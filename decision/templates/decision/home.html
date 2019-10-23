@@ -1,11 +1,11 @@
 {% extends "decision/base.html" %}
 {% block content %}
-	{% for post in posts %}
+	{% for session in sessions %}
 		<article class="media content-section">
 		  <div class="media-body">
 		    <div class="article-metadata">
-		      <a class="mr-2" href="#">{{ post.author }}</a>
-		      <small class="text-muted">{{ post.timeStarted|date:"F d, Y" }}</small>
+		      <a class="mr-2" href="#">{{ session.author }}</a>
+		      <small class="text-muted">{{ session.timeStarted|date:"F d, Y" }}</small>
 		    </div
 		  </div>
 		</article>

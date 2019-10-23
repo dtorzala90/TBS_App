@@ -1,11 +1,11 @@
 from django.shortcuts import render 
-from .models import Post
+from .models import Session
 
 
 # Create your views here.
 def home(request):
 	context = {
-		'posts': Post.objects.all()
+		'sessions': Session.objects.all()
 	}
 	return render(request, 'decision/home.html', context)
 

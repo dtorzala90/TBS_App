@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-class Post(models.Model):
+class Session(models.Model):
 	#These are the attributes of our object : Session
 	A_completed = models.BooleanField(default=False)
 	B_completed = models.BooleanField(default=False)
