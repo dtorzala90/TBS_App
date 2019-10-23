@@ -3,10 +3,15 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Post(models.Model):
-	title = models.CharField(max_length=100)
-	content = models.TextField()
-	date_posted = models.DateTimeField(default=timezone.now)
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	#These are the attributes of our object : Session
+	A_completed = models.BooleanField(default=False)
+	B_completed = models.BooleanField(default=False)
+	C_completed = models.BooleanField(default=False)
+	D_completed = models.BooleanField(default=False)
+	E_completed = models.BooleanField(default=False)
+	timeStarted = models.DateTimeField(default=timezone.now)
+	timeEnded = models.DateTimeField(default=timezone.now)
+	author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
 	def __str__(self):
-		return self.title
+		return self.user + self.timeStarted
