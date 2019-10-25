@@ -2,6 +2,33 @@
 {% block content %}
     <h1><strong>ABCDE Protocol</strong></h1>
     <br>
+    <h3><b>A</b>: <b>A</b>irway</h3>
+
+    <div class="form-group">
+        <label for="airway_intact"><b>Airway Compromised?</b></label>
+        <br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="yes-airway-compromised"
+                   value="option1" onclick="functionCalled()">
+            <label class="form-check-label greentext" for="yes-airway-compromised"><b>Yes</b></label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                   value="option2">
+            <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+        </div>
+
+    </div>
+
+    <script>
+     function functionCalled() {
+          window.location = "airway_compromised"; //if you want to redirect
+     }
+   </script>
+
+    <hr>
+    <br>
+    <br>
     <h3><b>ABC</b>: <b>A</b>wakening and <b>B</b>reathing <b>C</b>oordination</h3>
     <hr>
     <br>

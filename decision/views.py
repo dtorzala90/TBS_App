@@ -1,4 +1,4 @@
-from django.shortcuts import render 
+from django.shortcuts import render
 from .models import Post
 
 
@@ -11,3 +11,9 @@ def home(request):
 
 def about(request):
 	return render(request, 'decision/about.html', {'title': 'About'})
+
+def airway_compromised(request):
+	context = {
+		'posts': Post.objects.all()
+	}
+	return render(request, 'decision/airway_compromised.html', context)

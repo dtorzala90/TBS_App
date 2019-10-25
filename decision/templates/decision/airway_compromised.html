@@ -1,0 +1,35 @@
+{% extends "decision/base.html" %}
+{% block content %}
+    <h1><strong>Airway Protocol</strong></h1>
+    <br>
+    <h3><b>A</b>: <b>A</b>irway</h3>
+
+    <div class="form-group">
+        <label for="airway_intact"><b>Airway IS Compromised!!!!!!!</b></label>
+        <br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="yes-airway-compromised"
+                   value="option1">
+            <label class="form-check-label greentext" for="yes-airway-compromised"><b>Yes</b></label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                   value="option2">
+            <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+        </div>
+    </div>
+
+    <!--Leaving this here for now in case deleting it messes up the app-->
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
