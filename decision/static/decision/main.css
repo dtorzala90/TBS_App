@@ -41,6 +41,11 @@ ul {
   white-space: nowrap;
 }
 
+/*Highlights input required notification*/
+input:required {
+  border-color: orange !important;
+}
+
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
