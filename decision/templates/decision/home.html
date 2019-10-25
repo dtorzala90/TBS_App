@@ -1,6 +1,10 @@
 {% extends "decision/base.html" %}
 {% block content %}
-
+    <!--
+    ================================================================================
+    Javascript for survey input validation
+    ================================================================================
+    -->
     <script>
         $(".readonly").keydown(function (e) {
             e.preventDefault();
@@ -13,7 +17,11 @@
     <hr>
     <br>
     <form>
-        <!--Checklist for SAT Safety Screen-->
+        <!--
+        ================================================================================
+        Checklist for SAT Safety Screen
+        ================================================================================
+        -->
         <h4><b>
             <ins>SAT Safety Screen</ins>
         </b></h4>
@@ -161,7 +169,11 @@
     <hr>
     <br>
     <form>
-        <!--Checklist for SBT Safety Screen-->
+        <!--
+        ================================================================================
+        Checklist for SBT Safety Screen
+        ================================================================================
+        -->
         <h4><b>
             <ins>SBT Safety Screen</ins>
         </b></h4>
@@ -319,7 +331,11 @@
         <button type="submit" class="btn btn-primary">Check SBT</button>
     </form>
 
-    <!--Placeholder for D checklist-->
+    <!--
+    ================================================================================
+    Placeholder for protocol component D checklist
+    ================================================================================
+    -->
     <hr>
     <br>
     <h3><b>D</b>: <b>D</b>elirium Assessment and Management</h3>
@@ -328,7 +344,11 @@
     <button type="submit" class="btn btn-primary">Check Assessment</button>
     </form>
 
-    <!--Placeholder for E checklist-->
+    <!--
+    ================================================================================
+    Placeholder for protocol component E checklist
+    ================================================================================
+    -->
     <hr>
     <br>
     <h3><b>E</b>: <b>E</b>arly Exercise and Progressive Mobility</h3>
@@ -337,7 +357,11 @@
     <button type="submit" class="btn btn-primary">Check Assessment</button>
     </form>
 
-    <!--Leaving this here for now in case deleting it messes up the app-->
+    <!--
+    ================================================================================
+    Leaving this here in case deleting it messes up another function
+    ================================================================================
+    -->
     {% for post in posts %}
         <article class="media content-section">
             <div class="media-body">
