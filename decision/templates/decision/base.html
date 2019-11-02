@@ -65,8 +65,14 @@
 	          </ul>
 	        </p>
 	      </div>
-            <button type="button" class="btn btn-primary btn-lg" href="{% url 'startTimer'%}">Start Session</button>
-
+            <form action="{% url 'startTimer' %}" method="POST">
+                {% csrf_token %}
+              <input type="submit" class="btn btn-primary btn-lg" value="Start Session" name="start-btn">
+            </form>
+            <form action="{% url 'completeStep' %}" method="POST">
+                {% csrf_token %}
+              <input type="submit" class="btn btn-primary btn-lg" value="Complete Step" name="complete-btn">
+            </form>
 	    </div>
 	  </div>
 	</main>
