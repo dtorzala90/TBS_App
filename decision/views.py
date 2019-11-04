@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseNotModified
 from django.shortcuts import render
 from .models import Post
 import time
@@ -20,10 +20,10 @@ def startTimer(request):
 		request.session['step begun'] = request.session.get('start time')
 		print(request.session.get('step begun'))
 		print('start clicked')
-		return render(request, 'decision/home.html')
+		return HttpResponseNotModified()
 	else:
 		print('start failed')
-		return render(request, 'decision/home.html')
+		return HttpResponseNotModified()
 
 
 def completeStep(request):
@@ -34,11 +34,11 @@ def completeStep(request):
 			timeElapsed = request.session['step ended'] - request.session['start time']
 			request.session['step begun'] = time.time()
 			print(timeElapsed)
-			return render(request, 'decision/home.html')
+			return HttpResponseNotModified()
 		else:
 			timeElapsed = request.session['step ended'] - request.session['step begun']
 			request.session['step begun'] = time.time()
 			print(timeElapsed)
-			return render(request, 'decision/home.html')
+			return HttpResponseNotModified()
 	else:
-		return render(request, 'decision/home.html')
+		return HttpResponseNotModified()
