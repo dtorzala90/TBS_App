@@ -1,13 +1,386 @@
 {% extends "decision/base.html" %}
 {% block content %}
-	{% for session in sessions %}
-		<article class="media content-section">
-		  <div class="media-body">
-		    <div class="article-metadata">
-		      <a class="mr-2" href="#">{{ session.author }}</a>
-		      <small class="text-muted">{{ session.timeStarted|date:"F d, Y" }}</small>
-		    </div
-		  </div>
-		</article>
-	{% endfor %}
+
+    <!--
+    ================================================================================
+    Javascript for survey input validation
+    ================================================================================
+    -->
+    <script>
+        $(".readonly").keydown(function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+    <h1><strong>ABCDE Protocol</strong></h1>
+    <br>
+    <h3><b>ABC</b>: <b>A</b>wakening and <b>B</b>reathing <b>C</b>oordination</h3>
+    <hr>
+    <br>
+    <form>
+
+        <!--
+        ================================================================================
+        Checklist for SAT Safety Screen
+        ================================================================================
+        -->
+
+        <h4><b>
+            <ins>SAT Safety Screen</ins>
+        </b></h4>
+        <br>
+        <div class="form-group">
+            <label for="active_seizures"><b>Active Seizures?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group1" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group1" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="alcohol_withdrawal"><b>Alcohol Withdrawal?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group2" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group2" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ag_an_pa"><b>Agitation, anxiety, or pain?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group3" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group3" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="paralytics"><b>Paralytics?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group4" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group4" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="myoc_isch"><b>Myocardial ischemia?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group5" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group5" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="intr_pres"><b>Normal intracranial pressure?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group6" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group6" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="resp_rate"><b>Enter respiratory rate:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control readonly" type="text" placeholder="00/min" required>
+                <label class="label-wrap"><b>/min</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="spo2"><b>Enter SpO<sub><b>2</b></sub>:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control readonly" type="text" placeholder="00%" required>
+                <label class="label-wrap"><b>%</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="resp_dist"><b>Respiratory distress?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group7" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group7" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="acut_card_arrh"><b>Acute cardiac arrhythmia?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group8" id="inlineRadio1"
+                       value="option1" required>
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="group8" id="inlineRadio2"
+                       value="option2" required>
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Check SAT</button>
+    </form>
+
+    <hr>
+    <br>
+    <form>
+        <!--
+        ================================================================================
+        Checklist for SBT Safety Screen
+        ================================================================================
+        -->
+
+        <h4><b>
+            <ins>SBT Safety Screen</ins>
+        </b></h4>
+        <br>
+        <div class="form-group">
+            <label for="ag_an_pa"><b>Agitation, anxiety, or pain?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="o2_sat"><b>Enter oxygen saturation:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control" type="text" placeholder="00%" readonly>
+                <label class="label-wrap"><b>%</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="spo2"><b>Enter FiO<sub><b>2</b></sub>:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control" type="text" placeholder="00%" readonly>
+                <label class="label-wrap"><b>%</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="spo2"><b>Enter PEEP:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control" type="text" placeholder="00cm H2O" readonly>
+                <label class="label-wrap"><b>cm H<sub><b>2</b></sub>O</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="myoc_isch"><b>Myocardial ischemia?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="vaso_use"><b>Vasopressor use?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="insp_eff"><b>Inspiratory efforts?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="resp_rate"><b>Enter respiratory rate:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control" type="text" placeholder="00/min" readonly>
+                <label class="label-wrap"><b>/min</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="spo2"><b>Enter SpO<sub><b>2</b></sub>:</b></label>
+            <br>
+            <div class="form-check form-check-inline col-auto">
+                <input class="form-control" type="text" placeholder="00%" readonly>
+                <label class="label-wrap"><b>%</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="resp_dist"><b>Respiratory distress?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ment_stat"><b>Mental status change?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="acut_card_arrh"><b>Acute cardiac arrhythmia?</b></label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                       value="option1">
+                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                       value="option2">
+                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Check SBT</button>
+    </form>
+
+    <!--
+    ================================================================================
+    Placeholder for protocol component D checklist
+    ================================================================================
+    -->
+
+    <hr>
+    <br>
+    <h3><b>D</b>: <b>D</b>elirium Assessment and Management</h3>
+    <hr>
+    <br>
+    <button type="submit" class="btn btn-primary">Check Assessment</button>
+    </form>
+
+    <!--
+    ================================================================================
+    Placeholder for protocol component E checklist
+    ================================================================================
+    -->
+
+    <hr>
+    <br>
+    <h3><b>E</b>: <b>E</b>arly Exercise and Progressive Mobility</h3>
+    <hr>
+    <br>
+    <button type="submit" class="btn btn-primary">Check Assessment</button>
+    </form>
+
+    <!--
+    ================================================================================
+    Leaving this here in case deleting it messes up another function
+    ================================================================================
+    -->
+
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+
 {% endblock content %}
