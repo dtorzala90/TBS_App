@@ -36,8 +36,31 @@
 	</header>
 	<main role="main" class="container">
 	  <div class="jumbotron ">
-	    <div class="container">
-            <h1 class="display-4">Timer Goes Here</h1>
+	    <div class="container" id="timer">
+           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+        <script>
+            var hourslabel = document.getElementById("hours");
+            var minutesLabel = document.getElementById("minutes");
+            var secondsLabel = document.getElementById("seconds");
+            var totalSeconds = 0;
+            setInterval(setTime, 1000);
+
+            function setTime() {
+              ++totalSeconds;
+              secondsLabel.innerHTML = pad(totalSeconds % 60);
+              minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+              hourslabel.innerHTML = pad(parseInt(totalSeconds / 3600));
+            }
+
+            function pad(val) {
+              var valString = val + "";
+              if (valString.length < 2) {
+                return "0" + valString;
+              } else {
+                return valString;
+              }
+            }
+        </script>
 	    </div>
 	  </div>
 	  <div class="row">

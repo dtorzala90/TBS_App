@@ -11,8 +11,8 @@ def home(request):
 	return render(request, 'decision/home.html', context)
 
 
-def about(request):
-	return render(request, 'decision/about.html', {'title': 'About'})
+def summary(request):
+	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
 
 def startTimer(request):
 	if request.method == 'POST':
