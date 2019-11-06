@@ -40,12 +40,12 @@
 	    </div>
 	  </nav>
 	</header>
-{% block content %}
-    <div id="init-trauma">
-    	<h1>Begin Session</h1>
-        <form action="{% url 'startTimer' %}" method="POST">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-primary btn-lg" value="Start Session" name="start-btn">
-        </form>
-    <div>
-{% endblock content %}
+    <main>
+        <div id="init-trauma"  class="container">
+            <form action="{% url 'startTimer' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary btn-lg"  value="Start Session" name="start-btn">
+            </form>
+        </div>
+    </main>
+</body>
