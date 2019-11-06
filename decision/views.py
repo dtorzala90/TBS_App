@@ -10,6 +10,8 @@ def home(request):
 	}
 	return render(request, 'decision/home.html', context)
 
+def begin(request):
+	return render(request, 'decision/begin.html')
 
 def summary(request):
 	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
@@ -20,7 +22,7 @@ def startTimer(request):
 		request.session['step begun'] = request.session.get('start time')
 		print(request.session.get('step begun'))
 		print('start clicked')
-		return HttpResponseNotModified()
+		return render(request, 'decision/home.html')
 	else:
 		print('start failed')
 		return HttpResponseNotModified()

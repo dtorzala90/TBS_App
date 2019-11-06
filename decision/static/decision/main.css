@@ -104,3 +104,8 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+#init-trauma {
+  text-align:center;
+  vertical-align: middle;
+}
