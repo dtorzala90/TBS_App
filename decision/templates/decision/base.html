@@ -29,7 +29,7 @@
 	      <div class="collapse navbar-collapse" id="navbarToggle">
 	        <div class="navbar-nav mr-auto">
 	          <a class="nav-item nav-link" href="{% url 'decision-home' %}">Decision App</a>
-	          <a class="nav-item nav-link" href="{% url 'decision-about' %}">Summary Page</a>
+	          <a class="nav-item nav-link" href="{% url 'summary' %}">Summary Page</a>
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
@@ -65,10 +65,32 @@
 	          </ul>
 	        </p>
 	      </div>
-            <form action="{% url 'startTimer' %}" method="POST">
-                {% csrf_token %}
-              <input type="submit" class="btn btn-primary btn-lg" value="Start Session" name="start-btn">
-            </form>
+	    <div class="container" id="timer">
+           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+        <script>
+            var hours = document.getElementById("hours");
+            var minutes = document.getElementById("minutes");
+            var seconds = document.getElementById("seconds");
+            var totalSeconds = 0;
+            setInterval(setTime, 1000);
+
+            function setTime() {
+              ++totalSeconds;
+              seconds.innerHTML = pad(totalSeconds % 60);
+              minutes.innerHTML = pad(parseInt(totalSeconds / 60));
+              hours.innerHTML = pad(parseInt(totalSeconds / 3600));
+            }
+
+            function pad(val) {
+              var valString = val + "";
+              if (valString.length < 2) {
+                return "0" + valString;
+              } else {
+                return valString;
+              }
+            }
+        </script>
+	    </div>
 
             <form action="{% url 'completeStep' %}" method="POST">
                 {% csrf_token %}
