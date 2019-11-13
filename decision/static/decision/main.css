@@ -24,26 +24,12 @@ ul {
   color: #ffffff;
 }
 
-/*Text color to emphasize "No" button*/
-.redtext {
-  color: #901111;
-}
-/*Text color to emphasize "Yes" button*/
-.greentext {
-  color: #119011;
-}
-
 .label-wrap {
   display: inline-block;
   text_align: right;
   padding-left: 5px;
   padding-top: 7px;
   white-space: nowrap;
-}
-
-/*Highlights input required notification*/
-input:required {
-  border-color: orange !important;
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -103,4 +89,5 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+  color: ;
 }
