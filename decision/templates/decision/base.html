@@ -101,15 +101,7 @@
             }
         </script>
 	    </div>
-            <!--
-            ================================================================================
-            Dummy button for completing a protocol step (to be removed later)
-            ================================================================================
-            -->
-            <form action="{% url 'completeStep' %}" method="POST">
-                {% csrf_token %}
-              <input type="submit" class="btn btn-primary btn-lg" value="Complete Step" name="complete-btn">
-            </form>
+
 	    </div>
 	  </div>
 	</main>
