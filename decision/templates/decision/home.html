@@ -14,372 +14,330 @@
 
     <h1><strong>ABCDE Protocol</strong></h1>
     <br>
-    <h3><b>ABC</b>: <b>A</b>wakening and <b>B</b>reathing <b>C</b>oordination</h3>
+
     <hr>
     <br>
-    <form>
+
+    <div id="accordion"> <!-- Accordion container with card layout -->
 
         <!--
         ================================================================================
-        Checklist for SAT Safety Screen
+        Airway Checklist
+
+        - A table was used to organize the steps of Airway in a vertical fashion. Buttons
+          were added next to each step according to the sample UI for future timer
+          functionality. It serves as a very basic layout for Airway.
         ================================================================================
         -->
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                        <h3><b>A</b>irway</h3>
+                    </button>
+                </h5>
+            </div>
 
-        <h4><b>
-            <ins>SAT Safety Screen</ins>
-        </b></h4>
-        <br>
-        <div class="form-group">
-            <label for="active_seizures"><b>Active Seizures?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group1" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group1" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
 
-        <div class="form-group">
-            <label for="alcohol_withdrawal"><b>Alcohol Withdrawal?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group2" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group2" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
 
-        <div class="form-group">
-            <label for="ag_an_pa"><b>Agitation, anxiety, or pain?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group3" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group3" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
 
-        <div class="form-group">
-            <label for="paralytics"><b>Paralytics?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group4" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group4" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                                    <!-- Oxygen Supplementation -->
+                                    <tr bgcolor="00a9ce"> <!-- Oxygen Supplementation -->
+                                        <td style="vertical-align: middle"><h4>Oxygen Supplementation</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-        <div class="form-group">
-            <label for="myoc_isch"><b>Myocardial ischemia?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group5" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group5" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                                    <!-- Bag Mask -->
+                                    <tr bgcolor="#3CBDD9">
+                                        <td style="vertical-align: middle"><h4>Bag Mask</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-        <div class="form-group">
-            <label for="intr_pres"><b>Normal intracranial pressure?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group6" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group6" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                                    <!-- LMA -->
+                                    <tr bgcolor="#74D0E4">
+                                        <td style="vertical-align: middle"><h4>LMA</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-        <div class="form-group">
-            <label for="resp_rate"><b>Enter respiratory rate:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control readonly" type="text" placeholder="00/min" required>
-                <label class="label-wrap"><b>/min</b></label>
-            </div>
-        </div>
+                                    <!-- Endotracheal Tube -->
+                                    <tr bgcolor="ABE3EF">
+                                        <td style="vertical-align: middle"><h4>Endotracheal Tube</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-        <div class="form-group">
-            <label for="spo2"><b>Enter SpO<sub><b>2</b></sub>:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control readonly" type="text" placeholder="00%" required>
-                <label class="label-wrap"><b>%</b></label>
-            </div>
-        </div>
+                                    <!-- Difficult Airway -->
+                                    <tr bgcolor="C7ECF4">
+                                        <td style="vertical-align: middle"><h4>Difficult Airway</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-        <div class="form-group">
-            <label for="resp_dist"><b>Respiratory distress?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group7" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group7" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                                    <!-- Surgical Airway -->
+                                    <tr bgcolor="E3F6FA">
+                                        <td style="vertical-align: middle"><h4>Surgical Airway</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-        <div class="form-group">
-            <label for="acut_card_arrh"><b>Acute cardiac arrhythmia?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group8" id="inlineRadio1"
-                       value="option1" required>
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="group8" id="inlineRadio2"
-                       value="option2" required>
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
+                                    </tbody>
+                                </table>
+                            </div>
 
-        <button type="submit" class="btn btn-primary">Check SAT</button>
-    </form>
+                        </div>
+                    </form>
 
-    <hr>
-    <br>
-    <form>
-        <!--
-        ================================================================================
-        Checklist for SBT Safety Screen
-        ================================================================================
-        -->
-
-        <h4><b>
-            <ins>SBT Safety Screen</ins>
-        </b></h4>
-        <br>
-        <div class="form-group">
-            <label for="ag_an_pa"><b>Agitation, anxiety, or pain?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="o2_sat"><b>Enter oxygen saturation:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control" type="text" placeholder="00%" readonly>
-                <label class="label-wrap"><b>%</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="spo2"><b>Enter FiO<sub><b>2</b></sub>:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control" type="text" placeholder="00%" readonly>
-                <label class="label-wrap"><b>%</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="spo2"><b>Enter PEEP:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control" type="text" placeholder="00cm H2O" readonly>
-                <label class="label-wrap"><b>cm H<sub><b>2</b></sub>O</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="myoc_isch"><b>Myocardial ischemia?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="vaso_use"><b>Vasopressor use?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="insp_eff"><b>Inspiratory efforts?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="resp_rate"><b>Enter respiratory rate:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control" type="text" placeholder="00/min" readonly>
-                <label class="label-wrap"><b>/min</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="spo2"><b>Enter SpO<sub><b>2</b></sub>:</b></label>
-            <br>
-            <div class="form-check form-check-inline col-auto">
-                <input class="form-control" type="text" placeholder="00%" readonly>
-                <label class="label-wrap"><b>%</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="resp_dist"><b>Respiratory distress?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="ment_stat"><b>Mental status change?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="acut_card_arrh"><b>Acute cardiac arrhythmia?</b></label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                       value="option1">
-                <label class="form-check-label greentext" for="inlineRadio1"><b>Yes</b></label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                       value="option2">
-                <label class="form-check-label redtext" for="inlineRadio2"><b>No</b></label>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Check SBT</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Placeholder for protocol component D checklist
-    ================================================================================
-    -->
-
-    <hr>
-    <br>
-    <h3><b>D</b>: <b>D</b>elirium Assessment and Management</h3>
-    <hr>
-    <br>
-    <button type="submit" class="btn btn-primary">Check Assessment</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Placeholder for protocol component E checklist
-    ================================================================================
-    -->
-
-    <hr>
-    <br>
-    <h3><b>E</b>: <b>E</b>arly Exercise and Progressive Mobility</h3>
-    <hr>
-    <br>
-    <button type="submit" class="btn btn-primary">Check Assessment</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Leaving this here in case deleting it messes up another function
-    ================================================================================
-    -->
-
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 </div>
-                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
             </div>
-        </article>
-    {% endfor %}
+        </div>
+        <!--
+        ================================================================================
+        Breathing Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="true"
+                            aria-controls="collapseTwo">
+                        <h3><b>B</b>reathing</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!--
+        ================================================================================
+        Circulation Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="true"
+                            aria-controls="collapseThree">
+                        <h3><b>C</b>irculation</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--
+        ================================================================================
+        Disability Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
+                            aria-expanded="true"
+                            aria-controls="collapseFour">
+                        <h3><b>D</b>isability</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFour" class="collapse hide" aria-labelledby="headingFour"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--
+        ================================================================================
+        Exposure Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive"
+                            aria-expanded="true"
+                            aria-controls="collapseFive">
+                        <h3><b>E</b>xposure</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFive" class="collapse hide" aria-labelledby="headingFive"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Stopped
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--
+        ================================================================================
+        Leaving this here in case deleting it messes up another function
+        ================================================================================
+        -->
+
+        {% for post in posts %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">{{ post.author }}</a>
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    </div>
+                    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                    <p class="article-content">{{ post.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
 {% endblock content %}
