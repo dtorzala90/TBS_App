@@ -15,169 +15,329 @@
     <h1><strong>ABCDE Protocol</strong></h1>
     <br>
 
-    <!--
-    ================================================================================
-    Airway Checklist
-
-    - A table was used to organize the steps of Airway in a vertical fashion. Buttons
-      were added next to each step according to the sample UI for future timer
-      functionality. It serves as a very basic layout for Airway.
-    ================================================================================
-    -->
-
-
     <hr>
     <br>
-    <form>
-        <h3><b>A</b>: <b>A</b>irway</h3>
-        <hr>
-        <br>
-        <div class="container">
-            <div class="row justify-content-left">
-                <div class="col-md-8">
-                    <table class="table">
-                        <tbody>
-                        <tr bgcolor="00a9ce">
-                            <td style="vertical-align: middle"><h4>Oxygen Supplementation</h4></td>
-                            <td>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class="btn btn-light">Initiated</button>
-                                    <button type="button" class="btn btn-dark">Stopped</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr bgcolor="#3CBDD9">
-                            <td style="vertical-align: middle"><h4>Bag Mask</h4></td>
-                            <td>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class="btn btn-light">Initiated</button>
-                                    <button type="button" class="btn btn-dark">Stopped</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr bgcolor="#74D0E4">
-                            <td style="vertical-align: middle"><h4>LMA</h4></td>
-                            <td>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class="btn btn-light">Initiated</button>
-                                    <button type="button" class="btn btn-secondary">Achieved</button>
-                                    <button type="button" class="btn btn-dark">Removed</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr bgcolor="ABE3EF">
-                            <td style="vertical-align: middle"><h4>Endotracheal Tube</h4></td>
-                            <td>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class="btn btn-light">Initiated</button>
-                                    <button type="button" class="btn btn-secondary">Achieved</button>
-                                    <button type="button" class="btn btn-dark">Removed</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr bgcolor="C7ECF4">
-                            <td style="vertical-align: middle"><h4>Difficult Airway</h4></td>
-                            <td>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class="btn btn-light">Initiated</button>
-                                    <button type="button" class="btn btn-secondary">Achieved</button>
-                                    <button type="button" class="btn btn-dark">Removed</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr bgcolor="E3F6FA">
-                            <td style="vertical-align: middle"><h4>Surgical Airway</h4></td>
-                            <td>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class="btn btn-light">Initiated</button>
-                                    <button type="button" class="btn btn-secondary">Achieved</button>
-                                    <button type="button" class="btn btn-dark">Removed</button>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+    <div id="accordion"> <!-- Accordion container with card layout -->
+
+        <!--
+        ================================================================================
+        Airway Checklist
+
+        - A table was used to organize the steps of Airway in a vertical fashion. Buttons
+          were added next to each step according to the sample UI for future timer
+          functionality. It serves as a very basic layout for Airway.
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                        <h3><b>A</b>irway</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Oxygen Supplementation -->
+                                    <tr bgcolor="00a9ce"> <!-- Oxygen Supplementation -->
+                                        <td style="vertical-align: middle"><h4>Oxygen Supplementation</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Bag Mask -->
+                                    <tr bgcolor="#3CBDD9">
+                                        <td style="vertical-align: middle"><h4>Bag Mask</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- LMA -->
+                                    <tr bgcolor="#74D0E4">
+                                        <td style="vertical-align: middle"><h4>LMA</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Endotracheal Tube -->
+                                    <tr bgcolor="ABE3EF">
+                                        <td style="vertical-align: middle"><h4>Endotracheal Tube</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Difficult Airway -->
+                                    <tr bgcolor="C7ECF4">
+                                        <td style="vertical-align: middle"><h4>Difficult Airway</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Surgical Airway -->
+                                    <tr bgcolor="E3F6FA">
+                                        <td style="vertical-align: middle"><h4>Surgical Airway</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Removed</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
-    </form>
-
-    <!--
-    ================================================================================
-    Breathing Checklist
-    ================================================================================
-    -->
-
-    <hr>
-    <br>
-    <form>
-        <h3><b>B</b>: <b>B</b>reathing</h3>
-        <hr>
-        <br>
-        <button type="submit" class="btn btn-primary">Check Assessment</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Circulation Checklist
-    ================================================================================
-    -->
-
-    <hr>
-    <br>
-    <form>
-        <h3><b>C</b>: <b>C</b>irculation</h3>
-        <hr>
-        <br>
-        <button type="submit" class="btn btn-primary">Check Assessment</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Disability Checklist
-    ================================================================================
-    -->
-
-    <hr>
-    <br>
-    <form>
-        <h3><b>D</b>: <b>D</b>isability</h3>
-        <hr>
-        <br>
-        <button type="submit" class="btn btn-primary">Check Assessment</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Exposure Checklist
-    ================================================================================
-    -->
-
-    <hr>
-    <br>
-    <form>
-        <h3><b>E</b>: <b>E</b>xposure</h3>
-        <hr>
-        <br>
-        <button type="submit" class="btn btn-primary">Check Assessment</button>
-    </form>
-
-    <!--
-    ================================================================================
-    Leaving this here in case deleting it messes up another function
-    ================================================================================
-    -->
-
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-                </div>
-                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
+        <!--
+        ================================================================================
+        Breathing Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="true"
+                            aria-controls="collapseTwo">
+                        <h3><b>B</b>reathing</h3>
+                    </button>
+                </h5>
             </div>
-        </article>
-    {% endfor %}
+
+            <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!--
+        ================================================================================
+        Circulation Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="true"
+                            aria-controls="collapseThree">
+                        <h3><b>C</b>irculation</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--
+        ================================================================================
+        Disability Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
+                            aria-expanded="true"
+                            aria-controls="collapseFour">
+                        <h3><b>D</b>isability</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFour" class="collapse hide" aria-labelledby="headingFour"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--
+        ================================================================================
+        Exposure Checklist
+        ================================================================================
+        -->
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive"
+                            aria-expanded="true"
+                            aria-controls="collapseFive">
+                        <h3><b>E</b>xposure</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFive" class="collapse hide" aria-labelledby="headingFive"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <form> <!-- Container for table contents -->
+                        <div class="container">
+
+                            <div class="row justify-content-left">
+                                <table class="table">
+                                    <tbody>
+
+                                    <!-- Placeholder for content, copy for more cells -->
+                                    <tr bgcolor="gray"> <!-- Insert Content -->
+                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Stopped
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--
+        ================================================================================
+        Leaving this here in case deleting it messes up another function
+        ================================================================================
+        -->
+
+        {% for post in posts %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">{{ post.author }}</a>
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    </div>
+                    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                    <p class="article-content">{{ post.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
 {% endblock content %}
