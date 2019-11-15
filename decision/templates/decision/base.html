@@ -65,8 +65,18 @@
 	          </ul>
 	        </p>
 	      </div>
+        <!--
+        ================================================================================
+        Timer that displays time elapsed since beginning of Trauma
+        ================================================================================
+        -->
 	    <div class="container" id="timer">
            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+        <!--
+        ================================================================================
+        Javascript for timer
+        ================================================================================
+        -->
         <script>
             var hours = document.getElementById("hours");
             var minutes = document.getElementById("minutes");
@@ -92,10 +102,6 @@
         </script>
 	    </div>
 
-            <form action="{% url 'completeStep' %}" method="POST">
-                {% csrf_token %}
-              <input type="submit" class="btn btn-primary btn-lg" value="Complete Step" name="complete-btn">
-            </form>
 	    </div>
 	  </div>
 	</main>
