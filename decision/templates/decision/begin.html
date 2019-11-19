@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src="{% static "js/timer.js" %}"></script>
 
 	<!-- Required meta tags -->
     <meta charset="utf-8">
@@ -42,7 +43,7 @@
 	</header>
     <main>
         <div id="init-trauma"  class="container">
-            <br><br><br><br><center><form action="{% url 'startTimer' %}" method="POST">
+            <br><br><br><br><center><form action="{% url 'startTrauma' %}" method="POST">
                 {% csrf_token %}
                 <input type="submit" class="btn btn-primary btn-lg"  value="Start Session" name="start-btn">
             </form></center>
