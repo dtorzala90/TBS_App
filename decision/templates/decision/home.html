@@ -1,6 +1,6 @@
 {% extends "decision/base.html" %}
+{% load static %}
 {% block content %}
-
     <!--
     ================================================================================
     Javascript for survey input validation
@@ -10,6 +10,18 @@
         $(".readonly").keydown(function (e) {
             e.preventDefault();
         });
+    </script>
+
+    <!--
+    ================================================================================
+    Javascript for background timer
+    ================================================================================
+    -->
+    <script type="text/javascript" src="{% static "js/timer.js" %}"></script>
+
+    <script>
+        var d = new Date();
+        var timer = new Timer(d.getTime());
     </script>
 
     <h1><strong>ABCDE Protocol</strong></h1>
@@ -50,7 +62,7 @@
                                     <tbody>
 
                                     <!-- Oxygen Supplementation -->
-                                    <tr bgcolor="00a9ce"> <!-- Oxygen Supplementation -->
+                                    <tr bgcolor="00a9ce">
                                         <td style="vertical-align: middle"><h4>Oxygen Supplementation</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
