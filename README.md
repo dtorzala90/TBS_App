@@ -33,17 +33,17 @@ Explain what these tests test and why
 Version 1.0
 
 ## Authors
-Daniel Torzala
-Elizabeth Mos
-Rebecca Rodriguez
-Cristina Gonzales
+* Daniel Torzala
+* Elizabeth Mos
+* Rebecca Rodriguez
+* Cristina Gonzales
 
 
 ## Acknowledgments
-David M. Notrica, MD, FACS, FAAP
+* David M. Notrica, MD, FACS, FAAP
 Pediatric Surgeon
 Phoenix Children's Hospital
 
-Lois W. Sayrs, PhD,
+* Lois W. Sayrs, PhD,
 Senior Clinical Research Scientist
 Phoenix Children’s Hospital
