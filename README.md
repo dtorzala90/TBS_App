@@ -6,12 +6,13 @@ trauma in real time. User can input tasks as a checklist to make sure no steps a
 
 ## Getting Started
 
-```python3 manage.py runserver
+```bash
+python3 manage.py runserver
 ```
 
 ## Prerequisites
-Python3
-Django
+* Python3
+* Django
 
 ## Running the tests
 TO DO: Explain how to run the automated tests for this system
@@ -24,8 +25,8 @@ And coding style tests
 Explain what these tests test and why
 
 ## Built With
-django- The web framework used
-pip3 - Dependency Management
+* django - The web framework used
+* pip3 - Dependency Management
 
 
 ## Versioning
