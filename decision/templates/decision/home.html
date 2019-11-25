@@ -5,12 +5,12 @@
     ================================================================================
     Javascript for survey input validation
     ================================================================================
-
+    -->
     <script>
         $(".readonly").keydown(function (e) {
             e.preventDefault();
         });
-    </script>    -->
+    </script>
 
      <h1>
          <!--
@@ -23,20 +23,69 @@
         <!--
         ================================================================================
         Javascript to create new timer for current session
+
+        This script uses session storage variables to ensure that the time elapsed
+        being displayed on the screen remain persistent with user navigation. If the user
+        starts a session, let's it run for a bit, navigates away from the page, and then
+        comes back the time elapsed is still accurate.
         ================================================================================
         -->
 
         <script >
-            const d = new Date();
-            const visTimer = new VisualTimer(d.getTime());
-            setInterval(startVisTimer, 1000);
+            /*
+                If a new session has been started the total seconds elapsed is set to 0,
+                the start time is set to the current system time, and a new timer is started.
+                These values are then stored in web storage to be accesses later.
+             */
+            if (sessionStorage.getItem('session_start') === null){
+                var start = new Date().getTime();
+                var totSeconds = 0;
+                var navTime = 0;
+                var visTimer = new VisualTimer(start, totSeconds, navTime);
+                sessionStorage.setItem('session_start', start.toString());
+                sessionStorage.setItem('total_seconds', totSeconds.toString());
+                sessionStorage.setItem('nav_time', navTime.toString());
+                setInterval(startVisTimer, 1000);
+            }
 
+            /*
+                If this is not a new session, the total seconds and start time are found
+                in session storage and used to create a new timer that is identical to the
+                old one. This ensure all data is preserved.
+             */
+            else {
+                var totSeconds = parseInt(sessionStorage.getItem('total_seconds'), 10);
+                var start = parseInt(sessionStorage.getItem('session_start'), 10);
+                var navTime = parseInt(sessionStorage.getItem('nav_time'), 10);
+
+                var visTimer = new VisualTimer(start, totSeconds, navTime);
+                setInterval(startVisTimer, 1000);
+            }
+
+            /*
+                This function is repeated every second while the timer is running. It is
+                responsible for changing the timer displayed on the UI and saving the
+                updated total seconds elapsed to session storage. This ensures that this
+                value is always up to date as the user could navigate away from the page
+                at any time.
+             */
             function startVisTimer(){
-                console.log("called");
                 visTimer.timerAnimate();
+                sessionStorage.setItem('total_seconds', (visTimer.totalSeconds).toString());
+
+                /*
+                    This simply saves the current time to ensure that we know exactly when the
+                    user navigated away from the page. When the user navigates back to the page
+                    this value will be used to calculate an accurate "total seconds" compensating
+                    for the time spent away from the page.
+                 */
+                var navTime = new Date().getTime();
+                console.log(navTime);
+                sessionStorage.setItem('nav_time', navTime.toString());
             }
         </script>
-        </div></h1>
+        </div>
+     </h1>
     <br>
 
     <hr>
