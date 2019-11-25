@@ -37,14 +37,14 @@
                 the start time is set to the current system time, and a new timer is started.
                 These values are then stored in web storage to be accesses later.
              */
-            if (sessionStorage.getItem('session_start') === null){
+            if (localStorage.getItem('total_seconds_main') === null){
                 var start = new Date().getTime();
                 var totSeconds = 0;
                 var navTime = 0;
                 var visTimer = new VisualTimer(start, totSeconds, navTime);
-                sessionStorage.setItem('session_start', start.toString());
-                sessionStorage.setItem('total_seconds', totSeconds.toString());
-                sessionStorage.setItem('nav_time', navTime.toString());
+                localStorage.setItem('session_start', start.toString());
+                localStorage.setItem('total_seconds_main', totSeconds.toString());
+                localStorage.setItem('nav_time_main', navTime.toString());
                 setInterval(startVisTimer, 1000);
             }
 
@@ -54,9 +54,9 @@
                 old one. This ensure all data is preserved.
              */
             else {
-                var totSeconds = parseInt(sessionStorage.getItem('total_seconds'), 10);
-                var start = parseInt(sessionStorage.getItem('session_start'), 10);
-                var navTime = parseInt(sessionStorage.getItem('nav_time'), 10);
+                var totSeconds = parseInt(localStorage.getItem('total_seconds_main'), 10);
+                var start = parseInt(localStorage.getItem('session_start'), 10);
+                var navTime = parseInt(localStorage.getItem('nav_time_main'), 10);
 
                 var visTimer = new VisualTimer(start, totSeconds, navTime);
                 setInterval(startVisTimer, 1000);
@@ -71,7 +71,7 @@
              */
             function startVisTimer(){
                 visTimer.timerAnimate();
-                sessionStorage.setItem('total_seconds', (visTimer.totalSeconds).toString());
+                localStorage.setItem('total_seconds_main', (visTimer.totalSeconds).toString());
 
                 /*
                     This simply saves the current time to ensure that we know exactly when the
@@ -81,7 +81,7 @@
                  */
                 var navTime = new Date().getTime();
                 console.log(navTime);
-                sessionStorage.setItem('nav_time', navTime.toString());
+                localStorage.setItem('nav_time_main', navTime.toString());
             }
         </script>
         </div>

@@ -21,7 +21,7 @@ class VisualTimer {
          this.visMinutes = document.getElementById("minutes");
          this.visSeconds = document.getElementById("seconds");
 
-         if(secondCount != 0){
+         if(secondCount != 0 && navTime != 0){
              console.log("Current Time: " + currentTime);
              console.log("Navigated away at: " + navTime);
              var timeAway = Math.floor((currentTime - navTime)/1000);
