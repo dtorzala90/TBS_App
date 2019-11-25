@@ -5,30 +5,43 @@
     ================================================================================
     Javascript for survey input validation
     ================================================================================
-    -->
+
     <script>
         $(".readonly").keydown(function (e) {
             e.preventDefault();
         });
-    </script>
+    </script>    -->
 
-    <!--
-    ================================================================================
-    Javascript for background timer
-    ================================================================================
-    -->
-    <script type="text/javascript" src="{% static "js/timer.js" %}"></script>
+     <h1>
+         <!--
+        ================================================================================
+        Timer that displays time elapsed since beginning of Trauma
+        ================================================================================
+        -->
+	    <div class="container" id="timer">
+           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+        <!--
+        ================================================================================
+        Javascript to create new timer for current session
+        ================================================================================
+        -->
 
-    <script>
-        var d = new Date();
-        var timer = new Timer(d.getTime());
-    </script>
+        <script >
+            const d = new Date();
+            const visTimer = new VisualTimer(d.getTime());
+            setInterval(startVisTimer, 1000);
 
-    <h1><strong>ABCDE Protocol</strong></h1>
+            function startVisTimer(){
+                console.log("called");
+                visTimer.timerAnimate();
+            }
+        </script>
+        </div></h1>
     <br>
 
     <hr>
     <br>
+
 
 	<div class="sidenav">
 	  	<center>

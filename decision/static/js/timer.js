@@ -3,15 +3,46 @@
     duration of the trauma. Additionally, it is responsible for calculating
     the time elapsed between various protocol steps.
  */
-class Timer {
+var instance;
+var startTime;
+var timerDict;
+var totalSeconds;
+var visHours;
+var visMinutes;
+var visSeconds;
+
+class VisualTimer {
     /*
         Creates a Timer object and records the initial start time of the trauma.
         The constructor also initiates a blank dictionary for the various steps.
      */
-    constructor(startTime) {
-        this.startTime = startTime;
-        this.timerDict = { };
-        console.log("Timer Started At: " + startTime);
+    constructor(start) {
+           //instance = this;
+           startTime = start;
+           timerDict = { };
+
+           totalSeconds = 0;
+           visHours = document.getElementById("hours");
+           visMinutes = document.getElementById("minutes");
+           visSeconds = document.getElementById("seconds");
+           console.log("Timer Started At: " + startTime);
+
+    }
+
+    timerAnimate() {
+        ++totalSeconds;
+        visSeconds.innerHTML = this.pad(totalSeconds % 60);
+        visMinutes.innerHTML = this.pad(parseInt(totalSeconds / 60));
+        visHours.innerHTML = this.pad(parseInt(totalSeconds / 3600));
+    }
+
+    pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
     }
 
     /*
@@ -19,17 +50,7 @@ class Timer {
         the time elapsed is recorded or the time stamp that the step was initiated
         is recorded. These values are then stored in the timer dictionary.
      */
-    completeAirwayStep(stepName, time) {
-        if (stepName == 'OxygenSupplInit'){
-            this.timerDict[stepName] = time;
-            print("Oxygen Supplementation Initiated At: " + time);
-        }
-
-        else if(stepName == 'OxygenSupplStop'){
-            this.timerDict[stepName] = time;
-            this.timerDict["OxygenSupplTime"] = time - this.timerDict.OxygenSupplInit;
-            print("Oxygen Supplementation Stopped At: " + time);
-            print("Total Time Elapsed for Oxygen Supllementation Was: " + this.timerDict.OxygenSupplTime);
-        }
+    completeStepTest() {
+        console.log("Button Pressed!!!");
     }
 }

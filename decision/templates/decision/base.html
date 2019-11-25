@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'decision/main.css' %}">
 
+    <script type="text/javascript" src="{% static "js/timer.js" %}"></script>
 	{% if title %}
 		<title>Django Decision - {{ title }}</title>
 	{% else %}
@@ -65,43 +66,6 @@
 	          </ul>
 	        </p>
 	      </div>
-        <!--
-        ================================================================================
-        Timer that displays time elapsed since beginning of Trauma
-        ================================================================================
-        -->
-	    <div class="container" id="timer">
-           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
-        <!--
-        ================================================================================
-        Javascript for timer
-        ================================================================================
-        -->
-        <script>
-            var hours = document.getElementById("hours");
-            var minutes = document.getElementById("minutes");
-            var seconds = document.getElementById("seconds");
-            var totalSeconds = 0;
-            setInterval(setTime, 1000);
-
-            function setTime() {
-              ++totalSeconds;
-              seconds.innerHTML = pad(totalSeconds % 60);
-              minutes.innerHTML = pad(parseInt(totalSeconds / 60));
-              hours.innerHTML = pad(parseInt(totalSeconds / 3600));
-            }
-
-            function pad(val) {
-              var valString = val + "";
-              if (valString.length < 2) {
-                return "0" + valString;
-              } else {
-                return valString;
-              }
-            }
-        </script>
-	    </div>
-
 	    </div>
 	  </div>
 	</main>
