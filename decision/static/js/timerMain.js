@@ -63,7 +63,7 @@ class VisualTimer {
         this.visMinutes.innerHTML = this.pad(parseInt(this.totalSeconds / 60));
         this.visHours.innerHTML = this.pad(parseInt(this.totalSeconds / 3600));
 
-        checkGeneralAlerts();
+        //checkGeneralAlerts();
     }
 
     /**

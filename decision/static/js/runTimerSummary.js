@@ -18,7 +18,7 @@ if (localStorage.getItem('total_seconds_summary') === null){
     localStorage.setItem('total_seconds_summary', totSeconds.toString());
     localStorage.setItem('nav_time_summary', navTime.toString());
     setInterval(startVisTimer, 1000);
-    setInterval(checkGeneralAlerts, 1000);
+    //setInterval(checkGeneralAlerts, 1000);
 }
 
 /*
