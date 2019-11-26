@@ -57,5 +57,4 @@ function startVisTimer(){
     localStorage.setItem('nav_time_summary', navTime.toString());
 
     //Check for general alerts and manages UI alerts accordingly
-    visTimer.checkGeneralAlerts();
 }

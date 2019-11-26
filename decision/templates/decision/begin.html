@@ -18,14 +18,7 @@
 	{% else %}
 		<title>Django Decision</title>
 	{% endif %}
-
-    <!-- Clear data from previous session and initialize global values -->
-    <script>
-        localStorage.clear();
-        localStorage.setItem("ETCO2", " ");
-        localStorage.setItem("IV Started", "false");
-        localStorage.setItem("GCS", " ");
-    </script>
+    <script type="text/javascript" src="{% static "js/initTimer.js" %}"></script>
 </head>
 <body>
 	<header class="site-header">

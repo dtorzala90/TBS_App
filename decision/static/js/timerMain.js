@@ -38,21 +38,6 @@ class VisualTimer {
          console.log("Total seconds elapsed: " + this.totalSeconds);
     }
 
-    checkGeneralAlerts(){
-        var etco2 = localStorage.getItem("ETCO2");
-        var ivAccess = localStorage.getItem("IV Started");
-        var gcs = localStorage.getItem("GCS");
-
-        if(this.totalSeconds > 120){
-            if(ivAccess === "false") {
-                return "ivAlert";
-            }
-
-            else{
-                return "ivDismiss";
-            }
-        }
-    }
     /**
      *  Increments the timer by one second and updates the UI accordingly. This method will
      *  be called from the HTML file every second to ensure accuracy.
