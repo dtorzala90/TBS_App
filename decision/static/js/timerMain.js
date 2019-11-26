@@ -38,6 +38,21 @@ class VisualTimer {
          console.log("Total seconds elapsed: " + this.totalSeconds);
     }
 
+    checkGeneralAlerts(){
+        var etco2 = localStorage.getItem("ETCO2");
+        var ivAccess = localStorage.getItem("IV Started");
+        var gcs = localStorage.getItem("GCS");
+
+        if(this.totalSeconds > 120){
+            if(ivAccess === "false") {
+                return "ivAlert";
+            }
+
+            else{
+                return "ivDismiss";
+            }
+        }
+    }
     /**
      *  Increments the timer by one second and updates the UI accordingly. This method will
      *  be called from the HTML file every second to ensure accuracy.
@@ -47,6 +62,8 @@ class VisualTimer {
         this.visSeconds.innerHTML = this.pad(this.totalSeconds % 60);
         this.visMinutes.innerHTML = this.pad(parseInt(this.totalSeconds / 60));
         this.visHours.innerHTML = this.pad(parseInt(this.totalSeconds / 3600));
+
+        checkGeneralAlerts();
     }
 
     /**
@@ -62,14 +79,5 @@ class VisualTimer {
         } else {
             return valString;
         }
-    }
-
-    /*
-        This method handles all the steps in the airway protocol. For each step
-        the time elapsed is recorded or the time stamp that the step was initiated
-        is recorded. These values are then stored in the timer dictionary.
-     */
-    completeStepTest() {
-        console.log("Button Pressed!!!");
     }
 }
