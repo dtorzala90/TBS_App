@@ -12,23 +12,28 @@
         });
     </script>
 
-    <!--
-    ================================================================================
-    Javascript for background timer
-    ================================================================================
-    -->
-    <script type="text/javascript" src="{% static "js/timer.js" %}"></script>
+     <h1>
+         <!--
+        ================================================================================
+        Timer that displays time elapsed since beginning of Trauma
+        ================================================================================
+        -->
+	    <div class="container" id="timer">
+           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
 
-    <script>
-        var d = new Date();
-        var timer = new Timer(d.getTime());
-    </script>
-
-    <h1><strong>ABCDE Protocol</strong></h1>
+        <!--
+        ================================================================================
+        Javascript to create new timer for current session
+        ================================================================================
+        -->
+            <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
+        </div>
+     </h1>
     <br>
 
     <hr>
     <br>
+
 
 	<div class="sidenav">
 	  	<center>
