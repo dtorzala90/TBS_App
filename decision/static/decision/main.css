@@ -157,18 +157,18 @@ a.article-title:hover {
 }
 
 .btn-xl {
+    align-content: center;
     padding: 15px 30px;
     font-size: 30px;
     border-radius: 15px;
-    justify-content: center;
-    margin-top: 25%;
-    margin-bottom: 25%;
 }
 
 .btn.btn-primary {
     background-color: #D72331;
-    box-shadow: 0 5px 0 0 #6C1219;
+    box-shadow: 0 8px 0 0 #6C1219;
     border: #6C1219;
+    margin-top: 25%;
+    margin-bottom: 25%;
 }
 
 .btn.btn-primary:hover {
@@ -177,12 +177,14 @@ a.article-title:hover {
 
 .btn.btn-primary:visited {
     border-color: #86161F !important;
+    margin-top: 25%;
+    margin-bottom: 25%;
 }
 
 .btn.btn-primary:active:focus {
     background-color: #86161F !important;
     box-shadow: none !important;
-    margin-bottom: -5px !important;
-	margin-top: 5px !important;
+    margin-top: 26%;
+    margin-bottom: 26%;
 
 }
