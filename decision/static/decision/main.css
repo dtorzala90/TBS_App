@@ -113,6 +113,24 @@ a.article-title:hover {
   display: block;
 }
 
+.card-header::after {
+  content: "\f106";
+  color: #333;
+  right: 30px;
+  top: 18px;
+  position: absolute;
+  font-family: "FontAwesome";
+  font-size: 30px;
+}
+
+.card-header[aria-expanded="false"]::after {
+  content: "\f107";
+}
+
+.card-header[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
 .timer-color {
   color: white;
 }
