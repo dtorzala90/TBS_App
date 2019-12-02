@@ -53,7 +53,6 @@ function startVisTimer(){
         for the time spent away from the page.
     */
     var navTime = new Date().getTime();
-    console.log(navTime);
     localStorage.setItem('nav_time_summary', navTime.toString());
 
     //Check for general alerts and manages UI alerts accordingly

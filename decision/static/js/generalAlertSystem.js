@@ -4,13 +4,9 @@
     that is the case, there is no need to run a loop to check for these alert
     criteria again.
  */
-var ivAlertThrown = localStorage.getItem("ivAlert");
-var ivAccess = localStorage.getItem("IVACCESS");
+var ivAlertThrown = localStorage.getItem("ivAlert").toString();
 
-var ETCO2alert = localStorage.getItem("ETCO2alert");
-var ETCO2recorded = localStorage.getItem("ETCO2recorded");
-
-var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
+var ETCO2alert = localStorage.getItem("ETCO2alert").toString();
 
 if(ivAlertThrown !== "dismissed"){
     setInterval(checkIV, 1000);
@@ -30,6 +26,10 @@ if(ETCO2alert !== "dismissed"){
  *      If there is access then we dismiss the previously thrown alert.
  */
 function checkIV(){
+    var ivAlertThrown = localStorage.getItem("ivAlert");
+    var ivAccess = localStorage.getItem("IVACCESS");
+    var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
+
         if(timeElapsed >= 20 && ivAlertThrown !== "dismissed"){
             if(ivAccess === "false" && ivAlertThrown !== "thrown") {
                 localStorage.setItem("ivAlert", "thrown");
@@ -42,7 +42,7 @@ function checkIV(){
                       "                </div>");
             }
 
-            else{
+            else if (ivAccess === "true"){
                 localStorage.setItem("ivAlert", "dismissed");
                 $('#iv-alert').remove();
             }
@@ -50,6 +50,10 @@ function checkIV(){
 }
 
 function checkETCO2(){
+    var ETCO2alert = localStorage.getItem("ETCO2alert");
+    var ETCO2recorded = localStorage.getItem("ETCO2recorded");
+    var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
+
         if(timeElapsed >= 26 && ETCO2alert !== "dismissed"){
             if(ETCO2recorded === "false" && ETCO2alert !== "thrown") {
                 localStorage.setItem("ETCO2alert", "thrown");
@@ -62,7 +66,7 @@ function checkETCO2(){
                       "                </div>");
             }
 
-            else{
+            else if (ETCO2recorded === "true") {
                 localStorage.setItem("ETCO2alert", "dismissed");
                 $('#etco2-alert').remove();
             }
