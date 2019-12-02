@@ -1,140 +1,188 @@
 body {
-  background: #29323A;
-  color: #333333;
-  margin-top: 5rem;
-  margin-left: 140px;
+    background: #29323A;
+    color: #0a3303;
+    margin-top: 5rem;
+    margin-left: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+    color: #444444;
 }
 
 ul {
-  margin: 0;
+    margin: 0;
 }
 
 .bg-steel {
-  background-color: #5f788a;
+    background-color: #5f788a;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #555555;
-}
-
-.site-header .navbar-nav .nav-link:hover {
-  color: #333333;
-}
-
-.navbar-light .navbar-brand {
     color: #555555;
 }
 
+.site-header .navbar-nav .nav-link:hover {
+    color: #D72331;
+}
+
+.navbar-default {
+    background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+    color: #555555;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #D72331;
+}
+
 .label-wrap {
-  display: inline-block;
-  text_align: right;
-  padding-left: 5px;
-  padding-top: 7px;
-  white-space: nowrap;
+    display: inline-block;
+    text_align: right;
+    padding-left: 5px;
+    padding-top: 7px;
+    white-space: nowrap;
 }
 
 .site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .content-section {
-  background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 
 .article-title {
-  color: #444444;
+    color: #444444;
 }
 
 a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
+    color: #428bca;
+    text-decoration: none;
 }
 
 .article-content {
-  white-space: pre-line;
+    white-space: pre-line;
 }
 
 .article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
 }
 
 .article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
 }
 
 .article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
 
 .article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
 }
 
 .account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
 }
 
 .account-heading {
-  font-size: 2.5rem;
+    font-size: 2.5rem;
 }
 
 .sidenav {
-  height: 100%;
-  width: 140px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 30px;
-  margin-top: 20px;
+    height: 100%;
+    width: 140px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 30px;
+    margin-top: 20px;
+    background: white;
 }
 
 .sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 70px;
-  color: #555555;
-  display: block;
+    padding: 6px 8px 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 70px;
+    color: #555555;
+    display: block;
 }
 
 .card-header::after {
-  content: "\f106";
-  color: #333;
-  right: 30px;
-  top: 18px;
-  position: absolute;
-  font-family: "FontAwesome";
-  font-size: 30px;
+    content: "\f106";
+    color: #333;
+    right: 30px;
+    top: 18px;
+    position: absolute;
+    font-family: "FontAwesome";
+    font-size: 30px;
 }
 
 .card-header[aria-expanded="false"]::after {
-  content: "\f107";
+    content: "\f107";
 }
 
 .card-header[aria-expanded="true"]::after {
-  content: "\f106";
+    content: "\f106";
 }
 
 .timer-color {
-  color: white;
+    color: white;
+}
+
+#brandImage {
+    width: 150px;
+    height: 57.75px;
+    display: inline-block;
+    float: left;
+}
+
+.btn-xl {
+    padding: 15px 30px;
+    font-size: 30px;
+    border-radius: 15px;
+    justify-content: center;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+
+.btn.btn-primary {
+    background-color: #D72331;
+    box-shadow: 0 5px 0 0 #6C1219;
+    border: #6C1219;
+}
+
+.btn.btn-primary:hover {
+    background-color: #A11A25;
+}
+
+.btn.btn-primary:visited {
+    border-color: #86161F !important;
+}
+
+.btn.btn-primary:active:focus {
+    background-color: #86161F !important;
+    box-shadow: none !important;
+    margin-bottom: -5px !important;
+	margin-top: 5px !important;
+
 }
