@@ -1,14 +1,28 @@
 /*
-    Sets up a loop to check the IV alerts every second to ensure nothing needs to be
-    thrown or dismissed.
+    Sets up global variables to be used in various functions. Also checks
+    to see if these various alerts have already been thrown and dismissed. If
+    that is the case, there is no need to run a loop to check for these alert
+    criteria again.
  */
+var ivAlertThrown = localStorage.getItem("ivAlert");
+var ivAccess = localStorage.getItem("IVACCESS");
 
-setInterval(checkIV, 1000);
-var alertList = document.getElementById('alert_placeholder');
+var ETCO2alert = localStorage.getItem("ETCO2alert");
+var ETCO2recorded = localStorage.getItem("ETCO2recorded");
+
+var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
+
+if(ivAlertThrown !== "dismissed"){
+    setInterval(checkIV, 1000);
+}
+
+if(ETCO2alert !== "dismissed"){
+    setInterval(checkETCO2, 1000);
+}
 
 /**
  *  Using local storage this function does the following:
- *      Checks if it has been longer than 2 minutes
+ *      Checks if it has been longer than 5 minutes
  *      If it has then we check to see if an iv alert has been previously
  *      dismissed - if it has then we don't worry about it but if it hasn't
  *      then we check to see if there is iv access. If there is no iv access
@@ -16,21 +30,41 @@ var alertList = document.getElementById('alert_placeholder');
  *      If there is access then we dismiss the previously thrown alert.
  */
 function checkIV(){
-        var ivAlertThrown = localStorage.getItem("ivAlert");
-        var ivAccess = localStorage.getItem("IVACCESS");
-        var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
-
-        if(timeElapsed >= 12 && ivAlertThrown !== "dismissed"){
-            if(ivAccess === "false") {
+        if(timeElapsed >= 20 && ivAlertThrown !== "dismissed"){
+            if(ivAccess === "false" && ivAlertThrown !== "thrown") {
                 localStorage.setItem("ivAlert", "thrown");
-                localStorage.setItem("IVACCESS", "true");
-                  $('#alert_placeholder').html("<div class='alert alert-danger alert-dismissible' id='iv-alert'>No IV: Consider central line or intraosseous line!</div>");
-                  $('#alert_placeholder').show();
+                  $('#alert_placeholder').append(
+                      "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='iv-alert'>\n" +
+                      "                  <strong>Alert: No IV:  Consider central line or intraosseous line!</strong>\n" +
+                      "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                      "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                      "                  </button>\n" +
+                      "                </div>");
             }
 
             else{
                 localStorage.setItem("ivAlert", "dismissed");
                 $('#iv-alert').remove();
+            }
+        }
+}
+
+function checkETCO2(){
+        if(timeElapsed >= 26 && ETCO2alert !== "dismissed"){
+            if(ETCO2recorded === "false" && ETCO2alert !== "thrown") {
+                localStorage.setItem("ETCO2alert", "thrown");
+                  $('#alert_placeholder').append(
+                      "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-alert'>\n" +
+                      "                  <strong>Alert: No ETCO2 measured!</strong>\n" +
+                      "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                      "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                      "                  </button>\n" +
+                      "                </div>");
+            }
+
+            else{
+                localStorage.setItem("ETCO2alert", "dismissed");
+                $('#etco2-alert').remove();
             }
         }
 }
