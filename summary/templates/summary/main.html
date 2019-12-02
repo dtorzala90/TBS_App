@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'decision/main.css' %}">
 
+    <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
 	{% if title %}
 		<title>Trauma Overview - {{ title }}</title>
 	{% else %}
@@ -35,75 +36,29 @@
 	  </nav>
 	</header>
 	<main role="main" class="container">
-	  <div class="container">
-	    <div class="jumbotron" id="timer">
-           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
-        <script>
-            var hours = document.getElementById("hours");
-            var minutes = document.getElementById("minutes");
-            var seconds = document.getElementById("seconds");
-            var totalSeconds = 0;
-            setInterval(setTime, 1000);
+        <h1>
+             <!--
+            ================================================================================
+            Timer that displays time elapsed since beginning of Trauma
+            ================================================================================
+            -->
+            <div class="container" id="timer">
+               <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+            </div>
+        </h1>
+	  <div class="container" id="alert_placeholder">
+            <!--
+            ================================================================================
+            Javascript to create new timer for current session
 
-            function setTime() {
-              ++totalSeconds;
-              seconds.innerHTML = pad(totalSeconds % 60);
-              minutes.innerHTML = pad(parseInt(totalSeconds / 60));
-              hours.innerHTML = pad(parseInt(totalSeconds / 3600));
-            }
+            This script is the same as the one in home.html but with additional calculations
+            to compensate for the fact that the Summary page will be opened after the timer
+            has started.
+            ================================================================================
+            -->
+                <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
+                <script type="text/javascript" src="{% static "js/generalAlertSystem.js" %}"></script>
 
-            function pad(val) {
-              var valString = val + "";
-              if (valString.length < 2) {
-                return "0" + valString;
-              } else {
-                return valString;
-              }
-            }
-        </script>
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Step 1
-                <span class="badge badge-primary badge-pill">00:00:45:00</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Step 2
-                <span class="badge badge-primary badge-pill">00:1:45:10</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Step 3
-                <span class="badge badge-primary badge-pill">00:00:15:07</span>
-              </li>
-            </ul>
-
-	    </div>
-	    <div class="col-md-4">
-	      <div class="content-section">
-	        <h3>Alerts</h3>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>Alert here</strong>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong>Suggestion here</strong>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              </li>
-            </ul>
-	      </div>
-	    </div>
 	  </div>
 	</main>
 

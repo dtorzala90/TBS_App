@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
 
 	<!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,6 +18,9 @@
 	{% else %}
 		<title>Django Decision</title>
 	{% endif %}
+
+    <!-- Initializes timer and local storage data -->
+    <script type="text/javascript" src="{% static "js/initTimer.js" %}"></script>
 </head>
 <body>
 	<header class="site-header">
@@ -42,7 +46,7 @@
 	</header>
     <main>
         <div id="init-trauma"  class="container">
-            <br><br><br><br><center><form action="{% url 'startTimer' %}" method="POST">
+            <br><br><br><br><center><form action="{% url 'startTrauma' %}" method="POST">
                 {% csrf_token %}
                 <input type="submit" class="btn btn-primary btn-lg"  value="Start Session" name="start-btn">
             </form></center>

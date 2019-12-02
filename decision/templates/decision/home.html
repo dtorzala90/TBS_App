@@ -1,6 +1,6 @@
 {% extends "decision/base.html" %}
+{% load static %}
 {% block content %}
-
     <!--
     ================================================================================
     Javascript for survey input validation
@@ -11,12 +11,53 @@
             e.preventDefault();
         });
     </script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+     <h1>
+         <!--
+        ================================================================================
+        Timer that displays time elapsed since beginning of Trauma
+        ================================================================================
+        -->
+	    <div class="container" id="timer">
+           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
 
-    <h1><strong>ABCDE Protocol</strong></h1>
+        <!--
+        ================================================================================
+        Javascript to create new timer for current session
+        ================================================================================
+        -->
+            <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
+        </div>
+     </h1>
     <br>
 
     <hr>
     <br>
+
+
+	<div class="sidenav">
+	  	<center>
+	  		<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	  			<a href="#A">A</a>
+        	</button>
+
+			<button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a href="#B">B</a>
+            </button>
+
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <a href="#C">C</a>
+            </button>
+
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                <a href="#D">D</a>
+            </button>
+
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                <a href="#E">E</a>
+            </button>
+		</center>
+	</div>
 
     <div id="accordion"> <!-- Accordion container with card layout -->
 
@@ -30,10 +71,10 @@
         ================================================================================
         -->
         <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
                             aria-controls="collapseOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link">
                         <h3><b>A</b>irway</h3>
                     </button>
                 </h5>
@@ -41,7 +82,7 @@
 
             <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-
+                	<a id="A">
                     <form> <!-- Container for table contents -->
                         <div class="container">
 
@@ -50,7 +91,7 @@
                                     <tbody>
 
                                     <!-- Oxygen Supplementation -->
-                                    <tr bgcolor="00a9ce"> <!-- Oxygen Supplementation -->
+                                    <tr bgcolor="00a9ce">
                                         <td style="vertical-align: middle"><h4>Oxygen Supplementation</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -125,7 +166,7 @@
 
                         </div>
                     </form>
-
+                	</a>
                 </div>
             </div>
         </div>
@@ -134,12 +175,12 @@
         Breathing Checklist
         ================================================================================
         -->
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
-                            aria-expanded="true"
+        <div class="card" >
+            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false"
                             aria-controls="collapseTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link">
                         <h3><b>B</b>reathing</h3>
                     </button>
                 </h5>
@@ -156,11 +197,52 @@
                                     <tbody>
 
                                     <!-- Placeholder for content, copy for more cells -->
-                                    <tr bgcolor="gray"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                    <tr bgcolor="2F832E"> <!-- Breathing Patent -->
+                                        <td style="vertical-align: middle"><h4>Breating Patent</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="21A11F"> <!-- Adequate Ventilation -->
+                                        <td style="vertical-align: middle"><h4>Adequate Ventilation</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="2FB52D"> <!-- Chest Tube Placement -->
+                                        <td style="vertical-align: middle"><h4>Chest Tube Placement</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="2DCF2A"> <!-- Chest X-ray-->
+                                        <td style="vertical-align: middle"><h4>Chest x-ray</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
+                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="7DF17B"> <!-- Aterial Blood Gas -->
+                                        <td style="vertical-align: middle"><h4>Aterial Blood Gas</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated</button>
+                                                <button type="button" class="btn btn-secondary">Achieved</button>
                                                 <button type="button" class="btn btn-dark">Stopped</button>
                                             </div>
                                         </td>
@@ -176,17 +258,19 @@
             </div>
         </div>
 
+
+
         <!--
         ================================================================================
         Circulation Checklist
         ================================================================================
         -->
         <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
-                            aria-expanded="true"
+            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="false"
                             aria-controls="collapseThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link">
                         <h3><b>C</b>irculation</h3>
                     </button>
                 </h5>
@@ -204,7 +288,7 @@
                                     <tbody>
 
                                    <!-- Level of Consciousness -->
-                                    <tr bgcolor="#a448ff"> <!-- Level of Consciousness -->
+                                    <tr bgcolor="#a448ff">
                                         <td style="vertical-align: middle"><h4>Level of Consciousness</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -235,7 +319,7 @@
                                         </td>
                                     </tr>
 
-                                    <!-- Sites of rapid blood loss -->
+                                    <!-- Sites of Rapid Blood Loss -->
                                     <tr bgcolor="#dab4ff">
                                         <td style="vertical-align: middle"><h4>Sites of rapid blood loss</h4></td>
                                         <td>
@@ -262,11 +346,11 @@
         ================================================================================
         -->
         <div class="card">
-            <div class="card-header" id="headingFour">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
-                            aria-expanded="true"
+            <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour"
+                            aria-expanded="false"
                             aria-controls="collapseFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link">
                         <h3><b>D</b>isability</h3>
                     </button>
                 </h5>
@@ -283,14 +367,73 @@
                                 <table class="table">
                                     <tbody>
 
-                                    <!-- Placeholder for content, copy for more cells -->
-                                    <tr bgcolor="gray"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Insert Content</h4></td>
+                                    <tr bgcolor="#F2A900"> <!-- Optimize ABC -->
+                                        <td style="vertical-align: middle"><h4>Optimize ABC</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <button type="button" class="btn btn-light">Initiated
                                                 </button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                                <button type="button" class="btn btn-dark">Complete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- AVPU Assessment -->
+                                    <tr bgcolor="#F5BE40">
+                                        <td style="vertical-align: middle"><h4>AVPU Assessment</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Complete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Drug Chart Review -->
+                                    <tr bgcolor="#F7C960">
+                                        <td style="vertical-align: middle"><h4>Drug Chart Review</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Complete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Pupil Assessment -->
+                                    <tr bgcolor="#F8D480">
+                                        <td style="vertical-align: middle"><h4>Pupil Assessment</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Complete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Glucose Level Assessment -->
+                                    <tr bgcolor="#FADF9F">
+                                        <td style="vertical-align: middle"><h4>Glucose Level Assessment</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Complete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Movement Assessment -->
+                                    <tr bgcolor="#FCE9BF">
+                                        <td style="vertical-align: middle"><h4>Movement Assessment</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-light">Initiated
+                                                </button>
+                                                <button type="button" class="btn btn-dark">Complete</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -310,11 +453,11 @@
         ================================================================================
         -->
         <div class="card">
-            <div class="card-header" id="headingFive">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive"
-                            aria-expanded="true"
+            <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive"
+                            aria-expanded="false"
                             aria-controls="collapseFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link">
                         <h3><b>E</b>xposure</h3>
                     </button>
                 </h5>
@@ -332,6 +475,7 @@
                                     <tbody>
 
                                     <!-- Placeholder for content, copy for more cells -->
+
                                     <tr bgcolor="00FF00"> <!-- Insert Content -->
                                         <td style="vertical-align: middle"><h4>Patient in Pain?</h4></td>
                                         <td>
@@ -392,6 +536,7 @@
 
                                     <tr bgcolor="CCFFCC"> <!-- Insert Content -->
                                         <td style="vertical-align: middle"><h4>Check for Infection</h4></td>
+
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <button type="button" class="btn btn-light">Initiated
