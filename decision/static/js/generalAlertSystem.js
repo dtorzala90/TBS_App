@@ -4,6 +4,7 @@
  */
 
 setInterval(checkIV, 1000);
+var alertList = document.getElementById('alert_placeholder');
 
 /**
  *  Using local storage this function does the following:
@@ -16,7 +17,6 @@ setInterval(checkIV, 1000);
  */
 function checkIV(){
         var ivAlertThrown = localStorage.getItem("ivAlert");
-        var alertBox = document.getElementById("alert_placeholder");
         var ivAccess = localStorage.getItem("IVACCESS");
         var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
 
@@ -24,12 +24,13 @@ function checkIV(){
             if(ivAccess === "false") {
                 localStorage.setItem("ivAlert", "thrown");
                 localStorage.setItem("IVACCESS", "true");
-                alertBox.append('No IV: Consider central line or intraosseous line!');
+                  $('#alert_placeholder').html("<div class='alert alert-danger alert-dismissible' id='iv-alert'>No IV: Consider central line or intraosseous line!</div>");
+                  $('#alert_placeholder').show();
             }
 
             else{
                 localStorage.setItem("ivAlert", "dismissed");
-                alertBox.append('IV PUT IN');
+                $('#iv-alert').remove();
             }
         }
 }
