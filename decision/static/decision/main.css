@@ -1,5 +1,5 @@
 body {
-  background: #fafafa;
+  background: #29323A;
   color: #333333;
   margin-top: 5rem;
   margin-left: 140px;
@@ -111,4 +111,8 @@ a.article-title:hover {
   font-size: 70px;
   color: #ffffff;
   display: block;
+}
+
+.timer-color {
+  color: white;
 }
