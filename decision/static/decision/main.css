@@ -1,5 +1,5 @@
 body {
-  background: #fafafa;
+  background: #29323A;
   color: #333333;
   margin-top: 5rem;
   margin-left: 140px;
@@ -99,7 +99,6 @@ a.article-title:hover {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #5f788a;
   overflow-x: hidden;
   padding-top: 30px;
   margin-top: 20px;
@@ -130,4 +129,8 @@ a.article-title:hover {
 
 .card-header[aria-expanded="true"]::after {
   content: "\f106";
+}
+
+.timer-color {
+  color: white;
 }
