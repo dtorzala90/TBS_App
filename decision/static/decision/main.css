@@ -1,136 +1,247 @@
 body {
-  background: #29323A;
-  color: #333333;
-  margin-top: 5rem;
-  margin-left: 140px;
+    background: #29323A;
+    color: #FFFFFF;
+    margin-top: 5rem;
+    margin-left: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+    color: #444444;
 }
 
 ul {
-  margin: 0;
+    margin: 0;
 }
-
-.bg-steel {
-  background-color: #5f788a;
+/*Remove table lines and make it transparent*/
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    border-top: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    vertical-align: middle;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+    color: #555555;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+    color: #D72331;
+}
+
+.navbar-default {
+    background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+    color: #555555;
 }
 
 .label-wrap {
-  display: inline-block;
-  text_align: right;
-  padding-left: 5px;
-  padding-top: 7px;
-  white-space: nowrap;
+    display: inline-block;
+    text_align: right;
+    padding-left: 5px;
+    padding-top: 7px;
+    white-space: nowrap;
 }
 
 .site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .content-section {
-  background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 
 .article-title {
-  color: #444444;
+    color: #444444;
 }
 
 a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
+    color: #428bca;
+    text-decoration: none;
 }
 
 .article-content {
-  white-space: pre-line;
-}
-
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+    white-space: pre-line;
 }
 
 .article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
 }
 
 .article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
-
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
-
-.account-heading {
-  font-size: 2.5rem;
-}
-
+/*Sidebar for shortcuts between accordion sections*/
 .sidenav {
-  height: 100%;
-  width: 140px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 30px;
-  margin-top: 20px;
+    height: 100%;
+    width: 140px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 30px;
+    margin-top: 20px;
+    background: white;
 }
 
 .sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 70px;
-  color: #ffffff;
-  display: block;
+    padding: 6px 8px 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 70px;
+    color: #555555;
+    display: block;
 }
 
 .card-header::after {
-  content: "\f106";
-  color: #333;
-  right: 30px;
-  top: 18px;
-  position: absolute;
-  font-family: "FontAwesome";
-  font-size: 30px;
+    content: "\f106";
+    color: #333;
+    right: 30px;
+    top: 18px;
+    position: absolute;
+    font-family: "FontAwesome";
+    font-size: 30px;
 }
 
 .card-header[aria-expanded="false"]::after {
-  content: "\f107";
+    content: "\f107";
 }
 
 .card-header[aria-expanded="true"]::after {
-  content: "\f106";
+    content: "\f106";
+}
+/*Formatting the timer on the decision and summary pages*/
+.timer-style {
+    color: white;
+    text-align: center;
+    display: inline-block;
+    padding-top: 5%;
+    font-size: 75px;
 }
 
-.timer-color {
-  color: white;
+.timer-summary {
+    color: white;
+    text-align: center;
+    display: inline-block;
+    padding-top: 25%;
+    font-size: 200px;
+}
+/*Formatting the text alert on the summary page*/
+.alert-format {
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+/*Format the PCH logo in the navbar*/
+#brandImage {
+    width: 150px;
+    height: 57.75px;
+    display: inline-block;
+    float: left;
+}
+/*Create a large button for the landing page*/
+.btn-xl {
+    align-content: center;
+    padding: 15px 30px;
+    font-size: 30px;
+    border-radius: 15px;
+}
+
+.btn.btn-primary {
+    background-color: #D72331;
+    box-shadow: 0 8px 0 0 #6C1219;
+    border: #6C1219;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+
+.btn.btn-primary:hover {
+    background-color: #A11A25;
+}
+
+.btn.btn-primary:visited {
+    border-color: #86161F !important;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+
+.btn.btn-primary:active:focus {
+    background-color: #86161F !important;
+    box-shadow: none !important;
+    margin-top: 26%;
+    margin-bottom: 26%;
+
+}
+/*Search bar for archive section*/
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+/*Styling each section of the accordion*/
+.collapse-A {
+    background: rgb(0, 169, 206, 0.85);
+    background: linear-gradient(180deg, rgba(0, 169, 206, 0.85) 0%, rgba(255, 255, 255, 0.85) 100%);
+
+}
+
+.collapse-B {
+    background: rgb(132, 189, 0, 0.85);
+    background: linear-gradient(180deg, rgba(132, 189, 0, 0.85) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+
+.collapse-C {
+    background: rgb(128, 49, 167, 0.85);
+    background: linear-gradient(180deg, rgba(128, 49, 167, 0.85) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+
+.collapse-D {
+    background: rgb(242, 169, 0, 0.85);
+    background: linear-gradient(180deg, rgba(242, 169, 0, 0.85) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+
+.collapse-E {
+    background: rgb(210, 22, 104, 0.85);
+    background: linear-gradient(180deg, rgba(210, 22, 104, 0.85) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+/*Format the geometric background graphics on the bottom*/
+#bgDesign {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    max-width: 100%;
+    height: auto;
+    transform: scaleX(-1);
+}
+/*Remove underline from text links*/
+.nounderline {
+  text-decoration: none !important;
+}
+/*Change hover color for sidebar letters*/
+a:hover {
+    color: #D72331;
+}
+
+.btn-padding {
+    width: 75%;
+    margin: 5px;
 }

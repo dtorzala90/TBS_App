@@ -1,72 +1,82 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
 
-	<!-- Required meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'decision/main.css' %}">
 
     <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
-	{% if title %}
-		<title>Trauma Overview - {{ title }}</title>
-	{% else %}
-		<title>Trauma Overview</title>
-	{% endif %}
+    {% if title %}
+        <title>Trauma Overview - {{ title }}</title>
+    {% else %}
+        <title>Trauma Overview</title>
+    {% endif %}
 </head>
 <body>
-	<header class="site-header">
-	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-	    <div class="container">
-	      <a class="navbar-brand mr-4" href="{% url 'decision-home' %}">TBS Decision App</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	      </button>
-	      <div class="collapse navbar-collapse" id="navbarToggle">
-	        <div class="navbar-nav mr-auto">
-	          <a class="nav-item nav-link" href="#">View Metrics</a>
-	        </div>
-	      </div>
-	    </div>
-	  </nav>
-	</header>
-	<main role="main" class="container">
-        <h1>
-             <!--
-            ================================================================================
-            Timer that displays time elapsed since beginning of Trauma
-            ================================================================================
-            -->
-            <div class="container" id="timer">
-               <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+<header class="site-header">
+    <!-- Navbar Main Content -->
+    <nav class="navbar navbar-expand-md navbar-default fixed-top">
+        <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
+        <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="#">View Metrics</a>
+                </div>
             </div>
-        </h1>
-	  <div class="container" id="alert_placeholder">
-            <!--
-            ================================================================================
-            Javascript to create new timer for current session
+        </div>
+    </nav>
+</header>
+<main role="main" class="container">
+    <h1>
+        <!--
+       ================================================================================
+       Timer that displays time elapsed since beginning of Trauma
+       ================================================================================
+       -->
+        <div class="container timer-summary" id="timer">
+            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+        </div>
+    </h1>
+    <div class="container alert-format" id="alert_placeholder">
+        <!--
+        ================================================================================
+        Javascript to create new timer for current session
 
-            This script is the same as the one in home.html but with additional calculations
-            to compensate for the fact that the Summary page will be opened after the timer
-            has started.
-            ================================================================================
-            -->
-                <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
-                <script type="text/javascript" src="{% static "js/generalAlertSystem.js" %}"></script>
+        This script is the same as the one in home.html but with additional calculations
+        to compensate for the fact that the Summary page will be opened after the timer
+        has started.
+        ================================================================================
+        -->
+        <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/generalAlertSystem.js" %}"></script>
 
-	  </div>
-	</main>
+    </div>
+</main>
 
 
-	 <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

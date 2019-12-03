@@ -12,54 +12,60 @@
         });
     </script>
 
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-     <h1>
-         <!--
-        ================================================================================
-        Timer that displays time elapsed since beginning of Trauma
-        ================================================================================
-        -->
-	    <div class="container timer-color" id="timer">
-           <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
-
+    <h1>
         <!--
-        ================================================================================
-        Javascript to create new timer for current session
-        ================================================================================
-        -->
+       ================================================================================
+       Timer that displays time elapsed since beginning of Trauma
+       ================================================================================
+       -->
+        <div class="container timer-style" id="timer">
+            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+
+            <!--
+            ================================================================================
+            Javascript to create new timer for current session
+            ================================================================================
+            -->
             <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
         </div>
-     </h1>
+    </h1>
     <br>
 
     <hr>
     <br>
 
 
-	<div class="sidenav bg-light">
-	  	<center>
-	  		<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	  			<a href="#A">A</a>
-        	</button>
+    <div class="sidenav">
+        <div style="text-align: center;">
+            <br>
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                    aria-controls="collapseOne">
+                <a href="#A">A</a>
+            </button>
 
-			<button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
                 <a href="#B">B</a>
             </button>
 
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+                    aria-controls="collapseThree">
                 <a href="#C">C</a>
             </button>
 
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+                    aria-controls="collapseFour">
                 <a href="#D">D</a>
             </button>
 
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
+                    aria-controls="collapseFive">
                 <a href="#E">E</a>
             </button>
-		</center>
-	</div>
+        </div>
+    </div>
 
     <div id="accordion"> <!-- Accordion container with card layout -->
 
@@ -73,102 +79,103 @@
         ================================================================================
         -->
         <div class="card">
-            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                            aria-controls="collapseOne">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+                 aria-expanded="false"
+                 aria-controls="collapseOne">
                 <h5 class="mb-0">
-                    <button class="btn btn-link">
-                        <h3><b>A</b>irway</h3>
+                    <button class="btn btn-link nounderline">
+                        <h2><b>A</b>irway</h2>
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapseOne" class="collapse hide collapse-A" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-                	<a id="A">
-                    <form> <!-- Container for table contents -->
-                        <div class="container">
+                    <a id="A">
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
 
-                            <div class="row justify-content-left">
-                                <table class="table">
-                                    <tbody>
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
 
-                                    <!-- Oxygen Supplementation -->
-                                    <tr bgcolor="00a9ce">
-                                        <td style="vertical-align: middle"><h4>Oxygen Supplementation</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Oxygen Supplementation -->
+                                        <tr>
+                                            <td><h4>Oxygen Supplementation</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated</button>
+                                                    <button type="button" class="btn btn-danger">Stopped</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Bag Mask -->
-                                    <tr bgcolor="#3CBDD9">
-                                        <td style="vertical-align: middle"><h4>Bag Mask</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Bag Mask -->
+                                        <tr>
+                                            <td><h4>Bag Mask</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated</button>
+                                                    <button type="button" class="btn btn-danger">Stopped</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- LMA -->
-                                    <tr bgcolor="#74D0E4">
-                                        <td style="vertical-align: middle"><h4>LMA</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Removed</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- LMA -->
+                                        <tr>
+                                            <td><h4>LMA</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated</button>
+                                                    <button type="button" class="btn btn-dark">Achieved</button>
+                                                    <button type="button" class="btn btn-danger">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Endotracheal Tube -->
-                                    <tr bgcolor="ABE3EF">
-                                        <td style="vertical-align: middle"><h4>Endotracheal Tube</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Removed</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Endotracheal Tube -->
+                                        <tr>
+                                            <td><h4>Endotracheal Tube</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated</button>
+                                                    <button type="button" class="btn btn-dark">Achieved</button>
+                                                    <button type="button" class="btn btn-danger">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Difficult Airway -->
-                                    <tr bgcolor="C7ECF4">
-                                        <td style="vertical-align: middle"><h4>Difficult Airway</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Removed</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Difficult Airway -->
+                                        <tr>
+                                            <td><h4>Difficult Airway</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated</button>
+                                                    <button type="button" class="btn btn-dark">Achieved</button>
+                                                    <button type="button" class="btn btn-danger">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Surgical Airway -->
-                                    <tr bgcolor="E3F6FA">
-                                        <td style="vertical-align: middle"><h4>Surgical Airway</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Removed</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Surgical Airway -->
+                                        <tr>
+                                            <td><h4>Surgical Airway</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated</button>
+                                                    <button type="button" class="btn btn-dark">Achieved</button>
+                                                    <button type="button" class="btn btn-danger">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-
-                        </div>
-                    </form>
-                	</a>
+                        </form>
+                    </a>
                 </div>
             </div>
         </div>
@@ -177,18 +184,18 @@
         Breathing Checklist
         ================================================================================
         -->
-        <div class="card" >
+        <div class="card">
             <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo">
+                 aria-expanded="false"
+                 aria-controls="collapseTwo">
                 <h5 class="mb-0">
-                    <button class="btn btn-link">
-                        <h3><b>B</b>reathing</h3>
+                    <button class="btn btn-link nounderline">
+                        <h2><b>B</b>reathing</h2>
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div id="collapseTwo" class="collapse hide collapse-B" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
 
                     <form> <!-- Container for table contents -->
@@ -199,17 +206,19 @@
                                     <tbody>
 
                                     <!-- Placeholder for content, copy for more cells -->
-                                    <tr bgcolor="2F832E"> <!-- Spontaneuous breathing -->
+
+                                    <tr> <!-- Spontaneuous breathing -->
                                         <td style="vertical-align: middle"><h4>Spontaneous Breathing</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                               <input type="radio" name="sponbreath" value="yes"> Yes<br>
                                               <input type="radio" name="sponbreath" value="no"> No<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="21A11F"> <!-- Adequate Ventilation -->
+                                    <tr> <!-- Adequate Ventilation -->
                                         <td style="vertical-align: middle"><h4>Assisted Breathing</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -218,7 +227,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr bgcolor="2FB52D"> <!-- Right: Chest Rise -->
+                                    <tr> <!-- Right: Chest Rise -->
                                         <td style="vertical-align: middle"><h4>Right: Chest Rise / Breath Sounds</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -227,7 +236,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr bgcolor="2DCF2A"> <!-- Left: Chest X-ray-->
+                                    <tr> <!-- Left: Chest X-ray-->
                                         <td style="vertical-align: middle"><h4>Left: Chest Rise / Breath Sounds</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -236,7 +245,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr bgcolor="7DF17B"> <!-- Aterial Blood Gas -->
+                                    <tr> <!-- Aterial Blood Gas -->
                                         <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -262,7 +271,6 @@
         </div>
 
 
-
         <!--
         ================================================================================
         Circulation Checklist
@@ -270,16 +278,16 @@
         -->
         <div class="card">
             <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree">
+                 aria-expanded="false"
+                 aria-controls="collapseThree">
                 <h5 class="mb-0">
-                    <button class="btn btn-link">
-                        <h3><b>C</b>irculation</h3>
+                    <button class="btn btn-link nounderline">
+                        <h2><b>C</b>irculation</h2>
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree"
+            <div id="collapseThree" class="collapse hide collapse-C" aria-labelledby="headingThree"
                  data-parent="#accordion">
                 <div class="card-body">
 
@@ -291,37 +299,42 @@
                                     <tbody>
 
                                    <!-- Heart RAte -->
-                                    <tr bgcolor="#a448ff">
+                                    <tr>
                                         <td style="vertical-align: middle"><h4>Heart Rate</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <input type="text" name="hr" value=""> BPM<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Blood Pressure -->
-                                    <tr bgcolor="#b66cff">
+                                    <tr>
                                         <td style="vertical-align: middle"><h4>Systolic Blood Pressure</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <input type="text" name="bp" value=""> mmHg<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Central Pulse -->
-                                    <tr bgcolor="#c890ff">
+
+                                    <tr>
                                         <td style="vertical-align: middle"><h4>Shock Index</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <button type="button" class="btn btn-dark">HR / SBP </button>
+
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Sites of Rapid Blood Loss -->
-                                    <tr bgcolor="#dab4ff">
+
+                                    <tr>
                                         <td style="vertical-align: middle"><h4>Perfusion</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -381,6 +394,7 @@
                                             <div class="btn-group-vertical" role="group">
                                               <input type="radio" name="tac" value="yes"> Yes<br>
                                               <input type="radio" name="tac" value="no"> No <br>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -421,16 +435,16 @@
         -->
         <div class="card">
             <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour"
-                            aria-expanded="false"
-                            aria-controls="collapseFour">
+                 aria-expanded="false"
+                 aria-controls="collapseFour">
                 <h5 class="mb-0">
-                    <button class="btn btn-link">
-                        <h3><b>D</b>isability</h3>
+                    <button class="btn btn-link nounderline">
+                        <h2><b>D</b>isability</h2>
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseFour" class="collapse hide" aria-labelledby="headingFour"
+            <div id="collapseFour" class="collapse hide collapse-D" aria-labelledby="headingFour"
                  data-parent="#accordion">
                 <div class="card-body">
 
@@ -441,7 +455,7 @@
                                 <table class="table">
                                     <tbody>
 
-                                    <tr bgcolor="#F2A900"> <!-- Optimize ABC -->
+                                    <tr> <!-- Optimize ABC -->
                                         <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Motor</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -455,7 +469,7 @@
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="#F2A900"> <!-- Optimize ABC -->
+                                    <tr> <!-- Optimize ABC -->
                                         <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Verbal</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -464,11 +478,12 @@
                                               <input type="radio" name="verbal" value="wo"> Inappropriate Words<br>
                                               <input type="radio" name="verbal" value="so"> Incomprehensible Sounds<br>
                                               <input type="radio" name="verbal" value="no"> No Verbal Response<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="#F2A900"> <!-- Optimize ABC -->
+                                    <tr> <!-- Optimize ABC -->
                                         <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Eye</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -481,7 +496,7 @@
                                     </tr>
 
                                     <!-- AVPU Assessment -->
-                                    <tr bgcolor="#F5BE40">
+                                    <tr>
                                         <td style="vertical-align: middle"><h4>Pupils</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -501,7 +516,7 @@
                                     </tr>
 
                                     <!-- Drug Chart Review -->
-                                    <tr bgcolor="#F7C960">
+                                    <tr>
                                         <td style="vertical-align: middle"><h4>Move All Extremities</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
@@ -527,16 +542,16 @@
         -->
         <div class="card">
             <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive"
-                            aria-expanded="false"
-                            aria-controls="collapseFive">
+                 aria-expanded="false"
+                 aria-controls="collapseFive">
                 <h5 class="mb-0">
-                    <button class="btn btn-link">
-                        <h3><b>E</b>xposure</h3>
+                    <button class="btn btn-link nounderline">
+                        <h2><b>E</b>xposure</h2>
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseFive" class="collapse hide" aria-labelledby="headingFive"
+            <div id="collapseFive" class="collapse hide collapse-E" aria-labelledby="headingFive"
                  data-parent="#accordion">
                 <div class="card-body">
 
@@ -549,72 +564,71 @@
 
                                     <!-- Placeholder for content, copy for more cells -->
 
-                                    <tr bgcolor="00FF00"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Patient in Pain?</h4></td>
+                                    <tr> <!-- Insert Content -->
+                                        <td><h4>Patient in Pain?</h4></td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-light" style="width:104px">Yes
+                                            <div class="btn-group-vertical btn-padding" role="group">
+                                                <button type="button" class="btn btn-light">Yes
                                                 </button>
-                                                <button type="button" class="btn btn-dark" style="width:104px">No
+                                                <button type="button" class="btn btn-danger">No</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr> <!-- Insert Content -->
+                                        <td><h4>Patient Bleeding?</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical btn-padding" role="group">
+                                                <button type="button" class="btn btn-light">Yes
+                                                </button>
+                                                <button type="button" class="btn btn-danger">No
                                                 </button>
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="4CFF4C"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Patient bleeding?</h4></td>
+                                    <tr> <!-- Insert Content -->
+                                        <td><h4>Estimated Blood Loss</h4></td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-light" style="width:104px">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark" style="width:104px">No
+                                            <div class="btn-group-vertical btn-padding" role="group">
+                                                <button type="button" class="btn btn-danger">Recorded
                                                 </button>
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="66FF66"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Estimated Blood Loss</h4></td>
+                                    <tr> <!-- Insert Content -->
+                                        <td><h4>Patient in Shock?</h4></td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-dark">Recorded
+                                            <div class="btn-group-vertical btn-padding" role="group">
+                                                <button type="button" class="btn btn-light">Yes
+                                                </button>
+                                                <button type="button" class="btn btn-danger">No
                                                 </button>
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="7FFF7F"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Patient in Shock?</h4></td>
+                                    <tr> <!-- Insert Content -->
+                                        <td><h4>Patient Hemorrhaging?</h4></td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-light" style="width:104px">Yes
+                                            <div class="btn-group-vertical btn-padding" role="group">
+                                                <button type="button" class="btn btn-light">Yes
                                                 </button>
-                                                <button type="button" class="btn btn-dark" style="width:104px">No
+                                                <button type="button" class="btn btn-danger">No
                                                 </button>
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr bgcolor="99FF99"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Patient Haemorrhaging?</h4></td>
-                                        <td>
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-light" style="width:104px">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark" style="width:104px">No
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr bgcolor="CCFFCC"> <!-- Insert Content -->
-                                        <td style="vertical-align: middle"><h4>Check for Infection</h4></td>
+                                    <tr> <!-- Insert Content -->
+                                        <td><h4>Check for Infection</h4></td>
 
                                         <td>
-                                            <div class="btn-group-vertical" role="group">
+                                            <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light">Initiated
                                                 </button>
-                                                <button type="button" class="btn btn-dark">Completed
+                                                <button type="button" class="btn btn-danger">Completed
                                                 </button>
                                             </div>
                                         </td>
@@ -631,22 +645,22 @@
         </div>
     </div>
 
-        <!--
-        ================================================================================
-        Leaving this here in case deleting it messes up another function
-        ================================================================================
-        -->
+    <!--
+    ================================================================================
+    Leaving this here in case deleting it messes up another function
+    ================================================================================
+    -->
 
-        {% for post in posts %}
-            <article class="media content-section">
-                <div class="media-body">
-                    <div class="article-metadata">
-                        <a class="mr-2" href="#">{{ post.author }}</a>
-                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-                    </div>
-                    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-                    <p class="article-content">{{ post.content }}</p>
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 </div>
-            </article>
-        {% endfor %}
+                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
 {% endblock content %}

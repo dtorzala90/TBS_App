@@ -10,8 +10,8 @@ class VisualTimer {
      *  we know the user navigated away from the page and must factor this into our calculation
      *  of the time elapsed.
      *
-     * @param start   represents the time the session was started in miliseconds
-     * @param secondCount represents, in miliseconds, the total time elapsed since the session began.
+     * @param start   represents the time the session was started in milliseconds
+     * @param secondCount represents, in milliseconds, the total time elapsed since the session began.
      */
     constructor(start, secondCount, navTime) {
         var currentTime = new Date().getTime();
