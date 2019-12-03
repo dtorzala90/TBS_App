@@ -290,49 +290,110 @@
                                 <table class="table">
                                     <tbody>
 
-                                   <!-- Level of Consciousness -->
+                                   <!-- Heart RAte -->
                                     <tr bgcolor="#a448ff">
-                                        <td style="vertical-align: middle"><h4>Level of Consciousness</h4></td>
+                                        <td style="vertical-align: middle"><h4>Heart Rate</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Complete</button>
+                                                <input type="text" name="hr" value=""> BPM<br>
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <!-- Skin Color -->
+                                    <!-- Blood Pressure -->
                                     <tr bgcolor="#b66cff">
-                                        <td style="vertical-align: middle"><h4>Skin Color</h4></td>
+                                        <td style="vertical-align: middle"><h4>Systolic Blood Pressure</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Complete</button>
+                                                <input type="text" name="bp" value=""> mmHg<br>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Central Pulse -->
                                     <tr bgcolor="#c890ff">
-                                        <td style="vertical-align: middle"><h4>Central Pulse</h4></td>
+                                        <td style="vertical-align: middle"><h4>Shock Index</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-dark">Recorded</button>
+                                                <button type="button" class="btn btn-dark">HR / SBP </button>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Sites of Rapid Blood Loss -->
                                     <tr bgcolor="#dab4ff">
-                                        <td style="vertical-align: middle"><h4>Sites of rapid blood loss</h4></td>
+                                        <td style="vertical-align: middle"><h4>Perfusion</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Complete</button>
+                                              <input type="radio" name="lipc" value="no"> Lip Color - Pink<br>
+                                              <input type="radio" name="lipc" value="25"> Lip Color - White<br>
+                                              <input type="radio" name="lipc" value="30"> Lip Color - Unable To Assess <br>
+                                              <input type="radio" name="nailc" value="35"> Nail Color - Pink<br>
+                                              <input type="radio" name="nailc" value="40"> Nail Color - White<br>
+                                              <input type="radio" name="nailc" value="50"> Nail Color - Unable To Assess<br>
+                                              <input type="radio" name="capr" value="35"> Cap Refill - <2s<br>
+                                              <input type="radio" name="capr" value="40"> Cap Refill - 2s-4s<br>
+                                              <input type="radio" name="capr" value="50"> Cap Refill - >4s<br>
                                             </div>
                                         </td>
                                     </tr>
 
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>IV Access</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="funp" value="no"> Functional Peripheral IV - None<br>
+                                              <input type="radio" name="funp" value="25"> Functional Peripheral IV - 1<br>
+                                              <input type="radio" name="funp" value="30"> Functional Peripheral IV - 2<br>
+                                              <input type="radio" name="funp" value="35"> Functional Peripheral IV - >2<br>
+                                              <input type="radio" name="intral" value="40"> Intraosseous Line - Yes<br>
+                                              <input type="radio" name="intral" value="50"> Intraosseous Line - No<br>
+                                              <input type="radio" name="cenl" value="35"> Central Line - Yes<br>
+                                              <input type="radio" name="cenl" value="40"> Central Line - No<br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>IV Fluids</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="ivf" value="no"> None<br>
+                                              <input type="radio" name="ivf" value="<20"> < 20mL/kg <br>
+                                              <input type="radio" name="ivf" value=">20"> >= 20mL/kg<br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>Type And Cross</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="tac" value="yes"> Yes<br>
+                                              <input type="radio" name="tac" value="no"> No <br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>Transfused PRBCs</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="tprbc" value="yes"> Yes<br>
+                                              <input type="radio" name="tprbc" value="no"> No <br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>  Massive Transfusion Protocol</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="mtp" value="yes"> Activated<br>
+                                              <input type="radio" name="mtp" value="no"> No <br>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
