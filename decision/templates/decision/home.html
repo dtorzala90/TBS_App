@@ -206,53 +206,56 @@
                                     <tbody>
 
                                     <!-- Placeholder for content, copy for more cells -->
-                                    <tr> <!-- Breathing Patent -->
-                                        <td><h4>Breating Patent</h4></td>
+
+                                    <tr> <!-- Spontaneuous breathing -->
+                                        <td style="vertical-align: middle"><h4>Spontaneous Breathing</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-danger">Stopped</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="sponbreath" value="yes"> Yes<br>
+                                              <input type="radio" name="sponbreath" value="no"> No<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr> <!-- Adequate Ventilation -->
-                                        <td><h4>Adequate Ventilation</h4></td>
+                                        <td style="vertical-align: middle"><h4>Assisted Breathing</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Achieved</button>
-                                                <button type="button" class="btn btn-danger">Stopped</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="assistb" value="yes"> Yes<br>
+                                              <input type="radio" name="assistb" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr> <!-- Chest Tube Placement -->
-                                        <td><h4>Chest Tube Placement</h4></td>
+                                    <tr> <!-- Right: Chest Rise -->
+                                        <td style="vertical-align: middle"><h4>Right: Chest Rise / Breath Sounds</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Achieved</button>
-                                                <button type="button" class="btn btn-danger">Stopped</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="rchest" value="yes"> Yes<br>
+                                              <input type="radio" name="rchest" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr> <!-- Chest X-ray-->
-                                        <td><h4>Chest X-Ray</h4></td>
+                                    <tr> <!-- Left: Chest X-ray-->
+                                        <td style="vertical-align: middle"><h4>Left: Chest Rise / Breath Sounds</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Achieved</button>
-                                                <button type="button" class="btn btn-danger">Stopped</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="lchest" value="yes"> Yes<br>
+                                              <input type="radio" name="lchest" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr> <!-- Arterial  Blood Gas -->
-                                        <td><h4>Arterial  Blood Gas</h4></td>
+                                    <tr> <!-- Aterial Blood Gas -->
+                                        <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Achieved</button>
-                                                <button type="button" class="btn btn-danger">Stopped</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="etco" value="no"> No Measurement<br>
+                                              <input type="radio" name="etco" value="25"> ETCO < 25 <br>
+                                              <input type="radio" name="etco" value="30"> ETCO 25-30 <br>
+                                              <input type="radio" name="etco" value="35"> ETCO 30-35 <br>
+                                              <input type="radio" name="etco" value="40"> ETCO 35-40 <br>
+                                              <input type="radio" name="etco" value="50"> ETCO 40-50 <br>
+                                              <input type="radio" name="etco" value="50+"> ETCO > 50 <br>
                                             </div>
                                         </td>
                                     </tr>
@@ -295,49 +298,126 @@
                                 <table class="table">
                                     <tbody>
 
-                                    <!-- Level of Consciousness -->
+                                   <!-- Heart RAte -->
                                     <tr>
-                                        <td><h4>Level of Consciousness</h4></td>
+                                        <td style="vertical-align: middle"><h4>Heart Rate</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
+                                            <div class="btn-group-vertical" role="group">
+                                                <input type="text" name="hr" value=""> BPM<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <!-- Skin Color -->
+                                    <!-- Blood Pressure -->
                                     <tr>
-                                        <td><h4>Skin Color</h4></td>
+                                        <td style="vertical-align: middle"><h4>Systolic Blood Pressure</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
+                                            <div class="btn-group-vertical" role="group">
+                                                <input type="text" name="bp" value=""> mmHg<br>
+
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Central Pulse -->
+
                                     <tr>
-                                        <td><h4>Central Pulse</h4></td>
+                                        <td style="vertical-align: middle"><h4>Shock Index</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-danger">Recorded</button>
+                                            <div class="btn-group-vertical" role="group">
+                                                <button type="button" class="btn btn-dark">HR / SBP </button>
+
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Sites of Rapid Blood Loss -->
+
                                     <tr>
-                                        <td><h4>Sites of Rapid Blood Loss</h4></td>
+                                        <td style="vertical-align: middle"><h4>Perfusion</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <span style="font-weight:bold">Lip Color:</span>
+                                              <input type="radio" name="lipc" value="pi"> Pink<br>
+                                              <input type="radio" name="lipc" value="wh"> White<br>
+                                              <input type="radio" name="lipc" value="unk"> Unable To Assess <br><br>
+
+                                              <span style="font-weight:bold">Nail Color:</span>
+                                              <input type="radio" name="nailc" value="pi"> Pink<br>
+                                              <input type="radio" name="nailc" value="wh"> White<br>
+                                              <input type="radio" name="nailc" value="unk"> Unable To Assess<br><br>
+
+                                              <span style="font-weight:bold">Cap Refill:</span>
+                                              <input type="radio" name="capr" value="<2"> <2s<br>
+                                              <input type="radio" name="capr" value="2-4"> 2s-4s<br>
+                                              <input type="radio" name="capr" value=">4"> >4s<br>
                                             </div>
                                         </td>
                                     </tr>
 
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>IV Access</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <span style="font-weight:bold">Functional Peripheral IV:</span>
+                                              <input type="radio" name="funp" value="no"> None<br>
+                                              <input type="radio" name="funp" value="1"> 1<br>
+                                              <input type="radio" name="funp" value="2"> 2<br>
+                                              <input type="radio" name="funp" value=">2"> >2<br><br>
+
+                                              <span style="font-weight:bold">Intraosseous Line:</span>
+                                              <input type="radio" name="intral" value="yes"> Yes<br>
+                                              <input type="radio" name="intral" value="no"> No<br><br>
+
+                                                <span style="font-weight:bold">Central Line:</span>
+                                              <input type="radio" name="cenl" value="yes"> Yes<br>
+                                              <input type="radio" name="cenl" value="no"> No<br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>IV Fluids</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="ivf" value="no"> None<br>
+                                              <input type="radio" name="ivf" value="<20"> < 20mL/kg <br>
+                                              <input type="radio" name="ivf" value=">20"> >= 20mL/kg<br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>Type And Cross</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="tac" value="yes"> Yes<br>
+                                              <input type="radio" name="tac" value="no"> No <br>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>Transfused PRBCs</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="tprbc" value="yes"> Yes<br>
+                                              <input type="radio" name="tprbc" value="no"> No <br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#dab4ff">
+                                        <td style="vertical-align: middle"><h4>  Massive Transfusion Protocol</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="mtp" value="yes"> Activated<br>
+                                              <input type="radio" name="mtp" value="no"> No <br>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -376,72 +456,72 @@
                                     <tbody>
 
                                     <tr> <!-- Optimize ABC -->
-                                        <td><h4>Optimize ABC</h4></td>
+                                        <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Motor</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="motor" value="ob"> Obeys Commands<br>
+                                              <input type="radio" name="motor" value="lo"> Localizing Pain<br>
+                                              <input type="radio" name="motor" value="wi"> Withdraw From Pain<br>
+                                              <input type="radio" name="motor" value="fl"> Flexion To Pain<br>
+                                              <input type="radio" name="motor" value="ex"> Extension To Pain<br>
+                                              <input type="radio" name="motor" value="no"> No Motor Response<br>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr> <!-- Optimize ABC -->
+                                        <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Verbal</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="verbal" value="or"> Oriented<br>
+                                              <input type="radio" name="verbal" value="co"> Confused<br>
+                                              <input type="radio" name="verbal" value="wo"> Inappropriate Words<br>
+                                              <input type="radio" name="verbal" value="so"> Incomprehensible Sounds<br>
+                                              <input type="radio" name="verbal" value="no"> No Verbal Response<br>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr> <!-- Optimize ABC -->
+                                        <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Eye</h4></td>
+                                        <td>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="eye" value="sp"> Opens Spontaneously<br>
+                                              <input type="radio" name="eye" value="ve"> Open To Verbal Command<br>
+                                              <input type="radio" name="eye" value="pa"> Open To Pain<br>
+                                              <input type="radio" name="eye" value="no"> No Eye Opening<br>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- AVPU Assessment -->
                                     <tr>
-                                        <td><h4>AVPU Assessment</h4></td>
+                                        <td style="vertical-align: middle"><h4>Pupils</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <span style="font-weight:bold">Equal:</span>
+                                              <input type="radio" name="equal" value="yes"> Yes<br>
+                                              <input type="radio" name="equal" value="no"> No<br><br>
+
+                                              <span style="font-weight:bold">Round:</span>
+                                              <input type="radio" name="round" value="yes"> Yes<br>
+                                              <input type="radio" name="round" value="no"> No<br><br>
+
+                                              <span style="font-weight:bold">Reactive To Light:</span>
+                                              <input type="radio" name="rlight" value="yes"> Yes<br>
+                                              <input type="radio" name="rlight" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <!-- Drug Chart Review -->
                                     <tr>
-                                        <td><h4>Drug Chart Review</h4></td>
+                                        <td style="vertical-align: middle"><h4>Move All Extremities</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Pupil Assessment -->
-                                    <tr>
-                                        <td><h4>Pupil Assessment</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Glucose Level Assessment -->
-                                    <tr>
-                                        <td><h4>Glucose Level Assessment</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Movement Assessment -->
-                                    <tr>
-                                        <td><h4>Movement Assessment</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-danger">Complete</button>
+                                            <div class="btn-group-vertical" role="group">
+                                              <input type="radio" name="movee" value="yes"> Yes<br>
+                                              <input type="radio" name="movee" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
