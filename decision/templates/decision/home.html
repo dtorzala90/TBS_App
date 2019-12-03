@@ -199,53 +199,54 @@
                                     <tbody>
 
                                     <!-- Placeholder for content, copy for more cells -->
-                                    <tr bgcolor="2F832E"> <!-- Breathing Patent -->
-                                        <td style="vertical-align: middle"><h4>Breating Patent</h4></td>
+                                    <tr bgcolor="2F832E"> <!-- Spontaneuous breathing -->
+                                        <td style="vertical-align: middle"><h4>Spontaneous Breathing</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                              <input type="radio" name="sponbreath" value="yes"> Yes<br>
+                                              <input type="radio" name="sponbreath" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr bgcolor="21A11F"> <!-- Adequate Ventilation -->
-                                        <td style="vertical-align: middle"><h4>Adequate Ventilation</h4></td>
+                                        <td style="vertical-align: middle"><h4>Assisted Breathing</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                              <input type="radio" name="assistb" value="yes"> Yes<br>
+                                              <input type="radio" name="assistb" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr bgcolor="2FB52D"> <!-- Chest Tube Placement -->
-                                        <td style="vertical-align: middle"><h4>Chest Tube Placement</h4></td>
+                                    <tr bgcolor="2FB52D"> <!-- Right: Chest Rise -->
+                                        <td style="vertical-align: middle"><h4>Right: Chest Rise / Breath Sounds</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                              <input type="radio" name="rchest" value="yes"> Yes<br>
+                                              <input type="radio" name="rchest" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr bgcolor="2DCF2A"> <!-- Chest X-ray-->
-                                        <td style="vertical-align: middle"><h4>Chest x-ray</h4></td>
+                                    <tr bgcolor="2DCF2A"> <!-- Left: Chest X-ray-->
+                                        <td style="vertical-align: middle"><h4>Left: Chest Rise / Breath Sounds</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                              <input type="radio" name="lchest" value="yes"> Yes<br>
+                                              <input type="radio" name="lchest" value="no"> No<br>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr bgcolor="7DF17B"> <!-- Aterial Blood Gas -->
-                                        <td style="vertical-align: middle"><h4>Aterial Blood Gas</h4></td>
+                                        <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <button type="button" class="btn btn-light">Initiated</button>
-                                                <button type="button" class="btn btn-secondary">Achieved</button>
-                                                <button type="button" class="btn btn-dark">Stopped</button>
+                                              <input type="radio" name="etco" value="no"> No Measurement<br>
+                                              <input type="radio" name="etco" value="25"> ETCO < 25 <br>
+                                              <input type="radio" name="etco" value="30"> ETCO 25-30 <br>
+                                              <input type="radio" name="etco" value="35"> ETCO 30-35 <br>
+                                              <input type="radio" name="etco" value="40"> ETCO 35-40 <br>
+                                              <input type="radio" name="etco" value="50"> ETCO 40-50 <br>
+                                              <input type="radio" name="etco" value="50+"> ETCO > 50 <br>
                                             </div>
                                         </td>
                                     </tr>
