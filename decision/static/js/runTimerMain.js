@@ -54,6 +54,5 @@ function startVisTimer(){
          for the time spent away from the page.
     */
      var navTime = new Date().getTime();
-     console.log(navTime);
      localStorage.setItem('nav_time_main', navTime.toString());
 }

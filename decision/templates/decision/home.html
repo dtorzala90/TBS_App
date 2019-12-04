@@ -1,6 +1,18 @@
 {% extends "decision/base.html" %}
 {% load static %}
 {% block content %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <!--
     ================================================================================
     Javascript for survey input validation
@@ -29,6 +41,8 @@
             ================================================================================
             -->
             <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
+
+
         </div>
     </h1>
     <br>
@@ -249,13 +263,13 @@
                                         <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                              <input type="radio" name="etco" value="no"> No Measurement<br>
-                                              <input type="radio" name="etco" value="25"> ETCO < 25 <br>
-                                              <input type="radio" name="etco" value="30"> ETCO 25-30 <br>
-                                              <input type="radio" name="etco" value="35"> ETCO 30-35 <br>
-                                              <input type="radio" name="etco" value="40"> ETCO 35-40 <br>
-                                              <input type="radio" name="etco" value="50"> ETCO 40-50 <br>
-                                              <input type="radio" name="etco" value="50+"> ETCO > 50 <br>
+                                              <input type="radio" name="etco" id="etco2_none" value="no"> No Measurement<br>
+                                              <input type="radio" name="etco" id="etco2_less25" value="25"> ETCO < 25 <br>
+                                              <input type="radio" name="etco" id="etco2_25plus" value="30"> ETCO 25-30 <br>
+                                              <input type="radio" name="etco" id="etco2_30plus" value="35"> ETCO 30-35 <br>
+                                              <input type="radio" name="etco" id="etco2_35plus" value="40"> ETCO 35-40 <br>
+                                              <input type="radio" name="etco" id="etco2_40plus" value="50"> ETCO 40-50 <br>
+                                              <input type="radio" name="etco" id="etco2_50plus" value="50+"> ETCO > 50 <br>
                                             </div>
                                         </td>
                                     </tr>
@@ -361,18 +375,19 @@
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                               <span style="font-weight:bold">Functional Peripheral IV:</span>
-                                              <input type="radio" name="funp" value="no"> None<br>
-                                              <input type="radio" name="funp" value="1"> 1<br>
-                                              <input type="radio" name="funp" value="2"> 2<br>
-                                              <input type="radio" name="funp" value=">2"> >2<br><br>
+                                              <input type="radio" name="funp" id="funp0" value="no"> None<br>
+                                              <input type="radio" name="funp" id="funp1" value="1"> 1<br>
+                                              <input type="radio" name="funp" id="funp2" value="2"> 2<br>
+                                              <input type="radio" name="funp" id="funp>2" value=">2"> >2<br><br>
 
                                               <span style="font-weight:bold">Intraosseous Line:</span>
-                                              <input type="radio" name="intral" value="yes"> Yes<br>
-                                              <input type="radio" name="intral" value="no"> No<br><br>
+                                              <input type="radio" name="intral" id="intralYes" value="yes"> Yes<br>
+                                              <input type="radio" name="intral" id="intralNo" value="no"> No<br><br>
 
                                                 <span style="font-weight:bold">Central Line:</span>
-                                              <input type="radio" name="cenl" value="yes"> Yes<br>
-                                              <input type="radio" name="cenl" value="no"> No<br>
+                                              <input type="radio" name="cenl" id="cenlYes" value="yes"> Yes<br>
+                                              <input type="radio" name="cenl" id="cenlNo" value="no"> No<br>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -643,6 +658,12 @@
                 </div>
             </div>
         </div>
+        <!--
+        ================================================================================
+           Javascript initialize all buttons and text fields on main page
+        ================================================================================
+        -->
+        <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
     </div>
 
     <!--
