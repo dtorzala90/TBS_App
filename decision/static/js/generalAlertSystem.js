@@ -56,7 +56,7 @@ function checkIV(){
             //If only 1 PIV and the correlated alert has not yet been thrown...
             if( PIVcount === "1" && onePIVAlert === "not thrown"){
                 localStorage.setItem("Alert One PIV", "thrown");
-                localStorage.setItem("Alert No IV Established", "dismissed");
+                localStorage.setItem("Alert No IV", "dismissed");
                 $('#no-iv-alert').remove();
                  $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
@@ -69,11 +69,11 @@ function checkIV(){
 
             //If there are 2 or more PIV put in....
             else if(PIVcount !== "0" && PIVcount !== "1") {
-                localStorage.setItem("Alert One PIV Established", "dismissed");
+                localStorage.setItem("Alert One PIV", "dismissed");
                 if(noIvAlert === "thrown"){
                     $('#no-iv-alert').remove();
                 }
-                localStorage.setItem("Alert No IV Established", "dismissed");
+                localStorage.setItem("Alert No IV", "dismissed");
                 $('#one-piv-alert').remove();
             }
         }
@@ -81,12 +81,12 @@ function checkIV(){
         //If none of the alert parameters have been met then we check to see what alerts need to be dismissed.
         else{
             if(noIvAlert === "thrown"){
-                localStorage.setItem("Alert No IV Established", "dismissed");
+                localStorage.setItem("Alert No IV", "dismissed");
                 $('#no-iv-alert').remove();
             }
 
             else if(onePIVAlert === "thrown"){
-                localStorage.setItem("Alert One PIV Established", "dismissed");
+                localStorage.setItem("Alert One PIV", "dismissed");
                 $('#one-piv-alert').remove();
             }
         }
@@ -97,11 +97,11 @@ function checkIV(){
         being called again.*/
     else{
         if(cenLineAccess === "true" || intraosLineAccess === "true"){
-            localStorage.setItem("Alert No IV Established", "dismissed");
+            localStorage.setItem("Alert No IV", "dismissed");
         }
 
         else if(PIVcount !== "0" && PIVcount !== "1"){
-            localStorage.setItem("Alert One PIV Established", "dismissed");
+            localStorage.setItem("Alert One PIV", "dismissed");
         }
     }
 
