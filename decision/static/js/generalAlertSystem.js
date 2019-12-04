@@ -9,11 +9,12 @@
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
 
-
-//This checks to see if the alert has already been dismissed.
+//This checks to see if the alerts have already been dismissed.
 if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
     var ivAlertInterval = setInterval(checkIV, 1000);
 }
+
+setInterval(checkETCO2, 1000);
 
 
 /**
@@ -95,7 +96,6 @@ function checkIV(){
         dismiss the alert anyways. This prevents it from being thrown twice and prevents this loop from
         being called again.*/
     else{
-        console.log("Under Time, checking for params");
         if(cenLineAccess === "true" || intraosLineAccess === "true"){
             localStorage.setItem("Alert No IV Established", "dismissed");
         }
@@ -111,3 +111,111 @@ function checkIV(){
     }
 }
 
+/**
+ * This method is run every second to check for changes in ECO2 values.
+ * For each given value, a different alert is thrown. Additionally, an alert
+ * is thrown if two minutes have passed at no ETCO2 has been recorded.
+ */
+function checkETCO2(){
+    var noEtco2Alert = localStorage.getItem("Record ETCO2 Alert");
+    var currAlert = localStorage.getItem("Current alert thrown");
+    var etco2 = localStorage.getItem("ETCO2");
+
+    var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
+
+    //If etco2 has been recorded we check which alert to throw
+    if(etco2 !== "not recorded"){
+        //If this is the first time recording etco2 we dimiss the original alert
+        if(noEtco2Alert === "thrown"){
+             localStorage.setItem("Record ETCO2 Alert", "dismissed");
+            $('#no-etco2-alert').remove();
+        }
+
+        //Check what the etco2 level is and throw alerts accordingly
+        else{
+            localStorage.setItem("Record ETCO2 Alert", "dismissed");
+            if(etco2 === "not present" && currAlert !== "not present"){
+                $('#etco2-value-alert').remove();
+                localStorage.setItem("Current alert thrown", "not present");
+                $('#alert_placeholder').append(
+                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                    "                  <strong>Alert:  Check Airway Placement! </strong>\n" +
+                    "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                    "                  </button>\n" +
+                    "                </div>");
+            }
+
+            else if(etco2 === "<25" && currAlert !== "<25"){
+                $('#etco2-value-alert').remove();
+                localStorage.setItem("Current alert thrown", "<25");
+                $('#alert_placeholder').append(
+                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                    "                  <strong>Alert:  ETCO2 is very low! Confirm pulse and Airway</strong>\n" +
+                    "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                    "                  </button>\n" +
+                    "                </div>");
+            }
+
+            else if(etco2 === "25-30" && currAlert !== "25-30"){
+                $('#etco2-value-alert').remove();
+                localStorage.setItem("Current alert thrown", "25-30");
+                $('#alert_placeholder').append(
+                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                    "                  <strong>Alert: Decrease Ventilation Rate</strong>\n" +
+                    "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                    "                  </button>\n" +
+                    "                </div>");
+            }
+
+            else if(etco2 === "40-50" && currAlert !== "40-50"){
+                $('#etco2-value-alert').remove();
+                var gcs = localStorage.getItem("GCS<13");
+                if(gcs === "true"){
+                    localStorage.setItem("Current alert thrown", "40-50");
+                     $('#alert_placeholder').append(
+                        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                        "                  <strong>Alert: GCS<13:</strong>\n" +
+                        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                        "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                        "                  </button>\n" +
+                        "                </div>");
+                }
+
+
+            }
+
+            else if(etco2 === ">50" && currAlert !== ">50"){
+                $('#etco2-value-alert').remove();
+                localStorage.setItem("Current alert thrown", ">50");
+                $('#alert_placeholder').append(
+                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                    "                  <strong>Alert:  Increase Ventilation Rate</strong>\n" +
+                    "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                    "                  </button>\n" +
+                    "                </div>");
+            }
+
+            else if (etco2 === "30-35" || etco2 === "35-40"){
+                $('#etco2-value-alert').remove();
+            }
+        }
+    }
+
+    //If two minutes has passed and the user has not recorded etco2, we throw an alert.
+    else if(timeElapsed >= 30){
+        if(noEtco2Alert === "not thrown" && etco2 === "not recorded"){
+            localStorage.setItem("Record ETCO2 Alert", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
+                "                  <strong>Alert: No ETCO2 measured!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+    }
+}

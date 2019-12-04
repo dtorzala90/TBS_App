@@ -263,13 +263,13 @@
                                         <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                              <input type="radio" name="etco" value="no"> No Measurement<br>
-                                              <input type="radio" name="etco" value="25"> ETCO < 25 <br>
-                                              <input type="radio" name="etco" value="30"> ETCO 25-30 <br>
-                                              <input type="radio" name="etco" value="35"> ETCO 30-35 <br>
-                                              <input type="radio" name="etco" value="40"> ETCO 35-40 <br>
-                                              <input type="radio" name="etco" value="50"> ETCO 40-50 <br>
-                                              <input type="radio" name="etco" value="50+"> ETCO > 50 <br>
+                                              <input type="radio" name="etco" id="etco2_none" value="no"> No Measurement<br>
+                                              <input type="radio" name="etco" id="etco2_less25" value="25"> ETCO < 25 <br>
+                                              <input type="radio" name="etco" id="etco2_25plus" value="30"> ETCO 25-30 <br>
+                                              <input type="radio" name="etco" id="etco2_30plus" value="35"> ETCO 30-35 <br>
+                                              <input type="radio" name="etco" id="etco2_35plus" value="40"> ETCO 35-40 <br>
+                                              <input type="radio" name="etco" id="etco2_40plus" value="50"> ETCO 40-50 <br>
+                                              <input type="radio" name="etco" id="etco2_50plus" value="50+"> ETCO > 50 <br>
                                             </div>
                                         </td>
                                     </tr>
@@ -663,7 +663,7 @@
            Javascript initialize all buttons and text fields on main page
         ================================================================================
         -->
-        <script type="text/javascript" src="{% static "js/initButtons.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
     </div>
 
     <!--
