@@ -97,12 +97,10 @@ function checkIV(){
     else{
         console.log("Under Time, checking for params");
         if(cenLineAccess === "true" || intraosLineAccess === "true"){
-            console.log("Under Time, iv established");
             localStorage.setItem("Alert No IV Established", "dismissed");
         }
 
         else if(PIVcount !== "0" && PIVcount !== "1"){
-            console.log("Under Time, piv one established");
             localStorage.setItem("Alert One PIV Established", "dismissed");
         }
     }
