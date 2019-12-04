@@ -20,9 +20,9 @@
 //Set up PIV radio buttons
 var piv1 = document.getElementById('funp1');
 var piv2 = document.getElementById('funp2');
-var piv3 = document.getElementById('funp2+');
+var piv3 = document.getElementById('funp>2');
 
-piv1.onchange = piv1Func;
+piv1.onclick = piv1Func;
 piv2.onclick = piv2Func;
 piv3.onclick = piv3Func;
 
@@ -37,7 +37,7 @@ function piv2Func() {
 }
 
 function piv3Func() {
-    localStorage.setItem("Functional Peripheral IV count", "3");
+    localStorage.setItem("Functional Peripheral IV count", ">2");
     localStorage.setItem("Functional Peripheral IV established", "true");
 }
 
