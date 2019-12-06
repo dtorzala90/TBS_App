@@ -13,7 +13,7 @@ function checkIVAlerts() {
     if (ivAlert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
-            "                  <strong>Alert: No IV:  Consider central line or intraosseous line!</strong>\n" +
+            "                  <strong>No IV:  Consider central line or intraosseous line!</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
@@ -23,7 +23,7 @@ function checkIVAlerts() {
     if (pivAlert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
-            "                  <strong>Alert:  Consider additional PIV<</strong>\n" +
+            "                  <strong>Consider additional PIV<</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
@@ -38,7 +38,7 @@ function checkETCO2Alerts() {
     if(noEtco2Alert === "thrown"){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
-            "                  <strong>Alert: No ETCO2 measured!</strong>\n" +
+            "                  <strong>No ETCO<sub>2</sub> measured!</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
@@ -49,7 +49,7 @@ function checkETCO2Alerts() {
         if (currAlert === "not present") {
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                "                  <strong>Alert:  Check Airway Placement! </strong>\n" +
+                "                  <strong>Check Airway Placement! </strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -57,7 +57,7 @@ function checkETCO2Alerts() {
         } else if (currAlert === "<25") {
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                "                  <strong>Alert:  ETCO2 is very low! Confirm pulse and Airway</strong>\n" +
+                "                  <strong>ETCO<sub>2</sub> is very low! Confirm pulse and Airway</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -65,7 +65,7 @@ function checkETCO2Alerts() {
         } else if (currAlert === "25-30") {
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                "                  <strong>Alert: Decrease Ventilation Rate</strong>\n" +
+                "                  <strong>Decrease Ventilation Rate</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -73,7 +73,7 @@ function checkETCO2Alerts() {
         } else if (currAlert === "40-50") {
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                "                  <strong>Alert: GCS<13:</strong>\n" +
+                "                  <strong>GCS < 13:</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -81,7 +81,7 @@ function checkETCO2Alerts() {
         } else if (currAlert === ">50") {
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                "                  <strong>Alert:  Increase Ventilation Rate</strong>\n" +
+                "                  <strong>Increase Ventilation Rate</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
