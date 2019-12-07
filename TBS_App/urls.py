@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users import views as user_views
+from summary import views as summary_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
-    path('', include('decision.urls'))
+    path('', include('decision.urls')),
+    path('summary/', summary_views.main, name='summary')
 ]
