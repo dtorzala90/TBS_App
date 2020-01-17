@@ -15,7 +15,7 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
 }
 
 setInterval(checkETCO2, 1000);
-
+setInterval(checkGCS(), 1000);
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -217,5 +217,23 @@ function checkETCO2(){
                 "                  </button>\n" +
                 "                </div>");
         }
+    }
+}
+
+/**
+ * This function is responsible for checking that the GCS is above 13 before intubation meds
+ * are administered.
+ */
+function checkGCS(){
+    var gcs = localStorage.getItem("GCS<13 Alert");
+    if (gcs === "true"){
+            localStorage.setItem("GCS<13 Alert", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
+                "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
     }
 }

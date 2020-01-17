@@ -15,4 +15,5 @@ localStorage.setItem("Current alert thrown", "none");
 
 localStorage.setItem("ETCO2", "not recorded");
 
-localStorage.setItem("GCS<13", "true");
+localStorage.setItem("GCS<13", "false");
+localStorage.setItem("GCS<13 Alert", "not thrown");
