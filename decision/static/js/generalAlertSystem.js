@@ -16,6 +16,7 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
 
 setInterval(checkETCO2, 1000);
 setInterval(checkGCS(), 1000);
+setInterval(checkPerfusion(), 1000);
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -241,5 +242,24 @@ function checkGCS(){
     else if(alert === "thrown"){
         $('#GCS-13-alert').remove();
         localStorage.setItem("No GCS Alert", "dismissed");
+    }
+}
+
+function checkPerfusion(){
+    var lipcol = localStorage.getItem("Lip Color");
+    var alert = localStorage.getItem("Poor Perfusion");
+    if (lipcol === "White") {
+        localStorage.setItem("Poor Perfusion", "thrown");
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+            "                  <strong>Patient has poor perfusion.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    else if(alert === "thrown" ) {
+      $('#poor-perfusion-alert').remove();
+      localStorage.setItem("Poor Perfusion", "dismissed");
     }
 }

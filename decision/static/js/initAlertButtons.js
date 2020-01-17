@@ -103,6 +103,29 @@ function intraoLineFunc() {
     localStorage.setItem("Intraosseous Line established", "true");
 }
 
+
+var lipc1 = document.getElementById('lipc-pi');
+var lipc2 = document.getElementById('lipc-wh');
+var lipc3 = document.getElementById('lipc-unk');
+
+lipc1.onclick = lipc1Func;
+lipc2.onclick = lipc2Func;
+lipc3.onclick = lipc3Func;
+
+function lipc1Func() {
+    localStorage.setItem("Lip Color", "Pink");
+}
+
+function lipc2Func() {
+    localStorage.setItem("Lip Color", "White");
+}
+
+function lipc3Func() {
+    localStorage.setItem("Lip Color", "Unknown");
+}
+
+
+
 /**
  * Set up Disability buttons
  */

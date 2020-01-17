@@ -7,6 +7,7 @@
 checkIVAlerts();
 checkETCO2Alerts();
 checkGCSAlerts();
+checkPerfusionAlerts();
 
 function checkIVAlerts() {
     var ivAlert = localStorage.getItem("Alert No IV");
@@ -97,6 +98,19 @@ function checkGCSAlerts(){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
             "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+function checkPerfusionAlerts(){
+    var alert = localStorage.getItem("Poor Perfusion");
+    if (alert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+            "                  <strong>Patient has poor perfusion.</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
