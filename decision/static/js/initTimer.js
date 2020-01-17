@@ -11,9 +11,11 @@ localStorage.setItem("Intraosseous Line established", "false");
 localStorage.setItem("Central Line established", "false");
 
 localStorage.setItem("Record ETCO2 Alert", "not thrown");
-localStorage.setItem("Current alert thrown", "none");
+localStorage.setItem("Current ETCO2 alert thrown", "none");
 
 localStorage.setItem("ETCO2", "not recorded");
 
 localStorage.setItem("GCS<13", "false");
+localStorage.setItem("GCS", "null");
 localStorage.setItem("GCS<13 Alert", "not thrown");
+localStorage.setItem("No GCS Alert", "not thrown");

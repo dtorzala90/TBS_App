@@ -221,19 +221,25 @@ function checkETCO2(){
 }
 
 /**
- * This function is responsible for checking that the GCS is above 13 before intubation meds
- * are administered.
+ * This function is responsible for checking that the GCS is recorded before intubationi meds
+ * are given
  */
 function checkGCS(){
-    var gcs = localStorage.getItem("GCS<13 Alert");
-    if (gcs === "true"){
-            localStorage.setItem("GCS<13 Alert", "thrown");
+    var gcs = localStorage.getItem("GCS");
+    var alert = localStorage.getItem("No GCS Alert");
+    if (gcs === "null"){
+            localStorage.setItem("No GCS Alert", "thrown");
             $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-13-alert'>\n" +
                 "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
+    }
+
+    else if(alert === "thrown"){
+        $('#GCS-13-alert').remove();
+        localStorage.setItem("No GCS Alert", "dismissed");
     }
 }

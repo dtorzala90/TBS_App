@@ -34,7 +34,7 @@ function checkIVAlerts() {
 
 function checkETCO2Alerts() {
     var noEtco2Alert = localStorage.getItem("Record ETCO2 Alert");
-    var currAlert = localStorage.getItem("Current alert thrown");
+    var currAlert = localStorage.getItem("Current ETCO2 alert thrown");
 
     if(noEtco2Alert === "thrown"){
         $('#alert_placeholder').append(
@@ -92,7 +92,7 @@ function checkETCO2Alerts() {
 }
 
 function checkGCSAlerts(){
-    var alert = localStorage.getItem("GCS<13 Alert");
+    var alert = localStorage.getItem("No GCS Alert");
     if (alert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
