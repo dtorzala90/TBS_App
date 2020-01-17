@@ -18,16 +18,6 @@ python3 manage.py runserver
 * Python3
 * Django
 
-## Running the tests
-TO DO: Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
 ## Built With
 * django - The web framework used
 * pip3 - Dependency Management
