@@ -15,7 +15,7 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
 }
 
 setInterval(checkETCO2, 1000);
-setInterval(checkGCS(), 1000);
+setInterval(checkGCS, 1000);
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -221,25 +221,42 @@ function checkETCO2(){
 }
 
 /**
- * This function is responsible for checking that the GCS is recorded before intubationi meds
- * are given
+ * This function is responsible for recording the GCS in accordance with user input
+ * and ensuring the corresponding alerts are thrown
  */
 function checkGCS(){
-    var gcs = localStorage.getItem("GCS");
+    var motor = localStorage.getItem("GCS Motor");
+    var verbal = localStorage.getItem("GCS Verbal");
+    var eye = localStorage.getItem("GCS Eye");
+
     var alert = localStorage.getItem("No GCS Alert");
-    if (gcs === "null"){
-            localStorage.setItem("No GCS Alert", "thrown");
-            $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-13-alert'>\n" +
-                "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
+
+    if (motor !== "null" && verbal !== "null" && eye !== "null"){
+        var m = parseInt(motor, 10);
+        var v = parseInt(verbal, 10);
+        var e = parseInt(eye, 10);
+
+        var gcs = m + v + e;
+        localStorage.setItem("GCS", gcs.toString(10));
+        console.log(gcs);
+        if (gcs < 13){
+            localStorage.setItem("GCS<13", "true");
+        }
+
+        if(alert === "thrown"){
+            localStorage.setItem("No GCS Alert", "dismissed");
+            $('#GCS-alert').remove();
+        }
     }
 
-    else if(alert === "thrown"){
-        $('#GCS-13-alert').remove();
-        localStorage.setItem("No GCS Alert", "dismissed");
+    else if(alert === "not thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-alert'>\n" +
+            "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+        localStorage.setItem("No GCS Alert", "thrown");
     }
 }
