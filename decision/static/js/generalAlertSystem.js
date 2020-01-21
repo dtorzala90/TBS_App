@@ -125,7 +125,7 @@ function checkETCO2(){
 
     //If etco2 has been recorded we check which alert to throw
     if(etco2 !== "not recorded"){
-        //If this is the first time recording etco2 we dimiss the original alert
+        //If this is the first time recording etco2 we dismiss the original alert
         if(noEtco2Alert === "thrown"){
              localStorage.setItem("Record ETCO2 Alert", "dismissed");
             $('#no-etco2-alert').remove();

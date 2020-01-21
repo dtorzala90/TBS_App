@@ -106,7 +106,104 @@ function intraoLineFunc() {
 /**
  * Set up Disability buttons
  */
+//Set up all GCS Motor
+var m6 = document.getElementById('motor6');
+var m5 = document.getElementById('motor5');
+var m4 = document.getElementById('motor4');
+var m3 = document.getElementById('motor3');
+var m2 = document.getElementById('motor2');
+var m1 = document.getElementById('motor1');
 
+m6.onclick = motor6;
+m5.onclick = motor5;
+m4.onclick = motor4;
+m3.onclick = motor3;
+m2.onclick = motor2;
+m1.onclick = motor1;
+
+function motor6() {
+    localStorage.setItem("GCS Motor", "6");
+}
+
+function motor5() {
+    localStorage.setItem("GCS Motor", "5");
+}
+
+function motor4() {
+    localStorage.setItem("GCS Motor", "4");
+}
+
+function motor3() {
+    localStorage.setItem("GCS Motor", "3");
+}
+
+function motor2() {
+    localStorage.setItem("GCS Motor", "2");
+}
+
+function motor1() {
+    localStorage.setItem("GCS Motor", "1");
+}
+
+//Set up GCS Verbal
+var v5 = document.getElementById('verbal5');
+var v4 = document.getElementById('verbal4');
+var v3 = document.getElementById('verbal3');
+var v2 = document.getElementById('verbal2');
+var v1 = document.getElementById('verbal1');
+
+v5.onclick = verbal5;
+v4.onclick = verbal4;
+v3.onclick = verbal3;
+v2.onclick = verbal2;
+v1.onclick = verbal1;
+
+function verbal5() {
+    localStorage.setItem("GCS Verbal", "5");
+}
+
+function verbal4() {
+    localStorage.setItem("GCS Verbal", "4");
+}
+
+function verbal3() {
+    localStorage.setItem("GCS Verbal", "3");
+}
+
+function verbal2() {
+    localStorage.setItem("GCS Verbal", "2");
+}
+
+function verbal1() {
+    localStorage.setItem("GCS Verbal", "1");
+}
+
+//Set up GCS Eye
+var e4 = document.getElementById('eye4');
+var e3 = document.getElementById('eye3');
+var e2 = document.getElementById('eye2');
+var e1 = document.getElementById('eye1');
+
+e4.onclick = eye4;
+e3.onclick = eye3;
+e2.onclick = eye2;
+e1.onclick = eye1;
+
+function eye4() {
+    localStorage.setItem("GCS Eye", "4");
+}
+
+function eye3() {
+    localStorage.setItem("GCS Eye", "3");
+}
+
+function eye2() {
+    localStorage.setItem("GCS Eye", "2");
+}
+
+function eye1() {
+    localStorage.setItem("GCS Eye", "1");
+}
 /**
  * Set up Exposure buttons
  */
