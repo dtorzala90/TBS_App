@@ -58,7 +58,7 @@ function checkIV(){
                 localStorage.setItem("Alert One PIV", "thrown");
                 localStorage.setItem("Alert No IV", "dismissed");
                 $('#no-iv-alert').remove();
-                 $('#alert_placeholder').append(
+                $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
                 "                  <strong>Consider additional PIV</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
