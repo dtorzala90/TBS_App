@@ -245,10 +245,39 @@ function checkGCS(){
     }
 }
 
+/**
+ * This function is responsible for checking that perfusion is checked. Throws alert if poor.
+ * are given
+ */
 function checkPerfusion(){
     var lipcol = localStorage.getItem("Lip Color");
+    var nailbcol = localStorage.getItem("Nail Bed Color");
+    var caprtime = localStorage.getItem("Cap Refill Time");
     var alert = localStorage.getItem("Poor Perfusion");
+    // If lip color is white poor perfuion alert is thrown. 
     if (lipcol === "White") {
+        localStorage.setItem("Poor Perfusion", "thrown");
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+            "                  <strong>Patient has poor perfusion.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    // If nail bed color is white poor perfusion alert is thrown.
+    if (nailbcol === "White") {
+        localStorage.setItem("Poor Perfusion", "thrown");
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+            "                  <strong>Patient has poor perfusion.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    // If capillary refill is more than 4 seconds poor perfusion alert is thrown.
+    if (caprtime === ">4sec") {
         localStorage.setItem("Poor Perfusion", "thrown");
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
