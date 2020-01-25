@@ -16,6 +16,9 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
 
 setInterval(checkETCO2, 1000);
 setInterval(checkGCS, 1000);
+setInterval(checkHR, 1000);
+setInterval(checkBP, 1000);
+setInterval(calcShock, 1000);
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -35,7 +38,7 @@ function checkIV(){
 
     var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
 
-    if(timeElapsed >= 10){
+    if(timeElapsed >= 350){
         //If no IV access has been put in....
         if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "false"){
             //If the no IV access alert has not already been thrown......
@@ -206,7 +209,7 @@ function checkETCO2(){
     }
 
     //If two minutes has passed and the user has not recorded etco2, we throw an alert.
-    else if(timeElapsed >= 30){
+    else if(timeElapsed >= 120){
         if(noEtco2Alert === "not thrown" && etco2 === "not recorded"){
             localStorage.setItem("Record ETCO2 Alert", "thrown");
             $('#alert_placeholder').append(
@@ -259,4 +262,103 @@ function checkGCS(){
             "                </div>");
         localStorage.setItem("No GCS Alert", "thrown");
     }
+}
+
+function checkHR(){
+    var HR_recorded = localStorage.getItem("HR");
+    var brady = localStorage.getItem("Bradycardia Alert");
+    var tach = localStorage.getItem("Tachycardia Alert");
+
+    if(HR_recorded !== "null"){
+        var HR = parseInt(HR_recorded);
+
+        if(HR <= 100 && HR >=60){
+            if(brady === "thrown"){
+                $('#brady-alert').remove();
+                localStorage.setItem("Bradycardia Alert", "dismissed");
+            }
+
+            if(tach === "thrown"){
+                $('#tach-alert').remove();
+                localStorage.setItem("Tachycardia Alert", "dismissed");
+            }
+        }
+        else if (HR < 60 && brady !== "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
+                "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Bradycardia Alert", "thrown");
+        }
+
+        else if (HR > 100 && tach !== "thrown"){
+              $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tach-alert'>\n" +
+                "                  <strong>Tachycardia</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+              localStorage.setItem("Tachycardia Alert", "thrown");
+        }
+    }
+}
+
+function checkBP(){
+    var BP_recorded = localStorage.getItem("BP");
+    var hypo = localStorage.getItem("Hypotensive Alert");
+
+    if(BP_recorded !== "null"){
+        var BP = parseInt(BP_recorded);
+
+        if(BP >=55){
+            if(hypo === "thrown"){
+                $('#hypo-alert').remove();
+                localStorage.setItem("Hypotensive Alert", "dismissed");
+            }
+        }
+        else if (BP < 55 && hypo !== "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='hypo-alert'>\n" +
+                "                  <strong>Hypotensive!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Hypotensive Alert", "thrown");
+        }
+    }
+}
+
+function calcShock(){
+     var BP_recorded = localStorage.getItem("BP");
+     var HR_recorded = localStorage.getItem("HR");
+     var shock_alert = localStorage.getItem("Shock Alert");
+
+     if (BP_recorded !== "null" && HR_recorded !== "null"){
+         var BP = parseInt(BP_recorded);
+         var HR = parseInt(HR_recorded);
+
+         var shock = HR/BP;
+         localStorage.setItem("Shock Lebvel", shock.toString(10));
+
+         if(shock > 1.0 && shock_alert !== "thrown"){
+             $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
+                "                  <strong>Elevated shock index!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Shock Alert", "thrown");
+         }
+
+         else if (shock < 1.0 && shock_alert === "thrown"){
+             $('#shock-alert').remove();
+             localStorage.setItem("Shock Alert", "dismissed");
+         }
+     }
 }
