@@ -23,3 +23,8 @@ localStorage.setItem("GCS Eye", "null");
 localStorage.setItem("GCS<13", "false");
 localStorage.setItem("GCS<13 Alert", "not thrown");
 localStorage.setItem("No GCS Alert", "not thrown");
+
+localStorage.setItem("Poor Perfusion", "not thrown");
+localStorage.setItem("Lip Color", "null");
+localStorage.setItem("Nail Bed Color", "null");
+localStorage.setItem("Cap Refill Time", "null");
