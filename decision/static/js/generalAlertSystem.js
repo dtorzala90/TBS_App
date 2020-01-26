@@ -8,7 +8,11 @@
  */
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
+
 var typeAndCrossAlertDismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
+
+var perfusionAlert = localStorage.getItem("Poor Perfusion");
+
 
 //This checks to see if the alerts have already been dismissed.
 if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
@@ -20,8 +24,12 @@ if(typeAndCrossAlertDismissed === "no"){
 }
 
 setInterval(checkETCO2, 1000);
-setInterval(checkGCS(), 1000);
-setInterval(checkPerfusion(), 1000);
+
+setInterval(checkGCS, 1000);
+
+if (perfusionAlert !== "dismissed") {
+  setInterval(checkPerfusion, 1000);
+}
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -64,7 +72,7 @@ function checkIV(){
                 localStorage.setItem("Alert One PIV", "thrown");
                 localStorage.setItem("Alert No IV", "dismissed");
                 $('#no-iv-alert').remove();
-                 $('#alert_placeholder').append(
+                $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
                 "                  <strong>Consider additional PIV</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
@@ -131,7 +139,7 @@ function checkETCO2(){
 
     //If etco2 has been recorded we check which alert to throw
     if(etco2 !== "not recorded"){
-        //If this is the first time recording etco2 we dimiss the original alert
+        //If this is the first time recording etco2 we dismiss the original alert
         if(noEtco2Alert === "thrown"){
              localStorage.setItem("Record ETCO2 Alert", "dismissed");
             $('#no-etco2-alert').remove();
@@ -227,45 +235,102 @@ function checkETCO2(){
 }
 
 /**
- * This function is responsible for checking that the GCS is recorded before intubationi meds
- * are given
+ * This function is responsible for recording the GCS in accordance with user input
+ * and ensuring the corresponding alerts are thrown
  */
 function checkGCS(){
-    var gcs = localStorage.getItem("GCS");
+    var motor = localStorage.getItem("GCS Motor");
+    var verbal = localStorage.getItem("GCS Verbal");
+    var eye = localStorage.getItem("GCS Eye");
+
     var alert = localStorage.getItem("No GCS Alert");
-    if (gcs === "null"){
-            localStorage.setItem("No GCS Alert", "thrown");
-            $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-13-alert'>\n" +
-                "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
+
+    if (motor !== "null" && verbal !== "null" && eye !== "null"){
+        var m = parseInt(motor, 10);
+        var v = parseInt(verbal, 10);
+        var e = parseInt(eye, 10);
+
+        var gcs = m + v + e;
+        localStorage.setItem("GCS", gcs.toString(10));
+        console.log(gcs);
+        if (gcs < 13){
+            localStorage.setItem("GCS<13", "true");
+        }
+
+        if(alert === "thrown"){
+            localStorage.setItem("No GCS Alert", "dismissed");
+            $('#GCS-alert').remove();
+        }
     }
 
-    else if(alert === "thrown"){
-        $('#GCS-13-alert').remove();
-        localStorage.setItem("No GCS Alert", "dismissed");
-    }
-}
-
-function checkPerfusion(){
-    var lipcol = localStorage.getItem("Lip Color");
-    var alert = localStorage.getItem("Poor Perfusion");
-    if (lipcol === "White") {
-        localStorage.setItem("Poor Perfusion", "thrown");
+    else if(alert === "not thrown"){
         $('#alert_placeholder').append(
-            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
-            "                  <strong>Patient has poor perfusion.</strong>\n" +
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-alert'>\n" +
+            "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
+        localStorage.setItem("No GCS Alert", "thrown");
     }
-    else if(alert === "thrown" ) {
-      $('#poor-perfusion-alert').remove();
-      localStorage.setItem("Poor Perfusion", "dismissed");
+}
+
+/**
+ * This function is responsible for checking that perfusion is checked. Throws alert if poor.
+ * are given
+ */
+function checkPerfusion(){
+    var lipcol = localStorage.getItem("Lip Color");
+    var nailbcol = localStorage.getItem("Nail Bed Color");
+    var caprtime = localStorage.getItem("Cap Refill Time");
+    var alert = localStorage.getItem("Poor Perfusion");
+    // If lip color is white poor perfuion alert is thrown.
+
+    if(lipcol !== null || nailbcol !== null || caprtime !== null) {
+
+      // Dismiss the alert if it is no longer needed
+      if(lipcol !== "White" && nailbcol !== "White" && caprtime !== ">4sec") {
+        if(alert === "thrown" ) {
+          $('#poor-perfusion-alert').remove();
+          localStorage.setItem("Poor Perfusion", "dismissed");
+        }
+      }
+
+      // Check if the alert is not currently thrown or has been dismissed
+      if(alert === "not thrown" || alert === "dismissed"){
+        if (lipcol === "White") {
+            localStorage.setItem("Poor Perfusion", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+                "                  <strong>Patient has poor perfusion.</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+        // If nail bed color is white poor perfusion alert is thrown.
+        else if (nailbcol === "White") {
+            localStorage.setItem("Poor Perfusion", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+                "                  <strong>Patient has poor perfusion.</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+        // If capillary refill is more than 4 seconds poor perfusion alert is thrown.
+        else if (caprtime === ">4sec") {
+            localStorage.setItem("Poor Perfusion", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+                "                  <strong>Patient has poor perfusion.</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+     }
     }
 }
 

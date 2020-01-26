@@ -104,6 +104,11 @@ function intraoLineFunc() {
 }
 
 
+/**
+* Set up Perfusion buttons
+*/
+
+// Buttons for lip color
 var lipc1 = document.getElementById('lipc-pi');
 var lipc2 = document.getElementById('lipc-wh');
 var lipc3 = document.getElementById('lipc-unk');
@@ -121,11 +126,55 @@ function lipc2Func() {
 }
 
 function lipc3Func() {
-    localStorage.setItem("Lip Color", "Unknown");
+    localStorage.setItem("Lip Color", "Unable to assess");
 }
+
+//Buttons for nail bed color
+var nailbc1 = document.getElementById('nailc-pi');
+var nailbc2 = document.getElementById('nailc-wh');
+var nailbc3 = document.getElementById('nailc-unk');
+
+nailbc1.onclick = nailbc1Func;
+nailbc2.onclick = nailbc2Func;
+nailbc3.onclick = nailbc3Func;
+
+function nailbc1Func() {
+    localStorage.setItem("Nail Bed Color", "Pink");
+}
+
+function nailbc2Func() {
+    localStorage.setItem("Nail Bed Color", "White");
+}
+
+function nailbc3Func() {
+    localStorage.setItem("Nail Bed Color", "Unable to assess");
+}
+
+//Buttons for capillary refill time.
+var caprt1 = document.getElementById('caprt-2');
+var caprt2 = document.getElementById('caprt-24');
+var caprt3 = document.getElementById('caprt-4');
+
+caprt1.onclick = caprt1Func;
+caprt2.onclick = caprt2Func;
+caprt3.onclick = caprt3Func;
+
+function caprt1Func() {
+    localStorage.setItem("Cap Refill Time", "<2sec");
+}
+
+function caprt2Func() {
+    localStorage.setItem("Cap Refill Time", "2-4sec");
+}
+
 
 //Set up Type and Cross Alert
 var typeAndCross = document.getElementById('typeAndCrossNo');
+
+function caprt3Func() {
+    localStorage.setItem("Cap Refill Time", ">4sec");
+}
+
 
 typeAndCross.onclick = typeAndCrossFunc;
 
@@ -136,7 +185,104 @@ function typeAndCrossFunc() {
 /**
  * Set up Disability buttons
  */
+//Set up all GCS Motor
+var m6 = document.getElementById('motor6');
+var m5 = document.getElementById('motor5');
+var m4 = document.getElementById('motor4');
+var m3 = document.getElementById('motor3');
+var m2 = document.getElementById('motor2');
+var m1 = document.getElementById('motor1');
 
+m6.onclick = motor6;
+m5.onclick = motor5;
+m4.onclick = motor4;
+m3.onclick = motor3;
+m2.onclick = motor2;
+m1.onclick = motor1;
+
+function motor6() {
+    localStorage.setItem("GCS Motor", "6");
+}
+
+function motor5() {
+    localStorage.setItem("GCS Motor", "5");
+}
+
+function motor4() {
+    localStorage.setItem("GCS Motor", "4");
+}
+
+function motor3() {
+    localStorage.setItem("GCS Motor", "3");
+}
+
+function motor2() {
+    localStorage.setItem("GCS Motor", "2");
+}
+
+function motor1() {
+    localStorage.setItem("GCS Motor", "1");
+}
+
+//Set up GCS Verbal
+var v5 = document.getElementById('verbal5');
+var v4 = document.getElementById('verbal4');
+var v3 = document.getElementById('verbal3');
+var v2 = document.getElementById('verbal2');
+var v1 = document.getElementById('verbal1');
+
+v5.onclick = verbal5;
+v4.onclick = verbal4;
+v3.onclick = verbal3;
+v2.onclick = verbal2;
+v1.onclick = verbal1;
+
+function verbal5() {
+    localStorage.setItem("GCS Verbal", "5");
+}
+
+function verbal4() {
+    localStorage.setItem("GCS Verbal", "4");
+}
+
+function verbal3() {
+    localStorage.setItem("GCS Verbal", "3");
+}
+
+function verbal2() {
+    localStorage.setItem("GCS Verbal", "2");
+}
+
+function verbal1() {
+    localStorage.setItem("GCS Verbal", "1");
+}
+
+//Set up GCS Eye
+var e4 = document.getElementById('eye4');
+var e3 = document.getElementById('eye3');
+var e2 = document.getElementById('eye2');
+var e1 = document.getElementById('eye1');
+
+e4.onclick = eye4;
+e3.onclick = eye3;
+e2.onclick = eye2;
+e1.onclick = eye1;
+
+function eye4() {
+    localStorage.setItem("GCS Eye", "4");
+}
+
+function eye3() {
+    localStorage.setItem("GCS Eye", "3");
+}
+
+function eye2() {
+    localStorage.setItem("GCS Eye", "2");
+}
+
+function eye1() {
+    localStorage.setItem("GCS Eye", "1");
+}
 /**
  * Set up Exposure buttons
  */
