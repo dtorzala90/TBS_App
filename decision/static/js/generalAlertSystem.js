@@ -8,10 +8,15 @@
  */
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
+var typeAndCrossAlertDismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
 
 //This checks to see if the alerts have already been dismissed.
 if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
     var ivAlertInterval = setInterval(checkIV, 1000);
+}
+
+if(typeAndCrossAlertDismissed === "no"){
+    var typeAndCrossInterval = setInterval(checkTypeAndCross(), 1000);
 }
 
 setInterval(checkETCO2, 1000);
@@ -261,5 +266,25 @@ function checkPerfusion(){
     else if(alert === "thrown" ) {
       $('#poor-perfusion-alert').remove();
       localStorage.setItem("Poor Perfusion", "dismissed");
+    }
+}
+
+function checkTypeAndCross(){
+    var typeAndCrossSelection = localStorage.getItem("Type and Cross Selection");
+    var typeAndCrossAlert = localStorage.getItem("Type and Cross Alert");
+    if (typeAndCrossAlert === "not thrown" && typeAndCrossSelection === "no") {
+        localStorage.setItem("Type and Cross Selection", "thrown");
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
+            "                  <strong>Consider Type and Cross!!!" + typeAndCrossAlert +"</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    else if(typeAndCrossAlert === "thrown" ) {
+      $('#type-and-cross-alert').remove();
+      localStorage.setItem("Type and Cross Alert Dismissed?", "yes");
+      clearInterval(typeAndCrossInterval);
     }
 }

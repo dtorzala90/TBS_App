@@ -124,7 +124,14 @@ function lipc3Func() {
     localStorage.setItem("Lip Color", "Unknown");
 }
 
+//Set up Type and Cross Alert
+var typeAndCross = document.getElementById('typeAndCrossNo');
 
+typeAndCross.onclick = typeAndCrossFunc;
+
+function typeAndCrossFunc() {
+    localStorage.setItem("Type and Cross Selection", "no");
+}
 
 /**
  * Set up Disability buttons

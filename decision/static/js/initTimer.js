@@ -19,3 +19,7 @@ localStorage.setItem("GCS<13", "false");
 localStorage.setItem("GCS", "null");
 localStorage.setItem("GCS<13 Alert", "not thrown");
 localStorage.setItem("No GCS Alert", "not thrown");
+
+localStorage.setItem("Type and Cross Alert", "not thrown");
+localStorage.setItem("Type and Cross Selection", "none");
+localStorage.setItem("Type and Cross Alert Dismissed?", "no");
