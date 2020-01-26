@@ -111,7 +111,7 @@ function intraoLineFunc() {
 // Buttons for lip color
 var lipc1 = document.getElementById('lipc-pi');
 var lipc2 = document.getElementById('lipc-wh');
-var lipc3 = document.getElementById('lipc-uta');
+var lipc3 = document.getElementById('lipc-unk');
 
 lipc1.onclick = lipc1Func;
 lipc2.onclick = lipc2Func;
@@ -132,7 +132,7 @@ function lipc3Func() {
 //Buttons for nail bed color
 var nailbc1 = document.getElementById('nailc-pi');
 var nailbc2 = document.getElementById('nailc-wh');
-var nailbc3 = document.getElementById('nailc-uta');
+var nailbc3 = document.getElementById('nailc-unk');
 
 nailbc1.onclick = nailbc1Func;
 nailbc2.onclick = nailbc2Func;
@@ -167,7 +167,7 @@ function caprt2Func() {
     localStorage.setItem("Cap Refill Time", "2-4sec");
 }
 
-function caprtFunc() {
+function caprt3Func() {
     localStorage.setItem("Cap Refill Time", ">4sec");
 }
 
