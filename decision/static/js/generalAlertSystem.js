@@ -279,10 +279,17 @@ function checkPerfusion(){
     // If lip color is white poor perfuion alert is thrown.
 
     if(lipcol !== null || nailbcol !== null || caprtime !== null) {
-      if(alert === "thrown" ) {
-        localStorage.setItem("Poor Perfusion", "dismissed");
+
+      // Dismiss the alert if it is no longer needed
+      if(lipcol !== "White" && nailbcol !== "White" && caprtime !== ">4sec") {
+        if(alert === "thrown" ) {
+          $('#poor-perfusion-alert').remove();
+          localStorage.setItem("Poor Perfusion", "dismissed");
+        }
       }
-      if(alert === "not thrown"){
+
+      // Check if the alert is not currently thrown or has been dismissed
+      if(alert === "not thrown" || alert === "dismissed"){
         if (lipcol === "White") {
             localStorage.setItem("Poor Perfusion", "thrown");
             $('#alert_placeholder').append(
