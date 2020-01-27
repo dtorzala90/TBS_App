@@ -26,10 +26,10 @@ localStorage.setItem("GCS<13 Alert", "not thrown");
 localStorage.setItem("No GCS Alert", "not thrown");
 
 localStorage.setItem("Shock Level", "null");
-localStorage.setItem(("Shock Alert", "not thrown"));
+localStorage.setItem("Shock Alert", "not thrown");
 
 localStorage.setItem("HR", "null");
-localStorage.setItem(("Bradycardia Alert", "not thrown"));
+localStorage.setItem("Bradycardia Alert", "not thrown");
 localStorage.setItem("Tachycardia Alert", "not thrown");
 
 localStorage.setItem("BP", "null");
