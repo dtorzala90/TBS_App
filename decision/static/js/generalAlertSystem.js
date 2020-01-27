@@ -284,6 +284,11 @@ function checkHR(){
             }
         }
         else if (HR < 60 && brady !== "thrown"){
+            if(tach === "thrown"){
+                $('#tach-alert').remove();
+                localStorage.setItem("Tachycardia Alert", "dismissed");
+            }
+
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
                 "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
@@ -295,6 +300,10 @@ function checkHR(){
         }
 
         else if (HR > 100 && tach !== "thrown"){
+            if(brady === "thrown"){
+                $('#brady-alert').remove();
+                localStorage.setItem("Bradycardia Alert", "dismissed");
+            }
               $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tach-alert'>\n" +
                 "                  <strong>Tachycardia</strong>\n" +
@@ -343,7 +352,7 @@ function calcShock(){
          var HR = parseInt(HR_recorded);
 
          var shock = HR/BP;
-         localStorage.setItem("Shock Lebvel", shock.toString(10));
+         localStorage.setItem("Shock Level", shock.toString(10));
 
          if(shock > 1.0 && shock_alert !== "thrown"){
              $('#alert_placeholder').append(
