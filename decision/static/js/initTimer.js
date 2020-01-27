@@ -33,3 +33,5 @@ localStorage.setItem("Tachycardia Alert", "not thrown");
 
 localStorage.setItem("BP", "null");
 localStorage.setItem("Hypotensive alert", "not thrown");
+
+localStorage.setItem("Patient Age", "null");
