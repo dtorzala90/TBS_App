@@ -25,6 +25,17 @@ localStorage.setItem("GCS Eye", "null");
 localStorage.setItem("GCS<13 Alert", "not thrown");
 localStorage.setItem("No GCS Alert", "not thrown");
 
+localStorage.setItem("Shock Level", "null");
+localStorage.setItem(("Shock Alert", "not thrown"));
+
+localStorage.setItem("HR", "null");
+localStorage.setItem(("Bradycardia Alert", "not thrown"));
+localStorage.setItem("Tachycardia Alert", "not thrown");
+
+localStorage.setItem("BP", "null");
+localStorage.setItem("Hypotensive alert", "not thrown");
+
+localStorage.setItem("Patient Age", "null");
 
 localStorage.setItem("Type and Cross Alert", "not thrown");
 localStorage.setItem("Type and Cross Selection", "none");
@@ -34,4 +45,3 @@ localStorage.setItem("Poor Perfusion", "not thrown");
 localStorage.setItem("Lip Color", "null");
 localStorage.setItem("Nail Bed Color", "null");
 localStorage.setItem("Cap Refill Time", "null");
-

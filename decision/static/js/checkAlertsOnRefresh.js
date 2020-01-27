@@ -7,6 +7,8 @@
 checkIVAlerts();
 checkETCO2Alerts();
 checkGCSAlerts();
+check_HR_BP_Alerts();
+checkShockAlert();
 checkPerfusionAlerts();
 checkTypeAndCrossAlert();
 
@@ -106,12 +108,62 @@ function checkGCSAlerts(){
     }
 }
 
+function check_HR_BP_Alerts(){
+    var hypo = localStorage.getItem("Hypotensive Alert");
+    var brady = localStorage.getItem("Bradycardia Alert");
+    var tach = localStorage.getItem("Tachycardia Alert");
+
+    if(hypo === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='hypo-alert'>\n" +
+            "                  <strong>Hypotensive!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+
+    if(brady === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
+            "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+
+    else if(tach === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tach-alert'>\n" +
+            "                  <strong>Tachycardia</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
 function checkPerfusionAlerts(){
     var alert = localStorage.getItem("Poor Perfusion");
     if (alert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
             "                  <strong>Patient has poor perfusion.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+function checkShockAlert(){
+    var shock_alert = localStorage.getItem("Shock Alert");
+
+    if(shock_alert === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
+            "                  <strong>Elevated shock index!</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +

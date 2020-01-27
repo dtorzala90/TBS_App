@@ -64,6 +64,27 @@ function etco2_50plusFunc(){
 /**
  * Set up Circulation buttons
  */
+//Set up HR and BP text fields
+var hrText = document.getElementById("hr");
+var bpText = document.getElementById("bp");
+var ageText = document.getElementById("age");
+
+ageText.oninput = recordAge;
+hrText.oninput = recordHR;
+bpText.oninput = recordBP;
+
+function recordHR(){
+    localStorage.setItem("HR", hrText.value);
+}
+
+function recordBP(){
+    localStorage.setItem("BP", bpText.value);
+}
+
+function recordAge(){
+    localStorage.setItem("Patient Age", ageText.value);
+}
+
 //Set up PIV radio buttons
 var piv1 = document.getElementById('funp1');
 var piv2 = document.getElementById('funp2');
