@@ -9,13 +9,27 @@
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
 
+var typeAndCrossAlertDismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
+
+var perfusionAlert = localStorage.getItem("Poor Perfusion");
+
+
 //This checks to see if the alerts have already been dismissed.
 if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
     var ivAlertInterval = setInterval(checkIV, 1000);
 }
 
+if(typeAndCrossAlertDismissed === "no"){
+    var typeAndCrossInterval = setInterval(checkTypeAndCross(), 1000);
+}
+
 setInterval(checkETCO2, 1000);
+
 setInterval(checkGCS, 1000);
+
+if (perfusionAlert !== "dismissed") {
+  setInterval(checkPerfusion, 1000);
+}
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -258,5 +272,84 @@ function checkGCS(){
             "                  </button>\n" +
             "                </div>");
         localStorage.setItem("No GCS Alert", "thrown");
+    }
+}
+
+/**
+ * This function is responsible for checking that perfusion is checked. Throws alert if poor.
+ * are given
+ */
+function checkPerfusion(){
+    var lipcol = localStorage.getItem("Lip Color");
+    var nailbcol = localStorage.getItem("Nail Bed Color");
+    var caprtime = localStorage.getItem("Cap Refill Time");
+    var alert = localStorage.getItem("Poor Perfusion");
+    // If lip color is white poor perfuion alert is thrown.
+
+    if(lipcol !== null || nailbcol !== null || caprtime !== null) {
+
+      // Dismiss the alert if it is no longer needed
+      if(lipcol !== "White" && nailbcol !== "White" && caprtime !== ">4sec") {
+        if(alert === "thrown" ) {
+          $('#poor-perfusion-alert').remove();
+          localStorage.setItem("Poor Perfusion", "dismissed");
+        }
+      }
+
+      // Check if the alert is not currently thrown or has been dismissed
+      if(alert === "not thrown" || alert === "dismissed"){
+        if (lipcol === "White") {
+            localStorage.setItem("Poor Perfusion", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+                "                  <strong>Patient has poor perfusion.</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+        // If nail bed color is white poor perfusion alert is thrown.
+        else if (nailbcol === "White") {
+            localStorage.setItem("Poor Perfusion", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+                "                  <strong>Patient has poor perfusion.</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+        // If capillary refill is more than 4 seconds poor perfusion alert is thrown.
+        else if (caprtime === ">4sec") {
+            localStorage.setItem("Poor Perfusion", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+                "                  <strong>Patient has poor perfusion.</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+     }
+    }
+}
+
+function checkTypeAndCross(){
+    var typeAndCrossSelection = localStorage.getItem("Type and Cross Selection");
+    var typeAndCrossAlert = localStorage.getItem("Type and Cross Alert");
+    if (typeAndCrossAlert === "not thrown" && typeAndCrossSelection === "no") {
+        localStorage.setItem("Type and Cross Selection", "thrown");
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
+            "                  <strong>Consider Type and Cross!!!" + typeAndCrossAlert +"</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    else if(typeAndCrossAlert === "thrown" ) {
+      $('#type-and-cross-alert').remove();
+      localStorage.setItem("Type and Cross Alert Dismissed?", "yes");
+      clearInterval(typeAndCrossInterval);
     }
 }
