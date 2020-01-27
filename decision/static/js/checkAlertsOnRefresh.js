@@ -9,6 +9,8 @@ checkETCO2Alerts();
 checkGCSAlerts();
 check_HR_BP_Alerts();
 checkShockAlert();
+checkPerfusionAlerts();
+checkTypeAndCrossAlert();
 
 function checkIVAlerts() {
     var ivAlert = localStorage.getItem("Alert No IV");
@@ -142,6 +144,19 @@ function check_HR_BP_Alerts(){
     }
 }
 
+function checkPerfusionAlerts(){
+    var alert = localStorage.getItem("Poor Perfusion");
+    if (alert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
+            "                  <strong>Patient has poor perfusion.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
 function checkShockAlert(){
     var shock_alert = localStorage.getItem("Shock Alert");
 
@@ -149,6 +164,20 @@ function checkShockAlert(){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
             "                  <strong>Elevated shock index!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+function checkTypeAndCrossAlert(){
+    var alert = localStorage.getItem("Type and Cross Alert");
+    var dismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
+    if (alert === "thrown" && dismissed === "yes") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
+            "                  <strong>Consider Type and Cross.</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +

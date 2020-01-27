@@ -126,6 +126,84 @@ function intraoLineFunc() {
 
 
 /**
+* Set up Perfusion buttons
+*/
+
+// Buttons for lip color
+var lipc1 = document.getElementById('lipc-pi');
+var lipc2 = document.getElementById('lipc-wh');
+var lipc3 = document.getElementById('lipc-unk');
+
+lipc1.onclick = lipc1Func;
+lipc2.onclick = lipc2Func;
+lipc3.onclick = lipc3Func;
+
+function lipc1Func() {
+    localStorage.setItem("Lip Color", "Pink");
+}
+
+function lipc2Func() {
+    localStorage.setItem("Lip Color", "White");
+}
+
+function lipc3Func() {
+    localStorage.setItem("Lip Color", "Unable to assess");
+}
+
+//Buttons for nail bed color
+var nailbc1 = document.getElementById('nailc-pi');
+var nailbc2 = document.getElementById('nailc-wh');
+var nailbc3 = document.getElementById('nailc-unk');
+
+nailbc1.onclick = nailbc1Func;
+nailbc2.onclick = nailbc2Func;
+nailbc3.onclick = nailbc3Func;
+
+function nailbc1Func() {
+    localStorage.setItem("Nail Bed Color", "Pink");
+}
+
+function nailbc2Func() {
+    localStorage.setItem("Nail Bed Color", "White");
+}
+
+function nailbc3Func() {
+    localStorage.setItem("Nail Bed Color", "Unable to assess");
+}
+
+//Buttons for capillary refill time.
+var caprt1 = document.getElementById('caprt-2');
+var caprt2 = document.getElementById('caprt-24');
+var caprt3 = document.getElementById('caprt-4');
+
+caprt1.onclick = caprt1Func;
+caprt2.onclick = caprt2Func;
+caprt3.onclick = caprt3Func;
+
+function caprt1Func() {
+    localStorage.setItem("Cap Refill Time", "<2sec");
+}
+
+function caprt2Func() {
+    localStorage.setItem("Cap Refill Time", "2-4sec");
+}
+
+
+//Set up Type and Cross Alert
+var typeAndCross = document.getElementById('typeAndCrossNo');
+
+function caprt3Func() {
+    localStorage.setItem("Cap Refill Time", ">4sec");
+}
+
+
+typeAndCross.onclick = typeAndCrossFunc;
+
+function typeAndCrossFunc() {
+    localStorage.setItem("Type and Cross Selection", "no");
+}
+
+/**
  * Set up Disability buttons
  */
 //Set up all GCS Motor
