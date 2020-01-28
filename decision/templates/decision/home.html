@@ -293,7 +293,7 @@
                                     <tr>
                                         <td style="vertical-align: middle"><h4>Heart Rate</h4></td>
                                         <td>
-                                            <div class="form-group w-50">
+                                            <div class="form-group w-60">
                                                 <input class="form-control" type="text" id="hr" name="hr" value="" placeholder="BPM">
                                             </div>
                                         </td>
@@ -303,7 +303,7 @@
                                     <tr>
                                         <td style="vertical-align: middle"><h4>Systolic Blood Pressure</h4></td>
                                         <td>
-                                            <div class="form-group w-50">
+                                            <div class="form-group w-60">
                                                 <input class="form-control" type="text" id="bp" name="bp" value="" placeholder="mmHg">
                                                 <input class="form-control" type="text" id="age" name="age" value="" placeholder="Patient Age">
                                             </div>
@@ -446,42 +446,47 @@
                                 <table class="table">
                                     <tbody>
 
+                                    <tr style="border-bottom: 2px solid #29323A;">
+                                        <td colspan = "2"><h4>Glasgow Coma Scale:</h4></td>
+                                    </tr>
+
                                     <tr> <!-- Optimize ABC -->
-                                        <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Motor</h4></td>
+
+                                        <td style="vertical-align: middle"><h4>Motor</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="motor" id="motor6" value="ob"> Obeys Commands<br></label>
-                                                <label><input type="radio" name="motor" id="motor5" value="lo"> Localizing Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor4" value="wi"> Withdraw From Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor3" value="fl"> Flexion To Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor2" value="ex"> Extension To Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor1" value="no"> No Motor Response<br></label>
+                                            <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
+                                                <label><input type="radio" name="motor" id="motor6" value="ob"> <b>6</b> - Obeys Commands<br></label>
+                                                <label><input type="radio" name="motor" id="motor5" value="lo"> <b>5</b> - Localizing Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor4" value="wi"> <b>4</b> - Withdraw From Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor3" value="fl"> <b>3</b> - Flexion To Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor2" value="ex"> <b>2</b> - Extension To Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor1" value="no"> <b>1</b> - No Motor Response<br></label>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr> <!-- Optimize ABC -->
-                                        <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Verbal</h4></td>
+                                        <td style="vertical-align: middle"><h4>Verbal</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="verbal" id="verbal5" value="or"> Oriented<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal4" value="co"> Confused<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal3" value="wo"> Inappropriate Words<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal2" value="so"> Incomprehensible Sounds<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal1" value="no"> No Verbal Response<br></label>
+                                            <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
+                                                <label><input type="radio" name="verbal" id="verbal5" value="or"> <b>5</b> - Oriented<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal4" value="co"> <b>4</b> - Confused<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal3" value="wo"> <b>3</b> - Inappropriate Words<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal2" value="so"> <b>2</b> - Incomprehensible Sounds<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal1" value="no"> <b>1</b> - No Verbal Response<br></label>
 
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <tr> <!-- Optimize ABC -->
-                                        <td style="vertical-align: middle"><h4>Glasgow Coma Scale - Eye</h4></td>
+                                    <tr style="border-bottom: 2px solid #29323A;"> <!-- Optimize ABC -->
+                                        <td style="vertical-align: middle"><h4>Eye</h4></td>
                                         <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="eye" id="eye4" value="sp"> Opens Spontaneously<br></label>
-                                                <label><input type="radio" name="eye" id="eye3" value="ve"> Open To Verbal Command<br></label>
-                                                <label><input type="radio" name="eye" id="eye2" value="pa"> Open To Pain<br></label>
-                                                <label><input type="radio" name="eye" id="eye1" value="no"> No Eye Opening<br></label>
+                                            <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
+                                                <label><input type="radio" name="eye" id="eye4" value="sp"> <b>4</b> - Opens Spontaneously<br></label>
+                                                <label><input type="radio" name="eye" id="eye3" value="ve"> <b>3</b> - Open To Verbal Command<br></label>
+                                                <label><input type="radio" name="eye" id="eye2" value="pa"> <b>2</b> - Open To Pain<br></label>
+                                                <label><input type="radio" name="eye" id="eye1" value="no"> <b>1</b> - No Eye Opening<br></label>
                                             </div>
                                         </td>
                                     </tr>
@@ -614,7 +619,6 @@
 
                                     <tr> <!-- Insert Content -->
                                         <td><h4>Check for Infection</h4></td>
-
                                         <td>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light">Initiated
