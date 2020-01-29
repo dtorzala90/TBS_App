@@ -5,40 +5,29 @@ var HR_prev = "null";
 var Shock_prev = "null";
 
 function checkVitals(){
-    var BP = localStorage.getItem("BP Display");
-    var HR = localStorage.getItem("HR Display");
-    var shock = localStorage.getItem("Shock Index Display");
+    var BP = localStorage.getItem("BP");
+    var HR = localStorage.getItem("HR");
+    var shock = localStorage.getItem("Shock Level");
+
 
     if (BP !== "null"){
-        if(BP_prev === "null"){
+        if(BP_prev !== BP){
             BP_prev = BP;
-            $('#vitals_placeholder').append(BP);
-        }
-
-        else if (BP_prev !== BP){
-            $('#vitals_placeholder').append(BP);
+            $('#vitals_placeholder').append(localStorage.getItem("BP Display"));
         }
     }
 
     if (HR !== "null"){
-        if(HR_prev === "null"){
+        if(HR_prev !== HR){
             HR_prev = HR;
-            $('#vitals_placeholder').append(HR);
-        }
-
-        else if (HR_prev !== HR){
-            $('#vitals_placeholder').append(HR);
+            $('#vitals_placeholder').append(localStorage.getItem("HR Display"));
         }
     }
 
     if (shock !== "null"){
-        if(Shock_prev === "null"){
+        if(Shock_prev !== shock){
             Shock_prev = shock;
-            $('#vitals_placeholder').append(shock);
-        }
-
-        else if (Shock_prev !== shock){
-            $('#vitals_placeholder').append(shock);
+            $('#vitals_placeholder').append(localStorage.getItem("Shock Level Display"));
         }
     }
 }

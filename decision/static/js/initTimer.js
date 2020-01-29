@@ -54,5 +54,6 @@ localStorage.setItem("IVF", "null");
 //Variables for display of vital signs
 localStorage.setItem("HR Display", "null");
 localStorage.setItem("BP Display", "null");
-localStorage.setItem("Shock Index Display", "null");
+localStorage.setItem("Shock Level Display", "null");
+
 
