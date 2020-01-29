@@ -429,6 +429,16 @@ function calcShock(){
          var shock = HR/BP;
          localStorage.setItem("Shock Level", shock.toString(10));
 
+         var min = (parseInt(localStorage.getItem('total_seconds_summary'),10))/60;
+         var sec = (parseInt(localStorage.getItem('total_seconds_summary'),10))%60;
+
+         if(min < 0){
+            min = 0;
+         }
+         var display = "Shock Level: " + shock.toString(10) + " at " + min.toString(10) +
+             "min " + sec.toString(10) + "sec";
+         localStorage.setItem('Shock Level Display',display);
+
          if(shock > 1.0 && shock_alert !== "thrown"){
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
@@ -440,7 +450,7 @@ function calcShock(){
             localStorage.setItem("Shock Alert", "thrown");
          }
 
-         else if (shock < 1.0 && shock_alert === "thrown"){
+         else if (shock < 1.0 && shock_alert === "thrown") {
              $('#shock-alert').remove();
              localStorage.setItem("Shock Alert", "dismissed");
          }
