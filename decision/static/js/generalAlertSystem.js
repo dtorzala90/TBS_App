@@ -395,7 +395,7 @@ function checkBP(){
     var BP_recorded = localStorage.getItem("BP");
     var hypo = localStorage.getItem("Hypotensive Alert");
     var age = localStorage.getItem("Patient Age");
-    if(BP_recorded !== "null"){
+    if(BP_recorded !== "null" && age !== "null"){
         var BP = parseInt(BP_recorded) + (2 * parseInt(age));
 
         if(BP >=55){
