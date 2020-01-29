@@ -74,11 +74,21 @@ hrText.oninput = recordHR;
 bpText.oninput = recordBP;
 
 function recordHR(){
+    var hr = hrText.value;
     localStorage.setItem("HR", hrText.value);
+    var min = parseInt(localStorage.getItem('total_seconds_summary'))/60;
+    var sec = parseInt(localStorage.getItem('total_seconds_summary'))%60;
+    var display = "Heartrate: " + hr + " at " + min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem('HR Display',display);
 }
 
 function recordBP(){
+    var bp = bpText.value;
     localStorage.setItem("BP", bpText.value);
+    var min = parseInt(localStorage.getItem('total_seconds_summary'))/60;
+    var sec = parseInt(localStorage.getItem('total_seconds_summary'))%60;
+    var display = "Systolic BP: " + bp + " at " + min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem('BP Display',display);
 }
 
 function recordAge(){

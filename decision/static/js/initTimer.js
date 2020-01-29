@@ -50,3 +50,9 @@ localStorage.setItem("Alert Consider IVF", "not thrown");
 localStorage.setItem("Alert Fluids Given", "not thrown");
 localStorage.setItem("Alert Excess IVF", "not thrown");
 localStorage.setItem("IVF", "null");
+
+//Variables for display of vital signs
+localStorage.setItem("HR Display", "null");
+localStorage.setItem("BP Display", "null");
+localStorage.setItem("Shock Index Display", "null");
+
