@@ -29,6 +29,7 @@ setInterval(checkGCS, 1000);
 setInterval(checkHR, 1000);
 setInterval(checkBP, 1000);
 setInterval(calcShock, 1000);
+setInterval(checkFluids, 1000);
 
 if (perfusionAlert !== "dismissed") {
   setInterval(checkPerfusion, 1000);
@@ -464,4 +465,55 @@ function checkTypeAndCross(){
       localStorage.setItem("Type and Cross Alert Dismissed?", "yes");
       clearInterval(typeAndCrossInterval);
     }
+}
+
+function checkFluids(){
+  var alertIVFluids = localStorage.getItem("Alert Consider IVF");
+  var alertFluidsGiven = localStorage.getItem("Alert Fluids Given");
+  var alertExcessIVFluids = localStorage.getItem("Alert Excess IVF");
+  var iVFSelection = localStorage.getItem("IVF");
+  if((alertIVFluids === "not thrown" || alertIVFluids === "dismissed") && iVFSelection === "none"){
+    localStorage.setItem("Alert Consider IVF", "thrown");
+    $('#alert_placeholder').append(
+        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='consider-ivf-alert'>\n" +
+        "                  <strong>Consider IVF bolus</strong>\n" +
+        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+        "                    <span aria-hidden=\"true\">&times;</span>\n" +
+        "                  </button>\n" +
+        "                </div>");
+  }
+  else if(alertIVFluids === "thrown" && iVFSelection !== "none") {
+    $('#consider-ivf-alert').remove();
+    localStorage.setItem("Alert Consider IVF", "dismissed");
+  }
+  if((alertFluidsGiven === "not thrown" || alertFluidsGiven === "dismissed") && iVFSelection === "<20mL/kg"){
+    localStorage.setItem("Alert Fluids Given", "thrown");
+    $('#alert_placeholder').append(
+        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
+        "                  <strong>Fluids Given</strong>\n" +
+        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+        "                    <span aria-hidden=\"true\">&times;</span>\n" +
+        "                  </button>\n" +
+        "                </div>");
+  }
+  else if(alertFluidsGiven === "thrown" && iVFSelection !== "<20mL/kg") {
+    $('#fluids-given-alert').remove();
+    localStorage.setItem("Alert Fluids Given", "dismissed");
+  }
+  if((alertExcessIVFluids === "not thrown" || alertExcessIVFluids === "dismissed") && iVFSelection === ">20mL/kg"){
+    localStorage.setItem("Alert Excess IVF", "thrown");
+    $('#alert_placeholder').append(
+        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-ivf-alert'>\n" +
+        "                  <strong>Excess IVFs, consider transfusion</strong>\n" +
+        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+        "                    <span aria-hidden=\"true\">&times;</span>\n" +
+        "                  </button>\n" +
+        "                </div>");
+  }
+  else if(alertExcessIVFluids === "thrown" && iVFSelection !== ">20mL/kg") {
+    $('#excess-ivf-alert').remove();
+    localStorage.setItem("Alert Excess IVF", "dismissed");
+  }
+
+
 }

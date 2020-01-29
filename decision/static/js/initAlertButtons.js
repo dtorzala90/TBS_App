@@ -188,14 +188,33 @@ function caprt2Func() {
     localStorage.setItem("Cap Refill Time", "2-4sec");
 }
 
-
-//Set up Type and Cross Alert
-var typeAndCross = document.getElementById('typeAndCrossNo');
-
 function caprt3Func() {
     localStorage.setItem("Cap Refill Time", ">4sec");
 }
 
+// Setup IVF alerts
+var ivf1 = document.getElementById('ivf-none');
+var ivf2 = document.getElementById('ivf-<20');
+var ivf3 = document.getElementById('ivf->20');
+
+ivf1.onclick = ivf1Func;
+ivf2.onclick = ivf2Func;
+ivf3.onclick = ivf3Func;
+
+function ivf1Func() {
+    localStorage.setItem("IVF", "none");
+}
+
+function ivf2Func() {
+    localStorage.setItem("IVF", "<20mL/kg");
+}
+
+function ivf3Func() {
+    localStorage.setItem("IVF", ">20mL/kg");
+}
+
+//Set up Type and Cross Alert
+var typeAndCross = document.getElementById('typeAndCrossNo');
 
 typeAndCross.onclick = typeAndCrossFunc;
 

@@ -45,3 +45,8 @@ localStorage.setItem("Poor Perfusion", "not thrown");
 localStorage.setItem("Lip Color", "null");
 localStorage.setItem("Nail Bed Color", "null");
 localStorage.setItem("Cap Refill Time", "null");
+
+localStorage.setItem("Alert Consider IVF", "not thrown");
+localStorage.setItem("Alert Fluids Given", "not thrown");
+localStorage.setItem("Alert Excess IVF", "not thrown");
+localStorage.setItem("IVF", "null");

@@ -15,6 +15,9 @@ checkTypeAndCrossAlert();
 function checkIVAlerts() {
     var ivAlert = localStorage.getItem("Alert No IV");
     var pivAlert = localStorage.getItem("Alert One PIV");
+    var civfluidAlert = localStorage.getItem("Alert Consider IVF");
+    var givenfluidAlert = localStorage.getItem("Alert Fluids Given");
+    var eivfluidAlert = localStorage.getItem("Alert Excess IVF");
     if (ivAlert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
@@ -29,6 +32,34 @@ function checkIVAlerts() {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
             "                  <strong>Consider additional PIV<</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+
+    if (civfluidAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='consider-ivf-alert'>\n" +
+            "                  <strong>Consider IVF bolus</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    if (givenfluidAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
+            "                  <strong>Fluids Given</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    if (eivfluidAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-ivf-alert'>\n" +
+            "                  <strong>Excess IVFs, consider transfusion</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
