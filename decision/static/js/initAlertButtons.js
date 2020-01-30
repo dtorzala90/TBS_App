@@ -76,8 +76,8 @@ bpText.oninput = recordBP;
 function recordHR(){
     var hr = hrText.value;
     localStorage.setItem("HR", hrText.value);
-    var min = (parseInt(localStorage.getItem('total_seconds_summary'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_summary'),10))%60;
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
     if(min < 1){
         min = 0;
     }
@@ -88,8 +88,8 @@ function recordHR(){
 function recordBP(){
     var bp = bpText.value;
     localStorage.setItem("BP", bpText.value);
-    var min = (parseInt(localStorage.getItem('total_seconds_summary'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_summary'),10))%60;
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
 
     if(min < 1){
         min = 0;
