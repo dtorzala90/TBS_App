@@ -147,8 +147,7 @@ a.article-title:hover {
     top: 300px;
     left: 5px;
     bottom: 30px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: auto
 }
 
 .vitals-format{
@@ -160,25 +159,27 @@ a.article-title:hover {
     top: 300px;
     right: 5px;
     bottom: 30px;
-    overflow-y: scroll;
 }
 
 #hr_placeholder{
     position: relative;
     font-size: 20px;
-    padding-top:15px;
+    padding-top: 15px;
+    overflow: auto;
 }
 
 #bp_placeholder{
     font-size: 20px;
     position: relative;
     padding-top:15px;
+    overflow: auto;
 }
 
 #shock_placeholder{
     font-size: 20px;
     position: relative;
     padding-top:15px;
+    overflow: auto;
 }
 /*Format the PCH logo in the navbar*/
 #brandImage {
