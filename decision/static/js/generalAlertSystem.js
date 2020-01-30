@@ -426,13 +426,13 @@ function calcShock(){
          var BP = parseInt(BP_recorded);
          var HR = parseInt(HR_recorded);
 
-         var shock = HR/BP;
+         var shock = Math.round(HR/BP);
          localStorage.setItem("Shock Level", shock.toString(10));
 
          var min = (parseInt(localStorage.getItem('total_seconds_summary'),10))/60;
          var sec = (parseInt(localStorage.getItem('total_seconds_summary'),10))%60;
 
-         if(min < 0){
+         if(min < 1){
             min = 0;
          }
          var display = "Shock Level: " + shock.toString(10) + " at " + min.toString(10) +

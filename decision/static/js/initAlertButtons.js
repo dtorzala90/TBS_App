@@ -81,7 +81,7 @@ function recordHR(){
     if(min < 1){
         min = 0;
     }
-    var display = "Heartrate: " + hr + " at " + min.toString(10) + "min " + sec.toString(10) + "sec";
+    var display = "Heart Rate: " + hr + " at " + min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem('HR Display',display);
 }
 

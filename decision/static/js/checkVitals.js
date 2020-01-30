@@ -13,21 +13,21 @@ function checkVitals(){
     if (BP !== "null"){
         if(BP_prev !== BP){
             BP_prev = BP;
-            $('#vitals_placeholder').append(localStorage.getItem("BP Display"));
+            $('#bp_placeholder').append(localStorage.getItem("BP Display") + "<br>");
         }
     }
 
     if (HR !== "null"){
         if(HR_prev !== HR){
             HR_prev = HR;
-            $('#vitals_placeholder').append(localStorage.getItem("HR Display"));
+            $('#hr_placeholder').append(localStorage.getItem("HR Display") + "<br>");
         }
     }
 
     if (shock !== "null"){
         if(Shock_prev !== shock){
             Shock_prev = shock;
-            $('#vitals_placeholder').append(localStorage.getItem("Shock Level Display"));
+            $('#shock_placeholder').append(localStorage.getItem("Shock Level Display") + "<br>");
         }
     }
 }
