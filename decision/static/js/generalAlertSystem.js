@@ -395,7 +395,7 @@ function checkBP(){
     var BP_recorded = localStorage.getItem("BP");
     var hypo = localStorage.getItem("Hypotensive Alert");
     var age = localStorage.getItem("Patient Age");
-    if(BP_recorded !== "null"){
+    if(BP_recorded !== "null" && age !== "null"){
         var BP = parseInt(BP_recorded) + (2 * parseInt(age));
 
         if(BP >=55){
@@ -426,8 +426,19 @@ function calcShock(){
          var BP = parseInt(BP_recorded);
          var HR = parseInt(HR_recorded);
 
-         var shock = HR/BP;
+         var shock = Math.round(HR/BP);
          localStorage.setItem("Shock Level", shock.toString(10));
+
+         var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+         var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+         if(min < 1){
+            min = 0;
+         }
+
+         var display = "Shock Level: " + shock.toString(10) + " at " + min.toString(10) +
+             "min " + sec.toString(10) + "sec";
+         localStorage.setItem('Shock Level Display',display);
 
          if(shock > 1.0 && shock_alert !== "thrown"){
              $('#alert_placeholder').append(
@@ -440,7 +451,7 @@ function calcShock(){
             localStorage.setItem("Shock Alert", "thrown");
          }
 
-         else if (shock < 1.0 && shock_alert === "thrown"){
+         else if (shock < 1.0 && shock_alert === "thrown") {
              $('#shock-alert').remove();
              localStorage.setItem("Shock Alert", "dismissed");
          }
