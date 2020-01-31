@@ -11,6 +11,7 @@ check_HR_BP_Alerts();
 checkShockAlert();
 checkPerfusionAlerts();
 checkTypeAndCrossAlert();
+checkBreathingAlerts();
 
 function checkIVAlerts() {
     var ivAlert = localStorage.getItem("Alert No IV");
@@ -209,6 +210,19 @@ function checkTypeAndCrossAlert(){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
             "                  <strong>Consider Type and Cross.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+function checkBreathingAlerts(){
+    var rightAlert = localStorage.getItem("Right Breathing Alert");
+    if (rightAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-breathing-alert'>\n" +
+            "                  <strong>Check ETT depth; consider Tight chest tube.</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
