@@ -15,6 +15,9 @@ localStorage.setItem("Current ETCO2 alert thrown", "none");
 
 localStorage.setItem("ETCO2", "not recorded");
 
+localStorage.setItem("ETT", "not initiated");
+localStorage.setItem("ETT Alert", "not thrown");
+
 localStorage.setItem("GCS<13", "false");
 localStorage.setItem("GCS", "null");
 localStorage.setItem("GCS Motor", "null");
@@ -55,5 +58,6 @@ localStorage.setItem("IVF", "null");
 localStorage.setItem("HR Display", "null");
 localStorage.setItem("BP Display", "null");
 localStorage.setItem("Shock Level Display", "null");
+
 
 
