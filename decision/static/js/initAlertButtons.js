@@ -61,6 +61,21 @@ function etco2_50plusFunc(){
     localStorage.setItem("ETCO2", ">50");
 }
 
+// Buttons for chest rise
+var rchesty = document.getElementById('rchestyes');
+var rchestn = document.getElementById('rchestno');
+
+rchesty.onclick = rchest1Func;
+rchestn.onclick = rchest2Func;
+
+function rchest1Func() {
+    localStorage.setItem("Chest Rise/Breath Sounds", "Yes");
+}
+
+function rchest2Func() {
+    localStorage.setItem("Chest Rise/Breath Sounds", "No");
+}
+
 /**
  * Set up Circulation buttons
  */

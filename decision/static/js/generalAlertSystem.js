@@ -30,6 +30,7 @@ setInterval(checkHR, 1000);
 setInterval(checkBP, 1000);
 setInterval(calcShock, 1000);
 setInterval(checkFluids, 1000);
+setInterval(checkBreathing, 1000);
 
 if (perfusionAlert !== "dismissed") {
   setInterval(checkPerfusion, 1000);
@@ -388,6 +389,28 @@ function checkPerfusion(){
                 "                </div>");
         }
      }
+    }
+}
+
+function checkBreathing(){
+    var rightRiseSounds = localStorage.getItem("Chest Rise/Breath Sounds");
+    var rightAlert = localStorage.getItem("Right Breathing Alert");
+    if (rightRiseSounds === "Yes" && rightAlert === "thrown"){
+      $('#right-breathing-alert').remove();
+      localStorage.setItem("Right Breathing Alert", "dismissed");
+    }
+    // Check if the alert is not currently thrown or has been dismissed
+    if(rightAlert === "not thrown" || rightAlert === "dismissed"){
+      if (rightRiseSounds === "No") {
+          localStorage.setItem("Right Breathing Alert", "thrown");
+          $('#alert_placeholder').append(
+              "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-breathing-alert'>\n" +
+              "                  <strong>Check ETT depth; consider right chest tube.</strong>\n" +
+              "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+              "                    <span aria-hidden=\"true\">&times;</span>\n" +
+              "                  </button>\n" +
+              "                </div>");
+      }
     }
 }
 

@@ -222,7 +222,7 @@ function checkBreathingAlerts(){
     if (rightAlert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-breathing-alert'>\n" +
-            "                  <strong>Check ETT depth; consider Tight chest tube.</strong>\n" +
+            "                  <strong>Check ETT depth; consider right chest tube.</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
