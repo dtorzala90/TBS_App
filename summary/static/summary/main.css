@@ -1,36 +1,29 @@
 body {
-    background: #29323A;
-    color: white;
+    background: #feffff;
+    color: #555555;
     margin-top: 5rem;
     margin-left: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #555555;
+    color: white;
 }
 
 ul {
     margin: 0;
 }
-/*Remove table lines and make it transparent*/
-.table>tbody>tr>td,
-.table>tbody>tr>th {
-    border-top: rgba(0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0);
-    vertical-align: middle;
-    border-bottom: 1px solid #797F84;
-}
 
 .site-header .navbar-nav .nav-link {
-    color: #555555;
+    color: white;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #D72331;
+    color: #9fedd7;
 }
 
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #17252a;
+    border-bottom: 4px solid #fce181;
 }
 
 .navbar-default .navbar-brand {
@@ -122,7 +115,7 @@ a.article-title:hover {
 }
 /*Formatting the timer on the decision and summary pages*/
 .timer-style {
-    color: white;
+    color: #414143;
     text-align: center;
     display: inline-block;
     padding-top: 5%;
@@ -130,10 +123,12 @@ a.article-title:hover {
 }
 
 .timer-summary {
-    color: white;
+    color: #414143;
     text-align: center;
     display: inline-block;
-    font-size: 200px;
+    font-size: 150px;
+    text-decoration: underline;
+    text-decoration-color: #3aafa9;
 }
 /*Formatting the text alert on the summary page*/
 .alert-format {
@@ -166,6 +161,8 @@ a.article-title:hover {
     font-size: 20px;
     padding-top: 15px;
     overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #9fedd7;
 }
 
 #bp_placeholder{
@@ -173,6 +170,8 @@ a.article-title:hover {
     position: relative;
     padding-top:15px;
     overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #fce181;
 }
 
 #shock_placeholder{
@@ -180,6 +179,8 @@ a.article-title:hover {
     position: relative;
     padding-top:15px;
     overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #edeae5;
 }
 /*Format the PCH logo in the navbar*/
 #brandImage {
