@@ -9,7 +9,7 @@
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
 
-var typeAndCrossAlertDismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
+var typeAndCrossAlert= localStorage.getItem("Type and Cross Alert");
 
 var perfusionAlert = localStorage.getItem("Poor Perfusion");
 
@@ -19,7 +19,7 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
     var ivAlertInterval = setInterval(checkIV, 1000);
 }
 
-if(typeAndCrossAlertDismissed === "no"){
+if(typeAndCrossAlert !== "thrown"){
     var typeAndCrossInterval = setInterval(checkTypeAndCross(), 1000);
 }
 
@@ -30,6 +30,7 @@ setInterval(checkHR, 1000);
 setInterval(checkBP, 1000);
 setInterval(calcShock, 1000);
 setInterval(checkFluids, 1000);
+setInterval(checkBreathing, 1000);
 
 if (perfusionAlert !== "dismissed") {
   setInterval(checkPerfusion, 1000);
@@ -62,7 +63,8 @@ function checkIV(){
                 $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
                 "                  <strong>No IV:  Consider central line or intraosseous line!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert No IV\", \"dismissed\")'" +
+                    "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -79,7 +81,8 @@ function checkIV(){
                 $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
                 "                  <strong>Consider additional PIV</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
+                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -230,7 +233,8 @@ function checkETCO2(){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
                 "                  <strong>No ETCO<sub>2</sub> measured!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Record ETCO2 Alert\", \"dismissed\")'" +
+                "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -271,7 +275,8 @@ function checkGCS(){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-alert'>\n" +
             "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
-            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"No GCS Alert\", \"dismissed\")'" +
+            "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
@@ -391,6 +396,47 @@ function checkPerfusion(){
     }
 }
 
+function checkBreathing(){
+    var rightRiseSounds = localStorage.getItem("Right Chest Rise/Breath Sounds");
+    var rightAlert = localStorage.getItem("Right Breathing Alert");
+    var leftRiseSounds = localStorage.getItem("Left Chest Rise/Breath Sounds");
+    var leftAlert = localStorage.getItem("Left Breathing Alert");
+    if (rightRiseSounds === "Yes" && rightAlert === "thrown"){
+      $('#right-breathing-alert').remove();
+      localStorage.setItem("Right Breathing Alert", "dismissed");
+    }
+    // Check if the alert is not currently thrown or has been dismissed
+    if(rightAlert === "not thrown" || rightAlert === "dismissed"){
+      if (rightRiseSounds === "No") {
+          localStorage.setItem("Right Breathing Alert", "thrown");
+          $('#alert_placeholder').append(
+              "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-breathing-alert'>\n" +
+              "                  <strong>Check ETT depth; consider right chest tube.</strong>\n" +
+              "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+              "                    <span aria-hidden=\"true\">&times;</span>\n" +
+              "                  </button>\n" +
+              "                </div>");
+      }
+    }
+    if (leftRiseSounds === "Yes" && leftAlert === "thrown"){
+      $('#left-breathing-alert').remove();
+      localStorage.setItem("Left Breathing Alert", "dismissed");
+    }
+    // Check if the alert is not currently thrown or has been dismissed
+    if(leftAlert === "not thrown" || leftAlert === "dismissed"){
+      if (leftRiseSounds === "No") {
+          localStorage.setItem("Left Breathing Alert", "thrown");
+          $('#alert_placeholder').append(
+              "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-breathing-alert'>\n" +
+              "                  <strong>Check ETT depth; consider left chest tube.</strong>\n" +
+              "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+              "                    <span aria-hidden=\"true\">&times;</span>\n" +
+              "                  </button>\n" +
+              "                </div>");
+      }
+    }
+}
+
 function checkBP(){
     var BP_recorded = localStorage.getItem("BP");
     var hypo = localStorage.getItem("Hypotensive Alert");
@@ -461,19 +507,20 @@ function calcShock(){
 function checkTypeAndCross(){
     var typeAndCrossSelection = localStorage.getItem("Type and Cross Selection");
     var typeAndCrossAlert = localStorage.getItem("Type and Cross Alert");
-    if (typeAndCrossAlert === "not thrown" && typeAndCrossSelection === "no") {
+    if (typeAndCrossAlert !== "dismissed" && typeAndCrossSelection === "no") {
         localStorage.setItem("Type and Cross Selection", "thrown");
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
             "                  <strong>Consider Type and Cross!!!" + typeAndCrossAlert +"</strong>\n" +
-            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Selection\", \"dismissed\")'" +
+            "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
     }
     else if(typeAndCrossAlert === "thrown" ) {
       $('#type-and-cross-alert').remove();
-      localStorage.setItem("Type and Cross Alert Dismissed?", "yes");
+      localStorage.setItem("Type and Cross Alert", "dismissed");
       clearInterval(typeAndCrossInterval);
     }
 }
