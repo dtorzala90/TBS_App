@@ -58,5 +58,7 @@ localStorage.setItem("Shock Level Display", "null");
 
 
 
-localStorage.setItem("Chest Rise/Breath Sounds", "null");
+localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
 localStorage.setItem("Right Breathing Alert", "not thrown");
+localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
+localStorage.setItem("Left Breathing Alert", "not thrown");

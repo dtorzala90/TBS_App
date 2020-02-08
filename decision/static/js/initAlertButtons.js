@@ -64,16 +64,28 @@ function etco2_50plusFunc(){
 // Buttons for chest rise
 var rchesty = document.getElementById('rchestyes');
 var rchestn = document.getElementById('rchestno');
+var lchesty = document.getElementById('lchestyes');
+var lchestn = document.getElementById('lchestno');
 
 rchesty.onclick = rchest1Func;
 rchestn.onclick = rchest2Func;
+lchesty.onclick = lchest1Func;
+lchestn.onclick = lchest2Func;
 
 function rchest1Func() {
-    localStorage.setItem("Chest Rise/Breath Sounds", "Yes");
+    localStorage.setItem("Right Chest Rise/Breath Sounds", "Yes");
 }
 
 function rchest2Func() {
-    localStorage.setItem("Chest Rise/Breath Sounds", "No");
+    localStorage.setItem("Right Chest Rise/Breath Sounds", "No");
+}
+
+function lchest1Func() {
+    localStorage.setItem("Left Chest Rise/Breath Sounds", "Yes");
+}
+
+function lchest2Func() {
+    localStorage.setItem("Left Chest Rise/Breath Sounds", "No");
 }
 
 /**

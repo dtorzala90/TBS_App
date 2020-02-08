@@ -228,4 +228,14 @@ function checkBreathingAlerts(){
             "                  </button>\n" +
             "                </div>");
     }
+    var leftAlert = localStorage.getItem("Left Breathing Alert");
+    if (leftAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-breathing-alert'>\n" +
+            "                  <strong>Check ETT depth; consider left chest tube.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
 }

@@ -393,8 +393,10 @@ function checkPerfusion(){
 }
 
 function checkBreathing(){
-    var rightRiseSounds = localStorage.getItem("Chest Rise/Breath Sounds");
+    var rightRiseSounds = localStorage.getItem("Right Chest Rise/Breath Sounds");
     var rightAlert = localStorage.getItem("Right Breathing Alert");
+    var leftRiseSounds = localStorage.getItem("Left Chest Rise/Breath Sounds");
+    var leftAlert = localStorage.getItem("Left Breathing Alert");
     if (rightRiseSounds === "Yes" && rightAlert === "thrown"){
       $('#right-breathing-alert').remove();
       localStorage.setItem("Right Breathing Alert", "dismissed");
@@ -406,6 +408,23 @@ function checkBreathing(){
           $('#alert_placeholder').append(
               "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-breathing-alert'>\n" +
               "                  <strong>Check ETT depth; consider right chest tube.</strong>\n" +
+              "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+              "                    <span aria-hidden=\"true\">&times;</span>\n" +
+              "                  </button>\n" +
+              "                </div>");
+      }
+    }
+    if (leftRiseSounds === "Yes" && leftAlert === "thrown"){
+      $('#left-breathing-alert').remove();
+      localStorage.setItem("Left Breathing Alert", "dismissed");
+    }
+    // Check if the alert is not currently thrown or has been dismissed
+    if(leftAlert === "not thrown" || leftAlert === "dismissed"){
+      if (leftRiseSounds === "No") {
+          localStorage.setItem("Left Breathing Alert", "thrown");
+          $('#alert_placeholder').append(
+              "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-breathing-alert'>\n" +
+              "                  <strong>Check ETT depth; consider left chest tube.</strong>\n" +
               "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
               "                    <span aria-hidden=\"true\">&times;</span>\n" +
               "                  </button>\n" +
