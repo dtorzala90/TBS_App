@@ -89,7 +89,7 @@ a.article-title:hover {
     top: 0;
     left: 0;
     overflow-x: hidden;
-    padding-top: 30px;
+    padding-top: 60px;
     margin-top: 20px;
     background: #17252a;
     border-right: 4px solid #fce181;
@@ -128,6 +128,8 @@ a.article-title:hover {
     display: inline-block;
     padding-top: 5%;
     font-size: 75px;
+    text-decoration: underline;
+    text-decoration-color: #fce181;
 }
 
 .timer-summary {
@@ -226,22 +228,27 @@ a.article-title:hover {
 /*Styling each section of the accordion*/
 .collapse-A {
     background: #def2f1;
+    border: 1.5px solid #2b7a78;
 }
 
 .collapse-B {
     background: #def2f1;
+    border: 1.5px solid #2b7a78;
     }
 
 .collapse-C {
     background: #def2f1;
+    border: 1.5px solid #2b7a78;
     }
 
 .collapse-D {
     background: #def2f1;
+    border: 1.5px solid #2b7a78;
     }
 
 .collapse-E {
     background: #def2f1;
+    border: 1.5px solid #2b7a78;
    }
 /*Format the geometric background graphics on the bottom*/
 /*#bgDesign {
@@ -268,6 +275,7 @@ a:hover {
 
 .card-header {
     background-color: #3aafa9;
+    border: 1.5px solid #2b7a78;
 }
 
 h4 {
