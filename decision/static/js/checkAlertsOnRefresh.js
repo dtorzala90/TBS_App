@@ -205,8 +205,7 @@ function checkShockAlert(){
 
 function checkTypeAndCrossAlert(){
     var alert = localStorage.getItem("Type and Cross Alert");
-    var dismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
-    if (alert === "thrown" && dismissed === "yes") {
+    if (alert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
             "                  <strong>Consider Type and Cross.</strong>\n" +

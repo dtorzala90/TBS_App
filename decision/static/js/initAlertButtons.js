@@ -18,7 +18,8 @@ function ettAlertFunc(){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
             "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
-            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT Alert\", \"dismissed\")'" +
+            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
