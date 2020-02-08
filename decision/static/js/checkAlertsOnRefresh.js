@@ -11,6 +11,7 @@ check_HR_BP_Alerts();
 checkShockAlert();
 checkPerfusionAlerts();
 checkTypeAndCrossAlert();
+checkETTAlerts();
 checkBreathingAlerts();
 
 function checkIVAlerts() {
@@ -205,11 +206,24 @@ function checkShockAlert(){
 
 function checkTypeAndCrossAlert(){
     var alert = localStorage.getItem("Type and Cross Alert");
-    var dismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
-    if (alert === "thrown" && dismissed === "yes") {
+    if (alert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
             "                  <strong>Consider Type and Cross.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+
+function checkETTAlerts(){
+    var alert = localStorage.getItem("ETT Alert");
+    if(alert === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
+            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +

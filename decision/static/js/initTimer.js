@@ -15,6 +15,9 @@ localStorage.setItem("Current ETCO2 alert thrown", "none");
 
 localStorage.setItem("ETCO2", "not recorded");
 
+localStorage.setItem("ETT", "not initiated");
+localStorage.setItem("ETT Alert", "not thrown");
+
 localStorage.setItem("GCS<13", "false");
 localStorage.setItem("GCS", "null");
 localStorage.setItem("GCS Motor", "null");
@@ -39,7 +42,6 @@ localStorage.setItem("Patient Age", "null");
 
 localStorage.setItem("Type and Cross Alert", "not thrown");
 localStorage.setItem("Type and Cross Selection", "none");
-localStorage.setItem("Type and Cross Alert Dismissed?", "no");
 
 localStorage.setItem("Poor Perfusion", "not thrown");
 localStorage.setItem("Lip Color", "null");
@@ -57,8 +59,8 @@ localStorage.setItem("BP Display", "null");
 localStorage.setItem("Shock Level Display", "null");
 
 
-
 localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
 localStorage.setItem("Right Breathing Alert", "not thrown");
 localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
 localStorage.setItem("Left Breathing Alert", "not thrown");
+

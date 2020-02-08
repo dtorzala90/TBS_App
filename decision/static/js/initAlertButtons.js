@@ -8,7 +8,25 @@
 /**
  * Set up Airway buttons
  */
+var ETT = document.getElementById("ETT");
+ETT.onclick = ettAlertFunc;
 
+function ettAlertFunc(){
+    var etco2 = localStorage.getItem("ETCO2");
+    if(etco2 === "not recorded"){
+        localStorage.setItem("ETT Alert", "thrown");
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
+            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT Alert\", \"dismissed\")'" +
+            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+
+    localStorage.setItem("ETT", "initiated");
+}
 
 /**
  * Set up Breathing buttons
@@ -34,30 +52,65 @@ etco2_50plus.onclick = etco2_50plusFunc;
 
 //Based on the radio button clicked, we save the corresponding etco2 value in localStorage
 function etco2_noFunc(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", "not present");
 }
 
 function etco2_less25Func(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", "<25");
 }
 
 function etco2_25plusFunc(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", "25-30");
 }
 
 function etco2_30plusFunc(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", "30-35");
 }
 
 function etco2_35plusFunc(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", "35-40");
 }
 
 function etco2_40plusFunc(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", "40-50");
 }
 
 function etco2_50plusFunc(){
+    var ett = localStorage.getItem("ETT alert");
+    if(ett === "thrown"){
+        localStorage.setItem("ETT Alert", "dismissed");
+        $('#ETT-etco2-alert').remove();
+    }
     localStorage.setItem("ETCO2", ">50");
 }
 
