@@ -11,6 +11,8 @@ check_HR_BP_Alerts();
 checkShockAlert();
 checkPerfusionAlerts();
 checkTypeAndCrossAlert();
+checkETTAlerts();
+checkBreathingAlerts();
 
 function checkIVAlerts() {
     var ivAlert = localStorage.getItem("Alert No IV");
@@ -204,11 +206,47 @@ function checkShockAlert(){
 
 function checkTypeAndCrossAlert(){
     var alert = localStorage.getItem("Type and Cross Alert");
-    var dismissed = localStorage.getItem("Type and Cross Alert Dismissed?");
-    if (alert === "thrown" && dismissed === "yes") {
+    if (alert === "thrown") {
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
             "                  <strong>Consider Type and Cross.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+
+function checkETTAlerts(){
+    var alert = localStorage.getItem("ETT Alert");
+    if(alert === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
+            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+function checkBreathingAlerts(){
+    var rightAlert = localStorage.getItem("Right Breathing Alert");
+    if (rightAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-breathing-alert'>\n" +
+            "                  <strong>Check ETT depth; consider right chest tube.</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+    var leftAlert = localStorage.getItem("Left Breathing Alert");
+    if (leftAlert === "thrown") {
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-breathing-alert'>\n" +
+            "                  <strong>Check ETT depth; consider left chest tube.</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
