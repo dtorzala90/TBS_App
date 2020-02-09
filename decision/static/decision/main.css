@@ -105,8 +105,6 @@ ul {
     display: inline-block;
     padding-top: 5%;
     font-size: 75px;
-    text-decoration: underline;
-    text-decoration-color: #fce181;
 }
 
 .timer-summary {
@@ -168,6 +166,14 @@ ul {
     display: inline-block;
     float: left;
 }
+
+#square {
+    width: 150px;
+    height: 57.75px;
+    display: inline-block;
+    float: left;
+}
+
 /*Create a large button for the landing page*/
 .btn-xl {
     align-content: center;
@@ -259,4 +265,10 @@ a:hover{
 /*Text color for survey sections*/
 h4 {
     color: #17252a;
+}
+
+.nav-border {
+    border-bottom: 4px solid #fce181;
+    z-index: 0;
+
 }
