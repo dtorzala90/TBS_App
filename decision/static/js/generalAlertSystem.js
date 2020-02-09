@@ -54,7 +54,7 @@ function checkIV(){
 
     var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
 
-    if(timeElapsed >= 350){
+    if(timeElapsed >= 300){
         //If no IV access has been put in....
         if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "false"){
             //If the no IV access alert has not already been thrown......
@@ -267,20 +267,8 @@ function checkGCS(){
 
         if(alert === "thrown"){
             localStorage.setItem("No GCS Alert", "dismissed");
-            $('#GCS-alert').remove();
+            $('#GCS-intubation-alert').remove();
         }
-    }
-
-    else if(alert === "not thrown"){
-        $('#alert_placeholder').append(
-            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-alert'>\n" +
-            "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
-            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"No GCS Alert\", \"dismissed\")'" +
-            "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-            "                    <span aria-hidden=\"true\">&times;</span>\n" +
-            "                  </button>\n" +
-            "                </div>");
-        localStorage.setItem("No GCS Alert", "thrown");
     }
 }
 

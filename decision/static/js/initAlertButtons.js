@@ -13,16 +13,33 @@ ETT.onclick = ettAlertFunc;
 
 function ettAlertFunc(){
     var etco2 = localStorage.getItem("ETCO2");
-    if(etco2 === "not recorded"){
+    var ettAlert = localStorage.getItem("ETT Alert");
+
+    if(etco2 === "not recorded" && ettAlert === "not thrown"){
         localStorage.setItem("ETT Alert", "thrown");
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
-            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
+            "                  <strong>Confirm End Tidal CO<sub>2</sub></strong>\n" +
             "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT Alert\", \"dismissed\")'" +
             "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
+    }
+
+    var gcs = localStorage.getItem("GCS");
+    var gcsAlert = localStorage.getItem("No GCS Alert");
+
+    if(gcs === "null" && gcsAlert === "not thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='GCS-intubation-alert'>\n" +
+            "                  <strong>Determine GCS before giving intubation meds!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"No GCS Alert\", \"dismissed\")'" +
+            "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+        localStorage.setItem("No GCS Alert", "thrown");
     }
 
     localStorage.setItem("ETT", "initiated");
