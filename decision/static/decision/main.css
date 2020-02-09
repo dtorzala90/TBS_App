@@ -177,25 +177,25 @@ ul {
 }
 
 .btn.btn-primary {
-    background-color: #26508b;
-    box-shadow: 0 8px 0 0 #183257;
-    border: #183257;
+    background-color: #3aafa9;
+    box-shadow: 0 8px 0 0 #1D5755;
+    border: #1D5755;
     margin-top: 25%;
     margin-bottom: 25%;
 }
 
 .btn.btn-primary:hover {
-    background-color: #21467a;
+    background-color: #2B837F;
 }
 
 .btn.btn-primary:visited {
-    border-color: #1d3c68 !important;
+    border-color: #246D6A !important;
     margin-top: 25%;
     margin-bottom: 25%;
 }
 
 .btn.btn-primary:active:focus {
-    background-color: #1d3c68 !important;
+    background-color: #246D6A !important;
     box-shadow: none !important;
     margin-top: 26%;
     margin-bottom: 26%;
