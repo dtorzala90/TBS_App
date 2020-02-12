@@ -397,6 +397,7 @@ function checkBreathing(){
     var rightAlert = localStorage.getItem("Right Breathing Alert");
     var leftRiseSounds = localStorage.getItem("Left Chest Rise/Breath Sounds");
     var leftAlert = localStorage.getItem("Left Breathing Alert");
+
     if (rightRiseSounds === "Yes" && rightAlert === "thrown"){
       $('#right-breathing-alert').remove();
       localStorage.setItem("Right Breathing Alert", "dismissed");
