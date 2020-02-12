@@ -142,7 +142,7 @@ function checkIV(){
  */
 function checkETCO2(){
     var noEtco2Alert = localStorage.getItem("Record ETCO2 Alert");
-    var currAlert = localStorage.getItem("Current alert thrown");
+    var currAlert = localStorage.getItem("Current ETCO2 alert thrown");
     var etco2 = localStorage.getItem("ETCO2");
     var ettAlert  = localStorage.getItem("ETT ETCO2 Alert");
 
@@ -166,7 +166,7 @@ function checkETCO2(){
         localStorage.setItem("Record ETCO2 Alert", "dismissed");
         if(etco2 === "not present" && currAlert !== "not present"){
             $('#etco2-value-alert').remove();
-            localStorage.setItem("Current alert thrown", "not present");
+            localStorage.setItem("Current ETCO2 alert thrown", "not present");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Check Airway Placement! </strong>\n" +
@@ -178,7 +178,7 @@ function checkETCO2(){
 
         else if(etco2 === "<25" && currAlert !== "<25"){
             $('#etco2-value-alert').remove();
-            localStorage.setItem("Current alert thrown", "<25");
+            localStorage.setItem("Current ETCO2 alert thrown", "<25");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>ETCO<sub>2</sub> is very low! Confirm pulse and Airway</strong>\n" +
@@ -190,7 +190,7 @@ function checkETCO2(){
 
         else if(etco2 === "25-30" && currAlert !== "25-30"){
             $('#etco2-value-alert').remove();
-            localStorage.setItem("Current alert thrown", "25-30");
+            localStorage.setItem("Current ETCO2 alert thrown", "25-30");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Decrease Ventilation Rate</strong>\n" +
@@ -204,7 +204,7 @@ function checkETCO2(){
             $('#etco2-value-alert').remove();
             var gcs = localStorage.getItem("GCS<13");
             if(gcs === "true"){
-                localStorage.setItem("Current alert thrown", "40-50");
+                localStorage.setItem("Current ETCO2 alert thrown", "40-50");
                 $('#alert_placeholder').append(
                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                     "                  <strong>GCS < 13:</strong>\n" +
@@ -219,7 +219,7 @@ function checkETCO2(){
 
         else if(etco2 === ">50" && currAlert !== ">50"){
             $('#etco2-value-alert').remove();
-            localStorage.setItem("Current alert thrown", ">50");
+            localStorage.setItem("Current ETCO2 alert thrown", ">50");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Increase Ventilation Rate</strong>\n" +
