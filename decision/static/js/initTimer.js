@@ -16,7 +16,8 @@ localStorage.setItem("Current ETCO2 alert thrown", "none");
 localStorage.setItem("ETCO2", "not recorded");
 
 localStorage.setItem("ETT", "not initiated");
-localStorage.setItem("ETT Alert", "not thrown");
+localStorage.setItem("ETT ETCO2 Alert", "not thrown");
+localStorage.setItem("ETT GCS Alert", "not thrown");
 
 localStorage.setItem("GCS<13", "false");
 localStorage.setItem("GCS", "null");
@@ -26,7 +27,6 @@ localStorage.setItem("GCS Eye", "null");
 
 
 localStorage.setItem("GCS<13 Alert", "not thrown");
-localStorage.setItem("No GCS Alert", "not thrown");
 
 localStorage.setItem("Shock Level", "null");
 localStorage.setItem("Shock Alert", "not thrown");

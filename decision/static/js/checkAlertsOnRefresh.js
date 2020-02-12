@@ -13,6 +13,7 @@ checkPerfusionAlerts();
 checkTypeAndCrossAlert();
 checkETTAlerts();
 checkBreathingAlerts();
+checkTransfusionAlerts();
 
 function checkIVAlerts() {
     var ivAlert = localStorage.getItem("Alert No IV");
@@ -219,12 +220,25 @@ function checkTypeAndCrossAlert(){
 
 
 function checkETTAlerts(){
-    var alert = localStorage.getItem("ETT Alert");
-    if(alert === "thrown"){
+    var gcsAlert = localStorage.getItem("ETT GCS Alert");
+    var etco2Alert = localStorage.getItem("ETT ETCO2 Alert");
+    if(gcsAlert === "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-gcs-alert'>\n" +
+                "                  <strong>Determine GCS before Giving Intubation Meds!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT GCS Alert\", \"dismissed\")'" +
+                "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+    }
+
+    if(etco2Alert === "thrown"){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
-            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
-            "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                  <strong>Confirm End Tidal CO<sub>2</sub></strong>\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT ETCO2 Alert\", \"dismissed\")'" +
+            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
@@ -248,6 +262,33 @@ function checkBreathingAlerts(){
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-breathing-alert'>\n" +
             "                  <strong>Check ETT depth; consider left chest tube.</strong>\n" +
             "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+}
+
+function checkTransfusionAlerts(){
+    var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
+    var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
+    if(mtpAlert === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
+            "                  <strong>Consider Activating MTP!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "                    <span aria-hidden=\"true\">&times;</span>\n" +
+            "                  </button>\n" +
+            "                </div>");
+    }
+
+    if(prbcAlert === "thrown"){
+        $('#alert_placeholder').append(
+            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
+            "                  <strong>Consider Transfusion!</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Transfusion PRBC Alert\", \"dismissed\")'" +
+            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");

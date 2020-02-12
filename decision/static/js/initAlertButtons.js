@@ -9,22 +9,9 @@
  * Set up Airway buttons
  */
 var ETT = document.getElementById("ETT");
-ETT.onclick = ettAlertFunc;
+ETT.onclick = ettFunc;
 
-function ettAlertFunc(){
-    var etco2 = localStorage.getItem("ETCO2");
-    if(etco2 === "not recorded"){
-        localStorage.setItem("ETT Alert", "thrown");
-        $('#alert_placeholder').append(
-            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
-            "                  <strong>Confirm End Tidal CO<sub>2</sub></strong>\n" +
-            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT Alert\", \"dismissed\")'" +
-            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-            "                    <span aria-hidden=\"true\">&times;</span>\n" +
-            "                  </button>\n" +
-            "                </div>");
-    }
-
+function ettFunc(){
     localStorage.setItem("ETT", "initiated");
 }
 
@@ -349,49 +336,20 @@ function mtpFuncYes(){
 }
 
 function mtpFuncNo(){
-    var sbp = parseInt(localStorage.getItem("BP"), 10);
-    var shock = parseInt(localStorage.getItem("HR"), 10);
-    var hr = parseFloat(localStorage.getItem("Shock Level"));
+    localStorage.setItem("Massive Transfusion Protocol", "no");
 
-    if(sbp < 90 || shock  > 1.2 || hr > 180 && mtpAlert === "not thrown"){
-        localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
-         $('#alert_placeholder').append(
-             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
-             "                  <strong>Consider Activating MTP!</strong>\n" +
-             "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
-             "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-             "                    <span aria-hidden=\"true\">&times;</span>\n" +
-             "                  </button>\n" +
-             "                </div>");
-         localStorage.setItem("Massive Transfusion Protocol", "no");
-    }
-
-    else if(mtpAlert === "thrown"){
+    if(mtpAlert === "thrown"){
         if(sbp >= 90 && shock <=1.2 && hr <= 180){
             $('#mtp-alert').remove();
+            localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
         }
     }
 }
 
 function prbcFuncNo(){
-    var sbp = parseInt(localStorage.getItem("BP"), 10);
-    var shock = parseInt(localStorage.getItem("HR"), 10);
-    var hr = parseFloat(localStorage.getItem("Shock Level"));
+    localStorage.setItem("Transfusion PRBC", "no");
 
-    if(sbp < 90 || shock  > 1.2 || hr > 180 && prbcAlert === "not thrown"){
-        localStorage.setItem("Transfusion PRBC Alert", "thrown");
-         $('#alert_placeholder').append(
-             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
-             "                  <strong>Consider Transfusion!</strong>\n" +
-             "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
-             "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-             "                    <span aria-hidden=\"true\">&times;</span>\n" +
-             "                  </button>\n" +
-             "                </div>");
-         localStorage.setItem("Transfusion PRBC", "no");
-    }
-
-    else if(prbcAlert === "thrown"){
+    if(prbcAlert === "thrown"){
         if(sbp >= 90 && shock <=1.2 && hr <= 180){
             localStorage.setItem("Transfusion PRBC Alert", "dismissed");
             $('#tprbc-alert').remove();
