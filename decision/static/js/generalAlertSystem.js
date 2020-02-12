@@ -54,7 +54,7 @@ function checkIV(){
 
     var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
 
-    if(timeElapsed >= 350){
+    if(timeElapsed >= 300){
         //If no IV access has been put in....
         if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "false"){
             //If the no IV access alert has not already been thrown......
@@ -334,6 +334,52 @@ function checkHR(){
                 "                </div>");
               localStorage.setItem("Tachycardia Alert", "thrown");
         }
+
+        if(HR > 180) {
+             var mtpAlert = localStorage.getItem("Massive Transfusion Protocol Alert");
+             var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+             var mtp = localStorage.getItem("Massive Transfusion Protocol");
+             var prbc = localStorage.getItem("Transfusion PRBC");
+
+             if (mtpAlert === "not thrown" && mtp === "no") {
+                 $('#alert_placeholder').append(
+                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
+                     "                  <strong>Consider Activating MTP!</strong>\n" +
+                     "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+                     "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                     "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                     "                  </button>\n" +
+                     "                </div>");
+                 localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
+             }
+
+             if (prbcAlert === "not thrown" && prbc === "no") {
+                 localStorage.setItem("Transfusion PRBC Alert", "thrown");
+                 $('#alert_placeholder').append(
+                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
+                     "                  <strong>Consider Transfusion!</strong>\n" +
+                     "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+                     "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                     "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                     "                  </button>\n" +
+                     "                </div>");
+             }
+         }
+
+         if(HR <= 180){
+             var mtpAlert = localStorage.getItem("Massive Transfusion Protocol Alert");
+             var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
+             if(mtpAlert === "thrown"){
+                 $('#mtp-alert').remove();
+                 localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
+             }
+
+             if(prbcAlert === "thrown"){
+                $('#tprbc-alert').remove();
+                localStorage.setItem("Transfusion PRBC Alert", "dismissed");
+             }
+         }
     }
 }
 
@@ -441,6 +487,7 @@ function checkBP(){
     var BP_recorded = localStorage.getItem("BP");
     var hypo = localStorage.getItem("Hypotensive Alert");
     var age = localStorage.getItem("Patient Age");
+
     if(BP_recorded !== "null" && age !== "null"){
         var BP = parseInt(BP_recorded) + (2 * parseInt(age));
 
@@ -460,6 +507,52 @@ function checkBP(){
                 "                </div>");
             localStorage.setItem("Hypotensive Alert", "thrown");
         }
+
+        if(BP < 90) {
+             var mtpAlert = localStorage.getItem("Massive Transfusion Protocol Alert");
+             var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+             var mtp = localStorage.getItem("Massive Transfusion Protocol");
+             var prbc = localStorage.getItem("Transfusion PRBC");
+
+             if (mtpAlert === "not thrown" && mtp === "no") {
+                 $('#alert_placeholder').append(
+                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
+                     "                  <strong>Consider Activating MTP!</strong>\n" +
+                     "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+                     "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                     "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                     "                  </button>\n" +
+                     "                </div>");
+                 localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
+             }
+
+             if (prbcAlert === "not thrown" && prbc === "no") {
+                 localStorage.setItem("Transfusion PRBC Alert", "thrown");
+                 $('#alert_placeholder').append(
+                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
+                     "                  <strong>Consider Transfusion!</strong>\n" +
+                     "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+                     "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                     "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                     "                  </button>\n" +
+                     "                </div>");
+             }
+         }
+
+         if(BP >= 90){
+             var mtpAlert = localStorage.getItem("Massive Transfusion Protocol Alert");
+             var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
+             if(mtpAlert === "thrown"){
+                 $('#mtp-alert').remove();
+                 localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
+             }
+
+             if(prbcAlert === "thrown"){
+                $('#tprbc-alert').remove();
+                localStorage.setItem("Transfusion PRBC Alert", "dismissed");
+             }
+         }
     }
 }
 
@@ -500,6 +593,52 @@ function calcShock(){
          else if (shock < 1.0 && shock_alert === "thrown") {
              $('#shock-alert').remove();
              localStorage.setItem("Shock Alert", "dismissed");
+         }
+
+         if(shock > 1.2) {
+             var mtpAlert = localStorage.getItem("Massive Transfusion Protocol Alert");
+             var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+             var mtp = localStorage.getItem("Massive Transfusion Protocol");
+             var prbc = localStorage.getItem("Transfusion PRBC");
+
+             if (mtpAlert === "not thrown" && mtp === "no") {
+                 $('#alert_placeholder').append(
+                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
+                     "                  <strong>Consider Activating MTP!</strong>\n" +
+                     "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+                     "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                     "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                     "                  </button>\n" +
+                     "                </div>");
+                 localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
+             }
+
+             if (prbcAlert === "not thrown" && prbc === "no") {
+                 localStorage.setItem("Transfusion PRBC Alert", "thrown");
+                 $('#alert_placeholder').append(
+                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
+                     "                  <strong>Consider Transfusion!</strong>\n" +
+                     "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+                     "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                     "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                     "                  </button>\n" +
+                     "                </div>");
+             }
+         }
+
+         if(shock <= 1.2){
+             var mtpAlert = localStorage.getItem("Massive Transfusion Protocol Alert");
+             var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
+             if(mtpAlert === "thrown"){
+                 $('#mtp-alert').remove();
+                 localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
+             }
+
+             if(prbcAlert === "thrown"){
+                $('#tprbc-alert').remove();
+                localStorage.setItem("Transfusion PRBC Alert", "dismissed");
+             }
          }
      }
 }

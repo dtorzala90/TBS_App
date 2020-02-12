@@ -17,7 +17,7 @@ function ettAlertFunc(){
         localStorage.setItem("ETT Alert", "thrown");
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
-            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
+            "                  <strong>Confirm End Tidal CO<sub>2</sub></strong>\n" +
             "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT Alert\", \"dismissed\")'" +
             "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
@@ -317,6 +317,86 @@ typeAndCross.onclick = typeAndCrossFunc;
 
 function typeAndCrossFunc() {
     localStorage.setItem("Type and Cross Selection", "no");
+}
+
+var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
+var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
+var mtpButNo = document.getElementById('mtpNo');
+var prbcButNo = document.getElementById('tprbcNo');
+var mtpButYes = document.getElementById('mtpNo');
+var prbcButYes = document.getElementById('tprbcNo');
+
+mtpButNo.onclick = mtpFuncNo;
+prbcButNo.onclick = prbcFuncNo;
+mtpButYes.onclick = mtpFuncYes;
+prbcButYes.onclick = prbcFuncYes;
+
+function prbcFuncYes(){
+    localStorage.setItem("Transfusion PRBC", "yes");
+    if (prbcAlert === "thrown"){
+        $('#tprbc-alert').remove();
+        localStorage.setItem("Transfusion PRBC Alert", "dismissed");
+    }
+}
+
+function mtpFuncYes(){
+    localStorage.setItem("Massive Transfusion Protocol", "yes");
+    if (mtpAlert === "thrown"){
+        $('#mtp-alert').remove();
+        localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
+    }
+}
+
+function mtpFuncNo(){
+    var sbp = parseInt(localStorage.getItem("BP"), 10);
+    var shock = parseInt(localStorage.getItem("HR"), 10);
+    var hr = parseFloat(localStorage.getItem("Shock Level"));
+
+    if(sbp < 90 || shock  > 1.2 || hr > 180 && mtpAlert === "not thrown"){
+        localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
+         $('#alert_placeholder').append(
+             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
+             "                  <strong>Consider Activating MTP!</strong>\n" +
+             "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+             "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+             "                    <span aria-hidden=\"true\">&times;</span>\n" +
+             "                  </button>\n" +
+             "                </div>");
+         localStorage.setItem("Massive Transfusion Protocol", "no");
+    }
+
+    else if(mtpAlert === "thrown"){
+        if(sbp >= 90 && shock <=1.2 && hr <= 180){
+            $('#mtp-alert').remove();
+        }
+    }
+}
+
+function prbcFuncNo(){
+    var sbp = parseInt(localStorage.getItem("BP"), 10);
+    var shock = parseInt(localStorage.getItem("HR"), 10);
+    var hr = parseFloat(localStorage.getItem("Shock Level"));
+
+    if(sbp < 90 || shock  > 1.2 || hr > 180 && prbcAlert === "not thrown"){
+        localStorage.setItem("Transfusion PRBC Alert", "thrown");
+         $('#alert_placeholder').append(
+             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
+             "                  <strong>Consider Transfusion!</strong>\n" +
+             "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
+             "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+             "                    <span aria-hidden=\"true\">&times;</span>\n" +
+             "                  </button>\n" +
+             "                </div>");
+         localStorage.setItem("Transfusion PRBC", "no");
+    }
+
+    else if(prbcAlert === "thrown"){
+        if(sbp >= 90 && shock <=1.2 && hr <= 180){
+            localStorage.setItem("Transfusion PRBC Alert", "dismissed");
+            $('#tprbc-alert').remove();
+        }
+    }
 }
 
 /**
