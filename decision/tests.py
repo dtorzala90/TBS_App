@@ -32,6 +32,13 @@ try:
 except:
 	print('CORRECT Type and Cross not found.')
 
+#Check if right breathing thrown
+try:
+	element = driver.find_element_by_id('right-breathing-alert')
+	print('ERROR rightAlert breathing found.')
+except:
+	print('CORRECT rightAlert breathing not found.')
+
 #Go back to Decision App
 element = driver.find_element_by_tag_name('h4')
 element.click()
@@ -47,6 +54,22 @@ element = driver.find_element_by_id('typeAndCrossNo')
 element.click()
 time.sleep(1)
 
+#Go back to Decision App
+element = driver.find_element_by_tag_name('h4')
+element.click()
+time.sleep(1)
+
+#Open header
+element = driver.find_element_by_id('headingTwo')
+element.click()
+time.sleep(1)
+
+#Click No on Type and Cross, triggering alert
+element = driver.find_element_by_id('rchestno')
+element.click()
+time.sleep(1)
+
+
 #Go back to Summary Page
 element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
 element.click()
@@ -58,6 +81,12 @@ try:
 	print('CORRECT Type and cross found.')
 except:
 	print('ERROR Type and Cross not found.')
+
+try:
+	element = driver.find_element_by_id('right-breathing-alert')
+	print('CORRECT rightAlert breathing found.')
+except:
+	print('ERROR rightAlert breathing not found.')
 
 
 #Close Selenium
