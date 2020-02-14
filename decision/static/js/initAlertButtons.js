@@ -8,13 +8,257 @@
 /**
  * Set up Airway buttons
  */
-var ETT = document.getElementById("ETT");
-ETT.onclick = ettFunc;
+var oxyInit = document.getElementById("oxySupplInit");
+var oxyStop = document.getElementById("oxySupplStop");
 
-function ettFunc(){
-    localStorage.setItem("ETT", "initiated");
+oxyInit.onclick = oxyInitFunc;
+oxyStop.onclick = oxyStopFunc;
+
+function oxyInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Oxygen Supplementation", "initiated");
+    localStorage.setItem("Oxygen Supplementation Initiated Time", timeStamp);
 }
 
+function oxyStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Oxygen Supplementation", "stopped");
+    localStorage.setItem("Oxygen Supplementation Stopped Time", timeStamp);
+}
+
+var bagInit = document.getElementById("bagMaskInit");
+var bagStop = document.getElementById("bagMaskStop");
+
+bagInit.onclick = bagInitFunc;
+bagStop.onclick = bagStopFunc;
+
+function bagInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Bag Mask", "initiated");
+    localStorage.setItem("Bag Mask Initiated Time", timeStamp);
+}
+
+function bagStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Bag Mask", "stopped");
+    localStorage.setItem("Bag Mask Stopped Time", timeStamp);
+}
+
+var lmaInit = document.getElementById("lmaInit");
+var lmaAchieve = document.getElementById("lmaAchieved");
+var lmaStop = document.getElementById("lmaStop")
+
+lmaInit.onclick = lmaInitFunc;
+lmaAchieve.onclick = lmaAchieveFunc;
+lmaStop.onclick = lmaStopFunc;
+
+function lmaInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("LMA", "initiated");
+    localStorage.setItem("LMA Initiated Time", timeStamp);
+}
+
+function lmaAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("LMA", "achieved");
+    localStorage.setItem("LMA Achieved Time", timeStamp);
+}
+
+function lmaStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("LMA", "stopped");
+    localStorage.setItem("LMA Stopped Time", timeStamp);
+}
+
+var ettInit = document.getElementById("ettInit");
+var ettAchieve = document.getElementById("ettAchieved");
+var ettStop = document.getElementById("ettStop")
+
+ettInit.onclick = ettInitFunc;
+ettAchieve.onclick = ettAchieveFunc;
+ettStop.onclick = ettStopFunc;
+
+function ettInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("ETT", "initiated");
+    localStorage.setItem("ETT Initiated Time", timeStamp);
+}
+
+function ettAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("ETT", "achieved");
+    localStorage.setItem("ETT Achieved Time", timeStamp);
+}
+
+function ettStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("ETT", "stopped");
+    localStorage.setItem("ETT Stopped Time", timeStamp);
+}
+
+var diffAirwayInit = document.getElementById("diffAirwayInit");
+var diffAirwayAchieve = document.getElementById("diffAirwayAchieved");
+var diffAirwayStop = document.getElementById("diffAirwayStop")
+
+diffAirwayInit.onclick = diffAirwayInitFunc;
+diffAirwayAchieve.onclick = diffAirwayAchieveFunc;
+diffAirwayStop.onclick = diffAirwayStopFunc;
+
+function diffAirwayInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Difficult Airway", "initiated");
+    localStorage.setItem("Difficult Airway Initiated Time", timeStamp);
+}
+
+function diffAirwayAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Difficult Airway", "achieved");
+    localStorage.setItem("Difficult Airway Achieved Time", timeStamp);
+}
+
+function diffAirwayStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Difficult Airway", "stopped");
+    localStorage.setItem("Difficult Airway Stopped Time", timeStamp);
+}
+
+var surgAirwayInit = document.getElementById("surgAirwayInit");
+var surgAirwayAchieve = document.getElementById("surgAirwayAchieved");
+var surgAirwayStop = document.getElementById("surgAirwayStop")
+
+surgAirwayInit.onclick = surgAirwayInitFunc;
+surgAirwayAchieve.onclick = surgAirwayAchieveFunc;
+surgAirwayStop.onclick = surgAirwayStopFunc;
+
+function surgAirwayInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Surgical Airway", "initiated");
+    localStorage.setItem("Surgical Airway Initiated Time", timeStamp);
+}
+
+function surgAirwayAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Surgical Airway", "achieved");
+    localStorage.setItem("Surgical Airway Achieved Time", timeStamp);
+}
+
+function surgAirwayStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Surgical Airway", "stopped");
+    localStorage.setItem("Surgical Airway Stopped Time", timeStamp);
+}
 /**
  * Set up Breathing buttons
  */
