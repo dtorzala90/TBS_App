@@ -542,12 +542,18 @@ function ivf3Func() {
 }
 
 //Set up Type and Cross Alert
-var typeAndCross = document.getElementById('typeAndCrossNo');
+var typeAndCrossNo = document.getElementById('typeAndCrossNo');
+var typeAndCrossYes = document.getElementById('typeAndCrossYes');
 
-typeAndCross.onclick = typeAndCrossFunc;
+typeAndCrossNo.onclick = typeAndCrossNoFunc;
+typeAndCrossYes.onclick = typeAndCrossYesFunc;
 
-function typeAndCrossFunc() {
-    localStorage.setItem("Type and Cross Selection", "no");
+function typeAndCrossNoFunc() {
+    localStorage.setItem("Type and Cross", "no");
+}
+
+function typeAndCrossYesFunc() {
+    localStorage.setItem("Type and Cross", "yes");
 }
 
 var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
@@ -580,25 +586,13 @@ function mtpFuncYes(){
 }
 
 function mtpFuncNo(){
+    console.log("mtp no");
     localStorage.setItem("Massive Transfusion Protocol", "no");
-
-    if(mtpAlert === "thrown"){
-        if(sbp >= 90 && shock <=1.2 && hr <= 180){
-            $('#mtp-alert').remove();
-            localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
-        }
-    }
 }
 
 function prbcFuncNo(){
+    console.log(localStorage.getItem("Transfusion PRBC"));
     localStorage.setItem("Transfusion PRBC", "no");
-
-    if(prbcAlert === "thrown"){
-        if(sbp >= 90 && shock <=1.2 && hr <= 180){
-            localStorage.setItem("Transfusion PRBC Alert", "dismissed");
-            $('#tprbc-alert').remove();
-        }
-    }
 }
 
 /**

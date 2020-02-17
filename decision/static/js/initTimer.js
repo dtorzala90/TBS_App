@@ -40,7 +40,7 @@ localStorage.setItem("Hypotensive alert", "not thrown");
 localStorage.setItem("Patient Age", "null");
 
 localStorage.setItem("Type and Cross Alert", "not thrown");
-localStorage.setItem("Type and Cross Selection", "none");
+localStorage.setItem("Type and Cross", "none");
 
 localStorage.setItem("Poor Perfusion", "not thrown");
 localStorage.setItem("Lip Color", "null");

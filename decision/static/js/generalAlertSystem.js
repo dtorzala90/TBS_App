@@ -19,9 +19,9 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
     var ivAlertInterval = setInterval(checkIV, 1000);
 }
 
-if(typeAndCrossAlert !== "thrown"){
-    var typeAndCrossInterval = setInterval(checkTypeAndCross(), 1000);
-}
+
+
+
 
 setInterval(checkETCO2, 1000);
 
@@ -34,6 +34,7 @@ setInterval(checkBreathing, 1000);
 
 var tranfusionInterval = setInterval(checkTransfusionAlerts, 1000);
 var ettInterval = setInterval(checkETTAlerts, 1000);
+var typeAndCrossInterval = setInterval(checkTypeAndCross, 1000);
 
 if (perfusionAlert !== "dismissed") {
   setInterval(checkPerfusion, 1000);
@@ -503,23 +504,27 @@ function calcShock(){
 }
 
 function checkTypeAndCross(){
-    var typeAndCrossSelection = localStorage.getItem("Type and Cross Selection");
+    var typeAndCrossSelection = localStorage.getItem("Type and Cross");
     var typeAndCrossAlert = localStorage.getItem("Type and Cross Alert");
-    if (typeAndCrossAlert !== "dismissed" && typeAndCrossSelection === "no") {
-        localStorage.setItem("Type and Cross Selection", "thrown");
+
+    if (typeAndCrossAlert === "not thrown" && typeAndCrossSelection === "no") {
+        localStorage.setItem("Type and Cross Alert", "thrown");
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-and-cross-alert'>\n" +
-            "                  <strong>Consider Type and Cross!!!" + typeAndCrossAlert +"</strong>\n" +
-            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Selection\", \"dismissed\")'" +
+            "                  <strong>Consider Type and Cross</strong>\n" +
+            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Selection Alert\", \"dismissed\")'" +
             "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
     }
-    else if(typeAndCrossAlert === "thrown" ) {
-      $('#type-and-cross-alert').remove();
-      localStorage.setItem("Type and Cross Alert", "dismissed");
-      clearInterval(typeAndCrossInterval);
+
+    else if(typeAndCrossSelection === "yes") {
+        if(typeAndCrossAlert === "thrown"){
+            $('#type-and-cross-alert').remove();
+        }
+        localStorage.setItem("Type and Cross Alert", "dismissed");
+        clearInterval(typeAndCrossInterval);
     }
 }
 
@@ -608,7 +613,7 @@ function checkETTAlerts() {
 
 function checkTransfusionAlerts(){
     var sbp = parseInt(localStorage.getItem("BP"), 10);
-    var shock = parseInt(localStorage.getItem("HR"), 10);
+    var shock = parseFloat(localStorage.getItem("HR"));
     var hr = parseFloat(localStorage.getItem("Shock Level"));
     var mtp = localStorage.getItem("Massive Transfusion Protocol");
     var tprbc = localStorage.getItem("Transfusion PRBC");
@@ -617,6 +622,7 @@ function checkTransfusionAlerts(){
 
     if(tprbc === "no"){
          if((sbp < 90 || shock  > 1.2 || hr > 180) && prbcAlert === "not thrown"){
+             console.log("thrown tprbc alert");
             localStorage.setItem("Transfusion PRBC Alert", "thrown");
              $('#alert_placeholder').append(
                  "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
@@ -632,6 +638,7 @@ function checkTransfusionAlerts(){
 
     if(mtp === "no"){
         if((sbp < 90 || shock  > 1.2 || hr > 180) && mtpAlert === "not thrown"){
+            console.log("thrown mtp alert");
             localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
              $('#alert_placeholder').append(
                  "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
@@ -660,7 +667,7 @@ function checkTransfusionAlerts(){
         clearInterval(tranfusionInterval);
     }
 
-    if(mtp === "yes" && tprbc === "yest"){
+    if(mtp === "yes" && tprbc === "yes"){
         clearInterval(tranfusionInterval);
     }
 }
