@@ -6,6 +6,12 @@
  */
 
 /**
+ * Set up modal window buttons
+ */
+var minus = document.getElementById("minus");
+var plus = document.getElementById("plus");
+
+/**
  * Set up Airway buttons
  */
 var oxyInit = document.getElementById("oxySupplInit");
@@ -13,6 +19,33 @@ var oxyStop = document.getElementById("oxySupplStop");
 
 oxyInit.onclick = oxyInitFunc;
 oxyStop.onclick = oxyStopFunc;
+
+oxyInit.onmousedown = oxyInitEdit;
+oxyStop.onmouseup = oxyStopEdit;
+
+function oxyInitEdit(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    //var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+
+    setTimeout(function() {
+        document.getElementById("popup-title").innerHTML = "Oxygen Initiated At:";
+        document.getElementById('minuteStamp').value = min.toString(10);
+        document.getElementById('secondStamp').value = sec.toString(10);
+        $("#popUp").modal();
+        console.log("made it to pop up function");
+    }, 500);
+   //console.log(localStorage.getItem("Oxygen Supplementation Initiated Time"));
+}
+
+function oxyStopEdit(){
+
+}
 
 function oxyInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
