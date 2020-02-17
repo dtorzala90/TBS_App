@@ -26,9 +26,14 @@ oxyStop.onmouseup = oxyStopEdit;
 function oxyInitEdit(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
     if(min < 1){
         min = 0;
+    }
+
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
     }
 
     //var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
@@ -50,12 +55,22 @@ function oxyStopEdit(){
 function oxyInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Oxygen Supplementation", "initiated");
     localStorage.setItem("Oxygen Supplementation Initiated Time", timeStamp);
 }
@@ -63,12 +78,22 @@ function oxyInitFunc(){
 function oxyStopFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Oxygen Supplementation", "stopped");
     localStorage.setItem("Oxygen Supplementation Stopped Time", timeStamp);
 }
@@ -82,12 +107,22 @@ bagStop.onclick = bagStopFunc;
 function bagInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Bag Mask", "initiated");
     localStorage.setItem("Bag Mask Initiated Time", timeStamp);
 }
@@ -95,12 +130,22 @@ function bagInitFunc(){
 function bagStopFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Bag Mask", "stopped");
     localStorage.setItem("Bag Mask Stopped Time", timeStamp);
 }
@@ -116,12 +161,22 @@ lmaStop.onclick = lmaStopFunc;
 function lmaInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("LMA", "initiated");
     localStorage.setItem("LMA Initiated Time", timeStamp);
 }
@@ -129,12 +184,22 @@ function lmaInitFunc(){
 function lmaAchieveFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("LMA", "achieved");
     localStorage.setItem("LMA Achieved Time", timeStamp);
 }
@@ -142,12 +207,22 @@ function lmaAchieveFunc(){
 function lmaStopFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("LMA", "stopped");
     localStorage.setItem("LMA Stopped Time", timeStamp);
 }
@@ -163,12 +238,22 @@ ettStop.onclick = ettStopFunc;
 function ettInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("ETT", "initiated");
     localStorage.setItem("ETT Initiated Time", timeStamp);
 }
@@ -176,12 +261,22 @@ function ettInitFunc(){
 function ettAchieveFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("ETT", "achieved");
     localStorage.setItem("ETT Achieved Time", timeStamp);
 }
@@ -189,12 +284,22 @@ function ettAchieveFunc(){
 function ettStopFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("ETT", "stopped");
     localStorage.setItem("ETT Stopped Time", timeStamp);
 }
@@ -210,12 +315,22 @@ diffAirwayStop.onclick = diffAirwayStopFunc;
 function diffAirwayInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Difficult Airway", "initiated");
     localStorage.setItem("Difficult Airway Initiated Time", timeStamp);
 }
@@ -223,12 +338,22 @@ function diffAirwayInitFunc(){
 function diffAirwayAchieveFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Difficult Airway", "achieved");
     localStorage.setItem("Difficult Airway Achieved Time", timeStamp);
 }
@@ -236,12 +361,22 @@ function diffAirwayAchieveFunc(){
 function diffAirwayStopFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Difficult Airway", "stopped");
     localStorage.setItem("Difficult Airway Stopped Time", timeStamp);
 }
@@ -257,12 +392,22 @@ surgAirwayStop.onclick = surgAirwayStopFunc;
 function surgAirwayInitFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Surgical Airway", "initiated");
     localStorage.setItem("Surgical Airway Initiated Time", timeStamp);
 }
@@ -270,12 +415,22 @@ function surgAirwayInitFunc(){
 function surgAirwayAchieveFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Surgical Airway", "achieved");
     localStorage.setItem("Surgical Airway Achieved Time", timeStamp);
 }
@@ -283,12 +438,22 @@ function surgAirwayAchieveFunc(){
 function surgAirwayStopFunc(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
+    var hour = 0;
+    var timeStamp = "";
     if(min < 1){
         min = 0;
     }
 
-    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Surgical Airway", "stopped");
     localStorage.setItem("Surgical Airway Stopped Time", timeStamp);
 }
@@ -422,10 +587,21 @@ function recordHR(){
     localStorage.setItem("HR", hrText.value);
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var hour = 0;
+    var display = "Heart Rate: " + hr + " at ";
     if(min < 1){
         min = 0;
     }
-    var display = "Heart Rate: " + hr + " at " + min.toString(10) + "min " + sec.toString(10) + "sec";
+
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+    display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem('HR Display',display);
 }
 
@@ -434,11 +610,23 @@ function recordBP(){
     localStorage.setItem("BP", bpText.value);
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
     var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var hour = 0;
+    var display = "Systolic BP: " + bp + " at " ;
 
     if(min < 1){
         min = 0;
     }
-    var display = "Systolic BP: " + bp + " at " + min.toString(10) + "min " + sec.toString(10) + "sec";
+
+    if(min > 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem('BP Display',display);
 }
 
