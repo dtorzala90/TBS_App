@@ -9,8 +9,6 @@
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
 
-var typeAndCrossAlert= localStorage.getItem("Type and Cross Alert");
-
 var perfusionAlert = localStorage.getItem("Poor Perfusion");
 
 
@@ -24,7 +22,6 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
 
 
 setInterval(checkETCO2, 1000);
-
 setInterval(checkGCS, 1000);
 setInterval(checkHR, 1000);
 setInterval(checkBP, 1000);
@@ -32,7 +29,7 @@ setInterval(calcShock, 1000);
 setInterval(checkFluids, 1000);
 setInterval(checkBreathing, 1000);
 
-var tranfusionInterval = setInterval(checkTransfusionAlerts, 1000);
+var transfusionInterval = setInterval(checkTransfusionAlerts, 1000);
 var ettInterval = setInterval(checkETTAlerts, 1000);
 var typeAndCrossInterval = setInterval(checkTypeAndCross, 1000);
 
@@ -611,14 +608,18 @@ function checkETTAlerts() {
     }
 }
 
-function checkTransfusionAlerts(){
+function checkTransfusionAlerts() {
+        console.log("checking tranfusion");
+
     var sbp = parseInt(localStorage.getItem("BP"), 10);
-    var shock = parseFloat(localStorage.getItem("HR"));
-    var hr = parseFloat(localStorage.getItem("Shock Level"));
+    var shock = parseFloat(localStorage.getItem("Shock Level"));
+    var hr = parseInt(localStorage.getItem("HR"),10);
+
     var mtp = localStorage.getItem("Massive Transfusion Protocol");
     var tprbc = localStorage.getItem("Transfusion PRBC");
     var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
     var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
 
     if(tprbc === "no"){
          if((sbp < 90 || shock  > 1.2 || hr > 180) && prbcAlert === "not thrown"){
@@ -663,11 +664,11 @@ function checkTransfusionAlerts(){
         }
     }
 
-    if(mtpAlert !== "dismissed" && prbcAlert !== "dismissed"){
-        clearInterval(tranfusionInterval);
+    if(mtpAlert === "dismissed" && prbcAlert === "dismissed"){
+        clearInterval(transfusionInterval);
     }
 
     if(mtp === "yes" && tprbc === "yes"){
-        clearInterval(tranfusionInterval);
+        clearInterval(transfusionInterval);
     }
 }

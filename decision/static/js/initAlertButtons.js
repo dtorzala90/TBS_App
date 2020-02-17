@@ -561,8 +561,9 @@ var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
 
 var mtpButNo = document.getElementById('mtpNo');
 var prbcButNo = document.getElementById('tprbcNo');
-var mtpButYes = document.getElementById('mtpNo');
-var prbcButYes = document.getElementById('tprbcNo');
+
+var mtpButYes = document.getElementById('mtpYes');
+var prbcButYes = document.getElementById('tprbcYes');
 
 mtpButNo.onclick = mtpFuncNo;
 prbcButNo.onclick = prbcFuncNo;
@@ -586,12 +587,10 @@ function mtpFuncYes(){
 }
 
 function mtpFuncNo(){
-    console.log("mtp no");
     localStorage.setItem("Massive Transfusion Protocol", "no");
 }
 
 function prbcFuncNo(){
-    console.log(localStorage.getItem("Transfusion PRBC"));
     localStorage.setItem("Transfusion PRBC", "no");
 }
 
