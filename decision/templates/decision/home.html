@@ -31,27 +31,32 @@
     <div class="sidenav">
         <div style="text-align: center;">
             <br>
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true"
                     aria-controls="collapseOne">
                 <a href="#A">A</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true"
                     aria-controls="collapseTwo">
                 <a href="#B">B</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true"
                     aria-controls="collapseThree">
                 <a href="#C">C</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true"
                     aria-controls="collapseFour">
                 <a href="#D">D</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFive"
+                    aria-expanded="true"
                     aria-controls="collapseFive">
                 <a href="#E">E</a>
             </button>
@@ -80,7 +85,8 @@
                 </h5>
             </div>
 
-            <div id="collapseOne" class="collapse hide collapse-A" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapseOne" class="collapse hide collapse-A" aria-labelledby="headingOne"
+                 data-parent="#accordion">
                 <div class="card-body">
                     <a id="A">
                         <form> <!-- Container for table contents -->
@@ -129,7 +135,8 @@
                                             <td><h4>Endotracheal Tube</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="ETT">Initiated</button>
+                                                    <button type="button" class="btn btn-light" id="ETT">Initiated
+                                                    </button>
                                                     <button type="button" class="btn btn-info">Achieved</button>
                                                     <button type="button" class="btn btn-dark">Removed</button>
                                                 </div>
@@ -186,7 +193,8 @@
                 </h5>
             </div>
 
-            <div id="collapseTwo" class="collapse hide collapse-B" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div id="collapseTwo" class="collapse hide collapse-B" aria-labelledby="headingTwo"
+                 data-parent="#accordion">
                 <div class="card-body">
 
                     <form> <!-- Container for table contents -->
@@ -202,7 +210,8 @@
                                         <td style="vertical-align: middle"><h4>Spontaneous Breathing</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="sponbreath" value="yes"> Yes<br></label>
+                                                <label><input type="radio" name="sponbreath" value="yes">
+                                                    Yes<br></label>
                                                 <label><input type="radio" name="sponbreath" value="no"> No<br></label>
 
                                             </div>
@@ -219,20 +228,24 @@
                                         </td>
                                     </tr>
                                     <tr> <!-- Right: Chest Rise -->
-                                        <td style="vertical-align: middle"><h4>Right: Chest Rise / Breath Sounds</h4></td>
+                                        <td style="vertical-align: middle"><h4>Right: Chest Rise / Breath Sounds</h4>
+                                        </td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <label><input type="radio" name="rchest" id="rchestyes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="rchest" id="rchestno" value="no"> No<br></label>
+                                                <label><input type="radio" name="rchest" id="rchestno" value="no">
+                                                    No<br></label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr> <!-- Left: Chest X-ray-->
-                                        <td style="vertical-align: middle"><h4>Left: Chest Rise / Breath Sounds</h4></td>
+                                        <td style="vertical-align: middle"><h4>Left: Chest Rise / Breath Sounds</h4>
+                                        </td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <label><input type="radio" name="lchest" id="lchestyes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="lchest" id="lchestno" value="no"> No<br></label>
+                                                <label><input type="radio" name="lchest" id="lchestno" value="no">
+                                                    No<br></label>
                                             </div>
                                         </td>
                                     </tr>
@@ -240,13 +253,20 @@
                                         <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="etco" id="etco2_none" value="no"> No Measurement<br></label>
-                                                <label> <input type="radio" name="etco" id="etco2_less25" value="25"> ETCO<sub>2</sub> < 25 <br></label>
-                                                <label> <input type="radio" name="etco" id="etco2_25plus" value="30"> ETCO<sub>2</sub> 25-30 <br></label>
-                                                <label><input type="radio" name="etco" id="etco2_30plus" value="35"> ETCO<sub>2</sub> 30-35 <br></label>
-                                                <label><input type="radio" name="etco" id="etco2_35plus" value="40"> ETCO<sub>2</sub> 35-40 <br></label>
-                                                <label><input type="radio" name="etco" id="etco2_40plus" value="50"> ETCO<sub>2</sub> 40-50 <br></label>
-                                                <label> <input type="radio" name="etco" id="etco2_50plus" value="50+"> ETCO<sub>2</sub> > 50 <br></label>
+                                                <label><input type="radio" name="etco" id="etco2_none" value="no"> No
+                                                    Measurement<br></label>
+                                                <label> <input type="radio" name="etco" id="etco2_less25" value="25">
+                                                    ETCO<sub>2</sub> < 25 <br></label>
+                                                <label> <input type="radio" name="etco" id="etco2_25plus" value="30">
+                                                    ETCO<sub>2</sub> 25-30 <br></label>
+                                                <label><input type="radio" name="etco" id="etco2_30plus" value="35">
+                                                    ETCO<sub>2</sub> 30-35 <br></label>
+                                                <label><input type="radio" name="etco" id="etco2_35plus" value="40">
+                                                    ETCO<sub>2</sub> 35-40 <br></label>
+                                                <label><input type="radio" name="etco" id="etco2_40plus" value="50">
+                                                    ETCO<sub>2</sub> 40-50 <br></label>
+                                                <label> <input type="radio" name="etco" id="etco2_50plus" value="50+">
+                                                    ETCO<sub>2</sub> > 50 <br></label>
                                             </div>
                                         </td>
                                     </tr>
@@ -289,12 +309,13 @@
                                 <table class="table">
                                     <tbody>
 
-                                   <!-- Heart RAte -->
+                                    <!-- Heart RAte -->
                                     <tr>
                                         <td style="vertical-align: middle"><h4>Heart Rate</h4></td>
                                         <td>
                                             <div class="form-group w-60">
-                                                <input class="form-control" type="text" id="hr" name="hr" value="" placeholder="BPM">
+                                                <input class="form-control" type="text" id="hr" name="hr" value=""
+                                                       placeholder="BPM">
                                             </div>
                                         </td>
                                     </tr>
@@ -304,8 +325,10 @@
                                         <td style="vertical-align: middle"><h4>Systolic Blood Pressure</h4></td>
                                         <td>
                                             <div class="form-group w-60">
-                                                <input class="form-control" type="text" id="bp" name="bp" value="" placeholder="mmHg">
-                                                <input class="form-control" type="text" id="age" name="age" value="" placeholder="Patient Age">
+                                                <input class="form-control" type="text" id="bp" name="bp" value=""
+                                                       placeholder="mmHg">
+                                                <input class="form-control" type="text" id="age" name="age" value=""
+                                                       placeholder="Patient Age">
                                             </div>
                                         </td>
                                     </tr>
@@ -316,17 +339,21 @@
                                         <td style="vertical-align: middle"><h4>Perfusion</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                              <span style="font-weight:bold">Lip Color:</span>
+                                                <span style="font-weight:bold">Lip Color:</span>
                                                 <label><input type="radio" name="lipc" id="lipc-pi" value="pi"> Pink<br></label>
-                                                <label><input type="radio" name="lipc" id="lipc-wh" value="wh"> White<br></label>
-                                                <label><input type="radio" name="lipc" id="lipc-unk" value="unk"> Unable To Assess <br><br></label>
+                                                <label><input type="radio" name="lipc" id="lipc-wh" value="wh">
+                                                    White<br></label>
+                                                <label><input type="radio" name="lipc" id="lipc-unk" value="unk"> Unable
+                                                    To Assess <br><br></label>
 
-                                              <span style="font-weight:bold">Nail Color:</span>
-                                                <label><input type="radio" name="nailc" id="nailc-pi" value="pi"> Pink<br></label>
+                                                <span style="font-weight:bold">Nail Color:</span>
+                                                <label><input type="radio" name="nailc" id="nailc-pi" value="pi">
+                                                    Pink<br></label>
                                                 <label> <input type="radio" name="nailc" id="nailc-wh" value="wh"> White<br></label>
-                                                <label> <input type="radio" name="nailc" id="nailc-unk" value="unk"> Unable To Assess<br><br></label>
+                                                <label> <input type="radio" name="nailc" id="nailc-unk" value="unk">
+                                                    Unable To Assess<br><br></label>
 
-                                              <span style="font-weight:bold">Cap Refill:</span>
+                                                <span style="font-weight:bold">Cap Refill:</span>
                                                 <label> <input type="radio" name="capr" id="caprt-2" value="<2"> <2s<br></label>
                                                 <label> <input type="radio" name="capr" id="caprt-24" value="2-4"> 2s-4s<br></label>
                                                 <label> <input type="radio" name="capr" id="caprt-4" value=">4"> >4s<br></label>
@@ -338,19 +365,25 @@
                                         <td style="vertical-align: middle"><h4>IV Access</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                              <span style="font-weight:bold">Functional Peripheral IV:</span>
-                                                <label><input type="radio" name="funp" id="funp0" value="no"> None<br></label>
-                                                <label><input type="radio" name="funp" id="funp1" value="1"> 1<br></label>
-                                                <label><input type="radio" name="funp" id="funp2" value="2"> 2<br></label>
-                                                <label> <input type="radio" name="funp" id="funp>2" value=">2"> >2<br><br></label>
+                                                <span style="font-weight:bold">Functional Peripheral IV:</span>
+                                                <label><input type="radio" name="funp" id="funp0" value="no">
+                                                    None<br></label>
+                                                <label><input type="radio" name="funp" id="funp1" value="1">
+                                                    1<br></label>
+                                                <label><input type="radio" name="funp" id="funp2" value="2">
+                                                    2<br></label>
+                                                <label> <input type="radio" name="funp" id="funp>2" value=">2">
+                                                    >2<br><br></label>
 
-                                             <span style="font-weight:bold">Intraosseous Line:</span>
+                                                <span style="font-weight:bold">Intraosseous Line:</span>
                                                 <label><input type="radio" name="intral" id="intralYes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="intral" id="intralNo" value="no"> No<br><br></label>
+                                                <label><input type="radio" name="intral" id="intralNo" value="no">
+                                                    No<br><br></label>
 
                                                 <span style="font-weight:bold">Central Line:</span>
-                                               <label><input type="radio" name="cenl" id="cenlYes" value="yes"> Yes<br></label>
-                                               <label><input type="radio" name="cenl" id="cenlNo" value="no"> No<br></label>
+                                                <label><input type="radio" name="cenl" id="cenlYes" value="yes"> Yes<br></label>
+                                                <label><input type="radio" name="cenl" id="cenlNo" value="no">
+                                                    No<br></label>
 
                                             </div>
                                         </td>
@@ -361,8 +394,10 @@
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <label><input type="radio" name="ivf" id="ivf-none" value="no"> None<br></label>
-                                                <label><input type="radio" name="ivf" id="ivf-<20" value="<20"> < 20mL/kg <br></label>
-                                                <label><input type="radio" name="ivf" id="ivf->20" value=">20"> >= 20mL/kg<br></label>
+                                                <label><input type="radio" name="ivf" id="ivf-<20" value="<20"> <
+                                                    20mL/kg <br></label>
+                                                <label><input type="radio" name="ivf" id="ivf->20" value=">20"> >=
+                                                    20mL/kg<br></label>
                                             </div>
                                         </td>
                                     </tr>
@@ -371,8 +406,10 @@
                                         <td style="vertical-align: middle"><h4>Type And Cross</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="tac" id="typeAndCrossYes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="tac" id="typeAndCrossNo" value="no"> No <br></label>
+                                                <label><input type="radio" name="tac" id="typeAndCrossYes" value="yes">
+                                                    Drawn<br></label>
+                                                <label><input type="radio" name="tac" id="typeAndCrossNo" value="no"> Sent
+                                                    <br></label>
 
                                             </div>
                                         </td>
@@ -389,7 +426,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td style="vertical-align: middle"><h4>  Massive Transfusion Protocol</h4></td>
+                                        <td style="vertical-align: middle"><h4> Massive Transfusion Protocol</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
                                                 <label><input type="radio" name="mtp" value="yes"> Activated<br></label>
@@ -435,7 +472,7 @@
                                     <tbody>
 
                                     <tr style="border-bottom: 2px solid #29323A;">
-                                        <td colspan = "2"><h4>Glasgow Coma Scale:</h4></td>
+                                        <td colspan="2"><h4>Glasgow Coma Scale:</h4></td>
                                     </tr>
 
                                     <tr> <!-- Optimize ABC -->
@@ -443,12 +480,18 @@
                                         <td style="vertical-align: middle"><h4>Motor</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
-                                                <label><input type="radio" name="motor" id="motor6" value="ob"> <b>6</b> - Obeys Commands<br></label>
-                                                <label><input type="radio" name="motor" id="motor5" value="lo"> <b>5</b> - Localizing Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor4" value="wi"> <b>4</b> - Withdraw From Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor3" value="fl"> <b>3</b> - Flexion To Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor2" value="ex"> <b>2</b> - Extension To Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor1" value="no"> <b>1</b> - No Motor Response<br></label>
+                                                <label><input type="radio" name="motor" id="motor6" value="ob"> <b>6</b>
+                                                    - Obeys Commands<br></label>
+                                                <label><input type="radio" name="motor" id="motor5" value="lo"> <b>5</b>
+                                                    - Localizing Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor4" value="wi"> <b>4</b>
+                                                    - Withdraw From Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor3" value="fl"> <b>3</b>
+                                                    - Flexion To Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor2" value="ex"> <b>2</b>
+                                                    - Extension To Pain<br></label>
+                                                <label><input type="radio" name="motor" id="motor1" value="no"> <b>1</b>
+                                                    - No Motor Response<br></label>
                                             </div>
                                         </td>
                                     </tr>
@@ -457,11 +500,16 @@
                                         <td style="vertical-align: middle"><h4>Verbal</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
-                                                <label><input type="radio" name="verbal" id="verbal5" value="or"> <b>5</b> - Oriented<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal4" value="co"> <b>4</b> - Confused<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal3" value="wo"> <b>3</b> - Inappropriate Words<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal2" value="so"> <b>2</b> - Incomprehensible Sounds<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal1" value="no"> <b>1</b> - No Verbal Response<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal5" value="or">
+                                                    <b>5</b> - Oriented<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal4" value="co">
+                                                    <b>4</b> - Confused<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal3" value="wo">
+                                                    <b>3</b> - Inappropriate Words<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal2" value="so">
+                                                    <b>2</b> - Incomprehensible Sounds<br></label>
+                                                <label><input type="radio" name="verbal" id="verbal1" value="no">
+                                                    <b>1</b> - No Verbal Response<br></label>
 
                                             </div>
                                         </td>
@@ -471,10 +519,14 @@
                                         <td style="vertical-align: middle"><h4>Eye</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
-                                                <label><input type="radio" name="eye" id="eye4" value="sp"> <b>4</b> - Opens Spontaneously<br></label>
-                                                <label><input type="radio" name="eye" id="eye3" value="ve"> <b>3</b> - Open To Verbal Command<br></label>
-                                                <label><input type="radio" name="eye" id="eye2" value="pa"> <b>2</b> - Open To Pain<br></label>
-                                                <label><input type="radio" name="eye" id="eye1" value="no"> <b>1</b> - No Eye Opening<br></label>
+                                                <label><input type="radio" name="eye" id="eye4" value="sp"> <b>4</b> -
+                                                    Opens Spontaneously<br></label>
+                                                <label><input type="radio" name="eye" id="eye3" value="ve"> <b>3</b> -
+                                                    Open To Verbal Command<br></label>
+                                                <label><input type="radio" name="eye" id="eye2" value="pa"> <b>2</b> -
+                                                    Open To Pain<br></label>
+                                                <label><input type="radio" name="eye" id="eye1" value="no"> <b>1</b> -
+                                                    No Eye Opening<br></label>
                                             </div>
                                         </td>
                                     </tr>
@@ -484,15 +536,15 @@
                                         <td style="vertical-align: middle"><h4>Pupils</h4></td>
                                         <td>
                                             <div class="btn-group-vertical" role="group">
-                                              <span style="font-weight:bold">Equal:</span>
+                                                <span style="font-weight:bold">Equal:</span>
                                                 <label><input type="radio" name="equal" value="yes"> Yes<br></label>
                                                 <label><input type="radio" name="equal" value="no"> No<br><br></label>
 
-                                              <span style="font-weight:bold">Round:</span>
+                                                <span style="font-weight:bold">Round:</span>
                                                 <label><input type="radio" name="round" value="yes"> Yes<br></label>
                                                 <label><input type="radio" name="round" value="no"> No<br><br></label>
 
-                                              <span style="font-weight:bold">Reactive To Light:</span>
+                                                <span style="font-weight:bold">Reactive To Light:</span>
                                                 <label><input type="radio" name="rlight" value="yes"> Yes<br></label>
                                                 <label><input type="radio" name="rlight" value="no"> No<br></label>
                                             </div>
