@@ -39,6 +39,14 @@ try:
 except:
 	print('CORRECT rightAlert breathing not found.')
 
+#Check if left breathing thrown
+try:
+	element = driver.find_element_by_id('left-breathing-alert')
+	print('ERROR leftAlert breathing found.')
+except:
+	print('CORRECT leftAlert breathing not found.')
+
+
 #Go back to Decision App
 element = driver.find_element_by_tag_name('h4')
 element.click()
@@ -64,8 +72,13 @@ element = driver.find_element_by_id('headingTwo')
 element.click()
 time.sleep(1)
 
-#Click No on Type and Cross, triggering alert
+#Click No on right chest, triggering alert
 element = driver.find_element_by_id('rchestno')
+element.click()
+time.sleep(1)
+
+#Click No on left chest, triggering alert
+element = driver.find_element_by_id('lchestno')
 element.click()
 time.sleep(1)
 
@@ -87,6 +100,12 @@ try:
 	print('CORRECT rightAlert breathing found.')
 except:
 	print('ERROR rightAlert breathing not found.')
+
+try:
+	element = driver.find_element_by_id('left-breathing-alert')
+	print('CORRECT lefttAlert breathing found.')
+except:
+	print('ERROR lefttAlert breathing not found.')
 
 
 #Close Selenium
