@@ -1,11 +1,11 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseNotModified
 from django.shortcuts import render
-from .models import Post
+from .models import Session
 
 # Create your views here.
 def home(request):
 	context = {
-		'posts': Post.objects.all()
+		'posts': Session.objects.all()
 	}
 	return render(request, 'decision/home.html', context)
 
