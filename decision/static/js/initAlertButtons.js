@@ -8,26 +8,257 @@
 /**
  * Set up Airway buttons
  */
-var ETT = document.getElementById("ETT");
-ETT.onclick = ettAlertFunc;
+var oxyInit = document.getElementById("oxySupplInit");
+var oxyStop = document.getElementById("oxySupplStop");
 
-function ettAlertFunc(){
-    var etco2 = localStorage.getItem("ETCO2");
-    if(etco2 === "not recorded"){
-        localStorage.setItem("ETT Alert", "thrown");
-        $('#alert_placeholder').append(
-            "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ETT-etco2-alert'>\n" +
-            "                  <strong>Confrim End Tidal CO<sub>2</sub></strong>\n" +
-            "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"ETT Alert\", \"dismissed\")'" +
-            "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-            "                    <span aria-hidden=\"true\">&times;</span>\n" +
-            "                  </button>\n" +
-            "                </div>");
+oxyInit.onclick = oxyInitFunc;
+oxyStop.onclick = oxyStopFunc;
+
+function oxyInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
     }
 
-    localStorage.setItem("ETT", "initiated");
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Oxygen Supplementation", "initiated");
+    localStorage.setItem("Oxygen Supplementation Initiated Time", timeStamp);
 }
 
+function oxyStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Oxygen Supplementation", "stopped");
+    localStorage.setItem("Oxygen Supplementation Stopped Time", timeStamp);
+}
+
+var bagInit = document.getElementById("bagMaskInit");
+var bagStop = document.getElementById("bagMaskStop");
+
+bagInit.onclick = bagInitFunc;
+bagStop.onclick = bagStopFunc;
+
+function bagInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Bag Mask", "initiated");
+    localStorage.setItem("Bag Mask Initiated Time", timeStamp);
+}
+
+function bagStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Bag Mask", "stopped");
+    localStorage.setItem("Bag Mask Stopped Time", timeStamp);
+}
+
+var lmaInit = document.getElementById("lmaInit");
+var lmaAchieve = document.getElementById("lmaAchieved");
+var lmaStop = document.getElementById("lmaStop")
+
+lmaInit.onclick = lmaInitFunc;
+lmaAchieve.onclick = lmaAchieveFunc;
+lmaStop.onclick = lmaStopFunc;
+
+function lmaInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("LMA", "initiated");
+    localStorage.setItem("LMA Initiated Time", timeStamp);
+}
+
+function lmaAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("LMA", "achieved");
+    localStorage.setItem("LMA Achieved Time", timeStamp);
+}
+
+function lmaStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("LMA", "stopped");
+    localStorage.setItem("LMA Stopped Time", timeStamp);
+}
+
+var ettInit = document.getElementById("ettInit");
+var ettAchieve = document.getElementById("ettAchieved");
+var ettStop = document.getElementById("ettStop")
+
+ettInit.onclick = ettInitFunc;
+ettAchieve.onclick = ettAchieveFunc;
+ettStop.onclick = ettStopFunc;
+
+function ettInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("ETT", "initiated");
+    localStorage.setItem("ETT Initiated Time", timeStamp);
+}
+
+function ettAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("ETT", "achieved");
+    localStorage.setItem("ETT Achieved Time", timeStamp);
+}
+
+function ettStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("ETT", "stopped");
+    localStorage.setItem("ETT Stopped Time", timeStamp);
+}
+
+var diffAirwayInit = document.getElementById("diffAirwayInit");
+var diffAirwayAchieve = document.getElementById("diffAirwayAchieved");
+var diffAirwayStop = document.getElementById("diffAirwayStop")
+
+diffAirwayInit.onclick = diffAirwayInitFunc;
+diffAirwayAchieve.onclick = diffAirwayAchieveFunc;
+diffAirwayStop.onclick = diffAirwayStopFunc;
+
+function diffAirwayInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Difficult Airway", "initiated");
+    localStorage.setItem("Difficult Airway Initiated Time", timeStamp);
+}
+
+function diffAirwayAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Difficult Airway", "achieved");
+    localStorage.setItem("Difficult Airway Achieved Time", timeStamp);
+}
+
+function diffAirwayStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Difficult Airway", "stopped");
+    localStorage.setItem("Difficult Airway Stopped Time", timeStamp);
+}
+
+var surgAirwayInit = document.getElementById("surgAirwayInit");
+var surgAirwayAchieve = document.getElementById("surgAirwayAchieved");
+var surgAirwayStop = document.getElementById("surgAirwayStop")
+
+surgAirwayInit.onclick = surgAirwayInitFunc;
+surgAirwayAchieve.onclick = surgAirwayAchieveFunc;
+surgAirwayStop.onclick = surgAirwayStopFunc;
+
+function surgAirwayInitFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Surgical Airway", "initiated");
+    localStorage.setItem("Surgical Airway Initiated Time", timeStamp);
+}
+
+function surgAirwayAchieveFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Surgical Airway", "achieved");
+    localStorage.setItem("Surgical Airway Achieved Time", timeStamp);
+}
+
+function surgAirwayStopFunc(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    var timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    localStorage.setItem("Surgical Airway", "stopped");
+    localStorage.setItem("Surgical Airway Stopped Time", timeStamp);
+}
 /**
  * Set up Breathing buttons
  */
@@ -311,12 +542,56 @@ function ivf3Func() {
 }
 
 //Set up Type and Cross Alert
-var typeAndCross = document.getElementById('typeAndCrossNo');
+var typeAndCrossNo = document.getElementById('typeAndCrossNo');
+var typeAndCrossYes = document.getElementById('typeAndCrossYes');
 
-typeAndCross.onclick = typeAndCrossFunc;
+typeAndCrossNo.onclick = typeAndCrossNoFunc;
+typeAndCrossYes.onclick = typeAndCrossYesFunc;
 
-function typeAndCrossFunc() {
-    localStorage.setItem("Type and Cross Selection", "no");
+function typeAndCrossNoFunc() {
+    localStorage.setItem("Type and Cross", "no");
+}
+
+function typeAndCrossYesFunc() {
+    localStorage.setItem("Type and Cross", "yes");
+}
+
+var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
+var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
+
+var mtpButNo = document.getElementById('mtpNo');
+var prbcButNo = document.getElementById('tprbcNo');
+
+var mtpButYes = document.getElementById('mtpYes');
+var prbcButYes = document.getElementById('tprbcYes');
+
+mtpButNo.onclick = mtpFuncNo;
+prbcButNo.onclick = prbcFuncNo;
+mtpButYes.onclick = mtpFuncYes;
+prbcButYes.onclick = prbcFuncYes;
+
+function prbcFuncYes(){
+    localStorage.setItem("Transfusion PRBC", "yes");
+    if (prbcAlert === "thrown"){
+        $('#tprbc-alert').remove();
+        localStorage.setItem("Transfusion PRBC Alert", "dismissed");
+    }
+}
+
+function mtpFuncYes(){
+    localStorage.setItem("Massive Transfusion Protocol", "yes");
+    if (mtpAlert === "thrown"){
+        $('#mtp-alert').remove();
+        localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
+    }
+}
+
+function mtpFuncNo(){
+    localStorage.setItem("Massive Transfusion Protocol", "no");
+}
+
+function prbcFuncNo(){
+    localStorage.setItem("Transfusion PRBC", "no");
 }
 
 /**
