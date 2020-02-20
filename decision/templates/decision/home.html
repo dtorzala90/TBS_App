@@ -633,25 +633,14 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="popup-title"></h5>
+                <p class="modal-title" id="popup-title"></p>
               </div>
               <div class="modal-body">
                     <div>
-                        <button id="minus">−</button>
-                        <input type="number" id="hourStamp"/> Hour(s)
-                        <button id="plus">+</button>
-                    </div>
+                        <input type="number" id="hourStamp" min="0" max="5"/> Hr
+                        <input type="number" id="minuteStamp" min="0" max="59"/> Min
+                        <input type="number" id="secondStamp" min="0" max="59"/> Sec
 
-                    <div>
-                        <button id="minus">−</button>
-                        <input type="number" id="minuteStamp"/> Minute(s)
-                        <button id="plus">+</button>
-                    </div>
-
-                    <div>
-                        <button id="minus">−</button>
-                        <input type="number" id="secondStamp"/> Seconds
-                        <button id="plus">+</button>
                     </div>
               </div>
               <div class="modal-footer">

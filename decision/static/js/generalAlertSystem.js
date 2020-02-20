@@ -609,8 +609,6 @@ function checkETTAlerts() {
 }
 
 function checkTransfusionAlerts() {
-        console.log("checking tranfusion");
-
     var sbp = parseInt(localStorage.getItem("BP"), 10);
     var shock = parseFloat(localStorage.getItem("Shock Level"));
     var hr = parseInt(localStorage.getItem("HR"),10);
