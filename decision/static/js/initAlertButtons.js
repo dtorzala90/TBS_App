@@ -36,6 +36,16 @@ function oxyInitEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Oxygen Supplementation Initiated Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "Oxygen Initiated At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -54,6 +64,16 @@ function oxyStopEdit(){
     if(min >= 60){
         hour = min/60;
         min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Oxygen Supplementation Stopped Time", timeStamp);
+        $("#popUp").modal('hide');
     }
 
     document.getElementById('popup-title').innerHTML = "Oxygen Stopped At";
@@ -131,6 +151,16 @@ function bagInitEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Bag Mask Initiated Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "Bag Initiated At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -149,6 +179,16 @@ function bagStopEdit(){
     if(min >= 60){
         hour = min/60;
         min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Bag Mask Stopped Time", timeStamp);
+        $("#popUp").modal('hide');
     }
 
     document.getElementById('popup-title').innerHTML = "Bag Stopped At";
@@ -229,6 +269,16 @@ function lmaInitEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("LMA Initiated Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "LMA Initiated At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -249,6 +299,16 @@ function lmaAchievedEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("LMA Achieved Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "LMA Achieved At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -267,6 +327,16 @@ function lmaStopEdit(){
     if(min >= 60){
         hour = min/60;
         min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("LMA Stopped Time", timeStamp);
+        $("#popUp").modal('hide');
     }
 
     document.getElementById('popup-title').innerHTML = "LMA Stopped At";
@@ -370,6 +440,16 @@ function ettInitEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("ETT Initiated Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "ETT Initiated At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -390,6 +470,16 @@ function ettAchievedEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("ETT Achieved Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "ETT Achieved At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -408,6 +498,16 @@ function ettStopEdit(){
     if(min >= 60){
         hour = min/60;
         min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("ETT Stopped Time", timeStamp);
+        $("#popUp").modal('hide');
     }
 
     document.getElementById('popup-title').innerHTML = "ETT Stopped At";
@@ -511,6 +611,16 @@ function diffAirwayInitEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Difficult Airway Initiated Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "Difficult Airway Initiated At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -531,6 +641,16 @@ function diffAirwayAchievedEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Difficult Airway Achieved Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "Difficult Airway Achieved At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -549,6 +669,16 @@ function diffAirwayStopEdit(){
     if(min >= 60){
         hour = min/60;
         min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Difficult Airway Stopped Time", timeStamp);
+        $("#popUp").modal('hide');
     }
 
     document.getElementById('popup-title').innerHTML = "Difficult Airway Stopped At";
@@ -652,6 +782,16 @@ function surgAirwayInitEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Surgical Airway Initiated Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "Surgical Airway Initiated At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -672,6 +812,16 @@ function surgAirwayAchievedEdit(){
         min = min%60;
     }
 
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Surgical Airway Achieved Time", timeStamp);
+        $("#popUp").modal('hide');
+    }
+
     document.getElementById('popup-title').innerHTML = "Surgical Airway Achieved At";
     document.getElementById('hourStamp').value = min;
     document.getElementById('minuteStamp').value = min;
@@ -690,6 +840,16 @@ function surgAirwayStopEdit(){
     if(min >= 60){
         hour = min/60;
         min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        var hr = parseInt(document.getElementById('hourStamp').value, 10);
+        var min = parseInt(document.getElementById('minuteStamp').value, 10);
+        var sec = parseInt(document.getElementById('secondStamp').value, 10);
+        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem("Surgical Airway Stopped Time", timeStamp);
+        $("#popUp").modal('hide');
     }
 
     document.getElementById('popup-title').innerHTML = "Surgical Airway Stopped At";
