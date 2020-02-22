@@ -95,18 +95,58 @@ try:
 except:
 	print('ERROR Type and Cross not found.')
 
+# Right Breathing alert should be thrown
 try:
 	element = driver.find_element_by_id('right-breathing-alert')
 	print('CORRECT rightAlert breathing found.')
 except:
 	print('ERROR rightAlert breathing not found.')
 
+# Left Breathing alert should be thrown
 try:
 	element = driver.find_element_by_id('left-breathing-alert')
 	print('CORRECT lefttAlert breathing found.')
 except:
 	print('ERROR lefttAlert breathing not found.')
 
+
+#Go back to Decision App
+element = driver.find_element_by_tag_name('h4')
+element.click()
+time.sleep(1)
+
+#Open header
+element = driver.find_element_by_id('headingTwo')
+element.click()
+time.sleep(1)
+
+#Click Yes on right chest, dismissing alert
+element = driver.find_element_by_id('rchestyes')
+element.click()
+time.sleep(1)
+
+#Click Yes on left chest, dismissing alert
+element = driver.find_element_by_id('lchestyes')
+element.click()
+time.sleep(1)
+
+
+#Go back to Summary Page
+element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
+element.click()
+time.sleep(1)
+
+try:
+	element = driver.find_element_by_id('right-breathing-alert')
+	print('ERROR rightAlert breathing found.')
+except:
+	print('CORRECT rightAlert breathing not found.')
+
+try:
+	element = driver.find_element_by_id('left-breathing-alert')
+	print('ERROR lefttAlert breathing found.')
+except:
+	print('CORRECT lefttAlert breathing not found.')
 
 #Close Selenium
 driver.quit()
