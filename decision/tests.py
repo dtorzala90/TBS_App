@@ -4,6 +4,243 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pathlib
 
+def click_element_id(buttonName):
+	element = driver.find_element_by_id(buttonName)
+	element.click()
+	time.sleep(1)
+
+def click_button_name(buttonName):
+	element = driver.find_element_by_name(buttonName)
+	element.click()
+	time.sleep(1)
+
+def goto_decision_app():
+	element = driver.find_element_by_tag_name('h4')
+	element.click()
+	time.sleep(1)
+
+def goto_summary():
+	element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
+	element.click()
+	time.sleep(1)
+
+def check_alert_thrown(alertName, shouldBeThrown):
+	alertThrown = False
+	try:
+		element = driver.find_element_by_id(alertName)
+		alertThrown = True
+	except:
+		pass
+
+	if shouldBeThrown and alertThrown:
+		print('CORRECT', alertName, "was successfully thrown.")
+	elif shouldBeThrown and not alertThrown:
+		print('ERROR', alertName, "was not successfully thrown.")
+	if not shouldBeThrown and not alertThrown:
+		print('CORRECT', alertName, "was not thrown.")
+	elif not shouldBeThrown and alertThrown:
+		print('ERROR', alertName, "was thrown.")
+
+
+def perfusionTests():
+	perfusionTest1()
+	perfusionTest2()
+	perfusionTest3()
+	perfusionTest4()
+
+def perfusionTest1():
+	print("\n####   PERFUSION TEST #1 - No Alerts Present   #####")
+	# Perfusion Alerts Test Case 1 - No Alerts Present:
+	check_alert_thrown('poor-perfusion-alert', False)
+
+	#Go back to Decision App
+	goto_decision_app()
+
+	#Open circulation header
+	click_element_id('headingThree')
+
+	# Enter Lip Color pink
+	click_element_id('lipc-pi')
+
+	# Enter Nail bed color pink
+	click_element_id('nailc-pi')
+
+	# Enter Cap refill <2
+	click_element_id('caprt-2')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+
+	# Enter Cap refill 2-4
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('caprt-24')
+
+	# Enter lip color unable to assess
+	click_element_id('lipc-unk')
+
+	# Enter nail bed color unable to assess
+	click_element_id('nailc-unk')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+	print("")
+
+def perfusionTest2():
+	print("\n####   PERFUSION TEST #2  - Cap Refill Alerts  #####")
+	# Perfusion Alerts Test Case 2 - Cap Refill Alerts:
+
+	#Go back to Decision App
+	goto_decision_app()
+
+	#Open circulation header
+	click_element_id('headingThree')
+
+	# Enter Lip Color pink
+	click_element_id('lipc-pi')
+
+	# Enter Nail bed color pink
+	click_element_id('nailc-pi')
+
+	# Enter Cap refill >4, throwing alert
+	click_element_id('caprt-4')
+
+	# Ensure ‘poor-perfusion-alert’ is present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', True)
+
+	# Enter Cap refill 2-4, dismissing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('caprt-24')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+
+	# Enter Cap refill >4, throwing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('caprt-4')
+
+	# Ensure ‘poor-perfusion-alert’ is present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', True)
+
+	# Enter Cap refill <2, dismissing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('caprt-2')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+	print("")
+
+
+def perfusionTest3():
+	print("\n#####   PERFUSION TEST #3 - Nail Bed Alerts   #####")
+	# Perfusion Alerts Test Case 3 - Nail Bed Alerts:
+
+	#Go back to Decision App
+	goto_decision_app()
+
+	#Open circulation header
+	click_element_id('headingThree')
+
+	# Enter Lip Color pink
+	click_element_id('lipc-pi')
+
+	# Enter Nail bed color white
+	click_element_id('nailc-wh')
+
+	# Enter Cap refill <2
+	click_element_id('caprt-2')
+
+	# Ensure ‘poor-perfusion-alert’ is present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', True)
+
+	# Enter Nail color pink, dismissing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('nailc-pi')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+
+	# Enter nail color white, throwing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('nailc-wh')
+
+	# Ensure ‘poor-perfusion-alert’ is present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', True)
+
+	# Enter Nail color unable to assess, dismissing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('nailc-unk')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+	print("")
+
+def perfusionTest4():
+	print("\n#####   PERFUSION TEST #4 - Lip Color Alerts   #####")
+	# Perfusion Alerts Test Case 3 - Nail Bed Alerts:
+
+	#Go back to Decision App
+	goto_decision_app()
+
+	#Open circulation header
+	click_element_id('headingThree')
+
+	# Enter Lip Color white
+	click_element_id('lipc-wh')
+
+	# Enter Nail bed color pink
+	click_element_id('nailc-pi')
+
+	# Enter Cap refill <2
+	click_element_id('caprt-2')
+
+	# Ensure ‘poor-perfusion-alert’ is present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', True)
+
+	# Enter Lip color pink, dismissing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('lipc-pi')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+
+	# Enter lip color white, throwing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('lipc-wh')
+
+	# Ensure ‘poor-perfusion-alert’ is present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', True)
+
+	# Enter Lip color unable to assess, dismissing alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('lipc-unk')
+
+	# Ensure ‘poor-perfusion-alert’ is not present
+	goto_summary()
+	check_alert_thrown('poor-perfusion-alert', False)
+	print("")
 
 #Begin the driver instance with chromedriver application
 chrome_options = Options()
@@ -16,9 +253,7 @@ driver.get('http://127.0.0.1:8080/')
 time.sleep(1)
 
 #Click Start Button
-element = driver.find_element_by_name('start-btn')
-element.click()
-time.sleep(1)
+click_button_name('start-btn')
 
 #Go to Summary Page
 element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
@@ -26,127 +261,70 @@ element.click()
 time.sleep(1)
 
 #Check if Type and Cross Alert is thrown
-try:
-	element = driver.find_element_by_id('type-and-cross-alert')
-	print('ERROR Type and cross found.')
-except:
-	print('CORRECT Type and Cross not found.')
+check_alert_thrown('type-and-cross-alert', False)
 
 #Check if right breathing thrown
-try:
-	element = driver.find_element_by_id('right-breathing-alert')
-	print('ERROR rightAlert breathing found.')
-except:
-	print('CORRECT rightAlert breathing not found.')
+check_alert_thrown('right-breathing-alert', False)
 
 #Check if left breathing thrown
-try:
-	element = driver.find_element_by_id('left-breathing-alert')
-	print('ERROR leftAlert breathing found.')
-except:
-	print('CORRECT leftAlert breathing not found.')
-
+check_alert_thrown('left-breathing-alert', False)
 
 #Go back to Decision App
-element = driver.find_element_by_tag_name('h4')
-element.click()
-time.sleep(1)
+goto_decision_app()
 
 #Open header
-element = driver.find_element_by_id('headingThree')
-element.click()
-time.sleep(1)
+click_element_id('headingThree')
 
 #Click No on Type and Cross, triggering alert
-element = driver.find_element_by_id('typeAndCrossNo')
-element.click()
-time.sleep(1)
+click_element_id('typeAndCrossNo')
 
 #Go back to Decision App
-element = driver.find_element_by_tag_name('h4')
-element.click()
-time.sleep(1)
+goto_decision_app()
 
 #Open header
-element = driver.find_element_by_id('headingTwo')
-element.click()
-time.sleep(1)
+click_element_id('headingTwo')
 
 #Click No on right chest, triggering alert
-element = driver.find_element_by_id('rchestno')
-element.click()
-time.sleep(1)
+click_element_id('rchestno')
 
 #Click No on left chest, triggering alert
-element = driver.find_element_by_id('lchestno')
-element.click()
-time.sleep(1)
-
+click_element_id('lchestno')
 
 #Go back to Summary Page
-element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
-element.click()
-time.sleep(1)
+goto_summary()
 
 #Check if Alert is correctly thrown
-try:
-	element = driver.find_element_by_id('type-and-cross-alert')
-	print('CORRECT Type and cross found.')
-except:
-	print('ERROR Type and Cross not found.')
+check_alert_thrown('type-and-cross-alert', True)
 
 # Right Breathing alert should be thrown
-try:
-	element = driver.find_element_by_id('right-breathing-alert')
-	print('CORRECT rightAlert breathing found.')
-except:
-	print('ERROR rightAlert breathing not found.')
+check_alert_thrown('right-breathing-alert', True)
 
 # Left Breathing alert should be thrown
-try:
-	element = driver.find_element_by_id('left-breathing-alert')
-	print('CORRECT lefttAlert breathing found.')
-except:
-	print('ERROR lefttAlert breathing not found.')
+check_alert_thrown('left-breathing-alert', True)
 
 
 #Go back to Decision App
-element = driver.find_element_by_tag_name('h4')
-element.click()
-time.sleep(1)
+goto_decision_app()
 
 #Open header
-element = driver.find_element_by_id('headingTwo')
-element.click()
-time.sleep(1)
+click_element_id('headingTwo')
 
 #Click Yes on right chest, dismissing alert
-element = driver.find_element_by_id('rchestyes')
-element.click()
-time.sleep(1)
+click_element_id('rchestyes')
 
 #Click Yes on left chest, dismissing alert
-element = driver.find_element_by_id('lchestyes')
-element.click()
-time.sleep(1)
-
+click_element_id('lchestyes')
 
 #Go back to Summary Page
-element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
-element.click()
-time.sleep(1)
+goto_summary()
 
-try:
-	element = driver.find_element_by_id('right-breathing-alert')
-	print('ERROR rightAlert breathing found.')
-except:
-	print('CORRECT rightAlert breathing not found.')
+#Check if right breathing dismissed
+check_alert_thrown('right-breathing-alert', False)
 
-try:
-	element = driver.find_element_by_id('left-breathing-alert')
-	print('ERROR lefttAlert breathing found.')
-except:
-	print('CORRECT lefttAlert breathing not found.')
+#Check if left breathing dismissed
+check_alert_thrown('left-breathing-alert', False)
+
+perfusionTests()
 
 #Close Selenium
 driver.quit()
