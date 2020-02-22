@@ -269,6 +269,12 @@ h4 {
 
 .nav-border {
     border-bottom: 4px solid #fce181;
-    z-index: 0;
+    z-index: 1;
 
+}
+
+/*Allows for spacing between the vertical button groups*/
+.btn-group-vertical>button{
+    margin-bottom: 10px;
+    border-radius: 0.25rem !important;
 }
