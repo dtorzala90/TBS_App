@@ -24,109 +24,21 @@ oxyInit.ondblclick = oxyInitEdit;
 oxyStop.ondblclick = oxyStopEdit;
 
 function oxyInitEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Oxygen Supplementation Initiated Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Oxygen Initiated At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Oxygen Initiated At","Oxygen Supplementation Initiated Time");
 }
 
 function oxyStopEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Oxygen Supplementation Stopped Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Oxygen Stopped At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Oxygen Stopped At","Oxygen Supplementation Stopped Time");
 }
 
 function oxyInitFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Oxygen Supplementation", "initiated");
-    localStorage.setItem("Oxygen Supplementation Initiated Time", timeStamp);
+    localStorage.setItem("Oxygen Supplementation Initiated Time", getCurrentTime());
 }
 
 function oxyStopFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Oxygen Supplementation", "stopped");
-    localStorage.setItem("Oxygen Supplementation Stopped Time", timeStamp);
+    localStorage.setItem("Oxygen Supplementation Stopped Time", getCurrentTime());
 }
 
 var bagInit = document.getElementById("bagMaskInit");
@@ -139,109 +51,21 @@ bagInit.ondblclick = bagInitEdit;
 bagStop.ondblclick = bagStopEdit;
 
 function bagInitEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Bag Mask Initiated Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Bag Initiated At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Bag Initiated At","Bag Mask Initiated Time");
 }
 
 function bagStopEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Bag Mask Stopped Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Bag Stopped At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Bag Stopped At","Bag Mask Stopped Time");
 }
 
 function bagInitFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Bag Mask", "initiated");
-    localStorage.setItem("Bag Mask Initiated Time", timeStamp);
+    localStorage.setItem("Bag Mask Initiated Time", getCurrentTime());
 }
 
 function bagStopFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Bag Mask", "stopped");
-    localStorage.setItem("Bag Mask Stopped Time", timeStamp);
+    localStorage.setItem("Bag Mask Stopped Time", getCurrentTime());
 }
 
 var lmaInit = document.getElementById("lmaInit");
@@ -257,162 +81,30 @@ lmaAchieve.ondblclick = lmaAchievedEdit;
 lmaStop.onclick = lmaStopEdit;
 
 function lmaInitEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("LMA Initiated Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "LMA Initiated At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("LMA Initiated At","LMA Initiated Time");
 }
 
 function lmaAchievedEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("LMA Achieved Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "LMA Achieved At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("LMA Achieved At","LMA Achieved Time");
 }
 
 function lmaStopEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("LMA Stopped Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "LMA Stopped At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("LMA Stopped At","LMA Stopped Time");
 }
 
 function lmaInitFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("LMA", "initiated");
-    localStorage.setItem("LMA Initiated Time", timeStamp);
+    localStorage.setItem("LMA Initiated Time", getCurrentTime());
 }
 
 function lmaAchieveFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("LMA", "achieved");
-    localStorage.setItem("LMA Achieved Time", timeStamp);
+    localStorage.setItem("LMA Achieved Time", getCurrentTime());
 }
 
 function lmaStopFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("LMA", "stopped");
-    localStorage.setItem("LMA Stopped Time", timeStamp);
+    localStorage.setItem("LMA Stopped Time", getCurrentTime());
 }
 
 var ettInit = document.getElementById("ettInit");
@@ -428,162 +120,30 @@ ettAchieve.ondblclick = ettAchievedEdit;
 ettStop.onclick = ettStopEdit;
 
 function ettInitEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("ETT Initiated Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "ETT Initiated At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("ETT Initiated At","ETT Initiated Time");
 }
 
 function ettAchievedEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("ETT Achieved Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "ETT Achieved At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("ETT Achieved At","ETT Achieved Time");
 }
 
 function ettStopEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("ETT Stopped Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "ETT Stopped At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("ETT Stopped At","ETT Stopped Time");
 }
 
 function ettInitFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("ETT", "initiated");
-    localStorage.setItem("ETT Initiated Time", timeStamp);
+    localStorage.setItem("ETT Initiated Time", getCurrentTime());
 }
 
 function ettAchieveFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("ETT", "achieved");
-    localStorage.setItem("ETT Achieved Time", timeStamp);
+    localStorage.setItem("ETT Achieved Time", getCurrentTime());
 }
 
 function ettStopFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("ETT", "stopped");
-    localStorage.setItem("ETT Stopped Time", timeStamp);
+    localStorage.setItem("ETT Stopped Time", getCurrentTime());
 }
 
 var diffAirwayInit = document.getElementById("diffAirwayInit");
@@ -599,162 +159,30 @@ diffAirwayAchieve.ondblclick = diffAirwayAchievedEdit;
 diffAirwayStop.onclick = diffAirwayStopEdit;
 
 function diffAirwayInitEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Difficult Airway Initiated Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Difficult Airway Initiated At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Difficult Airway Initiated At","Difficult Airway Initiated Time");
 }
 
 function diffAirwayAchievedEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Difficult Airway Achieved Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Difficult Airway Achieved At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Difficult Airway Achieved At","Difficult Airway Achieved Time");
 }
 
 function diffAirwayStopEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Difficult Airway Stopped Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Difficult Airway Stopped At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Difficult Airway Stopped At","Difficult Airway Stopped Time");
 }
 
 function diffAirwayInitFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Difficult Airway", "initiated");
-    localStorage.setItem("Difficult Airway Initiated Time", timeStamp);
+    localStorage.setItem("Difficult Airway Initiated Time", getCurrentTime());
 }
 
 function diffAirwayAchieveFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Difficult Airway", "achieved");
-    localStorage.setItem("Difficult Airway Achieved Time", timeStamp);
+    localStorage.setItem("Difficult Airway Achieved Time", getCurrentTime());
 }
 
 function diffAirwayStopFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Difficult Airway", "stopped");
-    localStorage.setItem("Difficult Airway Stopped Time", timeStamp);
+    localStorage.setItem("Difficult Airway Stopped Time", getCurrentTime());
 }
 
 var surgAirwayInit = document.getElementById("surgAirwayInit");
@@ -770,162 +198,30 @@ surgAirwayAchieve.ondblclick = surgAirwayAchievedEdit;
 surgAirwayStop.onclick = surgAirwayStopEdit;
 
 function surgAirwayInitEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Surgical Airway Initiated Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Surgical Airway Initiated At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Surgical Airway Initiated At","Surgical Airway Initiated Time");
 }
 
 function surgAirwayAchievedEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Surgical Airway Achieved Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Surgical Airway Achieved At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Surgical Airway Achieved At","Surgical Airway Achieved Time");
 }
 
 function surgAirwayStopEdit(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    var saveBtn = document.getElementById('saveModal');
-    saveBtn.onclick = function(){
-        var hr = parseInt(document.getElementById('hourStamp').value, 10);
-        var min = parseInt(document.getElementById('minuteStamp').value, 10);
-        var sec = parseInt(document.getElementById('secondStamp').value, 10);
-        var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem("Surgical Airway Stopped Time", timeStamp);
-        $("#popUp").modal('hide');
-    }
-
-    document.getElementById('popup-title').innerHTML = "Surgical Airway Stopped At";
-    document.getElementById('hourStamp').value = min;
-    document.getElementById('minuteStamp').value = min;
-    document.getElementById('secondStamp').value = sec;
-    $("#popUp").modal();
+    launchModal("Surgical Airway Stopped At","Surgical Airway Stopped Time");
 }
 
 function surgAirwayInitFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min > 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Surgical Airway", "initiated");
-    localStorage.setItem("Surgical Airway Initiated Time", timeStamp);
+    localStorage.setItem("Surgical Airway Initiated Time", getCurrentTime());
 }
 
 function surgAirwayAchieveFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Surgical Airway", "achieved");
-    localStorage.setItem("Surgical Airway Achieved Time", timeStamp);
+    localStorage.setItem("Surgical Airway Achieved Time", getCurrentTime());
 }
 
 function surgAirwayStopFunc(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
     localStorage.setItem("Surgical Airway", "stopped");
-    localStorage.setItem("Surgical Airway Stopped Time", timeStamp);
+    localStorage.setItem("Surgical Airway Stopped Time", getCurrentTime());
 }
 /**
  * Set up Breathing buttons
@@ -1385,6 +681,67 @@ function eye2() {
 
 function eye1() {
     localStorage.setItem("GCS Eye", "1");
+}
+
+function fetchTimeModal(){
+    var hr = parseInt(document.getElementById('hourStamp').value, 10);
+    var min = parseInt(document.getElementById('minuteStamp').value, 10);
+    var sec = parseInt(document.getElementById('secondStamp').value, 10);
+    var timeStamp = hr.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    return timeStamp;
+}
+
+function getCurrentTime(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var hour = 0;
+    var timeStamp = "";
+    if(min < 1){
+        min = 0;
+    }
+
+    if(min >= 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    else{
+        timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    return timeStamp;
+}
+
+function launchModal(modalTitle, step){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var hour = 0;
+    if(min < 1){
+        min = 0;
+    }
+
+    if(min >= 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        localStorage.setItem(step, fetchTimeModal());
+        $("#popUp").modal('hide');
+        console.log(localStorage.getItem(step));
+    }
+
+    document.getElementById('popup-title').innerHTML = modalTitle;
+    document.getElementById('hourStamp').value = min;
+    document.getElementById('minuteStamp').value = min;
+    document.getElementById('secondStamp').value = sec;
+    $("#popUp").modal();
+
 }
 /**
  * Set up Exposure buttons
