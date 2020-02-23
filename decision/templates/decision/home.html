@@ -628,6 +628,28 @@
         </div>
 
         <p><br></p>
+
+         <div class="modal" tabindex="-1" role="dialog" id="popUp">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modal-title" id="popup-title"></p>
+              </div>
+              <div class="modal-body">
+                    <div>
+                        <input type="number" id="hourStamp" min="0" max="59"/> Hr
+                        <input type="number" id="minuteStamp" min="0" max="59"/> Min
+                        <input type="number" id="secondStamp" min="0" max="59"/> Sec
+
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" id="saveModal">Save changes</button>
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--
         ================================================================================
            Javascript initialize all buttons and text fields on main page
