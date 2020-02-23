@@ -46,6 +46,56 @@ def check_alert_thrown(alertName, shouldBeThrown):
 	elif not shouldBeThrown and alertThrown:
 		print('ERROR', alertName, "was thrown.")
 
+def HRTest():
+	print("\n####    Heart Rate Test    ####")
+
+	# First check that no brady alert is thrown
+	check_alert_thrown('brady-alert', False)
+
+	# Enter HR of 59 or lower, triggering brady-alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '49')
+	goto_summary()
+	check_alert_thrown('brady-alert', True)
+
+	# Enter HR between 60 - 100 to dismiss brady-alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '70')
+	goto_summary()
+	check_alert_thrown('brady-alert', False)
+
+	# Enter HR of 101 or higher to trigger tach-alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '120')
+	goto_summary()
+	check_alert_thrown('tach-alert', True)
+
+	# Enter HR between 60 - 100, dismissing tach-alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '75')
+	goto_summary()
+	check_alert_thrown('tach-alert', False)
+
+	# Set hr less than 59 and then greater than 100
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '40')
+	set_value_element_id('hr', '120')
+	goto_summary()
+	check_alert_thrown('brady-alert', False)
+
+	# Enter HR of 59 or lower, triggering brady-alert and dismissing tach-alert
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '40')
+	goto_summary()
+	check_alert_thrown('tach-alert', False)
+	check_alert_thrown('brady-alert', True)
+
 def BPTest():
 	print("\n####    Systolic BP Test    ####")
 	#Test Case   - Hypotensive alert:
@@ -367,6 +417,8 @@ check_alert_thrown('left-breathing-alert', False)
 perfusionTests()
 
 BPTest()
+
+HRTest()
 
 #Close Selenium
 driver.quit()
