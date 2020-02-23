@@ -9,6 +9,11 @@ def click_element_id(buttonName):
 	element.click()
 	time.sleep(1)
 
+def set_value_element_id(fieldId, value):
+	element = driver.find_element_by_id(fieldId)
+	element.send_keys(value)
+	time.sleep(1)
+
 def click_button_name(buttonName):
 	element = driver.find_element_by_name(buttonName)
 	element.click()
@@ -40,6 +45,41 @@ def check_alert_thrown(alertName, shouldBeThrown):
 		print('CORRECT', alertName, "was not thrown.")
 	elif not shouldBeThrown and alertThrown:
 		print('ERROR', alertName, "was thrown.")
+
+def BPTest():
+	print("\n####    Systolic BP Test    ####")
+	#Test Case   - Hypotensive alert:
+	check_alert_thrown('hypo-alert', False)
+
+	#Go back to Decision App
+	goto_decision_app()
+
+	#Open circulation header
+	click_element_id('headingThree')
+
+	#Enter bp value of 10
+	set_value_element_id('bp', '10')
+
+	#Enter age of 2
+	set_value_element_id('age', '2')
+
+	#Ensure ‘hypo-alert’  is present
+	goto_summary()
+	check_alert_thrown('hypo-alert', True)
+
+	#Go back to Decision App
+	goto_decision_app()
+
+	#Open circulation header
+	click_element_id('headingThree')
+
+	#Enter bp value of 55
+	#Keep age of 2
+	set_value_element_id('bp', '55')
+
+	#Ensure ‘hypo-alert’ is gone
+	goto_summary()
+	check_alert_thrown('hypo-alert', False)
 
 
 def perfusionTests():
@@ -325,6 +365,8 @@ check_alert_thrown('right-breathing-alert', False)
 check_alert_thrown('left-breathing-alert', False)
 
 perfusionTests()
+
+BPTest()
 
 #Close Selenium
 driver.quit()
