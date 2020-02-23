@@ -78,7 +78,7 @@ lmaStop.onclick = lmaStopFunc;
 
 lmaInit.ondblclick = lmaInitEdit;
 lmaAchieve.ondblclick = lmaAchievedEdit;
-lmaStop.onclick = lmaStopEdit;
+lmaStop.ondblclick = lmaStopEdit;
 
 function lmaInitEdit(){
     launchModal("LMA Initiated At","LMA Initiated Time");
@@ -117,7 +117,7 @@ ettStop.onclick = ettStopFunc;
 
 ettInit.ondblclick = ettInitEdit;
 ettAchieve.ondblclick = ettAchievedEdit;
-ettStop.onclick = ettStopEdit;
+ettStop.ondblclick = ettStopEdit;
 
 function ettInitEdit(){
     launchModal("ETT Initiated At","ETT Initiated Time");
@@ -156,7 +156,7 @@ diffAirwayStop.onclick = diffAirwayStopFunc;
 
 diffAirwayInit.ondblclick = diffAirwayInitEdit;
 diffAirwayAchieve.ondblclick = diffAirwayAchievedEdit;
-diffAirwayStop.onclick = diffAirwayStopEdit;
+diffAirwayStop.ondblclick = diffAirwayStopEdit;
 
 function diffAirwayInitEdit(){
     launchModal("Difficult Airway Initiated At","Difficult Airway Initiated Time");
@@ -195,7 +195,7 @@ surgAirwayStop.onclick = surgAirwayStopFunc;
 
 surgAirwayInit.ondblclick = surgAirwayInitEdit;
 surgAirwayAchieve.ondblclick = surgAirwayAchievedEdit;
-surgAirwayStop.onclick = surgAirwayStopEdit;
+surgAirwayStop.ondblclick = surgAirwayStopEdit;
 
 function surgAirwayInitEdit(){
     launchModal("Surgical Airway Initiated At","Surgical Airway Initiated Time");
