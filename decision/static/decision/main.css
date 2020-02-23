@@ -19,6 +19,7 @@ ul {
     background-color: rgba(0, 0, 0, 0);
     vertical-align: middle;
     border-bottom: 1px solid #2b7a78;
+    align-content: center;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -275,6 +276,11 @@ h4 {
 
 /*Allows for spacing between the vertical button groups*/
 .btn-group-vertical>button{
+    margin-bottom: 10px;
+    border-radius: 0.25rem !important;
+}
+
+.btn-space {
     margin-bottom: 10px;
     border-radius: 0.25rem !important;
 }
