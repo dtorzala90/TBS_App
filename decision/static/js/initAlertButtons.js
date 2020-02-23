@@ -684,16 +684,16 @@ function eye1() {
 }
 
 function fetchTimeModal(){
-    var hr = parseInt(document.getElementById('hourStamp').value, 10);
-    var min = parseInt(document.getElementById('minuteStamp').value, 10);
-    var sec = parseInt(document.getElementById('secondStamp').value, 10);
+    var hr = Math.round(parseInt(document.getElementById('hourStamp').value, 10));
+    var min = Math.round(parseInt(document.getElementById('minuteStamp').value, 10));
+    var sec =Math.round(parseInt(document.getElementById('secondStamp').value, 10));
     var timeStamp = hr.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
     return timeStamp;
 }
 
 function getCurrentTime(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
+    var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
     var timeStamp = "";
     if(min < 1){
@@ -701,8 +701,8 @@ function getCurrentTime(){
     }
 
     if(min >= 60){
-        hour = min/60;
-        min = min%60;
+        hour = Math.round(min/60);
+        min = Math.round(min%60);
     }
 
     if(hour !== 0){
@@ -717,16 +717,16 @@ function getCurrentTime(){
 }
 
 function launchModal(modalTitle, step){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
+    var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
     if(min < 1){
         min = 0;
     }
 
     if(min >= 60){
-        hour = min/60;
-        min = min%60;
+        hour = Math.round(min/60);
+        min = Math.round(min%60);
     }
 
     var saveBtn = document.getElementById('saveModal');
@@ -737,7 +737,7 @@ function launchModal(modalTitle, step){
     }
 
     document.getElementById('popup-title').innerHTML = modalTitle;
-    document.getElementById('hourStamp').value = min;
+    document.getElementById('hourStamp').value = hour;
     document.getElementById('minuteStamp').value = min;
     document.getElementById('secondStamp').value = sec;
     $("#popUp").modal();
