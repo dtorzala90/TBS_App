@@ -296,7 +296,9 @@ h4 {
     border-radius: 0.25rem !important;
 }
 
+
 /*Creates border to make btn-light buttons pop against current theme*/
 .btn-light {
     border-color: #2b7a78;
 }
+

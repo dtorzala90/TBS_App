@@ -119,8 +119,8 @@
                                             <td><h4>Oxygen Supplementation</h4></td> <!-- Left cell, section name -->
                                             <td> <!-- Right cell, corresponding buttons -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light">Initiated</button>
-                                                    <button type="button" class="btn btn-dark">Stopped</button>
+                                                    <button type="button" class="btn btn-light" id="oxySupplInit">Initiated</button>
+                                                    <button type="button" class="btn btn-dark" id="oxySupplStop">Stopped</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -130,8 +130,8 @@
                                             <td><h4>Bag Mask</h4></td>
                                             <td> <!-- 'btn-group-vertical' gives buttons a vertical orientation -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light">Initiated</button>
-                                                    <button type="button" class="btn btn-dark">Stopped</button>
+                                                    <button type="button" class="btn btn-light" id="bagMaskInit">Initiated</button>
+                                                    <button type="button" class="btn btn-dark" id="bagMaskStop">Stopped</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -141,9 +141,9 @@
                                             <td><h4>LMA</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light">Initiated</button>
-                                                    <button type="button" class="btn btn-info">Achieved</button>
-                                                    <button type="button" class="btn btn-dark">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="lmaInit">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="lmaAchieved">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="lmaStop">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -153,10 +153,9 @@
                                             <td><h4>Endotracheal Tube</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="ETT">Initiated
-                                                    </button>
-                                                    <button type="button" class="btn btn-info">Achieved</button>
-                                                    <button type="button" class="btn btn-dark">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="ettInit">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="ettAchieved">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="ettStop">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -166,9 +165,9 @@
                                             <td><h4>Difficult Airway</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light">Initiated</button>
-                                                    <button type="button" class="btn btn-info">Achieved</button>
-                                                    <button type="button" class="btn btn-dark">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="diffAirwayInit">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="diffAirwayAchieved">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="diffAirwayStop">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -178,9 +177,9 @@
                                             <td><h4>Surgical Airway</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light">Initiated</button>
-                                                    <button type="button" class="btn btn-info">Achieved</button>
-                                                    <button type="button" class="btn btn-dark">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="surgAirwayInit">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="surgAirwayAchieved">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="surgAirwayStop">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -371,7 +370,7 @@
                                     <table class="table">
                                         <tbody>
 
-                                        <!-- Heart RAte -->
+                                        <!-- Heart Rate -->
                                         <tr>
                                             <td><h4>Heart Rate</h4></td>
                                             <td>
@@ -878,6 +877,28 @@
         </div>
 
         <p><br></p>
+
+         <div class="modal" tabindex="-1" role="dialog" id="popUp">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modal-title" id="popup-title"></p>
+              </div>
+              <div class="modal-body">
+                    <div>
+                        <input type="number" id="hourStamp" min="0" max="59"/> Hr
+                        <input type="number" id="minuteStamp" min="0" max="59"/> Min
+                        <input type="number" id="secondStamp" min="0" max="59"/> Sec
+
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" id="saveModal">Save changes</button>
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!--
         ================================================================================
