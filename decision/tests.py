@@ -339,7 +339,7 @@ chrome_options.add_argument('log-level=2')
 driver = webdriver.Chrome('decision/static/chromedriver', options=chrome_options)
 
 #Get the website you are looking for
-driver.get('http://127.0.0.1:8080/')
+driver.get('http://127.0.0.1:8000/')
 time.sleep(1)
 
 #Click Start Button
