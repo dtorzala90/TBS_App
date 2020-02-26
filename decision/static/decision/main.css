@@ -12,23 +12,28 @@ h1, h2, h3, h4, h5, h6 {
 ul {
     margin: 0;
 }
-/*Remove table lines and make it transparent*/
+/*Adjust table styling, such as borders and cell fill*/
 .table>tbody>tr>td,
 .table>tbody>tr>th {
     border-top: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     vertical-align: middle;
     border-bottom: 1px solid #2b7a78;
+    align-content: center;
+    table-layout: auto;
 }
 
+/*Color for navigation bar links*/
 .site-header .navbar-nav .nav-link {
     color: white;
 }
 
+/*Changes nav bar link color when interacted with*/
 .site-header .navbar-nav .nav-link:hover {
     color: #9fedd7;
 }
 
+/*Background color for nav bar*/
 .navbar-default {
     background-color: #17252a;
 }
@@ -81,6 +86,7 @@ ul {
     display: block;
 }
 
+/*Styling accordion headers when they are opened/closed*/
 .card-header::after {
     content: "\f106";
     color: white;
@@ -113,6 +119,7 @@ ul {
     display: inline-block;
     font-size: 200px;
 }
+
 /*Formatting the text alert on the summary page*/
 .alert-format {
     align-content: center;
@@ -159,6 +166,7 @@ ul {
     padding-top:15px;
     overflow: auto;
 }
+
 /*Format the PCH logo in the navbar*/
 #brandImage {
     width: 150px;
@@ -233,6 +241,7 @@ ul {
     background: #def2f1;
     border: 1.5px solid #2b7a78;
    }
+
 /*Format the geometric background graphics on the bottom*/
 /*#bgDesign {
     position: fixed;
@@ -247,6 +256,7 @@ ul {
 .nounderline {
   text-decoration: none !important;
 }
+
 /*Change hover color for sidebar letters*/
 a:hover{
     color: #9fedd7;
@@ -267,9 +277,28 @@ h4 {
     color: #17252a;
 }
 
+/*Page accents, this is for the line under the nav bar*/
 .nav-border {
     border-bottom: 4px solid #fce181;
-    z-index: 0;
+    z-index: 1;
 
+}
+
+/*Allows for spacing between the vertical button groups*/
+.btn-group-vertical>button{
+    margin-bottom: 10px;
+    border-radius: 0.25rem !important;
+}
+
+/*Adjusts spacing between clustered buttons in the 'Pupils' section*/
+.btn-space {
+    margin-bottom: 10px;
+    border-radius: 0.25rem !important;
+}
+
+
+/*Creates border to make btn-light buttons pop against current theme*/
+.btn-light {
+    border-color: #2b7a78;
 }
 

@@ -5,11 +5,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
     <h1>
+
         <!--
-       ================================================================================
-       Timer that displays time elapsed since beginning of Trauma
-       ================================================================================
-       -->
+        ================================================================================
+        Timer that displays time elapsed since beginning of Trauma
+        ================================================================================
+        -->
+
         <div class="container timer-style" id="timer">
             <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
 
@@ -18,6 +20,7 @@
             Javascript to create new timer for current session
             ================================================================================
             -->
+
             <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
 
         </div>
@@ -27,48 +30,68 @@
     <hr>
     <br>
 
+    <!--
+    ================================================================================
+    Side navigation bar for each accordion section ABCDE
+    ================================================================================
+    -->
 
     <div class="sidenav">
         <div style="text-align: center;">
             <br>
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true"
                     aria-controls="collapseOne">
                 <a href="#A">A</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true"
                     aria-controls="collapseTwo">
                 <a href="#B">B</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true"
                     aria-controls="collapseThree">
                 <a href="#C">C</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true"
                     aria-controls="collapseFour">
                 <a href="#D">D</a>
             </button>
 
-            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFive"
+                    aria-expanded="true"
                     aria-controls="collapseFive">
                 <a href="#E">E</a>
             </button>
         </div>
     </div>
 
+    <!--
+    ================================================================================
+    Survey/Checklist Accordion
+
+    This entire checklist uses an accordion with card bodies specified by
+    Bootstrap. Each section of the checklist uses a table split into two columns,
+    or more specifically table cells per the '<td>' tags, to organize contents; on
+    the left is the section header (e.g., "LMA"), and on the right are the
+    corresponding buttons (in this case, "Initiated"/"Achieved"/"Removed"). Each
+    table is wrapped in a <form> element to record input, since it's a survey
+    ================================================================================
+    -->
+
     <div class="accordion" id="accordion"> <!-- Accordion container with card layout -->
 
         <!--
         ================================================================================
         Airway Checklist
-
-        - A table was used to organize the steps of Airway in a vertical fashion. Buttons
-          were added next to each step according to the sample UI for future timer
-          functionality. It serves as a very basic layout for Airway.
         ================================================================================
         -->
+
         <div class="card">
             <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
                  aria-expanded="false"
@@ -80,20 +103,21 @@
                 </h5>
             </div>
 
-            <div id="collapseOne" class="collapse hide collapse-A" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapseOne" class="collapse hide collapse-A" aria-labelledby="headingOne"
+                 data-parent="#accordion">
                 <div class="card-body">
                     <a id="A">
                         <form> <!-- Container for table contents -->
                             <div class="container">
 
                                 <div class="row justify-content-left">
-                                    <table class="table">
+                                    <table class="table"> <!-- Beginning of table -->
                                         <tbody>
 
                                         <!-- Oxygen Supplementation -->
                                         <tr>
-                                            <td><h4>Oxygen Supplementation</h4></td>
-                                            <td>
+                                            <td><h4>Oxygen Supplementation</h4></td> <!-- Left cell, section name -->
+                                            <td> <!-- Right cell, corresponding buttons -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" id="oxySupplInit">Initiated</button>
                                                     <button type="button" class="btn btn-dark" id="oxySupplStop">Stopped</button>
@@ -104,7 +128,7 @@
                                         <!-- Bag Mask -->
                                         <tr>
                                             <td><h4>Bag Mask</h4></td>
-                                            <td>
+                                            <td> <!-- 'btn-group-vertical' gives buttons a vertical orientation -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" id="bagMaskInit">Initiated</button>
                                                     <button type="button" class="btn btn-dark" id="bagMaskStop">Stopped</button>
@@ -170,11 +194,13 @@
                 </div>
             </div>
         </div>
+
         <!--
         ================================================================================
         Breathing Checklist
         ================================================================================
         -->
+
         <div class="card">
             <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo"
                  aria-expanded="false"
@@ -186,87 +212,141 @@
                 </h5>
             </div>
 
-            <div id="collapseTwo" class="collapse hide collapse-B" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div id="collapseTwo" class="collapse hide collapse-B" aria-labelledby="headingTwo"
+                 data-parent="#accordion">
                 <div class="card-body">
+                    <a id="B">
 
-                    <form> <!-- Container for table contents -->
-                        <div class="container">
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
 
-                            <div class="row justify-content-left">
-                                <table class="table">
-                                    <tbody>
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
 
-                                    <!-- Placeholder for content, copy for more cells -->
+                                        <!-- Spontaneous Breathing -->
+                                        <tr>
+                                            <td><h4>Spontaneous Breathing</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="sponbreath"
+                                                            value="yes">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="sponbreath"
+                                                            value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Spontaneuous breathing -->
-                                        <td style="vertical-align: middle"><h4>Spontaneous Breathing</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="sponbreath" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="sponbreath" value="no"> No<br></label>
+                                        <!-- Assisted Breathing -->
+                                        <tr>
+                                            <td><h4>Assisted Breathing</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="assistb"
+                                                            value="yes">
+                                                        Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="assistb"
+                                                            value="no">
+                                                        No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Right: Chest Rise / Breath Sounds -->
+                                        <tr>
+                                            <td><h4>Right: Chest Rise / Breath Sounds</h4>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="rchest"
+                                                            id="rchestyes"
+                                                            value="yes">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="rchest"
+                                                            id="rchestno"
+                                                            value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Adequate Ventilation -->
-                                        <td style="vertical-align: middle"><h4>Assisted Breathing</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="assistb" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="assistb" value="no"> No<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr> <!-- Right: Chest Rise -->
-                                        <td style="vertical-align: middle"><h4>Right: Chest Rise / Breath Sounds</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="rchest" id="rchestyes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="rchest" id="rchestno" value="no"> No<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr> <!-- Left: Chest X-ray-->
-                                        <td style="vertical-align: middle"><h4>Left: Chest Rise / Breath Sounds</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="lchest" id="lchestyes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="lchest" id="lchestno" value="no"> No<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr> <!-- Aterial Blood Gas -->
-                                        <td style="vertical-align: middle"><h4>End Tidal CO</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="etco" id="etco2_none" value="no"> No Measurement<br></label>
-                                                <label> <input type="radio" name="etco" id="etco2_less25" value="25"> ETCO<sub>2</sub> < 25 <br></label>
-                                                <label> <input type="radio" name="etco" id="etco2_25plus" value="30"> ETCO<sub>2</sub> 25-30 <br></label>
-                                                <label><input type="radio" name="etco" id="etco2_30plus" value="35"> ETCO<sub>2</sub> 30-35 <br></label>
-                                                <label><input type="radio" name="etco" id="etco2_35plus" value="40"> ETCO<sub>2</sub> 35-40 <br></label>
-                                                <label><input type="radio" name="etco" id="etco2_40plus" value="50"> ETCO<sub>2</sub> 40-50 <br></label>
-                                                <label> <input type="radio" name="etco" id="etco2_50plus" value="50+"> ETCO<sub>2</sub> > 50 <br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                        <!-- Left: Chest Rise / Breath Sounds-->
+                                        <tr>
+                                            <td><h4>Left: Chest Rise / Breath Sounds</h4>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="lchest"
+                                                            id="lchestyes"
+                                                            value="yes">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="lchest"
+                                                            id="lchestno"
+                                                            value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- End Tidal CO -->
+                                        <tr>
+                                            <td><h4>End Tidal CO</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_none"
+                                                            value="no">
+                                                        No Measurement
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_less25" value="25">
+                                                        ETCO<sub>2</sub> < 25
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_25plus" value="30">
+                                                        ETCO<sub>2</sub> 25-30
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_30plus" value="35">
+                                                        ETCO<sub>2</sub> 30-35
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_35plus" value="40">
+                                                        ETCO<sub>2</sub> 35-40
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_40plus" value="50">
+                                                        ETCO<sub>2</sub> 40-50
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_50plus" value="50+">
+                                                        ETCO<sub>2</sub> > 50
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-
-                        </div>
-                    </form>
+                        </form>
+                    </a>
 
                 </div>
             </div>
         </div>
-
 
         <!--
         ================================================================================
         Circulation Checklist
         ================================================================================
         -->
+
         <div class="card">
             <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
                  aria-expanded="false"
@@ -281,137 +361,220 @@
             <div id="collapseThree" class="collapse hide collapse-C" aria-labelledby="headingThree"
                  data-parent="#accordion">
                 <div class="card-body">
+                    <a id="C">
 
-                    <form> <!-- Container for table contents -->
-                        <div class="container">
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
 
-                            <div class="row justify-content-left">
-                                <table class="table">
-                                    <tbody>
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
 
-                                   <!-- Heart RAte -->
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Heart Rate</h4></td>
-                                        <td>
-                                            <div class="form-group w-60">
-                                                <input class="form-control" type="text" id="hr" name="hr" value="" placeholder="BPM">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Heart Rate -->
+                                        <tr>
+                                            <td><h4>Heart Rate</h4></td>
+                                            <td>
+                                                <div class="form-group w-60">
+                                                    <input class="form-control" type="text" id="hr" name="hr" value=""
+                                                           placeholder="BPM">
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Blood Pressure -->
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Systolic Blood Pressure</h4></td>
-                                        <td>
-                                            <div class="form-group w-60">
-                                                <input class="form-control" type="text" id="bp" name="bp" value="" placeholder="mmHg">
-                                                <input class="form-control" type="text" id="age" name="age" value="" placeholder="Patient Age">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Systolic Blood Pressure -->
+                                        <tr>
+                                            <td><h4>Systolic Blood Pressure</h4></td>
+                                            <td>
+                                                <div class="form-group w-60">
+                                                    <input class="form-control" type="text" id="bp" name="bp" value=""
+                                                           placeholder="mmHg">
+                                                    <input class="form-control" type="text" id="age" name="age" value=""
+                                                           placeholder="Patient Age">
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Sites of Rapid Blood Loss -->
+                                        <!-- Perfusion -->
+                                        <tr>
+                                            <td><h4>Perfusion</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <span style="font-weight:bold">Lip Color:</span>
+                                                    <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
+                                                            value="pi">Pink
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
+                                                            value="wh">White
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="lipc"
+                                                            id="lipc-unk"
+                                                            value="unk">Unable To Assess
+                                                    </button>
 
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Perfusion</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                              <span style="font-weight:bold">Lip Color:</span>
-                                                <label><input type="radio" name="lipc" id="lipc-pi" value="pi"> Pink<br></label>
-                                                <label><input type="radio" name="lipc" id="lipc-wh" value="wh"> White<br></label>
-                                                <label><input type="radio" name="lipc" id="lipc-unk" value="unk"> Unable To Assess <br><br></label>
+                                                    <br>
 
-                                              <span style="font-weight:bold">Nail Color:</span>
-                                                <label><input type="radio" name="nailc" id="nailc-pi" value="pi"> Pink<br></label>
-                                                <label> <input type="radio" name="nailc" id="nailc-wh" value="wh"> White<br></label>
-                                                <label> <input type="radio" name="nailc" id="nailc-unk" value="unk"> Unable To Assess<br><br></label>
+                                                    <span style="font-weight:bold">Nail Color:</span>
+                                                    <button type="button" class="btn btn-light" name="nailc"
+                                                            id="nailc-pi"
+                                                            value="pi">Pink
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="nailc"
+                                                            id="nailc-wh"
+                                                            value="wh">White
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="nailc"
+                                                            id="nailc-unk"
+                                                            value="unk">Unable To Assess
+                                                    </button>
 
-                                              <span style="font-weight:bold">Cap Refill:</span>
-                                                <label> <input type="radio" name="capr" id="caprt-2" value="<2"> <2s<br></label>
-                                                <label> <input type="radio" name="capr" id="caprt-24" value="2-4"> 2s-4s<br></label>
-                                                <label> <input type="radio" name="capr" id="caprt-4" value=">4"> >4s<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                    <br>
 
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>IV Access</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                              <span style="font-weight:bold">Functional Peripheral IV:</span>
-                                                <label><input type="radio" name="funp" id="funp0" value="no"> None<br></label>
-                                                <label><input type="radio" name="funp" id="funp1" value="1"> 1<br></label>
-                                                <label><input type="radio" name="funp" id="funp2" value="2"> 2<br></label>
-                                                <label> <input type="radio" name="funp" id="funp>2" value=">2"> >2<br><br></label>
+                                                    <span style="font-weight:bold">Cap Refill:</span>
+                                                    <button type="button" class="btn btn-light" name="capr" id="caprt-2"
+                                                            value="<2"><2s
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="capr"
+                                                            id="caprt-24"
+                                                            value="2-4">2s-4s
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="capr" id="caprt-4"
+                                                            value=">4">>4s
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                             <span style="font-weight:bold">Intraosseous Line:</span>
-                                                <label><input type="radio" name="intral" id="intralYes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="intral" id="intralNo" value="no"> No<br><br></label>
+                                        <!-- IV Access -->
+                                        <tr>
+                                            <td><h4>IV Access</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <span style="font-weight:bold">Functional Peripheral IV:</span>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp0"
+                                                            value="no">None
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp1"
+                                                            value="1">1
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp2"
+                                                            value="2">2
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp>2"
+                                                            value=">2">>2
+                                                    </button>
 
-                                                <span style="font-weight:bold">Central Line:</span>
-                                               <label><input type="radio" name="cenl" id="cenlYes" value="yes"> Yes<br></label>
-                                               <label><input type="radio" name="cenl" id="cenlNo" value="no"> No<br></label>
+                                                    <br>
 
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                    <span style="font-weight:bold">Intraosseous Line:</span>
+                                                    <button type="button" class="btn btn-light" name="intral"
+                                                            id="intralYes"
+                                                            value="yes"> Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="intral"
+                                                            id="intralNo"
+                                                            value="no">No
+                                                    </button>
 
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>IV Fluids</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="ivf" id="ivf-none" value="no"> None<br></label>
-                                                <label><input type="radio" name="ivf" id="ivf-<20" value="<20"> < 20mL/kg <br></label>
-                                                <label><input type="radio" name="ivf" id="ivf->20" value=">20"> >= 20mL/kg<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                    <br>
 
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Type And Cross</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="tac" id="typeAndCrossYes" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="tac" id="typeAndCrossNo" value="no"> No <br></label>
+                                                    <span style="font-weight:bold">Central Line:</span>
+                                                    <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
+                                                            value="yes"> Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
+                                                            value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- IV Fluids -->
+                                        <tr>
+                                            <td><h4>IV Fluids</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="ivf" id="ivf-none"
+                                                            value="no">None
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="ivf" id="ivf-<20"
+                                                            value="<20">< 20mL/kg
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="ivf" id="ivf->20"
+                                                            value=">20">>= 20mL/kg
+                                                    </button>
 
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Transfused PRBCs</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="tprbc" value="yes" id="tprbcYes"> Yes<br></label>
-                                                <label><input type="radio" name="tprbc" value="no" id="tprbcNo"> No <br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                    <br>
 
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>  Massive Transfusion Protocol</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="mtp" value="yes" id="mtpYes"> Activated<br></label>
-                                                <label><input type="radio" name="mtp" value="no" id="mtpNo"> No <br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                                    <button type="button" class="btn btn-light">Started</button>
+                                                    <button type="button" class="btn btn-info">Additional Fluids
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">Completed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Type and Cross -->
+                                        <tr>
+                                            <td><h4>Type And Cross</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="tac"
+                                                            id="typeAndCrossYes" value="yes">Drawn
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="tac"
+                                                            id="typeAndCrossNo" value="no">Sent
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Transfused PRBCs -->
+                                        <tr>
+                                            <td><h4>Transfused PRBCs</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="tprbc"
+                                                            value="yes">
+                                                        Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="tprbc" value="no">
+                                                        No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Massive Transfusion Protocol -->
+                                        <tr>
+                                            <td><h4> Massive Transfusion Protocol</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="mtp" value="yes">
+                                                        Activated
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="mtp" value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-
-                        </div>
-                    </form>
+                        </form>
+                    </a>
 
                 </div>
             </div>
         </div>
+
         <!--
         ================================================================================
         Disability Checklist
         ================================================================================
         -->
+
         <div class="card">
             <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour"
                  aria-expanded="false"
@@ -426,104 +589,184 @@
             <div id="collapseFour" class="collapse hide collapse-D" aria-labelledby="headingFour"
                  data-parent="#accordion">
                 <div class="card-body">
+                    <a id="D">
 
-                    <form> <!-- Container for table contents -->
-                        <div class="container">
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
 
-                            <div class="row justify-content-left">
-                                <table class="table">
-                                    <tbody>
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
 
-                                    <tr style="border-bottom: 2px solid #29323A;">
-                                        <td colspan = "2"><h4>Glasgow Coma Scale:</h4></td>
-                                    </tr>
+                                        <!-- Glasgow Coma Scale (header) -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td colspan="2"><h4>Glasgow Coma Scale:</h4></td>
+                                        </tr>
 
-                                    <tr> <!-- Optimize ABC -->
+                                        <!-- GCS Motor -->
+                                        <tr>
+                                            <td><h4>Motor</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor6" value="ob">
+                                                        <b>6</b> - Obeys Commands
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor5" value="lo">
+                                                        <b>5</b> - Localizing Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor4" value="wi">
+                                                        <b>4</b> - Withdraw From Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor3" value="fl">
+                                                        <b>3</b> - Flexion To Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor2" value="ex">
+                                                        <b>2</b> - Extension To Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor1" value="no">
+                                                        <b>1</b> - No Motor Response
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                        <td style="vertical-align: middle"><h4>Motor</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
-                                                <label><input type="radio" name="motor" id="motor6" value="ob"> <b>6</b> - Obeys Commands<br></label>
-                                                <label><input type="radio" name="motor" id="motor5" value="lo"> <b>5</b> - Localizing Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor4" value="wi"> <b>4</b> - Withdraw From Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor3" value="fl"> <b>3</b> - Flexion To Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor2" value="ex"> <b>2</b> - Extension To Pain<br></label>
-                                                <label><input type="radio" name="motor" id="motor1" value="no"> <b>1</b> - No Motor Response<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- GCS Verbal -->
+                                        <tr>
+                                            <td><h4>Verbal</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal5" value="or">
+                                                        <b>5</b> - Oriented
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal4" value="co">
+                                                        <b>4</b> - Confused
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal3" value="wo">
+                                                        <b>3</b> - Inappropriate Words
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal2" value="so">
+                                                        <b>2</b> - Incomprehensible Sounds
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal1" value="no">
+                                                        <b>1</b> - No Verbal Response
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Optimize ABC -->
-                                        <td style="vertical-align: middle"><h4>Verbal</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
-                                                <label><input type="radio" name="verbal" id="verbal5" value="or"> <b>5</b> - Oriented<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal4" value="co"> <b>4</b> - Confused<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal3" value="wo"> <b>3</b> - Inappropriate Words<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal2" value="so"> <b>2</b> - Incomprehensible Sounds<br></label>
-                                                <label><input type="radio" name="verbal" id="verbal1" value="no"> <b>1</b> - No Verbal Response<br></label>
+                                        <!-- GCS Eye -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td><h4>Eye</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye4" value="sp">
+                                                        <b>4</b> - Opens Spontaneously
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye3" value="ve">
+                                                        <b>3</b> - Open To Verbal Command
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye2" value="pa">
+                                                        <b>2</b> - Open To Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye1" value="no">
+                                                        <b>1</b> - No Eye Opening
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Pupils -->
+                                        <tr>
+                                            <td><h4>Pupils</h4></td>
+                                            <td width="60%">
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <span style="font-weight:bold">Equal:</span>
+                                                            <button type="button" class="btn btn-light btn-space"
+                                                                    name="equal" value="yes">Yes
+                                                            </button>
+                                                            <button type="button" class="btn btn-dark btn-space"
+                                                                    name="equal" value="no">No
+                                                            </button>
+                                                        </div>
 
-                                    <tr style="border-bottom: 2px solid #29323A;"> <!-- Optimize ABC -->
-                                        <td style="vertical-align: middle"><h4>Eye</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group" style="white-space: nowrap;">
-                                                <label><input type="radio" name="eye" id="eye4" value="sp"> <b>4</b> - Opens Spontaneously<br></label>
-                                                <label><input type="radio" name="eye" id="eye3" value="ve"> <b>3</b> - Open To Verbal Command<br></label>
-                                                <label><input type="radio" name="eye" id="eye2" value="pa"> <b>2</b> - Open To Pain<br></label>
-                                                <label><input type="radio" name="eye" id="eye1" value="no"> <b>1</b> - No Eye Opening<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                        <div class="col-sm">
+                                                            <span style="font-weight:bold">Round:</span>
+                                                            <button type="button" class="btn btn-light btn-space"
+                                                                    name="round" value="yes">Yes
+                                                            </button>
+                                                            <button type="button" class="btn btn-dark btn-space"
+                                                                    name="round" value="no">No
+                                                            </button>
+                                                        </div>
 
-                                    <!-- AVPU Assessment -->
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Pupils</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                              <span style="font-weight:bold">Equal:</span>
-                                                <label><input type="radio" name="equal" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="equal" value="no"> No<br><br></label>
+                                                        <div class="col-sm">
+                                                            <span style="font-weight:bold">Reactive:</span>
+                                                            <button type="button" class="btn btn-light btn-space"
+                                                                    name="rlight" value="yes">Yes
+                                                            </button>
+                                                            <button type="button" class="btn btn-dark btn-space"
+                                                                    name="rlight" value="no">No
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                              <span style="font-weight:bold">Round:</span>
-                                                <label><input type="radio" name="round" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="round" value="no"> No<br><br></label>
+                                        <!-- Moves All Extremities -->
+                                        <tr>
+                                            <td><h4>Moves All Extremities</h4></td>
+                                            <td width="60%">
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="movee"
+                                                            value="yes">
+                                                        Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" name="movee"
+                                                            value="onlyinj">
+                                                        Limited Only by Injury
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" name="movee" value="no">
+                                                        No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                                              <span style="font-weight:bold">Reactive To Light:</span>
-                                                <label><input type="radio" name="rlight" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="rlight" value="no"> No<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Drug Chart Review -->
-                                    <tr>
-                                        <td style="vertical-align: middle"><h4>Move All Extremities</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical" role="group">
-                                                <label><input type="radio" name="movee" value="yes"> Yes<br></label>
-                                                <label><input type="radio" name="movee" value="no"> No<br></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
-
-                        </div>
-                    </form>
+                        </form>
+                    </a>
 
                 </div>
             </div>
         </div>
+
         <!--
         ================================================================================
         Exposure Checklist
         ================================================================================
         -->
+
         <div class="card">
             <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive"
                  aria-expanded="false"
@@ -538,90 +781,96 @@
             <div id="collapseFive" class="collapse hide collapse-E" aria-labelledby="headingFive"
                  data-parent="#accordion">
                 <div class="card-body">
+                    <a id="E">
 
-                    <form> <!-- Container for table contents -->
-                        <div class="container">
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
 
-                            <div class="row justify-content-left">
-                                <table class="table">
-                                    <tbody>
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
 
-                                    <!-- Placeholder for content, copy for more cells -->
+                                        <!-- Patient in Pain -->
+                                        <tr>
+                                            <td><h4>Patient in Pain?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Insert Content -->
-                                        <td><h4>Patient in Pain?</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark">No</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Patient Bleeding -->
+                                        <tr>
+                                            <td><h4>Patient Bleeding?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Insert Content -->
-                                        <td><h4>Patient Bleeding?</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark">No
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Estimated Blood Loss -->
+                                        <tr>
+                                            <td><h4>Estimated Blood Loss</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-dark">Recorded
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Insert Content -->
-                                        <td><h4>Estimated Blood Loss</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-dark">Recorded
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Patient in Shock -->
+                                        <tr>
+                                            <td><h4>Patient in Shock?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Insert Content -->
-                                        <td><h4>Patient in Shock?</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark">No
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Patient Hemorrhaging -->
+                                        <tr>
+                                            <td><h4>Patient Hemorrhaging?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr> <!-- Insert Content -->
-                                        <td><h4>Patient Hemorrhaging?</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark">No
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <!-- Check for Infection -->
+                                        <tr>
+                                            <td><h4>Check for Infection</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">Completed
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                                    <tr> <!-- Insert Content -->
-                                        <td><h4>Check for Infection</h4></td>
-                                        <td>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-dark">Completed
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
-
-                        </div>
-                    </form>
+                        </form>
+                    </a>
 
                 </div>
             </div>
@@ -650,11 +899,13 @@
             </div>
           </div>
         </div>
+
         <!--
         ================================================================================
-           Javascript initialize all buttons and text fields on main page
+        Javascript initialize all buttons and text fields on main page
         ================================================================================
         -->
+
         <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
     </div>
 
