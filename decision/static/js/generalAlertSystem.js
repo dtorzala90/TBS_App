@@ -647,7 +647,6 @@ function checkTransfusionAlerts() {
 
     if(tprbc === "no"){
          if((sbp < 90 || shock  > 1.2 || hr > 180) && prbcAlert === "not thrown"){
-             console.log("thrown tprbc alert");
             localStorage.setItem("Transfusion PRBC Alert", "thrown");
              $('#alert_placeholder').append(
                  "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
@@ -663,7 +662,6 @@ function checkTransfusionAlerts() {
 
     if(mtp === "no"){
         if((sbp < 90 || shock  > 1.2 || hr > 180) && mtpAlert === "not thrown"){
-            console.log("thrown mtp alert");
             localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
              $('#alert_placeholder').append(
                  "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +

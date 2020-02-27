@@ -510,9 +510,7 @@ def testThreeIV():
 	time.sleep(1)
 
 def testOneTransfusion():
-	resetVariables()
-	print("\n####    Check HR triggered MTP alert  ####")
-
+	print("\n####    Check HR triggered Transfusion alert  ####")
 	goto_decision_app()
 	click_element_id('headingThree')
 	click_element_id('mtpNo')
@@ -539,6 +537,7 @@ def testOneTransfusion():
 
 	goto_decision_app()
 	click_element_id('headingThree')
+	set_value_element_id('hr', '183')
 	set_value_element_id('bp', '91')
 	set_value_element_id('age', '3')
 
@@ -572,7 +571,7 @@ def testOneTransfusion():
 
 def testTwoTransfusion():
 	resetVariables()
-	print("\n####    Check SBP triggered MTP alert  ####")
+	print("\n####    Check SBP triggered Transfusion alert  ####")
 	goto_decision_app()
 	click_element_id('headingThree')
 	click_element_id('mtpNo')
@@ -617,7 +616,7 @@ def testTwoTransfusion():
 
 def testThreeTransfusion():
 	resetVariables()
-	print("\n####    Check SBP triggered MTP alert  ####")
+	print("\n####    Check SBP triggered Transfusion alert  ####")
 	goto_decision_app()
 	click_element_id('headingThree')
 	click_element_id('mtpNo')
@@ -681,8 +680,8 @@ time.sleep(1)
 click_button_name('start-btn')
 
 #Go to Summary Page
-element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
-element.click()
+elem = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
+elem.click()
 time.sleep(1)
 
 #Check if Type and Cross Alert is thrown
@@ -753,7 +752,7 @@ check_alert_thrown('left-breathing-alert', False)
 
 #testTwoIV()
 
-testThreeIV()
+#testThreeIV()
 
 testOneTransfusion()
 
