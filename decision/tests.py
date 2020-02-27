@@ -591,6 +591,10 @@ check_alert_thrown('right-breathing-alert', False)
 #Check if left breathing dismissed
 check_alert_thrown('left-breathing-alert', False)
 
+#testOneIV()
+
+#testTwoIV()
+
 testThreeIV()
 
 perfusionTests()
