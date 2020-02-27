@@ -4,6 +4,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pathlib
 
+def resetVariables():
+	driver.execute_script('localStorage.clear();')
+	time.sleep(1)
+
 def click_element_id(buttonName):
 	element = driver.find_element_by_id(buttonName)
 	element.click()
@@ -332,6 +336,179 @@ def perfusionTest4():
 	check_alert_thrown('poor-perfusion-alert', False)
 	print("")
 
+def testOneIV():
+	print("\n####    Make sure no alerts are thrown if criteria met before time limit    ####")
+	print("\n####    THIS TEST WILL TAKE ABOUT 15-20 MINUTES DUE TO WAIT TIMES FOR ALERTS   ####")
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp2')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+	resetVariables()
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp>2')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+	resetVariables()
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('cenlYes')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('intralYes')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+
+def testTwoIV():
+	print("\n####    Make sure No iv alert is triggered and dismissed properly    ####")
+	print("\n####    THIS TEST WILL TAKE ABOUT 15-20 MINUTES DUE TO WAIT TIMES FOR ALERTS   ####")
+	time.sleep(301)
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp0')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp1')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp2')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp>2')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('cenlYes')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('intralYes')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+
+def testThreeIV():
+	print("\n####    Make sure PIV alert is triggered and dismissed properly    ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp0')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp1')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', True)
+
+	print("\n####    PIV dismissed by PIV 2 button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp2')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+	print("\n####    PIV dismissed by PIV>2 button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp>2')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+	print("\n####    PIV dismissed by Central Line Yes button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('cenlYes')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+	print("\n####    PIV dismissed by Intraosseous Line Yes button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('intralYes')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
 #Begin the driver instance with chromedriver application
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -413,6 +590,8 @@ check_alert_thrown('right-breathing-alert', False)
 
 #Check if left breathing dismissed
 check_alert_thrown('left-breathing-alert', False)
+
+testThreeIV()
 
 perfusionTests()
 
