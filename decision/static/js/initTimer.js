@@ -1,6 +1,8 @@
 <!-- Clear data from previous session and initialize global values -->
 localStorage.clear();
 
+var sessions = '{{ sessions|escapejs }}';
+
 localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");
 
