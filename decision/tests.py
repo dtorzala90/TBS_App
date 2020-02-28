@@ -537,7 +537,6 @@ def testOneTransfusion():
 
 	goto_decision_app()
 	click_element_id('headingThree')
-	set_value_element_id('hr', '183')
 	set_value_element_id('bp', '91')
 	set_value_element_id('age', '3')
 
