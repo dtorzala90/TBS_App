@@ -4,6 +4,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pathlib
 
+def resetVariables():
+	driver.execute_script('localStorage.clear();')
+	time.sleep(1)
+
 def click_element_id(buttonName):
 	element = driver.find_element_by_id(buttonName)
 	element.click()
@@ -332,6 +336,335 @@ def perfusionTest4():
 	check_alert_thrown('poor-perfusion-alert', False)
 	print("")
 
+def testOneIV():
+	print("\n####    Make sure no alerts are thrown if criteria met before time limit    ####")
+	print("\n####    THIS TEST WILL TAKE ABOUT 15-20 MINUTES DUE TO WAIT TIMES FOR ALERTS   ####")
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp2')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+	resetVariables()
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp>2')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+	resetVariables()
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('cenlYes')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('intralYes')
+
+	time.sleep(300)
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+
+def testTwoIV():
+	print("\n####    Make sure No iv alert is triggered and dismissed properly    ####")
+	print("\n####    THIS TEST WILL TAKE ABOUT 15-20 MINUTES DUE TO WAIT TIMES FOR ALERTS   ####")
+	time.sleep(301)
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp0')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp1')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp2')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('funp>2')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('cenlYes')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+	resetVariables()
+	time.sleep(301)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_button_name('intralYes')
+
+	goto_summary()
+	check_alert_thrown('no-iv-alert', False)
+
+
+def testThreeIV():
+	print("\n####    Make sure PIV alert is triggered and dismissed properly    ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp0')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp1')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', True)
+
+	print("\n####    PIV dismissed by PIV 2 button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp2')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+	print("\n####    PIV dismissed by PIV>2 button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('funp>2')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+	print("\n####    PIV dismissed by Central Line Yes button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('cenlYes')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+	print("\n####    PIV dismissed by Intraosseous Line Yes button   ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('intralYes')
+
+	goto_summary()
+	check_alert_thrown('one-piv-alert', False)
+
+	resetVariables()
+	time.sleep(1)
+
+def testOneTransfusion():
+	print("\n####    Check HR triggered Transfusion alert  ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('mtpNo')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '180')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '183')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', True)
+	check_alert_thrown('tprbc-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('bp', '91')
+	set_value_element_id('age', '3')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', True)
+	check_alert_thrown('tprbc-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '179')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '183')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', True)
+	check_alert_thrown('tprbc-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('mtpYes')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+def testTwoTransfusion():
+	resetVariables()
+	print("\n####    Check SBP triggered Transfusion alert  ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('mtpNo')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('bp', '90')
+	set_value_element_id('age', '3')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('bp', '87')
+	set_value_element_id('age', '3')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', True)
+	check_alert_thrown('tprbc-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '179')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', True)
+	check_alert_thrown('tprbc-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('mtpYes')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+def testThreeTransfusion():
+	resetVariables()
+	print("\n####    Check SBP triggered Transfusion alert  ####")
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('mtpNo')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '120')
+
+	set_value_element_id('bp', '100')
+	set_value_element_id('age', '3')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '100')
+
+	set_value_element_id('bp', '100')
+	set_value_element_id('age', '3')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	set_value_element_id('hr', '200')
+
+	set_value_element_id('bp', '100')
+	set_value_element_id('age', '3')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', True)
+	check_alert_thrown('tprbc-alert', True)
+
+	goto_decision_app()
+	click_element_id('headingThree')
+	click_element_id('mtpYes')
+
+	goto_summary()
+	check_alert_thrown('mtp-alert', False)
+	check_alert_thrown('tprbc-alert', False)
+
 #Begin the driver instance with chromedriver application
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -339,15 +672,15 @@ chrome_options.add_argument('log-level=2')
 driver = webdriver.Chrome('decision/static/chromedriver', options=chrome_options)
 
 #Get the website you are looking for
-driver.get('http://127.0.0.1:8080/')
+driver.get('http://127.0.0.1:8000/')
 time.sleep(1)
 
 #Click Start Button
 click_button_name('start-btn')
 
 #Go to Summary Page
-element = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
-element.click()
+elem = driver.find_element_by_xpath('//*[@id="navbarToggle"]/div[1]/a[2]')
+elem.click()
 time.sleep(1)
 
 #Check if Type and Cross Alert is thrown
@@ -413,6 +746,18 @@ check_alert_thrown('right-breathing-alert', False)
 
 #Check if left breathing dismissed
 check_alert_thrown('left-breathing-alert', False)
+
+#testOneIV()
+
+#testTwoIV()
+
+#testThreeIV()
+
+testOneTransfusion()
+
+testTwoTransfusion()
+
+testThreeTransfusion()
 
 perfusionTests()
 

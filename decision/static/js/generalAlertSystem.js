@@ -113,6 +113,32 @@ function checkIV(){
             }
         }
     }
+    else if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "true"){
+            //If only 1 PIV and the correlated alert has not yet been thrown...
+            if( PIVcount === "1" && onePIVAlert === "not thrown"){
+                localStorage.setItem("Alert One PIV", "thrown");
+                localStorage.setItem("Alert No IV", "dismissed");
+                $('#no-iv-alert').remove();
+                $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
+                "                  <strong>Consider additional PIV</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
+                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            }
+
+            //If there are 2 or more PIV put in....
+            else if(PIVcount !== "0" && PIVcount !== "1") {
+                localStorage.setItem("Alert One PIV", "dismissed");
+                if(noIvAlert === "thrown"){
+                    $('#no-iv-alert').remove();
+                }
+                localStorage.setItem("Alert No IV", "dismissed");
+                $('#one-piv-alert').remove();
+            }
+    }
 
     /*If we are under the time limit for this alert but all parameters have already been met then we want to
         dismiss the alert anyways. This prevents it from being thrown twice and prevents this loop from
@@ -621,7 +647,6 @@ function checkTransfusionAlerts() {
 
     if(tprbc === "no"){
          if((sbp < 90 || shock  > 1.2 || hr > 180) && prbcAlert === "not thrown"){
-             console.log("thrown tprbc alert");
             localStorage.setItem("Transfusion PRBC Alert", "thrown");
              $('#alert_placeholder').append(
                  "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
@@ -637,7 +662,6 @@ function checkTransfusionAlerts() {
 
     if(mtp === "no"){
         if((sbp < 90 || shock  > 1.2 || hr > 180) && mtpAlert === "not thrown"){
-            console.log("thrown mtp alert");
             localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
              $('#alert_placeholder').append(
                  "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +

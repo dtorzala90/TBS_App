@@ -63,10 +63,10 @@ localStorage.setItem("Right Breathing Alert", "not thrown");
 localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
 localStorage.setItem("Left Breathing Alert", "not thrown");
 
-localStorage.setItem("Massive Transfusion Protocol", "null");
+localStorage.setItem("Massive Transfusion Protocol", "no");
 localStorage.setItem("Massive Transfusion Protocol Alert", "not thrown");
 
-localStorage.setItem("Transfusion PRBC", "null");
+localStorage.setItem("Transfusion PRBC", "no");
 localStorage.setItem("Transfusion PRBC Alert", "not thrown");
 
 //All time stamp varibles initiated below

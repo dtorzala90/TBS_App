@@ -543,9 +543,6 @@ function typeAndCrossYesFunc() {
     localStorage.setItem("Type and Cross", "yes");
 }
 
-var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
-var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
-
 var mtpButNo = document.getElementById('mtpNo');
 var prbcButNo = document.getElementById('tprbcNo');
 
@@ -558,6 +555,7 @@ mtpButYes.onclick = mtpFuncYes;
 prbcButYes.onclick = prbcFuncYes;
 
 function prbcFuncYes(){
+    var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
     localStorage.setItem("Transfusion PRBC", "yes");
     if (prbcAlert === "thrown"){
         $('#tprbc-alert').remove();
@@ -566,6 +564,7 @@ function prbcFuncYes(){
 }
 
 function mtpFuncYes(){
+    var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
     localStorage.setItem("Massive Transfusion Protocol", "yes");
     if (mtpAlert === "thrown"){
         $('#mtp-alert').remove();
