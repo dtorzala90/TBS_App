@@ -263,55 +263,61 @@ hrText.oninput = recordHR;
 bpText.oninput = recordBP;
 
 function recordHR(){
-    var hr = hrText.value;
-    localStorage.setItem("HR", hrText.value);
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var display = "Heart Rate: " + hr + " at ";
-    if(min < 1){
-        min = 0;
-    }
+    setTimeout(function(){
+        var hr = hrText.value;
+        localStorage.setItem("HR", hrText.value);
+        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+        var hour = 0;
+        var display = "Heart Rate: " + hr + " at ";
+        if(min < 1){
+            min = 0;
+        }
 
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
+        if(min >= 60){
+            hour = min/60;
+            min = min%60;
+        }
 
-    if(hour !== 0){
-        display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-    display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-    localStorage.setItem('HR Display',display);
+        if(hour !== 0){
+            display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        }
+        display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
+        localStorage.setItem('HR Display',display);
+    }, 1000);
 }
 
 function recordBP(){
-    var bp = bpText.value;
-    localStorage.setItem("BP", bpText.value);
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-    var hour = 0;
-    var display = "Systolic BP: " + bp + " at " ;
+        setTimeout(function(){
+            var bp = bpText.value;
+            localStorage.setItem("BP", bpText.value);
+            var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+            var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+            var hour = 0;
+            var display = "Systolic BP: " + bp + " at " ;
 
-    if(min < 1){
-        min = 0;
-    }
+            if(min < 1){
+                min = 0;
+            }
 
-    if(min >= 60){
-        hour = min/60;
-        min = min%60;
-    }
+            if(min >= 60){
+                hour = min/60;
+                min = min%60;
+            }
 
-    if(hour !== 0){
-        display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
+            if(hour !== 0){
+                display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+            }
 
-    display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-    localStorage.setItem('BP Display',display);
+            display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
+            localStorage.setItem('BP Display',display);
+        }, 1000);
 }
 
 function recordAge(){
-    localStorage.setItem("Patient Age", ageText.value);
+    setTimeout(function(){
+        localStorage.setItem("Patient Age", ageText.value);
+    }, 1000);
 }
 
 /**
