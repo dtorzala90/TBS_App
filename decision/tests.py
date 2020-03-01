@@ -542,6 +542,7 @@ def testOneTransfusion():
 
 	goto_summary()
 	check_alert_thrown('mtp-alert', True)
+
 	check_alert_thrown('tprbc-alert', True)
 
 	goto_decision_app()
@@ -550,6 +551,7 @@ def testOneTransfusion():
 
 	goto_summary()
 	check_alert_thrown('mtp-alert', False)
+
 	check_alert_thrown('tprbc-alert', False)
 
 	goto_decision_app()

@@ -17,10 +17,6 @@ if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
     var ivAlertInterval = setInterval(checkIV, 1000);
 }
 
-
-
-
-
 setInterval(checkETCO2, 1000);
 setInterval(checkGCS, 1000);
 setInterval(checkHR, 1000);
