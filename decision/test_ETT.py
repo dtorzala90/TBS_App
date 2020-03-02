@@ -50,6 +50,10 @@ def test_ett():
 	print("\n####    ETT Test    ####")
 
 	# TODO: Click “Initiated” ETT button
+	goto_decision_app()
+	click_element_id('headingOne')
+	click_element_id('ettInit')
+	goto_summary()
 
 	# Ensure ‘ETT-etco2-alert’ is present
 	check_alert_thrown('ETT-etco2-alert', True)
@@ -58,6 +62,10 @@ def test_ett():
 	check_alert_thrown('ETT-gcs-alert', True)
 
 	# TODO: Click any etco2 value
+	goto_decision_app()
+	click_element_id('headingOne')
+	click_element_id('ettInit')
+	goto_summary()
 
 	# Ensure ‘ETT-etco2-alert’ is gone
 	check_alert_thrown('ETT-etco2-alert', False)
