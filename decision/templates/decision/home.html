@@ -119,8 +119,12 @@
                                             <td><h4>Oxygen Supplementation</h4></td> <!-- Left cell, section name -->
                                             <td> <!-- Right cell, corresponding buttons -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="oxySupplInit">Initiated</button>
-                                                    <button type="button" class="btn btn-dark" id="oxySupplStop">Stopped</button>
+                                                    <button type="button" class="btn btn-light" id="oxySupplInit"
+                                                            onclick="airwayStepFunc('oxygen','init')"
+                                                            ondblclick="initEdit('oxygen','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-dark" id="oxySupplStop"
+                                                            onclick="airwayStepFunc('oxygen','stop')"
+                                                            ondblclick="initEdit('oxygen','stop')">Stopped</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -130,8 +134,12 @@
                                             <td><h4>Bag Mask</h4></td>
                                             <td> <!-- 'btn-group-vertical' gives buttons a vertical orientation -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="bagMaskInit">Initiated</button>
-                                                    <button type="button" class="btn btn-dark" id="bagMaskStop">Stopped</button>
+                                                    <button type="button" class="btn btn-light" id="bagMaskInit"
+                                                            onclick="airwayStepFunc('bag','init')"
+                                                            ondblclick="initEdit('bag','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-dark" id="bagMaskStop"
+                                                            onclick="airwayStepFunc('bag','stop')"
+                                                            ondblclick="initEdit('bag','stop')">Stopped</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -141,9 +149,15 @@
                                             <td><h4>LMA</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="lmaInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="lmaAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="lmaStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="lmaInit"
+                                                            onclick="airwayStepFunc('lma','init')"
+                                                            ondblclick="initEdit('lma','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="lmaAchieved"
+                                                            onclick="airwayStepFunc('lma','achieved')"
+                                                            ondblclick="initEdit('lma','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="lmaStop"
+                                                            onclick="airwayStepFunc('lma','stop')"
+                                                            ondblclick="initEdit('lma','stop')">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -153,9 +167,15 @@
                                             <td><h4>Endotracheal Tube</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="ettInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="ettAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="ettStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="ettInit"
+                                                            onclick="airwayStepFunc('ett','init')"
+                                                            ondblclick="initEdit('ett','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="ettAchieved"
+                                                            onclick="airwayStepFunc('ett','achieved')"
+                                                            ondblclick="initEdit('ett','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="ettStop"
+                                                            onclick="airwayStepFunc('ett','stop')"
+                                                            ondblclick="initEdit('ett','stop')">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -165,9 +185,15 @@
                                             <td><h4>Difficult Airway</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="diffAirwayInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="diffAirwayAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="diffAirwayStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="diffAirwayInit"
+                                                            onclick="airwayStepFunc('diffAirway','init')"
+                                                            ondblclick="initEdit('diffAirway','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="diffAirwayAchieved"
+                                                            onclick="airwayStepFunc('diffAirway','achieved')"
+                                                            ondblclick="initEdit('diffAirway','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="diffAirwayStop"
+                                                            onclick="airwayStepFunc('diffAirway','stop')"
+                                                            ondblclick="initEdit('diffAirway','stop')">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -177,9 +203,15 @@
                                             <td><h4>Surgical Airway</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="surgAirwayInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="surgAirwayAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="surgAirwayStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="surgAirwayInit"
+                                                            onclick="airwayStepFunc('surgAirway','init')"
+                                                            ondblclick="initEdit('surgAirway','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="surgAirwayAchieved"
+                                                            onclick="airwayStepFunc('surgAirway','achieved')"
+                                                            ondblclick="initEdit('surgAirway','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="surgAirwayStop"
+                                                            onclick="airwayStepFunc('surgAirway','stop')"
+                                                            ondblclick="initEdit('surgAirway','stop')">Removed</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -264,11 +296,13 @@
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" name="rchest"
                                                             id="rchestyes"
-                                                            value="yes">Yes
+                                                            value="yes"
+                                                            onclick="chestSoundFunc('right','Yes')">Yes
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="rchest"
                                                             id="rchestno"
-                                                            value="no">No
+                                                            value="no"
+                                                            onclick="chestSoundFunc('right','No')">No
                                                     </button>
                                                 </div>
                                             </td>
@@ -282,11 +316,13 @@
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" name="lchest"
                                                             id="lchestyes"
-                                                            value="yes">Yes
+                                                            value="yes"
+                                                            onclick="chestSoundFunc('left','Yes')">Yes
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="lchest"
                                                             id="lchestno"
-                                                            value="no">No
+                                                            value="no"
+                                                            onclick="chestSoundFunc('left','No')">No
                                                     </button>
                                                 </div>
                                             </td>
@@ -299,31 +335,32 @@
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" name="etco"
                                                             id="etco2_none"
-                                                            value="no">
+                                                            value="no"
+                                                            onclick="etco2('none')">
                                                         No Measurement
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="etco"
-                                                            id="etco2_less25" value="25">
+                                                            id="etco2_less25" value="25" onclick="etco2('<25')">
                                                         ETCO<sub>2</sub> < 25
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="etco"
-                                                            id="etco2_25plus" value="30">
+                                                            id="etco2_25plus" value="30" onclick="etco2('25-30')">
                                                         ETCO<sub>2</sub> 25-30
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="etco"
-                                                            id="etco2_30plus" value="35">
+                                                            id="etco2_30plus" value="35" onclick="etco2('30-35')">
                                                         ETCO<sub>2</sub> 30-35
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="etco"
-                                                            id="etco2_35plus" value="40">
+                                                            id="etco2_35plus" value="40" onclick="etco2('35-40')">
                                                         ETCO<sub>2</sub> 35-40
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="etco"
-                                                            id="etco2_40plus" value="50">
+                                                            id="etco2_40plus" value="50" onclick="etco2('40-50')">
                                                         ETCO<sub>2</sub> 40-50
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="etco"
-                                                            id="etco2_50plus" value="50+">
+                                                            id="etco2_50plus" value="50+" onclick="etco2('>50')">
                                                         ETCO<sub>2</sub> > 50
                                                     </button>
                                                 </div>
@@ -401,14 +438,14 @@
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <span style="font-weight:bold">Lip Color:</span>
                                                     <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
-                                                            value="pi">Pink
+                                                            value="pi" onclick="lipColorFunc('Pink')">Pink
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
-                                                            value="wh">White
+                                                            value="wh" onclick="lipColorFunc('White')">White
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="lipc"
                                                             id="lipc-unk"
-                                                            value="unk">Unable To Assess
+                                                            value="unk" onclick="lipColorFunc('Unable to assess')">Unable To Assess
                                                     </button>
 
                                                     <br>
@@ -416,29 +453,29 @@
                                                     <span style="font-weight:bold">Nail Color:</span>
                                                     <button type="button" class="btn btn-light" name="nailc"
                                                             id="nailc-pi"
-                                                            value="pi">Pink
+                                                            value="pi" onclick="nailColorFunc('Pink')">Pink
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="nailc"
                                                             id="nailc-wh"
-                                                            value="wh">White
+                                                            value="wh" onclick="nailColorFunc('White')">White
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="nailc"
                                                             id="nailc-unk"
-                                                            value="unk">Unable To Assess
+                                                            value="unk" onclick="nailColorFunc('Unable to assess')">Unable To Assess
                                                     </button>
 
                                                     <br>
 
                                                     <span style="font-weight:bold">Cap Refill:</span>
                                                     <button type="button" class="btn btn-light" name="capr" id="caprt-2"
-                                                            value="<2"><2s
+                                                            value="<2" onclick="capRefillFunc('<2sec')"><2s
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="capr"
                                                             id="caprt-24"
-                                                            value="2-4">2s-4s
+                                                            value="2-4" onclick="capRefillFunc('2-4sec')">2s-4s
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="capr" id="caprt-4"
-                                                            value=">4">>4s
+                                                            value=">4" onclick="capRefillFunc('>4sec')">>4s
                                                     </button>
                                                 </div>
                                             </td>
@@ -454,13 +491,13 @@
                                                             value="no">None
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="funp" id="funp1"
-                                                            value="1">1
+                                                            value="1" onclick="pivFunc('1')">1
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="funp" id="funp2"
-                                                            value="2">2
+                                                            value="2" onclick="pivFunc('2')">2
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="funp" id="funp>2"
-                                                            value=">2">>2
+                                                            value=">2" onclick="pivFunc('>2')">>2
                                                     </button>
 
                                                     <br>
@@ -468,7 +505,7 @@
                                                     <span style="font-weight:bold">Intraosseous Line:</span>
                                                     <button type="button" class="btn btn-light" name="intral"
                                                             id="intralYes"
-                                                            value="yes"> Yes
+                                                            value="yes" onclick="intraoLineFunc()"> Yes
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="intral"
                                                             id="intralNo"
@@ -479,7 +516,7 @@
 
                                                     <span style="font-weight:bold">Central Line:</span>
                                                     <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
-                                                            value="yes"> Yes
+                                                            value="yes" onclick="centrLineFunc()"> Yes
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
                                                             value="no">No
@@ -494,13 +531,13 @@
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" name="ivf" id="ivf-none"
-                                                            value="no">None
+                                                            value="no" onclick="ivFluidFunc('none')">None
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="ivf" id="ivf-<20"
-                                                            value="<20">< 20mL/kg
+                                                            value="<20" onclick="ivFluidFunc('<20mL/kg')">< 20mL/kg
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="ivf" id="ivf->20"
-                                                            value=">20">>= 20mL/kg
+                                                            value=">20" onclick="ivFluidFunc('>20mL/kg')">>= 20mL/kg
                                                     </button>
 
                                                     <br>
@@ -519,10 +556,10 @@
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" name="tac"
-                                                            id="typeAndCrossYes" value="yes">Drawn
+                                                            id="typeAndCrossYes" value="yes" onclick="typeAndCrossFunc('yes')">Drawn
                                                     </button>
                                                     <button type="button" class="btn btn-light" name="tac"
-                                                            id="typeAndCrossNo" value="no">Sent
+                                                            id="typeAndCrossNo" value="no" onclick="typeAndCrossFunc('no')">Sent
                                                     </button>
                                                 </div>
                                             </td>
@@ -534,10 +571,10 @@
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
-                                                            value="yes">
+                                                            value="yes" onclick="prbcFunc('yes')">
                                                         Yes
                                                     </button>
-                                                    <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo" value="no">
+                                                    <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo" value="no" onclick="prbcFunc('no')">
                                                         No
                                                     </button>
                                                 </div>
@@ -549,10 +586,10 @@
                                             <td><h4> Massive Transfusion Protocol</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" name="mtp" id="mtpYes" value="yes">
+                                                    <button type="button" class="btn btn-light" name="mtp" id="mtpYes" value="yes" onclick="mtpFunc('yes')">
                                                         Activated
                                                     </button>
-                                                    <button type="button" class="btn btn-light" name="mtp" id="mtpNo" value="no">No
+                                                    <button type="button" class="btn btn-light" name="mtp" id="mtpNo" value="no" onclick="mtpFunc('no')">No
                                                     </button>
                                                 </div>
                                             </td>
@@ -609,27 +646,27 @@
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light text-left" name="motor"
-                                                            id="motor6" value="ob">
+                                                            id="motor6" value="ob" onclick="gcsFunc('motor','6')">
                                                         <b>6</b> - Obeys Commands
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="motor"
-                                                            id="motor5" value="lo">
+                                                            id="motor5" value="lo" onclick="gcsFunc('motor','5')">
                                                         <b>5</b> - Localizing Pain
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="motor"
-                                                            id="motor4" value="wi">
+                                                            id="motor4" value="wi" onclick="gcsFunc('motor','4')">
                                                         <b>4</b> - Withdraw From Pain
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="motor"
-                                                            id="motor3" value="fl">
+                                                            id="motor3" value="fl" onclick="gcsFunc('motor','3')">
                                                         <b>3</b> - Flexion To Pain
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="motor"
-                                                            id="motor2" value="ex">
+                                                            id="motor2" value="ex" onclick="gcsFunc('motor','2')">
                                                         <b>2</b> - Extension To Pain
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="motor"
-                                                            id="motor1" value="no">
+                                                            id="motor1" value="no" onclick="gcsFunc('motor','1')">
                                                         <b>1</b> - No Motor Response
                                                     </button>
                                                 </div>
@@ -642,23 +679,23 @@
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light text-left" name="verbal"
-                                                            id="verbal5" value="or">
+                                                            id="verbal5" value="or" onclick="gcsFunc('verbal','5')">
                                                         <b>5</b> - Oriented
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="verbal"
-                                                            id="verbal4" value="co">
+                                                            id="verbal4" value="co" onclick="gcsFunc('verbal','4')">
                                                         <b>4</b> - Confused
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="verbal"
-                                                            id="verbal3" value="wo">
+                                                            id="verbal3" value="wo" onclick="gcsFunc('verbal','3')">
                                                         <b>3</b> - Inappropriate Words
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="verbal"
-                                                            id="verbal2" value="so">
+                                                            id="verbal2" value="so" onclick="gcsFunc('verbal','2')">
                                                         <b>2</b> - Incomprehensible Sounds
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="verbal"
-                                                            id="verbal1" value="no">
+                                                            id="verbal1" value="no" onclick="gcsFunc('verbal','1')">
                                                         <b>1</b> - No Verbal Response
                                                     </button>
                                                 </div>
@@ -671,19 +708,19 @@
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
                                                     <button type="button" class="btn btn-light text-left" name="eye"
-                                                            id="eye4" value="sp">
+                                                            id="eye4" value="sp" onclick="gcsFunc('eye','4')">
                                                         <b>4</b> - Opens Spontaneously
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="eye"
-                                                            id="eye3" value="ve">
+                                                            id="eye3" value="ve" onclick="gcsFunc('eye','3')">
                                                         <b>3</b> - Open To Verbal Command
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="eye"
-                                                            id="eye2" value="pa">
+                                                            id="eye2" value="pa" onclick="gcsFunc('eye','2')">
                                                         <b>2</b> - Open To Pain
                                                     </button>
                                                     <button type="button" class="btn btn-light text-left" name="eye"
-                                                            id="eye1" value="no">
+                                                            id="eye1" value="no" onclick="gcsFunc('eye','1')">
                                                         <b>1</b> - No Eye Opening
                                                     </button>
                                                 </div>
