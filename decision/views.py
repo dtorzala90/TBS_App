@@ -1,6 +1,10 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseNotModified
 from django.shortcuts import render
 from .models import Session
+from django.core import serializers
+
+json_serializer = serializers.get_serializer("json")()
+sessions = json_serializer.serialize(Session.objects.all().order_by('id')[:5], ensure_ascii=False)
 
 # Create your views here.
 def home(request):
