@@ -214,6 +214,13 @@ function checkETCO2(){
 
 
         }
+        else if(etco2 === "40-50" && currAlert === "40-50"){
+            var gcs = localStorage.getItem("GCS<13");
+            if(gcs === "false"){
+              localStorage.setItem("Current ETCO2 alert thrown", "not present");
+              $('#etco2-value-alert').remove();
+            }
+        }
 
         else if(etco2 === ">50" && currAlert !== ">50"){
             $('#etco2-value-alert').remove();
@@ -269,6 +276,8 @@ function checkGCS(){
         console.log(gcs);
         if (gcs < 13){
             localStorage.setItem("GCS<13", "true");
+        } else {
+            localStorage.setItem("GCS<13", "false");
         }
 
         if(alert === "thrown"){

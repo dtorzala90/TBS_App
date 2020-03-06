@@ -49,22 +49,57 @@ def check_alert_thrown(alertName, shouldBeThrown):
 def test_gcs():
 	print("\n####    GCS Test    ####")
 
+	#Enter Motor value of 1
+	goto_decision_app()
+	click_element_id('headingFour')
+	click_element_id('motor1')
 
-#Test Case 1:
-#Enter Motor value of 1
-#Enter Verbal value of 1
-#Enter eye value of 1
-#Enter Etco2 value 40-50
-#Ensure ‘etco2-value-alert’ is present
-#Ensure local storage variable ‘Current ETCO2 alert thrown’ is equal to ‘40-50’
-#Enter Motor Value 6
-#Enter verbal value 5
-#Enter eye value 2
-#Ensure ‘etco2-value-alert’ not present
-#Enter Eye value 4
-#Ensure ‘etco2-value-alert’ not present
+	#Enter Verbal value of 1
+	click_element_id('verbal1')
 
+	#Enter eye value of 1
+	click_element_id('eye1')
 
+	#Enter Etco2 value 40-50
+	goto_decision_app()
+	click_element_id('headingTwo')
+	click_element_id('etco2_40plus')
+	goto_summary()
+
+	time.sleep(3)
+
+	#Ensure ‘etco2-value-alert’ is present
+	check_alert_thrown('etco2-value-alert', True)
+
+	#TODO: Ensure local storage variable ‘Current ETCO2 alert thrown’ is equal to ‘40-50’
+
+	#Enter Motor Value 6
+	goto_decision_app()
+	click_element_id('headingFour')
+	click_element_id('motor6')
+
+	#Enter verbal value 5
+	click_element_id('verbal5')
+
+	#Enter eye value 2
+	click_element_id('eye2')
+	goto_summary()
+
+	time.sleep(3)
+
+	#Ensure ‘etco2-value-alert’ not present
+	check_alert_thrown('etco2-value-alert', False)
+
+	#Enter Eye value 4
+	goto_decision_app()
+	click_element_id('headingFour')
+	click_element_id('eye4')
+	goto_summary()
+
+	time.sleep(3)
+
+	#Ensure ‘etco2-value-alert’ not present
+	check_alert_thrown('etco2-value-alert', False)
 
 #Begin the driver instance with chromedriver application
 chrome_options = Options()
