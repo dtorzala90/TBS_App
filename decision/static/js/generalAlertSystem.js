@@ -24,14 +24,13 @@ setInterval(checkBP, 1000);
 setInterval(calcShock, 1000);
 setInterval(checkFluids, 1000);
 setInterval(checkBreathing, 1000);
+setInterval(checkPerfusion, 1000);
 
 var transfusionInterval = setInterval(checkTransfusionAlerts, 1000);
 var ettInterval = setInterval(checkETTAlerts, 1000);
 var typeAndCrossInterval = setInterval(checkTypeAndCross, 1000);
 
-if (perfusionAlert !== "dismissed") {
-  setInterval(checkPerfusion, 1000);
-}
+
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -236,6 +235,13 @@ function checkETCO2(){
 
 
         }
+        else if(etco2 === "40-50" && currAlert === "40-50"){
+            var gcs = localStorage.getItem("GCS<13");
+            if(gcs === "false"){
+              localStorage.setItem("Current ETCO2 alert thrown", "not present");
+              $('#etco2-value-alert').remove();
+            }
+        }
 
         else if(etco2 === ">50" && currAlert !== ">50"){
             $('#etco2-value-alert').remove();
@@ -291,6 +297,8 @@ function checkGCS(){
         console.log(gcs);
         if (gcs < 13){
             localStorage.setItem("GCS<13", "true");
+        } else {
+            localStorage.setItem("GCS<13", "false");
         }
 
         if(alert === "thrown"){
@@ -366,16 +374,18 @@ function checkPerfusion(){
 
     if(lipcol !== null || nailbcol !== null || caprtime !== null) {
 
+      if(alert === "thrown" ) {
+
       // Dismiss the alert if it is no longer needed
       if(lipcol !== "White" && nailbcol !== "White" && caprtime !== ">4sec") {
-        if(alert === "thrown" ) {
+
           $('#poor-perfusion-alert').remove();
           localStorage.setItem("Poor Perfusion", "dismissed");
         }
       }
 
       // Check if the alert is not currently thrown or has been dismissed
-      if(alert === "not thrown" || alert === "dismissed"){
+      else if(alert === "not thrown" || alert === "dismissed"){
         if (lipcol === "White") {
             localStorage.setItem("Poor Perfusion", "thrown");
             $('#alert_placeholder').append(
@@ -487,10 +497,10 @@ function calcShock(){
      var shock_alert = localStorage.getItem("Shock Alert");
 
      if (BP_recorded !== "null" && HR_recorded !== "null"){
-         var BP = parseInt(BP_recorded);
-         var HR = parseInt(HR_recorded);
+         var BP = parseFloat(BP_recorded);
+         var HR = parseFloat(HR_recorded);
 
-         var shock = Math.round(HR/BP);
+         var shock = Math.abs(HR/BP);
          localStorage.setItem("Shock Level", shock.toString(10));
 
          var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
