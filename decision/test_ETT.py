@@ -61,10 +61,10 @@ def test_ett():
 	# Ensure ‘ETT-gcs-alert’ is present
 	check_alert_thrown('ETT-gcs-alert', True)
 
-	# TODO: Click any etco2 value
+	# Click any etco2 value
 	goto_decision_app()
-	click_element_id('headingOne')
-	click_element_id('ettInit')
+	click_element_id('headingTwo')
+	click_element_id('etco2_25plus')
 	goto_summary()
 
 	# Ensure ‘ETT-etco2-alert’ is gone
@@ -74,7 +74,13 @@ def test_ett():
 	# Ensure ‘ETT-gcs-alert’ is present
 	check_alert_thrown('ETT-gcs-alert', True)
 
-	# TODO: Click any value for motor, verbal, and eye under GCS
+	# Click any value for motor, verbal, and eye under GCS
+	goto_decision_app()
+	click_element_id('headingFour')
+	click_element_id('motor6')
+	click_element_id('verbal5')
+	click_element_id('eye4')
+	goto_summary()
 
 	# Ensure ‘ETT-gcs-alert’ is gone
 	check_alert_thrown('ETT-gcs-alert', False)
