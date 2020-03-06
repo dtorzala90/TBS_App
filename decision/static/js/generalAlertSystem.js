@@ -28,14 +28,13 @@ setInterval(checkBP, 1000);
 setInterval(calcShock, 1000);
 setInterval(checkFluids, 1000);
 setInterval(checkBreathing, 1000);
+setInterval(checkPerfusion, 1000);
 
 var transfusionInterval = setInterval(checkTransfusionAlerts, 1000);
 var ettInterval = setInterval(checkETTAlerts, 1000);
 var typeAndCrossInterval = setInterval(checkTypeAndCross, 1000);
 
-if (perfusionAlert !== "dismissed") {
-  setInterval(checkPerfusion, 1000);
-}
+
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -353,16 +352,18 @@ function checkPerfusion(){
 
     if(lipcol !== null || nailbcol !== null || caprtime !== null) {
 
+      if(alert === "thrown" ) {
+
       // Dismiss the alert if it is no longer needed
       if(lipcol !== "White" && nailbcol !== "White" && caprtime !== ">4sec") {
-        if(alert === "thrown" ) {
+
           $('#poor-perfusion-alert').remove();
           localStorage.setItem("Poor Perfusion", "dismissed");
         }
       }
 
       // Check if the alert is not currently thrown or has been dismissed
-      if(alert === "not thrown" || alert === "dismissed"){
+      else if(alert === "not thrown" || alert === "dismissed"){
         if (lipcol === "White") {
             localStorage.setItem("Poor Perfusion", "thrown");
             $('#alert_placeholder').append(
