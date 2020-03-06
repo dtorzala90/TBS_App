@@ -465,10 +465,10 @@ function calcShock(){
      var shock_alert = localStorage.getItem("Shock Alert");
 
      if (BP_recorded !== "null" && HR_recorded !== "null"){
-         var BP = parseInt(BP_recorded);
-         var HR = parseInt(HR_recorded);
+         var BP = parseFloat(BP_recorded);
+         var HR = parseFloat(HR_recorded);
 
-         var shock = Math.round(HR/BP);
+         var shock = Math.abs(HR/BP);
          localStorage.setItem("Shock Level", shock.toString(10));
 
          var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
