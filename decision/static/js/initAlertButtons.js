@@ -467,15 +467,15 @@ lipc2.onclick = lipc2Func;
 lipc3.onclick = lipc3Func;
 
 function lipc1Func() {
-    localStorage.setItem("Lip Color", "Pink");
+    setItemAjax("Lip_Color", "Pink");
 }
 
 function lipc2Func() {
-    localStorage.setItem("Lip Color", "White");
+    setItemAjax("Lip_Color", "White");
 }
 
 function lipc3Func() {
-    localStorage.setItem("Lip Color", "Unable to assess");
+    setItemAjax("Lip_Color", "Unable to assess");
 }
 
 //Buttons for nail bed color
@@ -488,15 +488,15 @@ nailbc2.onclick = nailbc2Func;
 nailbc3.onclick = nailbc3Func;
 
 function nailbc1Func() {
-    localStorage.setItem("Nail Bed Color", "Pink");
+    setItemAjax("Nail_Bed_Color", "Pink");
 }
 
 function nailbc2Func() {
-    localStorage.setItem("Nail Bed Color", "White");
+    setItemAjax("Nail_Bed_Color", "White");
 }
 
 function nailbc3Func() {
-    localStorage.setItem("Nail Bed Color", "Unable to assess");
+    setItemAjax("Nail_Bed_Color", "Unable to assess");
 }
 
 //Buttons for capillary refill time.
@@ -509,15 +509,15 @@ caprt2.onclick = caprt2Func;
 caprt3.onclick = caprt3Func;
 
 function caprt1Func() {
-    localStorage.setItem("Cap Refill Time", "<2sec");
+    setItemAjax("Cap_Refill_Time", "<2");
 }
 
 function caprt2Func() {
-    localStorage.setItem("Cap Refill Time", "2-4sec");
+    setItemAjax("Cap_Refill_Time", "2-4");
 }
 
 function caprt3Func() {
-    localStorage.setItem("Cap Refill Time", ">4sec");
+    setItemAjax("Cap_Refill_Time", ">4");
 }
 
 // Setup IVF alerts
@@ -698,3 +698,18 @@ function eye1() {
 /**
  * Set up Exposure buttons
  */
+
+function setItemAjax(step, value){
+    $.ajax(
+    {
+        type:"POST",
+        url: "/setItem/",
+        data:{
+            'step': step,
+            'value': value,
+        },
+        success: function( data )
+        {}
+     })
+
+}

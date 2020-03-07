@@ -2,10 +2,11 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 class Session(models.Model):
-	content = models.TextField()
-	date_created = models.DateTimeField(default=timezone.now)
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	id = models.CharField(max_length=20, primary_key=True)
+	#date_created = models.DateTimeField(default=timezone.now)
+	#author = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	#Alert Data
 	# Alert_No_IV = models.CharField(max_length=20, default="not thrown") #No IVlocalStorage.setItem("Alert No IV", "not thrown");
@@ -50,9 +51,9 @@ class Session(models.Model):
 	# Type_and_Cross = models.CharField(max_length=20)# localStorage.setItem("Type and Cross", "none");
 
 	# Poor_Perfusion = models.CharField(max_length=20)# localStorage.setItem("Poor Perfusion", "not thrown");
-	# Lip_Color = models.CharField(max_length=20)# localStorage.setItem("Lip Color", "null");
-	# Nail_Bed_Color = models.CharField(max_length=20)# localStorage.setItem("Nail Bed Color", "null");
-	# Cap_Refill_Time = models.CharField(max_length=20)# localStorage.setItem("Cap Refill Time", "null");
+	Lip_Color = models.CharField(max_length=20, default="null")
+	Nail_Bed_Color = models.CharField(max_length=20, default="null")
+	Cap_Refill_Time = models.CharField(max_length=20, default="null")
 
 	# Alert_Consider_IVF = models.CharField(max_length=20)# localStorage.setItem("Alert Consider IVF", "not thrown");
 	# Alert_Fluids_Given = models.CharField(max_length=20)# localStorage.setItem("Alert Fluids Given", "not thrown");
@@ -104,6 +105,3 @@ class Session(models.Model):
 	# Surgical_Airway_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway Achieved Time", "null");
 	# Surgical_Airway_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway Stopped Time", "null");
 	# Surgical_Airway = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway", "not initiated");
-
-	def __str__(self):
-		return self.content

@@ -1,8 +1,6 @@
 <!-- Clear data from previous session and initialize global values -->
 localStorage.clear();
 
-var sessions = '{{ sessions|escapejs }}';
-
 localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");
 
@@ -44,10 +42,7 @@ localStorage.setItem("Patient Age", "null");
 localStorage.setItem("Type and Cross Alert", "not thrown");
 localStorage.setItem("Type and Cross", "none");
 
-localStorage.setItem("Poor Perfusion", "not thrown");
-localStorage.setItem("Lip Color", "null");
-localStorage.setItem("Nail Bed Color", "null");
-localStorage.setItem("Cap Refill Time", "null");
+localStorage.setItem("poor-perfusion-alert", "not thrown");
 
 localStorage.setItem("Alert Consider IVF", "not thrown");
 localStorage.setItem("Alert Fluids Given", "not thrown");
