@@ -251,6 +251,29 @@ function chestSoundFunc(side, value) {
 }
 
 /**
+* Set up of Airway buttons and functions that will record user input
+*/
+//For ETT depth in cm
+var ettdepthText = document.getElementById("ettdepth");
+ettdepthText.oninput = recordettdepth;
+
+function recordettdepth(){
+    setTimeout(function(){
+        localStorage.setItem("ETT Depth", ettdepthText.value);
+    }, 1000);
+}
+
+//BVM breaths per minutes
+var bvmbpmText = document.getElementById("bvmbpm");
+bvmbpmText.oninput = recordbvmbpm;
+
+function recordbvmbpm(){
+    setTimeout(function(){
+        localStorage.setItem("BVM BPM", bvmbpmText.value);
+    }, 1000);
+}
+
+/**
  * Set up Circulation buttons and function that will record vitals on user input
  */
 //Set up HR and BP text fields
