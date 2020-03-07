@@ -45,12 +45,15 @@ ul {
 
 .timer-summary {
     color: #414143;
+    align-content: center;
     text-align: center;
     display: inline-block;
-    font-size: 75px;
+    font-size: 90px;
     position: fixed;
-    right: 0px;
-    width: 40%;
+    right: 0;
+    width: 30%;
+    z-index: 1;
+    top: 6.5rem;
 }
 /*Formatting the text alert on the summary page*/
 .alert-format {
@@ -110,4 +113,32 @@ ul {
     height: 57.75px;
     display: inline-block;
     float: left;
+}
+
+.ph-banner {
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    z-index: 0;
+    top: 5.5rem;
+    left: 0;
+}
+
+/*Adjust table styling, such as borders and cell fill*/
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    background-color: rgba(0, 0, 0, 0);
+    vertical-align: middle;
+    border: 8px solid #2b7a78;
+    align-content: center;
+    table-layout: auto;
+}
+
+.td-weight {
+    border-bottom: 4px solid #2b7a78 !important;
+}
+
+.td-age {
+    border-top: 4px solid #2b7a78 !important;
 }
