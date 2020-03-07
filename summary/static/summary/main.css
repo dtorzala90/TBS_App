@@ -2,7 +2,6 @@ body {
     background: #feffff;
     color: #555555;
     margin-top: 5rem;
-    margin-left: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,20 +41,16 @@ ul {
     font-weight: 500;
 }
 
-/*Formatting the timer on the decision and summary pages*/
-.timer-style {
-    color: #414143;
-    text-align: center;
-    display: inline-block;
-    padding-top: 5%;
-    font-size: 75px;
-}
+/*Formatting the timer on the summary page*/
 
 .timer-summary {
     color: #414143;
     text-align: center;
     display: inline-block;
-    font-size: 150px;
+    font-size: 75px;
+    position: fixed;
+    right: 0px;
+    width: 40%;
 }
 /*Formatting the text alert on the summary page*/
 .alert-format {
