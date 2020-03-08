@@ -502,6 +502,7 @@ function calcShock(){
 
          var display = "Shock Level: " + shock.toString(10) + " at " + min.toString(10) +
              "min " + sec.toString(10) + "sec";
+         $('#shock_placeholder').append(display + "<br>");
          localStorage.setItem('Shock Level Display',display);
 
          if(shock > 1.0 && shock_alert !== "thrown"){

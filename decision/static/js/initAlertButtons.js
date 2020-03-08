@@ -284,6 +284,7 @@ function recordHR(){
         }
         display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
         localStorage.setItem('HR Display',display);
+        $('#hr_placeholder').append(display + "<br>");
     }, 1000);
 }
 
@@ -311,6 +312,7 @@ function recordBP(){
 
             display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
             localStorage.setItem('BP Display',display);
+            $('#bp_placeholder').append(display + "<br>");
         }, 1000);
 }
 
