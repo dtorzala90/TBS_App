@@ -119,8 +119,12 @@
                                             <td><h4>Oxygen Supplementation</h4></td> <!-- Left cell, section name -->
                                             <td> <!-- Right cell, corresponding buttons -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="oxySupplInit">Initiated</button>
-                                                    <button type="button" class="btn btn-dark" id="oxySupplStop">Stopped</button>
+                                                    <button type="button" class="btn btn-light" id="oxySupplInit">
+                                                        Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" id="oxySupplStop">
+                                                        Stopped
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -130,8 +134,12 @@
                                             <td><h4>Bag Mask</h4></td>
                                             <td> <!-- 'btn-group-vertical' gives buttons a vertical orientation -->
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="bagMaskInit">Initiated</button>
-                                                    <button type="button" class="btn btn-dark" id="bagMaskStop">Stopped</button>
+                                                    <button type="button" class="btn btn-light" id="bagMaskInit">
+                                                        Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" id="bagMaskStop">
+                                                        Stopped
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -141,9 +149,13 @@
                                             <td><h4>LMA</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="lmaInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="lmaAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="lmaStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="lmaInit">Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" id="lmaAchieved">
+                                                        Achieved
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" id="lmaStop">Removed
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -153,9 +165,13 @@
                                             <td><h4>Endotracheal Tube</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="ettInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="ettAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="ettStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="ettInit">Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" id="ettAchieved">
+                                                        Achieved
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" id="ettStop">Removed
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -165,9 +181,15 @@
                                             <td><h4>Difficult Airway</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="diffAirwayInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="diffAirwayAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="diffAirwayStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="diffAirwayInit">
+                                                        Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" id="diffAirwayAchieved">
+                                                        Achieved
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" id="diffAirwayStop">
+                                                        Removed
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -177,9 +199,15 @@
                                             <td><h4>Surgical Airway</h4></td>
                                             <td>
                                                 <div class="btn-group-vertical btn-padding" role="group">
-                                                    <button type="button" class="btn btn-light" id="surgAirwayInit">Initiated</button>
-                                                    <button type="button" class="btn btn-info" id="surgAirwayAchieved">Achieved</button>
-                                                    <button type="button" class="btn btn-dark" id="surgAirwayStop">Removed</button>
+                                                    <button type="button" class="btn btn-light" id="surgAirwayInit">
+                                                        Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" id="surgAirwayAchieved">
+                                                        Achieved
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" id="surgAirwayStop">
+                                                        Removed
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -790,254 +818,188 @@
                                     <table class="table">
                                         <tbody>
 
-                                        <!-- Head -->
+                                        <!-- HEENT (header) -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td colspan="2"><h4>HEENT:</h4></td>
+                                        </tr>
+
+                                        <!-- HEENT Scalp -->
                                         <tr>
-                                            <td><h4>Head</h4></td>
+                                            <td><h4>Scalp</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
+                                                    <button type="button" class="btn btn-light">Atraumatic</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Other">
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Eyes -->
-                                        <tr>
-                                            <td><h4>Eyes</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Ears -->
-                                        <tr>
-                                            <td><h4>Ears</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Midface -->
-                                        <tr>
+                                        <!-- HEENT Midface -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
                                             <td><h4>Midface</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
+                                                    <button type="button" class="btn btn-light">Stable</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Unstable - Describe">
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Trachea -->
+                                        <!-- Eyes (header) -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td colspan="2"><h4>Eyes:</h4></td>
+                                        </tr>
+
+                                        <!-- Eyes EOM -->
                                         <tr>
-                                            <td><h4>Trachea</h4></td>
+                                            <td><h4>EOM</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
+                                                    <button type="button" class="btn btn-light">Intact</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Abnormal - Describe">
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Jugular Veins -->
+                                        <!-- Eyes Acuity -->
                                         <tr>
-                                            <td><h4>Jugular Veins</h4></td>
+                                            <td><h4>Acuity</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
                                                     <button type="button" class="btn btn-light">Normal</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Unable to Assess d/t">
+                                                    </div>
+                                                    <div class="form-group w-60">
+                                                        <input class="form-control" type="text" id="" name=""
+                                                               value="" placeholder="Abnormal - Describe">
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- CV -->
-                                        <tr>
-                                            <td><h4>CV</h4></td>
+                                        <!-- Eyes Hyphema -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td><h4>Hyphema</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
+                                                    <button type="button" class="btn btn-light">No</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Yes - Describe">
+                                                    </div>
+                                                    <div class="form-group w-60">
+                                                        <input class="form-control" type="text" id="" name=""
+                                                               value="" placeholder="Other">
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Lungs -->
-                                        <tr>
-                                            <td><h4>Lungs</h4></td>
+                                        <!-- Ears (header) -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td colspan="2"><h4>Ears:</h4></td>
+                                        </tr>
+
+                                        <!-- Ears TM -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td><h4>TM</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
                                                     <button type="button" class="btn btn-light">Normal</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Unable to Visualize d/t">
+                                                    </div>
+                                                    <button type="button" class="btn btn-light">Hemotympanum</button>
+                                                    <div class="btn-group btn-rl-align" role="group">
+                                                        <button type="button" class="btn btn-dark btn-rl">R</button>
+                                                        <button type="button" class="btn btn-dark btn-rl">L</button>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Abdomen -->
+                                        <!-- Neck (header) -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td colspan="2"><h4>Neck:</h4></td>
+                                        </tr>
+
+                                        <!-- Neck C-Spine Tenderness -->
                                         <tr>
-                                            <td><h4>Abdomen</h4></td>
+                                            <td><h4>C-Spine Tenderness</h4></td>
+                                            <td align="right" width="65%">
+                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
+                                                    <button type="button" class="btn btn-light">No</button>
+                                                    <button type="button" class="btn btn-light">Yes</button>
+                                                    <button type="button" class="btn btn-light">Unable to Evaluate</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Neck C-Spine Cleared by Clinical Exam -->
+                                        <tr>
+                                            <td><h4>C-Spine Cleared by Clinical Exam</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
+                                                    <button type="button" class="btn btn-light">No</button>
                                                     <div class="form-group w-60">
                                                         <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                               value="" placeholder="Yes @time">
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Pelvis -->
-                                        <tr>
-                                            <td><h4>Pelvis</h4></td>
+                                        <!-- Neck Carotids -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td><h4>Carotids</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
                                                     <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
+                                                    <button type="button" class="btn btn-light">Unequal</button>
+                                                    <button type="button" class="btn btn-light">Bruit</button>
+                                                    <div class="btn-group btn-rl-align" role="group">
+                                                        <button type="button" class="btn btn-dark btn-rl">R</button>
+                                                        <button type="button" class="btn btn-dark btn-rl">L</button>
+                                                    </div>
+                                                    <button type="button" class="btn btn-light">Thrill</button>
+                                                    <div class="btn-group btn-rl-align" role="group">
+                                                        <button type="button" class="btn btn-dark btn-rl">R</button>
+                                                        <button type="button" class="btn btn-dark btn-rl">L</button>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- G/U -->
+                                        <!-- Neck Bruising -->
                                         <tr>
-                                            <td><h4>G/U</h4></td>
+                                            <td><h4>Bruising</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
+                                                    <button type="button" class="btn btn-light">No</button>
+                                                    <button type="button" class="btn btn-light">Yes</button>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <!-- Rectal -->
+                                        <!-- Neck Abrasion -->
                                         <tr>
-                                            <td><h4>Rectal</h4></td>
+                                            <td><h4>Abrasion</h4></td>
                                             <td align="right">
                                                 <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- RUE -->
-                                        <tr>
-                                            <td><h4>RUE</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- LUE -->
-                                        <tr>
-                                            <td><h4>LUE</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- RLE -->
-                                        <tr>
-                                            <td><h4>RLE</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- LLE -->
-                                        <tr>
-                                            <td><h4>LLE</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Back -->
-                                        <tr>
-                                            <td><h4>Back</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Skin -->
-                                        <tr>
-                                            <td><h4>Skin</h4></td>
-                                            <td align="right">
-                                                <div class="btn-group-vertical btn-padding col-sm-10" role="group">
-                                                    <button type="button" class="btn btn-light">Normal</button>
-                                                    <div class="form-group w-60">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                               value="" placeholder="Enter Abnormality">
-                                                    </div>
+                                                    <button type="button" class="btn btn-light">No</button>
+                                                    <button type="button" class="btn btn-light">Yes</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -1056,26 +1018,26 @@
 
         <p><br></p>
 
-         <div class="modal" tabindex="-1" role="dialog" id="popUp">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <p class="modal-title" id="popup-title"></p>
-              </div>
-              <div class="modal-body">
-                    <div>
-                        <input type="number" id="hourStamp" min="0" max="59"/> Hr
-                        <input type="number" id="minuteStamp" min="0" max="59"/> Min
-                        <input type="number" id="secondStamp" min="0" max="59"/> Sec
-
+        <div class="modal" tabindex="-1" role="dialog" id="popUp">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title" id="popup-title"></p>
                     </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn" id="saveModal">Save changes</button>
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-              </div>
+                    <div class="modal-body">
+                        <div>
+                            <input type="number" id="hourStamp" min="0" max="59"/> Hr
+                            <input type="number" id="minuteStamp" min="0" max="59"/> Min
+                            <input type="number" id="secondStamp" min="0" max="59"/> Sec
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" id="saveModal">Save changes</button>
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
         <!--

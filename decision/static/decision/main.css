@@ -302,3 +302,13 @@ h4 {
     border-color: #2b7a78;
 }
 
+.btn-rl {
+    margin: 10px;
+    border-radius: 0.25rem !important;
+}
+
+.btn-rl-align {
+    left: 5px;
+    position: center;
+}
+
