@@ -10,5 +10,6 @@ urlpatterns = [
     path('currentSession/', views.startTrauma, name='startTrauma'),
     url(r'^setItem/$', views.setItem, name='setItem'),
     url(r'^getPerfusion/$', views.getPerfusion, name='getPerfusion'),
+    url(r'^getETCO2/$', views.getPerfusion, name='getETCO2'),
 ]
 

@@ -21,7 +21,7 @@ class Session(models.Model):
 	# Record_ETCO2_Alert = models.CharField(max_length=20)# localStorage.setItem("Record ETCO2 Alert", "not thrown");
 	# Current_ETCO2_alert_thrown = models.CharField(max_length=20)# localStorage.setItem("Current ETCO2 alert thrown", "none");
 
-	# ETCO2 = models.CharField(max_length=20)# localStorage.setItem("ETCO2", "not recorded");
+	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");
 
 	# ETT_ETCO2_Alert = models.CharField(max_length=20)# localStorage.setItem("ETT ETCO2 Alert", "not thrown");
 	# ETT_GCS_Alert = models.CharField(max_length=20)# localStorage.setItem("ETT GCS Alert", "not thrown");

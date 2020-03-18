@@ -9,7 +9,7 @@
 var noIvAlert = localStorage.getItem("Alert No IV");
 var onePIVAlert = localStorage.getItem("Alert One PIV");
 
-var perfusionAlert = localStorage.getItem("Poor Perfusion");
+//var perfusionAlert = localStorage.getItem("Poor Perfusion");
 
 
 //This checks to see if the alerts have already been dismissed.

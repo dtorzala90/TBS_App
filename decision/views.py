@@ -50,3 +50,17 @@ def getPerfusion(request):
 		return resp
 	else:
 		return HttpResponse("Request method is not a GET")
+
+@csrf_exempt
+def getETCO2(request):
+	if request.method == 'GET':
+		dbTable = Session.objects.get(id="100")
+		ETCO2 = dbTable.__getattribute__('ETCO2')
+
+		if (ETCO2 != "notRecorded") or (lipcolor == "White") or (caprefill == ">4"):
+			resp = HttpResponse('Alert')
+		else:
+			resp = HttpResponse('Remove')
+		return resp
+	else:
+		return HttpResponse("Request method is not a GET")
