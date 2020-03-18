@@ -1,11 +1,15 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseNotModified
 from django.shortcuts import render
-from .models import Post
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import Session
+from django.core import serializers
 
 # Create your views here.
 def home(request):
 	context = {
-		'posts': Post.objects.all()
+		'sessions': Session.objects.all()
 	}
 	return render(request, 'decision/home.html', context)
 
@@ -17,3 +21,47 @@ def summary(request):
 
 def startTrauma(request):
 	return render(request, 'decision/home.html')
+
+@csrf_exempt
+def setItem(request):
+	if request.method == 'POST':
+		key = request.POST.get('step', None)
+		valueNew = request.POST.get('value', None)
+		dbTable = Session.objects.get(id="100")
+		dbTable.__setattr__(key, valueNew)
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+	else:
+		return HttpResponse("Request method is not a POST")
+
+@csrf_exempt
+def getPerfusion(request):
+	if request.method == 'GET':
+		dbTable = Session.objects.get(id="100")
+		nailBed = dbTable.__getattribute__('Nail_Bed_Color')
+		lipcolor = dbTable.__getattribute__('Lip_Color')
+		caprefill = dbTable.__getattribute__('Cap_Refill_Time')
+
+		if (nailBed == "White") or (lipcolor == "White") or (caprefill == ">4"):
+			resp = HttpResponse('Alert')
+		else:
+			resp = HttpResponse('Remove')
+		return resp
+	else:
+		return HttpResponse("Request method is not a GET")
+
+@csrf_exempt
+def getETCO2(request):
+	if request.method == 'GET':
+		dbTable = Session.objects.get(id="100")
+		ETCO2 = dbTable.__getattribute__('ETCO2')
+
+		if (ETCO2 != "notRecorded") or (lipcolor == "White") or (caprefill == ">4"):
+			resp = HttpResponse('Alert')
+		else:
+			resp = HttpResponse('Remove')
+		return resp
+	else:
+		return HttpResponse("Request method is not a GET")

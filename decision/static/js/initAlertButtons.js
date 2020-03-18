@@ -505,3 +505,18 @@ function launchModal(modalTitle, step){
 /**
  * Set up Exposure buttons
  */
+
+function setItemAjax(step, value){
+    $.ajax(
+    {
+        type:"POST",
+        url: "/setItem/",
+        data:{
+            'step': step,
+            'value': value,
+        },
+        success: function( data )
+        {}
+     })
+
+}
