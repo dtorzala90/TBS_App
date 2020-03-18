@@ -20,6 +20,8 @@ def summary(request):
 	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
 
 def startTrauma(request):
+	newSession = Session(id='100');
+	newSession.save()
 	return render(request, 'decision/home.html')
 
 @csrf_exempt
