@@ -48,12 +48,13 @@ ul {
     align-content: center;
     text-align: center;
     display: inline-block;
-    font-size: 90px;
+    font-size: 100px;
     position: fixed;
     right: 0;
+    top: 5rem;
     width: 30%;
     z-index: 1;
-    top: 6.5rem;
+    margin-left: 10px;
 }
 /*Formatting the text alert on the summary page*/
 .alert-format {
@@ -121,8 +122,10 @@ ul {
     display: inline-block;
     position: fixed;
     z-index: 0;
-    top: 5.5rem;
+    top: 6rem;
     left: 0;
+    width: 70%;
+    margin-right: 10px;
 }
 
 /*Adjust table styling, such as borders and cell fill*/
