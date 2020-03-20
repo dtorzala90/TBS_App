@@ -65,25 +65,59 @@
     </h1>
 
     <div class="container ph-banner">
-        <table class="table">
+        <!--
+        ================================================================================
+        Container for pre-hospital information
+        ================================================================================
+        -->
+        <table class="table cell-size">
             <tbody>
             <tr>
                 <td class="td-weight">[Weight]</td>
                 <td rowspan="2">[MVC]</td>
-                <td rowspan="2">[History]</td>
-                <td rowspan="2">[LOC]</td>
             </tr>
             <tr>
                 <td class="td-age">[Age]</td>
+            </tr>
+            <tr>
+                <td rowspan="2">[History]</td>
+                <td rowspan="2">[LOC]</td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="container alert-format" id="alert_placeholder">
+    <div class="container abcd-banner">
         <!--
         ================================================================================
-        Javascript to create new timer for current session and check for previous alerts
+        Container for ABCD components
+        ================================================================================
+        -->
+
+        <table class="table cell-size">
+            <tbody>
+            <tr>
+                <td>[Airway]</td>
+            </tr>
+            <tr>
+                <td>[Breathing]</td>
+            </tr>
+            <tr>
+                <td>[Circulation]</td>
+            </tr>
+            <tr>
+                <td>[Disability]</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="container alert-format" id="alert_placeholder">
+        <p class="alert-label" style="font-size: 40px; text-decoration: underline">ALERTS</p>
+        <!--
+        ================================================================================
+        JavaScript to create new timer for current session and check for previous alerts
 
         This script is the same as the one in home.html but with additional calculations
         to compensate for the fact that the Summary page will be opened after the timer
@@ -96,6 +130,12 @@
     </div>
 
     <div class="container vitals-format" id="vitals_placeholder">
+        <p class="alert-label" style="font-size: 40px; text-decoration: underline">VITALS</p>
+        <!--
+        ================================================================================
+        Container for JavaScript vitals system
+        ================================================================================
+        -->
         <div class="container hr-display" id="hr_placeholder"></div>
         <div class="container bp-display" id="bp_placeholder"></div>
         <div class="container shock-display" id="shock_placeholder"></div>

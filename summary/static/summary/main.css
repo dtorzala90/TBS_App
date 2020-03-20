@@ -48,7 +48,7 @@ ul {
     align-content: center;
     text-align: center;
     display: inline-block;
-    font-size: 100px;
+    font-size: 125px;
     position: fixed;
     right: 0;
     top: 5rem;
@@ -65,7 +65,7 @@ ul {
     height: 80vh;
     position: fixed;
     z-index: 1;
-    top: 300px;
+    top: 375px;
     left: 5px;
     bottom: 30px;
     overflow: auto
@@ -77,9 +77,10 @@ ul {
     height: 80vh;
     position: fixed;
     z-index: 1;
-    top: 300px;
+    top: 375px;
     right: 5px;
     bottom: 30px;
+    text-align: center;
 }
 
 #hr_placeholder{
@@ -89,6 +90,7 @@ ul {
     overflow: auto;
     text-decoration: underline;
     text-decoration-color: #9fedd7;
+    display: inline-block;
 }
 
 #bp_placeholder{
@@ -98,6 +100,7 @@ ul {
     overflow: auto;
     text-decoration: underline;
     text-decoration-color: #fce181;
+    display: inline-block;
 }
 
 #shock_placeholder{
@@ -107,6 +110,7 @@ ul {
     overflow: auto;
     text-decoration: underline;
     text-decoration-color: #edeae5;
+    display: inline-block;
 }
 /*Format the PCH logo in the navbar*/
 #brandImage {
@@ -124,7 +128,7 @@ ul {
     z-index: 0;
     top: 6rem;
     left: 0;
-    width: 70%;
+    width: 30%;
     margin-right: 10px;
 }
 
@@ -144,4 +148,41 @@ ul {
 
 .td-age {
     border-top: 4px solid #2b7a78 !important;
+}
+
+.cell-size td {
+    height: 50%;
+}
+
+/*Format the labels for each item on the summary page*/
+.content-label {
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #414143;
+    font-size: 2.5rem;
+}
+
+.alert-label {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #414143;
+    font-size: 2.5rem;
+    text-align: center;
+
+}
+
+.abcd-banner {
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    z-index: 0;
+    left: 35%;
+    top: 6rem;
+    width: 30%;
+    margin-right: 10px;
+    margin-left: 10px;
 }
