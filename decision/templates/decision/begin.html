@@ -48,16 +48,35 @@
         </div>
     </nav>
 </header>
-<main>
-    <!-- Landing Page "Start Session" Button -->
-    <div id="init-trauma" class="container">
-        <br><br><br><br>
-        <div style="text-align: center;">
-            <form action="{% url 'startTrauma' %}" method="POST">
-                {% csrf_token %}
-                <input type="submit" class="btn btn-primary btn-xl" value="Start Session" name="start-btn">
-            </form>
-        </div>
+
+    <div class="startForm">
+        <form action="{% url 'startTrauma' %}" method="POST">
+            <div class="form-row">
+                <label>First Name</label>
+                <input type="text" class="form-control" id="firstName">
+            </div>
+
+            <div class="form-row">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" id="lastName">
+            </div>
+
+            <div class="form-row">
+                <label>Age</label>
+                <input type="text" class="form-control" id="patientAge">
+            </div>
+
+            <div class="form-row">
+                <label for="incidentInfo">Patient History</label>
+                <textarea class="form-control" id="patientHistory" rows="3"></textarea>
+            </div>
+
+            <div class="form-row">
+                <label for="initialInfo">Additional Info</label>
+                <textarea class="form-control" id="addlInfo" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-xl startButton" name="start-btn">Start Session</button>
+        </form>
     </div>
-</main>
 </body>
