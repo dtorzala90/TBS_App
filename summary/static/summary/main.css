@@ -48,10 +48,10 @@ ul {
     align-content: center;
     text-align: center;
     display: inline-block;
-    font-size: 125px;
+    font-size: 50px;
     position: fixed;
     right: 0;
-    top: 5rem;
+    top: 8rem;
     width: 30%;
     z-index: 1;
     margin-left: 10px;
@@ -65,21 +65,19 @@ ul {
     height: 80vh;
     position: fixed;
     z-index: 1;
-    top: 375px;
-    left: 5px;
-    bottom: 30px;
+    top: 15rem;
+    left: 0;
     overflow: auto
 }
 
 .vitals-format{
     align-content: center;
     width: 40vw;
-    height: 80vh;
+    height: 50vh;
     position: fixed;
     z-index: 1;
-    top: 375px;
-    right: 5px;
-    bottom: 30px;
+    top: 15rem;
+    right: 0;
     text-align: center;
 }
 
@@ -128,7 +126,7 @@ ul {
     z-index: 0;
     top: 6rem;
     left: 0;
-    width: 30%;
+    width: 70%;
     margin-right: 10px;
 }
 
@@ -154,7 +152,7 @@ ul {
     height: 50%;
 }
 
-/*Format the labels for each item on the summary page*/
+/*Format the labels for each item on the summary page
 .content-label {
     font-weight: 500;
     line-height: 1.2;
@@ -172,17 +170,16 @@ ul {
     font-size: 2.5rem;
     text-align: center;
 
-}
+}*/
 
 .abcd-banner {
     align-content: center;
-    text-align: center;
-    display: inline-block;
+    width: 40vw;
+    height: 50vh;
     position: fixed;
-    z-index: 0;
-    left: 35%;
-    top: 6rem;
-    width: 30%;
-    margin-right: 10px;
-    margin-left: 10px;
+    z-index: 1;
+    top: 30rem;
+    right: 5px;
+    bottom: 30px;
+    text-align: center;
 }

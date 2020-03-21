@@ -52,13 +52,8 @@
     <div class="startForm">
         <form action="{% url 'startTrauma' %}" method="POST">
             <div class="form-row">
-                <label>First Name</label>
-                <input type="text" class="form-control" id="firstName">
-            </div>
-
-            <div class="form-row">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" id="lastName">
+                <label>Weight</label>
+                <input type="text" class="form-control" id="patientWeight">
             </div>
 
             <div class="form-row">
@@ -75,7 +70,7 @@
                 <label for="initialInfo">Additional Info</label>
                 <textarea class="form-control" id="addlInfo" rows="3"></textarea>
             </div>
-
+            {%  csrf_token %}
             <button type="submit" class="btn btn-primary btn-xl startButton" name="start-btn">Start Session</button>
         </form>
     </div>
