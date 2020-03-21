@@ -557,64 +557,8 @@ function checkETTAlerts() {
 }
 
 function checkTransfusionAlerts() {
-    var sbp = parseInt(localStorage.getItem("BP"), 10);
-    var shock = parseFloat(localStorage.getItem("Shock Level"));
-    var hr = parseInt(localStorage.getItem("HR"),10);
-
-    var mtp = localStorage.getItem("Massive Transfusion Protocol");
-    var tprbc = localStorage.getItem("Transfusion PRBC");
-    var mtpAlert =localStorage.getItem("Massive Transfusion Protocol Alert");
-    var prbcAlert = localStorage.getItem("Transfusion PRBC Alert");
-
-
-    if(tprbc === "no"){
-         if((sbp < 90 || shock  > 1.2 || hr > 180) && prbcAlert === "not thrown"){
-            localStorage.setItem("Transfusion PRBC Alert", "thrown");
-             $('#alert_placeholder').append(
-                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tprbc-alert'>\n" +
-                 "                  <strong>Consider Transfusion!</strong>\n" +
-                 "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Transfusion PRBC Alert\", \"dismissed\")'" +
-                 "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                 "                  </button>\n" +
-                 "                </div>");
-        }
-    }
-
-
-    if(mtp === "no"){
-        if((sbp < 90 || shock  > 1.2 || hr > 180) && mtpAlert === "not thrown"){
-            localStorage.setItem("Massive Transfusion Protocol Alert", "thrown");
-             $('#alert_placeholder').append(
-                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
-                 "                  <strong>Consider Activating MTP!</strong>\n" +
-                 "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Massive Transfusion Protocol Alert\", \"dismissed\")'" +
-                 "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                 "                  </button>\n" +
-                 "                </div>");
-        }
-
-        else if(sbp >= 90 && shock  <= 1.2 && hr <= 180){
-            if(mtpAlert === "thrown"){
-                $('#mtp-alert').remove();
-                localStorage.setItem("Massive Transfusion Protocol Alert", "dismissed");
-            }
-
-            if(prbcAlert === "thrown"){
-                localStorage.setItem("Transfusion PRBC Alert", "dismissed");
-                $('#tprbc-alert').remove();
-            }
-        }
-    }
-
-    if(mtpAlert === "dismissed" && prbcAlert === "dismissed"){
-        clearInterval(transfusionInterval);
-    }
-
-    if(mtp === "yes" && tprbc === "yes"){
-        clearInterval(transfusionInterval);
-    }
+    checkAjax('Consider Transfusion!', 'tprbc-alert', 'Transfusion PRBC Alert', '/getTransfusionPRBC/');
+    checkAjax('Consider Activating MTP!', 'mtp-alert', 'Massive Transfusion Protocol Alert', '/getTransfusionMTP/');
 }
 
 /**

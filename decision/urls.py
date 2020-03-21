@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^getTypeAndCross/$', views.getTypeAndCross, name='getTypeAndCross'),
     url(r'^getBreathingRight/$', views.getBreathingRight, name='getBreathingRight'),
     url(r'^getBreathingLeft/$', views.getBreathingLeft, name='getBreathingLeft'),
+    url(r'^getTransfusionPRBC/$', views.getTransfusionPRBC, name='getTransfusionPRBC'),
+    url(r'^getTransfusionMTP/$', views.getTransfusionMTP, name='getTransfusionMTP'),
     #url(r'^getETCO2/$', views.getETCO2, name='getETCO2'),
 ]
 

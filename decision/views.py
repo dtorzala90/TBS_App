@@ -94,6 +94,42 @@ def getBreathingLeft(request):
 		return HttpResponse("Request method is not a GET")
 
 @csrf_exempt
+def getTransfusionPRBC(request):
+	if request.method == 'GET':
+		dbTable = Session.objects.get(id="99")
+		sbp = dbTable.__getattribute__('BP')
+		shock = dbTable.__getattribute__('Shock_Level')
+		hr = dbTable.__getattribute__('HR')
+		tprbc = dbTable.__getattribute__('Transfusion_PRBC')
+
+
+		if ((tprbc == "no") and (sbp < 90 or shock  > 1.2 or hr > 180)):
+				resp = HttpResponse('Alert')
+		else:
+			resp = HttpResponse('Remove')
+		return resp
+	else:
+		return HttpResponse("Request method is not a GET")
+
+@csrf_exempt
+def getTransfusionMTP(request):
+	if request.method == 'GET':
+		dbTable = Session.objects.get(id="99")
+		sbp = dbTable.__getattribute__('BP')
+		shock = dbTable.__getattribute__('Shock_Level')
+		hr = dbTable.__getattribute__('HR')
+		mtp = dbTable.__getattribute__('Transfusion_PRBC')
+
+
+		if ((mtp == "no") and (sbp < 90 or shock  > 1.2 or hr > 180)):
+				resp = HttpResponse('Alert')
+		else:
+			resp = HttpResponse('Remove')
+		return resp
+	else:
+		return HttpResponse("Request method is not a GET")
+
+@csrf_exempt
 def getETCO2(request):
 	if request.method == 'GET':
 		dbTable = Session.objects.get(id="99")

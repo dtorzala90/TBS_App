@@ -267,7 +267,9 @@ bpText.oninput = recordBP;
 function recordHR(){
     setTimeout(function(){
         var hr = hrText.value;
-        localStorage.setItem("HR", hrText.value);
+        //localStorage.setItem("HR", hrText.value);
+        setItemAjax("HR", hrText.value);
+
         var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
         var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
         var hour = 0;
@@ -285,14 +287,18 @@ function recordHR(){
             display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
         }
         display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem('HR Display',display);
+        //localStorage.setItem('HR Display',display);
+        setItemAjax("HR_Display", display);
+
     }, 1000);
 }
 
 function recordBP(){
         setTimeout(function(){
             var bp = bpText.value;
-            localStorage.setItem("BP", bpText.value);
+            //localStorage.setItem("BP", bpText.value);
+            setItemAjax("BP", bpText.value);
+
             var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
             var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
             var hour = 0;
@@ -312,7 +318,8 @@ function recordBP(){
             }
 
             display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-            localStorage.setItem('BP Display',display);
+            //localStorage.setItem('BP Display',display);
+            setItemAjax("BP_Display", bpText.value);
         }, 1000);
 }
 

@@ -25,11 +25,11 @@ class Session(models.Model):
 	# GCS_Eye = models.CharField(max_length=20)# localStorage.setItem("GCS Eye", "null");
 
 
-	# Shock_Level = models.CharField(max_length=20)# localStorage.setItem("Shock Level", "null");
+	Shock_Level = models.CharField(max_length=20, default="null")# localStorage.setItem("Shock Level", "null");
 
-	# HR = models.CharField(max_length=20)# localStorage.setItem("HR", "null");
+	HR = models.CharField(max_length=20, default="null")# localStorage.setItem("HR", "null");
 
-	# BP = models.CharField(max_length=20)# localStorage.setItem("BP", "null");
+	BP = models.CharField(max_length=20, default="null")# localStorage.setItem("BP", "null");
 
 	Patient_Age = models.CharField(max_length=20, default="null")# localStorage.setItem("Patient Age", "null");
 
@@ -42,17 +42,17 @@ class Session(models.Model):
 	# IVF = models.CharField(max_length=20)# localStorage.setItem("IVF", "null");
 
 	# #Variables for display of vital signs
-	# HR_Display = models.CharField(max_length=20)# localStorage.setItem("HR Display", "null");
-	# BP_Display = models.CharField(max_length=20)# localStorage.setItem("BP Display", "null");
-	# Shock_Level_Display = models.CharField(max_length=20)# localStorage.setItem("Shock Level Display", "null");
+	HR_Display = models.CharField(max_length=20, default="null")# localStorage.setItem("HR Display", "null");
+	BP_Display = models.CharField(max_length=20, default="null")# localStorage.setItem("BP Display", "null");
+	Shock_Level_Display = models.CharField(max_length=20, default="null")# localStorage.setItem("Shock Level Display", "null");
 
 
 	Right_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
 	Left_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
 
-	# Massive_Transfusion_Protocol = models.CharField(max_length=20)# localStorage.setItem("Massive Transfusion Protocol", "null");
+	Massive_Transfusion_Protocol = models.CharField(max_length=20, default="null")# localStorage.setItem("Massive Transfusion Protocol", "null");
 
-	# Transfusion_PRBC = models.CharField(max_length=20)# localStorage.setItem("Transfusion PRBC", "null");
+	Transfusion_PRBC = models.CharField(max_length=20, default="null")# localStorage.setItem("Transfusion PRBC", "null");
 
 	# #All time stamp varibles initiated below
 	# Oxygen_Supplementation_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("Oxygen Supplementation Initiated Time", "null");
