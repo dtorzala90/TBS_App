@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^getBreathingLeft/$', views.getBreathingLeft, name='getBreathingLeft'),
     url(r'^getTransfusionPRBC/$', views.getTransfusionPRBC, name='getTransfusionPRBC'),
     url(r'^getTransfusionMTP/$', views.getTransfusionMTP, name='getTransfusionMTP'),
-    #url(r'^getETCO2/$', views.getETCO2, name='getETCO2'),
+    url(r'^getETTCO2/$', views.getETTCO2, name='getETTCO2'),
+    url(r'^getETTGCS/$', views.getETTGCS, name='getETTGCS'),
+    url(r'^getShock/$', views.getShock, name='getShock'),
 ]
 

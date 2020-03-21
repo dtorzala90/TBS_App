@@ -19,7 +19,7 @@ class Session(models.Model):
 	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");
 
 	# GCS<13 = models.BooleanField()# localStorage.setItem("GCS<13", "false");
-	# GCS = models.CharField(max_length=20)# localStorage.setItem("GCS", "null");
+	GCS = models.CharField(max_length=20, default="null")# localStorage.setItem("GCS", "null");
 	# GCS_Motor = models.CharField(max_length=20)# localStorage.setItem("GCS Motor", "null");
 	# GCS_Verbal = models.CharField(max_length=20)# localStorage.setItem("GCS Verbal", "null");
 	# GCS_Eye = models.CharField(max_length=20)# localStorage.setItem("GCS Eye", "null");
@@ -71,7 +71,7 @@ class Session(models.Model):
 	# ETT_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("ETT Initiated Time", "null");
 	# ETT_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("ETT Achieved Time", "null");
 	# ETT_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("ETT Stopped Time", "null");
-	# ETT = models.CharField(max_length=20)# localStorage.setItem("ETT", "not initiated");
+	ETT = models.CharField(max_length=20, default="null")# localStorage.setItem("ETT", "not initiated");
 
 	# Difficult_Airway_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("Difficult Airway Initiated Time", "null");
 	# Difficult_Airway_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("Difficult Airway Achieved Time", "null");

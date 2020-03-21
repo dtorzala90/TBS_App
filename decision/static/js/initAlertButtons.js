@@ -179,7 +179,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "not present");
+        setItemAjax("ETCO2", "not present");
+        //localStorage.setItem("ETCO2", "not present");
     }
 
     else if(value === "<25"){
@@ -188,7 +189,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "<25");
+        setItemAjax("ETCO2", "<25");
+        //localStorage.setItem("ETCO2", "<25");
     }
 
     else if(value === "25-30"){
@@ -197,7 +199,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "25-30");
+        setItemAjax("ETCO2", "25-30");        
+        //localStorage.setItem("ETCO2", "25-30");
     }
 
     else if(value === "30-35"){
@@ -206,7 +209,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "30-35");
+        setItemAjax("ETCO2", "30-35");
+        //localStorage.setItem("ETCO2", "30-35");
     }
 
     else if(value === "35-40"){
@@ -215,7 +219,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "35-40");
+        setItemAjax("ETCO2", "35-40");
+        //localStorage.setItem("ETCO2", "35-40");
     }
 
     else if(value === "40-50"){
@@ -224,7 +229,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "40-50");
+        setItemAjax("ETCO2", "40-50");
+        //localStorage.setItem("ETCO2", "40-50");
     }
 
     else {
@@ -233,7 +239,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", ">50");
+        setItemAjax("ETCO2", ">50");
+        //localStorage.setItem("ETCO2", ">50");
     }
 }
 
