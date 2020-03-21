@@ -242,11 +242,13 @@ function etco2(value){
  */
 function chestSoundFunc(side, value) {
     if(side === "right") {
-        localStorage.setItem("Right Chest Rise/Breath Sounds", value);
+        setItemAjax("Right_Chest_Rise_Breath_Sounds", value);
+        // localStorage.setItem("Right Chest Rise/Breath Sounds", value);
     }
 
     else{
-        localStorage.setItem("Left Chest Rise/Breath Sounds", value);
+        setItemAjax("Left_Chest_Rise_Breath_Sounds", value);
+        // localStorage.setItem("Left Chest Rise/Breath Sounds", value);
     }
 }
 
@@ -316,6 +318,7 @@ function recordBP(){
 
 function recordAge(){
     setTimeout(function(){
+        //setItemAjax("Patient_Age", color);
         localStorage.setItem("Patient Age", ageText.value);
     }, 1000);
 }
@@ -348,21 +351,92 @@ function intraoLineFunc() {
     localStorage.setItem("Intraosseous Line established", "true");
 }
 
+/**
+* Set up Perfusion buttons
+*/
+
+// Buttons for lip color
+// var lipc1 = document.getElementById('lipc-pi');
+// var lipc2 = document.getElementById('lipc-wh');
+// var lipc3 = document.getElementById('lipc-unk');
+
+// lipc1.onclick = lipc1Func;
+// lipc2.onclick = lipc2Func;
+// lipc3.onclick = lipc3Func;
 
 /**
  * These functions are responsible for responding to perfusion button clicks
  */
+
 function lipColorFunc(color) {
-    localStorage.setItem("Lip Color", color);
+    setItemAjax("Lip_Color", color);
+    //localStorage.setItem("Lip Color", color);
 }
 
 function nailColorFunc(color) {
-    localStorage.setItem("Nail Bed Color", color);
+    setItemAjax("Nail_Bed_Color", color);
+    //localStorage.setItem("Nail Bed Color", color);
 }
 
 function capRefillFunc(time) {
-    localStorage.setItem("Cap Refill Time", time);
+    setItemAjax("Cap_Refill_Time", time);
+    // localStorage.setItem("Cap Refill Time", time);
 }
+
+
+// function lipc1Func() {
+//     setItemAjax("Lip_Color", "Pink");
+// }
+
+// function lipc2Func() {
+//     setItemAjax("Lip_Color", "White");
+// }
+
+// function lipc3Func() {
+//     setItemAjax("Lip_Color", "Unable to assess");
+// }
+
+// //Buttons for nail bed color
+// var nailbc1 = document.getElementById('nailc-pi');
+// var nailbc2 = document.getElementById('nailc-wh');
+// var nailbc3 = document.getElementById('nailc-unk');
+
+// nailbc1.onclick = nailbc1Func;
+// nailbc2.onclick = nailbc2Func;
+// nailbc3.onclick = nailbc3Func;
+
+// function nailbc1Func() {
+//     setItemAjax("Nail_Bed_Color", "Pink");
+// }
+
+// function nailbc2Func() {
+//     setItemAjax("Nail_Bed_Color", "White");
+// }
+
+// function nailbc3Func() {
+//     setItemAjax("Nail_Bed_Color", "Unable to assess");
+// }
+
+// //Buttons for capillary refill time.
+// var caprt1 = document.getElementById('caprt-2');
+// var caprt2 = document.getElementById('caprt-24');
+// var caprt3 = document.getElementById('caprt-4');
+
+// caprt1.onclick = caprt1Func;
+// caprt2.onclick = caprt2Func;
+// caprt3.onclick = caprt3Func;
+
+// function caprt1Func() {
+//     setItemAjax("Cap_Refill_Time", "<2");
+// }
+
+// function caprt2Func() {
+//     setItemAjax("Cap_Refill_Time", "2-4");
+// }
+
+// function caprt3Func() {
+//     setItemAjax("Cap_Refill_Time", ">4");
+// }
 
 /**
  * This function is responsible for responding to the ivf button click
@@ -375,7 +449,8 @@ function ivFluidFunc(amount) {
  * This function is responsible for responding to the type and cross button click
  */
 function typeAndCrossFunc(value) {
-    localStorage.setItem("Type and Cross", value);
+    setItemAjax("Type_and_Cross", value);
+    //localStorage.setItem("Type and Cross", value);
 }
 
 /**

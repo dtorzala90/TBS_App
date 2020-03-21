@@ -31,9 +31,9 @@ class Session(models.Model):
 
 	# BP = models.CharField(max_length=20)# localStorage.setItem("BP", "null");
 
-	# Patient_Age = models.CharField(max_length=20)# localStorage.setItem("Patient Age", "null");
+	Patient_Age = models.CharField(max_length=20, default="null")# localStorage.setItem("Patient Age", "null");
 
-	# Type_and_Cross = models.CharField(max_length=20)# localStorage.setItem("Type and Cross", "none");
+	Type_and_Cross = models.CharField(max_length=20, default="none")# localStorage.setItem("Type and Cross", "none");
 
 	Lip_Color = models.CharField(max_length=20, default="null")
 	Nail_Bed_Color = models.CharField(max_length=20, default="null")
@@ -47,8 +47,8 @@ class Session(models.Model):
 	# Shock_Level_Display = models.CharField(max_length=20)# localStorage.setItem("Shock Level Display", "null");
 
 
-	# Right_Chest_Rise/Breath_Sounds = models.CharField(max_length=20)# localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
-	# Left_Chest_Rise/Breath Sounds = models.CharField(max_length=20)# localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
+	Right_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
+	Left_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
 
 	# Massive_Transfusion_Protocol = models.CharField(max_length=20)# localStorage.setItem("Massive Transfusion Protocol", "null");
 

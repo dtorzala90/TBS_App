@@ -40,12 +40,12 @@ localStorage.setItem("Hypotensive alert", "not thrown");
 localStorage.setItem("Patient Age", "null");
 
 localStorage.setItem("Type and Cross Alert", "not thrown");
-localStorage.setItem("Type and Cross", "none");
+//localStorage.setItem("Type and Cross", "none");
 
 localStorage.setItem("Poor Perfusion", "not thrown");
-localStorage.setItem("Lip Color", "null");
-localStorage.setItem("Nail Bed Color", "null");
-localStorage.setItem("Cap Refill Time", "null");
+// localStorage.setItem("Lip Color", "null");
+// localStorage.setItem("Nail Bed Color", "null");
+// localStorage.setItem("Cap Refill Time", "null");
 
 localStorage.setItem("Alert Consider IVF", "not thrown");
 localStorage.setItem("Alert Fluids Given", "not thrown");
@@ -58,9 +58,9 @@ localStorage.setItem("BP Display", "null");
 localStorage.setItem("Shock Level Display", "null");
 
 
-localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
+// localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
 localStorage.setItem("Right Breathing Alert", "not thrown");
-localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
+// localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
 localStorage.setItem("Left Breathing Alert", "not thrown");
 
 localStorage.setItem("Massive Transfusion Protocol", "no");
