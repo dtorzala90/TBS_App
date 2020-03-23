@@ -60,7 +60,6 @@
         -->
         <div class="container timer-summary" id="timer">
             <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
-            <p style="font-size: 40px; text-decoration: overline">TIME ELAPSED</p>
         </div>
     </h1>
 
@@ -74,20 +73,44 @@
             <tbody>
             <tr>
                 <td class="td-weight">[Weight]</td>
-                <td rowspan="2">[MVC]</td>
+                <td rowspan="2">[Additional Info]</td>
+                <td rowspan="2">[History]</td>
             </tr>
             <tr>
                 <td class="td-age">[Age]</td>
-            </tr>
-            <tr>
-                <td rowspan="2">[History]</td>
-                <td rowspan="2">[LOC]</td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="container abcd-banner">
+    <div class="container alert-format" id="alert_placeholder">
+        <!--
+        ================================================================================
+        JavaScript to create new timer for current session and check for previous alerts
+
+        This script is the same as the one in home.html but with additional calculations
+        to compensate for the fact that the Summary page will be opened after the timer
+        has started.
+        ================================================================================
+        -->
+        <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/generalAlertSystem.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/checkAlertsOnRefresh.js" %}"></script>
+    </div>
+
+    <div class="container vitals-format" id="vitals_placeholder">
+        <!--
+        ================================================================================
+        Container for JavaScript vitals system
+        ================================================================================
+        -->
+        <div class="container hr-display" id="hr_placeholder"></div>
+        <div class="container bp-display" id="bp_placeholder"></div>
+        <div class="container shock-display" id="shock_placeholder"></div>
+        <script type="text/javascript" src="{% static "js/checkVitals.js" %}"></script>
+    </div>
+
+     <div class="container abcd-banner">
         <!--
         ================================================================================
         Container for ABCD components
@@ -112,36 +135,6 @@
         </table>
 
     </div>
-
-    <div class="container alert-format" id="alert_placeholder">
-        <p class="alert-label" style="font-size: 40px; text-decoration: underline">ALERTS</p>
-        <!--
-        ================================================================================
-        JavaScript to create new timer for current session and check for previous alerts
-
-        This script is the same as the one in home.html but with additional calculations
-        to compensate for the fact that the Summary page will be opened after the timer
-        has started.
-        ================================================================================
-        -->
-        <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/generalAlertSystem.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/checkAlertsOnRefresh.js" %}"></script>
-    </div>
-
-    <div class="container vitals-format" id="vitals_placeholder">
-        <p class="alert-label" style="font-size: 40px; text-decoration: underline">VITALS</p>
-        <!--
-        ================================================================================
-        Container for JavaScript vitals system
-        ================================================================================
-        -->
-        <div class="container hr-display" id="hr_placeholder"></div>
-        <div class="container bp-display" id="bp_placeholder"></div>
-        <div class="container shock-display" id="shock_placeholder"></div>
-        <script type="text/javascript" src="{% static "js/checkVitals.js" %}"></script>
-    </div>
-
 </main>
 
 </body>
