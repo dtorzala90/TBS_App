@@ -179,7 +179,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "not present");
+        setItemAjax("ETCO2", "not present");
+        //localStorage.setItem("ETCO2", "not present");
     }
 
     else if(value === "<25"){
@@ -188,7 +189,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "<25");
+        setItemAjax("ETCO2", "<25");
+        //localStorage.setItem("ETCO2", "<25");
     }
 
     else if(value === "25-30"){
@@ -197,7 +199,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "25-30");
+        setItemAjax("ETCO2", "25-30");        
+        //localStorage.setItem("ETCO2", "25-30");
     }
 
     else if(value === "30-35"){
@@ -206,7 +209,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "30-35");
+        setItemAjax("ETCO2", "30-35");
+        //localStorage.setItem("ETCO2", "30-35");
     }
 
     else if(value === "35-40"){
@@ -215,7 +219,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "35-40");
+        setItemAjax("ETCO2", "35-40");
+        //localStorage.setItem("ETCO2", "35-40");
     }
 
     else if(value === "40-50"){
@@ -224,7 +229,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", "40-50");
+        setItemAjax("ETCO2", "40-50");
+        //localStorage.setItem("ETCO2", "40-50");
     }
 
     else {
@@ -233,7 +239,8 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        localStorage.setItem("ETCO2", ">50");
+        setItemAjax("ETCO2", ">50");
+        //localStorage.setItem("ETCO2", ">50");
     }
 }
 
@@ -242,11 +249,13 @@ function etco2(value){
  */
 function chestSoundFunc(side, value) {
     if(side === "right") {
-        localStorage.setItem("Right Chest Rise/Breath Sounds", value);
+        setItemAjax("Right_Chest_Rise_Breath_Sounds", value);
+        // localStorage.setItem("Right Chest Rise/Breath Sounds", value);
     }
 
     else{
-        localStorage.setItem("Left Chest Rise/Breath Sounds", value);
+        setItemAjax("Left_Chest_Rise_Breath_Sounds", value);
+        // localStorage.setItem("Left Chest Rise/Breath Sounds", value);
     }
 }
 
@@ -265,7 +274,9 @@ bpText.oninput = recordBP;
 function recordHR(){
     setTimeout(function(){
         var hr = hrText.value;
-        localStorage.setItem("HR", hrText.value);
+        //localStorage.setItem("HR", hrText.value);
+        setItemAjax("HR", hrText.value);
+
         var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
         var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
         var hour = 0;
@@ -283,14 +294,18 @@ function recordHR(){
             display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
         }
         display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem('HR Display',display);
+        //localStorage.setItem('HR Display',display);
+        setItemAjax("HR_Display", display);
+
     }, 1000);
 }
 
 function recordBP(){
         setTimeout(function(){
             var bp = bpText.value;
-            localStorage.setItem("BP", bpText.value);
+            //localStorage.setItem("BP", bpText.value);
+            setItemAjax("BP", bpText.value);
+
             var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
             var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
             var hour = 0;
@@ -310,12 +325,14 @@ function recordBP(){
             }
 
             display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-            localStorage.setItem('BP Display',display);
+            //localStorage.setItem('BP Display',display);
+            setItemAjax("BP_Display", bpText.value);
         }, 1000);
 }
 
 function recordAge(){
     setTimeout(function(){
+        //setItemAjax("Patient_Age", color);
         localStorage.setItem("Patient Age", ageText.value);
     }, 1000);
 }
@@ -348,21 +365,92 @@ function intraoLineFunc() {
     localStorage.setItem("Intraosseous Line established", "true");
 }
 
+/**
+* Set up Perfusion buttons
+*/
+
+// Buttons for lip color
+// var lipc1 = document.getElementById('lipc-pi');
+// var lipc2 = document.getElementById('lipc-wh');
+// var lipc3 = document.getElementById('lipc-unk');
+
+// lipc1.onclick = lipc1Func;
+// lipc2.onclick = lipc2Func;
+// lipc3.onclick = lipc3Func;
 
 /**
  * These functions are responsible for responding to perfusion button clicks
  */
+
 function lipColorFunc(color) {
-    localStorage.setItem("Lip Color", color);
+    setItemAjax("Lip_Color", color);
+    //localStorage.setItem("Lip Color", color);
 }
 
 function nailColorFunc(color) {
-    localStorage.setItem("Nail Bed Color", color);
+    setItemAjax("Nail_Bed_Color", color);
+    //localStorage.setItem("Nail Bed Color", color);
 }
 
 function capRefillFunc(time) {
-    localStorage.setItem("Cap Refill Time", time);
+    setItemAjax("Cap_Refill_Time", time);
+    // localStorage.setItem("Cap Refill Time", time);
 }
+
+
+// function lipc1Func() {
+//     setItemAjax("Lip_Color", "Pink");
+// }
+
+// function lipc2Func() {
+//     setItemAjax("Lip_Color", "White");
+// }
+
+// function lipc3Func() {
+//     setItemAjax("Lip_Color", "Unable to assess");
+// }
+
+// //Buttons for nail bed color
+// var nailbc1 = document.getElementById('nailc-pi');
+// var nailbc2 = document.getElementById('nailc-wh');
+// var nailbc3 = document.getElementById('nailc-unk');
+
+// nailbc1.onclick = nailbc1Func;
+// nailbc2.onclick = nailbc2Func;
+// nailbc3.onclick = nailbc3Func;
+
+// function nailbc1Func() {
+//     setItemAjax("Nail_Bed_Color", "Pink");
+// }
+
+// function nailbc2Func() {
+//     setItemAjax("Nail_Bed_Color", "White");
+// }
+
+// function nailbc3Func() {
+//     setItemAjax("Nail_Bed_Color", "Unable to assess");
+// }
+
+// //Buttons for capillary refill time.
+// var caprt1 = document.getElementById('caprt-2');
+// var caprt2 = document.getElementById('caprt-24');
+// var caprt3 = document.getElementById('caprt-4');
+
+// caprt1.onclick = caprt1Func;
+// caprt2.onclick = caprt2Func;
+// caprt3.onclick = caprt3Func;
+
+// function caprt1Func() {
+//     setItemAjax("Cap_Refill_Time", "<2");
+// }
+
+// function caprt2Func() {
+//     setItemAjax("Cap_Refill_Time", "2-4");
+// }
+
+// function caprt3Func() {
+//     setItemAjax("Cap_Refill_Time", ">4");
+// }
 
 /**
  * This function is responsible for responding to the ivf button click
@@ -375,7 +463,8 @@ function ivFluidFunc(amount) {
  * This function is responsible for responding to the type and cross button click
  */
 function typeAndCrossFunc(value) {
-    localStorage.setItem("Type and Cross", value);
+    setItemAjax("Type_and_Cross", value);
+    //localStorage.setItem("Type and Cross", value);
 }
 
 /**
@@ -505,3 +594,18 @@ function launchModal(modalTitle, step){
 /**
  * Set up Exposure buttons
  */
+
+function setItemAjax(step, value){
+    $.ajax(
+    {
+        type:"POST",
+        url: "/setItem/",
+        data:{
+            'step': step,
+            'value': value,
+        },
+        success: function( data )
+        {}
+     })
+
+}
