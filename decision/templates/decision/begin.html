@@ -26,10 +26,10 @@
 <body>
 <header class="site-header">
     <!-- Navbar Main Content -->
-    <nav class="navbar navbar-expand-md navbar-default fixed-top">
+    <nav class="navbar navbar-expand-md navbar-default fixed-top" style="border-bottom: 4px solid #fce181">
         <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
+            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4 style="color: white">Trauma Bay Decision App</h4></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -48,16 +48,30 @@
         </div>
     </nav>
 </header>
-<main>
-    <!-- Landing Page "Start Session" Button -->
-    <div id="init-trauma" class="container">
-        <br><br><br><br>
-        <div style="text-align: center;">
-            <form action="{% url 'startTrauma' %}" method="POST">
-                {% csrf_token %}
-                <input type="submit" class="btn btn-primary btn-xl" value="Start Session" name="start-btn">
-            </form>
-        </div>
+
+    <div class="startForm">
+        <form action="{% url 'startTrauma' %}" method="POST">
+            <div class="form-row">
+                <label>Weight</label>
+                <input type="text" class="form-control" id="patientWeight">
+            </div>
+
+            <div class="form-row">
+                <label>Age</label>
+                <input type="text" class="form-control" id="patientAge">
+            </div>
+
+            <div class="form-row">
+                <label for="incidentInfo">Patient History</label>
+                <textarea class="form-control" id="patientHistory" rows="3"></textarea>
+            </div>
+
+            <div class="form-row">
+                <label for="initialInfo">Additional Info</label>
+                <textarea class="form-control" id="addlInfo" rows="3"></textarea>
+            </div>
+            {%  csrf_token %}
+            <button type="submit" class="btn btn-primary btn-xl startButton" name="start-btn">Start Session</button>
+        </form>
     </div>
-</main>
 </body>

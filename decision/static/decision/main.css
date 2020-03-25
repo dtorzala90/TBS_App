@@ -1,35 +1,41 @@
 body {
-    background: #29323A;
+    background: #feffff;
     color: #555555;
     margin-top: 5rem;
     margin-left: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #555555;
+    color: white;
 }
 
 ul {
     margin: 0;
 }
-/*Remove table lines and make it transparent*/
+/*Adjust table styling, such as borders and cell fill*/
 .table>tbody>tr>td,
 .table>tbody>tr>th {
     border-top: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     vertical-align: middle;
+    border-bottom: 1px solid #2b7a78;
+    align-content: center;
+    table-layout: auto;
 }
 
+/*Color for navigation bar links*/
 .site-header .navbar-nav .nav-link {
-    color: #555555;
+    color: white;
 }
 
+/*Changes nav bar link color when interacted with*/
 .site-header .navbar-nav .nav-link:hover {
-    color: #D72331;
+    color: #9fedd7;
 }
 
+/*Background color for nav bar*/
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #17252a;
 }
 
 .navbar-default .navbar-brand {
@@ -56,29 +62,6 @@ ul {
     margin-bottom: 20px;
 }
 
-.article-title {
-    color: #444444;
-}
-
-a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
-}
-
-.article-content {
-    white-space: pre-line;
-}
-
-.article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-}
-
-.article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-}
 /*Sidebar for shortcuts between accordion sections*/
 .sidenav {
     height: 100%;
@@ -88,9 +71,10 @@ a.article-title:hover {
     top: 0;
     left: 0;
     overflow-x: hidden;
-    padding-top: 30px;
+    padding-top: 60px;
     margin-top: 20px;
-    background: white;
+    background: #17252a;
+    border-right: 4px solid #fce181;
 }
 
 .sidenav a {
@@ -98,13 +82,14 @@ a.article-title:hover {
     text-align: center;
     text-decoration: none;
     font-size: 70px;
-    color: #555555;
+    color: white;
     display: block;
 }
 
+/*Styling accordion headers when they are opened/closed*/
 .card-header::after {
     content: "\f106";
-    color: #333;
+    color: white;
     right: 30px;
     top: 18px;
     position: absolute;
@@ -121,7 +106,7 @@ a.article-title:hover {
 }
 /*Formatting the timer on the decision and summary pages*/
 .timer-style {
-    color: white;
+    color: #414143;
     text-align: center;
     display: inline-block;
     padding-top: 5%;
@@ -129,17 +114,59 @@ a.article-title:hover {
 }
 
 .timer-summary {
-    color: white;
+    color: #414143;
     text-align: center;
     display: inline-block;
     font-size: 200px;
 }
+
 /*Formatting the text alert on the summary page*/
 .alert-format {
     align-content: center;
     text-align: center;
     font-size: 30px;
+    width: 60vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 1;
+    top: 300px;
+    left: 5px;
+    bottom: 30px;
+    overflow: auto
 }
+
+.vitals-format{
+    align-content: center;
+    width: 40vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 1;
+    top: 300px;
+    right: 5px;
+    bottom: 30px;
+}
+
+#hr_placeholder{
+    position: relative;
+    font-size: 20px;
+    padding-top: 15px;
+    overflow: auto;
+}
+
+#bp_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+}
+
+#shock_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+}
+
 /*Format the PCH logo in the navbar*/
 #brandImage {
     width: 150px;
@@ -147,6 +174,14 @@ a.article-title:hover {
     display: inline-block;
     float: left;
 }
+
+#square {
+    width: 150px;
+    height: 57.75px;
+    display: inline-block;
+    float: left;
+}
+
 /*Create a large button for the landing page*/
 .btn-xl {
     align-content: center;
@@ -156,25 +191,25 @@ a.article-title:hover {
 }
 
 .btn.btn-primary {
-    background-color: #D72331;
-    box-shadow: 0 8px 0 0 #6C1219;
-    border: #6C1219;
+    background-color: #3aafa9;
+    box-shadow: 0 8px 0 0 #1D5755;
+    border: #1D5755;
     margin-top: 25%;
     margin-bottom: 25%;
 }
 
 .btn.btn-primary:hover {
-    background-color: #A11A25;
+    background-color: #2B837F;
 }
 
 .btn.btn-primary:visited {
-    border-color: #86161F !important;
+    border-color: #246D6A !important;
     margin-top: 25%;
     margin-bottom: 25%;
 }
 
 .btn.btn-primary:active:focus {
-    background-color: #86161F !important;
+    background-color: #246D6A !important;
     box-shadow: none !important;
     margin-top: 26%;
     margin-bottom: 26%;
@@ -183,49 +218,109 @@ a.article-title:hover {
 
 /*Styling each section of the accordion*/
 .collapse-A {
-    background: rgb(0, 169, 206);
-    background: linear-gradient(180deg, rgba(0, 169, 206, 0.75) 0%, rgba(255, 255, 255, 0.75) 100%);
-
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
 }
 
 .collapse-B {
-    background: rgb(132, 189, 0);
-    background: linear-gradient(180deg, rgba(132, 189, 0, 0.75) 0%, rgba(255, 255, 255, 0.75) 100%);
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+    }
 
 .collapse-C {
-    background: rgb(128, 49, 167);
-    background: linear-gradient(180deg, rgba(128, 49, 167, 0.75) 0%, rgba(255, 255, 255, 0.75) 100%);
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+    }
 
 .collapse-D {
-    background: rgb(242, 169, 0);
-    background: linear-gradient(180deg, rgba(242, 169, 0, 0.75) 0%, rgba(255, 255, 255, 0.75) 100%);
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+    }
 
 .collapse-E {
-    background: rgb(210, 22, 104);
-    background: linear-gradient(180deg, rgba(210, 22, 104, 0.75) 0%, rgba(255, 255, 255, 0.75) 100%);
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+   }
+
 /*Format the geometric background graphics on the bottom*/
-#bgDesign {
+/*#bgDesign {
     position: fixed;
     right: 0px;
     bottom: 0px;
     max-width: 100%;
     height: auto;
     transform: scaleX(-1);
-}
+}*/
+
 /*Remove underline from text links*/
 .nounderline {
   text-decoration: none !important;
 }
+
 /*Change hover color for sidebar letters*/
-a:hover {
-    color: #D72331;
+a:hover{
+    color: #9fedd7;
 }
 
 .btn-padding {
-    width: 75%;
-    margin: 5px;
+    width: 95%;
+}
+
+/*Accordion section color*/
+.card-header {
+    background-color: #3aafa9;
+    border: 1.5px solid #2b7a78;
+}
+
+/*Text color for survey sections*/
+h4 {
+    color: #17252a;
+}
+
+/*Page accents, this is for the line under the nav bar*/
+.nav-border {
+    border-bottom: 4px solid #fce181;
+    z-index: 1;
+
+}
+
+/*Allows for spacing between the vertical button groups*/
+.btn-group-vertical>button{
+    margin-bottom: 10px;
+    border-radius: 0.25rem !important;
+}
+
+/*Adjusts spacing between clustered buttons in the 'Pupils' section*/
+.btn-space {
+    margin-bottom: 10px;
+    border-radius: 0.25rem !important;
+}
+
+
+/*Creates border to make btn-light buttons pop against current theme*/
+.btn-light {
+    border-color: #2b7a78;
+}
+
+.startForm{
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    z-index: 0;
+    left: 35%;
+    top: 6rem;
+    width: 30%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.startButton{
+    position: fixed;
+    z-index: 0;
+    left: 35%;
+    top: 13rem;
+    width: 30%;
+    margin-right: 10px;
+    margin-left: 10px;
 }

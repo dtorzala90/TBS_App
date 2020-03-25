@@ -16,7 +16,6 @@ class VisualTimer {
     constructor(start, secondCount, navTime) {
         var currentTime = new Date().getTime();
          this.startTime = start;
-         this.timerDict = { };
          this.visHours = document.getElementById("hours");
          this.visMinutes = document.getElementById("minutes");
          this.visSeconds = document.getElementById("seconds");
