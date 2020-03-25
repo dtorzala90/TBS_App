@@ -18,5 +18,8 @@ urlpatterns = [
     url(r'^getETTCO2/$', views.getETTCO2, name='getETTCO2'),
     url(r'^getETTGCS/$', views.getETTGCS, name='getETTGCS'),
     url(r'^getShock/$', views.getShock, name='getShock'),
+    url(r'^getNoETCO2Alert/$', views.getNoETCO2Alert, name='getNoETCO2Alert'),
+    url(r'^getNoETTAlert/$', views.getNoETTAlert, name='getNoETTAlert'),
+    url(r'^getETCO2/$', views.getETCO2, name='getETCO2'),
 ]
 

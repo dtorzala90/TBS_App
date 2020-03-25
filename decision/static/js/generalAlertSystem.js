@@ -170,10 +170,11 @@ function checkETCO2(){
     jsonObj = {"noEtco2Alert":noEtco2Alert};
     checkAjaxWithData('','no-etco2-alert','Record ETCO2 Alert','/getNoETCO2Alert/', jsonObj);
 
-    jsonObj = {"noETTAlert":ettAlert};
+    var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
+
+    jsonObj = {"noETTAlert":ettAlert,"timeElapsed":timeElapsed};
     checkAjaxWithData('','ETT-etco2-alert','ETT ETCO2 Alert','/getNoETTAlert/', jsonObj);
 
-    var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
     jsonObj = {"timeElapsed":timeElapsed, "noEtco2Alert":noEtco2Alert};
 
     $.ajax(

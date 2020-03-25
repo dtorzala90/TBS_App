@@ -221,19 +221,21 @@ def getNoETTAlert(request):
 	if request.method == 'GET':
 		dbTable = Session.objects.get(id="99")
 		timeElapsed = request.GET.__getitem__('timeElapsed')
-		noEtco2Alert = request.GET.__getitem__('noEtco2Alert')
+		noETTAlert = request.GET.__getitem__('noETTAlert')
 		etco2 = dbTable.__getattribute__('ETCO2')
 
 		if(etco2 != "not recorded"):
 			resp = HttpResponse(etco2)
-		elif(timeElapsed >= 120 and noEtco2Alert == "not thrown" and etco2 == "not recorded"):
+		elif(int(timeElapsed) >= 120 and noETTAlert == "not thrown" and etco2 == "not recorded"):
 			resp = HttpResponse('timer')
+		else:
+			resp = HttpResponse('Do Nothing')
 		return resp
 	else:
 		return HttpResponse("Request method is not a GET")
 
 @csrf_exempt
-def ETCO2(request):
+def getETCO2(request):
 	if request.method == 'GET':
 		dbTable = Session.objects.get(id="99")
 		ett = dbTable.__getattribute__('ETT')
