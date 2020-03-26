@@ -139,8 +139,8 @@
             url: '/populateSummary/',
 
             success: function( data ) {
-                document.getElementById('patientAge').innerHTML = data.age;
-                document.getElementById('patientWeight').innerHTML = data.weight;
+                document.getElementById('patientAge').innerHTML = data.age + ' yrs';
+                document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
                 document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
                 document.getElementById('patientHistory').innerHTML = data.history;
             }
