@@ -9,7 +9,7 @@ urlpatterns = [
     path('summary/', views.summary, name = 'decision-summary'),
     path('currentSession/', views.startTrauma, name='startTrauma'),
 
-    #url(r'^populateSummary/$', views.populateSummary, name='populateSummary'),
+    url(r'^populateSummary/$', views.populateSummary, name='populateSummary'),
     url(r'^savePatientInfo/$', views.savePatientInfo, name='savePatientInfo'),
 
     url(r'^setItem/$', views.setItem, name='setItem'),
