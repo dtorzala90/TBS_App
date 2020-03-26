@@ -70,12 +70,12 @@
         <table class="table cell-size">
             <tbody>
             <tr>
-                <td class="td-weight">[Weight]</td>
-                <td rowspan="2">[Additional Info]</td>
-                <td rowspan="2">[History]</td>
+                <td class="td-weight" id="patientWeight">[Weight]</td>
+                <td rowspan="2" id="patientAddlInfo">[Additional Info]</td>
+                <td rowspan="2" id="patientHistory">[History]</td>
             </tr>
             <tr>
-                <td class="td-age">[Age]</td>
+                <td class="td-age" id="patientAge">[Age]</td>
             </tr>
             </tbody>
         </table>
@@ -133,6 +133,19 @@
         </table>
 
     </div>
+    <!--<script type="text/javascript">
+        $.ajax({
+            type:"GET",
+            url: '/populateSummary/',
+
+            success: function( data ) {
+                document.getElementById('patientAge').innerHTML = data.age;
+                document.getElementById('patientWeight').innerHTML = data.weight;
+                document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
+                document.getElementById('patientHistory').innerHTML = data.history;
+            }
+        });
+    </script>-->
 </main>
 
 </body>
