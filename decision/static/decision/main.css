@@ -1,5 +1,5 @@
 body {
-    background: #feffff;
+    background: #FBFBFB;
     color: #39393B;
     margin-top: 5rem;
 }
@@ -96,10 +96,14 @@ ul {
 /*Formatting the timer on the decision and summary pages*/
 .timer-decision {
     color: #39393B;
-    text-align: center;
-    display: inline-block;
-    margin: 5px 5px 0px;
+    margin: 8px auto 2px;
     font-size: 65px;
+    width: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,0.10),
+                0 0.9375rem 1.40625rem rgba(4,9,20,0.10),
+                0 0.25rem 0.53125rem rgba(4,9,20,0.10),
+                0 0.125rem 0.1875rem rgba(4,9,20,0.10);
 }
 
 /*Formatting the text alert on the summary page*/
@@ -320,6 +324,10 @@ h4 {
 
 .card {
     border: 4px solid #2b7a78;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,0.10),
+                0 0.9375rem 1.40625rem rgba(4,9,20,0.10),
+                0 0.25rem 0.53125rem rgba(4,9,20,0.10),
+                0 0.125rem 0.1875rem rgba(4,9,20,0.10);
 }
 
 .card-header {
