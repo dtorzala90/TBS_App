@@ -1,6 +1,6 @@
 body {
     background: #feffff;
-    color: #555555;
+    color: #39393B;
     margin-top: 5rem;
 }
 
@@ -10,16 +10,6 @@ h1, h2, h3, h4, h5, h6 {
 
 ul {
     margin: 0;
-}
-/*Adjust table styling, such as borders and cell fill*/
-.table>tbody>tr>td,
-.table>tbody>tr>th {
-    border-top: rgba(0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0);
-    vertical-align: middle;
-    border-bottom: 1px solid #2b7a78;
-    align-content: center;
-    table-layout: auto;
 }
 
 /*Color for navigation bar links*/
@@ -38,7 +28,7 @@ ul {
 }
 
 .navbar-default .navbar-brand {
-    color: #555555;
+    color: #39393B;
 }
 
 .label-wrap {
@@ -105,10 +95,10 @@ ul {
 /*
 /*Formatting the timer on the decision and summary pages*/
 .timer-decision {
-    color: #414143;
+    color: #39393B;
     text-align: center;
     display: inline-block;
-    margin: 5px;
+    margin: 5px 5px 0px;
     font-size: 65px;
 }
 
@@ -266,7 +256,7 @@ a:hover{
 
 /*Text color for survey sections*/
 h4 {
-    color: #17252a;
+    color: #39393B;
 }
 
 /*Page accents, this is for the line under the nav bar*/
@@ -325,13 +315,7 @@ h4 {
 
 .card-scroll {
     height: 60vh;
-    overflow-y: auto;
-}
-
-.card-body-format {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    border-top: 1.5px solid #2b7a78;
+    overflow-y: hidden;
 }
 
 .card {
@@ -352,7 +336,7 @@ h4 {
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #495057;
+    color: #39393B;
     background-color: #fff;
     border-color: #2b7a78 #2b7a78 #fff;
 }
@@ -385,4 +369,42 @@ h4 {
 
 .disb-btn {
     font-size: 1.6rem !important;
+}
+
+.card-title {
+    margin-bottom: 1.5rem;
+    background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(252,225,129,1) 50%, rgba(255,255,255,1) 100%);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #3aafa9;
+}
+
+.survey-pill-a {
+    color: #39393B;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20px;
+}
+
+.survey-col {
+    padding-left: 25px;
+    padding-right: 25px;
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
+.col-4 {
+    border-right: 1.5px solid #2b7a78;
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(230,245,244,1) 25%, rgba(230,245,244,1) 50%, rgba(230,245,244,1) 75%, rgba(255,255,255,1) 100%);
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
+.scrollable {
+  overflow-y: auto;
+    max-height: 50vh;
 }
