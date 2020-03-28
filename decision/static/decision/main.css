@@ -302,3 +302,25 @@ h4 {
     border-color: #2b7a78;
 }
 
+.startForm{
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    z-index: 0;
+    left: 35%;
+    top: 6rem;
+    width: 30%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.startButton{
+    position: fixed;
+    z-index: 0;
+    left: 35%;
+    top: 13rem;
+    width: 30%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
