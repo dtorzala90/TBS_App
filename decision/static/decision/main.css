@@ -204,7 +204,8 @@ border: 1.5px solid #2b7a78;
 
 /*Not currently used*/
 /*Formats the geometric background graphics on the bottom*/
-/*#bgDesign {
+/*
+#bgDesign {
 position: fixed;
 right: 0px;
 bottom: 0px;
@@ -219,13 +220,10 @@ transform: scaleX(-1);
     text-decoration: none !important;
 }
 
-/*Not currently used*/
-/*Changes hover color for sidebar letters*/
-/*
+/*Changes hover color for navbar letters*/
 a:hover{
 color: #9fedd7;
 }
-*/
 
 /*Adjusts padding between survey buttons*/
 .btn-padding {
