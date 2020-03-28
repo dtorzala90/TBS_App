@@ -525,6 +525,30 @@ function launchModal(modalTitle, step){
     $("#popUp").modal();
 
 }
+
+/**
+* Set up of disability  buttons and functions that will record user input
+*/
+//For pupilsizer depth in mm
+var pupilsizerText = document.getElementById("pupilsizer");
+pupilsizerText.oninput = recordpupilsizer;
+
+function recordpupilsizer(){
+    setTimeout(function(){
+        localStorage.setItem("Right Pupil Size", pupilsizerText.value);
+    }, 1000);
+}
+
+//For pupilsizel depth in mm
+var pupilsizelText = document.getElementById("pupilsizel");
+pupilsizelText.oninput = recordpupilsizel;
+
+function recordpupilsizel(){
+    setTimeout(function(){
+        localStorage.setItem("Left Pupil Size", pupilsizelText.value);
+    }, 1000);
+}
+
 /**
  * Set up Exposure buttons
  */

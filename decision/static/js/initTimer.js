@@ -28,6 +28,9 @@ localStorage.setItem("GCS Eye", "null");
 
 localStorage.setItem("GCS<13 Alert", "not thrown");
 
+localStorage.setItem("Right Pupil Size", "null");
+localStorage.setItem("Left Pupil Size", "null");
+
 localStorage.setItem("Shock Level", "null");
 localStorage.setItem("Shock Alert", "not thrown");
 
