@@ -18,13 +18,13 @@
 
                     <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
 
-                <!--
-                ================================================================================
-                Javascript to create new timer for current session
-                ================================================================================
-                -->
+                    <!--
+                    ================================================================================
+                    Javascript to create new timer for current session
+                    ================================================================================
+                    -->
 
-                <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
+                    <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
 
 
                 </div>
@@ -37,7 +37,7 @@
 
     <!--
     ================================================================================
-    Side navigation bar for each accordion section ABCDE
+    Card nav tabs for the survey
     ================================================================================
     -->
     <div class="container">
@@ -63,13 +63,37 @@
                     </ul>
                 </div>
 
+                <!--
+                ================================================================================
+                Card body containing the side nav pills and content of ABCDE
+                ================================================================================
+                -->
+
+                <!--
+                ================================================================================
+                A/Airway section
+                ================================================================================
+                -->
+
                 <div class="tab-content card-body card-scroll">
                     <div id="airw" class="tab-pane active">
                         <h2 class="card-title" style="color: #39393B">Airway</h2>
 
+                        <!--
+                        ================================================================================
+                        Each nav pill is tied to a portion of the survey. When clicked, the nav pill
+                        will reveal the appropriate input fields. Both the nav pill and input fields
+                        scroll individually in the event that there is too much content to display
+                        in the card body.
+                        ================================================================================
+                        -->
+
                         <form>
                             <div class="row">
                                 <div class="col-4">
+
+                                    <!-- Nav pills for each part of A/Airway linked to respective inputs -->
+
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                          aria-orientation="vertical">
                                         <a class="nav-link active survey-pill-a" id="v-pills-oxsp-tab"
@@ -99,6 +123,9 @@
                                     </div>
                                 </div>
                                 <div class="col-8 survey-col">
+
+                                    <!-- The resulting content according to the selected nav pill -->
+
                                     <div class="tab-content" id="v-pills-tabContent">
 
                                         <!-- Oxygen Supplementation -->
@@ -231,6 +258,12 @@
 
                         </form>
                     </div>
+
+                    <!--
+                    ================================================================================
+                    B/Breathing section
+                    ================================================================================
+                    -->
 
                     <div id="brth" class="tab-pane">
                         <h2 class="card-title" style="color: #39393B">Breathing</h2>
@@ -385,6 +418,12 @@
 
                         </form>
                     </div>
+
+                    <!--
+                    ================================================================================
+                    C/Circulation section
+                    ================================================================================
+                    -->
 
                     <div id="circ" class="tab-pane">
                         <h2 class="card-title" style="color: #39393B">Circulation</h2>
@@ -651,6 +690,12 @@
                         </form>
                     </div>
 
+                    <!--
+                    ================================================================================
+                    D/Disability section
+                    ================================================================================
+                    -->
+
                     <div id="disb" class="tab-pane">
                         <h2 class="card-title" style="color: #39393B">Disability</h2>
 
@@ -855,6 +900,12 @@
 
                         </form>
                     </div>
+
+                    <!--
+                    ================================================================================
+                    E/Exposure section
+                    ================================================================================
+                    -->
 
                     <div id="exps" class="tab-pane">
                         <h2 class="card-title" style="color: #39393B">Exposure</h2>
