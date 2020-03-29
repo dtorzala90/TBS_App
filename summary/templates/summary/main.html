@@ -118,16 +118,33 @@
         <table class="table cell-size">
             <tbody>
             <tr>
-                <td>[Airway]</td>
+                <td> Airway: ETT taped at
+                  <script type="text/javascript">
+                    document.write(localStorage.getItem("ETT Depth"))
+                  </script> cm
+                </td>
             </tr>
             <tr>
-                <td>[Breathing]</td>
+                <td> Breathing: BMV at
+                  <script type="text/javascript">
+                    document.write(localStorage.getItem("BVM BPM"))
+                  </script> breaths/min
+                </td>
             </tr>
             <tr>
                 <td>[Circulation]</td>
             </tr>
             <tr>
-                <td>[Disability]</td>
+                <td> Disability:<br />
+                  Pupils: Right:
+                    <script type="text/javascript">
+                      document.write(localStorage.getItem("Right Pupil Size"))
+                    </script> mm
+                    Left:
+                      <script type="text/javascript">
+                        document.write(localStorage.getItem("Left Pupil Size"))
+                    </script> mm
+                </td>
             </tr>
             </tbody>
         </table>

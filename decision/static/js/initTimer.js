@@ -17,6 +17,7 @@ localStorage.setItem("ETCO2", "not recorded");
 
 localStorage.setItem("ETT ETCO2 Alert", "not thrown");
 localStorage.setItem("ETT GCS Alert", "not thrown");
+localStorage.setItem("ETT Depth", "null");
 
 localStorage.setItem("GCS<13", "false");
 //localStorage.setItem("GCS", "null"); IN DATABASE
@@ -26,6 +27,9 @@ localStorage.setItem("GCS Eye", "null");
 
 
 localStorage.setItem("GCS<13 Alert", "not thrown");
+
+localStorage.setItem("Right Pupil Size", "null");
+localStorage.setItem("Left Pupil Size", "null");
 
 localStorage.setItem("Shock Level", "null");
 localStorage.setItem("Shock Alert", "not thrown");
@@ -77,6 +81,7 @@ localStorage.setItem("Oxygen Supplementation", "not initiated");
 localStorage.setItem("Bag Mask Initiated Time", "null");
 localStorage.setItem("Bag Mask Stopped Time", "null");
 localStorage.setItem("Bag Mask", "not initiated");
+localStorage.setItem("BVM BPM", "null")
 
 localStorage.setItem("LMA Initiated Time", "null");
 localStorage.setItem("LMA Achieved Time", "null");

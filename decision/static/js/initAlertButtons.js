@@ -260,6 +260,29 @@ function chestSoundFunc(side, value) {
 }
 
 /**
+* Set up of Airway buttons and functions that will record user input
+*/
+//For ETT depth in cm
+var ettdepthText = document.getElementById("ettdepth");
+ettdepthText.oninput = recordettdepth;
+
+function recordettdepth(){
+    setTimeout(function(){
+        localStorage.setItem("ETT Depth", ettdepthText.value);
+    }, 1000);
+}
+
+//BVM breaths per minutes
+var bvmbpmText = document.getElementById("bvmbpm");
+bvmbpmText.oninput = recordbvmbpm;
+
+function recordbvmbpm(){
+    setTimeout(function(){
+        localStorage.setItem("BVM BPM", bvmbpmText.value);
+    }, 1000);
+}
+
+/**
  * Set up Circulation buttons and function that will record vitals on user input
  */
 //Set up HR and BP text fields
@@ -591,6 +614,30 @@ function launchModal(modalTitle, step){
     $("#popUp").modal();
 
 }
+
+/**
+* Set up of disability  buttons and functions that will record user input
+*/
+//For pupilsizer depth in mm
+var pupilsizerText = document.getElementById("pupilsizer");
+pupilsizerText.oninput = recordpupilsizer;
+
+function recordpupilsizer(){
+    setTimeout(function(){
+        localStorage.setItem("Right Pupil Size", pupilsizerText.value);
+    }, 1000);
+}
+
+//For pupilsizel depth in mm
+var pupilsizelText = document.getElementById("pupilsizel");
+pupilsizelText.oninput = recordpupilsizel;
+
+function recordpupilsizel(){
+    setTimeout(function(){
+        localStorage.setItem("Left Pupil Size", pupilsizelText.value);
+    }, 1000);
+}
+
 /**
  * Set up Exposure buttons
  */
