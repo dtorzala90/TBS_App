@@ -54,8 +54,7 @@ def savePatientInfo(request):
 
 @csrf_exempt
 def setItem(request):
-	if request.method == 'POST':
-		key = request.POST.get('step', None)
+		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
 		dbTable = Session.objects.get(id="99")
 		dbTable.__setattr__(key, valueNew)
@@ -63,8 +62,6 @@ def setItem(request):
 
 		resp = HttpResponse("Saved it!")
 		return resp  # Sending an success response
-	else:
-		return HttpResponse("Request method is not a POST")
 
 @csrf_exempt
 def getPerfusion(request):

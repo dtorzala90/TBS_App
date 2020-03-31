@@ -101,10 +101,20 @@
         Container for JavaScript vitals system
         ================================================================================
         -->
-        <div class="container hr-display" id="hr_placeholder"></div>
-        <div class="container bp-display" id="bp_placeholder"></div>
-        <div class="container shock-display" id="shock_placeholder"></div>
-        <script type="text/javascript" src="{% static "js/checkVitals.js" %}"></script>
+        <table class="table cell-size">
+            <tbody>
+            <tr>
+                <td class="td-weight" id="bp_display">SBP:  </td>
+            </tr>
+            <tr>
+                <td rowspan="td-weight" id="hr_display">HR:  </td>
+            </tr>
+            <tr>
+                <td rowspan="td-weight" id="shock_display">Shock:  </td>
+            </tr>
+            </tbody>
+        </table>
+        <script type="text/javascript" src="{% static "js/updateSummary.js" %}"></script>
     </div>
 
      <div class="container abcd-banner">
@@ -154,6 +164,7 @@
             type:"GET",
             url: '/populateSummary/',
             success: function( data ) {
+                localStorage.setItem("Age", data.age);
                 document.getElementById('patientAge').innerHTML = data.age + ' yrs';
                 document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
                 document.getElementById('patientAddlInfo').innerHTML = data.addInfo;

@@ -74,6 +74,10 @@ class Session(models.Model):
 	HR = models.CharField(max_length=20, default="null")
 	BP = models.CharField(max_length=20, default="null")
 
+	Shock_History = models.CharField(max_length=20, default="null")
+	HR_History = models.CharField(max_length=20, default="null")
+	BP_History = models.CharField(max_length=20, default="null")
+
 	#Initial patient info
 	Patient_Age = models.CharField(max_length=20, default="null")
 	Patient_Weight = models.CharField(max_length=20, default="null")

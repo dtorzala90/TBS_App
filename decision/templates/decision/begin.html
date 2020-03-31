@@ -78,6 +78,7 @@
     </div>
             <script type="text/javascript">
                 function startSession(){
+                    localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
                     $.ajax({
                     type:"POST",
                     url: '/savePatientInfo/',

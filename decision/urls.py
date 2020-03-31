@@ -11,7 +11,11 @@ urlpatterns = [
 
     url(r'^populateSummary/$', views.populateSummary, name='populateSummary'),
     url(r'^savePatientInfo/$', views.savePatientInfo, name='savePatientInfo'),
+
     url(r'^setItem/$', views.setItem, name='setItem'),
+
+    url(r'^getVitals/$', views.populateSummary, name='populateSummary'),
+
     url(r'^getPerfusion/$', views.getPerfusion, name='getPerfusion'),
     url(r'^getTypeAndCross/$', views.getTypeAndCross, name='getTypeAndCross'),
     url(r'^getBreathingRight/$', views.getBreathingRight, name='getBreathingRight'),
