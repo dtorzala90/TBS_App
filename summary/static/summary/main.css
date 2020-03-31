@@ -183,3 +183,9 @@ ul {
     bottom: 30px;
     text-align: center;
 }
+
+/*Ensures that individual divs with this class can scroll individually*/
+.scrollable {
+    overflow-y: auto;
+    max-height: 50vh;
+}
