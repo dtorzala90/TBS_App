@@ -12,163 +12,74 @@
 function initEdit(type, step){
     if(type === 'oxygen'){
         if(step === 'init'){
-            launchModal("Oxygen Initiated At","Oxygen Supplementation Initiated Time");
+            launchModal("Oxygen Initiated At","Oxygen_Supplementation_Initiated");
         }
         else{
-            launchModal("Oxygen Stopped At","Oxygen Supplementation Stopped Time");
+            launchModal("Oxygen Stopped At","Oxygen_Supplementation_Stopped");
         }
     }
 
     else if(type === 'bag'){
         if(step === 'init'){
-            launchModal("Bag Initiated At","Bag Mask Initiated Time");
+            launchModal("Bag Initiated At","Bag_Mask_Initiated");
         }
         else{
-            launchModal("Bag Stopped At","Bag Mask Stopped Time");
+            launchModal("Bag Stopped At","Bag_Mask_Stopped");
         }
     }
 
     else if(type === 'lma'){
         if(step === 'init'){
-            launchModal("LMA Initiated At","LMA Initiated Time");
+            launchModal("LMA Initiated At","LMA_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("LMA Achieved At","LMA Achieved Time");
+            launchModal("LMA Achieved At","LMA_Achieved");
         }
 
         else{
-            launchModal("LMA Stopped At","LMA Stopped Time");
+            launchModal("LMA Stopped At","LMA_Stopped");
         }
     }
 
     else if(type === 'ett'){
         if(step === 'init'){
-            launchModal("ETT Initiated At","ETT Initiated Time");
+            launchModal("ETT Initiated At","ETT_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("ETT Achieved At","ETT Achieved Time");
+            launchModal("ETT Achieved At","ETT_Achieved");
         }
 
         else{
-            launchModal("ETT Stopped At","ETT Stopped Time");
+            launchModal("ETT Stopped At","ETT_Stopped");
         }
     }
 
     else if(type === 'diffAirway'){
         if(step === 'init'){
-            launchModal("Difficult Airway Initiated At","Difficult Airway Initiated Time");
+            launchModal("Difficult Airway Initiated At","Difficult_Airway_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("Difficult Airway Achieved At","Difficult Airway Achieved Time");
+            launchModal("Difficult Airway Achieved At","Difficult_Airway_Achieved");
         }
 
         else{
-            launchModal("Difficult Airway Stopped At","Difficult Airway Stopped Time");
+            launchModal("Difficult Airway Stopped At","Difficult_Airway_Stopped");
         }
     }
 
     else{
         if(step === 'init'){
-            launchModal("Surgical Airway Initiated At","Surgical Airway Initiated Time");
+            launchModal("Surgical Airway Initiated At","Surgical_Airway_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("Surgical Airway Achieved At","Surgical Airway Achieved Time");
+            launchModal("Surgical Airway Achieved At","Surgical_Airway_Achieved");
         }
 
         else{
-            launchModal("Surgical Airway Stopped At","Surgical Airway Stopped Time");
+            launchModal("Surgical Airway Stopped At","Surgical_Airway_Stopped");
         }
     }
 }
-
-function airwayStepFunc(type, step){
-    if(type === 'oxygen'){
-        if(step === 'init'){
-            localStorage.setItem("Oxygen Supplementation", "initiated");
-            localStorage.setItem("Oxygen Supplementation Initiated Time", getCurrentTime());
-        }
-        else{
-            localStorage.setItem("Oxygen Supplementation", "stopped");
-            localStorage.setItem("Oxygen Supplementation Stopped Time", getCurrentTime());
-        }
-    }
-
-    else if(type === 'bag'){
-        if(step === 'init'){
-            localStorage.setItem("Bag Mask", "initiated");
-            localStorage.setItem("Bag Mask Initiated Time", getCurrentTime());
-        }
-        else{
-            localStorage.setItem("Bag Mask", "stopped");
-            localStorage.setItem("Bag Mask Stopped Time", getCurrentTime());
-        }
-    }
-
-    else if(type === 'lma'){
-        if(step === 'init'){
-            localStorage.setItem("LMA", "initiated");
-            localStorage.setItem("LMA Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("LMA", "achieved");
-            localStorage.setItem("LMA Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("LMA", "stopped");
-            localStorage.setItem("LMA Stopped Time", getCurrentTime());
-        }
-    }
-
-    else if(type === 'ett'){
-        if(step === 'init'){
-            localStorage.setItem("ETT", "initiated");
-            localStorage.setItem("ETT Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("ETT", "achieved");
-            localStorage.setItem("ETT Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("ETT", "stopped");
-            localStorage.setItem("ETT Stopped Time", getCurrentTime());
-        }
-    }
-
-    else if(type === 'diffAirway'){
-        if(step === 'init'){
-            localStorage.setItem("Difficult Airway", "initiated");
-            localStorage.setItem("Difficult Airway Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("Difficult Airway", "achieved");
-            localStorage.setItem("Difficult Airway Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("Difficult Airway", "stopped");
-            localStorage.setItem("Difficult Airway Stopped Time", getCurrentTime());
-        }
-    }
-
-    else{
-        if(step === 'init'){
-            localStorage.setItem("Surgical Airway", "initiated");
-            localStorage.setItem("Surgical Airway Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("Surgical Airway", "achieved");
-            localStorage.setItem("Surgical Airway Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("Surgical Airway", "stopped");
-            localStorage.setItem("Surgical Airway Stopped Time", getCurrentTime());
-        }
-    }
-}
-
 
 
 /**
@@ -388,35 +299,6 @@ function fetchTimeModal(){
 }
 
 /**
- * Gets the current time stamp and returns it in a "displayable" format
- * @returns {string}
- */
-function getCurrentTime(){
-    var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
-    var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
-    var hour = 0;
-    var timeStamp = "";
-    if(min < 1){
-        min = 0;
-    }
-
-    if(min >= 60){
-        hour = Math.round(min/60);
-        min = Math.round(min%60);
-    }
-
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    else{
-        timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    return timeStamp;
-}
-
-/**
  * Launches the time stamp edit modal and sets up corresponding buttons
  *
  * @param modalTitle
@@ -437,7 +319,7 @@ function launchModal(modalTitle, step){
 
     var saveBtn = document.getElementById('saveModal');
     saveBtn.onclick = function(){
-        localStorage.setItem(step, fetchTimeModal());
+        setItemAjax(step, fetchTimeModal());
         $("#popUp").modal('hide');
     }
 
