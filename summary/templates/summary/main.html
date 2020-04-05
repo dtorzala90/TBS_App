@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
 
     <!-- Required meta tags -->
@@ -29,10 +30,13 @@
     {% else %}
         <title>Trauma Overview</title>
     {% endif %}
+
 </head>
+
 <body>
+
 <header class="site-header">
-    <!-- Navbar Main Content -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-default fixed-top">
         <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
         <div class="container">
@@ -50,24 +54,24 @@
     </nav>
 </header>
 <main role="main" class="container">
-    <h1>
         <!--
         ================================================================================
         Timer that displays time elapsed since beginning of Trauma
         ================================================================================
         -->
-        <div class="container timer-summary" id="timer">
-            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
-        </div>
-    </h1>
 
-    <div class="container ph-banner">
-        <!--
+        <div class="container">
+            <div class="row">
+                <div class="col timer-summary" id="timer">
+                    <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+                </div>
+                <div class="col ph-banner">
+                    <!--
         ================================================================================
         Container for pre-hospital information
         ================================================================================
         -->
-        <table class="table cell-size">
+                    <table class="table cell-size">
             <tbody>
             <tr>
                 <td class="td-weight">[Weight]</td>
@@ -79,9 +83,11 @@
             </tr>
             </tbody>
         </table>
-    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="container alert-format" id="alert_placeholder">
+    <div class="container alert-format scrollable" id="alert_placeholder">
         <!--
         ================================================================================
         JavaScript to create new timer for current session and check for previous alerts

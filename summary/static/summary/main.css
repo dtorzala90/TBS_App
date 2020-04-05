@@ -183,3 +183,8 @@ ul {
     bottom: 30px;
     text-align: center;
 }
+
+.scrollable {
+    overflow-y: auto;
+    max-height: 50vh;
+}
