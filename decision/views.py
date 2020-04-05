@@ -8,18 +8,18 @@ from django.core import serializers
 
 # Create your views here.
 def home(request):
-	return render(request, 'decision/home.html')
+	return render(request, 'decision/home.html', {'title': 'Decision App'})
 
 def begin(request):
-	return render(request, 'decision/begin.html')
+	return render(request, 'decision/begin.html', {'title': 'Start Session'})
 
 def summary(request):
-	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
+	return render(request, 'summary/main.html', {'title': 'Summary Page'})
 
 def startTrauma(request):
 	newSession = Session(id='99');
 	newSession.save()
-	return render(request, 'decision/home.html')
+	return render(request, 'decision/home.html', {'title': 'Decision App'})
 
 @csrf_exempt
 def setItem(request):
