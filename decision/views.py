@@ -1,21 +1,26 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseNotModified
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Session
 from django.core import serializers
 
 # Create your views here.
+@login_required
 def home(request):
 	return render(request, 'decision/home.html')
 
+@login_required
 def begin(request):
 	return render(request, 'decision/begin.html')
 
+@login_required
 def summary(request):
 	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
 
+@login_required
 def startTrauma(request):
 	newSession = Session(id='99');
 	newSession.save()
