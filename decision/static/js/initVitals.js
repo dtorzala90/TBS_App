@@ -132,7 +132,7 @@ function updateVitals(key, value){
         },
 
         success: function( data ) {
-            console.log("Vitals Updated!");
+
         }
     });
 }

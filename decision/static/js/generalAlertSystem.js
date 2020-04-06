@@ -1,9 +1,73 @@
 /**
  * This file is responsible for all time based alerts in our system.
  */
+var currTime = localStorage.getItem('total_seconds_main');
+setInterval(checkAlertsAjax, 1000);
 
-setInterval(checkAlerts, 1000);
+function checkAlertsAjax(){
+    currTime = localStorage.getItem('total_seconds_main');
+    $.ajax(
+    {
+        type:"GET",
+        url: "/checkAlerts/",
+        data:{
+            'time': currTime,
+        },
+        success: function( data )
+        {
+            checkAlertsLocal(data);
+        }
+     })
+}
 
+function checkAlertsLocal(ajaxData){
+
+    //Check Time Based Alerts First
+    var no_etco2 = localStorage.getItem('Record ETCO2 Alert');
+    var no_iv = localStorage.getItem('Alert No IV');
+
+    if(ajaxData.no_etco2_recorded == "true"){
+        if(no_etco2 == 'not thrown' && no_etco2 !='dismissed'){
+            localStorage.setItem("Record ETCO2 Alert", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
+                "                  <strong>No ETCO<sub>2</sub> measured!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Record ETCO2 Alert\", \"dismissed\")'" +
+                "                               data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+    }
+
+    else{
+        if(no_etco2 == 'thrown'){
+            localStorage.setItem("Record ETCO2 Alert", "dismissed");
+            $('#no-etco2-alert').remove();
+        }
+    }
+
+    if(ajaxData.no_iv == 'true'){
+        if(no_iv == 'not thrown' && no_iv !='dismissed'){
+            localStorage.setItem('Alert No IV', "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
+                "                  <strong>No IV:  Consider central line or intraosseous line!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert No IV\", \"dismissed\")'" +
+                    "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+    }
+
+    else{
+        if(no_iv == 'thrown'){
+            localStorage.setItem('Alert No IV', "dismissed");
+            $('#no-iv-alert').remove();
+        }
+    }
+}
 
 /**
  * This method is called when 5 minutes have passed and no forms of IV Access
@@ -12,7 +76,7 @@ setInterval(checkAlerts, 1000);
  *         If only 1 PIV has been established
  * We also keep track of when the alerts have been thrown to ensure we do not
  * display them multiple times.
- */
+
 function checkIV(){
     var noIvAlert = localStorage.getItem("Alert No IV");
     var onePIVAlert = localStorage.getItem("Alert One PIV");
@@ -108,9 +172,7 @@ function checkIV(){
             }
     }
 
-    /*If we are under the time limit for this alert but all parameters have already been met then we want to
-        dismiss the alert anyways. This prevents it from being thrown twice and prevents this loop from
-        being called again.*/
+
     else{
         if(cenLineAccess === "true" || intraosLineAccess === "true"){
             localStorage.setItem("Alert No IV", "dismissed");
@@ -127,11 +189,6 @@ function checkIV(){
     }
 }
 
-/**
- * This method is run every second to check for changes in ECO2 values.
- * For each given value, a different alert is thrown. Additionally, an alert
- * is thrown if two minutes have passed at no ETCO2 has been recorded.
- */
 function checkETCO2(){
     var noEtco2Alert = localStorage.getItem("Record ETCO2 Alert");
     var currAlert = localStorage.getItem("Current ETCO2 alert thrown");
@@ -250,10 +307,6 @@ function checkETCO2(){
      });
 }
 
-/**
- * This function is responsible for recording the GCS in accordance with user input
- * and ensuring the corresponding alerts are thrown
- */
 function checkGCS(){
     var motor = localStorage.getItem("GCS Motor");
     var verbal = localStorage.getItem("GCS Verbal");
@@ -508,4 +561,4 @@ function checkAjaxWithData(alertString, alertId, alertItem, urlString, dataForAj
             }
         }
      });
-}
+}*/

@@ -5,7 +5,33 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import Session
 from django.core import serializers
+import json
 
+alertsDict = {
+	'no_iv': 'false',
+	'no_etco2_recorded': 'false',
+	'ett_before_gcs': 'false',
+	'ett_no_etco2': 'false',
+	'right_chest': 'false',
+	'left_chest': 'false',
+	'no_etco2_measured': 'false',
+	'etco2_<25': 'false',
+	'ecto2_25-30': 'false',
+	'etco2_40-50': 'false',
+	'etco2_>50': 'false',
+	'bradycardia': 'false',
+	'tachycardia': 'false',
+	'shock_elevated': 'false',
+	'hypotensive': 'false',
+	'poor perfusion' : 'false',
+	'additional_piv' : 'false',
+	'iv_fluids_<20' : 'false',
+	'iv_fluids_>20' : 'false',
+	'type_cross' : 'false',
+	'prbc' : 'false',
+	'mtp' : 'false'
+
+}
 # Create your views here.
 def home(request):
 	return render(request, 'decision/home.html')
@@ -64,215 +90,34 @@ def setItem(request):
 		return resp  # Sending an success response
 
 @csrf_exempt
-def getPerfusion(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		nailBed = dbTable.__getattribute__('Nail_Bed_Color')
-		lipcolor = dbTable.__getattribute__('Lip_Color')
-		caprefill = dbTable.__getattribute__('Cap_Refill_Time')
+def checkAlerts(request):
+	dbTable = Session.objects.get(id="99")
+	time = int(request.GET.get('time', None));
 
-		if (nailBed == "White") or (lipcolor == "White") or (caprefill == ">4"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getTypeAndCross(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		typeAndCross = dbTable.__getattribute__('Type_and_Cross')
-
-		if (typeAndCross == "no"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getBreathingRight(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		rightChestRiseBreathSounds = dbTable.__getattribute__('Right_Chest_Rise_Breath_Sounds')
-
-		if (rightChestRiseBreathSounds == "No"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getBreathingLeft(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		leftChestRiseBreathSounds = dbTable.__getattribute__('Left_Chest_Rise_Breath_Sounds')
-
-		if (leftChestRiseBreathSounds == "no"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getTransfusionPRBC(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		sbp = dbTable.__getattribute__('BP')
-		shock = dbTable.__getattribute__('Shock_Level')
-		hr = dbTable.__getattribute__('HR')
-		tprbc = dbTable.__getattribute__('Transfusion_PRBC')
-
-
-		if ((tprbc == "no") and (sbp < 90 or shock  > 1.2 or hr > 180)):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getTransfusionMTP(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		sbp = dbTable.__getattribute__('BP')
-		shock = dbTable.__getattribute__('Shock_Level')
-		hr = dbTable.__getattribute__('HR')
-		mtp = dbTable.__getattribute__('Transfusion_PRBC')
-
-
-		if ((mtp == "no") and (sbp < 90 or shock  > 1.2 or hr > 180)):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getETTGCS(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		ett = dbTable.__getattribute__('ETT')
-		gcs = dbTable.__getattribute__('GCS')
-
-		if (ett == "initiated" and gcs == "null"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getETTCO2(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		ett = dbTable.__getattribute__('ETT')
+	#Time Based Alerts
+	if (time >= 2):
 		etco2 = dbTable.__getattribute__('ETCO2')
-
-		if (ett == "initiated" and etco2 == "null"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
+		if(etco2 == "null"):
+			alertsDict['no_etco2_recorded'] = 'true'
 	else:
-		return HttpResponse("Request method is not a GET")
+		alertsDict['no_etco2_recorded'] = 'false'
 
-@csrf_exempt
-def getShock(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		BP_recorded = dbTable.__getattribute__('BP')
-		HR_recorded = dbTable.__getattribute__('HR')
-		second = request.GET.__getitem__("second")
-		minute = request.GET.__getitem__("minuteTime")
-		
+	if (time >= 10):
+		pivCount = dbTable.__getattribute__('PIV_Count')
+		centrLine = dbTable.__getattribute__('Central_Line')
+		intrLine = dbTable.__getattribute__('Intraosseous_Line')
 
-		if (BP_recorded != "null" and HR_recorded != "null"):
+		if(pivCount == '0' and centrLine == "no" and intrLine == "no"):
+			alertsDict['no_iv'] = 'true'
 
-			BP = float(BP_recorded)
-			HR = float(HR_recorded)
-			shock = abs(HR/BP)
-
-			key = request.POST.get('step', None)
-			valueNew = request.POST.get('value', None)
-			dbTable = Session.objects.get(id="99")
-			dbTable.__setattr__('Shock_Level', str(shock))
-			dbTable.save()
-
-			if(minute < 1):
-				minute = 0
-
-			display = "Shock Level: " + str(shock) + " at " + str(minute) + "min " + str(sec) + "sec"
-
-			dbTable = Session.objects.get(id="99")
-			dbTable.__setattr__('Shock Level Display', display)
-			dbTable.save()
-
-			if(shock > 1.0):
-				resp = HttpResponse('Alert')
-			else:
-				resp = HttpResponse('Remove')
-			return resp
 		else:
-			return HttpResponse('Remove')
-	else:
-		return HttpResponse("Request method is not a GET")
+			alertsDict['no_iv'] = 'false'
+			if(centrLine == "no" and intrLine == "no" and pivCount == "1"):
+				alertsDict['no_iv'] = 'true'
 
-@csrf_exempt
-def getNoETCO2Alert(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		noEtco2Alert = request.GET.__getitem__('noEtco2Alert')
-		etco2 = dbTable.__getattribute__('ETCO2')
+	#Breathing Alerts
 
-		if(etco2 != "not recorded" and noEtco2Alert == "thrown"):
+	#Vital Alerts
 
-			resp = HttpResponse('Remove')
-		else:
-			resp = HttpResponse('Do Nothing')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getNoETTAlert(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		timeElapsed = request.GET.__getitem__('timeElapsed')
-		noETTAlert = request.GET.__getitem__('noETTAlert')
-		etco2 = dbTable.__getattribute__('ETCO2')
-
-		if(etco2 != "not recorded"):
-			resp = HttpResponse(etco2)
-		elif(int(timeElapsed) >= 120 and noETTAlert == "not thrown" and etco2 == "not recorded"):
-			resp = HttpResponse('timer')
-		else:
-			resp = HttpResponse('Do Nothing')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
-
-@csrf_exempt
-def getETCO2(request):
-	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
-		ett = dbTable.__getattribute__('ETT')
-		etco2 = dbTable.__getattribute__('ETCO2')
-
-		if (ett == "initiated" and etco2 == "not recorded"):
-			resp = HttpResponse('Alert')
-		else:
-			resp = HttpResponse('Remove')
-		return resp
-	else:
-		return HttpResponse("Request method is not a GET")
+	#Circulation Alerts
+	return JsonResponse(alertsDict)

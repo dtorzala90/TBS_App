@@ -42,8 +42,8 @@ class Session(models.Model):
 	Nail_Color = models.CharField(max_length=20, default="null")
 	Cap_Refill = models.CharField(max_length=20, default="null")
 	PIV_Count = models.CharField(max_length=20, default="0")
-	Central_Line = models.CharField(max_length=20, default="null")
-	Intraosseous_Line = models.CharField(max_length=20, default="null")
+	Central_Line = models.CharField(max_length=20, default="no")
+	Intraosseous_Line = models.CharField(max_length=20, default="no")
 
 	IV_Fluid_Amount = models.CharField(max_length=20, default="null")
 	Type_Cross = models.CharField(max_length=20, default="null")
@@ -58,10 +58,10 @@ class Session(models.Model):
 	Pupil_Size_Left = models.CharField(max_length=20, default="null")
 
 	Moves_Extremities = models.CharField(max_length=20, default="null")
-	#Vitals
-	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");
 
-	# GCS<13 = models.BooleanField()# localStorage.setItem("GCS<13", "false");
+	#Vitals
+	ETCO2 = models.CharField(max_length=20, default="null")
+
 	GCS = models.CharField(max_length=20, default="null")
 	GCS_Motor = models.CharField(max_length=20, default="null")
 	GCS_Verbal = models.CharField(max_length=20, default="null")
