@@ -1,9 +1,29 @@
 {% extends "decision/base.html" %}
-{% block content %}
-	<h2>Login</h2>
-	<form method="post">
-	  {% csrf_token %}
-	  {{ form.as_p }}
-	  <button type="submit">Login</button>
+<!--
+	<br>
+	<div class="form-row" style="margin: auto">
+		<form method="post">
+	  	{% csrf_token %}
+	  	<div class="form-row">
+                <label>Login2</label>
+                <input type="text" class="form-control" id="loginUsername">
+        </div>
+	  	<label>Login2</label>
+	  	{{ form.as_p }}
+	  <button type="submit" class="btn btn-primary btn-xl startButton">Login</button>
 	</form>
-{% endblock content %}
+	</div>
+	 -->
+{% block content %}
+
+    <div class="container">
+        <form method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+        	{{form.as_p}}
+    	</div>
+            <button class="btn btn-primary btn-xl loginButton" type="submit">Login</button>
+        </form>
+        <div class="have-account">Don't have an account? <a href="/register" target="blank"><strong>reister here</strong></a>!</div>
+    </div>
+{% endblock %}
