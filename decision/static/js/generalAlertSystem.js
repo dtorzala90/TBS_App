@@ -67,6 +67,101 @@ function checkAlertsLocal(ajaxData){
             $('#no-iv-alert').remove();
         }
     }
+
+    //Check vital based alerts
+    var bradyAlert = localStorage.getItem("Bradycardia Alert");
+    var tachyAlert = localStorage.getItem("Tachycardia Alert");
+    var hypoAlert = localStorage.getItem("Hypotensive alert");
+    var shockAlert = localStorage.getItem("Shock Alert");
+
+    if(ajaxData.bradycardia == 'true'){
+        if(bradyAlert != "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
+                "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Bradycardia Alert", "thrown");
+        }
+
+        if(tachyAlert == 'thrown'){
+            $('#tach-alert').remove();
+            localStorage.setItem("Tachycardia Alert", "dismissed");
+        }
+    }
+
+    else{
+        if(bradyAlert == "thrown"){
+            $('#brady-alert').remove();
+            localStorage.setItem("Bradycardia Alert", "dismissed");
+        }
+    }
+
+    if(ajaxData.tachycardia == 'true'){
+        if(tachyAlert != "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tachy-alert'>\n" +
+                "                  <strong>TachyCardia:  Consider cause!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Tachycardia Alert", "thrown");
+        }
+
+        if(bradyAlert == 'thrown'){
+            $('#brady-alert').remove();
+            localStorage.setItem("Bradycardia Alert", "dismissed");
+        }
+    }
+
+    else{
+        if(tachyAlert == "thrown"){
+            $('#tachy-alert').remove();
+            localStorage.setItem("Tachycardia Alert", "dismissed");
+        }
+    }
+
+    if(ajaxData.hypotensive == 'true'){
+        if(hypoAlert != "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='hypo-alert'>\n" +
+                "                  <strong>Hypotensive!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Hypotensive Alert", "thrown");
+        }
+    }
+
+    else{
+        $('#hypo-alert').remove();
+        localStorage.setItem("Hypotensive Alert", "dismissed");
+    }
+
+    if(ajaxData.shock_elevated == 'true'){
+        if(shockAlert != "thrown"){
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
+                "                  <strong>Elevated shock index!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+            localStorage.setItem("Shock Alert", "thrown");
+        }
+
+        else{
+           if(shockAlert == "thrown"){
+               $('#shock-alert').remove();
+               localStorage.setItem("Shock Alert", "thrown");
+           }
+        }
+    }
+
 }
 
 /**
@@ -333,96 +428,6 @@ function checkGCS(){
             $('#ETT-gcs-alert').remove();
         }
     }
-}
-
-
-function checkHR(){
-    var HR_recorded = localStorage.getItem("HR");
-    var brady = localStorage.getItem("Bradycardia Alert");
-    var tach = localStorage.getItem("Tachycardia Alert");
-
-    if(HR_recorded !== "null"){
-        var HR = parseInt(HR_recorded);
-
-        if(HR <= 100 && HR >=60){
-            if(brady === "thrown"){
-                $('#brady-alert').remove();
-                localStorage.setItem("Bradycardia Alert", "dismissed");
-            }
-
-            if(tach === "thrown"){
-                $('#tach-alert').remove();
-                localStorage.setItem("Tachycardia Alert", "dismissed");
-            }
-        }
-        else if (HR < 60 && brady !== "thrown"){
-            if(tach === "thrown"){
-                $('#tach-alert').remove();
-                localStorage.setItem("Tachycardia Alert", "dismissed");
-            }
-
-            $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
-                "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
-            localStorage.setItem("Bradycardia Alert", "thrown");
-        }
-
-        else if (HR > 100 && tach !== "thrown"){
-            if(brady === "thrown"){
-                $('#brady-alert').remove();
-                localStorage.setItem("Bradycardia Alert", "dismissed");
-            }
-              $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tach-alert'>\n" +
-                "                  <strong>Tachycardia</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
-              localStorage.setItem("Tachycardia Alert", "thrown");
-        }
-    }
-}
-
-
-function checkBP(){
-    var BP_recorded = localStorage.getItem("BP");
-    var hypo = localStorage.getItem("Hypotensive Alert");
-    var age = localStorage.getItem("Patient Age");
-
-    if(BP_recorded !== "null" && age !== "null"){
-        var BP = parseInt(BP_recorded) + (2 * parseInt(age));
-
-        if(BP >=55){
-            if(hypo === "thrown"){
-                $('#hypo-alert').remove();
-                localStorage.setItem("Hypotensive Alert", "dismissed");
-            }
-        }
-        else if (BP < 55 && hypo !== "thrown"){
-            $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='hypo-alert'>\n" +
-                "                  <strong>Hypotensive!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
-            localStorage.setItem("Hypotensive Alert", "thrown");
-        }
-    }
-}
-
-function calcShock(){
-
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-
-    jsonObj = {"minuteTime":min, "second":sec};
-    checkAjaxWithData('Elevated shock index!', 'shock-alert', 'Shock Alert', '/getShock/', jsonObj);
 }
 
 function checkFluids(){

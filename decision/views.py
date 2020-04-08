@@ -94,7 +94,7 @@ def checkAlerts(request):
 	dbTable = Session.objects.get(id="99")
 	time = int(request.GET.get('time', None));
 
-	#Time Based Alerts
+	##Time Based Alerts
 	if (time >= 2):
 		etco2 = dbTable.__getattribute__('ETCO2')
 		if(etco2 == "null"):
@@ -115,9 +115,36 @@ def checkAlerts(request):
 			if(centrLine == "no" and intrLine == "no" and pivCount == "1"):
 				alertsDict['no_iv'] = 'true'
 
-	#Breathing Alerts
+	##Breathing Alerts
 
-	#Vital Alerts
+	##Vital Alerts
+	hr = int(dbTable.__getattribute__('HR'))
+	bp = int(dbTable.__getattribute__('BP'))
+	shock = int(dbTable.__getattribute__('Shock_Level'))
+	age = int(dbTable.__getattribute__('Patient_Age'))
 
-	#Circulation Alerts
+	#Brady/Tachycardia
+	if(hr < 60):
+		alertsDict['bradycardia'] = 'true'
+		alertsDict['tachycardia'] = 'false'
+	elif(hr > 100):
+		alertsDict['tachycardia'] = 'true'
+		alertsDict['bradycardia'] = 'false'
+	else:
+		alertsDict['tachycardia'] = 'false'
+		alertsDict['bradycardia'] = 'false'
+
+	#Hypotension
+	if(bp < (55 + (2*age))):
+		alertsDict['hypotensive'] = 'true'
+	else:
+		alertsDict['hypotensive'] = 'false'
+
+	#Elevated shock
+	if(shock > 1.0):
+		alertsDict['shock_elevated'] = 'true'
+	else:
+		alertsDict['shock_elevated'] = 'false'
+
+	##Circulation Alerts
 	return JsonResponse(alertsDict)
