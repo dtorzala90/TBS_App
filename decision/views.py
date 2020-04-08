@@ -9,6 +9,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Session
 from django.core import serializers
 
+newSession = Session()
+
 def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -45,7 +47,8 @@ def summary(request):
 
 @login_required
 def startTrauma(request):
-	newSession = Session(id='99');
+	#newSession = Session();
+	newSession.author = request.user
 	newSession.save()
 	return render(request, 'decision/home.html')
 
@@ -54,7 +57,7 @@ def setItem(request):
 	if request.method == 'POST':
 		key = request.POST.get('step', None)
 		valueNew = request.POST.get('value', None)
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		dbTable.__setattr__(key, valueNew)
 		dbTable.save()
 
@@ -66,7 +69,7 @@ def setItem(request):
 @csrf_exempt
 def getPerfusion(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		nailBed = dbTable.__getattribute__('Nail_Bed_Color')
 		lipcolor = dbTable.__getattribute__('Lip_Color')
 		caprefill = dbTable.__getattribute__('Cap_Refill_Time')
@@ -82,7 +85,7 @@ def getPerfusion(request):
 @csrf_exempt
 def getTypeAndCross(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		typeAndCross = dbTable.__getattribute__('Type_and_Cross')
 
 		if (typeAndCross == "no"):
@@ -96,7 +99,7 @@ def getTypeAndCross(request):
 @csrf_exempt
 def getBreathingRight(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		rightChestRiseBreathSounds = dbTable.__getattribute__('Right_Chest_Rise_Breath_Sounds')
 
 		if (rightChestRiseBreathSounds == "No"):
@@ -110,7 +113,7 @@ def getBreathingRight(request):
 @csrf_exempt
 def getBreathingLeft(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		leftChestRiseBreathSounds = dbTable.__getattribute__('Left_Chest_Rise_Breath_Sounds')
 
 		if (leftChestRiseBreathSounds == "no"):
@@ -124,7 +127,7 @@ def getBreathingLeft(request):
 @csrf_exempt
 def getTransfusionPRBC(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		sbp = dbTable.__getattribute__('BP')
 		shock = dbTable.__getattribute__('Shock_Level')
 		hr = dbTable.__getattribute__('HR')
@@ -142,7 +145,7 @@ def getTransfusionPRBC(request):
 @csrf_exempt
 def getTransfusionMTP(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		sbp = dbTable.__getattribute__('BP')
 		shock = dbTable.__getattribute__('Shock_Level')
 		hr = dbTable.__getattribute__('HR')
@@ -160,7 +163,7 @@ def getTransfusionMTP(request):
 @csrf_exempt
 def getETTGCS(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		ett = dbTable.__getattribute__('ETT')
 		gcs = dbTable.__getattribute__('GCS')
 
@@ -175,7 +178,7 @@ def getETTGCS(request):
 @csrf_exempt
 def getETTCO2(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		ett = dbTable.__getattribute__('ETT')
 		etco2 = dbTable.__getattribute__('ETCO2')
 
@@ -190,7 +193,7 @@ def getETTCO2(request):
 @csrf_exempt
 def getShock(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		BP_recorded = dbTable.__getattribute__('BP')
 		HR_recorded = dbTable.__getattribute__('HR')
 		second = request.GET.__getitem__("second")
@@ -205,7 +208,7 @@ def getShock(request):
 
 			key = request.POST.get('step', None)
 			valueNew = request.POST.get('value', None)
-			dbTable = Session.objects.get(id="99")
+			dbTable = Session.objects.get(id=newSession.id)
 			dbTable.__setattr__('Shock_Level', str(shock))
 			dbTable.save()
 
@@ -214,7 +217,7 @@ def getShock(request):
 
 			display = "Shock Level: " + str(shock) + " at " + str(minute) + "min " + str(sec) + "sec"
 
-			dbTable = Session.objects.get(id="99")
+			dbTable = Session.objects.get(id=newSession.id)
 			dbTable.__setattr__('Shock Level Display', display)
 			dbTable.save()
 
@@ -231,7 +234,7 @@ def getShock(request):
 @csrf_exempt
 def getNoETCO2Alert(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		noEtco2Alert = request.GET.__getitem__('noEtco2Alert')
 		etco2 = dbTable.__getattribute__('ETCO2')
 
@@ -247,7 +250,7 @@ def getNoETCO2Alert(request):
 @csrf_exempt
 def getNoETTAlert(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		timeElapsed = request.GET.__getitem__('timeElapsed')
 		noETTAlert = request.GET.__getitem__('noETTAlert')
 		etco2 = dbTable.__getattribute__('ETCO2')
@@ -265,7 +268,7 @@ def getNoETTAlert(request):
 @csrf_exempt
 def getETCO2(request):
 	if request.method == 'GET':
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 		ett = dbTable.__getattribute__('ETT')
 		etco2 = dbTable.__getattribute__('ETCO2')
 
