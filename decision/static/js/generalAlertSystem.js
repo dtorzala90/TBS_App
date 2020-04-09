@@ -153,137 +153,98 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
             localStorage.setItem("Shock Alert", "thrown");
         }
+    }
 
-        else{
-           if(shockAlert == "thrown"){
-               $('#shock-alert').remove();
-               localStorage.setItem("Shock Alert", "thrown");
-           }
+    else{
+        if(shockAlert == "thrown"){
+            $('#shock-alert').remove();
+            localStorage.setItem("Shock Alert", "thrown");
         }
     }
+
+    //Check IV and IV fluid alerts
+    var addlPivAlert = localStorage.getItem("Alert One PIV");
+    var fluidsGivenAlert = localStorage.getItem("Alert Fluids Given")
+    var excessFluidsAlert = localStorage.getItem("Alert Excess IVF")
+
+    if(ajaxData.additional_piv == 'true'){
+        if(addlPivAlert != "thrown" && addlPivAlert != "dismissed"){
+            localStorage.setItem("Alert One PIV", "thrown");
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
+                "                  <strong>Consider additional PIV</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
+                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+
+            if(no_iv == "thrown"){
+                localStorage.setItem("Alert No IV", "dismissed");
+                $('#no-iv-alert').remove();
+            }
+
+        }
+    }
+
+    else{
+        if(addlPivAlert == "thrown"){
+            localStorage.setItem("Alert One PIV", "dismissed");
+            $('#one-piv-alert').remove();
+        }
+    }
+
+    if(ajaxData.fluids_given == 'true'){
+         if(fluidsGivenAlert != "thrown" && fluidsGivenAlert != "dismissed") {
+             localStorage.setItem("Alert Fluids Given", "thrown");
+             $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
+                "                  <strong>Fluids Given</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Fluids Given\", \"dismissed\"))'" +
+                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+         }
+    }
+    else{
+        if(fluidsGivenAlert == "thrown"){
+            localStorage.setItem("Alert Fluids Given", "dismissed");
+            $('#fluids-given-alert').remove();
+        }
+    }
+
+    if(ajaxData.excess_fluids == 'true'){
+        if(fluidsGivenAlert == "thrown"){
+            localStorage.setItem("Alert Fluids Given", "dismissed");
+            $('#fluids-given-alert').remove();
+        }
+
+         if(excessFluidsAlert != "thrown" && excessFluidsAlert != "dismissed") {
+             localStorage.setItem("Alert Excess IVF", "thrown");
+             $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-fluids-alert'>\n" +
+                "                  <strong>Excess IVF, consider transfusion!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\"))'" +
+                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+         }
+    }
+
+    else{
+        if(excessFluidsAlert == "thrown"){
+            localStorage.setItem("Alert Excess IVF", "dismissed");
+            $('#excess-fluids-alert').remove();
+        }
+    }
+
+
 
 }
 
 /**
- * This method is called when 5 minutes have passed and no forms of IV Access
- * have been established. We check for the following alerts:
- *         If no IV access has been established
- *         If only 1 PIV has been established
- * We also keep track of when the alerts have been thrown to ensure we do not
- * display them multiple times.
-
-function checkIV(){
-    var noIvAlert = localStorage.getItem("Alert No IV");
-    var onePIVAlert = localStorage.getItem("Alert One PIV");
-    var cenLineAccess = localStorage.getItem("Central Line established");
-    var intraosLineAccess = localStorage.getItem("Intraosseous Line established");
-    var pivAccess = localStorage.getItem("Functional Peripheral IV established");
-    var PIVcount = localStorage.getItem("Functional Peripheral IV count");
-
-    var timeElapsed = parseInt(localStorage.getItem('total_seconds_summary'), 10);
-
-    if(timeElapsed >= 300){
-        //If no IV access has been put in....
-        if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "false"){
-            //If the no IV access alert has not already been thrown......
-            if(noIvAlert === "not thrown"){
-                localStorage.setItem("Alert No IV", "thrown");
-                $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
-                "                  <strong>No IV:  Consider central line or intraosseous line!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert No IV\", \"dismissed\")'" +
-                    "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
-            }
-        }
-
-        //If no central or intraosseous line but PIV.....
-        else if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "true"){
-            //If only 1 PIV and the correlated alert has not yet been thrown...
-            if( PIVcount === "1" && onePIVAlert === "not thrown"){
-                localStorage.setItem("Alert One PIV", "thrown");
-                localStorage.setItem("Alert No IV", "dismissed");
-                $('#no-iv-alert').remove();
-                $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
-                "                  <strong>Consider additional PIV</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
-                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
-            }
-
-            //If there are 2 or more PIV put in....
-            else if(PIVcount !== "0" && PIVcount !== "1") {
-                localStorage.setItem("Alert One PIV", "dismissed");
-                if(noIvAlert === "thrown"){
-                    $('#no-iv-alert').remove();
-                }
-                localStorage.setItem("Alert No IV", "dismissed");
-                $('#one-piv-alert').remove();
-            }
-        }
-
-        //If none of the alert parameters have been met then we check to see what alerts need to be dismissed.
-        else{
-            if(noIvAlert === "thrown"){
-                localStorage.setItem("Alert No IV", "dismissed");
-                $('#no-iv-alert').remove();
-            }
-
-            else if(onePIVAlert === "thrown"){
-                localStorage.setItem("Alert One PIV", "dismissed");
-                $('#one-piv-alert').remove();
-            }
-        }
-    }
-    else if(cenLineAccess === "false" && intraosLineAccess === "false" && pivAccess === "true"){
-            //If only 1 PIV and the correlated alert has not yet been thrown...
-            if( PIVcount === "1" && onePIVAlert === "not thrown"){
-                localStorage.setItem("Alert One PIV", "thrown");
-                localStorage.setItem("Alert No IV", "dismissed");
-                $('#no-iv-alert').remove();
-                $('#alert_placeholder').append(
-                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
-                "                  <strong>Consider additional PIV</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
-                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
-                "                </div>");
-            }
-
-            //If there are 2 or more PIV put in....
-            else if(PIVcount !== "0" && PIVcount !== "1") {
-                localStorage.setItem("Alert One PIV", "dismissed");
-                if(noIvAlert === "thrown"){
-                    $('#no-iv-alert').remove();
-                }
-                localStorage.setItem("Alert No IV", "dismissed");
-                $('#one-piv-alert').remove();
-            }
-    }
-
-
-    else{
-        if(cenLineAccess === "true" || intraosLineAccess === "true"){
-            localStorage.setItem("Alert No IV", "dismissed");
-        }
-
-        else if(PIVcount !== "0" && PIVcount !== "1"){
-            localStorage.setItem("Alert One PIV", "dismissed");
-        }
-    }
-
-    //If all alerts have been dealt with then we can break the loop
-    if(noIvAlert === "dismissed" && onePIVAlert === "dismissed"){
-        clearInterval(ivAlertInterval);
-    }
-}
-
 function checkETCO2(){
     var noEtco2Alert = localStorage.getItem("Record ETCO2 Alert");
     var currAlert = localStorage.getItem("Current ETCO2 alert thrown");
@@ -430,54 +391,6 @@ function checkGCS(){
     }
 }
 
-function checkFluids(){
-  var alertIVFluids = localStorage.getItem("Alert Consider IVF");
-  var alertFluidsGiven = localStorage.getItem("Alert Fluids Given");
-  var alertExcessIVFluids = localStorage.getItem("Alert Excess IVF");
-  var iVFSelection = localStorage.getItem("IVF");
-  if((alertIVFluids === "not thrown" || alertIVFluids === "dismissed") && iVFSelection === "none"){
-    localStorage.setItem("Alert Consider IVF", "thrown");
-    $('#alert_placeholder').append(
-        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='consider-ivf-alert'>\n" +
-        "                  <strong>Consider IVF bolus</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-        "                    <span aria-hidden=\"true\">&times;</span>\n" +
-        "                  </button>\n" +
-        "                </div>");
-  }
-  else if(alertIVFluids === "thrown" && iVFSelection !== "none") {
-    $('#consider-ivf-alert').remove();
-    localStorage.setItem("Alert Consider IVF", "dismissed");
-  }
-  if((alertFluidsGiven === "not thrown" || alertFluidsGiven === "dismissed") && iVFSelection === "<20mL/kg"){
-    localStorage.setItem("Alert Fluids Given", "thrown");
-    $('#alert_placeholder').append(
-        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
-        "                  <strong>Fluids Given</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-        "                    <span aria-hidden=\"true\">&times;</span>\n" +
-        "                  </button>\n" +
-        "                </div>");
-  }
-  else if(alertFluidsGiven === "thrown" && iVFSelection !== "<20mL/kg") {
-    $('#fluids-given-alert').remove();
-    localStorage.setItem("Alert Fluids Given", "dismissed");
-  }
-  if((alertExcessIVFluids === "not thrown" || alertExcessIVFluids === "dismissed") && iVFSelection === ">20mL/kg"){
-    localStorage.setItem("Alert Excess IVF", "thrown");
-    $('#alert_placeholder').append(
-        "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-ivf-alert'>\n" +
-        "                  <strong>Excess IVFs, consider transfusion</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-        "                    <span aria-hidden=\"true\">&times;</span>\n" +
-        "                  </button>\n" +
-        "                </div>");
-  }
-  else if(alertExcessIVFluids === "thrown" && iVFSelection !== ">20mL/kg") {
-    $('#excess-ivf-alert').remove();
-    localStorage.setItem("Alert Excess IVF", "dismissed");
-  }
-}
 
 function checkETTAlerts() {
     checkAjax('Confirm End Tidal CO<sub>2</sub>', 'ETT-etco2-alert', 'ETT ETCO2 Alert', '/getETTCO2/');

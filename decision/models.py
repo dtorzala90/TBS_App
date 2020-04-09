@@ -45,7 +45,7 @@ class Session(models.Model):
 	Central_Line = models.CharField(max_length=20, default="no")
 	Intraosseous_Line = models.CharField(max_length=20, default="no")
 
-	IV_Fluid_Amount = models.CharField(max_length=20, default="null")
+	IV_Fluid_Amount = models.CharField(max_length=20, default="none")
 	Type_Cross = models.CharField(max_length=20, default="null")
 	Transfused_PRBC = models.CharField(max_length=20, default="null")
 	Massive_Transfusion = models.CharField(max_length=20, default="null")

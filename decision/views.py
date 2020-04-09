@@ -25,8 +25,8 @@ alertsDict = {
 	'hypotensive': 'false',
 	'poor perfusion' : 'false',
 	'additional_piv' : 'false',
-	'iv_fluids_<20' : 'false',
-	'iv_fluids_>20' : 'false',
+	'fluids_given' : 'false',
+	'excess_fluids' : 'false',
 	'type_cross' : 'false',
 	'prbc' : 'false',
 	'mtp' : 'false'
@@ -102,10 +102,11 @@ def checkAlerts(request):
 	else:
 		alertsDict['no_etco2_recorded'] = 'false'
 
+	pivCount = dbTable.__getattribute__('PIV_Count')
+	centrLine = dbTable.__getattribute__('Central_Line')
+	intrLine = dbTable.__getattribute__('Intraosseous_Line')
+
 	if (time >= 10):
-		pivCount = dbTable.__getattribute__('PIV_Count')
-		centrLine = dbTable.__getattribute__('Central_Line')
-		intrLine = dbTable.__getattribute__('Intraosseous_Line')
 
 		if(pivCount == '0' and centrLine == "no" and intrLine == "no"):
 			alertsDict['no_iv'] = 'true'
@@ -147,4 +148,25 @@ def checkAlerts(request):
 		alertsDict['shock_elevated'] = 'false'
 
 	##Circulation Alerts
+	ivFluids = dbTable.__getattribute__('IV_Fluid_Amount')
+
+	#Additional PIV
+	if(pivCount == "1" and centrLine == "no" and intrLine == "no"):
+		alertsDict['additional_piv'] = 'true'
+
+	else:
+		alertsDict['additional_piv'] = 'false'
+
+	#IV Fluids
+	if(ivFluids == "<20mL/kg"):
+		alertsDict['fluids_given'] = 'true'
+
+	elif(ivFluids == ">20mL/kg"):
+		alertsDict['fluids_given'] = 'false'
+		alertsDict['excess_fluids'] = 'true'
+
+	else:
+		alertsDict['fluids_given'] = 'false'
+		alertsDict['excess_fluids'] = 'false'
+
 	return JsonResponse(alertsDict)
