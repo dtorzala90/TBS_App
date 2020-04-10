@@ -278,8 +278,13 @@ h4 {
     left: 35%;
     top: 6rem;
     width: 30%;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
 }
 
 /*Formats the start button layout on the page*/
