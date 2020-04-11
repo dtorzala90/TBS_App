@@ -51,6 +51,122 @@ ul {
     margin-bottom: 20px;
 }
 
+/*Formatting the timer on the summary page*/
+.timer-summary {
+    color: #414143;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    font-size: 50px;
+    position: fixed;
+    right: 0;
+    top: 8rem;
+    width: 30%;
+    z-index: 1;
+    margin-left: 10px;
+}
+
+/*Formatting the text alert on the summary page*/
+.alert-format {
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+    width: 60vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 1;
+    top: 15rem;
+    left: 0;
+    overflow: auto
+}
+
+.vitals-format{
+    align-content: center;
+    width: 40vw;
+    height: 50vh;
+    position: fixed;
+    z-index: 1;
+    top: 15rem;
+    right: 0;
+    text-align: center;
+}
+
+#hr_placeholder{
+    position: relative;
+    font-size: 20px;
+    padding-top: 15px;
+    overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #9fedd7;
+    display: inline-block;
+}
+
+#bp_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #fce181;
+    display: inline-block;
+}
+
+#shock_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #edeae5;
+    display: inline-block;
+}
+
+.ph-banner {
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    z-index: 0;
+    top: 6rem;
+    left: 0;
+    width: 70%;
+    margin-right: 10px;
+}
+
+/*Adjust table styling, such as borders and cell fill*/
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    background-color: rgba(0, 0, 0, 0);
+    vertical-align: middle;
+    border: 8px solid #2b7a78;
+    align-content: center;
+    table-layout: auto;
+}
+
+.td-weight {
+    border-bottom: 4px solid #2b7a78 !important;
+}
+
+.td-age {
+    border-top: 4px solid #2b7a78 !important;
+}
+
+.cell-size td {
+    height: 50%;
+}
+
+.abcd-banner {
+    align-content: center;
+    width: 40vw;
+    height: 50vh;
+    position: fixed;
+    z-index: 1;
+    top: 30rem;
+    right: 5px;
+    bottom: 30px;
+    text-align: center;
+}
+
 /*Not currently used*/
 /*Sidebar for shortcuts between accordion sections*/
 /*
@@ -145,32 +261,35 @@ content: "\f106";
 }
 
 /*Formats the start button*/
-.btn.btn-primary {
+.start-button {
     background-color: #3aafa9;
     box-shadow: 0 8px 0 0 #1D5755;
+    align-content: center;
+    margin: 3px auto;
+    padding: 9px 0;
+    font-size: 30px;
+    border-radius: 15px;
     border: #1D5755;
-    margin-top: 25%;
-    margin-bottom: 25%;
+    color: #ffffff;
 }
 
 /*Changes start button color when hovered over*/
-.btn.btn-primary:hover {
+.start-button:hover {
     background-color: #2B837F;
 }
 
 /*Changes start button color when clicked*/
-.btn.btn-primary:visited {
+.start-button:visited {
     border-color: #246D6A !important;
     margin-top: 25%;
     margin-bottom: 25%;
 }
 
-.btn.btn-primary:active:focus {
+.start-button:active:focus {
     background-color: #246D6A !important;
     box-shadow: none !important;
     margin-top: 26%;
     margin-bottom: 26%;
-
 }
 
 /*Not currently used*/
@@ -266,6 +385,20 @@ h4 {
 /*Creates border to make btn-light buttons pop against current theme*/
 .btn-light {
     border-color: #2b7a78;
+}
+
+.btn-light:focus {
+    color: red;
+  background-color: orange;
+}
+
+.btn-dark:focus {
+    color: red;
+  background-color: orange;
+}
+
+.btn:active {
+  background-color: green !important;
 }
 
 /*Start page form for pre-hospital information*/
