@@ -124,7 +124,7 @@ function airwayStepFunc(type, step){
         if(step === 'init'){
             localStorage.setItem("ETT", "initiated");
             localStorage.setItem("ETT Initiated Time", getCurrentTime());
-            document.getElementById("ettdepth").style.display = "block";
+            document.getElementById("ettdepth").style.display = "none";
         }
         else if (step === 'achieved') {
             localStorage.setItem("ETT", "achieved");
