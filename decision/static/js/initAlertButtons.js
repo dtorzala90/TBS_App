@@ -124,15 +124,18 @@ function airwayStepFunc(type, step){
         if(step === 'init'){
             localStorage.setItem("ETT", "initiated");
             localStorage.setItem("ETT Initiated Time", getCurrentTime());
+            document.getElementById("ettdepth").style.display = "block";
         }
         else if (step === 'achieved') {
             localStorage.setItem("ETT", "achieved");
             localStorage.setItem("ETT Achieved Time", getCurrentTime());
+            document.getElementById("ettdepth").style.display = "block";
         }
 
         else{
             localStorage.setItem("ETT", "stopped");
             localStorage.setItem("ETT Stopped Time", getCurrentTime());
+            document.getElementById("ettdepth").style.display = "none";
         }
     }
 
@@ -199,7 +202,7 @@ function etco2(value){
             localStorage.setItem("ETT Alert", "dismissed");
             $('#ETT-etco2-alert').remove();
         }
-        setItemAjax("ETCO2", "25-30");        
+        setItemAjax("ETCO2", "25-30");
         //localStorage.setItem("ETCO2", "25-30");
     }
 
