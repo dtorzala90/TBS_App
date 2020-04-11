@@ -66,14 +66,17 @@ class Session(models.Model):
 
 	# GCS<13 = models.BooleanField()# localStorage.setItem("GCS<13", "false");
 	GCS = models.CharField(max_length=20, default="null")
-	#GCS_Motor = models.CharField(max_length=20)
-	#GCS_Verbal = models.CharField(max_length=20)
-	#GCS_Eye = models.CharField(max_length=20)
+	GCS_Motor = models.CharField(max_length=20, default="null")
+	GCS_Verbal = models.CharField(max_length=20, default="null")
+	GCS_Eye = models.CharField(max_length=20, default="null")
 
 	Shock_Level = models.CharField(max_length=20, default="null")
 	HR = models.CharField(max_length=20, default="null")
 	BP = models.CharField(max_length=20, default="null")
 
+
+	GCS_History = models.CharField(max_length=20, default="null")
+	ETCO2_History = models.CharField(max_length=20, default="null")
 	Shock_History = models.CharField(max_length=20, default="null")
 	HR_History = models.CharField(max_length=20, default="null")
 	BP_History = models.CharField(max_length=20, default="null")

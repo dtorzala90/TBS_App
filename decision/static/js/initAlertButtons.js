@@ -169,80 +169,7 @@ function airwayStepFunc(type, step){
     }
 }
 
-/**
- * This function responds to etco2 buttons and carries out actions based on the parameter given
- */
-function etco2(value){
-    if(value === "none"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", "not present");
-        //localStorage.setItem("ETCO2", "not present");
-    }
 
-    else if(value === "<25"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", "<25");
-        //localStorage.setItem("ETCO2", "<25");
-    }
-
-    else if(value === "25-30"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", "25-30");        
-        //localStorage.setItem("ETCO2", "25-30");
-    }
-
-    else if(value === "30-35"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", "30-35");
-        //localStorage.setItem("ETCO2", "30-35");
-    }
-
-    else if(value === "35-40"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", "35-40");
-        //localStorage.setItem("ETCO2", "35-40");
-    }
-
-    else if(value === "40-50"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", "40-50");
-        //localStorage.setItem("ETCO2", "40-50");
-    }
-
-    else {
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        setItemAjax("ETCO2", ">50");
-        //localStorage.setItem("ETCO2", ">50");
-    }
-}
 
 /**
  * This function responds to chest sound buttons
@@ -445,24 +372,6 @@ function mtpFunc(value){
 
     else{
         localStorage.setItem("Massive Transfusion Protocol", "no");
-    }
-}
-
-/**
- * This function is responsible for setting the GCS value based on the parameters given.
- * It is called by each GCS button.
- */
-function gcsFunc(type, value){
-    if(type === 'motor'){
-        localStorage.setItem("GCS Motor", value);
-    }
-
-    else if(type === 'verbal'){
-        localStorage.setItem("GCS Verbal", value);
-    }
-
-    else{
-         localStorage.setItem("GCS Eye", value);
     }
 }
 

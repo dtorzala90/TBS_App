@@ -388,38 +388,13 @@
                                         <div class="tab-pane fade" id="v-pills-entd" role="tabpanel"
                                              aria-labelledby="v-pills-entd-tab">
 
-                                            <p class="survey-p">End Tidal CO</p>
+                                            <p class="survey-p">End Tidal CO<sub>2</sub></p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_none"
-                                                        value="no"
-                                                        onclick="etco2('none')">
-                                                    No Measurement
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_less25" value="25" onclick="etco2('<25')">
-                                                    ETCO<sub>2</sub> < 25
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_25plus" value="30" onclick="etco2('25-30')">
-                                                    ETCO<sub>2</sub> 25-30
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_30plus" value="35" onclick="etco2('30-35')">
-                                                    ETCO<sub>2</sub> 30-35
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_35plus" value="40" onclick="etco2('35-40')">
-                                                    ETCO<sub>2</sub> 35-40
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_40plus" value="50" onclick="etco2('40-50')">
-                                                    ETCO<sub>2</sub> 40-50
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_50plus" value="50+" onclick="etco2('>50')">
-                                                    ETCO<sub>2</sub> > 50
-                                                </button>
+                                                <input class="form-control form-control-lg" type="text" id="etco2"
+                                                       name="etco2"
+                                                       value=""
+                                                       placeholder=" ">
+                                                <br>
                                             </div>
 
                                         </div>
@@ -745,32 +720,32 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor6" value="ob" onclick="gcsFunc('motor','6')">
+                                                        id="motor6" value="ob" onclick="recordGCS('motor','6')">
                                                     <b>6</b> - Obeys Commands
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor5" value="lo" onclick="gcsFunc('motor','5')">
+                                                        id="motor5" value="lo" onclick="recordGCS('motor','5')">
                                                     <b>5</b> - Localizing Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor4" value="wi" onclick="gcsFunc('motor','4')">
+                                                        id="motor4" value="wi" onclick="recordGCS('motor','4')">
                                                     <b>4</b> - Withdraw From Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor3" value="fl" onclick="gcsFunc('motor','3')">
+                                                        id="motor3" value="fl" onclick="recordGCS('motor','3')">
                                                     <b>3</b> - Flexion To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor2" value="ex" onclick="gcsFunc('motor','2')">
+                                                        id="motor2" value="ex" onclick="recordGCS('motor','2')">
                                                     <b>2</b> - Extension To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor1" value="no" onclick="gcsFunc('motor','1')">
+                                                        id="motor1" value="no" onclick="recordGCS('motor','1')">
                                                     <b>1</b> - No Motor Response
                                                 </button>
                                             </div>
@@ -785,27 +760,27 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal5" value="or" onclick="gcsFunc('verbal','5')">
+                                                        id="verbal5" value="or" onclick="recordGCS('verbal','5')">
                                                     <b>5</b> - Oriented
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal4" value="co" onclick="gcsFunc('verbal','4')">
+                                                        id="verbal4" value="co" onclick="recordGCS('verbal','4')">
                                                     <b>4</b> - Confused
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal3" value="wo" onclick="gcsFunc('verbal','3')">
+                                                        id="verbal3" value="wo" onclick="recordGCS('verbal','3')">
                                                     <b>3</b> - Inappropriate Words
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal2" value="so" onclick="gcsFunc('verbal','2')">
+                                                        id="verbal2" value="so" onclick="recordGCS('verbal','2')">
                                                     <b>2</b> - Incomprehensible Sounds
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal1" value="no" onclick="gcsFunc('verbal','1')">
+                                                        id="verbal1" value="no" onclick="recordGCS('verbal','1')">
                                                     <b>1</b> - No Verbal Response
                                                 </button>
                                             </div>
@@ -820,22 +795,22 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye4" value="sp" onclick="gcsFunc('eye','4')">
+                                                        id="eye4" value="sp" onclick="recordGCS('eye','4')">
                                                     <b>4</b> - Opens Spontaneously
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye3" value="ve" onclick="gcsFunc('eye','3')">
+                                                        id="eye3" value="ve" onclick="recordGCS('eye','3')">
                                                     <b>3</b> - Open To Verbal Command
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye2" value="pa" onclick="gcsFunc('eye','2')">
+                                                        id="eye2" value="pa" onclick="recordGCS('eye','2')">
                                                     <b>2</b> - Open To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye1" value="no" onclick="gcsFunc('eye','1')">
+                                                        id="eye1" value="no" onclick="recordGCS('eye','1')">
                                                     <b>1</b> - No Eye Opening
                                                 </button>
                                             </div>
