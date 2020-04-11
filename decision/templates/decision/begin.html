@@ -7,29 +7,29 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="startForm">
+            <div class="col startForm">
                 <form action="{% url 'startTrauma' %}" method="POST">
-                    <div class="form-row">
-                        <label>Weight</label>
+                    <div class="form-group">
+                        <label for="patientWeight">Weight</label>
                         <input type="text" class="form-control" id="patientWeight">
                     </div>
 
-                    <div class="form-row">
-                        <label>Age</label>
+                    <div class="form-group">
+                        <label for="patientAge">Age</label>
                         <input type="text" class="form-control" id="patientAge">
                     </div>
 
-                    <div class="form-row">
-                        <label for="incidentInfo">Patient History</label>
-                        <textarea class="form-control" id="patientHistory" rows="3"></textarea>
+                    <div class="form-group">
+                        <label for="patientHistory">Patient History</label>
+                        <textarea class="form-control" id="patientHistory" rows="4"></textarea>
                     </div>
 
-                    <div class="form-row">
-                        <label for="initialInfo">Additional Info</label>
-                        <textarea class="form-control" id="addlInfo" rows="3"></textarea>
+                    <div class="form-group">
+                        <label for="addlInfo">Additional Info</label>
+                        <textarea class="form-control" id="addlInfo" rows="4"></textarea>
                     </div>
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-xl startButton" name="start-btn">Start Session
+                    <button type="submit" class="btn btn-block" name="start-btn">Start Session
                     </button>
                 </form>
             </div>

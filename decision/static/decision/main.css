@@ -271,31 +271,16 @@ h4 {
 /*Start page form for pre-hospital information*/
 .startForm {
     align-content: center;
-    text-align: center;
-    display: inline-block;
-    position: fixed;
-    z-index: 0;
-    left: 35%;
-    top: 6rem;
-    width: 30%;
-    margin-right: auto;
-    margin-left: auto;
+    top: 4rem;
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
     padding: 30px;
+    margin-top: 0;
     background-color: #ffffff;
     box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
-}
-
-/*Formats the start button layout on the page*/
-.startButton {
-    position: fixed;
-    z-index: 0;
-    left: 35%;
-    top: 13rem;
-    width: 30%;
-    margin-right: 10px;
-    margin-left: 10px;
 }
 
 /*Formats the card nav tabs*/
@@ -368,7 +353,7 @@ h4 {
 }
 
 /*Changes size of input text fields to match buttons*/
-.form-control {
+.survey-fctrl {
     height: 75px;
     font-size: 1.6rem;
 }
