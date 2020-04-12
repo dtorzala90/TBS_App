@@ -57,6 +57,7 @@ class Session(models.Model):
 	Pupil_Size_Right = models.CharField(max_length=20, default="null")
 	Pupil_Size_Left = models.CharField(max_length=20, default="null")
 
+	Moves_Extremities = models.CharField(max_length=20, default="null")
 	#Vitals
 	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");
 
