@@ -5,50 +5,57 @@
     <!-- Initializes timer and local storage data -->
     <script type="text/javascript" src="{% static "js/initTimer.js" %}"></script>
 
-    <div class="startForm">
-        <form action="{% url 'startTrauma' %}" method="POST">
-            <div class="form-row">
-                <label>Weight</label>
-                <input type="text" class="form-control" id="patientWeight">
-            </div>
+    <script type="text/javascript">
+        function startSession(){
+            localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
+            $.ajax({
+            type:"POST",
+            url: '/savePatientInfo/',
+            data: {
+                'age': document.getElementById('patientAge').value,
+                'weight': document.getElementById('patientWeight').value,
+                'addInfo': document.getElementById('addlInfo').value,
+                'history': document.getElementById('patientHistory').value
+            },
 
-            <div class="form-row">
-                <label>Age</label>
-                <input type="text" class="form-control" id="patientAge">
-            </div>
+            success: function( data )
+            {
+                console.log("Started Session!");
+            }
+         });
+        }
+    </script>
 
-            <div class="form-row">
-                <label for="incidentInfo">Reason For Visit</label>
-                <textarea class="form-control" id="patientHistory" rows="3"></textarea>
-            </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col startForm">
+                <form action="{% url 'startTrauma' %}" method="POST">
+                    <div class="form-group">
+                        <label for="patientWeight">Weight</label>
+                        <input type="text" class="form-control" id="patientWeight">
+                    </div>
 
-            <div class="form-row">
-                <label for="initialInfo">Assessment En Route</label>
-                <textarea class="form-control" id="addlInfo" rows="3"></textarea>
+                    <div class="form-group">
+                        <label for="patientAge">Age</label>
+                        <input type="text" class="form-control" id="patientAge">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="patientHistory">Reason For Visit</label>
+                      <textarea class="form-control" id="patientHistory" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="addlInfo">Assessment En Route</label>
+                      <textarea class="form-control" id="addlInfo" rows="4"></textarea>
+                    </div>
+                  
+                    {%  csrf_token %}
+                    <button type="submit" class="btn btn-block" name="start-btn"
+                            onclick="startSession()">Start Session</button>
+                </form>
             </div>
-            {%  csrf_token %}
-            <button type="submit" class="btn btn-primary btn-xl startButton" name="start-btn"
-                    onclick="startSession()">Start Session</button>
-        </form>
+        </div>   
     </div>
-            <script type="text/javascript">
-                function startSession(){
-                    localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
-                    $.ajax({
-                    type:"POST",
-                    url: '/savePatientInfo/',
-                    data: {
-                        'age': document.getElementById('patientAge').value,
-                        'weight': document.getElementById('patientWeight').value,
-                        'addInfo': document.getElementById('addlInfo').value,
-                        'history': document.getElementById('patientHistory').value
-                    },
-
-                    success: function( data )
-                    {
-                        console.log("Started Session!");
-                    }
-                 });
-                }
-            </script>
+            
 {% endblock content %}
