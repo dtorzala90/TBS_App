@@ -274,6 +274,36 @@ ettdepthText.oninput = recordettdepth;
 function recordettdepth(){
     setTimeout(function(){
         localStorage.setItem("ETT Depth", ettdepthText.value);
+
+        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+        var hour = 0;
+        var timeStamp;
+        var ettDisplay;
+
+        if(min < 1){
+            min = 0;
+        }
+
+        if(min >= 60){
+            hour = min/60;
+            min = min%60;
+        }
+
+        if(hour !== 0){
+            timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        }
+
+        timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+
+        if (ettdepthText.value === "null") {
+
+          ettDisplay = "";
+        } else {
+          ettDisplay = "ETT taped at " + ettdepthText.value + "cm " + timeStamp;
+        }
+        localStorage.setItem("ETT_display", ettDisplay);
+        updateVitals("ETT_History", ettDisplay + timeStamp);
     }, 1000);
 }
 
