@@ -1,56 +1,85 @@
-{% extends "decision/base.html" %}
 {% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'summary/main.css' %}">
 
-    <script type="text/javascript">
-        $.ajax({
-            type:"GET",
-            url: '/populateSummary/',
-            success: function( data ) {
-                localStorage.setItem("Age", data.age);
-                document.getElementById('patientAge').innerHTML = data.age + ' yrs';
-                document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
-                document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
-                document.getElementById('patientHistory').innerHTML = data.history;
-            }
-        });
-    </script>
+    <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
 
-    <!--
-    ================================================================================
-    Timer that displays time elapsed since beginning of Trauma
-    ================================================================================
-    -->
-
-    <div class="container">
-        <div class="row">
-            <div class="col timer-summary" id="timer">
-                <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
-            </div>
-            <div class="col ph-banner">
-              <!--
-              ================================================================================
-              Container for pre-hospital information
-              ================================================================================
-              -->
-              <table class="table cell-size">
-                  <tbody>
-                  <tr>
-                      <td class="td-weight" id="patientWeight">[Weight]</td>
-                      <td rowspan="2" id="patientAddlInfo">[Additional Info]</td>
-                      <td rowspan="2" id="patientHistory">[History]</td>
-                  </tr>
-                  <tr>
-                      <td class="td-age" id="patientAge">[Age]</td>
-                  </tr>
-                  </tbody>
-              </table>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    {% if title %}
+        <title>Trauma Overview - {{ title }}</title>
+    {% else %}
+        <title>Trauma Overview</title>
+    {% endif %}
+</head>
+<body>
+<header class="site-header">
+    <!-- Navbar Main Content -->
+    <nav class="navbar navbar-expand-md navbar-default fixed-top">
+        <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
+        <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="#">View Metrics</a>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
+</header>
+<main role="main" class="container">
+    <h1>
+        <!--
+        ================================================================================
+        Timer that displays time elapsed since beginning of Trauma
+        ================================================================================
+        -->
+        <div class="container timer-summary" id="timer">
+            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+        </div>
+    </h1>
 
+    <div class="container ph-banner">
+        <!--
+        ================================================================================
+        Container for pre-hospital information
+        ================================================================================
+        -->
+        <table class="table cell-size">
+            <tbody>
+            <tr>
+                <td class="td-weight" id="patientWeight">[Weight]</td>
+                <td rowspan="2" id="patientAddlInfo">[Additional Info]</td>
+                <td rowspan="2" id="patientHistory">[History]</td>
+            </tr>
+            <tr>
+                <td class="td-age" id="patientAge">[Age]</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="container alert-format scrollable" id="alert_placeholder">
         <!--
         ================================================================================
@@ -92,7 +121,7 @@
         <script type="text/javascript" src="{% static "js/updateSummary.js" %}"></script>
     </div>
 
-    <div class="container abcd-banner">
+     <div class="container abcd-banner">
         <!--
         ================================================================================
         Container for ABCD components
@@ -103,40 +132,51 @@
             <tbody>
             <tr>
                 <td> Airway: ETT taped at
-                    <script type="text/javascript">
-                        document.write(localStorage.getItem("ETT Depth"))
-                    </script>
-                    cm
+                  <script type="text/javascript">
+                    document.write(localStorage.getItem("ETT Depth"))
+                  </script> cm
                 </td>
             </tr>
             <tr>
                 <td> Breathing: BMV at
-                    <script type="text/javascript">
-                        document.write(localStorage.getItem("BVM BPM"))
-                    </script>
-                    breaths/min
+                  <script type="text/javascript">
+                    document.write(localStorage.getItem("BVM BPM"))
+                  </script> breaths/min
                 </td>
             </tr>
             <tr>
                 <td>[Circulation]</td>
             </tr>
             <tr>
-                <td> Disability:<br/>
-                    Pupils: Right:
+                <td> Disability:<br />
+                  Pupils: Right:
                     <script type="text/javascript">
-                        document.write(localStorage.getItem("Right Pupil Size"))
-                    </script>
-                    mm
+                      document.write(localStorage.getItem("Right Pupil Size"))
+                    </script> mm
                     Left:
-                    <script type="text/javascript">
+                      <script type="text/javascript">
                         document.write(localStorage.getItem("Left Pupil Size"))
-                    </script>
-                    mm
+                    </script> mm
                 </td>
             </tr>
             </tbody>
         </table>
 
     </div>
+        <script type="text/javascript">
+        $.ajax({
+            type:"GET",
+            url: '/populateSummary/',
+            success: function( data ) {
+                localStorage.setItem("Age", data.age);
+                document.getElementById('patientAge').innerHTML = data.age + ' yrs';
+                document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
+                document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
+                document.getElementById('patientHistory').innerHTML = data.history;
+            }
+        });
+    </script>
+</main>
 
-{% endblock content %}
+</body>
+</html>

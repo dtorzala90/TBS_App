@@ -1,8 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
+
+    <!-- <img id="bgDesign" src={% static 'pch-shapes.svg' %}> -->
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,43 +17,43 @@
 
     <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
     {% if title %}
-        <title>{{ title }}</title>
+        <title>Django Decision - {{ title }}</title>
     {% else %}
-        <title>Django TBS App</title>
+        <title>Django Decision</title>
     {% endif %}
-
 </head>
-
 <body>
-
 <header class="site-header">
-    <!-- Navbar -->
+    <!-- Navbar Main Content -->
+
+    <!-- Placeholder for Formatting (behind content) -->
+    <nav class="navbar navbar-expand-md navbar-default fixed-top nav-border">
+        <<img id="square">
+    </nav>
+
+    <!-- Actual Nav Bar -->
     <nav class="navbar navbar-expand-md navbar-default fixed-top">
-        <a class="navbar-brand" href="{% url 'decision-home' %}"><h4 style="color: white">Trauma Bay Decision
-            App</h4></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-            <ul class="navbar-nav mr-auto ml-auto">
-                <li class="nav-item">
+        <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
+        <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4 style="color: white">Trauma Bay Decision App</h4></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="{% url 'decision-home' %}">Decision App</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-item nav-link" href="{% url 'summary' %}">Summary Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item nav-link" href="#">Register</a>
-                </li>
-            </ul>
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/login/">Login</a>
+                    <a class="nav-item nav-link" href="/register/">Register</a>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
-
 <main role="main" class="container">
     <div class="row justify-content-center">
         <div class="col-md">
