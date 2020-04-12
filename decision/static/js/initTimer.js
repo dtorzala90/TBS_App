@@ -36,7 +36,6 @@ localStorage.setItem("Type and Cross Alert", "not thrown");
 
 localStorage.setItem("Poor Perfusion Alert", "not thrown");
 
-localStorage.setItem("Alert Consider IVF", "not thrown");
 localStorage.setItem("Alert Fluids Given", "not thrown");
 localStorage.setItem("Alert Excess IVF", "not thrown");
 
@@ -44,9 +43,9 @@ localStorage.setItem("Right Breathing Alert", "not thrown");
 
 localStorage.setItem("Left Breathing Alert", "not thrown");
 
-localStorage.setItem("Massive Transfusion Protocol Alert", "not thrown");
+localStorage.setItem("MTP Alert", "not thrown");
 
-localStorage.setItem("Transfusion PRBC Alert", "not thrown");
+localStorage.setItem("PRBC Alert", "not thrown");
 
 
 

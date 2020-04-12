@@ -23,8 +23,8 @@ alertsDict = {
 	'fluids_given' : 'null',
 	'excess_fluids' : 'null',
 	'type_cross' : 'null',
-	'prbc' : 'null',
-	'mtp' : 'null'
+	'suggest_prbc' : 'null',
+	'suggest_mtp' : 'null'
 
 }
 # Create your views here.
@@ -88,12 +88,32 @@ def setItem(request):
 def checkAlerts(request):
 	dbTable = Session.objects.get(id="99")
 	time = int(request.GET.get('time', None))
-	hr = int(dbTable.__getattribute__('HR'))
-	bp = int(dbTable.__getattribute__('BP'))
-	shock = int(dbTable.__getattribute__('Shock_Level'))
-	age = int(dbTable.__getattribute__('Patient_Age'))
-	etco2 = dbTable.__getattribute__('ETCO2')
-	gcs = dbTable.__getattribute__('GCS')
+
+	#make sure all number values are actually integers. If not, assign null value
+	try:
+		hr = int(dbTable.__getattribute__('HR'))
+	except ValueError:
+		hr = "null"
+	try:
+		bp = int(dbTable.__getattribute__('BP'))
+	except ValueError:
+		bp = "null"
+	try:
+		shock = float(dbTable.__getattribute__('Shock_Level'))
+	except ValueError:
+		shock = "null"
+	try:
+		age = int(dbTable.__getattribute__('Patient_Age'))
+	except ValueError:
+		age = "null"
+	try:
+		etco2 = int(dbTable.__getattribute__('ETCO2'))
+	except ValueError:
+		etco2 = "null"
+	try:
+		gcs = int(dbTable.__getattribute__('GCS'))
+	except ValueError:
+		gcs = "null"
 
 	##Time Based Alerts
 	if (time >= 2):
@@ -151,38 +171,46 @@ def checkAlerts(request):
 	##Vital Alerts
 
 	#Brady/Tachycardia
-	if(hr < 60):
-		alertsDict['heart_rate'] = 'bradycardia'
-	elif(hr > 100):
-		alertsDict['heart_rate'] = 'tachycardia'
-	else:
-		alertsDict['heart_rate'] = 'null'
+	if(hr != "null"):
+		if(hr < 60):
+			alertsDict['heart_rate'] = 'bradycardia'
+		elif(hr  > 100):
+			alertsDict['heart_rate'] = 'tachycardia'
+		else:
+			alertsDict['heart_rate'] = 'null'
 
 	#Hypotension
-	if(bp < (55 + (2*age))):
-		alertsDict['hypotensive'] = 'true'
-	else:
-		alertsDict['hypotensive'] = 'false'
+	if(bp != "null"):
+		if (age != "null"):
+			if(bp < (55 + (2*age))):
+				alertsDict['hypotensive'] = 'true'
+			else:
+				alertsDict['hypotensive'] = 'false'
+		else:
+			if(bp < (55)):
+				alertsDict['hypotensive'] = 'true'
+			else:
+				alertsDict['hypotensive'] = 'false'
 
 	#Elevated shock
-	if(shock > 1.0):
-		alertsDict['shock_elevated'] = 'true'
-	else:
-		alertsDict['shock_elevated'] = 'false'
+	if(shock != "null"):
+		if(shock > 1.0):
+			alertsDict['shock_elevated'] = 'true'
+		else:
+			alertsDict['shock_elevated'] = 'false'
 
 	#Etco2 Alert
 	if (etco2 != 'null'):
-		etco2int = int(etco2)
-		if(etco2int == 0):
+		if(etco2 == 0):
 			alertsDict['etco2_value'] = 'no measurement'
-		elif(etco2int < 25 ):
+		elif(etco2 < 25 ):
 			alertsDict['etco2_value'] = '<25'
-		elif(etco2int >= 25 and etco2int <= 30):
+		elif(etco2 >= 25 and etco2 <= 30):
 			alertsDict['etco2_value'] = '25-30'
-		elif (etco2int >= 40 and etco2int <= 50 ):
-			if(gcs.isDigit() and int(gcs) < 13):
+		elif (etco2 >= 40 and etco2 <= 50 ):
+			if(gcs != "null" and gcs < 13):
 				alertsDict['etco2_value'] = '40-50'
-		elif(etco2int > 50):
+		elif(etco2 > 50):
 			alertsDict['etco2_value'] = '>50'
 		else:
 			alertsDict['etco2_value'] = 'null'
@@ -205,21 +233,15 @@ def checkAlerts(request):
 		alertsDict['excess_fluids'] = 'true'
 
 	else:
-		alertsDict['fluids_given'] = 'false'
-		alertsDict['excess_fluids'] = 'false'
+		alertsDict['fluids_given'] = 'null'
+		alertsDict['excess_fluids'] = 'null'
 
 	#Perfusion Alerts
 	nailColor = dbTable.__getattribute__('Nail_Color')
 	lipColor = dbTable.__getattribute__('Lip_Color')
 	capRefill = dbTable.__getattribute__('Cap_Refill')
 
-	if(nailColor == "White"):
-		alertsDict['poor perfusion'] = 'true'
-
-	elif(lipColor == "White"):
-		alertsDict['poor perfusion'] = 'true'
-
-	elif(capRefill == ">4sec"):
+	if(nailColor == "white" or lipColor == "white" or capRefill == ">4sec" ):
 		alertsDict['poor perfusion'] = 'true'
 
 	else:
@@ -233,4 +255,27 @@ def checkAlerts(request):
 
 	else:
 		alertsDict['type_cross'] = 'false'
+
+	#PRBC and MTP Alerts
+	mtpStatus = dbTable.__getattribute__('Massive_Transfusion')
+	prbcStatus = dbTable.__getattribute__('Transfused_PRBC')
+
+	if(mtpStatus != 'yes'):
+		if(bp != "null" and shock != "null" and hr != "null"):
+			if(bp < 90 or shock > 1.2 or hr > 180):
+				alertsDict['suggest_mtp'] = 'true'
+			else:
+				alertsDict['suggest_mtp'] = 'false'
+	else:
+		alertsDict['suggest_mtp'] = 'false'
+
+	if(prbcStatus != 'yes'):
+		if(bp != "null" and shock != "null" and hr != "null"):
+			if(bp < 90 or shock > 1.2 or hr > 180):
+				alertsDict['suggest_prbc'] = 'true'
+			else:
+				alertsDict['suggest_prbc'] = 'false'
+	else:
+		alertsDict['suggest_prbc'] = 'false'
+
 	return JsonResponse(alertsDict)
