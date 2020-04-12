@@ -169,7 +169,80 @@ function airwayStepFunc(type, step){
     }
 }
 
+/**
+ * This function responds to etco2 buttons and carries out actions based on the parameter given
+ */
+function etco2(value){
+    if(value === "none"){
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", "not present");
+        //localStorage.setItem("ETCO2", "not present");
+    }
 
+    else if(value === "<25"){
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", "<25");
+        //localStorage.setItem("ETCO2", "<25");
+    }
+
+    else if(value === "25-30"){
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", "25-30");        
+        //localStorage.setItem("ETCO2", "25-30");
+    }
+
+    else if(value === "30-35"){
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", "30-35");
+        //localStorage.setItem("ETCO2", "30-35");
+    }
+
+    else if(value === "35-40"){
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", "35-40");
+        //localStorage.setItem("ETCO2", "35-40");
+    }
+
+    else if(value === "40-50"){
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", "40-50");
+        //localStorage.setItem("ETCO2", "40-50");
+    }
+
+    else {
+        var ett = localStorage.getItem("ETT alert");
+        if(ett === "thrown"){
+            localStorage.setItem("ETT Alert", "dismissed");
+            $('#ETT-etco2-alert').remove();
+        }
+        setItemAjax("ETCO2", ">50");
+        //localStorage.setItem("ETCO2", ">50");
+    }
+}
 
 /**
  * This function responds to chest sound buttons
@@ -212,6 +285,81 @@ function recordbvmbpm(){
 /**
  * Set up Circulation buttons and function that will record vitals on user input
  */
+//Set up HR and BP text fields
+var hrText = document.getElementById("hr");
+var bpText = document.getElementById("bp");
+var ageText = document.getElementById("age");
+
+ageText.oninput = recordAge;
+hrText.oninput = recordHR;
+bpText.oninput = recordBP;
+
+function recordHR(){
+    setTimeout(function(){
+        var hr = hrText.value;
+        //localStorage.setItem("HR", hrText.value);
+        setItemAjax("HR", hrText.value);
+
+        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+        var hour = 0;
+        var display = "Heart Rate: " + hr + " at ";
+        if(min < 1){
+            min = 0;
+        }
+
+        if(min >= 60){
+            hour = min/60;
+            min = min%60;
+        }
+
+        if(hour !== 0){
+            display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        }
+        display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
+        //localStorage.setItem('HR Display',display);
+        setItemAjax("HR_Display", display);
+
+    }, 1000);
+}
+
+function recordBP(){
+        setTimeout(function(){
+            var bp = bpText.value;
+            //localStorage.setItem("BP", bpText.value);
+            setItemAjax("BP", bpText.value);
+
+            var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+            var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+            var hour = 0;
+            var display = "Systolic BP: " + bp + " at " ;
+
+            if(min < 1){
+                min = 0;
+            }
+
+            if(min >= 60){
+                hour = min/60;
+                min = min%60;
+            }
+
+            if(hour !== 0){
+                display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+            }
+
+            display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
+            //localStorage.setItem('BP Display',display);
+            setItemAjax("BP_Display", bpText.value);
+        }, 1000);
+}
+
+function recordAge(){
+    setTimeout(function(){
+        //setItemAjax("Patient_Age", color);
+        localStorage.setItem("Patient Age", ageText.value);
+    }, 1000);
+}
+
 /**
  * These functions are responsible for responding to IV button clicks
  */
@@ -376,6 +524,24 @@ function mtpFunc(value){
 }
 
 /**
+ * This function is responsible for setting the GCS value based on the parameters given.
+ * It is called by each GCS button.
+ */
+function gcsFunc(type, value){
+    if(type === 'motor'){
+        localStorage.setItem("GCS Motor", value);
+    }
+
+    else if(type === 'verbal'){
+        localStorage.setItem("GCS Verbal", value);
+    }
+
+    else{
+         localStorage.setItem("GCS Eye", value);
+    }
+}
+
+/**
  * Reads the time stamp from user input fields and returns it to be saved in the database
  * @returns {string}
  */
@@ -482,10 +648,11 @@ function setItemAjax(step, value){
         type:"POST",
         url: "/setItem/",
         data:{
-            'key': step,
+            'step': step,
             'value': value,
         },
         success: function( data )
         {}
      })
+
 }
