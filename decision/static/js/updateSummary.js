@@ -21,6 +21,8 @@ function updateVitals(){
         ivf = "IVF Volume " + (parseInt(ivfs) + parseInt(ivfa)).toString() + "mL/Kg";
       }
     }
+    var etco2 = localStorage.getItem("ETCO2_Display");
+    var gcs = localStorage.getItem("GCS_Display");
 
     document.getElementById("hr_display").innerHTML = ("HR: " + hr + "<br>");
     document.getElementById("bp_display").innerHTML = ("BP: " + bp + "<br>");
@@ -29,4 +31,6 @@ function updateVitals(){
     document.getElementById("bvm_display").innerHTML = ("Breathing: " + bvm + "<br>");
     document.getElementById("pupil_display").innerHTML = ("Disability:<br> Pupils: Right:" + rps + " Left: " + lps + "<br>");
     document.getElementById("ivf_display").innerHTML = ("Circulation: " + ivf + "<br>");
+    document.getElementById("etco2_display").innerHTML = ("ETCO<sub>2</sub>: " + etco2 + "<br>");
+    document.getElementById("gcs_display").innerHTML = ("GCS: " + gcs + "<br>");
 }

@@ -12,71 +12,71 @@
 function initEdit(type, step){
     if(type === 'oxygen'){
         if(step === 'init'){
-            launchModal("Oxygen Initiated At","Oxygen Supplementation Initiated Time");
+            launchModal("Oxygen Initiated At","Oxygen_Supplementation_Initiated");
         }
         else{
-            launchModal("Oxygen Stopped At","Oxygen Supplementation Stopped Time");
+            launchModal("Oxygen Stopped At","Oxygen_Supplementation_Stopped");
         }
     }
 
     else if(type === 'bag'){
         if(step === 'init'){
-            launchModal("Bag Initiated At","Bag Mask Initiated Time");
+            launchModal("Bag Initiated At","Bag_Mask_Initiated");
         }
         else{
-            launchModal("Bag Stopped At","Bag Mask Stopped Time");
+            launchModal("Bag Stopped At","Bag_Mask_Stopped");
         }
     }
 
     else if(type === 'lma'){
         if(step === 'init'){
-            launchModal("LMA Initiated At","LMA Initiated Time");
+            launchModal("LMA Initiated At","LMA_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("LMA Achieved At","LMA Achieved Time");
+            launchModal("LMA Achieved At","LMA_Achieved");
         }
 
         else{
-            launchModal("LMA Stopped At","LMA Stopped Time");
+            launchModal("LMA Stopped At","LMA_Stopped");
         }
     }
 
     else if(type === 'ett'){
         if(step === 'init'){
-            launchModal("ETT Initiated At","ETT Initiated Time");
+            launchModal("ETT Initiated At","ETT_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("ETT Achieved At","ETT Achieved Time");
+            launchModal("ETT Achieved At","ETT_Achieved");
         }
 
         else{
-            launchModal("ETT Stopped At","ETT Stopped Time");
+            launchModal("ETT Stopped At","ETT_Stopped");
         }
     }
 
     else if(type === 'diffAirway'){
         if(step === 'init'){
-            launchModal("Difficult Airway Initiated At","Difficult Airway Initiated Time");
+            launchModal("Difficult Airway Initiated At","Difficult_Airway_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("Difficult Airway Achieved At","Difficult Airway Achieved Time");
+            launchModal("Difficult Airway Achieved At","Difficult_Airway_Achieved");
         }
 
         else{
-            launchModal("Difficult Airway Stopped At","Difficult Airway Stopped Time");
+            launchModal("Difficult Airway Stopped At","Difficult_Airway_Stopped");
         }
     }
 
     else{
         if(step === 'init'){
-            launchModal("Surgical Airway Initiated At","Surgical Airway Initiated Time");
+            launchModal("Surgical Airway Initiated At","Surgical_Airway_Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("Surgical Airway Achieved At","Surgical Airway Achieved Time");
+            launchModal("Surgical Airway Achieved At","Surgical_Airway_Achieved");
         }
 
         else{
-            launchModal("Surgical Airway Stopped At","Surgical Airway Stopped Time");
+            launchModal("Surgical Airway Stopped At","Surgical_Airway_Stopped");
         }
     }
 }
@@ -332,39 +332,9 @@ function gettimestamp(){
 }
 
 /**
- * Set up Circulation buttons and function that will record vitals on user input
- */
-/**
- * These functions are responsible for responding to IV button clicks
- */
-function pivFunc(num) {
-    if(num === '1'){
-        localStorage.setItem("Functional Peripheral IV count", "1");
-        localStorage.setItem("Functional Peripheral IV established", "true");
-    }
-
-    else if(num === '2'){
-        localStorage.setItem("Functional Peripheral IV count", "2");
-        localStorage.setItem("Functional Peripheral IV established", "true");
-    }
-
-    else{
-        localStorage.setItem("Functional Peripheral IV count", ">2");
-        localStorage.setItem("Functional Peripheral IV established", "true");
-    }
-}
-
-function centrLineFunc() {
-    localStorage.setItem("Central Line established", "true");
-}
-
-function intraoLineFunc() {
-    localStorage.setItem("Intraosseous Line established", "true");
-}
-
-/**
-* Set up Perfusion buttons
+* Set up of disability  buttons and functions that will record user input
 */
+
 
 // Buttons for lip color
 // var lipc1 = document.getElementById('lipc-pi');
@@ -526,22 +496,24 @@ function mtpFunc(value){
     }
 }
 
-/**
- * This function is responsible for setting the GCS value based on the parameters given.
- * It is called by each GCS button.
- */
-function gcsFunc(type, value){
-    if(type === 'motor'){
-        localStorage.setItem("GCS Motor", value);
-    }
+//For pupilsizer depth in mm
+var pupilsizerText = document.getElementById("pupilsizer");
+pupilsizerText.oninput = recordpupilsizer;
 
-    else if(type === 'verbal'){
-        localStorage.setItem("GCS Verbal", value);
-    }
+function recordpupilsizer(){
+    setTimeout(function(){
+        localStorage.setItem("Right Pupil Size", pupilsizerText.value);
+    }, 1000);
+}
 
-    else{
-         localStorage.setItem("GCS Eye", value);
-    }
+//For pupilsizel depth in mm
+var pupilsizelText = document.getElementById("pupilsizel");
+pupilsizelText.oninput = recordpupilsizel;
+
+function recordpupilsizel(){
+    setTimeout(function(){
+        localStorage.setItem("Left Pupil Size", pupilsizelText.value);
+    }, 1000);
 }
 
 /**
@@ -554,6 +526,20 @@ function fetchTimeModal(){
     var sec =Math.round(parseInt(document.getElementById('secondStamp').value, 10));
     var timeStamp = hr.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
     return timeStamp;
+}
+
+/**
+ * Launches the time stamp edit modal and sets up corresponding buttons
+ *
+ * @param modalTitle
+ * @param step
+ */
+function launchModal(modalTitle, step) {
+    var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function () {
+        setItemAjax(step, fetchTimeModal());
+        $("#popUp").modal('hide');
+    }
 }
 
 /**

@@ -8,72 +8,72 @@ class Session(models.Model):
 	#date_created = models.DateTimeField(default=timezone.now)
 	#author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-	#Alert Data
+	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
+	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")
+	Oxygen_Supplementation_Stoppe = models.CharField(max_length=20, default="null")
 
-	# Functional_Peripheral_IV_established = models.BooleanField(default=False) #localStorage.setItem("Functional Peripheral IV established", "false");
-	# Functional_Peripheral_IV_count = models.IntegerField(default=0)# localStorage.setItem("Functional Peripheral IV count", "0");
+	Bag_Mask_Initiated = models.CharField(max_length=20, default="null")
+	Bag_Mask_Stopped = models.CharField(max_length=20, default="null")
 
-	# Intraosseous_Line_established = models.BooleanField(default=False)# localStorage.setItem("Intraosseous Line established", "false");
-	# Central_Line_established = models.BooleanField(default=False)# localStorage.setItem("Central Line established", "false");
+	LMA_Initiated = models.CharField(max_length=20, default="null")
+	LMA_Achieved = models.CharField(max_length=20, default="null")
+	LMA_Stopped = models.CharField(max_length=20, default="null")
 
-	Type_and_Cross = models.CharField(max_length=20, default="none")# localStorage.setItem("Type and Cross", "none");
+	ETT_Initiated = models.CharField(max_length=20, default="null")
+	ETT_Achieved = models.CharField(max_length=20, default="null")
+	ETT_Stopped = models.CharField(max_length=20, default="null")
 
+	Difficult_Airway_Initiated = models.CharField(max_length=20, default="null")
+	Difficult_Airway_Achieved = models.CharField(max_length=20, default="null")
+	Difficult_Airway_Stopped = models.CharField(max_length=20, default="null")
+
+	Surgical_Airway_Initiated = models.CharField(max_length=20, default="null")
+	Surgical_Airway_Achieved = models.CharField(max_length=20, default="null")
+	Surgical_Airway_Stopped = models.CharField(max_length=20, default="null")
+
+	#Breathing Data
+	Spontaneous_Breathing = models.CharField(max_length=20, default="null")
+	Assisted_Breathing = models.CharField(max_length=20, default="null")
+	Right_Chest = models.CharField(max_length=20, default="null")
+	Left_Chest = models.CharField(max_length=20, default="null")
+
+	#Circulation Data
 	Lip_Color = models.CharField(max_length=20, default="null")
-	Nail_Bed_Color = models.CharField(max_length=20, default="null")
-	Cap_Refill_Time = models.CharField(max_length=20, default="null")
+	Nail_Color = models.CharField(max_length=20, default="null")
+	Cap_Refill = models.CharField(max_length=20, default="null")
+	PIV_Count = models.CharField(max_length=20, default="0")
+	Central_Line = models.CharField(max_length=20, default="null")
+	Intraosseous_Line = models.CharField(max_length=20, default="null")
 
-	# IVF = models.CharField(max_length=20)# localStorage.setItem("IVF", "null");
+	IV_Fluid_Amount = models.CharField(max_length=20, default="null")
+	Type_Cross = models.CharField(max_length=20, default="null")
+	Transfused_PRBC = models.CharField(max_length=20, default="null")
+	Massive_Transfusion = models.CharField(max_length=20, default="null")
 
+	#Disability Data
+	Pupils_Equal = models.CharField(max_length=20, default="null")
+	Pupils_Round = models.CharField(max_length=20, default="null")
+	Pupils_Reactive = models.CharField(max_length=20, default="null")
+	Pupil_Size_Right = models.CharField(max_length=20, default="null")
+	Pupil_Size_Left = models.CharField(max_length=20, default="null")
 
-	Right_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
-	Left_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
-
-	Massive_Transfusion_Protocol = models.CharField(max_length=20, default="null")# localStorage.setItem("Massive Transfusion Protocol", "null");
-
-	Transfusion_PRBC = models.CharField(max_length=20, default="null")# localStorage.setItem("Transfusion PRBC", "null");
-
-	# #All time stamp varibles initiated below
-	# Oxygen_Supplementation_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("Oxygen Supplementation Initiated Time", "null");
-	# Oxygen_Supplementation_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("Oxygen Supplementation Stopped Time", "null");
-	# Oxygen_Supplementation = models.CharField(max_length=20)# localStorage.setItem("Oxygen Supplementation", "not initiated");
-
-	# Bag_Mask_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("Bag Mask Initiated Time", "null");
-	# Bag_Mask_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("Bag Mask Stopped Time", "null");
-	# Bag_Mask = models.CharField(max_length=20)# localStorage.setItem("Bag Mask", "not initiated");
-
-	# LMA_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("LMA Initiated Time", "null");
-	# LMA_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("LMA Achieved Time", "null");
-	# LMA_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("LMA Stopped Time", "null");
-	# LMA = models.CharField(max_length=20)# localStorage.setItem("LMA", "not initiated");
-
-	# ETT_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("ETT Initiated Time", "null");
-	# ETT_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("ETT Achieved Time", "null");
-	# ETT_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("ETT Stopped Time", "null");
-	ETT = models.CharField(max_length=20, default="null")# localStorage.setItem("ETT", "not initiated");
-
-	# Difficult_Airway_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("Difficult Airway Initiated Time", "null");
-	# Difficult_Airway_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("Difficult Airway Achieved Time", "null");
-	# Difficult_Airway_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("Difficult Airway Stopped Time", "null");
-	# Difficult_Airway = models.CharField(max_length=20)# localStorage.setItem("Difficult Airway", "not initiated");
-
-	# Surgical_Airway_Initiated_Time = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway Initiated Time", "null");
-	# Surgical_Airway_Achieved_Time = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway Achieved Time", "null");
-	# Surgical_Airway_Stopped_Time = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway Stopped Time", "null");
-	# Surgical_Airway = models.CharField(max_length=20)# localStorage.setItem("Surgical Airway", "not initiated");
-
+	Moves_Extremities = models.CharField(max_length=20, default="null")
 	#Vitals
 	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");
 
 	# GCS<13 = models.BooleanField()# localStorage.setItem("GCS<13", "false");
 	GCS = models.CharField(max_length=20, default="null")
-	#GCS_Motor = models.CharField(max_length=20)
-	#GCS_Verbal = models.CharField(max_length=20)
-	#GCS_Eye = models.CharField(max_length=20)
+	GCS_Motor = models.CharField(max_length=20, default="null")
+	GCS_Verbal = models.CharField(max_length=20, default="null")
+	GCS_Eye = models.CharField(max_length=20, default="null")
 
 	Shock_Level = models.CharField(max_length=20, default="null")
 	HR = models.CharField(max_length=20, default="null")
 	BP = models.CharField(max_length=20, default="null")
 
+
+	GCS_History = models.CharField(max_length=20, default="null")
+	ETCO2_History = models.CharField(max_length=20, default="null")
 	Shock_History = models.CharField(max_length=20, default="null")
 	HR_History = models.CharField(max_length=20, default="null")
 	BP_History = models.CharField(max_length=20, default="null")

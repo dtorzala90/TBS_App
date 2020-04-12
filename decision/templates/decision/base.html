@@ -1,10 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
+
 <html lang="en-us">
 <head>
-
-    <!-- <img id="bgDesign" src={% static 'pch-shapes.svg' %}> -->
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,71 +11,66 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'decision/main.css' %}">
 
+    <!-- Custom JavaScript -->
     <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- Page title block -->
     {% if title %}
-        <title>Django Decision - {{ title }}</title>
+        <title>{{ title }}</title>
     {% else %}
-        <title>Django Decision</title>
+        <title>Django TBS App</title>
     {% endif %}
 </head>
+
 <body>
-<header class="site-header">
-    <!-- Navbar Main Content -->
+<!-- Navbar -->
+<nav class="site-header navbar navbar-expand-md navbar-default fixed-top">
+    <a class="navbar-brand" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+            aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggle">
+        <ul class="navbar-nav mr-auto ml-auto">
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'decision-home' %}">Decision App</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'summary' %}">Summary Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="#">Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Placeholder for Formatting (behind content) -->
-    <nav class="navbar navbar-expand-md navbar-default fixed-top nav-border">
-        <<img id="square">
-    </nav>
-
-    <!-- Actual Nav Bar -->
-    <nav class="navbar navbar-expand-md navbar-default fixed-top">
-        <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
-        <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4 style="color: white">Trauma Bay Decision App</h4></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'decision-home' %}">Decision App</a>
-                    <a class="nav-item nav-link" href="{% url 'summary' %}">Summary Page</a>
-                </div>
-                <!-- Navbar Right Side -->
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#">Login</a>
-                    <a class="nav-item nav-link" href="#">Register</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
+<!-- Main content section of <body> -->
 <main role="main" class="container">
     <div class="row justify-content-center">
         <div class="col-md">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-            {% block content %}{% endblock %}
-
+            <!-- Content block filled by children of template -->
+            {% block content %}
+            {% endblock %}
         </div>
     </div>
 </main>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 </body>
 </html>

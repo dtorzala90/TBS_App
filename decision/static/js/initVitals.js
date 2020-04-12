@@ -1,37 +1,22 @@
 //Set up HR and BP text fields
 var hrText = document.getElementById("hr");
 var bpText = document.getElementById("bp");
+var etco2Text = document.getElementById("etco2");
 
 hrText.oninput = recordHR;
 bpText.oninput = recordBP;
+etco2Text.oninput = recordEtco2;
 
+var timeStamp = "";
 function recordHR(){
     setTimeout(function(){
+        createTimeStamp();
+
         var hr = parseInt(hrText.value, 10);
         updateVitals("HR", hr.toString(10));
         localStorage.setItem("HR_prev", hr.toString(10));
 
-        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-        var hour = 0;
-        var timeStamp;
         var hrDisplay = hr + " at ";
-
-        if(min < 1){
-            min = 0;
-        }
-
-        if(min >= 60){
-            hour = min/60;
-            min = min%60;
-        }
-
-        if(hour !== 0){
-            timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        }
-
-        timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
-
         updateVitals("HR_History", hrDisplay + timeStamp);
         localStorage.setItem("HR_display", hrDisplay + timeStamp);
 
@@ -49,31 +34,14 @@ function recordHR(){
 }
 
 function recordBP(){
+        createTimeStamp();
+
         setTimeout(function(){
             var bp = parseInt(bpText.value);
             updateVitals("BP", bp.toString(10));
             localStorage.setItem("BP_prev", bp.toString(10));
 
-            var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-            var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-            var hour = 0;
-            var timeStamp;
             var bpDisplay = bp + " at ";
-
-            if(min < 1){
-                min = 0;
-            }
-
-            if(min >= 60){
-                hour = min/60;
-                min = min%60;
-            }
-
-            if(hour !== 0){
-                timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-            }
-
-            timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
             updateVitals("BP_History", bpDisplay + timeStamp);
             localStorage.setItem("BP_display", bpDisplay + timeStamp);
 
@@ -90,6 +58,70 @@ function recordBP(){
         }, 1000);
 }
 
+function recordEtco2(value){
+    createTimeStamp();
+
+    setTimeout(function(){
+        var etco2 = parseInt(etco2Text.value);
+        updateVitals("ETCO2", etco2.toString(10));
+
+        var etco2Display = etco2 + " at ";
+        updateVitals("ETCO2_History", etco2Display + timeStamp);
+        localStorage.setItem("ETCO2_Display", etco2Display + timeStamp);
+        }, 1000);
+}
+
+
+function recordGCS(type, value){
+
+    if(type === 'motor'){
+        updateVitals("GCS_Motor", value);
+        localStorage.setItem("GCS Motor", value);
+    }
+
+    else if(type === 'verbal'){
+        updateVitals("GCS_Verbal", value);
+        localStorage.setItem("GCS Verbal", value);
+    }
+
+    else{
+        updateVitals("GCS_Eye", value);
+        localStorage.setItem("GCS Eye", value);
+    }
+
+    var gcs_motor = localStorage.getItem("GCS Motor");
+    var gcs_verbal = localStorage.getItem("GCS Motor");
+    var gcs_eye = localStorage.getItem("GCS Motor");
+
+    if(gcs_motor !== "null" && gcs_verbal !== "null" && gcs_eye !== "null"){
+        createTimeStamp();
+        var gcs = parseInt(gcs_motor,10) + parseInt(gcs_verbal, 10) + parseInt(gcs_eye, 10);
+        var gcsDisplay = gcs + " at ";
+
+        updateVitals("GCS_History", gcsDisplay + timeStamp);
+        localStorage.setItem("GCS_Display", gcsDisplay + timeStamp);
+    }
+}
+function createTimeStamp(){
+    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var hour = 0;
+
+    if(min < 1){
+        min = 0;
+    }
+
+    if(min >= 60){
+        hour = min/60;
+        min = min%60;
+    }
+
+    if(hour !== 0){
+        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    }
+
+    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+}
 function updateVitals(key, value){
     $.ajax({
         type:"POST",
