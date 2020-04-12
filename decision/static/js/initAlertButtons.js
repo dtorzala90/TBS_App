@@ -169,157 +169,49 @@ function airwayStepFunc(type, step){
     }
 }
 
-/**
- * This function responds to etco2 buttons and carries out actions based on the parameter given
- */
-function etco2(value){
-    if(value === "none"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", "not present");
-    }
 
-    else if(value === "<25"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", "<25");
-    }
-
-    else if(value === "25-30"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", "25-30");
-    }
-
-    else if(value === "30-35"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", "30-35");
-    }
-
-    else if(value === "35-40"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", "35-40");
-    }
-
-    else if(value === "40-50"){
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", "40-50");
-    }
-
-    else {
-        var ett = localStorage.getItem("ETT alert");
-        if(ett === "thrown"){
-            localStorage.setItem("ETT Alert", "dismissed");
-            $('#ETT-etco2-alert').remove();
-        }
-        localStorage.setItem("ETCO2", ">50");
-    }
-}
 
 /**
  * This function responds to chest sound buttons
  */
 function chestSoundFunc(side, value) {
     if(side === "right") {
-        localStorage.setItem("Right Chest Rise/Breath Sounds", value);
+        setItemAjax("Right_Chest_Rise_Breath_Sounds", value);
+        // localStorage.setItem("Right Chest Rise/Breath Sounds", value);
     }
 
     else{
-        localStorage.setItem("Left Chest Rise/Breath Sounds", value);
+        setItemAjax("Left_Chest_Rise_Breath_Sounds", value);
+        // localStorage.setItem("Left Chest Rise/Breath Sounds", value);
     }
+}
+
+/**
+* Set up of Airway buttons and functions that will record user input
+*/
+//For ETT depth in cm
+var ettdepthText = document.getElementById("ettdepth");
+ettdepthText.oninput = recordettdepth;
+
+function recordettdepth(){
+    setTimeout(function(){
+        localStorage.setItem("ETT Depth", ettdepthText.value);
+    }, 1000);
+}
+
+//BVM breaths per minutes
+var bvmbpmText = document.getElementById("bvmbpm");
+bvmbpmText.oninput = recordbvmbpm;
+
+function recordbvmbpm(){
+    setTimeout(function(){
+        localStorage.setItem("BVM BPM", bvmbpmText.value);
+    }, 1000);
 }
 
 /**
  * Set up Circulation buttons and function that will record vitals on user input
  */
-//Set up HR and BP text fields
-var hrText = document.getElementById("hr");
-var bpText = document.getElementById("bp");
-var ageText = document.getElementById("age");
-
-ageText.oninput = recordAge;
-hrText.oninput = recordHR;
-bpText.oninput = recordBP;
-
-function recordHR(){
-    setTimeout(function(){
-        var hr = hrText.value;
-        localStorage.setItem("HR", hrText.value);
-        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-        var hour = 0;
-        var display = "Heart Rate: " + hr + " at ";
-        if(min < 1){
-            min = 0;
-        }
-
-        if(min >= 60){
-            hour = min/60;
-            min = min%60;
-        }
-
-        if(hour !== 0){
-            display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        }
-        display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-        localStorage.setItem('HR Display',display);
-    }, 1000);
-}
-
-function recordBP(){
-        setTimeout(function(){
-            var bp = bpText.value;
-            localStorage.setItem("BP", bpText.value);
-            var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-            var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-            var hour = 0;
-            var display = "Systolic BP: " + bp + " at " ;
-
-            if(min < 1){
-                min = 0;
-            }
-
-            if(min >= 60){
-                hour = min/60;
-                min = min%60;
-            }
-
-            if(hour !== 0){
-                display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-            }
-
-            display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-            localStorage.setItem('BP Display',display);
-        }, 1000);
-}
-
-function recordAge(){
-    setTimeout(function(){
-        localStorage.setItem("Patient Age", ageText.value);
-    }, 1000);
-}
-
 /**
  * These functions are responsible for responding to IV button clicks
  */
@@ -348,21 +240,92 @@ function intraoLineFunc() {
     localStorage.setItem("Intraosseous Line established", "true");
 }
 
+/**
+* Set up Perfusion buttons
+*/
+
+// Buttons for lip color
+// var lipc1 = document.getElementById('lipc-pi');
+// var lipc2 = document.getElementById('lipc-wh');
+// var lipc3 = document.getElementById('lipc-unk');
+
+// lipc1.onclick = lipc1Func;
+// lipc2.onclick = lipc2Func;
+// lipc3.onclick = lipc3Func;
 
 /**
  * These functions are responsible for responding to perfusion button clicks
  */
+
 function lipColorFunc(color) {
-    localStorage.setItem("Lip Color", color);
+    setItemAjax("Lip_Color", color);
+    //localStorage.setItem("Lip Color", color);
 }
 
 function nailColorFunc(color) {
-    localStorage.setItem("Nail Bed Color", color);
+    setItemAjax("Nail_Bed_Color", color);
+    //localStorage.setItem("Nail Bed Color", color);
 }
 
 function capRefillFunc(time) {
-    localStorage.setItem("Cap Refill Time", time);
+    setItemAjax("Cap_Refill_Time", time);
+    // localStorage.setItem("Cap Refill Time", time);
 }
+
+
+// function lipc1Func() {
+//     setItemAjax("Lip_Color", "Pink");
+// }
+
+// function lipc2Func() {
+//     setItemAjax("Lip_Color", "White");
+// }
+
+// function lipc3Func() {
+//     setItemAjax("Lip_Color", "Unable to assess");
+// }
+
+// //Buttons for nail bed color
+// var nailbc1 = document.getElementById('nailc-pi');
+// var nailbc2 = document.getElementById('nailc-wh');
+// var nailbc3 = document.getElementById('nailc-unk');
+
+// nailbc1.onclick = nailbc1Func;
+// nailbc2.onclick = nailbc2Func;
+// nailbc3.onclick = nailbc3Func;
+
+// function nailbc1Func() {
+//     setItemAjax("Nail_Bed_Color", "Pink");
+// }
+
+// function nailbc2Func() {
+//     setItemAjax("Nail_Bed_Color", "White");
+// }
+
+// function nailbc3Func() {
+//     setItemAjax("Nail_Bed_Color", "Unable to assess");
+// }
+
+// //Buttons for capillary refill time.
+// var caprt1 = document.getElementById('caprt-2');
+// var caprt2 = document.getElementById('caprt-24');
+// var caprt3 = document.getElementById('caprt-4');
+
+// caprt1.onclick = caprt1Func;
+// caprt2.onclick = caprt2Func;
+// caprt3.onclick = caprt3Func;
+
+// function caprt1Func() {
+//     setItemAjax("Cap_Refill_Time", "<2");
+// }
+
+// function caprt2Func() {
+//     setItemAjax("Cap_Refill_Time", "2-4");
+// }
+
+// function caprt3Func() {
+//     setItemAjax("Cap_Refill_Time", ">4");
+// }
 
 /**
  * This function is responsible for responding to the ivf button click
@@ -375,7 +338,8 @@ function ivFluidFunc(amount) {
  * This function is responsible for responding to the type and cross button click
  */
 function typeAndCrossFunc(value) {
-    localStorage.setItem("Type and Cross", value);
+    setItemAjax("Type_and_Cross", value);
+    //localStorage.setItem("Type and Cross", value);
 }
 
 /**
@@ -408,24 +372,6 @@ function mtpFunc(value){
 
     else{
         localStorage.setItem("Massive Transfusion Protocol", "no");
-    }
-}
-
-/**
- * This function is responsible for setting the GCS value based on the parameters given.
- * It is called by each GCS button.
- */
-function gcsFunc(type, value){
-    if(type === 'motor'){
-        localStorage.setItem("GCS Motor", value);
-    }
-
-    else if(type === 'verbal'){
-        localStorage.setItem("GCS Verbal", value);
-    }
-
-    else{
-         localStorage.setItem("GCS Eye", value);
     }
 }
 
@@ -502,6 +448,44 @@ function launchModal(modalTitle, step){
     $("#popUp").modal();
 
 }
+
+/**
+* Set up of disability  buttons and functions that will record user input
+*/
+//For pupilsizer depth in mm
+var pupilsizerText = document.getElementById("pupilsizer");
+pupilsizerText.oninput = recordpupilsizer;
+
+function recordpupilsizer(){
+    setTimeout(function(){
+        localStorage.setItem("Right Pupil Size", pupilsizerText.value);
+    }, 1000);
+}
+
+//For pupilsizel depth in mm
+var pupilsizelText = document.getElementById("pupilsizel");
+pupilsizelText.oninput = recordpupilsizel;
+
+function recordpupilsizel(){
+    setTimeout(function(){
+        localStorage.setItem("Left Pupil Size", pupilsizelText.value);
+    }, 1000);
+}
+
 /**
  * Set up Exposure buttons
  */
+
+function setItemAjax(step, value){
+    $.ajax(
+    {
+        type:"POST",
+        url: "/setItem/",
+        data:{
+            'key': step,
+            'value': value,
+        },
+        success: function( data )
+        {}
+     })
+}
