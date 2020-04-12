@@ -35,19 +35,19 @@ def login_request(request):
 # Create your views here.
 @login_required
 def home(request):
-	return render(request, 'decision/home.html')
+	return render(request, 'decision/home.html', {'title': 'Decision App'})
 
 @login_required
 def begin(request):
-	return render(request, 'decision/begin.html')
+	return render(request, 'decision/begin.html', {'title': 'Start Session'})
 
 @login_required
 def summary(request):
-	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
+	return render(request, 'summary/main.html', {'title': 'Summary Page'})
 
 @login_required
 def startTrauma(request):
-	return render(request, 'decision/home.html')
+	return render(request, 'decision/home.html', {'title': 'Decision App'})
 
 
 @csrf_exempt
