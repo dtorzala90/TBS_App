@@ -8,6 +8,19 @@ function updateVitals(){
     var bvm = localStorage.getItem("BVM_display");
     var rps = localStorage.getItem("RPS_display");
     var lps = localStorage.getItem("LPS_display");
+    var ivfs = localStorage.getItem("IVF_Started");
+    var ivfa = localStorage.getItem("IVF_Additional");
+    var ivf;
+
+    if (ivfs === "null") {
+      ivf = ""
+    } else {
+      if (ivfa === "null") {
+        ivf = "IVF Volume " + ivfs + "mL/Kg";
+      } else {
+        ivf = "IVF Volume " + (parseInt(ivfs) + parseInt(ivfa)).toString() + "mL/Kg";
+      }
+    }
 
     document.getElementById("hr_display").innerHTML = ("HR: " + hr + "<br>");
     document.getElementById("bp_display").innerHTML = ("BP: " + bp + "<br>");
@@ -15,4 +28,5 @@ function updateVitals(){
     document.getElementById("ett_display").innerHTML = ("Airway: " + ett + "<br>");
     document.getElementById("bvm_display").innerHTML = ("Breathing: " + bvm + "<br>");
     document.getElementById("pupil_display").innerHTML = ("Disability:<br> Pupils: Right:" + rps + " Left: " + lps + "<br>");
+    document.getElementById("ivf_display").innerHTML = ("Circulation: " + ivf + "<br>");
 }

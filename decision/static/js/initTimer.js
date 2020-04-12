@@ -12,6 +12,9 @@ localStorage.setItem("BVM_display", " ");
 localStorage.setItem("RPS_display", " ");
 localStorage.setItem("LPS_display", " ");
 
+localStorage.setItem("IVF_Started", "null")
+localStorage.setItem("IVF_Additional", "null")
+
 localStorage.setItem("Age", "null");
 
 

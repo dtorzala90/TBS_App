@@ -456,6 +456,35 @@ function ivFluidFunc(amount) {
     localStorage.setItem("IVF", amount);
 }
 
+function ivfStarted() {
+  document.getElementById("started-ivf").style.display = "block";
+}
+
+function ivfAdditional() {
+  document.getElementById("additional-ivf").style.display = "block";
+}
+
+
+var ivfStartedText = document.getElementById("started-ivf");
+ivfStartedText.oninput = recordivfStarted;
+
+function recordivfStarted(){
+    setTimeout(function(){
+        localStorage.setItem("IVF_Started", ivfStartedText.value);
+        updateVitals("IVF_Started_History", ivfStartedText.value);
+    }, 1000);
+}
+
+var ivfAdditionalText = document.getElementById("additional-ivf");
+ivfAdditionalText.oninput = recordivfAdditional;
+
+function recordivfAdditional(){
+    setTimeout(function(){
+        localStorage.setItem("IVF_Additional", ivfAdditionalText.value);
+        updateVitals("IVF_Additional_History", ivfAdditionalText.value);
+    }, 1000);
+}
+
 /**
  * This function is responsible for responding to the type and cross button click
  */

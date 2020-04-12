@@ -627,9 +627,25 @@
 
                                                 <br>
 
-                                                <button type="button" class="btn btn-light">Started</button>
-                                                <button type="button" class="btn btn-info">Additional Fluids
-                                                </button>
+
+                                                <button type="button" class="btn btn-light" id="ivf-started" onclick="ivfStarted()">Started</button>
+
+                                                <div class="form-group w-60">
+                                                     <input class="form-control form-control-lg" type="text" id="started-ivf" style="display:none"
+                                                            name="started-ivf"
+                                                            value=""
+                                                            placeholder="IVF volume xx mL/Kg">
+                                                </div>
+
+                                                <button type="button" class="btn btn-info" id="ivf-additional" onclick="ivfAdditional()">Additional Fluids</button>
+
+                                                <div class="form-group w-60">
+                                                     <input class="form-control form-control-lg" type="text" id="additional-ivf" style="display:none"
+                                                            name="additional-ivf"
+                                                            value=""
+                                                            placeholder="IVF volume xx mL/Kg">
+                                                </div>
+
                                                 <button type="button" class="btn btn-dark">Completed</button>
                                             </div>
 
