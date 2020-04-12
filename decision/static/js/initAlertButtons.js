@@ -294,7 +294,7 @@ bvmbpmText.oninput = recordbvmbpm;
 function recordbvmbpm(){
     setTimeout(function(){
       var bvmDisplay;
-      
+
       if (bvmbpmText.value === "null") {
 
         bvmDisplay = "";
@@ -598,6 +598,15 @@ pupilsizerText.oninput = recordpupilsizer;
 
 function recordpupilsizer(){
     setTimeout(function(){
+        var rpsDisplay;
+
+        if (pupilsizerText.value === "null"){
+          rpsDisplay = "";
+        }else{
+          rpsDisplay = pupilsizerText.value + "mm";
+        }
+        localStorage.setItem("RPS_display", rpsDisplay);
+        updateVitals("RPS_History", rpsDisplay);
         localStorage.setItem("Right Pupil Size", pupilsizerText.value);
     }, 1000);
 }
@@ -608,8 +617,17 @@ pupilsizelText.oninput = recordpupilsizel;
 
 function recordpupilsizel(){
     setTimeout(function(){
-        localStorage.setItem("Left Pupil Size", pupilsizelText.value);
-    }, 1000);
+      var lpsDisplay;
+
+      if (pupilsizelText.value === "null"){
+        lpsDisplay = "";
+      }else{
+        lpsDisplay = pupilsizelText.value + "mm";
+      }
+      localStorage.setItem("LPS_display", lpsDisplay);
+      updateVitals("LPS_History", lpsDisplay);
+      localStorage.setItem("Left Pupil Size", pupilsizelText.value);
+  }, 1000);
 }
 
 /**
