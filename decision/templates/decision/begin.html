@@ -5,6 +5,27 @@
     <!-- Initializes timer and local storage data -->
     <script type="text/javascript" src="{% static "js/initTimer.js" %}"></script>
 
+    <script type="text/javascript">
+        function startSession(){
+            localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
+            $.ajax({
+            type:"POST",
+            url: '/savePatientInfo/',
+            data: {
+                'age': document.getElementById('patientAge').value,
+                'weight': document.getElementById('patientWeight').value,
+                'addInfo': document.getElementById('addlInfo').value,
+                'history': document.getElementById('patientHistory').value
+            },
+
+            success: function( data )
+            {
+                console.log("Started Session!");
+            }
+         });
+        }
+    </script>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col startForm">
@@ -28,9 +49,12 @@
                         <label for="addlInfo">Additional Info</label>
                         <textarea class="form-control" id="addlInfo" rows="4"></textarea>
                     </div>
+
                     <hr>
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-block start-button" name="start-btn">Start Session
+
+                    {%  csrf_token %}
+                    <button type="submit" class="btn btn-block" name="start-btn"
+                            onclick="startSession()">Start Session
                     </button>
                 </form>
             </div>
