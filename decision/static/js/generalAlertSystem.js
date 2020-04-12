@@ -2,36 +2,7 @@
  * This file is responsible for all time based alerts in our system.
  */
 
-/*
-    Sets up global variables to determine which alerts need to be checked for.
-    This will cut down on uneccessary looping and improve speed and performance.
- */
-var noIvAlert = localStorage.getItem("Alert No IV");
-var onePIVAlert = localStorage.getItem("Alert One PIV");
-
-//var perfusionAlert = localStorage.getItem("Poor Perfusion");
-
-
-//This checks to see if the alerts have already been dismissed.
-if(noIvAlert !== "dismissed" || onePIVAlert !== "dismissed"){
-    var ivAlertInterval = setInterval(checkIV, 1000);
-}
-
-setInterval(checkETCO2, 1000);
-setInterval(checkGCS, 1000);
-setInterval(checkHR, 1000);
-setInterval(checkBP, 1000);
-setInterval(calcShock, 1000);
-setInterval(checkFluids, 1000);
-setInterval(checkBreathingRight, 1000);
-setInterval(checkBreathingLeft, 1000);
-setInterval(checkPerfusion, 1000);
-
-
-var transfusionInterval = setInterval(checkTransfusionAlerts, 1000);
-var ettInterval = setInterval(checkETTAlerts, 1000);
-var typeAndCrossInterval = setInterval(checkTypeAndCross, 1000);
-
+setInterval(checkAlerts, 1000);
 
 
 /**
