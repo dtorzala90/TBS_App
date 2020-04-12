@@ -16,9 +16,6 @@ localStorage.setItem("GCS_Display", " ");
 
 localStorage.setItem("Age", "null");
 
-
-
-
 localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");
 
@@ -78,32 +75,4 @@ localStorage.setItem("Massive Transfusion Protocol Alert", "not thrown");
 //localStorage.setItem("Transfusion PRBC", "no"); IN DATABASE
 localStorage.setItem("Transfusion PRBC Alert", "not thrown");
 
-//All time stamp varibles initiated below
-localStorage.setItem("Oxygen Supplementation Initiated Time", "null");
-localStorage.setItem("Oxygen Supplementation Stopped Time", "null");
-localStorage.setItem("Oxygen Supplementation", "not initiated");
 
-localStorage.setItem("Bag Mask Initiated Time", "null");
-localStorage.setItem("Bag Mask Stopped Time", "null");
-localStorage.setItem("Bag Mask", "not initiated");
-localStorage.setItem("BVM BPM", "null")
-
-localStorage.setItem("LMA Initiated Time", "null");
-localStorage.setItem("LMA Achieved Time", "null");
-localStorage.setItem("LMA Stopped Time", "null");
-localStorage.setItem("LMA", "not initiated");
-
-localStorage.setItem("ETT Initiated Time", "null");
-localStorage.setItem("ETT Achieved Time", "null");
-localStorage.setItem("ETT Stopped Time", "null");
-//localStorage.setItem("ETT", "not initiated");
-
-localStorage.setItem("Difficult Airway Initiated Time", "null");
-localStorage.setItem("Difficult Airway Achieved Time", "null");
-localStorage.setItem("Difficult Airway Stopped Time", "null");
-localStorage.setItem("Difficult Airway", "not initiated");
-
-localStorage.setItem("Surgical Airway Initiated Time", "null");
-localStorage.setItem("Surgical Airway Achieved Time", "null");
-localStorage.setItem("Surgical Airway Stopped Time", "null");
-localStorage.setItem("Surgical Airway", "not initiated");

@@ -8,30 +8,6 @@ class Session(models.Model):
 	#date_created = models.DateTimeField(default=timezone.now)
 	#author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-	#Alert Data
-
-	# Functional_Peripheral_IV_established = models.BooleanField(default=False) #localStorage.setItem("Functional Peripheral IV established", "false");
-	# Functional_Peripheral_IV_count = models.IntegerField(default=0)# localStorage.setItem("Functional Peripheral IV count", "0");
-
-	# Intraosseous_Line_established = models.BooleanField(default=False)# localStorage.setItem("Intraosseous Line established", "false");
-	# Central_Line_established = models.BooleanField(default=False)# localStorage.setItem("Central Line established", "false");
-
-	Type_and_Cross = models.CharField(max_length=20, default="none")# localStorage.setItem("Type and Cross", "none");
-
-	Lip_Color = models.CharField(max_length=20, default="null")
-	Nail_Bed_Color = models.CharField(max_length=20, default="null")
-	Cap_Refill_Time = models.CharField(max_length=20, default="null")
-
-	# IVF = models.CharField(max_length=20)# localStorage.setItem("IVF", "null");
-
-
-	Right_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Right Chest Rise/Breath Sounds", "null");
-	Left_Chest_Rise_Breath_Sounds = models.CharField(max_length=20, default="null")# localStorage.setItem("Left Chest Rise/Breath Sounds", "null");
-
-	Massive_Transfusion_Protocol = models.CharField(max_length=20, default="null")# localStorage.setItem("Massive Transfusion Protocol", "null");
-
-	Transfusion_PRBC = models.CharField(max_length=20, default="null")# localStorage.setItem("Transfusion PRBC", "null");
-
 	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
 	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")
 	Oxygen_Supplementation_Stoppe = models.CharField(max_length=20, default="null")
@@ -54,6 +30,32 @@ class Session(models.Model):
 	Surgical_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Achieved = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Stopped = models.CharField(max_length=20, default="null")
+
+	#Breathing Data
+	Spontaneous_Breathing = models.CharField(max_length=20, default="null")
+	Assisted_Breathing = models.CharField(max_length=20, default="null")
+	Right_Chest = models.CharField(max_length=20, default="null")
+	Left_Chest = models.CharField(max_length=20, default="null")
+
+	#Circulation Data
+	Lip_Color = models.CharField(max_length=20, default="null")
+	Nail_Color = models.CharField(max_length=20, default="null")
+	Cap_Refill = models.CharField(max_length=20, default="null")
+	PIV_Count = models.CharField(max_length=20, default="0")
+	Central_Line = models.CharField(max_length=20, default="null")
+	Intraosseous_Line = models.CharField(max_length=20, default="null")
+
+	IV_Fluid_Amount = models.CharField(max_length=20, default="null")
+	Type_Cross = models.CharField(max_length=20, default="null")
+	Transfused_PRBC = models.CharField(max_length=20, default="null")
+	Massive_Transfusion = models.CharField(max_length=20, default="null")
+
+	#Disability Data
+	Pupils_Equal = models.CharField(max_length=20, default="null")
+	Pupils_Round = models.CharField(max_length=20, default="null")
+	Pupils_Reactive = models.CharField(max_length=20, default="null")
+	Pupil_Size_Right = models.CharField(max_length=20, default="null")
+	Pupil_Size_Left = models.CharField(max_length=20, default="null")
 
 	#Vitals
 	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");

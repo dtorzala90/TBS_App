@@ -320,17 +320,6 @@ function fetchTimeModal(){
  * @param step
  */
 function launchModal(modalTitle, step) {
-    var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'), 10)) / 60);
-    var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'), 10)) % 60);
-    var hour = 0;
-    if (min < 1) {
-        min = 0;
-    }
-    if (min >= 60) {
-        hour = Math.round(min / 60);
-        min = Math.round(min % 60);
-    }
-
     var saveBtn = document.getElementById('saveModal');
     saveBtn.onclick = function () {
         setItemAjax(step, fetchTimeModal());
