@@ -8,28 +8,23 @@ from django.core import serializers
 import json
 
 alertsDict = {
-	'no_iv': 'false',
-	'no_etco2_recorded': 'false',
-	'ett_before_gcs': 'false',
-	'ett_no_etco2': 'false',
-	'right_chest': 'false',
-	'left_chest': 'false',
-	'no_etco2_measured': 'false',
-	'etco2_<25': 'false',
-	'ecto2_25-30': 'false',
-	'etco2_40-50': 'false',
-	'etco2_>50': 'false',
-	'bradycardia': 'false',
-	'tachycardia': 'false',
+	'no_iv': 'null',
+	'no_etco2_recorded': 'null',
+	'additional_piv': 'null',
+	'ett_before_gcs': 'null',
+	'ett_no_etco2': 'null',
+	'right_chest': 'null',
+	'left_chest': 'null',
+	'etco2_value': 'null',
+	'heart_rate': 'null',
 	'shock_elevated': 'false',
 	'hypotensive': 'false',
 	'poor perfusion' : 'false',
-	'additional_piv' : 'false',
-	'fluids_given' : 'false',
-	'excess_fluids' : 'false',
-	'type_cross' : 'false',
-	'prbc' : 'false',
-	'mtp' : 'false'
+	'fluids_given' : 'null',
+	'excess_fluids' : 'null',
+	'type_cross' : 'null',
+	'prbc' : 'null',
+	'mtp' : 'null'
 
 }
 # Create your views here.
@@ -92,7 +87,13 @@ def setItem(request):
 @csrf_exempt
 def checkAlerts(request):
 	dbTable = Session.objects.get(id="99")
-	time = int(request.GET.get('time', None));
+	time = int(request.GET.get('time', None))
+	hr = int(dbTable.__getattribute__('HR'))
+	bp = int(dbTable.__getattribute__('BP'))
+	shock = int(dbTable.__getattribute__('Shock_Level'))
+	age = int(dbTable.__getattribute__('Patient_Age'))
+	etco2 = dbTable.__getattribute__('ETCO2')
+	gcs = dbTable.__getattribute__('GCS')
 
 	##Time Based Alerts
 	if (time >= 2):
@@ -113,27 +114,49 @@ def checkAlerts(request):
 
 		else:
 			alertsDict['no_iv'] = 'false'
-			if(centrLine == "no" and intrLine == "no" and pivCount == "1"):
-				alertsDict['no_iv'] = 'true'
+			if(centrLine == "no" and intrLine == "no"):
+				if(pivCount == "1"):
+					alertsDict['additional_piv'] = 'true'
+				elif(pivCount != "0"):
+					alertsDict['additional_piv'] = 'false'
 
 	##Breathing Alerts
+	ettInit = dbTable.__getattribute__('ETT_Initiated')
+	rightChest = dbTable.__getattribute__('Right_Chest')
+	leftChest = dbTable.__getattribute__('left_Chest')
+
+	#Chest Sounds
+	if(rightChest == 'no'):
+		alertsDict['right_chest'] = 'true'
+	elif(rightChest == 'yes'):
+		alertsDict['right_chest'] = 'false'
+
+	if(leftChest == 'no'):
+		alertsDict['left_chest'] = 'true'
+	elif(leftChest == 'yes'):
+		alertsDict['left_chest'] = 'false'
+
+	#Intubation Alerts
+	if(ettInit != 'null'):
+		if(gcs == 'null'):
+			alertsDict['ett_before_gcs'] = 'true'
+		else:
+			alertsDict['ett_before_gcs'] = 'false'
+
+		if(etco2 == 'null'):
+			alertsDict['ett_no_etco2'] = 'true'
+		else:
+			alertsDict['ett_no_etco2'] = 'false'
 
 	##Vital Alerts
-	hr = int(dbTable.__getattribute__('HR'))
-	bp = int(dbTable.__getattribute__('BP'))
-	shock = int(dbTable.__getattribute__('Shock_Level'))
-	age = int(dbTable.__getattribute__('Patient_Age'))
 
 	#Brady/Tachycardia
 	if(hr < 60):
-		alertsDict['bradycardia'] = 'true'
-		alertsDict['tachycardia'] = 'false'
+		alertsDict['heart_rate'] = 'bradycardia'
 	elif(hr > 100):
-		alertsDict['tachycardia'] = 'true'
-		alertsDict['bradycardia'] = 'false'
+		alertsDict['heart_rate'] = 'tachycardia'
 	else:
-		alertsDict['tachycardia'] = 'false'
-		alertsDict['bradycardia'] = 'false'
+		alertsDict['heart_rate'] = 'null'
 
 	#Hypotension
 	if(bp < (55 + (2*age))):
@@ -147,6 +170,22 @@ def checkAlerts(request):
 	else:
 		alertsDict['shock_elevated'] = 'false'
 
+	#Etco2 Alert
+	if (etco2 != 'null'):
+		etco2int = int(etco2)
+		if(etco2int == 0):
+			alertsDict['etco2_value'] = 'no measurement'
+		elif(etco2int < 25 ):
+			alertsDict['etco2_value'] = '<25'
+		elif(etco2int >= 25 and etco2int <= 30):
+			alertsDict['etco2_value'] = '25-30'
+		elif (etco2int >= 40 and etco2int <= 50 ):
+			if(gcs.isDigit() and int(gcs) < 13):
+				alertsDict['etco2_value'] = '40-50'
+		elif(etco2int > 50):
+			alertsDict['etco2_value'] = '>50'
+		else:
+			alertsDict['etco2_value'] = 'null'
 	##Circulation Alerts
 	ivFluids = dbTable.__getattribute__('IV_Fluid_Amount')
 
@@ -169,4 +208,29 @@ def checkAlerts(request):
 		alertsDict['fluids_given'] = 'false'
 		alertsDict['excess_fluids'] = 'false'
 
+	#Perfusion Alerts
+	nailColor = dbTable.__getattribute__('Nail_Color')
+	lipColor = dbTable.__getattribute__('Lip_Color')
+	capRefill = dbTable.__getattribute__('Cap_Refill')
+
+	if(nailColor == "White"):
+		alertsDict['poor perfusion'] = 'true'
+
+	elif(lipColor == "White"):
+		alertsDict['poor perfusion'] = 'true'
+
+	elif(capRefill == ">4sec"):
+		alertsDict['poor perfusion'] = 'true'
+
+	else:
+		alertsDict['poor perfusion'] = 'false'
+
+	#Type and Cross Alert
+	typeStatus = dbTable.__getattribute__('Type_Cross')
+
+	if(typeStatus == "null"):
+		alertsDict['type_cross'] = 'true'
+
+	else:
+		alertsDict['type_cross'] = 'false'
 	return JsonResponse(alertsDict)

@@ -20,7 +20,7 @@ localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");
 
 localStorage.setItem("Record ETCO2 Alert", "not thrown");
-localStorage.setItem("Current ETCO2 alert thrown", "none");
+localStorage.setItem("ETCO2 Value Alert", "null");
 
 localStorage.setItem("ETT ETCO2 Alert", "not thrown");
 localStorage.setItem("ETT GCS Alert", "not thrown");
@@ -28,14 +28,13 @@ localStorage.setItem("ETT GCS Alert", "not thrown");
 localStorage.setItem("Shock Level", "null");
 localStorage.setItem("Shock Alert", "not thrown");
 
-localStorage.setItem("Bradycardia Alert", "not thrown");
-localStorage.setItem("Tachycardia Alert", "not thrown");
+localStorage.setItem("HR Alert", "null");
 
 localStorage.setItem("Hypotensive alert", "not thrown");
 
 localStorage.setItem("Type and Cross Alert", "not thrown");
 
-localStorage.setItem("Poor Perfusion", "not thrown");
+localStorage.setItem("Poor Perfusion Alert", "not thrown");
 
 localStorage.setItem("Alert Consider IVF", "not thrown");
 localStorage.setItem("Alert Fluids Given", "not thrown");
