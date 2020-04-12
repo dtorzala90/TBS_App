@@ -97,10 +97,12 @@ function airwayStepFunc(type, step){
         if(step === 'init'){
             localStorage.setItem("Bag Mask", "initiated");
             localStorage.setItem("Bag Mask Initiated Time", getCurrentTime());
+            document.getElementById("bvmbpm").style.display = "block";
         }
         else{
             localStorage.setItem("Bag Mask", "stopped");
             localStorage.setItem("Bag Mask Stopped Time", getCurrentTime());
+            document.getElementById("bvmbpm").style.display = "none";
         }
     }
 
