@@ -135,11 +135,11 @@
                                             <p class="survey-p">Oxygen Supplementation</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="oxySupplInit"
-                                                        onclick="airwayStepFunc('oxygen','init')"
+                                                        onclick="setItemAjax('Oxygen_Supplementation_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('oxygen','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="oxySupplStop"
-                                                        onclick="airwayStepFunc('oxygen','stop')"
+                                                        onclick="setItemAjax('Oxygen_Supplementation_Stopped',getCurrentTime())"
                                                         ondblclick="initEdit('oxygen','stop')">Stopped
                                                 </button>
                                             </div>
@@ -153,11 +153,11 @@
                                             <p class="survey-p">Bag Mask</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="bagMaskInit"
-                                                        onclick="airwayStepFunc('bag','init')"
+                                                        onclick="setItemAjax('Bag_Mask_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('bag','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="airwayStepFunc('bag','stop')"
+                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime())"
                                                         ondblclick="initEdit('bag','stop')">Stopped
                                                 </button>
                                             </div>
@@ -177,15 +177,15 @@
                                             <p class="survey-p">LMA</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lmaInit"
-                                                        onclick="airwayStepFunc('lma','init')"
+                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('lma','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="lmaAchieved"
-                                                        onclick="airwayStepFunc('lma','achieved')"
+                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime())"
                                                         ondblclick="initEdit('lma','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="lmaStop"
-                                                        onclick="airwayStepFunc('lma','stop')"
+                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime())"
                                                         ondblclick="initEdit('lma','stop')">Removed
                                                 </button>
                                             </div>
@@ -199,15 +199,15 @@
                                             <p class="survey-p">Endotracheal Tube</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="airwayStepFunc('ett','init')"
+                                                        onclick="setItemAjax('ETT_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('ett','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="airwayStepFunc('ett','achieved')"
+                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime())"
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="airwayStepFunc('ett','stop')"
+                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime())"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
                                             </div>
@@ -227,15 +227,15 @@
                                             <p class="survey-p">Difficult Airway</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="diffAirwayInit"
-                                                        onclick="airwayStepFunc('diffAirway','init')"
+                                                        onclick="setItemAjax('Difficult_Airway_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('diffAirway','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="diffAirwayAchieved"
-                                                        onclick="airwayStepFunc('diffAirway','achieved')"
+                                                        onclick="setItemAjax('Difficult_Airway_Achieved',getCurrentTime())"
                                                         ondblclick="initEdit('diffAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="diffAirwayStop"
-                                                        onclick="airwayStepFunc('diffAirway','stop')"
+                                                        onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime())"
                                                         ondblclick="initEdit('diffAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -249,15 +249,15 @@
                                             <p class="survey-p">Surgical Airway</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="surgAirwayInit"
-                                                        onclick="airwayStepFunc('surgAirway','init')"
+                                                        onclick="setItemAjax('Surgical_Airway_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('surgAirway','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="surgAirwayAchieved"
-                                                        onclick="airwayStepFunc('surgAirway','achieved')"
+                                                        onclick="setItemAjax('Surgical_Airway_Achieved',getCurrentTime())"
                                                         ondblclick="initEdit('surgAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="surgAirwayStop"
-                                                        onclick="airwayStepFunc('surgAirway','stop')"
+                                                        onclick="setItemAjax('Surgical_Airway_Stopped',getCurrentTime())"
                                                         ondblclick="initEdit('surgAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -317,10 +317,10 @@
                                             <p class="survey-p">Spontaneous Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="yes">Yes
+                                                        value="yes" onclick="setItemAjax('Spontaneous_Breathing','Yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="no">No
+                                                        value="no" onclick="setItemAjax('Spontaneous_Breathing','No')">No
                                                 </button>
                                             </div>
 
@@ -333,11 +333,11 @@
                                             <p class="survey-p">Assisted Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="yes">
+                                                        value="yes" onclick="setItemAjax('Assisted_Breathing','Yes')">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="no">
+                                                        value="no" onclick="setItemAjax('Assisted_Breathing','No')">
                                                     No
                                                 </button>
                                             </div>
@@ -353,12 +353,12 @@
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestyes"
                                                         value="yes"
-                                                        onclick="chestSoundFunc('right','Yes')">Yes
+                                                        onclick="setItemAjax('Right_Chest','Yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestno"
                                                         value="no"
-                                                        onclick="chestSoundFunc('right','No')">No
+                                                        onclick="setItemAjax('Right_Chest','No')">No
                                                 </button>
                                             </div>
 
@@ -373,12 +373,12 @@
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestyes"
                                                         value="yes"
-                                                        onclick="chestSoundFunc('left','Yes')">Yes
+                                                        onclick="setItemAjax('Left_Chest','Yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestno"
                                                         value="no"
-                                                        onclick="chestSoundFunc('left','No')">No
+                                                        onclick="setItemAjax('left_Chest','No')">No
                                                 </button>
                                             </div>
 
@@ -388,38 +388,13 @@
                                         <div class="tab-pane fade" id="v-pills-entd" role="tabpanel"
                                              aria-labelledby="v-pills-entd-tab">
 
-                                            <p class="survey-p">End Tidal CO</p>
+                                            <p class="survey-p">End Tidal CO<sub>2</sub></p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_none"
-                                                        value="no"
-                                                        onclick="etco2('none')">
-                                                    No Measurement
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_less25" value="25" onclick="etco2('<25')">
-                                                    ETCO<sub>2</sub> < 25
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_25plus" value="30" onclick="etco2('25-30')">
-                                                    ETCO<sub>2</sub> 25-30
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_30plus" value="35" onclick="etco2('30-35')">
-                                                    ETCO<sub>2</sub> 30-35
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_35plus" value="40" onclick="etco2('35-40')">
-                                                    ETCO<sub>2</sub> 35-40
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_40plus" value="50" onclick="etco2('40-50')">
-                                                    ETCO<sub>2</sub> 40-50
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="etco"
-                                                        id="etco2_50plus" value="50+" onclick="etco2('>50')">
-                                                    ETCO<sub>2</sub> > 50
-                                                </button>
+                                                <input class="form-control form-control-lg" type="text" id="etco2"
+                                                       name="etco2"
+                                                       value=""
+                                                       placeholder=" ">
+                                                <br>
                                             </div>
 
                                         </div>
@@ -507,10 +482,6 @@
                                                        value=""
                                                        placeholder="mmHg">
                                                 <br>
-                                                <input class="form-control form-control-lg survey-fctrl" type="text" id="age"
-                                                       name="age"
-                                                       value=""
-                                                       placeholder="Patient Age">
                                             </div>
 
                                         </div>
@@ -523,14 +494,14 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
-                                                        value="pi" onclick="lipColorFunc('Pink')">Pink
+                                                        value="pi" onclick="setItemAjax('Lip_Color','Pink')">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
-                                                        value="wh" onclick="lipColorFunc('White')">White
+                                                        value="wh" onclick="setItemAjax('Lip_Color','White')">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc"
                                                         id="lipc-unk"
-                                                        value="unk" onclick="lipColorFunc('Unable to assess')">Unable To
+                                                        value="unk" onclick="setItemAjax('Lip_Color','Unable TO Assess')">Unable To
                                                     Assess
                                                 </button>
 
@@ -539,15 +510,15 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Nail Color:</span>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-pi"
-                                                        value="pi" onclick="nailColorFunc('Pink')">Pink
+                                                        value="pi" onclick="setItemAjax('Nail_Color','Pink')">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-wh"
-                                                        value="wh" onclick="nailColorFunc('White')">White
+                                                        value="wh" onclick="setItemAjax('Nail_Color','White')">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-unk"
-                                                        value="unk" onclick="nailColorFunc('Unable to assess')">Unable
+                                                        value="unk" onclick="setItemAjax('Nail_Color','Unable To Assess')">Unable
                                                     To Assess
                                                 </button>
 
@@ -555,14 +526,14 @@
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Cap Refill:</span>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-2"
-                                                        value="<2" onclick="capRefillFunc('<2sec')"><2s
+                                                        value="<2" onclick="setItemAjax('Cap_Refill','<2sec')"><2s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr"
                                                         id="caprt-24"
-                                                        value="2-4" onclick="capRefillFunc('2-4sec')">2s-4s
+                                                        value="2-4" onclick="setItemAjax('Cap_Refill','2-4sec')">2s-4s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-4"
-                                                        value=">4" onclick="capRefillFunc('>4sec')">>4s
+                                                        value=">4" onclick="setItemAjax('Cap_Refill','>4sec')">>4s
                                                 </button>
                                             </div>
 
@@ -579,13 +550,13 @@
                                                         value="no">None
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp1"
-                                                        value="1" onclick="pivFunc('1')">1
+                                                        value="1" onclick="setItemAjax('PIV_Count','1')">1
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp2"
-                                                        value="2" onclick="pivFunc('2')">2
+                                                        value="2" onclick="setItemAjax('PIV_Count','2')">2
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp>2"
-                                                        value=">2" onclick="pivFunc('>2')">>2
+                                                        value=">2" onclick="setItemAjax('PIV_Count','>2')">>2
                                                 </button>
 
                                                 <br>
@@ -593,21 +564,21 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Intraosseous Line:</span>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralYes"
-                                                        value="yes" onclick="intraoLineFunc()"> Yes
+                                                        value="yes" onclick="setItemAjax('Intraosseous_Line','Yes')"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralNo"
-                                                        value="no">No
+                                                        value="no" onclick="setItemAjax('Intraosseous_Line','No')">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Central Line:</span>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
-                                                        value="yes" onclick="centrLineFunc()"> Yes
+                                                        value="yes" onclick="setItemAjax('Central_Line','Yes')"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
-                                                        value="no">No
+                                                        value="no" onclick="setItemAjax('Central_Line','No')">No
                                                 </button>
                                             </div>
 
@@ -620,13 +591,13 @@
                                             <p class="survey-p">IV Fluids</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="ivf" id="ivf-none"
-                                                        value="no" onclick="ivFluidFunc('none')">None
+                                                        value="no" onclick="setItemAjax('IV_Fluid_Amount','None')">None
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="ivf" id="ivf-<20"
-                                                        value="<20" onclick="ivFluidFunc('<20mL/kg')">< 20mL/kg
+                                                        value="<20" onclick="setItemAjax('IV_Fluid_Amount','<20mL/kg')">< 20mL/kg
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="ivf" id="ivf->20"
-                                                        value=">20" onclick="ivFluidFunc('>20mL/kg')">>= 20mL/kg
+                                                        value=">20" onclick="setItemAjax('IV_Fluid_Amount','>20mL/kg')">> 20mL/kg
                                                 </button>
 
                                                 <br>
@@ -646,11 +617,11 @@
                                             <p class="survey-p">Type and Cross</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tac"
-                                                        id="typeAndCrossYes" value="yes"
-                                                        onclick="typeAndCrossFunc('yes')">Drawn
+                                                        id="typeAndCrossDrawn" value="yes"
+                                                        onclick="setItemAjax('Type_Cross','Drawn')">Drawn
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tac"
-                                                        id="typeAndCrossNo" value="no" onclick="typeAndCrossFunc('no')">
+                                                        id="typeAndCrossSent" value="sent" onclick="setItemAjax('Type_Cross','Sent')">
                                                     Sent
                                                 </button>
                                             </div>
@@ -664,12 +635,12 @@
                                             <p class="survey-p">Transfused PRBCs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
-                                                        value="yes" onclick="prbcFunc('yes')">
+                                                        value="yes" onclick="setItemAjax('Transfused_PRBC','Yes')">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo"
                                                         value="no"
-                                                        onclick="prbcFunc('no')">
+                                                        onclick="setItemAjax('Transfused_PRBC','No')">
                                                     No
                                                 </button>
                                             </div>
@@ -684,12 +655,12 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
-                                                        onclick="mtpFunc('yes')">
+                                                        onclick="setItemAjax('Massive_Transfusion','Yes')">
                                                     Activated
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
                                                         value="no"
-                                                        onclick="mtpFunc('no')">No
+                                                        onclick="setItemAjax('Massive_Transfusion','No')">No
                                                 </button>
                                             </div>
 
@@ -749,32 +720,32 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor6" value="ob" onclick="gcsFunc('motor','6')">
+                                                        id="motor6" value="ob" onclick="recordGCS('motor','6')">
                                                     <b>6</b> - Obeys Commands
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor5" value="lo" onclick="gcsFunc('motor','5')">
+                                                        id="motor5" value="lo" onclick="recordGCS('motor','5')">
                                                     <b>5</b> - Localizing Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor4" value="wi" onclick="gcsFunc('motor','4')">
+                                                        id="motor4" value="wi" onclick="recordGCS('motor','4')">
                                                     <b>4</b> - Withdraw From Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor3" value="fl" onclick="gcsFunc('motor','3')">
+                                                        id="motor3" value="fl" onclick="recordGCS('motor','3')">
                                                     <b>3</b> - Flexion To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor2" value="ex" onclick="gcsFunc('motor','2')">
+                                                        id="motor2" value="ex" onclick="recordGCS('motor','2')">
                                                     <b>2</b> - Extension To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor1" value="no" onclick="gcsFunc('motor','1')">
+                                                        id="motor1" value="no" onclick="recordGCS('motor','1')">
                                                     <b>1</b> - No Motor Response
                                                 </button>
                                             </div>
@@ -789,27 +760,27 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal5" value="or" onclick="gcsFunc('verbal','5')">
+                                                        id="verbal5" value="or" onclick="recordGCS('verbal','5')">
                                                     <b>5</b> - Oriented
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal4" value="co" onclick="gcsFunc('verbal','4')">
+                                                        id="verbal4" value="co" onclick="recordGCS('verbal','4')">
                                                     <b>4</b> - Confused
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal3" value="wo" onclick="gcsFunc('verbal','3')">
+                                                        id="verbal3" value="wo" onclick="recordGCS('verbal','3')">
                                                     <b>3</b> - Inappropriate Words
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal2" value="so" onclick="gcsFunc('verbal','2')">
+                                                        id="verbal2" value="so" onclick="recordGCS('verbal','2')">
                                                     <b>2</b> - Incomprehensible Sounds
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal1" value="no" onclick="gcsFunc('verbal','1')">
+                                                        id="verbal1" value="no" onclick="recordGCS('verbal','1')">
                                                     <b>1</b> - No Verbal Response
                                                 </button>
                                             </div>
@@ -824,22 +795,22 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye4" value="sp" onclick="gcsFunc('eye','4')">
+                                                        id="eye4" value="sp" onclick="recordGCS('eye','4')">
                                                     <b>4</b> - Opens Spontaneously
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye3" value="ve" onclick="gcsFunc('eye','3')">
+                                                        id="eye3" value="ve" onclick="recordGCS('eye','3')">
                                                     <b>3</b> - Open To Verbal Command
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye2" value="pa" onclick="gcsFunc('eye','2')">
+                                                        id="eye2" value="pa" onclick="recordGCS('eye','2')">
                                                     <b>2</b> - Open To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye1" value="no" onclick="gcsFunc('eye','1')">
+                                                        id="eye1" value="no" onclick="recordGCS('eye','1')">
                                                     <b>1</b> - No Eye Opening
                                                 </button>
                                             </div>
@@ -854,30 +825,36 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Equal:</span>
                                                 <button type="button" class="btn btn-light btn-space"
-                                                        name="equal" value="yes">Yes
+                                                        name="equal" value="yes"
+                                                        onclick="setItemAjax('Pupils_Equal','Yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
-                                                        name="equal" value="no">No
+                                                        name="equal" value="no"
+                                                        onclick="setItemAjax('Pupils_Equal','No')">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Round:</span>
                                                 <button type="button" class="btn btn-light btn-space"
-                                                        name="round" value="yes">Yes
+                                                        name="round" value="yes"
+                                                        onclick="setItemAjax('Pupils_Round','Yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
-                                                        name="round" value="no">No
+                                                        name="round" value="no"
+                                                        onclick="setItemAjax('Pupils_Round','No')">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Reactive:</span>
                                                 <button type="button" class="btn btn-light btn-space"
-                                                        name="rlight" value="yes">Yes
+                                                        name="rlight" value="yes"
+                                                        onclick="setItemAjax('Pupils_Reactive','Yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
-                                                        name="rlight" value="no">No
+                                                        name="rlight" value="no"
+                                                        onclick="setItemAjax('Pupils_Reactive','No')">No
                                                 </button>
 
                                                 <br>
@@ -914,14 +891,17 @@
                                             <p class="survey-p">Moves All Extremities</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="movee"
-                                                        value="yes">
+                                                        value="yes"
+                                                        onclick="setItemAjax('Moves_Extremities','Yes')">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-info" name="movee"
-                                                        value="onlyinj">
+                                                        value="onlyinj"
+                                                        onclick="setItemAjax('Moves_Extremities','Limited Only By Injury')">
                                                     Limited Only by Injury
                                                 </button>
-                                                <button type="button" class="btn btn-dark" name="movee" value="no">
+                                                <button type="button" class="btn btn-dark" name="movee" value="no"
+                                                        onclick="setItemAjax('Moves_Extremities','No')">
                                                     No
                                                 </button>
                                             </div>
@@ -1336,7 +1316,7 @@
     Javascript initialize all buttons and text fields on main page
     ================================================================================
     -->
-
+    <script type="text/javascript" src="{% static "js/initVitals.js" %}"></script>
     <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
     </div>
 
