@@ -274,28 +274,8 @@ ettdepthText.oninput = recordettdepth;
 function recordettdepth(){
     setTimeout(function(){
         localStorage.setItem("ETT Depth", ettdepthText.value);
-
-        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-        var hour = 0;
-        var timeStamp;
         var ettDisplay;
-
-        if(min < 1){
-            min = 0;
-        }
-
-        if(min >= 60){
-            hour = min/60;
-            min = min%60;
-        }
-
-        if(hour !== 0){
-            timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        }
-
-        timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
-
+        var timeStamp = gettimestamp();
         if (ettdepthText.value === "null") {
 
           ettDisplay = "";
@@ -313,8 +293,42 @@ bvmbpmText.oninput = recordbvmbpm;
 
 function recordbvmbpm(){
     setTimeout(function(){
+      var bvmDisplay;
+      
+      if (bvmbpmText.value === "null") {
+
+        bvmDisplay = "";
+      } else {
+        bvmDisplay = "BVM at " + bvmbpmText.value + " breaths/min ";
+      }
+        localStorage.setItem("BVM_display", bvmDisplay);
+        updateVitals("BVM_History", bvmDisplay);
         localStorage.setItem("BVM BPM", bvmbpmText.value);
     }, 1000);
+}
+
+function gettimestamp(){
+  var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+  var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+  var hour = 0;
+  var timeStamp;
+
+
+  if(min < 1){
+      min = 0;
+  }
+
+  if(min >= 60){
+      hour = min/60;
+      min = min%60;
+  }
+
+  if(hour !== 0){
+      timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+  }
+
+  timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+  return timeStamp;
 }
 
 /**

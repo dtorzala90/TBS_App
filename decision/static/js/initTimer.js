@@ -8,6 +8,7 @@ localStorage.setItem("HR_display", " ");
 localStorage.setItem("BP_display", " ");
 localStorage.setItem("Shock_display", " ");
 localStorage.setItem("ETT_display", " ");
+localStorage.setItem("BVM_display", " ");
 
 localStorage.setItem("Age", "null");
 
