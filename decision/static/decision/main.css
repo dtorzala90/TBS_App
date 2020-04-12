@@ -367,6 +367,11 @@ Summary page [/summary/main.html]
     z-index: 0;
 }
 
+.summary-container {
+    margin: 0; !important;
+    padding: 0; !important;
+}
+
 /*Adjust table styling, such as borders and cell fill for information divs*/
 .table > tbody > tr > td,
 .table > tbody > tr > th {
@@ -395,16 +400,14 @@ Summary page [/summary/main.html]
 
 /*Formats the timer on the summary page*/
 .timer-summary {
-    align-content: center;
-    color: #414143;
-    display: inline-block;
-    font-size: 50px;
-    margin-left: 10px;
-    position: fixed;
-    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+    color: #39393B;
+    margin: 0;
+    font-size: 65px;
     text-align: center;
-    top: 8rem;
-    width: 30%;
     z-index: 1;
 }
 
