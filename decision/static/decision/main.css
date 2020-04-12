@@ -1,34 +1,45 @@
 body {
-    background: #FBFBFB; /*Off-white background*/
-    color: #39393B;
-    margin-top: 5rem; /*Slight spacing from the top navbar*/
+    background: #feffff;
+    color: #555555;
+    margin-top: 5rem;
+    margin-left: 140px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: white; /*Sets the font color for headings*/
+    color: white;
 }
 
 ul {
     margin: 0;
 }
+/*Adjust table styling, such as borders and cell fill*/
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    border-top: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    vertical-align: middle;
+    border-bottom: 1px solid #2b7a78;
+    align-content: center;
+    table-layout: auto;
+}
 
-/*Font color for top navbar links*/
+/*Color for navigation bar links*/
 .site-header .navbar-nav .nav-link {
     color: white;
 }
 
-/*Changes top navbar link color when interacted with*/
+/*Changes nav bar link color when interacted with*/
 .site-header .navbar-nav .nav-link:hover {
     color: #9fedd7;
 }
 
-/*Background color for top navbar*/
+/*Background color for nav bar*/
 .navbar-default {
     background-color: #17252a;
 }
 
 .navbar-default .navbar-brand {
-    color: #39393B;
+    color: #555555;
 }
 
 .label-wrap {
@@ -51,76 +62,112 @@ ul {
     margin-bottom: 20px;
 }
 
-/*Not currently used*/
 /*Sidebar for shortcuts between accordion sections*/
-/*
 .sidenav {
-height: 100%;
-width: 140px;
-position: fixed;
-z-index: 1;
-bottom: 0;
-overflow-x: hidden;
-padding-top: 60px;
-margin-top: 20px;
-background: #17252a;
-border-right: 4px solid #fce181;
+    height: 100%;
+    width: 140px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 60px;
+    margin-top: 20px;
+    background: #17252a;
+    border-right: 4px solid #fce181;
 }
-*/
 
-/*Not currently used*/
-/*
 .sidenav a {
-padding: 6px 8px 6px 16px;
-text-align: center;
-text-decoration: none;
-font-size: 70px;
-color: white;
-display: block;
+    padding: 6px 8px 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 70px;
+    color: white;
+    display: block;
 }
-*/
 
-/*Not currently used*/
 /*Styling accordion headers when they are opened/closed*/
-/*
 .card-header::after {
-content: "\f106";
-color: white;
-right: 30px;
-top: 18px;
-position: absolute;
-font-family: "FontAwesome";
-font-size: 30px;
+    content: "\f106";
+    color: white;
+    right: 30px;
+    top: 18px;
+    position: absolute;
+    font-family: "FontAwesome";
+    font-size: 30px;
 }
-*/
 
-/*Not currently used*/
-/*
 .card-header[aria-expanded="false"]::after {
-content: "\f107";
+    content: "\f107";
 }
-*/
 
-/*Not currently used*/
-/*
 .card-header[aria-expanded="true"]::after {
-content: "\f106";
+    content: "\f106";
 }
-*/
-
-/*Formats the timer on the decision page*/
-.timer-decision {
-    color: #39393B;
-    margin: 8px auto 2px; /*Auto margin for left/right to center div*/
-    font-size: 65px;
-    width: 50%; /*Reduces div width to look nice*/
-    background-color: #ffffff;
-    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
-    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
-    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+/*Formatting the timer on the decision and summary pages*/
+.timer-style {
+    color: #414143;
+    text-align: center;
+    display: inline-block;
+    padding-top: 5%;
+    font-size: 75px;
 }
 
-/*Formats the PCH logo in the top navbar*/
+.timer-summary {
+    color: #414143;
+    text-align: center;
+    display: inline-block;
+    font-size: 200px;
+}
+
+/*Formatting the text alert on the summary page*/
+.alert-format {
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+    width: 60vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 1;
+    top: 300px;
+    left: 5px;
+    bottom: 30px;
+    overflow: auto
+}
+
+.vitals-format{
+    align-content: center;
+    width: 40vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 1;
+    top: 300px;
+    right: 5px;
+    bottom: 30px;
+}
+
+#hr_placeholder{
+    position: relative;
+    font-size: 20px;
+    padding-top: 15px;
+    overflow: auto;
+}
+
+#bp_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+}
+
+#shock_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+}
+
+/*Format the PCH logo in the navbar*/
 #brandImage {
     width: 150px;
     height: 57.75px;
@@ -128,7 +175,6 @@ content: "\f106";
     float: left;
 }
 
-/*Helps format the PCH logo*/
 #square {
     width: 150px;
     height: 57.75px;
@@ -136,7 +182,7 @@ content: "\f106";
     float: left;
 }
 
-/*Creates a large start button for the landing page*/
+/*Create a large button for the landing page*/
 .btn-xl {
     align-content: center;
     padding: 15px 30px;
@@ -144,7 +190,6 @@ content: "\f106";
     border-radius: 15px;
 }
 
-/*Formats the start button*/
 .btn.btn-primary {
     background-color: #3aafa9;
     box-shadow: 0 8px 0 0 #1D5755;
@@ -153,12 +198,10 @@ content: "\f106";
     margin-bottom: 25%;
 }
 
-/*Changes start button color when hovered over*/
 .btn.btn-primary:hover {
     background-color: #2B837F;
 }
 
-/*Changes start button color when clicked*/
 .btn.btn-primary:visited {
     border-color: #246D6A !important;
     margin-top: 25%;
@@ -173,75 +216,65 @@ content: "\f106";
 
 }
 
-/*Not currently used*/
-/*Styles each section of the accordion*/
-/*
+/*Styling each section of the accordion*/
 .collapse-A {
-background: #def2f1;
-border: 1.5px solid #2b7a78;
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
 }
 
 .collapse-B {
-background: #def2f1;
-border: 1.5px solid #2b7a78;
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+    }
 
 .collapse-C {
-background: #def2f1;
-border: 1.5px solid #2b7a78;
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+    }
 
 .collapse-D {
-background: #def2f1;
-border: 1.5px solid #2b7a78;
-}
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+    }
 
 .collapse-E {
-background: #def2f1;
-border: 1.5px solid #2b7a78;
-}
-*/
+    background: #def2f1;
+    border: 1.5px solid #2b7a78;
+   }
 
-/*Not currently used*/
-/*Formats the geometric background graphics on the bottom*/
-/*
-#bgDesign {
-position: fixed;
-right: 0px;
-bottom: 0px;
-max-width: 100%;
-height: auto;
-transform: scaleX(-1);
-}
-*/
+/*Format the geometric background graphics on the bottom*/
+/*#bgDesign {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    max-width: 100%;
+    height: auto;
+    transform: scaleX(-1);
+}*/
 
-/*Removes standard underline from text links*/
+/*Remove underline from text links*/
 .nounderline {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
-/*Changes hover color for navbar letters*/
+/*Change hover color for sidebar letters*/
 a:hover{
-color: #9fedd7;
+    color: #9fedd7;
 }
 
-/*Adjusts padding between survey buttons*/
 .btn-padding {
-    width: 100%;
+    width: 95%;
 }
 
-/*Not currently used*/
 /*Accordion section color*/
-/*
 .card-header {
-background-color: #3aafa9;
-border: 1.5px solid #2b7a78;
+    background-color: #3aafa9;
+    border: 1.5px solid #2b7a78;
 }
-*/
 
-/*Changes text color for survey headings using h4*/
+/*Text color for survey sections*/
 h4 {
-    color: #39393B;
+    color: #17252a;
 }
 
 /*Page accents, this is for the line under the nav bar*/
@@ -252,7 +285,7 @@ h4 {
 }
 
 /*Allows for spacing between the vertical button groups*/
-.btn-group-vertical > button {
+.btn-group-vertical>button{
     margin-bottom: 10px;
     border-radius: 0.25rem !important;
 }
@@ -263,13 +296,13 @@ h4 {
     border-radius: 0.25rem !important;
 }
 
+
 /*Creates border to make btn-light buttons pop against current theme*/
 .btn-light {
     border-color: #2b7a78;
 }
 
-/*Start page form for pre-hospital information*/
-.startForm {
+.startForm{
     align-content: center;
     text-align: center;
     display: inline-block;
@@ -282,8 +315,7 @@ h4 {
     margin-left: 10px;
 }
 
-/*Formats the start button layout on the page*/
-.startButton {
+.startButton{
     position: fixed;
     z-index: 0;
     left: 35%;
@@ -291,128 +323,4 @@ h4 {
     width: 30%;
     margin-right: 10px;
     margin-left: 10px;
-}
-
-/*Formats the card nav tabs*/
-.nav > li > a {
-    padding: 0px 35px;
-    font-size: 75px;
-    font-weight: bold;
-}
-
-/*Allows the content in the card to scroll*/
-.card-scroll {
-    height: 60vh;
-    overflow-y: hidden;
-}
-
-/*Formats the card container*/
-.card {
-    border: 4px solid #2b7a78;
-    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10),
-    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
-    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
-    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
-}
-
-/*Formats the card header with the nav tabs*/
-.card-header {
-    border-bottom: 4px solid #2b7a78;
-    background-color: #3aafa9;
-}
-
-/*Formats the nav tab divs since the size was increased for usability*/
-.card-header:first-child {
-    border-radius: 0px;
-}
-
-.card-header-tabs {
-    margin-bottom: -0.94rem;
-}
-
-/*Recolors the current nav tab*/
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #39393B;
-    background-color: #fff;
-    border-color: #2b7a78 #2b7a78 #fff;
-}
-
-/*Formats inactive nab tabs*/
-.nav-tabs .nav-link {
-    border: 4px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-}
-
-/*Changes nav tab font color*/
-.survey-a {
-    color: white;
-}
-
-/*Resizes the input buttons so it's easier on a tablet*/
-.btn-group-vertical .btn, .btn-group-vertical .btn-group {
-    width: 100%;
-    height: 85px;
-    font-size: 2rem;
-}
-
-/*Adjusts input section labels using <p> elements*/
-.survey-p {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/*Changes size of input text fields to match buttons*/
-.form-control {
-    height: 75px;
-    font-size: 1.6rem;
-}
-
-/*Specifically changes disability button text since it needs to fit more words*/
-.disb-btn {
-    font-size: 1.6rem !important;
-}
-
-/*Formats the card title for each nav tab*/
-.card-title {
-    margin-bottom: 1.5rem;
-    background: rgb(255, 255, 255); /*Creates background gradient effect*/
-    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(252, 225, 129, 1) 50%, rgba(255, 255, 255, 1) 100%);
-}
-
-/*Changes color of selected nav pill*/
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #3aafa9;
-}
-
-/*Formats nav pill to be easily selected on tablet*/
-.survey-pill-a {
-    color: #39393B;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 20px;
-}
-
-/*Resizes input section div*/
-.survey-col {
-    padding-left: 25px;
-    padding-right: 25px;
-    overflow-y: auto; /*Allows div to scroll separately if content doesn't fit*/
-    max-height: 50vh;
-}
-
-/*Resizes nav pill div*/
-.col-4 {
-    border-right: 1.5px solid #2b7a78;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(230, 245, 244, 1) 25%, rgba(230, 245, 244, 1) 50%, rgba(230, 245, 244, 1) 75%, rgba(255, 255, 255, 1) 100%);
-    overflow-y: auto; /*Allows div to scroll separately if content doesn't fit*/
-    max-height: 50vh;
-}
-
-/*Ensures that individual divs with this class can scroll individually*/
-.scrollable {
-    overflow-y: auto;
-    max-height: 50vh;
 }

@@ -12,1304 +12,956 @@
         ================================================================================
         -->
 
-        <div class="container timer-decision" id="timer">
-            <div class="row justify-content-center">
-                <div class="col-auto">
+        <div class="container timer-style" id="timer">
+            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
 
-                    <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+            <!--
+            ================================================================================
+            Javascript to create new timer for current session
+            ================================================================================
+            -->
 
-                    <!--
-                    ================================================================================
-                    Javascript to create new timer for current session
-                    ================================================================================
-                    -->
+            <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
 
-                    <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
-
-
-                </div>
-            </div>
         </div>
-
     </h1>
+    <br>
 
     <hr>
+    <br>
 
     <!--
     ================================================================================
-    Card nav tabs for the survey
+    Side navigation bar for each accordion section ABCDE
     ================================================================================
     -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="card text-center" style="width: 100%">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active survey-a" data-toggle="tab" href="#airw">A</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#brth">B</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#circ">C</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#disb">D</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#exps">E</a>
-                        </li>
-                    </ul>
-                </div>
 
-                <!--
-                ================================================================================
-                Card body containing the side nav pills and content of ABCDE
-                ================================================================================
-                -->
-
-                <!--
-                ================================================================================
-                A/Airway section
-                ================================================================================
-                -->
-
-                <div class="tab-content card-body card-scroll">
-                    <div id="airw" class="tab-pane active">
-                        <h2 class="card-title" style="color: #39393B">Airway</h2>
-
-                        <!--
-                        ================================================================================
-                        Each nav pill is tied to a portion of the survey. When clicked, the nav pill
-                        will reveal the appropriate input fields. Both the nav pill and input fields
-                        scroll individually in the event that there is too much content to display
-                        in the card body.
-                        ================================================================================
-                        -->
-
-                        <form>
-                            <div class="row">
-                                <div class="col-4">
-
-                                    <!-- Nav pills for each part of A/Airway linked to respective inputs -->
-
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                         aria-orientation="vertical">
-                                        <a class="nav-link active survey-pill-a" id="v-pills-oxsp-tab"
-                                           data-toggle="pill"
-                                           href="#v-pills-oxsp" role="tab" aria-controls="v-pills-oxsp"
-                                           aria-selected="true">Oxygen Supplementation</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-bgmk-tab" data-toggle="pill"
-                                           href="#v-pills-bgmk" role="tab" aria-controls="v-pills-bgmk"
-                                           aria-selected="false">Bag Mask</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-alma-tab" data-toggle="pill"
-                                           href="#v-pills-alma" role="tab" aria-controls="v-pills-alma"
-                                           aria-selected="false">LMA</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-entb-tab" data-toggle="pill"
-                                           href="#v-pills-entb" role="tab" aria-controls="v-pills-entb"
-                                           aria-selected="false">Endotracheal Tube</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-dfaw-tab" data-toggle="pill"
-                                           href="#v-pills-dfaw" role="tab" aria-controls="v-pills-dfaw"
-                                           aria-selected="false">Difficult Airway</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-sgaw-tab" data-toggle="pill"
-                                           href="#v-pills-sgaw" role="tab" aria-controls="v-pills-sgaw"
-                                           aria-selected="false">Surgical Airway</a>
-                                    </div>
-                                </div>
-                                <div class="col-8 survey-col">
-
-                                    <!-- The resulting content according to the selected nav pill -->
-
-                                    <div class="tab-content" id="v-pills-tabContent">
-
-                                        <!-- Oxygen Supplementation -->
-                                        <div class="tab-pane fade show active" id="v-pills-oxsp" role="tabpanel"
-                                             aria-labelledby="v-pills-oxsp-tab">
-
-                                            <p class="survey-p">Oxygen Supplementation</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="oxySupplInit"
-                                                        onclick="airwayStepFunc('oxygen','init')"
-                                                        ondblclick="initEdit('oxygen','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="oxySupplStop"
-                                                        onclick="airwayStepFunc('oxygen','stop')"
-                                                        ondblclick="initEdit('oxygen','stop')">Stopped
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Bag Mask -->
-                                        <div class="tab-pane fade" id="v-pills-bgmk" role="tabpanel"
-                                             aria-labelledby="v-pills-bgmk-tab">
-
-                                            <p class="survey-p">Bag Mask</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="bagMaskInit"
-                                                        onclick="airwayStepFunc('bag','init')"
-                                                        ondblclick="initEdit('bag','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="airwayStepFunc('bag','stop')"
-                                                        ondblclick="initEdit('bag','stop')">Stopped
-                                                </button>
-                                            </div>
-                                            <div class="form-group w-60">
-                                                 <input class="form-control form-control-lg" type="text" id="bvmbpm" 
-                                                        name="bvmbpm" 
-                                                        value=""
-                                                        placeholder="BPM">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- LMA -->
-                                        <div class="tab-pane fade" id="v-pills-alma" role="tabpanel"
-                                             aria-labelledby="v-pills-alma-tab">
-
-                                            <p class="survey-p">LMA</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="lmaInit"
-                                                        onclick="airwayStepFunc('lma','init')"
-                                                        ondblclick="initEdit('lma','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-info" id="lmaAchieved"
-                                                        onclick="airwayStepFunc('lma','achieved')"
-                                                        ondblclick="initEdit('lma','achieved')">Achieved
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="lmaStop"
-                                                        onclick="airwayStepFunc('lma','stop')"
-                                                        ondblclick="initEdit('lma','stop')">Removed
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Endotracheal Tube -->
-                                        <div class="tab-pane fade" id="v-pills-entb" role="tabpanel"
-                                             aria-labelledby="v-pills-entb-tab">
-
-                                            <p class="survey-p">Endotracheal Tube</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="airwayStepFunc('ett','init')"
-                                                        ondblclick="initEdit('ett','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="airwayStepFunc('ett','achieved')"
-                                                        ondblclick="initEdit('ett','achieved')">Achieved
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="airwayStepFunc('ett','stop')"
-                                                        ondblclick="initEdit('ett','stop')">Removed
-                                                </button>
-                                            </div>
-                                            <div class="form-group w-60">
-                                                 <input class="form-control form-control-lg" type="text" id="ettdepth" 
-                                                        name="ettdepth" 
-                                                        value=""
-                                                        placeholder="Depth at cm">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Difficult Airway -->
-                                        <div class="tab-pane fade" id="v-pills-dfaw" role="tabpanel"
-                                             aria-labelledby="v-pills-dfaw-tab">
-
-                                            <p class="survey-p">Difficult Airway</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="diffAirwayInit"
-                                                        onclick="airwayStepFunc('diffAirway','init')"
-                                                        ondblclick="initEdit('diffAirway','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-info" id="diffAirwayAchieved"
-                                                        onclick="airwayStepFunc('diffAirway','achieved')"
-                                                        ondblclick="initEdit('diffAirway','achieved')">Achieved
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="diffAirwayStop"
-                                                        onclick="airwayStepFunc('diffAirway','stop')"
-                                                        ondblclick="initEdit('diffAirway','stop')">Removed
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Surgical Airway -->
-                                        <div class="tab-pane fade" id="v-pills-sgaw" role="tabpanel"
-                                             aria-labelledby="v-pills-sgaw-tab">
-
-                                            <p class="survey-p">Surgical Airway</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="surgAirwayInit"
-                                                        onclick="airwayStepFunc('surgAirway','init')"
-                                                        ondblclick="initEdit('surgAirway','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-info" id="surgAirwayAchieved"
-                                                        onclick="airwayStepFunc('surgAirway','achieved')"
-                                                        ondblclick="initEdit('surgAirway','achieved')">Achieved
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="surgAirwayStop"
-                                                        onclick="airwayStepFunc('surgAirway','stop')"
-                                                        ondblclick="initEdit('surgAirway','stop')">Removed
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <!--
-                    ================================================================================
-                    B/Breathing section
-                    ================================================================================
-                    -->
-
-                    <div id="brth" class="tab-pane">
-                        <h2 class="card-title" style="color: #39393B">Breathing</h2>
-
-                        <form>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                         aria-orientation="vertical">
-                                        <a class="nav-link active survey-pill-a" id="v-pills-spbr-tab"
-                                           data-toggle="pill"
-                                           href="#v-pills-spbr" role="tab" aria-controls="v-pills-spbr"
-                                           aria-selected="true">Spontaneous Breathing</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-asbr-tab" data-toggle="pill"
-                                           href="#v-pills-asbr" role="tab" aria-controls="v-pills-asbr"
-                                           aria-selected="false">Assisted Breathing</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-rcbs-tab" data-toggle="pill"
-                                           href="#v-pills-rcbs" role="tab" aria-controls="v-pills-rcbs"
-                                           aria-selected="false">Right: Chest Rise / Breath Sounds</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-lcbs-tab" data-toggle="pill"
-                                           href="#v-pills-lcbs" role="tab" aria-controls="v-pills-lcbs"
-                                           aria-selected="false">Left: Chest Rise / Breath Sounds</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-entd-tab" data-toggle="pill"
-                                           href="#v-pills-entd" role="tab" aria-controls="v-pills-entd"
-                                           aria-selected="false">End Tidal CO</a>
-                                    </div>
-                                </div>
-                                <div class="col-8 survey-col">
-                                    <div class="tab-content" id="v-pills-tabContent">
-
-                                        <!-- Spontaneous Breathing -->
-                                        <div class="tab-pane fade show active" id="v-pills-spbr" role="tabpanel"
-                                             aria-labelledby="v-pills-spbr-tab">
-
-                                            <p class="survey-p">Spontaneous Breathing</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="yes">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="no">No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Assisted Breathing -->
-                                        <div class="tab-pane fade" id="v-pills-asbr" role="tabpanel"
-                                             aria-labelledby="v-pills-asbr-tab">
-
-                                            <p class="survey-p">Assisted Breathing</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="assistb"
-                                                        value="yes">
-                                                    Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="assistb"
-                                                        value="no">
-                                                    No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Right: Chest Rise / Breath Sounds -->
-                                        <div class="tab-pane fade" id="v-pills-rcbs" role="tabpanel"
-                                             aria-labelledby="v-pills-rcbs-tab">
-
-                                            <p class="survey-p">Right: Chest Rise / Breath Sounds</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="rchest"
-                                                        id="rchestyes"
-                                                        value="yes"
-                                                        onclick="chestSoundFunc('right','Yes')">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="rchest"
-                                                        id="rchestno"
-                                                        value="no"
-                                                        onclick="chestSoundFunc('right','No')">No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Left: Chest Rise / Breath Sounds-->
-                                        <div class="tab-pane fade" id="v-pills-lcbs" role="tabpanel"
-                                             aria-labelledby="v-pills-lcbs-tab">
-
-                                            <p class="survey-p">Left: Chest Rise / Breath Sounds</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="lchest"
-                                                        id="lchestyes"
-                                                        value="yes"
-                                                        onclick="chestSoundFunc('left','Yes')">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="lchest"
-                                                        id="lchestno"
-                                                        value="no"
-                                                        onclick="chestSoundFunc('left','No')">No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- End Tidal CO -->
-                                        <div class="tab-pane fade" id="v-pills-entd" role="tabpanel"
-                                             aria-labelledby="v-pills-entd-tab">
-
-                                            <p class="survey-p">End Tidal CO<sub>2</sub></p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <input class="form-control form-control-lg" type="text" id="etco2"
-                                                       name="etco2"
-                                                       value=""
-                                                       placeholder=" ">
-                                                <br>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <!--
-                    ================================================================================
-                    C/Circulation section
-                    ================================================================================
-                    -->
-
-                    <div id="circ" class="tab-pane">
-                        <h2 class="card-title" style="color: #39393B">Circulation</h2>
-
-                        <form>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                         aria-orientation="vertical">
-                                        <a class="nav-link active survey-pill-a" id="v-pills-hrrt-tab"
-                                           data-toggle="pill"
-                                           href="#v-pills-hrrt" role="tab" aria-controls="v-pills-hrrt"
-                                           aria-selected="true">Heart Rate</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-sybp-tab" data-toggle="pill"
-                                           href="#v-pills-sybp" role="tab" aria-controls="v-pills-sybp"
-                                           aria-selected="false">Systolic Blood Pressure</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-prfs-tab" data-toggle="pill"
-                                           href="#v-pills-prfs" role="tab" aria-controls="v-pills-prfs"
-                                           aria-selected="false">Perfusion</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-ivac-tab" data-toggle="pill"
-                                           href="#v-pills-ivac" role="tab" aria-controls="v-pills-ivac"
-                                           aria-selected="false">IV Access</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-ivfl-tab" data-toggle="pill"
-                                           href="#v-pills-ivfl" role="tab" aria-controls="v-pills-ivfl"
-                                           aria-selected="false">IV Fluids</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-tycr-tab" data-toggle="pill"
-                                           href="#v-pills-tycr" role="tab" aria-controls="v-pills-tycr"
-                                           aria-selected="false">Type and Cross</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-tfpr-tab" data-toggle="pill"
-                                           href="#v-pills-tfpr" role="tab" aria-controls="v-pills-tfpr"
-                                           aria-selected="false">Transfused PRBCs</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-mtfp-tab" data-toggle="pill"
-                                           href="#v-pills-mtfp" role="tab" aria-controls="v-pills-mtfp"
-                                           aria-selected="false">Massive Transfusion Protocol</a>
-                                    </div>
-                                </div>
-                                <div class="col-8 survey-col">
-                                    <div class="tab-content" id="v-pills-tabContent">
-
-                                        <!-- Heart Rate -->
-                                        <div class="tab-pane fade show active" id="v-pills-hrrt" role="tabpanel"
-                                             aria-labelledby="v-pills-hrrt-tab">
-
-                                            <p class="survey-p">Heart Rate</p>
-                                            <div class="form-group w-60">
-                                                <input class="form-control form-control-lg" type="text" id="hr"
-                                                       name="hr"
-                                                       value=""
-                                                       placeholder="BPM">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Systolic Blood Pressure -->
-                                        <div class="tab-pane fade" id="v-pills-sybp" role="tabpanel"
-                                             aria-labelledby="v-pills-sybp-tab">
-
-                                            <p class="survey-p">Systolic Blood Pressure</p>
-                                            <div class="form-group w-60">
-                                                <input class="form-control form-control-lg" type="text" id="bp"
-                                                       name="bp"
-                                                       value=""
-                                                       placeholder="mmHg">
-                                                <br>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Perfusion -->
-                                        <div class="tab-pane fade" id="v-pills-prfs" role="tabpanel"
-                                             aria-labelledby="v-pills-prfs-tab">
-
-                                            <p class="survey-p">Perfusion</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <span style="font-weight:bold; font-size: 1.5rem">Lip Color:</span>
-                                                <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
-                                                        value="pi" onclick="lipColorFunc('Pink')">Pink
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
-                                                        value="wh" onclick="lipColorFunc('White')">White
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="lipc"
-                                                        id="lipc-unk"
-                                                        value="unk" onclick="lipColorFunc('Unable to assess')">Unable To
-                                                    Assess
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Nail Color:</span>
-                                                <button type="button" class="btn btn-light" name="nailc"
-                                                        id="nailc-pi"
-                                                        value="pi" onclick="nailColorFunc('Pink')">Pink
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="nailc"
-                                                        id="nailc-wh"
-                                                        value="wh" onclick="nailColorFunc('White')">White
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="nailc"
-                                                        id="nailc-unk"
-                                                        value="unk" onclick="nailColorFunc('Unable to assess')">Unable
-                                                    To Assess
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Cap Refill:</span>
-                                                <button type="button" class="btn btn-light" name="capr" id="caprt-2"
-                                                        value="<2" onclick="capRefillFunc('<2sec')"><2s
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="capr"
-                                                        id="caprt-24"
-                                                        value="2-4" onclick="capRefillFunc('2-4sec')">2s-4s
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="capr" id="caprt-4"
-                                                        value=">4" onclick="capRefillFunc('>4sec')">>4s
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- IV Access -->
-                                        <div class="tab-pane fade" id="v-pills-ivac" role="tabpanel"
-                                             aria-labelledby="v-pills-ivac-tab">
-
-                                            <p class="survey-p">IV Access</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <span style="font-weight:bold; font-size: 1.5rem">Functional Peripheral IV:</span>
-                                                <button type="button" class="btn btn-light" name="funp" id="funp0"
-                                                        value="no">None
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="funp" id="funp1"
-                                                        value="1" onclick="pivFunc('1')">1
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="funp" id="funp2"
-                                                        value="2" onclick="pivFunc('2')">2
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="funp" id="funp>2"
-                                                        value=">2" onclick="pivFunc('>2')">>2
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Intraosseous Line:</span>
-                                                <button type="button" class="btn btn-light" name="intral"
-                                                        id="intralYes"
-                                                        value="yes" onclick="intraoLineFunc()"> Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="intral"
-                                                        id="intralNo"
-                                                        value="no">No
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Central Line:</span>
-                                                <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
-                                                        value="yes" onclick="centrLineFunc()"> Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
-                                                        value="no">No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- IV Fluids -->
-                                        <div class="tab-pane fade" id="v-pills-ivfl" role="tabpanel"
-                                             aria-labelledby="v-pills-ivfl-tab">
-
-                                            <p class="survey-p">IV Fluids</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="ivf" id="ivf-none"
-                                                        value="no" onclick="ivFluidFunc('none')">None
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="ivf" id="ivf-<20"
-                                                        value="<20" onclick="ivFluidFunc('<20mL/kg')">< 20mL/kg
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="ivf" id="ivf->20"
-                                                        value=">20" onclick="ivFluidFunc('>20mL/kg')">>= 20mL/kg
-                                                </button>
-
-                                                <br>
-
-                                                <button type="button" class="btn btn-light">Started</button>
-                                                <button type="button" class="btn btn-info">Additional Fluids
-                                                </button>
-                                                <button type="button" class="btn btn-dark">Completed</button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Type and Cross -->
-                                        <div class="tab-pane fade" id="v-pills-tycr" role="tabpanel"
-                                             aria-labelledby="v-pills-tycr-tab">
-
-                                            <p class="survey-p">Type and Cross</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="tac"
-                                                        id="typeAndCrossYes" value="yes"
-                                                        onclick="typeAndCrossFunc('yes')">Drawn
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="tac"
-                                                        id="typeAndCrossNo" value="no" onclick="typeAndCrossFunc('no')">
-                                                    Sent
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Transfused PRBCs -->
-                                        <div class="tab-pane fade" id="v-pills-tfpr" role="tabpanel"
-                                             aria-labelledby="v-pills-tfpr-tab">
-
-                                            <p class="survey-p">Transfused PRBCs</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
-                                                        value="yes" onclick="prbcFunc('yes')">
-                                                    Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo"
-                                                        value="no"
-                                                        onclick="prbcFunc('no')">
-                                                    No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Massive Transfusion Protocol -->
-                                        <div class="tab-pane fade" id="v-pills-mtfp" role="tabpanel"
-                                             aria-labelledby="v-pills-mtfp-tab">
-
-                                            <p class="survey-p">Massive Transfusion Protocol</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
-                                                        value="yes"
-                                                        onclick="mtpFunc('yes')">
-                                                    Activated
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
-                                                        value="no"
-                                                        onclick="mtpFunc('no')">No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <!--
-                    ================================================================================
-                    D/Disability section
-                    ================================================================================
-                    -->
-
-                    <div id="disb" class="tab-pane">
-                        <h2 class="card-title" style="color: #39393B">Disability</h2>
-
-                        <form>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                         aria-orientation="vertical">
-                                        <a class="nav-link active survey-pill-a" id="v-pills-gmtr-tab"
-                                           data-toggle="pill"
-                                           href="#v-pills-gmtr" role="tab" aria-controls="v-pills-gmtr"
-                                           aria-selected="true">GCS Motor</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-gvrb-tab" data-toggle="pill"
-                                           href="#v-pills-gvrb" role="tab" aria-controls="v-pills-gvrb"
-                                           aria-selected="false">GCS Verbal</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-geye-tab" data-toggle="pill"
-                                           href="#v-pills-geye" role="tab" aria-controls="v-pills-geye"
-                                           aria-selected="false">GCS Eye</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-ppls-tab" data-toggle="pill"
-                                           href="#v-pills-ppls" role="tab" aria-controls="v-pills-ppls"
-                                           aria-selected="false">Pupils</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-maex-tab" data-toggle="pill"
-                                           href="#v-pills-maex" role="tab" aria-controls="v-pills-maex"
-                                           aria-selected="false">Moves All Extremities</a>
-                                    </div>
-                                </div>
-                                <div class="col-8 survey-col">
-                                    <div class="tab-content" id="v-pills-tabContent">
-
-                                        <!-- Spontaneous Breathing -->
-                                        <div class="tab-pane fade show active" id="v-pills-gmtr" role="tabpanel"
-                                             aria-labelledby="v-pills-gmtr-tab">
-
-                                            <p class="survey-p">GCS Motor</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="motor"
-                                                        id="motor6" value="ob" onclick="recordGCS('motor','6')">
-                                                    <b>6</b> - Obeys Commands
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="motor"
-                                                        id="motor5" value="lo" onclick="recordGCS('motor','5')">
-                                                    <b>5</b> - Localizing Pain
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="motor"
-                                                        id="motor4" value="wi" onclick="recordGCS('motor','4')">
-                                                    <b>4</b> - Withdraw From Pain
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="motor"
-                                                        id="motor3" value="fl" onclick="recordGCS('motor','3')">
-                                                    <b>3</b> - Flexion To Pain
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="motor"
-                                                        id="motor2" value="ex" onclick="recordGCS('motor','2')">
-                                                    <b>2</b> - Extension To Pain
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="motor"
-                                                        id="motor1" value="no" onclick="recordGCS('motor','1')">
-                                                    <b>1</b> - No Motor Response
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- GCS Verbal -->
-                                        <div class="tab-pane fade" id="v-pills-gvrb" role="tabpanel"
-                                             aria-labelledby="v-pills-gvrb-tab">
-
-                                            <p class="survey-p">GCS Verbal</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="verbal"
-                                                        id="verbal5" value="or" onclick="recordGCS('verbal','5')">
-                                                    <b>5</b> - Oriented
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="verbal"
-                                                        id="verbal4" value="co" onclick="recordGCS('verbal','4')">
-                                                    <b>4</b> - Confused
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="verbal"
-                                                        id="verbal3" value="wo" onclick="recordGCS('verbal','3')">
-                                                    <b>3</b> - Inappropriate Words
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="verbal"
-                                                        id="verbal2" value="so" onclick="recordGCS('verbal','2')">
-                                                    <b>2</b> - Incomprehensible Sounds
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="verbal"
-                                                        id="verbal1" value="no" onclick="recordGCS('verbal','1')">
-                                                    <b>1</b> - No Verbal Response
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- GCS Eye -->
-                                        <div class="tab-pane fade" id="v-pills-geye" role="tabpanel"
-                                             aria-labelledby="v-pills-geye-tab">
-
-                                            <p class="survey-p">GCS Eye</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="eye"
-                                                        id="eye4" value="sp" onclick="recordGCS('eye','4')">
-                                                    <b>4</b> - Opens Spontaneously
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="eye"
-                                                        id="eye3" value="ve" onclick="recordGCS('eye','3')">
-                                                    <b>3</b> - Open To Verbal Command
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="eye"
-                                                        id="eye2" value="pa" onclick="recordGCS('eye','2')">
-                                                    <b>2</b> - Open To Pain
-                                                </button>
-                                                <button type="button" class="btn btn-light text-left disb-btn"
-                                                        name="eye"
-                                                        id="eye1" value="no" onclick="recordGCS('eye','1')">
-                                                    <b>1</b> - No Eye Opening
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Pupils-->
-                                        <div class="tab-pane fade" id="v-pills-ppls" role="tabpanel"
-                                             aria-labelledby="v-pills-ppls-tab">
-
-                                            <p class="survey-p">Pupils</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <span style="font-weight:bold; font-size: 1.5rem">Equal:</span>
-                                                <button type="button" class="btn btn-light btn-space"
-                                                        name="equal" value="yes">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark btn-space"
-                                                        name="equal" value="no">No
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Round:</span>
-                                                <button type="button" class="btn btn-light btn-space"
-                                                        name="round" value="yes">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark btn-space"
-                                                        name="round" value="no">No
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Reactive:</span>
-                                                <button type="button" class="btn btn-light btn-space"
-                                                        name="rlight" value="yes">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark btn-space"
-                                                        name="rlight" value="no">No
-                                                </button>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Right:</span>
-                                                <div class="form-group w-100">
-
-                                                     <input class="form-control form-control-lg" type="text" id="pupilsizer"
-                                                            name="sizer" 
-                                                            value=""
-                                                            placeholder="Size">
-                                                </div>
-
-                                                <br>
-
-                                                <span style="font-weight:bold; font-size: 1.5rem">Left:</span>
-                                                <div class="form-group w-100">
-
-                                                     <input class="form-control form-control-lg" type="text" id="pupilsizel"
-                                                            name="sizel" 
-                                                            value=""
-                                                            placeholder="Size">
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Moves All Extremities -->
-                                        <div class="tab-pane fade" id="v-pills-maex" role="tabpanel"
-                                             aria-labelledby="v-pills-maex-tab">
-
-                                            <p class="survey-p">Moves All Extremities</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="movee"
-                                                        value="yes">
-                                                    Yes
-                                                </button>
-                                                <button type="button" class="btn btn-info" name="movee"
-                                                        value="onlyinj">
-                                                    Limited Only by Injury
-                                                </button>
-                                                <button type="button" class="btn btn-dark" name="movee" value="no">
-                                                    No
-                                                </button>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <!--
-                    ================================================================================
-                    E/Exposure section
-                    ================================================================================
-                    -->
-
-                    <div id="exps" class="tab-pane">
-                        <h2 class="card-title" style="color: #39393B">Exposure</h2>
-
-                        <form>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                         aria-orientation="vertical">
-                                        <a class="nav-link active survey-pill-a" id="v-pills-head-tab"
-                                           data-toggle="pill"
-                                           href="#v-pills-head" role="tab" aria-controls="v-pills-head"
-                                           aria-selected="false">Head</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-eyes-tab" data-toggle="pill"
-                                           href="#v-pills-eyes" role="tab" aria-controls="v-pills-eyes"
-                                           aria-selected="false">Eyes</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-ears-tab" data-toggle="pill"
-                                           href="#v-pills-ears" role="tab" aria-controls="v-pills-ears"
-                                           aria-selected="false">Ears</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-mdfc-tab" data-toggle="pill"
-                                           href="#v-pills-mdfc" role="tab" aria-controls="v-pills-mdfc"
-                                           aria-selected="false">Midface</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-tcha-tab" data-toggle="pill"
-                                           href="#v-pills-tcha" role="tab" aria-controls="v-pills-tcha"
-                                           aria-selected="false">Trachea</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-jgrv-tab" data-toggle="pill"
-                                           href="#v-pills-jgrv" role="tab" aria-controls="v-pills-jgrv"
-                                           aria-selected="false">Jugular Veins</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-excv-tab" data-toggle="pill"
-                                           href="#v-pills-excv" role="tab" aria-controls="v-pills-excv"
-                                           aria-selected="false">CV</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-lngs-tab" data-toggle="pill"
-                                           href="#v-pills-lngs" role="tab" aria-controls="v-pills-lngs"
-                                           aria-selected="false">Lungs</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-abdm-tab" data-toggle="pill"
-                                           href="#v-pills-abdm" role="tab" aria-controls="v-pills-abdm"
-                                           aria-selected="false">Abdomen</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-plvs-tab" data-toggle="pill"
-                                           href="#v-pills-plvs" role="tab" aria-controls="v-pills-plvs"
-                                           aria-selected="false">Pelvis</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-exgu-tab" data-toggle="pill"
-                                           href="#v-pills-exgu" role="tab" aria-controls="v-pills-exgu"
-                                           aria-selected="false">G/U</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-rctl-tab" data-toggle="pill"
-                                           href="#v-pills-rctl" role="tab" aria-controls="v-pills-rctl"
-                                           aria-selected="false">Rectal</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-erue-tab" data-toggle="pill"
-                                           href="#v-pills-erue" role="tab" aria-controls="v-pills-erue"
-                                           aria-selected="false">RUE</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-elue-tab" data-toggle="pill"
-                                           href="#v-pills-elue" role="tab" aria-controls="v-pills-elue"
-                                           aria-selected="false">LUE</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-erle-tab" data-toggle="pill"
-                                           href="#v-pills-erle" role="tab" aria-controls="v-pills-erle"
-                                           aria-selected="false">RLE</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-elle-tab" data-toggle="pill"
-                                           href="#v-pills-elle" role="tab" aria-controls="v-pills-elle"
-                                           aria-selected="false">LLE</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-back-tab" data-toggle="pill"
-                                           href="#v-pills-back" role="tab" aria-controls="v-pills-back"
-                                           aria-selected="false">Back</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-skin-tab" data-toggle="pill"
-                                           href="#v-pills-skin" role="tab" aria-controls="v-pills-skin"
-                                           aria-selected="false">Skin</a>
-                                    </div>
-                                </div>
-                                <div class="col-8 survey-col">
-                                    <div class="tab-content" id="v-pills-tabContent">
-
-                                        <!-- Head -->
-                                        <div class="tab-pane fade show active sticky-top" id="v-pills-head"
-                                             role="tabpanel"
-                                             aria-labelledby="v-pills-head-tab">
-
-                                            <p class="survey-p">Head</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Eyes -->
-                                        <div class="tab-pane fade" id="v-pills-eyes" role="tabpanel"
-                                             aria-labelledby="v-pills-eyes-tab">
-
-                                            <p class="survey-p">Eyes</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Ears -->
-                                        <div class="tab-pane fade" id="v-pills-ears" role="tabpanel"
-                                             aria-labelledby="v-pills-ears-tab">
-
-                                            <p class="survey-p">Ears</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Midface -->
-                                        <div class="tab-pane fade" id="v-pills-mdfc" role="tabpanel"
-                                             aria-labelledby="v-pills-mdfc-tab">
-
-                                            <p class="survey-p">Midface</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Trachea -->
-                                        <div class="tab-pane fade" id="v-pills-tcha" role="tabpanel"
-                                             aria-labelledby="v-pills-tcha-tab">
-
-                                            <p class="survey-p">Trachea</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Jugular Veins -->
-                                        <div class="tab-pane fade" id="v-pills-jgrv" role="tabpanel"
-                                             aria-labelledby="v-pills-jgrv-tab">
-
-                                            <p class="survey-p">Jugular Veins</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- CV -->
-                                        <div class="tab-pane fade" id="v-pills-excv" role="tabpanel"
-                                             aria-labelledby="v-pills-excv-tab">
-
-                                            <p class="survey-p">CV</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Lungs -->
-                                        <div class="tab-pane fade" id="v-pills-lngs" role="tabpanel"
-                                             aria-labelledby="v-pills-lngs-tab">
-
-                                            <p class="survey-p">Lungs</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Abdomen -->
-                                        <div class="tab-pane fade" id="v-pills-abdm" role="tabpanel"
-                                             aria-labelledby="v-pills-abdm-tab">
-
-                                            <p class="survey-p">Abdomen</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Pelvis -->
-                                        <div class="tab-pane fade" id="v-pills-plvs" role="tabpanel"
-                                             aria-labelledby="v-pills-plvs-tab">
-
-                                            <p class="survey-p">Pelvis</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- G/U -->
-                                        <div class="tab-pane fade" id="v-pills-exgu" role="tabpanel"
-                                             aria-labelledby="v-pills-exgu-tab">
-
-                                            <p class="survey-p">G/U</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Rectal -->
-                                        <div class="tab-pane fade" id="v-pills-rctl" role="tabpanel"
-                                             aria-labelledby="v-pills-rctl-tab">
-
-                                            <p class="survey-p">Rectal</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- RUE -->
-                                        <div class="tab-pane fade" id="v-pills-erue" role="tabpanel"
-                                             aria-labelledby="v-pills-erue-tab">
-
-                                            <p class="survey-p">RUE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- LUE -->
-                                        <div class="tab-pane fade" id="v-pills-elue" role="tabpanel"
-                                             aria-labelledby="v-pills-elue-tab">
-
-                                            <p class="survey-p">LUE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- RLE -->
-                                        <div class="tab-pane fade" id="v-pills-erle" role="tabpanel"
-                                             aria-labelledby="v-pills-erle-tab">
-
-                                            <p class="survey-p">RLE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- LLE -->
-                                        <div class="tab-pane fade" id="v-pills-elle" role="tabpanel"
-                                             aria-labelledby="v-pills-elle-tab">
-
-                                            <p class="survey-p">LLE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Back -->
-                                        <div class="tab-pane fade" id="v-pills-back" role="tabpanel"
-                                             aria-labelledby="v-pills-back-tab">
-
-                                            <p class="survey-p">Back</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Skin -->
-                                        <div class="tab-pane fade" id="v-pills-skin" role="tabpanel"
-                                             aria-labelledby="v-pills-skin-tab">
-
-                                            <p class="survey-p">Skin</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-
-            </div>
+    <div class="sidenav">
+        <div style="text-align: center;">
+            <br>
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne">
+                <a href="#A">A</a>
+            </button>
+
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true"
+                    aria-controls="collapseTwo">
+                <a href="#B">B</a>
+            </button>
+
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true"
+                    aria-controls="collapseThree">
+                <a href="#C">C</a>
+            </button>
+
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true"
+                    aria-controls="collapseFour">
+                <a href="#D">D</a>
+            </button>
+
+            <button class="btn btn-link nounderline" data-toggle="collapse" data-target="#collapseFive"
+                    aria-expanded="true"
+                    aria-controls="collapseFive">
+                <a href="#E">E</a>
+            </button>
         </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog" id="popUp">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title" id="popup-title"></p>
+    <!--
+    ================================================================================
+    Survey/Checklist Accordion
+
+    This entire checklist uses an accordion with card bodies specified by
+    Bootstrap. Each section of the checklist uses a table split into two columns,
+    or more specifically table cells per the '<td>' tags, to organize contents; on
+    the left is the section header (e.g., "LMA"), and on the right are the
+    corresponding buttons (in this case, "Initiated"/"Achieved"/"Removed"). Each
+    table is wrapped in a <form> element to record input, since it's a survey
+    ================================================================================
+    -->
+
+    <div class="accordion" id="accordion"> <!-- Accordion container with card layout -->
+
+        <!--
+        ================================================================================
+        Airway Checklist
+        ================================================================================
+        -->
+
+        <div class="card">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+                 aria-expanded="false"
+                 aria-controls="collapseOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link nounderline">
+                        <h2><b>A</b>irway</h2>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse hide collapse-A" aria-labelledby="headingOne"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <a id="A">
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
+
+                                <div class="row justify-content-left">
+                                    <table class="table"> <!-- Beginning of table -->
+                                        <tbody>
+
+                                        <!-- Oxygen Supplementation -->
+                                        <tr>
+                                            <td><h4>Oxygen Supplementation</h4></td> <!-- Left cell, section name -->
+                                            <td> <!-- Right cell, corresponding buttons -->
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" id="oxySupplInit"
+                                                            onclick="airwayStepFunc('oxygen','init')"
+                                                            ondblclick="initEdit('oxygen','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-dark" id="oxySupplStop"
+                                                            onclick="airwayStepFunc('oxygen','stop')"
+                                                            ondblclick="initEdit('oxygen','stop')">Stopped</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Bag Mask -->
+                                        <tr>
+                                            <td><h4>Bag Mask</h4></td>
+                                            <td> <!-- 'btn-group-vertical' gives buttons a vertical orientation -->
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" id="bagMaskInit"
+                                                            onclick="airwayStepFunc('bag','init')"
+                                                            ondblclick="initEdit('bag','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-dark" id="bagMaskStop"
+                                                            onclick="airwayStepFunc('bag','stop')"
+                                                            ondblclick="initEdit('bag','stop')">Stopped</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- LMA -->
+                                        <tr>
+                                            <td><h4>LMA</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" id="lmaInit"
+                                                            onclick="airwayStepFunc('lma','init')"
+                                                            ondblclick="initEdit('lma','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="lmaAchieved"
+                                                            onclick="airwayStepFunc('lma','achieved')"
+                                                            ondblclick="initEdit('lma','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="lmaStop"
+                                                            onclick="airwayStepFunc('lma','stop')"
+                                                            ondblclick="initEdit('lma','stop')">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Endotracheal Tube -->
+                                        <tr>
+                                            <td><h4>Endotracheal Tube</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" id="ettInit"
+                                                            onclick="airwayStepFunc('ett','init')"
+                                                            ondblclick="initEdit('ett','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="ettAchieved"
+                                                            onclick="airwayStepFunc('ett','achieved')"
+                                                            ondblclick="initEdit('ett','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="ettStop"
+                                                            onclick="airwayStepFunc('ett','stop')"
+                                                            ondblclick="initEdit('ett','stop')">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Difficult Airway -->
+                                        <tr>
+                                            <td><h4>Difficult Airway</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" id="diffAirwayInit"
+                                                            onclick="airwayStepFunc('diffAirway','init')"
+                                                            ondblclick="initEdit('diffAirway','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="diffAirwayAchieved"
+                                                            onclick="airwayStepFunc('diffAirway','achieved')"
+                                                            ondblclick="initEdit('diffAirway','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="diffAirwayStop"
+                                                            onclick="airwayStepFunc('diffAirway','stop')"
+                                                            ondblclick="initEdit('diffAirway','stop')">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Surgical Airway -->
+                                        <tr>
+                                            <td><h4>Surgical Airway</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" id="surgAirwayInit"
+                                                            onclick="airwayStepFunc('surgAirway','init')"
+                                                            ondblclick="initEdit('surgAirway','init')">Initiated</button>
+                                                    <button type="button" class="btn btn-info" id="surgAirwayAchieved"
+                                                            onclick="airwayStepFunc('surgAirway','achieved')"
+                                                            ondblclick="initEdit('surgAirway','achieved')">Achieved</button>
+                                                    <button type="button" class="btn btn-dark" id="surgAirwayStop"
+                                                            onclick="airwayStepFunc('surgAirway','stop')"
+                                                            ondblclick="initEdit('surgAirway','stop')">Removed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </form>
+                    </a>
                 </div>
-                <div class="modal-body">
+            </div>
+        </div>
+
+        <!--
+        ================================================================================
+        Breathing Checklist
+        ================================================================================
+        -->
+
+        <div class="card">
+            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo"
+                 aria-expanded="false"
+                 aria-controls="collapseTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link nounderline">
+                        <h2><b>B</b>reathing</h2>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseTwo" class="collapse hide collapse-B" aria-labelledby="headingTwo"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <a id="B">
+
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
+
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
+
+                                        <!-- Spontaneous Breathing -->
+                                        <tr>
+                                            <td><h4>Spontaneous Breathing</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="sponbreath"
+                                                            value="yes">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="sponbreath"
+                                                            value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Assisted Breathing -->
+                                        <tr>
+                                            <td><h4>Assisted Breathing</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="assistb"
+                                                            value="yes">
+                                                        Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="assistb"
+                                                            value="no">
+                                                        No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Right: Chest Rise / Breath Sounds -->
+                                        <tr>
+                                            <td><h4>Right: Chest Rise / Breath Sounds</h4>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="rchest"
+                                                            id="rchestyes"
+                                                            value="yes"
+                                                            onclick="chestSoundFunc('right','Yes')">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="rchest"
+                                                            id="rchestno"
+                                                            value="no"
+                                                            onclick="chestSoundFunc('right','No')">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Left: Chest Rise / Breath Sounds-->
+                                        <tr>
+                                            <td><h4>Left: Chest Rise / Breath Sounds</h4>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="lchest"
+                                                            id="lchestyes"
+                                                            value="yes"
+                                                            onclick="chestSoundFunc('left','Yes')">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="lchest"
+                                                            id="lchestno"
+                                                            value="no"
+                                                            onclick="chestSoundFunc('left','No')">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- End Tidal CO -->
+                                        <tr>
+                                            <td><h4>End Tidal CO</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_none"
+                                                            value="no"
+                                                            onclick="etco2('none')">
+                                                        No Measurement
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_less25" value="25" onclick="etco2('<25')">
+                                                        ETCO<sub>2</sub> < 25
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_25plus" value="30" onclick="etco2('25-30')">
+                                                        ETCO<sub>2</sub> 25-30
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_30plus" value="35" onclick="etco2('30-35')">
+                                                        ETCO<sub>2</sub> 30-35
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_35plus" value="40" onclick="etco2('35-40')">
+                                                        ETCO<sub>2</sub> 35-40
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_40plus" value="50" onclick="etco2('40-50')">
+                                                        ETCO<sub>2</sub> 40-50
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="etco"
+                                                            id="etco2_50plus" value="50+" onclick="etco2('>50')">
+                                                        ETCO<sub>2</sub> > 50
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </form>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!--
+        ================================================================================
+        Circulation Checklist
+        ================================================================================
+        -->
+
+        <div class="card">
+            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
+                 aria-expanded="false"
+                 aria-controls="collapseThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link nounderline">
+                        <h2><b>C</b>irculation</h2>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseThree" class="collapse hide collapse-C" aria-labelledby="headingThree"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <a id="C">
+
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
+
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
+
+                                        <!-- Heart Rate -->
+                                        <tr>
+                                            <td><h4>Heart Rate</h4></td>
+                                            <td>
+                                                <div class="form-group w-60">
+                                                    <input class="form-control" type="text" id="hr" name="hr" value=""
+                                                           placeholder="BPM">
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Systolic Blood Pressure -->
+                                        <tr>
+                                            <td><h4>Systolic Blood Pressure</h4></td>
+                                            <td>
+                                                <div class="form-group w-60">
+                                                    <input class="form-control" type="text" id="bp" name="bp" value=""
+                                                           placeholder="mmHg">
+                                                    <input class="form-control" type="text" id="age" name="age" value=""
+                                                           placeholder="Patient Age">
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Perfusion -->
+                                        <tr>
+                                            <td><h4>Perfusion</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <span style="font-weight:bold">Lip Color:</span>
+                                                    <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
+                                                            value="pi" onclick="lipColorFunc('Pink')">Pink
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
+                                                            value="wh" onclick="lipColorFunc('White')">White
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="lipc"
+                                                            id="lipc-unk"
+                                                            value="unk" onclick="lipColorFunc('Unable to assess')">Unable To Assess
+                                                    </button>
+
+                                                    <br>
+
+                                                    <span style="font-weight:bold">Nail Color:</span>
+                                                    <button type="button" class="btn btn-light" name="nailc"
+                                                            id="nailc-pi"
+                                                            value="pi" onclick="nailColorFunc('Pink')">Pink
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="nailc"
+                                                            id="nailc-wh"
+                                                            value="wh" onclick="nailColorFunc('White')">White
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="nailc"
+                                                            id="nailc-unk"
+                                                            value="unk" onclick="nailColorFunc('Unable to assess')">Unable To Assess
+                                                    </button>
+
+                                                    <br>
+
+                                                    <span style="font-weight:bold">Cap Refill:</span>
+                                                    <button type="button" class="btn btn-light" name="capr" id="caprt-2"
+                                                            value="<2" onclick="capRefillFunc('<2sec')"><2s
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="capr"
+                                                            id="caprt-24"
+                                                            value="2-4" onclick="capRefillFunc('2-4sec')">2s-4s
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="capr" id="caprt-4"
+                                                            value=">4" onclick="capRefillFunc('>4sec')">>4s
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- IV Access -->
+                                        <tr>
+                                            <td><h4>IV Access</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <span style="font-weight:bold">Functional Peripheral IV:</span>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp0"
+                                                            value="no">None
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp1"
+                                                            value="1" onclick="pivFunc('1')">1
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp2"
+                                                            value="2" onclick="pivFunc('2')">2
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="funp" id="funp>2"
+                                                            value=">2" onclick="pivFunc('>2')">>2
+                                                    </button>
+
+                                                    <br>
+
+                                                    <span style="font-weight:bold">Intraosseous Line:</span>
+                                                    <button type="button" class="btn btn-light" name="intral"
+                                                            id="intralYes"
+                                                            value="yes" onclick="intraoLineFunc()"> Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="intral"
+                                                            id="intralNo"
+                                                            value="no">No
+                                                    </button>
+
+                                                    <br>
+
+                                                    <span style="font-weight:bold">Central Line:</span>
+                                                    <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
+                                                            value="yes" onclick="centrLineFunc()"> Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
+                                                            value="no">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- IV Fluids -->
+                                        <tr>
+                                            <td><h4>IV Fluids</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="ivf" id="ivf-none"
+                                                            value="no" onclick="ivFluidFunc('none')">None
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="ivf" id="ivf-<20"
+                                                            value="<20" onclick="ivFluidFunc('<20mL/kg')">< 20mL/kg
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="ivf" id="ivf->20"
+                                                            value=">20" onclick="ivFluidFunc('>20mL/kg')">>= 20mL/kg
+                                                    </button>
+
+                                                    <br>
+
+                                                    <button type="button" class="btn btn-light">Started</button>
+                                                    <button type="button" class="btn btn-info">Additional Fluids
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">Completed</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Type and Cross -->
+                                        <tr>
+                                            <td><h4>Type And Cross</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="tac"
+                                                            id="typeAndCrossYes" value="yes" onclick="typeAndCrossFunc('yes')">Drawn
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="tac"
+                                                            id="typeAndCrossNo" value="no" onclick="typeAndCrossFunc('no')">Sent
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Transfused PRBCs -->
+                                        <tr>
+                                            <td><h4>Transfused PRBCs</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
+                                                            value="yes" onclick="prbcFunc('yes')">
+                                                        Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo" value="no" onclick="prbcFunc('no')">
+                                                        No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Massive Transfusion Protocol -->
+                                        <tr>
+                                            <td><h4> Massive Transfusion Protocol</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="mtp" id="mtpYes" value="yes" onclick="mtpFunc('yes')">
+                                                        Activated
+                                                    </button>
+                                                    <button type="button" class="btn btn-light" name="mtp" id="mtpNo" value="no" onclick="mtpFunc('no')">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </form>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!--
+        ================================================================================
+        Disability Checklist
+        ================================================================================
+        -->
+
+        <div class="card">
+            <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour"
+                 aria-expanded="false"
+                 aria-controls="collapseFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link nounderline">
+                        <h2><b>D</b>isability</h2>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFour" class="collapse hide collapse-D" aria-labelledby="headingFour"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <a id="D">
+
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
+
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
+
+                                        <!-- Glasgow Coma Scale (header) -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td colspan="2"><h4>Glasgow Coma Scale:</h4></td>
+                                        </tr>
+
+                                        <!-- GCS Motor -->
+                                        <tr>
+                                            <td><h4>Motor</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor6" value="ob" onclick="gcsFunc('motor','6')">
+                                                        <b>6</b> - Obeys Commands
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor5" value="lo" onclick="gcsFunc('motor','5')">
+                                                        <b>5</b> - Localizing Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor4" value="wi" onclick="gcsFunc('motor','4')">
+                                                        <b>4</b> - Withdraw From Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor3" value="fl" onclick="gcsFunc('motor','3')">
+                                                        <b>3</b> - Flexion To Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor2" value="ex" onclick="gcsFunc('motor','2')">
+                                                        <b>2</b> - Extension To Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="motor"
+                                                            id="motor1" value="no" onclick="gcsFunc('motor','1')">
+                                                        <b>1</b> - No Motor Response
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- GCS Verbal -->
+                                        <tr>
+                                            <td><h4>Verbal</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal5" value="or" onclick="gcsFunc('verbal','5')">
+                                                        <b>5</b> - Oriented
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal4" value="co" onclick="gcsFunc('verbal','4')">
+                                                        <b>4</b> - Confused
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal3" value="wo" onclick="gcsFunc('verbal','3')">
+                                                        <b>3</b> - Inappropriate Words
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal2" value="so" onclick="gcsFunc('verbal','2')">
+                                                        <b>2</b> - Incomprehensible Sounds
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="verbal"
+                                                            id="verbal1" value="no" onclick="gcsFunc('verbal','1')">
+                                                        <b>1</b> - No Verbal Response
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- GCS Eye -->
+                                        <tr style="border-bottom: 2px solid #29323A;">
+                                            <td><h4>Eye</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye4" value="sp" onclick="gcsFunc('eye','4')">
+                                                        <b>4</b> - Opens Spontaneously
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye3" value="ve" onclick="gcsFunc('eye','3')">
+                                                        <b>3</b> - Open To Verbal Command
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye2" value="pa" onclick="gcsFunc('eye','2')">
+                                                        <b>2</b> - Open To Pain
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-left" name="eye"
+                                                            id="eye1" value="no" onclick="gcsFunc('eye','1')">
+                                                        <b>1</b> - No Eye Opening
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Pupils -->
+                                        <tr>
+                                            <td><h4>Pupils</h4></td>
+                                            <td width="60%">
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <span style="font-weight:bold">Equal:</span>
+                                                            <button type="button" class="btn btn-light btn-space"
+                                                                    name="equal" value="yes">Yes
+                                                            </button>
+                                                            <button type="button" class="btn btn-dark btn-space"
+                                                                    name="equal" value="no">No
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <span style="font-weight:bold">Round:</span>
+                                                            <button type="button" class="btn btn-light btn-space"
+                                                                    name="round" value="yes">Yes
+                                                            </button>
+                                                            <button type="button" class="btn btn-dark btn-space"
+                                                                    name="round" value="no">No
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <span style="font-weight:bold">Reactive:</span>
+                                                            <button type="button" class="btn btn-light btn-space"
+                                                                    name="rlight" value="yes">Yes
+                                                            </button>
+                                                            <button type="button" class="btn btn-dark btn-space"
+                                                                    name="rlight" value="no">No
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Moves All Extremities -->
+                                        <tr>
+                                            <td><h4>Moves All Extremities</h4></td>
+                                            <td width="60%">
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light" name="movee"
+                                                            value="yes">
+                                                        Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" name="movee"
+                                                            value="onlyinj">
+                                                        Limited Only by Injury
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark" name="movee" value="no">
+                                                        No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </form>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!--
+        ================================================================================
+        Exposure Checklist
+        ================================================================================
+        -->
+
+        <div class="card">
+            <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive"
+                 aria-expanded="false"
+                 aria-controls="collapseFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link nounderline">
+                        <h2><b>E</b>xposure</h2>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFive" class="collapse hide collapse-E" aria-labelledby="headingFive"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <a id="E">
+
+                        <form> <!-- Container for table contents -->
+                            <div class="container">
+
+                                <div class="row justify-content-left">
+                                    <table class="table">
+                                        <tbody>
+
+                                        <!-- Patient in Pain -->
+                                        <tr>
+                                            <td><h4>Patient in Pain?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Patient Bleeding -->
+                                        <tr>
+                                            <td><h4>Patient Bleeding?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Estimated Blood Loss -->
+                                        <tr>
+                                            <td><h4>Estimated Blood Loss</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-dark">Recorded
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Patient in Shock -->
+                                        <tr>
+                                            <td><h4>Patient in Shock?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Patient Hemorrhaging -->
+                                        <tr>
+                                            <td><h4>Patient Hemorrhaging?</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Yes
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">No
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Check for Infection -->
+                                        <tr>
+                                            <td><h4>Check for Infection</h4></td>
+                                            <td>
+                                                <div class="btn-group-vertical btn-padding" role="group">
+                                                    <button type="button" class="btn btn-light">Initiated
+                                                    </button>
+                                                    <button type="button" class="btn btn-dark">Completed
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </form>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <p><br></p>
+
+         <div class="modal" tabindex="-1" role="dialog" id="popUp">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modal-title" id="popup-title"></p>
+              </div>
+              <div class="modal-body">
                     <div>
                         <input type="number" id="hourStamp" min="0" max="59"/> Hr
                         <input type="number" id="minuteStamp" min="0" max="59"/> Min
                         <input type="number" id="secondStamp" min="0" max="59"/> Sec
 
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" id="saveModal">Save changes</button>
-                    <button type="button" class="btn" data-dismiss="modal">Close</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" id="saveModal">Save changes</button>
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
             </div>
+          </div>
         </div>
+
+        <!--
+        ================================================================================
+        Javascript initialize all buttons and text fields on main page
+        ================================================================================
+        -->
+
+        <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
     </div>
 
     <!--
     ================================================================================
-    Javascript initialize all buttons and text fields on main page
+    Leaving this here in case deleting it messes up another function
     ================================================================================
     -->
-    <script type="text/javascript" src="{% static "js/initVitals.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
-    </div>
 
-    
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
 {% endblock content %}

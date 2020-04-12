@@ -17,7 +17,9 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
@@ -70,17 +72,18 @@
         <table class="table cell-size">
             <tbody>
             <tr>
-                <td class="td-weight" id="patientWeight">[Weight]</td>
-                <td rowspan="2" id="patientAddlInfo">[Additional Info]</td>
-                <td rowspan="2" id="patientHistory">[History]</td>
+                <td class="td-weight">[Weight]</td>
+                <td rowspan="2">[Additional Info]</td>
+                <td rowspan="2">[History]</td>
             </tr>
             <tr>
-                <td class="td-age" id="patientAge">[Age]</td>
+                <td class="td-age">[Age]</td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div class="container alert-format scrollable" id="alert_placeholder">
+
+    <div class="container alert-format" id="alert_placeholder">
         <!--
         ================================================================================
         JavaScript to create new timer for current session and check for previous alerts
@@ -101,24 +104,10 @@
         Container for JavaScript vitals system
         ================================================================================
         -->
-        <table class="table cell-size">
-            <tbody>
-            <tr>
-                <td rowspan="td-weight" id="hr_display">HR:  </td>
-                <td class="td-weight" id="bp_display">SBP:  </td>
-            </tr>
-
-            <tr>
-                <td rowspan="td-weight" id="shock_display">Shock:  </td>
-                <td rowspan="td-weight" id="gcs_display">GCS:  </td>
-            </tr>
-
-            <tr>
-                <td colspan="2" id="etco2_display">ETCO<sub>2</sub>:  </td>
-            </tr>
-            </tbody>
-        </table>
-        <script type="text/javascript" src="{% static "js/updateSummary.js" %}"></script>
+        <div class="container hr-display" id="hr_placeholder"></div>
+        <div class="container bp-display" id="bp_placeholder"></div>
+        <div class="container shock-display" id="shock_placeholder"></div>
+        <script type="text/javascript" src="{% static "js/checkVitals.js" %}"></script>
     </div>
 
      <div class="container abcd-banner">
@@ -131,51 +120,21 @@
         <table class="table cell-size">
             <tbody>
             <tr>
-                <td> Airway: ETT taped at
-                  <script type="text/javascript">
-                    document.write(localStorage.getItem("ETT Depth"))
-                  </script> cm
-                </td>
+                <td>[Airway]</td>
             </tr>
             <tr>
-                <td> Breathing: BMV at
-                  <script type="text/javascript">
-                    document.write(localStorage.getItem("BVM BPM"))
-                  </script> breaths/min
-                </td>
+                <td>[Breathing]</td>
             </tr>
             <tr>
                 <td>[Circulation]</td>
             </tr>
             <tr>
-                <td> Disability:<br />
-                  Pupils: Right:
-                    <script type="text/javascript">
-                      document.write(localStorage.getItem("Right Pupil Size"))
-                    </script> mm
-                    Left:
-                      <script type="text/javascript">
-                        document.write(localStorage.getItem("Left Pupil Size"))
-                    </script> mm
-                </td>
+                <td>[Disability]</td>
             </tr>
             </tbody>
         </table>
 
     </div>
-        <script type="text/javascript">
-        $.ajax({
-            type:"GET",
-            url: '/populateSummary/',
-            success: function( data ) {
-                localStorage.setItem("Age", data.age);
-                document.getElementById('patientAge').innerHTML = data.age + ' yrs';
-                document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
-                document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
-                document.getElementById('patientHistory').innerHTML = data.history;
-            }
-        });
-    </script>
 </main>
 
 </body>
