@@ -17,14 +17,44 @@ def summary(request):
 	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
 
 def startTrauma(request):
-	newSession = Session(id='99');
-	newSession.save()
 	return render(request, 'decision/home.html')
+
+
+@csrf_exempt
+def populateSummary(request):
+	dbTable = Session.objects.get(id="99")
+
+	patientInfo = {
+		'age': dbTable.__getattribute__('Patient_Age'),
+		'weight': dbTable.__getattribute__('Patient_Weight'),
+		'history': dbTable.__getattribute__('Patient_History'),
+		'addInfo': dbTable.__getattribute__('Patient_AddInfo')
+	}
+
+	return JsonResponse(patientInfo)
+
+
+@csrf_exempt
+def savePatientInfo(request):
+	newSession = Session(id='99');
+
+	age = request.POST.get('age', None)
+	weight = request.POST.get('weight', None)
+	history = request.POST.get('history', None)
+	addInfo = request.POST.get('addInfo', None)
+
+	newSession.__setattr__('Patient_Age', age)
+	newSession.__setattr__('Patient_Weight', weight)
+	newSession.__setattr__('Patient_History', history)
+	newSession.__setattr__('Patient_AddInfo', addInfo)
+	newSession.save()
+
+	return HttpResponse('Success')
+
 
 @csrf_exempt
 def setItem(request):
-	if request.method == 'POST':
-		key = request.POST.get('step', None)
+		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
 		dbTable = Session.objects.get(id="99")
 		dbTable.__setattr__(key, valueNew)
@@ -32,8 +62,6 @@ def setItem(request):
 
 		resp = HttpResponse("Saved it!")
 		return resp  # Sending an success response
-	else:
-		return HttpResponse("Request method is not a POST")
 
 @csrf_exempt
 def getPerfusion(request):

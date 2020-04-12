@@ -1,6 +1,18 @@
 <!-- Clear data from previous session and initialize global values -->
 localStorage.clear();
 
+localStorage.setItem("HR_prev", "null");
+localStorage.setItem("BP_prev", "null");
+
+localStorage.setItem("HR_display", " ");
+localStorage.setItem("BP_display", " ");
+localStorage.setItem("Shock_display", " ");
+
+localStorage.setItem("Age", "null");
+
+
+
+
 localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");
 
@@ -41,8 +53,6 @@ localStorage.setItem("Tachycardia Alert", "not thrown");
 //localStorage.setItem("BP", "null"); IN DATABASE
 localStorage.setItem("Hypotensive alert", "not thrown");
 
-localStorage.setItem("Patient Age", "null");
-
 localStorage.setItem("Type and Cross Alert", "not thrown");
 //localStorage.setItem("Type and Cross", "none"); IN DATABASE
 
@@ -56,10 +66,6 @@ localStorage.setItem("Alert Fluids Given", "not thrown");
 localStorage.setItem("Alert Excess IVF", "not thrown");
 localStorage.setItem("IVF", "null");
 
-//Variables for display of vital signs
-localStorage.setItem("HR Display", "null");
-localStorage.setItem("BP Display", "null");
-localStorage.setItem("Shock Level Display", "null");
 
 
 // localStorage.setItem("Right Chest Rise/Breath Sounds", "null"); IN DATABASE

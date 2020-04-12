@@ -288,81 +288,6 @@ function recordbvmbpm(){
 /**
  * Set up Circulation buttons and function that will record vitals on user input
  */
-//Set up HR and BP text fields
-var hrText = document.getElementById("hr");
-var bpText = document.getElementById("bp");
-var ageText = document.getElementById("age");
-
-ageText.oninput = recordAge;
-hrText.oninput = recordHR;
-bpText.oninput = recordBP;
-
-function recordHR(){
-    setTimeout(function(){
-        var hr = hrText.value;
-        //localStorage.setItem("HR", hrText.value);
-        setItemAjax("HR", hrText.value);
-
-        var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-        var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-        var hour = 0;
-        var display = "Heart Rate: " + hr + " at ";
-        if(min < 1){
-            min = 0;
-        }
-
-        if(min >= 60){
-            hour = min/60;
-            min = min%60;
-        }
-
-        if(hour !== 0){
-            display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-        }
-        display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-        //localStorage.setItem('HR Display',display);
-        setItemAjax("HR_Display", display);
-
-    }, 1000);
-}
-
-function recordBP(){
-        setTimeout(function(){
-            var bp = bpText.value;
-            //localStorage.setItem("BP", bpText.value);
-            setItemAjax("BP", bpText.value);
-
-            var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-            var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
-            var hour = 0;
-            var display = "Systolic BP: " + bp + " at " ;
-
-            if(min < 1){
-                min = 0;
-            }
-
-            if(min >= 60){
-                hour = min/60;
-                min = min%60;
-            }
-
-            if(hour !== 0){
-                display = display + hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-            }
-
-            display = display + min.toString(10) + "min " + sec.toString(10) + "sec";
-            //localStorage.setItem('BP Display',display);
-            setItemAjax("BP_Display", bpText.value);
-        }, 1000);
-}
-
-function recordAge(){
-    setTimeout(function(){
-        //setItemAjax("Patient_Age", color);
-        localStorage.setItem("Patient Age", ageText.value);
-    }, 1000);
-}
-
 /**
  * These functions are responsible for responding to IV button clicks
  */
@@ -651,11 +576,10 @@ function setItemAjax(step, value){
         type:"POST",
         url: "/setItem/",
         data:{
-            'step': step,
+            'key': step,
             'value': value,
         },
         success: function( data )
         {}
      })
-
 }
