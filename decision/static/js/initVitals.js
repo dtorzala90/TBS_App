@@ -24,7 +24,6 @@ async function recordHR(){
     localStorage.setItem("HR_prev", hr.toString(10));
 
     var hrDisplay = hr + " at ";
-    //updateVitals("HR_History", hrDisplay + timeStamp);
     localStorage.setItem("HR_display", hrDisplay + timeStamp);
 
     //Because the HR was updated we must update the Shock Index as well
@@ -34,7 +33,6 @@ async function recordHR(){
         var shockDisplay = newShock + " at ";
         updateVitals("Shock_Level", newShock.toString(10));
         localStorage.setItem("Shock_display", shockDisplay + timeStamp);
-        //updateVitals("Shock_History", shockDisplay + timeStamp);
     }
 }
 
@@ -55,7 +53,6 @@ async function recordBP(){
         localStorage.setItem("BP_prev", bp.toString(10));
 
         var bpDisplay = bp + " at ";
-        //updateVitals("BP_History", bpDisplay + timeStamp);
         localStorage.setItem("BP_display", bpDisplay + timeStamp);
 
         //Because the BP  was updated we must update the Shock Index as well
@@ -65,7 +62,6 @@ async function recordBP(){
             var shockDisplay = newShock + " at ";
             updateVitals("Shock_Level", newShock.toString(10));
             localStorage.setItem("Shock_display", shockDisplay + timeStamp);
-            //updateVitals("Shock_History", shockDisplay + timeStamp);
         }
 }
 
@@ -82,7 +78,6 @@ async function recordEtco2(){
 
     updateVitals("ETCO2", etco2.toString(10));
     var etco2Display = etco2 + " at ";
-    //updateVitals("ETCO2_History", etco2Display + timeStamp);
     localStorage.setItem("ETCO2_Display", etco2Display + timeStamp);
 }
 
@@ -105,15 +100,15 @@ function recordGCS(type, value){
     }
 
     var gcs_motor = localStorage.getItem("GCS Motor");
-    var gcs_verbal = localStorage.getItem("GCS Motor");
-    var gcs_eye = localStorage.getItem("GCS Motor");
+    var gcs_verbal = localStorage.getItem("GCS Verbal");
+    var gcs_eye = localStorage.getItem("GCS Eye");
 
     if(gcs_motor !== "null" && gcs_verbal !== "null" && gcs_eye !== "null"){
         createTimeStamp();
         var gcs = parseInt(gcs_motor,10) + parseInt(gcs_verbal, 10) + parseInt(gcs_eye, 10);
         var gcsDisplay = gcs + " at ";
 
-        //updateVitals("GCS_History", gcsDisplay + timeStamp);
+        updateVitals("GCS", gcs.toString(10));
         localStorage.setItem("GCS_Display", gcsDisplay + timeStamp);
     }
 }

@@ -177,7 +177,7 @@ function checkAlertsLocal(ajaxData){
     //ETCO2 Alerts
     var etco2ValAlert = localStorage.getItem("ETCO2 Value Alert");
     if(ajaxData.etco2_value !== 'null'){
-
+        console.log(ajaxData.etco2_value);
         if(ajaxData.etco2_value === 'no measurement') {
             localStorage.setItem("ETCO2 Value Alert", "No Measurement");
             if(etco2ValAlert !== 'null') {
@@ -187,8 +187,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Check Airway Placement!</strong>\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
                 "                </div>");
         }
 
