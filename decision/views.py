@@ -244,10 +244,10 @@ def checkAlerts(request):
 	capRefill = dbTable.__getattribute__('Cap_Refill')
 
 	if(nailColor == "white" or lipColor == "white" or capRefill == ">4sec" ):
-		alertsDict['poor perfusion'] = 'true'
+		alertsDict['poor_perfusion'] = 'true'
 
 	else:
-		alertsDict['poor perfusion'] = 'false'
+		alertsDict['poor_perfusion'] = 'false'
 
 	#Type and Cross Alert
 	typeStatus = dbTable.__getattribute__('Type_Cross')
