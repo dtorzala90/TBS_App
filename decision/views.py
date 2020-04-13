@@ -128,11 +128,13 @@ def checkAlerts(request):
 	#Chest Sounds
 	if(rightChest == 'no'):
 		alertsDict['right_chest'] = 'true'
+
 	elif(rightChest == 'yes'):
 		alertsDict['right_chest'] = 'false'
 
 	if(leftChest == 'no'):
 		alertsDict['left_chest'] = 'true'
+
 	elif(leftChest == 'yes'):
 		alertsDict['left_chest'] = 'false'
 

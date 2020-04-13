@@ -136,15 +136,11 @@ function checkAlertsLocal(ajaxData){
                 "                  </button>\n" +
                 "                </div>");
         }
-
-        else if(ajaxData.right_chest === 'false'){
-             localStorage.setItem("Right Breathing Alert", "dismissed");
-        }
     }
 
     else if(rightAlert === "thrown"){
         if(ajaxData.right_chest === 'false'){
-            localStorage.setItem("Right Breathing Alert", "thrown");
+            localStorage.setItem("Right Breathing Alert", "resolved");
             $('#right-chest-alert').remove();
         }
     }
@@ -161,15 +157,11 @@ function checkAlertsLocal(ajaxData){
                 "                  </button>\n" +
                 "                </div>");
         }
-
-        else if(ajaxData.left_chest === 'false'){
-             localStorage.setItem("Left Breathing Alert", "dismissed");
-        }
     }
 
     else if(leftAlert === "thrown"){
         if(ajaxData.left_chest === 'false'){
-            localStorage.setItem("Left Breathing Alert", "thrown");
+            localStorage.setItem("Left Breathing Alert", "resolved");
             $('#left-chest-alert').remove();
         }
     }
