@@ -119,7 +119,7 @@ function recordGCS(type, value){
 }
 function createTimeStamp(){
     var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
-    var sec = (parseInt(localStorage.getItem('total_seconds_main'),10))%60;
+    var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
 
     if(min < 1){
