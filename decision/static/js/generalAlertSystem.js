@@ -240,7 +240,7 @@ function checkAlertsLocal(ajaxData){
 
     //Check vital based alerts
     var hrAlert = localStorage.getItem("HR Alert");
-    var hypoAlert = localStorage.getItem("Hypotensive alert");
+    var hypoAlert = localStorage.getItem("Hypotensive Alert");
     var shockAlert = localStorage.getItem("Shock Alert");
 
     if(ajaxData.heart_rate === 'bradycardia'){

@@ -30,7 +30,7 @@ localStorage.setItem("Shock Alert", "not thrown");
 
 localStorage.setItem("HR Alert", "null");
 
-localStorage.setItem("Hypotensive alert", "not thrown");
+localStorage.setItem("Hypotensive Alert", "not thrown");
 
 localStorage.setItem("Type and Cross Alert", "not thrown");
 
