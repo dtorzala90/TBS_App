@@ -244,36 +244,43 @@ function checkAlertsLocal(ajaxData){
     var shockAlert = localStorage.getItem("Shock Alert");
 
     if(ajaxData.heart_rate === 'bradycardia'){
-        if(hrAlert != "null"){
-            $('#tachy-alert').remove();
-        }
+        if(hrAlert !== "Bradycardia" ){
+            if(hrAlert === "Tachycardia"){
+                $('#tachy-alert').remove();
+            }
 
-        $('#alert_placeholder').append(
+            $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
             "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
             "                </div>");
-        localStorage.setItem("HR Alert", "Bradycardia");
+            localStorage.setItem("HR Alert", "Bradycardia");
+        }
     }
 
     else if(ajaxData.heart_rate === 'tachycardia'){
-        if(hrAlert !== "null"){
-            $('#brady-alert').remove();
-        }
-        $('#alert_placeholder').append(
+        if(hrAlert !== "Tachycardia"){
+            if(hrAlert === "Bradycardia"){
+                $('#brady-alert').remove();
+            }
+
+            $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tachy-alert'>\n" +
-            "                  <strong>TachyCardia:  Consider cause!</strong>\n" +
+            "                  <strong>Tachycardia:  Consider cause!</strong>\n" +
             "                </div>");
-        localStorage.setItem("HR Alert", "Tachycardia");
+            localStorage.setItem("HR Alert", "Tachycardia");
+        }
     }
 
     else{
-        if(hrAlert !== "Tachycardia"){
+        if(hrAlert === "Tachycardia"){
             $('#tachy-alert').remove();
         }
 
         else{
              $('#brady-alert').remove();
         }
+
+        localStorage.setItem("HR Alert", "null");
     }
 
     if(hypoAlert === 'not thrown' || hypoAlert === 'dismissed'){

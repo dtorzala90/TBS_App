@@ -78,15 +78,36 @@
     </div>
             <script type="text/javascript">
                 function startSession(){
+                    pAge = document.getElementById('patientAge').value;
+                    pWeight = document.getElementById('patientWeight').value;
+                    pAddlInfo = document.getElementById('addlInfo').value;
+                    pHistory = document.getElementById('patientHistory').value;
+
+                    if(pAge === ''){
+                        pAge = 'null';
+                    }
+
+                    if(pWeight === ''){
+                        pWeight = 'null';
+                    }
+
+                    if(pAddlInfo === ''){
+                        pAddlInfo = 'null';
+                    }
+
+                    if(pHistory === ''){
+                        pHistory = 'null';
+                    }
+
                     localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
                     $.ajax({
                     type:"POST",
                     url: '/savePatientInfo/',
                     data: {
-                        'age': document.getElementById('patientAge').value,
-                        'weight': document.getElementById('patientWeight').value,
-                        'addInfo': document.getElementById('addlInfo').value,
-                        'history': document.getElementById('patientHistory').value
+                        'age': pAge,
+                        'weight': pWeight,
+                        'addInfo': pAddlInfo,
+                        'history': pHistory
                     },
 
                     success: function( data )
