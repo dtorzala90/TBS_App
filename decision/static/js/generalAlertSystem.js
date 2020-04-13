@@ -21,13 +21,12 @@ function checkAlertsAjax(){
 }
 
 function checkAlertsLocal(ajaxData){
-
     //Check Time Based Alerts First
-    var no_etco2 = localStorage.getItem('Record ETCO2 Alert');
-    var no_iv = localStorage.getItem('Alert No IV');
+    var noEtco2Alert = localStorage.getItem('Record ETCO2 Alert');
+    var noIvAlert = localStorage.getItem('Alert No IV');
 
-    if(no_etco2 == "not thrown"){
-        if(ajaxData.no_etco2_recorded == "true"){
+    if(noEtco2Alert === "not thrown"){
+        if(ajaxData.no_etco2_recorded === "true"){
             localStorage.setItem("Record ETCO2 Alert", "thrown");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-etco2-alert'>\n" +
@@ -40,15 +39,18 @@ function checkAlertsLocal(ajaxData){
         }
     }
 
-    else if(no_etco2 == "thrown"){
-        if(ajaxData.no_etco2_recorded = "false"){
+    else if(noEtco2Alert === "thrown"){
+        if(ajaxData.no_etco2_recorded === "false"){
            localStorage.setItem("Record ETCO2 Alert", "dismissed");
            $('#no-etco2-alert').remove();
         }
     }
 
-    if(no_iv == "not thrown"){
-        if(ajaxData.no_iv == 'true'){
+    console.log(ajaxData.no_iv);
+    console.log(noIvAlert);
+
+    if(noIvAlert === "not thrown"){
+        if(ajaxData.no_iv === 'true'){
             localStorage.setItem('Alert No IV', "thrown");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='no-iv-alert'>\n" +
@@ -61,8 +63,8 @@ function checkAlertsLocal(ajaxData){
         }
     }
 
-    else if(no_iv == "thrown"){
-        if(ajaxData.no_iv == 'false'){
+    else if(noIvAlert === "thrown"){
+        if(ajaxData.no_iv === 'false'){
             localStorage.setItem('Alert No IV', "dismissed");
             $('#no-iv-alert').remove();
         }
@@ -73,8 +75,8 @@ function checkAlertsLocal(ajaxData){
     var ettEtco2Alert = localStorage.getItem("ETT ETCO2 Alert");
     var ettGcsAlert = localStorage.getItem("ETT GCS Alert");
 
-    if(ettGcsAlert =='not thrown'){
-        if(ajaxData.ett_before_gcs == 'true'){
+    if(ettGcsAlert ==='not thrown'){
+        if(ajaxData.ett_before_gcs === 'true'){
             localStorage.setItem("ETT GCS Alert", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ett-gcs-alert'>\n" +
@@ -85,20 +87,20 @@ function checkAlertsLocal(ajaxData){
                 "                  </button>\n" +
                 "                </div>");
         }
-        if(ajaxData.ett_before_gcs == 'false'){
+        if(ajaxData.ett_before_gcs === 'false'){
              localStorage.setItem("ETT GCS Alert", "dismissed");
         }
     }
 
-    else if(ettGcsAlert == 'thrown'){
-        if(ajaxData.ett_before_gcs == 'false'){
+    else if(ettGcsAlert === 'thrown'){
+        if(ajaxData.ett_before_gcs === 'false'){
              localStorage.setItem("ETT GCS Alert", "dismissed");
              $('#ett-gcs-alert').remove();
         }
     }
 
-    if(ettEtco2Alert =='not thrown'){
-        if(ajaxData.ett_no_etco2 == 'true'){
+    if(ettEtco2Alert === 'not thrown'){
+        if(ajaxData.ett_no_etco2 === 'true'){
             localStorage.setItem("ETT ETCO2 Alert", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ett-etco2-alert'>\n" +
@@ -109,13 +111,13 @@ function checkAlertsLocal(ajaxData){
                 "                  </button>\n" +
                 "                </div>");
         }
-        if(ajaxData.ett_no_etco2 == 'false'){
+        if(ajaxData.ett_no_etco2 === 'false'){
              localStorage.setItem("ETT ETCO2 Alert", "dismissed");
         }
     }
 
-    else if(ettEtco2Alert == 'thrown'){
-        if(ajaxData.ett_no_etco2 == 'false'){
+    else if(ettEtco2Alert === 'thrown'){
+        if(ajaxData.ett_no_etco2 === 'false'){
              localStorage.setItem("ETT ETCO2 Alert", "dismissed");
              $('#ett-etco2-alert').remove();
         }
@@ -125,8 +127,8 @@ function checkAlertsLocal(ajaxData){
     var rightAlert = localStorage.getItem("Right Breathing Alert");
     var leftAlert = localStorage.getItem("Left Breathing Alert");
 
-    if(rightAlert == "not thrown"){
-        if(ajaxData.right_chest == 'true'){
+    if(rightAlert === "not thrown"){
+        if(ajaxData.right_chest === 'true'){
             localStorage.setItem("Right Breathing Alert", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='right-chest-alert'>\n" +
@@ -138,20 +140,20 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        else if(ajaxData.right_chest == 'false'){
+        else if(ajaxData.right_chest === 'false'){
              localStorage.setItem("Right Breathing Alert", "dismissed");
         }
     }
 
-    else if(rightAlert == "thrown"){
-        if(ajaxData.right_chest == 'false'){
+    else if(rightAlert === "thrown"){
+        if(ajaxData.right_chest === 'false'){
             localStorage.setItem("Right Breathing Alert", "thrown");
             $('#right-chest-alert').remove();
         }
     }
 
-    if(leftAlert == "not thrown"){
-        if(ajaxData.left_chest == 'true'){
+    if(leftAlert === "not thrown"){
+        if(ajaxData.left_chest === 'true'){
             localStorage.setItem("Left Breathing Alert", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-chest-alert'>\n" +
@@ -163,13 +165,13 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        else if(ajaxData.left_chest == 'false'){
+        else if(ajaxData.left_chest === 'false'){
              localStorage.setItem("Left Breathing Alert", "dismissed");
         }
     }
 
-    else if(leftAlert == "thrown"){
-        if(ajaxData.left_chest == 'false'){
+    else if(leftAlert === "thrown"){
+        if(ajaxData.left_chest === 'false'){
             localStorage.setItem("Left Breathing Alert", "thrown");
             $('#left-chest-alert').remove();
         }
@@ -177,11 +179,11 @@ function checkAlertsLocal(ajaxData){
 
     //ETCO2 Alerts
     var etco2ValAlert = localStorage.getItem("ETCO2 Value Alert");
-    if(ajaxData.etco2_value != 'null'){
+    if(ajaxData.etco2_value !== 'null'){
 
-        if(ajaxData.etco2_value == 'no measurement') {
+        if(ajaxData.etco2_value === 'no measurement') {
             localStorage.setItem("ETCO2 Value Alert", "No Measurement");
-            if(etco2ValAlert != 'null') {
+            if(etco2ValAlert !== 'null') {
                 $('#etco2-value-alert').text('Check Airway Placement');
             }
 
@@ -196,9 +198,9 @@ function checkAlertsLocal(ajaxData){
             }
         }
 
-        else if(ajaxData.etco2_value == '<25') {
+        else if(ajaxData.etco2_value === '<25') {
             localStorage.setItem("ETCO2 Value Alert", "<25");
-            if(etco2ValAlert != 'null'){
+            if(etco2ValAlert !== 'null'){
                 $('#etco2-value-alert').text('ETCO<sub>2</sub> is very low. Confirm pulse!');
             }
 
@@ -213,9 +215,9 @@ function checkAlertsLocal(ajaxData){
             }
         }
 
-        else if(ajaxData.etco2_value == '25-30') {
+        else if(ajaxData.etco2_value === '25-30') {
             localStorage.setItem("ETCO2 Value Alert", "25-30");
-            if(etco2ValAlert != 'null'){
+            if(etco2ValAlert !== 'null'){
                 $('#etco2-value-alert').text('Decrease Ventilation Rate!');
             }
 
@@ -230,9 +232,9 @@ function checkAlertsLocal(ajaxData){
             }
         }
 
-        else if(ajaxData.etco2_value == '40-50') {
+        else if(ajaxData.etco2_value === '40-50') {
             localStorage.setItem("ETCO2 Value Alert", "40-50");
-            if(etco2ValAlert != 'null'){
+            if(etco2ValAlert !== 'null'){
                 $('#etco2-value-alert').text('ETCO<sub>2</sub> and GCS lower than 13!');
             }
 
@@ -249,7 +251,7 @@ function checkAlertsLocal(ajaxData){
 
         else{
             localStorage.setItem("ETCO2 Value Alert", ">50");
-            if(etco2ValAlert != 'null'){
+            if(etco2ValAlert !== 'null'){
                 $('#etco2-value-alert').text('Increase Ventilation Rate!');
             }
 
@@ -267,7 +269,7 @@ function checkAlertsLocal(ajaxData){
     }
 
     else{
-        if(etco2ValAlert == 'thrown'){
+        if(etco2ValAlert === 'thrown'){
              localStorage.setItem("ETCO2 Value Alert", "null");
              $('#etco2-value-alert').remove();
         }
@@ -278,7 +280,7 @@ function checkAlertsLocal(ajaxData){
     var hypoAlert = localStorage.getItem("Hypotensive alert");
     var shockAlert = localStorage.getItem("Shock Alert");
 
-    if(ajaxData.heart_rate == 'bradycardia'){
+    if(ajaxData.heart_rate === 'bradycardia'){
         if(hrAlert != "null"){
             $('#tachy-alert').remove();
         }
@@ -292,8 +294,8 @@ function checkAlertsLocal(ajaxData){
         localStorage.setItem("HR Alert", "Bradycardia");
     }
 
-    else if(ajaxData.heart_rate == 'tachycardia'){
-        if(hrAlert != "null"){
+    else if(ajaxData.heart_rate === 'tachycardia'){
+        if(hrAlert !== "null"){
             $('#brady-alert').remove();
         }
         $('#alert_placeholder').append(
@@ -306,7 +308,7 @@ function checkAlertsLocal(ajaxData){
     }
 
     else{
-        if(hrAlert != "Tachycardia"){
+        if(hrAlert !== "Tachycardia"){
             $('#tachy-alert').remove();
         }
 
@@ -315,8 +317,8 @@ function checkAlertsLocal(ajaxData){
         }
     }
 
-    if(hypoAlert == 'not thrown' || hypoAlert == 'dismissed'){
-        if(ajaxData.hypotensive == 'true'){
+    if(hypoAlert === 'not thrown' || hypoAlert === 'dismissed'){
+        if(ajaxData.hypotensive === 'true'){
                 $('#alert_placeholder').append(
                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='hypo-alert'>\n" +
                     "                  <strong>Hypotensive!</strong>\n" +
@@ -328,14 +330,14 @@ function checkAlertsLocal(ajaxData){
     }
 
     else{
-        if(ajaxData.hypotensive == 'false') {
+        if(ajaxData.hypotensive === 'false') {
             $('#hypo-alert').remove();
             localStorage.setItem("Hypotensive Alert", "dismissed");
         }
     }
 
-    if(shockAlert == 'not thrown' || shockAlert =='dismissed'){
-        if(ajaxData.shock_elevated == 'true'){
+    if(shockAlert === 'not thrown' || shockAlert ==='dismissed'){
+        if(ajaxData.shock_elevated === 'true'){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
                 "                  <strong>Elevated shock index!</strong>\n" +
@@ -347,7 +349,7 @@ function checkAlertsLocal(ajaxData){
     }
 
     else {
-        if(ajaxData.shock_elevated == 'false') {
+        if(ajaxData.shock_elevated === 'false') {
             $('#shock-alert').remove();
             localStorage.setItem("Shock Alert", "dismissed");
         }
@@ -359,8 +361,8 @@ function checkAlertsLocal(ajaxData){
     var fluidsGivenAlert = localStorage.getItem("Alert Fluids Given")
     var excessFluidsAlert = localStorage.getItem("Alert Excess IVF")
 
-    if(addlPivAlert == 'not thrown'){
-        if(ajaxData.additional_piv == 'true'){
+    if(addlPivAlert === 'not thrown'){
+        if(ajaxData.additional_piv === 'true'){
             localStorage.setItem("Alert One PIV", "thrown");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
@@ -372,20 +374,20 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        if(ajaxData.additional_piv == 'false'){
-            localStorage.setItem("Alert No IV", "dismissed");
+        if(ajaxData.additional_piv === 'false'){
+            localStorage.setItem("Alert One PIV", "dismissed");
         }
     }
 
-    else if(addlPivAlert == 'thrown'){
-        if(ajaxData.additional_piv == 'false'){
-            localStorage.setItem("Alert No IV", "dismissed");
-            $('#no-iv-alert').remove();
+    else if(addlPivAlert === 'thrown'){
+        if(ajaxData.additional_piv === 'false'){
+            localStorage.setItem("Alert One PIV", "dismissed");
+            $('#one-piv-alert').remove();
         }
     }
 
-    if(fluidsGivenAlert == 'not thrown'){
-        if(ajaxData.fluids_given == 'true'){
+    if(fluidsGivenAlert === 'not thrown'){
+        if(ajaxData.fluids_given === 'true'){
              localStorage.setItem("Alert Fluids Given", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
@@ -397,20 +399,20 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        else if (ajaxData.fluids_given == 'false'){
+        else if (ajaxData.fluids_given === 'false'){
               localStorage.setItem("Alert Fluids Given", "dismissed");
         }
     }
 
-    else if(fluidsGivenAlert == 'thrown'){
-        if(ajaxData.fluids_given == 'false'){
+    else if(fluidsGivenAlert === 'thrown'){
+        if(ajaxData.fluids_given === 'false'){
             localStorage.setItem("Alert Fluids Given", "thrown");
             $('#fluids-given-alert').remove();
         }
     }
 
-    if(excessFluidsAlert == 'not thrown'){
-        if(ajaxData.excess_fluids == 'true'){
+    if(excessFluidsAlert === 'not thrown'){
+        if(ajaxData.excess_fluids === 'true'){
              localStorage.setItem("Alert Excess IVF", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-fluids-alert'>\n" +
@@ -422,13 +424,13 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        else if(ajaxData.excess_fluids == 'false'){
+        else if(ajaxData.excess_fluids === 'false'){
              localStorage.setItem("Alert Excess IVF", "dismissed");
         }
     }
 
-    else if(excessFluidsAlert == 'thrown'){
-        if(ajaxData.excess_fluids == 'false'){
+    else if(excessFluidsAlert === 'thrown'){
+        if(ajaxData.excess_fluids === 'false'){
             localStorage.setItem("Alert Excess IVF", "dismissed");
             $('#excess-fluids-alert').remove();
         }
@@ -437,8 +439,8 @@ function checkAlertsLocal(ajaxData){
     //Perfusion Alerts
     var perfusionAlert = localStorage.getItem("Poor Perfusion Alert");
 
-    if(perfusionAlert == 'not thrown' || perfusionAlert == 'dismissed'){
-        if(ajaxData.poor_perfusion == "true"){
+    if(perfusionAlert === 'not thrown' || perfusionAlert === 'dismissed'){
+        if(ajaxData.poor_perfusion === "true"){
             localStorage.setItem("Poor Perfusion Alert", "thrown");
             $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
@@ -450,7 +452,7 @@ function checkAlertsLocal(ajaxData){
     }
 
     else{
-        if(ajaxData.poor_perfusion == 'false'){
+        if(ajaxData.poor_perfusion === 'false'){
             localStorage.setItem("Poor Perfusion Alert", "dismissed");
             $('#poor-perfusion-alert').remove();
         }
@@ -460,8 +462,8 @@ function checkAlertsLocal(ajaxData){
     //Type and Cross Alert
     var typeAlert = localStorage.getItem("Type and Cross Alert");
 
-    if(typeAlert == 'not thrown'){
-        if(ajaxData.type_cross == 'true'){
+    if(typeAlert === 'not thrown'){
+        if(ajaxData.type_cross === 'true'){
              localStorage.setItem("Type and Cross Alert", "thrown");
             $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-cross-alert'>\n" +
@@ -472,13 +474,13 @@ function checkAlertsLocal(ajaxData){
             "                </div>");
         }
 
-        else if(ajaxData.type_cross == 'false'){
+        else if(ajaxData.type_cross === 'false'){
              localStorage.setItem("Type and Cross Alert", "dismissed");
         }
     }
 
-    else if(typeAlert == "thrown"){
-        if(ajaxData.type_cross == 'false'){
+    else if(typeAlert === "thrown"){
+        if(ajaxData.type_cross === 'false'){
              localStorage.setItem("Type and Cross Alert", "dismissed");
             $('#type-cross-alert').remove();
         }
@@ -488,8 +490,8 @@ function checkAlertsLocal(ajaxData){
     var prbcAlert = localStorage.getItem('PRBC Alert');
     var mtpAlert = localStorage.getItem('MTP Alert');
 
-    if(prbcAlert == 'not thrown'){
-        if(ajaxData.suggest_prbc == 'true'){
+    if(prbcAlert === 'not thrown'){
+        if(ajaxData.suggest_prbc === 'true'){
               localStorage.setItem("PRBC Alert", "thrown");
               $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='prbc-alert'>\n" +
@@ -500,20 +502,20 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        else if(ajaxData.suggest_prbc == 'false'){
+        else if(ajaxData.suggest_prbc === 'false'){
             localStorage.setItem("PRBC Alert", "dismissed");
         }
     }
 
-    else if(prbcAlert == 'thrown'){
-        if(ajaxData.suggest_prbc == 'false'){
+    else if(prbcAlert === 'thrown'){
+        if(ajaxData.suggest_prbc === 'false'){
              localStorage.setItem("PRBC Alert", "dismissed");
              $('#prbc-alert').remove();
         }
     }
 
-    if(mtpAlert == 'not thrown'){
-        if(ajaxData.suggest_mtp == 'true'){
+    if(mtpAlert === 'not thrown'){
+        if(ajaxData.suggest_mtp === 'true'){
             localStorage.setItem("MTP Alert", "thrown");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
@@ -524,13 +526,13 @@ function checkAlertsLocal(ajaxData){
                 "                </div>");
         }
 
-        else if(ajaxData.suggest_mtp == 'false'){
+        else if(ajaxData.suggest_mtp === 'false'){
             localStorage.setItem("MTP Alert", "dismissed");
         }
     }
 
-    else if(mtpAlert == 'thrown'){
-        if(ajaxData.suggest_mtp == 'false'){
+    else if(mtpAlert === 'thrown'){
+        if(ajaxData.suggest_mtp === 'false'){
             localStorage.setItem("MTP Alert", "dismissed");
             $('#prbc-alert').remove();
         }

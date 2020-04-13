@@ -25,8 +25,8 @@ alertsDict = {
 	'type_cross' : 'null',
 	'suggest_prbc' : 'null',
 	'suggest_mtp' : 'null'
-
 }
+
 # Create your views here.
 def home(request):
 	return render(request, 'decision/home.html')
@@ -129,7 +129,7 @@ def checkAlerts(request):
 
 	if (time >= 10):
 
-		if(pivCount == '0' and centrLine == "no" and intrLine == "no"):
+		if(pivCount == "0" and centrLine == "no" and intrLine == "no"):
 			alertsDict['no_iv'] = 'true'
 
 		else:

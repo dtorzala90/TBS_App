@@ -10,7 +10,7 @@ class Session(models.Model):
 
 	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
 	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")
-	Oxygen_Supplementation_Stoppe = models.CharField(max_length=20, default="null")
+	Oxygen_Supplementation_Stopped = models.CharField(max_length=20, default="null")
 
 	Bag_Mask_Initiated = models.CharField(max_length=20, default="null")
 	Bag_Mask_Stopped = models.CharField(max_length=20, default="null")
