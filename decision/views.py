@@ -143,7 +143,7 @@ def checkAlerts(request):
 	##Breathing Alerts
 	ettInit = dbTable.__getattribute__('ETT_Initiated')
 	rightChest = dbTable.__getattribute__('Right_Chest')
-	leftChest = dbTable.__getattribute__('left_Chest')
+	leftChest = dbTable.__getattribute__('Left_Chest')
 
 	#Chest Sounds
 	if(rightChest == 'no'):
