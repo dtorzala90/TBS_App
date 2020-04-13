@@ -476,13 +476,13 @@ function checkAlertsLocal(ajaxData){
     var prbcAlert = localStorage.getItem('PRBC Alert');
     var mtpAlert = localStorage.getItem('MTP Alert');
 
-    if(prbcAlert === 'not thrown'){
+    if(prbcAlert === 'not thrown' || prbcAlert === "dismissed"){
         if(ajaxData.suggest_prbc === 'true'){
               localStorage.setItem("PRBC Alert", "thrown");
               $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='prbc-alert'>\n" +
                 "                  <strong>Consider Transfusion of PRBC!</strong>\n" +
-                "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"PRBC Alert\", \"dismissed\"))'" +
+                "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"PRBC Alert\", \"closed\"))'" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -500,13 +500,13 @@ function checkAlertsLocal(ajaxData){
         }
     }
 
-    if(mtpAlert === 'not thrown'){
+    if(mtpAlert === 'not thrown' || mtpAlert === "dismissed"){
         if(ajaxData.suggest_mtp === 'true'){
             localStorage.setItem("MTP Alert", "thrown");
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
                 "                  <strong>Consider Massive Transfusion Protocol!</strong>\n" +
-                "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"MTP Alert\", \"dismissed\"))'" +
+                "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\"))'" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -520,7 +520,7 @@ function checkAlertsLocal(ajaxData){
     else if(mtpAlert === 'thrown'){
         if(ajaxData.suggest_mtp === 'false'){
             localStorage.setItem("MTP Alert", "dismissed");
-            $('#prbc-alert').remove();
+            $('#mtp-alert').remove();
         }
     }
 }

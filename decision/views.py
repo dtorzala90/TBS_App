@@ -264,22 +264,36 @@ def checkAlerts(request):
 	mtpStatus = dbTable.__getattribute__('Massive_Transfusion')
 	prbcStatus = dbTable.__getattribute__('Transfused_PRBC')
 
-	if(mtpStatus != 'yes' and alertsDict['suggest_mtp'] != 'false'):
-		if(bp != "null" and shock != "null" and hr != "null"):
-			if(bp < 90 or shock > 1.2 or hr > 180):
-				alertsDict['suggest_mtp'] = 'true'
-			else:
-				alertsDict['suggest_mtp'] = 'false'
+	if(mtpStatus == 'no'):
+		if (bp != "null" and int(bp) < 90):
+			alertsDict['suggest_mtp'] = 'true'
+
+		elif (shock != "null" and float(shock) > 1.2):
+			alertsDict['suggest_mtp'] = 'true'
+
+		elif (hr != "null" and int(hr) > 180):
+			alertsDict['suggest_mtp'] = 'true'
+
 		else:
 			alertsDict['suggest_mtp'] = 'false'
 
-	if(prbcStatus != 'yes' and alertsDict['suggest_prbc'] != 'false'):
-		if(bp != "null" and shock != "null" and hr != "null"):
-			if(bp < 90 or shock > 1.2 or hr > 180):
+	elif(mtpStatus == "yes"):
+		alertsDict['suggest_mtp'] = 'false'
+
+	if(prbcStatus == 'no'):
+		if(bp != "null" and int(bp) < 90 ):
+			alertsDict['suggest_prbc'] = 'true'
+
+		elif(shock != "null" and float(shock) > 1.2):
 				alertsDict['suggest_prbc'] = 'true'
-			else:
-				alertsDict['suggest_prbc'] = 'false'
+
+		elif(hr != "null" and int(hr) > 180):
+			alertsDict['suggest_prbc'] = 'true'
+
 		else:
 			alertsDict['suggest_prbc'] = 'false'
+
+	elif (prbcStatus == "yes"):
+		alertsDict['suggest_prbc'] = 'false'
 
 	return JsonResponse(alertsDict)
