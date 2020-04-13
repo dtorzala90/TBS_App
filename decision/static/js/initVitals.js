@@ -12,6 +12,10 @@ async function recordHR(){
 
     var hr = await readHr();
 
+    if(hr == NaN){
+            return;
+    }
+    ß
     updateVitals("HR", hr.toString(10));
     localStorage.setItem("HR_prev", hr.toString(10));
 
@@ -35,6 +39,9 @@ async function recordBP(){
 
         var bp = await readBp();
 
+        if(bp == NaN){
+            return;
+        }
         updateVitals("BP", bp.toString(10));
         localStorage.setItem("BP_prev", bp.toString(10));
 
@@ -57,6 +64,10 @@ async function recordEtco2(){
     etco2time = createTimeStamp();
 
     var etco2 = await readEtco2();
+
+    if(etco2 == NaN){
+            return;
+    }
 
     updateVitals("ETCO2", etco2.toString(10));
     var etco2Display = etco2 + " at ";
@@ -136,6 +147,7 @@ function readEtco2(){
         setTimeout(function(){
             resolve(parseInt(etco2Text.value));
             }, 1000);
+
     })
 }
 

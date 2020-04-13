@@ -25,6 +25,7 @@ function checkAlertsLocal(ajaxData){
     var noEtco2Alert = localStorage.getItem('Record ETCO2 Alert');
     var noIvAlert = localStorage.getItem('Alert No IV');
 
+    console.log(ajaxData.no_etco2_recorded);
     if(noEtco2Alert === "not thrown"){
         if(ajaxData.no_etco2_recorded === "true"){
             localStorage.setItem("Record ETCO2 Alert", "thrown");
@@ -156,7 +157,7 @@ function checkAlertsLocal(ajaxData){
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='left-chest-alert'>\n" +
                 "                  <strong>Check ETT Depth; Consider Left Chest Tube!</strong>\n" +
                 "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Right Breathing Alert\", \"dismissed\")'" +
-                    "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                 "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -187,7 +188,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Check Airway Placement!</strong>\n" +
-                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -202,7 +202,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "               <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                 <strong>ETCO<sub>2</sub> is very low. Confirm pulse!</strong>\n" +
-                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -217,7 +216,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Decrease Ventilation Rate!</strong>\n" +
-                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -232,7 +230,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>ETCO<sub>2</sub> and GCS lower than 13!</strong>\n" +
-                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -247,7 +244,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Increase Ventilation Rate!</strong>\n" +
-                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");

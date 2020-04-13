@@ -100,8 +100,8 @@ def checkAlerts(request):
 	if (time >= 12 and alertsDict['no_etco2_recorded'] != 'false'):
 		if(etco2 == "null"):
 			alertsDict['no_etco2_recorded'] = 'true'
-	else:
-		alertsDict['no_etco2_recorded'] = 'false'
+		else:
+			alertsDict['no_etco2_recorded'] = 'false'
 
 	pivCount = dbTable.__getattribute__('PIV_Count')
 	centrLine = dbTable.__getattribute__('Central_Line')
@@ -185,7 +185,7 @@ def checkAlerts(request):
 			alertsDict['shock_elevated'] = 'false'
 
 	#Etco2 Alert
-	if (etco2 != 'null'):
+	if (etco2 != "null"):
 		alertsDict['no_etco2_recorded'] = 'false'
 		etco2Int = int(etco2)
 		if(etco2Int == 0):
@@ -253,8 +253,8 @@ def checkAlerts(request):
 				alertsDict['suggest_mtp'] = 'true'
 			else:
 				alertsDict['suggest_mtp'] = 'false'
-	else:
-		alertsDict['suggest_mtp'] = 'false'
+		else:
+			alertsDict['suggest_mtp'] = 'false'
 
 	if(prbcStatus != 'yes' and alertsDict['suggest_prbc'] != 'false'):
 		if(bp != "null" and shock != "null" and hr != "null"):
@@ -262,7 +262,7 @@ def checkAlerts(request):
 				alertsDict['suggest_prbc'] = 'true'
 			else:
 				alertsDict['suggest_prbc'] = 'false'
-	else:
-		alertsDict['suggest_prbc'] = 'false'
+		else:
+			alertsDict['suggest_prbc'] = 'false'
 
 	return JsonResponse(alertsDict)
