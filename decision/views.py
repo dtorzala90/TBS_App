@@ -97,7 +97,7 @@ def checkAlerts(request):
 	gcs = dbTable.__getattribute__('GCS')
 
 	##Time Based Alerts
-	if (time >= 12 and alertsDict['no_etco2_recorded'] != 'false'):
+	if (time >= 120 and alertsDict['no_etco2_recorded'] != 'false'):
 		if(etco2 == "null"):
 			alertsDict['no_etco2_recorded'] = 'true'
 		else:
@@ -107,7 +107,7 @@ def checkAlerts(request):
 	centrLine = dbTable.__getattribute__('Central_Line')
 	intrLine = dbTable.__getattribute__('Intraosseous_Line')
 
-	if (time >= 20 and alertsDict['no_iv'] != 'false'):
+	if (time >= 300 and alertsDict['no_iv'] != 'false'):
 
 		if(pivCount == "0" and centrLine == "no" and intrLine == "no"):
 			alertsDict['no_iv'] = 'true'
@@ -221,7 +221,7 @@ def checkAlerts(request):
 	if(pivCount == "1" and centrLine == "no" and intrLine == "no"):
 		alertsDict['additional_piv'] = 'true'
 
-	else:
+	elif(pivCount == "2" or pivCount == ">2" or centrLine == 'yes' or intrLine == "yes"):
 		alertsDict['additional_piv'] = 'false'
 
 	#IV Fluids
