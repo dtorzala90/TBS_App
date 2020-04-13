@@ -19,7 +19,7 @@ alertsDict = {
 	'heart_rate': 'null',
 	'shock_elevated': 'false',
 	'hypotensive': 'false',
-	'poor perfusion' : 'false',
+	'poor_perfusion' : 'false',
 	'fluids_given' : 'null',
 	'excess_fluids' : 'null',
 	'type_cross' : 'null',
