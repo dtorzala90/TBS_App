@@ -97,7 +97,7 @@ function checkAlertsLocal(ajaxData){
     }
 
     if(ettEtco2Alert === 'not thrown'){
-        if(ajaxData.ett_no_etco2 === 'true'){
+        if(ajaxData.ett_before_etco2 === 'true'){
             localStorage.setItem("ETT ETCO2 Alert", "thrown");
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='ett-etco2-alert'>\n" +
@@ -108,13 +108,13 @@ function checkAlertsLocal(ajaxData){
                 "                  </button>\n" +
                 "                </div>");
         }
-        if(ajaxData.ett_no_etco2 === 'false'){
+        if(ajaxData.ett_before_etco2 === 'false'){
              localStorage.setItem("ETT ETCO2 Alert", "dismissed");
         }
     }
 
     else if(ettEtco2Alert === 'thrown'){
-        if(ajaxData.ett_no_etco2 === 'false'){
+        if(ajaxData.ett_before_etco2 === 'false'){
              localStorage.setItem("ETT ETCO2 Alert", "dismissed");
              $('#ett-etco2-alert').remove();
         }

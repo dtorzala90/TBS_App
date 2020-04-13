@@ -12,7 +12,7 @@ alertsDict = {
 	'no_etco2_recorded': 'null',
 	'additional_piv': 'null',
 	'ett_before_gcs': 'null',
-	'ett_no_etco2': 'null',
+	'ett_before_etco2': 'null',
 	'right_chest': 'null',
 	'left_chest': 'null',
 	'etco2_value': 'null',
