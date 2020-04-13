@@ -46,9 +46,6 @@ function checkAlertsLocal(ajaxData){
         }
     }
 
-    console.log(ajaxData.no_iv);
-    console.log(noIvAlert);
-
     if(noIvAlert === "not thrown"){
         if(ajaxData.no_iv === 'true'){
             localStorage.setItem('Alert No IV', "thrown");

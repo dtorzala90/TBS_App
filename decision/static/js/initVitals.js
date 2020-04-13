@@ -1,74 +1,67 @@
 //Set up HR and BP text fields
-var hrText = document.getElementById("hr");
-var bpText = document.getElementById("bp");
-var etco2Text = document.getElementById("etco2");
+var hrText = document.getElementById("hrText");
+var bpText = document.getElementById("bpText");
+var etco2Text = document.getElementById("etco2Text");
 
 hrText.oninput = recordHR;
 bpText.oninput = recordBP;
 etco2Text.oninput = recordEtco2;
 
-var timeStamp = "";
-function recordHR(){
-    setTimeout(function(){
+async function recordHR(){
+    createTimeStamp();
+
+    var hr = await readHr();
+
+    updateVitals("HR", hr.toString(10));
+    localStorage.setItem("HR_prev", hr.toString(10));
+
+    var hrDisplay = hr + " at ";
+    //updateVitals("HR_History", hrDisplay + timeStamp);
+    localStorage.setItem("HR_display", hrDisplay + timeStamp);
+
+    //Because the HR was updated we must update the Shock Index as well
+    var bp = localStorage.getItem('BP_prev');
+    if(bp !== "null" && hr !== null){
+        var newShock = hr/(parseInt(bp,10)).toFixed(2);
+        var shockDisplay = newShock + " at ";
+        updateVitals("Shock_Level", newShock.toString(10));
+        localStorage.setItem("Shock_display", shockDisplay + timeStamp);
+        //updateVitals("Shock_History", shockDisplay + timeStamp);
+    }
+}
+
+async function recordBP(){
         createTimeStamp();
 
-        var hr = parseInt(hrText.value, 10);
-        updateVitals("HR", hr.toString(10));
-        localStorage.setItem("HR_prev", hr.toString(10));
+        var bp = await readBp();
 
-        var hrDisplay = hr + " at ";
-        updateVitals("HR_History", hrDisplay + timeStamp);
-        localStorage.setItem("HR_display", hrDisplay + timeStamp);
+        updateVitals("BP", bp.toString(10));
+        localStorage.setItem("BP_prev", bp.toString(10));
 
-        //Because the HR was updated we must update the Shock Index as well
-        var bp = localStorage.getItem('BP_prev');
-        if(bp !== "null" && hr !== null){
-            var newShock = hr/(parseInt(bp,10)).toFixed(2);
+        var bpDisplay = bp + " at ";
+        //updateVitals("BP_History", bpDisplay + timeStamp);
+        localStorage.setItem("BP_display", bpDisplay + timeStamp);
+
+        //Because the BP  was updated we must update the Shock Index as well
+        var hr = localStorage.getItem('HR_prev');
+        if(hr !== "null" && bp !== null){
+            var newShock = ((parseInt(hr,10))/bp).toFixed(2);
             var shockDisplay = newShock + " at ";
             updateVitals("Shock_Level", newShock.toString(10));
             localStorage.setItem("Shock_display", shockDisplay + timeStamp);
-            updateVitals("Shock_History", shockDisplay + timeStamp);
+            //updateVitals("Shock_History", shockDisplay + timeStamp);
         }
-
-    }, 1000);
 }
 
-function recordBP(){
-        createTimeStamp();
+async function recordEtco2(){
+    etco2time = createTimeStamp();
 
-        setTimeout(function(){
-            var bp = parseInt(bpText.value);
-            updateVitals("BP", bp.toString(10));
-            localStorage.setItem("BP_prev", bp.toString(10));
+    var etco2 = await readEtco2();
 
-            var bpDisplay = bp + " at ";
-            updateVitals("BP_History", bpDisplay + timeStamp);
-            localStorage.setItem("BP_display", bpDisplay + timeStamp);
-
-            //Because the BP  was updated we must update the Shock Index as well
-            var hr = localStorage.getItem('HR_prev');
-            if(hr !== "null" && bp !== null){
-                var newShock = ((parseInt(hr,10))/bp).toFixed(2);
-                var shockDisplay = newShock + " at ";
-                updateVitals("Shock_Level", newShock.toString(10));
-                localStorage.setItem("Shock_display", shockDisplay + timeStamp);
-                updateVitals("Shock_History", shockDisplay + timeStamp);
-            }
-
-        }, 1000);
-}
-
-function recordEtco2(value){
-    createTimeStamp();
-
-    setTimeout(function(){
-        var etco2 = parseInt(etco2Text.value);
-        updateVitals("ETCO2", etco2.toString(10));
-
-        var etco2Display = etco2 + " at ";
-        updateVitals("ETCO2_History", etco2Display + timeStamp);
-        localStorage.setItem("ETCO2_Display", etco2Display + timeStamp);
-        }, 1000);
+    updateVitals("ETCO2", etco2.toString(10));
+    var etco2Display = etco2 + " at ";
+    //updateVitals("ETCO2_History", etco2Display + timeStamp);
+    localStorage.setItem("ETCO2_Display", etco2Display + timeStamp);
 }
 
 
@@ -98,7 +91,7 @@ function recordGCS(type, value){
         var gcs = parseInt(gcs_motor,10) + parseInt(gcs_verbal, 10) + parseInt(gcs_eye, 10);
         var gcsDisplay = gcs + " at ";
 
-        updateVitals("GCS_History", gcsDisplay + timeStamp);
+        //updateVitals("GCS_History", gcsDisplay + timeStamp);
         localStorage.setItem("GCS_Display", gcsDisplay + timeStamp);
     }
 }
@@ -123,6 +116,7 @@ function createTimeStamp(){
     timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
 }
 function updateVitals(key, value){
+
     $.ajax({
         type:"POST",
         url: '/setItem/',
@@ -135,4 +129,28 @@ function updateVitals(key, value){
 
         }
     });
+}
+
+function readEtco2(){
+    return new Promise (resolve => {
+        setTimeout(function(){
+            resolve(parseInt(etco2Text.value));
+            }, 1000);
+    })
+}
+
+function readHr(){
+     return new Promise (resolve => {
+        setTimeout(function(){
+            resolve(parseInt(hrText.value));
+            }, 1000);
+    })
+}
+
+function readBp(){
+     return new Promise (resolve => {
+        setTimeout(function(){
+            resolve(parseInt(bpText.value));
+            }, 1000);
+    })
 }

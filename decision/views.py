@@ -116,7 +116,7 @@ def checkAlerts(request):
 		gcs = "null"
 
 	##Time Based Alerts
-	if (time >= 2):
+	if (time >= 12):
 		etco2 = dbTable.__getattribute__('ETCO2')
 		if(etco2 == "null"):
 			alertsDict['no_etco2_recorded'] = 'true'
@@ -127,7 +127,7 @@ def checkAlerts(request):
 	centrLine = dbTable.__getattribute__('Central_Line')
 	intrLine = dbTable.__getattribute__('Intraosseous_Line')
 
-	if (time >= 10):
+	if (time >= 20):
 
 		if(pivCount == "0" and centrLine == "no" and intrLine == "no"):
 			alertsDict['no_iv'] = 'true'
