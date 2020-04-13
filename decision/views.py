@@ -89,35 +89,15 @@ def checkAlerts(request):
 	dbTable = Session.objects.get(id="99")
 	time = int(request.GET.get('time', None))
 
-	#make sure all number values are actually integers. If not, assign null value
-	try:
-		hr = int(dbTable.__getattribute__('HR'))
-	except ValueError:
-		hr = "null"
-	try:
-		bp = int(dbTable.__getattribute__('BP'))
-	except ValueError:
-		bp = "null"
-	try:
-		shock = float(dbTable.__getattribute__('Shock_Level'))
-	except ValueError:
-		shock = "null"
-	try:
-		age = int(dbTable.__getattribute__('Patient_Age'))
-	except ValueError:
-		age = "null"
-	try:
-		etco2 = int(dbTable.__getattribute__('ETCO2'))
-	except ValueError:
-		etco2 = "null"
-	try:
-		gcs = int(dbTable.__getattribute__('GCS'))
-	except ValueError:
-		gcs = "null"
+	hr = dbTable.__getattribute__('HR')
+	bp = dbTable.__getattribute__('BP')
+	shock = dbTable.__getattribute__('Shock_Level')
+	age = dbTable.__getattribute__('Patient_Age')
+	etco2 = dbTable.__getattribute__('ETCO2')
+	gcs = dbTable.__getattribute__('GCS')
 
 	##Time Based Alerts
-	if (time >= 12):
-		etco2 = dbTable.__getattribute__('ETCO2')
+	if (time >= 12 and alertsDict['no_etco2_recorded'] != 'false'):
 		if(etco2 == "null"):
 			alertsDict['no_etco2_recorded'] = 'true'
 	else:
@@ -127,7 +107,7 @@ def checkAlerts(request):
 	centrLine = dbTable.__getattribute__('Central_Line')
 	intrLine = dbTable.__getattribute__('Intraosseous_Line')
 
-	if (time >= 20):
+	if (time >= 20 and alertsDict['no_iv'] != 'false'):
 
 		if(pivCount == "0" and centrLine == "no" and intrLine == "no"):
 			alertsDict['no_iv'] = 'true'
@@ -157,12 +137,13 @@ def checkAlerts(request):
 		alertsDict['left_chest'] = 'false'
 
 	#Intubation Alerts
-	if(ettInit != 'null'):
+	if(ettInit != 'null' and alertsDict['ett_before_gcs'] != 'false'):
 		if(gcs == 'null'):
 			alertsDict['ett_before_gcs'] = 'true'
 		else:
 			alertsDict['ett_before_gcs'] = 'false'
 
+	if (ettInit != 'null' and alertsDict['ett_before_etco2'] != 'false'):
 		if(etco2 == 'null'):
 			alertsDict['ett_no_etco2'] = 'true'
 		else:
@@ -172,42 +153,48 @@ def checkAlerts(request):
 
 	#Brady/Tachycardia
 	if(hr != "null"):
-		if(hr < 60):
+		hrInt = int(hr)
+		if(hrInt < 60):
 			alertsDict['heart_rate'] = 'bradycardia'
-		elif(hr  > 100):
+		elif(hrInt  > 100):
 			alertsDict['heart_rate'] = 'tachycardia'
 		else:
 			alertsDict['heart_rate'] = 'null'
 
 	#Hypotension
 	if(bp != "null"):
+		bpint = int(bp)
 		if (age != "null"):
-			if(bp < (55 + (2*age))):
+			ageInt = int(age)
+			if(bpint < (55 + (2*ageInt))):
 				alertsDict['hypotensive'] = 'true'
 			else:
 				alertsDict['hypotensive'] = 'false'
 		else:
-			if(bp < (55)):
+			if(bpint < (55)):
 				alertsDict['hypotensive'] = 'true'
 			else:
 				alertsDict['hypotensive'] = 'false'
 
 	#Elevated shock
 	if(shock != "null"):
-		if(shock > 1.0):
+		shockFloat = float(shock)
+		if(shockFloat > 1.0):
 			alertsDict['shock_elevated'] = 'true'
 		else:
 			alertsDict['shock_elevated'] = 'false'
 
 	#Etco2 Alert
 	if (etco2 != 'null'):
-		if(etco2 == 0):
+		alertsDict['no_etco2_recorded'] = 'false'
+		etco2Int = int(etco2)
+		if(etco2Int == 0):
 			alertsDict['etco2_value'] = 'no measurement'
-		elif(etco2 < 25 ):
+		elif(etco2Int < 25 ):
 			alertsDict['etco2_value'] = '<25'
-		elif(etco2 >= 25 and etco2 <= 30):
+		elif(etco2Int >= 25 and etco2Int <= 30):
 			alertsDict['etco2_value'] = '25-30'
-		elif (etco2 >= 40 and etco2 <= 50 ):
+		elif (etco2Int >= 40 and etco2Int <= 50 ):
 			if(gcs != "null" and gcs < 13):
 				alertsDict['etco2_value'] = '40-50'
 		elif(etco2 > 50):
@@ -260,7 +247,7 @@ def checkAlerts(request):
 	mtpStatus = dbTable.__getattribute__('Massive_Transfusion')
 	prbcStatus = dbTable.__getattribute__('Transfused_PRBC')
 
-	if(mtpStatus != 'yes'):
+	if(mtpStatus != 'yes' and alertsDict['suggest_mtp'] != 'false'):
 		if(bp != "null" and shock != "null" and hr != "null"):
 			if(bp < 90 or shock > 1.2 or hr > 180):
 				alertsDict['suggest_mtp'] = 'true'
@@ -269,7 +256,7 @@ def checkAlerts(request):
 	else:
 		alertsDict['suggest_mtp'] = 'false'
 
-	if(prbcStatus != 'yes'):
+	if(prbcStatus != 'yes' and alertsDict['suggest_prbc'] != 'false'):
 		if(bp != "null" and shock != "null" and hr != "null"):
 			if(bp < 90 or shock > 1.2 or hr > 180):
 				alertsDict['suggest_prbc'] = 'true'

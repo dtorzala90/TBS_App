@@ -181,87 +181,76 @@ function checkAlertsLocal(ajaxData){
         if(ajaxData.etco2_value === 'no measurement') {
             localStorage.setItem("ETCO2 Value Alert", "No Measurement");
             if(etco2ValAlert !== 'null') {
-                $('#etco2-value-alert').text('Check Airway Placement');
+                $('#etco2-value-alert').remove();
             }
 
-            else{
-                 $('#alert_placeholder').append(
-                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                    "                  <strong>Check Airway Placement!</strong>\n" +
-                        "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                    "                  </button>\n" +
-                    "                </div>");
-            }
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                "                  <strong>Check Airway Placement!</strong>\n" +
+                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
         }
 
         else if(ajaxData.etco2_value === '<25') {
             localStorage.setItem("ETCO2 Value Alert", "<25");
             if(etco2ValAlert !== 'null'){
-                $('#etco2-value-alert').text('ETCO<sub>2</sub> is very low. Confirm pulse!');
+                $('#etco2-value-alert').remove();
             }
 
-            else{
-                 $('#alert_placeholder').append(
-                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                    "                  <strong>ETCO<sub>2</sub> is very low. Confirm pulse!</strong>\n" +
-                        "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                    "                  </button>\n" +
-                    "                </div>");
-            }
+            $('#alert_placeholder').append(
+                "               <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                "                 <strong>ETCO<sub>2</sub> is very low. Confirm pulse!</strong>\n" +
+                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
         }
 
         else if(ajaxData.etco2_value === '25-30') {
             localStorage.setItem("ETCO2 Value Alert", "25-30");
             if(etco2ValAlert !== 'null'){
-                $('#etco2-value-alert').text('Decrease Ventilation Rate!');
+                $('#etco2-value-alert').remove();
             }
 
-            else{
-                 $('#alert_placeholder').append(
-                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                    "                  <strong>Decrease Ventilation Rate!</strong>\n" +
-                        "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                    "                  </button>\n" +
-                    "                </div>");
-            }
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                "                  <strong>Decrease Ventilation Rate!</strong>\n" +
+                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
         }
 
         else if(ajaxData.etco2_value === '40-50') {
             localStorage.setItem("ETCO2 Value Alert", "40-50");
             if(etco2ValAlert !== 'null'){
-                $('#etco2-value-alert').text('ETCO<sub>2</sub> and GCS lower than 13!');
+                $('#etco2-value-alert').remove();
             }
 
-            else{
-                 $('#alert_placeholder').append(
-                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                    "                  <strong>ETCO<sub>2</sub> and GCS lower than 13!</strong>\n" +
-                        "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                    "                  </button>\n" +
-                    "                </div>");
-            }
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                "                  <strong>ETCO<sub>2</sub> and GCS lower than 13!</strong>\n" +
+                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
         }
 
         else{
             localStorage.setItem("ETCO2 Value Alert", ">50");
             if(etco2ValAlert !== 'null'){
-                $('#etco2-value-alert').text('Increase Ventilation Rate!');
+                $('#etco2-value-alert').remove();
             }
 
-            else{
-                 $('#alert_placeholder').append(
-                    "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
-                    "                  <strong>Increase Ventilation Rate!</strong>\n" +
-                        "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                    "                  </button>\n" +
-                    "                </div>");
-            }
-
+            $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
+                "                  <strong>Increase Ventilation Rate!</strong>\n" +
+                "                            data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
         }
     }
 
