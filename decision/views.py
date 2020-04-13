@@ -186,7 +186,6 @@ def checkAlerts(request):
 
 	#Etco2 Alert
 	if (etco2 != "null"):
-		alertsDict['no_etco2_recorded'] = 'false'
 		etco2Int = int(etco2)
 		if(etco2Int == 0):
 			alertsDict['etco2_value'] = 'no measurement'
@@ -199,8 +198,8 @@ def checkAlerts(request):
 				alertsDict['etco2_value'] = '40-50'
 		elif(etco2 > 50):
 			alertsDict['etco2_value'] = '>50'
-		else:
-			alertsDict['etco2_value'] = 'null'
+	else:
+		alertsDict['etco2_value'] = 'null'
 	##Circulation Alerts
 	ivFluids = dbTable.__getattribute__('IV_Fluid_Amount')
 

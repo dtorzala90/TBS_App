@@ -12,10 +12,14 @@ async function recordHR(){
 
     var hr = await readHr();
 
-    if(hr == NaN){
-            return;
+    if(isNaN(hr)){
+         updateVitals("HR", "null");
+         localStorage.setItem("HR_Display", ' ');
+         updateVitals("Shock_Level", "null");
+         localStorage.setItem("Shock_display", " ");
+         return;
     }
-    ß
+
     updateVitals("HR", hr.toString(10));
     localStorage.setItem("HR_prev", hr.toString(10));
 
@@ -39,9 +43,14 @@ async function recordBP(){
 
         var bp = await readBp();
 
-        if(bp == NaN){
-            return;
+        if(isNaN(bp)){
+             updateVitals("BP", "null");
+             localStorage.setItem("BP_Display", ' ');
+             updateVitals("Shock_Level", "null");
+             localStorage.setItem("Shock_display", " ");
+             return;
         }
+
         updateVitals("BP", bp.toString(10));
         localStorage.setItem("BP_prev", bp.toString(10));
 
@@ -65,8 +74,10 @@ async function recordEtco2(){
 
     var etco2 = await readEtco2();
 
-    if(etco2 == NaN){
-            return;
+    if(isNaN(etco2)){
+         updateVitals("ETCO2", "null");
+         localStorage.setItem("ETCO2_Display", ' ');
+         return;
     }
 
     updateVitals("ETCO2", etco2.toString(10));

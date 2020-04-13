@@ -25,7 +25,6 @@ function checkAlertsLocal(ajaxData){
     var noEtco2Alert = localStorage.getItem('Record ETCO2 Alert');
     var noIvAlert = localStorage.getItem('Alert No IV');
 
-    console.log(ajaxData.no_etco2_recorded);
     if(noEtco2Alert === "not thrown"){
         if(ajaxData.no_etco2_recorded === "true"){
             localStorage.setItem("Record ETCO2 Alert", "thrown");
@@ -202,8 +201,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "               <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                 <strong>ETCO<sub>2</sub> is very low. Confirm pulse!</strong>\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
                 "                </div>");
         }
 
@@ -216,8 +213,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Decrease Ventilation Rate!</strong>\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
                 "                </div>");
         }
 
@@ -230,8 +225,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>ETCO<sub>2</sub> and GCS lower than 13!</strong>\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
                 "                </div>");
         }
 
@@ -244,14 +237,12 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='etco2-value-alert'>\n" +
                 "                  <strong>Increase Ventilation Rate!</strong>\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
                 "                </div>");
         }
     }
 
     else{
-        if(etco2ValAlert === 'thrown'){
+        if(etco2ValAlert !== 'null'){
              localStorage.setItem("ETCO2 Value Alert", "null");
              $('#etco2-value-alert').remove();
         }
@@ -270,8 +261,6 @@ function checkAlertsLocal(ajaxData){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
             "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
-            "                    <span aria-hidden=\"true\">&times;</span>\n" +
-            "                  </button>\n" +
             "                </div>");
         localStorage.setItem("HR Alert", "Bradycardia");
     }
@@ -283,8 +272,6 @@ function checkAlertsLocal(ajaxData){
         $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tachy-alert'>\n" +
             "                  <strong>TachyCardia:  Consider cause!</strong>\n" +
-            "                    <span aria-hidden=\"true\">&times;</span>\n" +
-            "                  </button>\n" +
             "                </div>");
         localStorage.setItem("HR Alert", "Tachycardia");
     }
@@ -304,8 +291,6 @@ function checkAlertsLocal(ajaxData){
                 $('#alert_placeholder').append(
                     "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='hypo-alert'>\n" +
                     "                  <strong>Hypotensive!</strong>\n" +
-                    "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                    "                  </button>\n" +
                     "                </div>");
                 localStorage.setItem("Hypotensive Alert", "thrown");
         }
@@ -323,8 +308,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='shock-alert'>\n" +
                 "                  <strong>Elevated shock index!</strong>\n" +
-                "                    <span aria-hidden=\"true\">&times;</span>\n" +
-                "                  </button>\n" +
                 "                </div>");
             localStorage.setItem("Shock Alert", "thrown");
         }
@@ -427,8 +410,6 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='poor-perfusion-alert'>\n" +
             "                  <strong>Patient has poor perfusion.</strong>\n" +
-            "                    <span aria-hidden=\"true\">&times;</span>\n" +
-            "                  </button>\n" +
             "                </div>");
         }
     }
