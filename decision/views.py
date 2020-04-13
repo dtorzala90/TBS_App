@@ -22,6 +22,7 @@ alertsDict = {
 	'poor_perfusion' : 'false',
 	'fluids_given' : 'null',
 	'excess_fluids' : 'null',
+	'consider_bolus' : 'null',
 	'type_cross' : 'null',
 	'suggest_prbc' : 'null',
 	'suggest_mtp' : 'null'
@@ -229,14 +230,15 @@ def checkAlerts(request):
 	#IV Fluids
 	if(ivFluids == "<20mL/kg"):
 		alertsDict['fluids_given'] = 'true'
+		alertsDict['consider_bolus'] = 'false'
 
 	elif(ivFluids == ">20mL/kg"):
 		alertsDict['fluids_given'] = 'false'
 		alertsDict['excess_fluids'] = 'true'
+		alertsDict['consider_bolus'] = 'false'
 
-	else:
-		alertsDict['fluids_given'] = 'null'
-		alertsDict['excess_fluids'] = 'null'
+	elif(ivFluids == "None"):
+		alertsDict['consider_bolus'] = 'true'
 
 	#Perfusion Alerts
 	nailColor = dbTable.__getattribute__('Nail_Color')

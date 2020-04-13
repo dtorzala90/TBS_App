@@ -320,8 +320,9 @@ function checkAlertsLocal(ajaxData){
 
     //Check IV and IV fluid alerts
     var addlPivAlert = localStorage.getItem("Alert One PIV");
-    var fluidsGivenAlert = localStorage.getItem("Alert Fluids Given")
-    var excessFluidsAlert = localStorage.getItem("Alert Excess IVF")
+    var fluidsGivenAlert = localStorage.getItem("Alert Fluids Given");
+    var excessFluidsAlert = localStorage.getItem("Alert Excess IVF");
+    var bolusAlert = localStorage.getItem("Alert Consider Bolus");
 
     if(addlPivAlert === 'not thrown'){
         if(ajaxData.additional_piv === 'true'){
@@ -368,7 +369,7 @@ function checkAlertsLocal(ajaxData){
 
     else if(fluidsGivenAlert === 'thrown'){
         if(ajaxData.fluids_given === 'false'){
-            localStorage.setItem("Alert Fluids Given", "thrown");
+            localStorage.setItem("Alert Fluids Given", "dismissed");
             $('#fluids-given-alert').remove();
         }
     }
@@ -395,6 +396,31 @@ function checkAlertsLocal(ajaxData){
         if(ajaxData.excess_fluids === 'false'){
             localStorage.setItem("Alert Excess IVF", "dismissed");
             $('#excess-fluids-alert').remove();
+        }
+    }
+
+    if(bolusAlert === 'not thrown'){
+        if(ajaxData.consider_bolus === 'true'){
+             localStorage.setItem("Alert Consider Bolus", "thrown");
+             $('#alert_placeholder').append(
+                "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='consider-bolus-alert'>\n" +
+                "                  <strong>Consider IVF bolus!</strong>\n" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\"))'" +
+                    "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "                    <span aria-hidden=\"true\">&times;</span>\n" +
+                "                  </button>\n" +
+                "                </div>");
+        }
+
+        else if(ajaxData.consider_bolus === 'false'){
+             localStorage.setItem("Alert Consider Bolus", "dismissed");
+        }
+    }
+
+    else if(bolusAlert === 'thrown'){
+        if(ajaxData.consider_bolus === 'false'){
+            localStorage.setItem("Alert Consider Bolus", "dismissed");
+            $('#consider-bolus-alert').remove();
         }
     }
 

@@ -38,6 +38,8 @@ localStorage.setItem("Poor Perfusion Alert", "not thrown");
 
 localStorage.setItem("Alert Fluids Given", "not thrown");
 localStorage.setItem("Alert Excess IVF", "not thrown");
+localStorage.setItem("Alert Consider Bolus", "not thrown");
+
 
 localStorage.setItem("Right Breathing Alert", "not thrown");
 
