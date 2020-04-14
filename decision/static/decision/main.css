@@ -121,8 +121,11 @@ Decision (survey) page [/decision/home.html]
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
     color: #39393B;
     font-size: 65px;
+    font-weight: 500;
+    line-height: 1.2;
     margin: 8px auto 2px; /*Auto margin for left/right to center div*/
-    width: 50%; /*Reduces div width to look nice*/
+    text-align: center;
+    width: 350px; /*Reduces div width to look nice*/
 }
 
 /* || Decision card container */
@@ -169,8 +172,8 @@ a:hover {
     overflow-y: hidden;
 }
 
-/*Resizes nav pill div*/
-.col-4 {
+/*Resizes nav pill div and adds styling*/
+.card-nav-pills {
     background: rgb(255, 255, 255);
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(230, 245, 244, 1) 25%, rgba(230, 245, 244, 1) 50%, rgba(230, 245, 244, 1) 75%, rgba(255, 255, 255, 1) 100%);
     border-right: 1.5px solid #2b7a78;
@@ -317,83 +320,57 @@ Summary page [/summary/main.html]
 .alert-format {
     align-content: center;
     font-size: 30px;
-    height: 80vh;
-    left: 0;
     overflow: auto;
-    position: fixed;
     text-align: center;
-    top: 15rem;
-    width: 60vw;
-    z-index: 1;
 }
 
 /*Adjusts the vitals div properties*/
 .vitals-format {
     align-content: center;
-    height: 50vh;
-    position: fixed;
-    right: 0;
     text-align: center;
-    top: 15rem;
-    width: 40vw;
-    z-index: 1;
 }
 
 /* || Information divs */
 
-/*Formats the div for displaying entered ABCD values*/
-.abcd-banner {
-    align-content: center;
-    bottom: 30px;
+/*Formats patient info card body*/
+.pi-body {
+    text-align: center;
+    padding: 20px 10px;
+    align-items: center;
+}
+
+.pi-col-divider {
+    border-left: 1.5px solid #2b7a78;
+    border-right: 1.5px solid #2b7a78;
+}
+
+.pi-header {
+    padding: 7.5px 20px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.alerts-scrollable {
+    overflow-y: auto;
+}
+
+.card-height {
     height: 50vh;
-    position: fixed;
-    right: 5px;
-    text-align: center;
-    top: 30rem;
-    width: 40vw;
-    z-index: 1;
 }
 
-/*Formats the pre-hospital div*/
-.ph-banner {
-    align-content: center;
-    display: inline-block;
-    left: 0;
-    margin-right: 10px;
-    position: fixed;
-    text-align: center;
-    top: 6rem;
-    width: 70%;
-    z-index: 0;
+.card-ul {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.card-li {
+    display: table-row;
 }
 
-.summary-container {
-    margin: 0; !important;
-    padding: 0; !important;
-}
-
-/*Adjust table styling, such as borders and cell fill for information divs*/
-.table > tbody > tr > td,
-.table > tbody > tr > th {
-    align-content: center;
-    background-color: rgba(0, 0, 0, 0);
-    border: 8px solid #2b7a78;
-    table-layout: auto;
+.card-a {
+    display: table-cell;
     vertical-align: middle;
-}
-
-.cell-size td {
-    height: 50%;
-}
-
-/*Patient age cell*/
-.td-age {
-    border-top: 4px solid #2b7a78 !important;
-}
-
-/*Patient weight cell*/
-.td-weight {
-    border-bottom: 4px solid #2b7a78 !important;
 }
 
 /* || Summary timer */
@@ -405,10 +382,12 @@ Summary page [/summary/main.html]
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
     color: #39393B;
-    margin: 0;
-    font-size: 65px;
+    font-size: 85px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 15px;
     text-align: center;
-    z-index: 1;
+    width: 450px; /*Reduces div width to look nice*/
 }
 
 /*
