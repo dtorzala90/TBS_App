@@ -124,6 +124,7 @@ Decision (survey) page [/decision/home.html]
     font-weight: 500;
     line-height: 1.2;
     margin: 8px auto 2px; /*Auto margin for left/right to center div*/
+    padding: 5px;
     text-align: center;
     width: 350px; /*Reduces div width to look nice*/
 }
@@ -316,7 +317,87 @@ Summary page [/summary/main.html]
     text-decoration-color: #edeae5;
 }
 
-/*Formats the text alerts on the summary page*/
+/* || Information divs general */
+
+/*Divides "rows" using borders in the ABCD card*/
+.abcd-card-item-divider {
+    border-bottom: 1.5px solid #2b7a78;
+}
+
+/*Allows each "row" in the ABCD and Vitals cards to be the same size*/
+.card-item {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+}
+
+/*Pads the text within each "row"*/
+.card-item-text {
+    padding: 10px 5px;
+}
+
+/*Adjusts the height and container display for the ABCD and Vitals cards*/
+.card-row-2-height {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column;
+    height: 57vh;
+}
+
+/*Formats the letter icons in the ABCD card*/
+.letter-icon {
+    background-color: #17252a;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+}
+
+/*Divides each section of the patient info card using borders*/
+.pi-col-divider {
+    border-left: 1.5px solid #2b7a78;
+    border-right: 1.5px solid #2b7a78;
+}
+
+/*Formats summary page card bodies*/
+.summary-card-body {
+    align-items: center;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+/*Formats the ABCD and Vitals card bodies*/
+.summary-card-body-2 {
+    align-items: center;
+    padding: 0px;
+    text-align: center;
+}
+
+/*Overrides default card headers for summary page use*/
+.summary-card-header {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 7.5px 20px;
+}
+
+/* || Alerts  card */
+
+/*Recolors the rest of the alerts card borders*/
+.alerts-card {
+    border: 4px solid #7A2B2D;
+}
+
+/*Sets height for alerts card (had to do this specifically due to bug)*/
+.alerts-card-height {
+    height: 57vh;
+}
+
+/*Formats the Bootstrap alerts on the summary page*/
 .alert-format {
     align-content: center;
     font-size: 30px;
@@ -324,53 +405,52 @@ Summary page [/summary/main.html]
     text-align: center;
 }
 
-/*Adjusts the vitals div properties*/
+/*Recolors the alerts card header*/
+.alerts-header {
+    background-color: #AF3A40;
+    border-bottom: 4px solid #7A2B2D;
+}
+
+/*Allows the alerts card to scroll vertically, removes horizontal scroll*/
+.alerts-scrollable {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* || Vitals card */
+
+/*Recolors the rest of the vitals card borders*/
+.vitals-card {
+    border: 4px solid #557A2B;
+}
+
+/*Divides "rows" using green borders in the vitals card*/
+.vitals-card-item-divider {
+    border-bottom: 1.5px solid #557A2B;
+}
+
+/*Adjusts the vitals text*/
 .vitals-format {
     align-content: center;
     text-align: center;
 }
 
-/* || Information divs */
-
-/*Formats patient info card body*/
-.pi-body {
-    text-align: center;
-    padding: 20px 10px;
-    align-items: center;
+/*Recolors the vitals card header*/
+.vitals-header {
+    background-color: #7aaf3a;
+    border-bottom: 4px solid #557A2B;
 }
 
-.pi-col-divider {
-    border-left: 1.5px solid #2b7a78;
-    border-right: 1.5px solid #2b7a78;
-}
-
-.pi-header {
-    padding: 7.5px 20px;
-    color: #ffffff;
+/*Formats the SVG icons in the vitals card*/
+.svg-icon {
+    background-color: #1C2A17;
+    color: white;
     font-weight: bold;
     font-size: 20px;
-}
-
-.alerts-scrollable {
-    overflow-y: auto;
-}
-
-.card-height {
-    height: 50vh;
-}
-
-.card-ul {
-    display: table;
-    width: 100%;
-    height: 100%;
-}
-.card-li {
-    display: table-row;
-}
-
-.card-a {
-    display: table-cell;
+    height: 40px;
+    padding: 7px;
     vertical-align: middle;
+    width: 40px;
 }
 
 /* || Summary timer */
@@ -382,10 +462,10 @@ Summary page [/summary/main.html]
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
     color: #39393B;
-    font-size: 85px;
+    font-size: 80px;
     font-weight: 500;
     line-height: 1.2;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     width: 450px; /*Reduces div width to look nice*/
 }
