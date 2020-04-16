@@ -10,7 +10,7 @@ class Session(models.Model):
 
 	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
 	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")
-	Oxygen_Supplementation_Stoppe = models.CharField(max_length=20, default="null")
+	Oxygen_Supplementation_Stopped = models.CharField(max_length=20, default="null")
 
 	Bag_Mask_Initiated = models.CharField(max_length=20, default="null")
 	Bag_Mask_Stopped = models.CharField(max_length=20, default="null")
@@ -42,13 +42,13 @@ class Session(models.Model):
 	Nail_Color = models.CharField(max_length=20, default="null")
 	Cap_Refill = models.CharField(max_length=20, default="null")
 	PIV_Count = models.CharField(max_length=20, default="0")
-	Central_Line = models.CharField(max_length=20, default="null")
-	Intraosseous_Line = models.CharField(max_length=20, default="null")
+	Central_Line = models.CharField(max_length=20, default="no")
+	Intraosseous_Line = models.CharField(max_length=20, default="no")
 
-	IV_Fluid_Amount = models.CharField(max_length=20, default="null")
+	IV_Fluid_Amount = models.CharField(max_length=20, default="none")
 	Type_Cross = models.CharField(max_length=20, default="null")
-	Transfused_PRBC = models.CharField(max_length=20, default="null")
-	Massive_Transfusion = models.CharField(max_length=20, default="null")
+	Transfused_PRBC = models.CharField(max_length=20, default="no")
+	Massive_Transfusion = models.CharField(max_length=20, default="no")
 
 	#Disability Data
 	Pupils_Equal = models.CharField(max_length=20, default="null")
@@ -58,10 +58,10 @@ class Session(models.Model):
 	Pupil_Size_Left = models.CharField(max_length=20, default="null")
 
 	Moves_Extremities = models.CharField(max_length=20, default="null")
-	#Vitals
-	ETCO2 = models.CharField(max_length=20, default="not recorded")# localStorage.setItem("ETCO2", "not recorded");
 
-	# GCS<13 = models.BooleanField()# localStorage.setItem("GCS<13", "false");
+	#Vitals
+	ETCO2 = models.CharField(max_length=20, default="null")
+
 	GCS = models.CharField(max_length=20, default="null")
 	GCS_Motor = models.CharField(max_length=20, default="null")
 	GCS_Verbal = models.CharField(max_length=20, default="null")

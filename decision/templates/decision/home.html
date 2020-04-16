@@ -325,10 +325,10 @@
                                             <p class="survey-p">Spontaneous Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="yes" onclick="setItemAjax('Spontaneous_Breathing','Yes')">Yes
+                                                        value="yes" onclick="setItemAjax('Spontaneous_Breathing','yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="no" onclick="setItemAjax('Spontaneous_Breathing','No')">No
+                                                        value="no" onclick="setItemAjax('Spontaneous_Breathing','no')">No
                                                 </button>
                                             </div>
 
@@ -341,11 +341,11 @@
                                             <p class="survey-p">Assisted Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="yes" onclick="setItemAjax('Assisted_Breathing','Yes')">
+                                                        value="yes" onclick="setItemAjax('Assisted_Breathing','yes')">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="no" onclick="setItemAjax('Assisted_Breathing','No')">
+                                                        value="no" onclick="setItemAjax('Assisted_Breathing','no')">
                                                     No
                                                 </button>
                                             </div>
@@ -361,12 +361,12 @@
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestyes"
                                                         value="yes"
-                                                        onclick="setItemAjax('Right_Chest','Yes')">Yes
+                                                        onclick="setItemAjax('Right_Chest','yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestno"
                                                         value="no"
-                                                        onclick="setItemAjax('Right_Chest','No')">No
+                                                        onclick="setItemAjax('Right_Chest','no')">No
                                                 </button>
                                             </div>
 
@@ -381,12 +381,12 @@
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestyes"
                                                         value="yes"
-                                                        onclick="setItemAjax('Left_Chest','Yes')">Yes
+                                                        onclick="setItemAjax('Left_Chest','yes')">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestno"
                                                         value="no"
-                                                        onclick="setItemAjax('left_Chest','No')">No
+                                                        onclick="setItemAjax('Left_Chest','no')">No
                                                 </button>
                                             </div>
 
@@ -398,8 +398,8 @@
 
                                             <p class="survey-p">End Tidal CO<sub>2</sub></p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <input class="form-control form-control-lg" type="text" id="etco2"
-                                                       name="etco2"
+                                                <input class="form-control form-control-lg" type="text" id="etco2Text"
+                                                       name="etco2Text"
                                                        value=""
                                                        placeholder=" ">
                                                 <br>
@@ -471,9 +471,8 @@
 
                                             <p class="survey-p">Heart Rate</p>
                                             <div class="form-group w-60">
-                                                <input class="form-control form-control-lg survey-fctrl" type="text"
-                                                       id="hr"
-                                                       name="hr"
+                                                <input class="form-control form-control-lg" type="text" id="hrText"
+                                                       name="hrText"
                                                        value=""
                                                        placeholder="BPM">
                                             </div>
@@ -486,9 +485,8 @@
 
                                             <p class="survey-p">Systolic Blood Pressure</p>
                                             <div class="form-group w-60">
-                                                <input class="form-control form-control-lg survey-fctrl" type="text"
-                                                       id="bp"
-                                                       name="bp"
+                                                <input class="form-control form-control-lg" type="text" id="bpText"
+                                                       name="bpText"
                                                        value=""
                                                        placeholder="mmHg">
                                                 <br>
@@ -504,14 +502,14 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
-                                                        value="pi" onclick="setItemAjax('Lip_Color','Pink')">Pink
+                                                        value="pi" onclick="setItemAjax('Lip_Color','pink')">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
-                                                        value="wh" onclick="setItemAjax('Lip_Color','White')">White
+                                                        value="wh" onclick="setItemAjax('Lip_Color','white')">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc"
                                                         id="lipc-unk"
-                                                        value="unk" onclick="setItemAjax('Lip_Color','Unable TO Assess')">Unable To
+                                                        value="unk" onclick="setItemAjax('Lip_Color','unable to assess')">Unable To
                                                     Assess
                                                 </button>
 
@@ -520,15 +518,15 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Nail Color:</span>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-pi"
-                                                        value="pi" onclick="setItemAjax('Nail_Color','Pink')">Pink
+                                                        value="pi" onclick="setItemAjax('Nail_Color','pink')">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-wh"
-                                                        value="wh" onclick="setItemAjax('Nail_Color','White')">White
+                                                        value="wh" onclick="setItemAjax('Nail_Color','white')">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-unk"
-                                                        value="unk" onclick="setItemAjax('Nail_Color','Unable To Assess')">Unable
+                                                        value="unk" onclick="setItemAjax('Nail_Color','unable to assess')">Unable
                                                     To Assess
                                                 </button>
 
@@ -574,21 +572,21 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Intraosseous Line:</span>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralYes"
-                                                        value="yes" onclick="setItemAjax('Intraosseous_Line','Yes')"> Yes
+                                                        value="yes" onclick="setItemAjax('Intraosseous_Line','yes')"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralNo"
-                                                        value="no" onclick="setItemAjax('Intraosseous_Line','No')">No
+                                                        value="no" onclick="setItemAjax('Intraosseous_Line','no')">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Central Line:</span>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
-                                                        value="yes" onclick="setItemAjax('Central_Line','Yes')"> Yes
+                                                        value="yes" onclick="setItemAjax('Central_Line','yes')"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
-                                                        value="no" onclick="setItemAjax('Central_Line','No')">No
+                                                        value="no" onclick="setItemAjax('Central_Line','no')">No
                                                 </button>
                                             </div>
 
@@ -661,12 +659,12 @@
                                             <p class="survey-p">Transfused PRBCs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
-                                                        value="yes" onclick="setItemAjax('Transfused_PRBC','Yes')">
+                                                        value="yes" onclick="setItemAjax('Transfused_PRBC','yes')">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo"
                                                         value="no"
-                                                        onclick="setItemAjax('Transfused_PRBC','No')">
+                                                        onclick="setItemAjax('Transfused_PRBC','no')">
                                                     No
                                                 </button>
                                             </div>
@@ -681,12 +679,12 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
-                                                        onclick="setItemAjax('Massive_Transfusion','Yes')">
+                                                        onclick="setItemAjax('Massive_Transfusion','yes')">
                                                     Activated
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
                                                         value="no"
-                                                        onclick="setItemAjax('Massive_Transfusion','No')">No
+                                                        onclick="setItemAjax('Massive_Transfusion','no')">No
                                                 </button>
                                             </div>
 

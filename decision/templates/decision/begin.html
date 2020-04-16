@@ -58,7 +58,47 @@
                     </button>
                 </form>
             </div>
-        </div>   
+        </div>
     </div>
-            
-{% endblock content %}
+            <script type="text/javascript">
+                function startSession(){
+                    pAge = document.getElementById('patientAge').value;
+                    pWeight = document.getElementById('patientWeight').value;
+                    pAddlInfo = document.getElementById('addlInfo').value;
+                    pHistory = document.getElementById('patientHistory').value;
+
+                    if(pAge === ''){
+                        pAge = 'null';
+                    }
+
+                    if(pWeight === ''){
+                        pWeight = 'null';
+                    }
+
+                    if(pAddlInfo === ''){
+                        pAddlInfo = 'null';
+                    }
+
+                    if(pHistory === ''){
+                        pHistory = 'null';
+                    }
+
+                    localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
+                    $.ajax({
+                    type:"POST",
+                    url: '/savePatientInfo/',
+                    data: {
+                        'age': pAge,
+                        'weight': pWeight,
+                        'addInfo': pAddlInfo,
+                        'history': pHistory
+                    },
+
+                    success: function( data )
+                    {
+                        console.log("Started Session!");
+                    }
+                 });
+                }
+            </script>
+</body>
