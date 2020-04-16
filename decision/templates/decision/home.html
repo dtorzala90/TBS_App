@@ -4,13 +4,7 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-    <!--
-    ================================================================================
-    Javascript initialize all buttons and text fields on main page
-    ================================================================================
-    -->
-    <script type="text/javascript" src="{% static "js/initVitals.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
+
 
     <h1>
 
@@ -161,11 +155,11 @@
                                             <p class="survey-p">Bag Mask</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="bagMaskInit"
-                                                        onclick="setItemAjax('Bag_Mask_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('Bag_Mask_Initiated',getCurrentTime());revealOnClick('bag','init');"
                                                         ondblclick="initEdit('bag','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime());revealOnClick('bag','stop');"
                                                         ondblclick="initEdit('bag','stop')">Stopped
                                                 </button>
                                             </div>
@@ -173,7 +167,7 @@
                                                  <input class="form-control form-control-lg survey-fctrl" type="text" id="bvmbpm" style="display:none"
                                                         name="bvmbpm"
                                                         value=""
-                                                        placeholder="BPM">
+                                                        placeholder="respiratory rate">
                                             </div>
 
                                         </div>
@@ -207,15 +201,15 @@
                                             <p class="survey-p">Endotracheal Tube</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="setItemAjax('ETT_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Initiated',getCurrentTime());revealOnClick('ett','init');"
                                                         ondblclick="initEdit('ett','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime());revealOnClick('ett','achieved');"
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime());revealOnClick('ett','stop');"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
                                             </div>
@@ -1355,4 +1349,11 @@
         </div>
     </div>
 
+    <!--
+    ================================================================================
+    Javascript initialize all buttons and text fields on main page
+    ================================================================================
+    -->
+    <script type="text/javascript" src="{% static "js/initVitals.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
 {% endblock content %}

@@ -81,99 +81,6 @@ function initEdit(type, step){
     }
 }
 
-function airwayStepFunc(type, step){
-    if(type === 'oxygen'){
-        if(step === 'init'){
-            localStorage.setItem("Oxygen Supplementation", "initiated");
-            localStorage.setItem("Oxygen Supplementation Initiated Time", getCurrentTime());
-        }
-        else{
-            localStorage.setItem("Oxygen Supplementation", "stopped");
-            localStorage.setItem("Oxygen Supplementation Stopped Time", getCurrentTime());
-        }
-    }
-
-    else if(type === 'bag'){
-        if(step === 'init'){
-            localStorage.setItem("Bag Mask", "initiated");
-            localStorage.setItem("Bag Mask Initiated Time", getCurrentTime());
-            document.getElementById("bvmbpm").style.display = "block";
-        }
-        else{
-            localStorage.setItem("Bag Mask", "stopped");
-            localStorage.setItem("Bag Mask Stopped Time", getCurrentTime());
-            document.getElementById("bvmbpm").style.display = "none";
-        }
-    }
-
-    else if(type === 'lma'){
-        if(step === 'init'){
-            localStorage.setItem("LMA", "initiated");
-            localStorage.setItem("LMA Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("LMA", "achieved");
-            localStorage.setItem("LMA Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("LMA", "stopped");
-            localStorage.setItem("LMA Stopped Time", getCurrentTime());
-        }
-    }
-
-    else if(type === 'ett'){
-        if(step === 'init'){
-            localStorage.setItem("ETT", "initiated");
-            localStorage.setItem("ETT Initiated Time", getCurrentTime());
-            document.getElementById("ettdepth").style.display = "none";
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("ETT", "achieved");
-            localStorage.setItem("ETT Achieved Time", getCurrentTime());
-            document.getElementById("ettdepth").style.display = "block";
-        }
-
-        else{
-            localStorage.setItem("ETT", "stopped");
-            localStorage.setItem("ETT Stopped Time", getCurrentTime());
-            document.getElementById("ettdepth").style.display = "none";
-        }
-    }
-
-    else if(type === 'diffAirway'){
-        if(step === 'init'){
-            localStorage.setItem("Difficult Airway", "initiated");
-            localStorage.setItem("Difficult Airway Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("Difficult Airway", "achieved");
-            localStorage.setItem("Difficult Airway Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("Difficult Airway", "stopped");
-            localStorage.setItem("Difficult Airway Stopped Time", getCurrentTime());
-        }
-    }
-
-    else{
-        if(step === 'init'){
-            localStorage.setItem("Surgical Airway", "initiated");
-            localStorage.setItem("Surgical Airway Initiated Time", getCurrentTime());
-        }
-        else if (step === 'achieved') {
-            localStorage.setItem("Surgical Airway", "achieved");
-            localStorage.setItem("Surgical Airway Achieved Time", getCurrentTime());
-        }
-
-        else{
-            localStorage.setItem("Surgical Airway", "stopped");
-            localStorage.setItem("Surgical Airway Stopped Time", getCurrentTime());
-        }
-    }
-}
-
 /**
  * This function responds to etco2 buttons and carries out actions based on the parameter given
  */
@@ -649,6 +556,29 @@ function recordpupilsizel(){
  * Set up Exposure buttons
  */
 
+function revealOnClick(type, step){
+  if(type === 'ett'){
+       if(step === 'init'){
+           document.getElementById("ettdepth").style.display = "none";
+       }
+       else if (step === 'achieved') {
+           document.getElementById("ettdepth").style.display = "block";
+       }
+
+       else{
+           document.getElementById("ettdepth").style.display = "none";
+       }
+   }
+   else if(type === 'bag'){
+       if(step === 'init'){
+           document.getElementById("bvmbpm").style.display = "block";
+       }
+       else{
+           document.getElementById("bvmbpm").style.display = "none";
+       }
+   }
+}
+
 function setItemAjax(step, value){
     $.ajax(
     {
@@ -661,4 +591,5 @@ function setItemAjax(step, value){
         success: function( data )
         {}
      })
+
 }
