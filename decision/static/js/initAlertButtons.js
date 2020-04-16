@@ -194,6 +194,26 @@ function recordettdepth(){
     }, 1000);
 }
 
+//For ETT size in cm
+var ettsizeText = document.getElementById("ettsize");
+ettsizeText.oninput = recordettsize;
+
+function recordettsize(){
+    setTimeout(function(){
+        localStorage.setItem("ETT Size", ettsizeText.value);
+        var ettSizeDisplay;
+        if (ettsizeText.value === "null") {
+
+          ettSizeDisplay = "";
+        } else {
+          ettSizeDisplay = "ETT size " + ettsizeText.value + "mm ";
+        }
+        localStorage.setItem("ETT_size_display", ettSizeDisplay);
+        updateVitals("ETT_size_History", ettSizeDisplay);
+    }, 1000);
+}
+
+
 //BVM breaths per minutes
 var bvmbpmText = document.getElementById("bvmbpm");
 bvmbpmText.oninput = recordbvmbpm;
@@ -560,13 +580,16 @@ function revealOnClick(type, step){
   if(type === 'ett'){
        if(step === 'init'){
            document.getElementById("ettdepth").style.display = "none";
+           document.getElementById("ettsize").style.display = "none";
        }
        else if (step === 'achieved') {
            document.getElementById("ettdepth").style.display = "block";
+           document.getElementById("ettsize").style.display = "block";
        }
 
        else{
            document.getElementById("ettdepth").style.display = "none";
+           document.getElementById("ettsize").style.display = "none";
        }
    }
    else if(type === 'bag'){
