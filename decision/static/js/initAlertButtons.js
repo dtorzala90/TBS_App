@@ -174,6 +174,27 @@ function chestSoundFunc(side, value) {
 /**
 * Set up of Airway buttons and functions that will record user input
 */
+
+//For LMA Respiratory Rate
+var lmarateText = document.getElementById("lmarate");
+lmarateText.oninput = recordlmarate;
+
+function recordlmarate(){
+    setTimeout(function(){
+        localStorage.setItem("LMA Rate", lmarateText.value);
+        var lmaDisplay;
+        if (lmarateText.value === "null") {
+
+          lmaDisplay = "";
+        } else {
+          lmaDisplay = lmarateText.value + "breaths/min ";
+        }
+        localStorage.setItem("LMA_display", lmaDisplay);
+        updateVitals("LMA_History", lmaDisplay);
+    }, 1000);
+}
+
+
 //For ETT depth in cm
 var ettdepthText = document.getElementById("ettdepth");
 ettdepthText.oninput = recordettdepth;
@@ -592,6 +613,17 @@ function revealOnClick(type, step){
            document.getElementById("ettsize").style.display = "none";
        }
    }
+   else if(type === 'lma'){
+        if(step === 'init'){
+            document.getElementById("lmarate").style.display = "none";
+        }
+        else if (step === 'achieved') {
+            document.getElementById("lmarate").style.display = "block";
+        }
+        else{
+            document.getElementById("lmarate").style.display = "none";
+        }
+    }
    else if(type === 'bag'){
        if(step === 'init'){
            document.getElementById("bvmbpm").style.display = "block";

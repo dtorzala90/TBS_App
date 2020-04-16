@@ -4,6 +4,7 @@ function updateVitals(){
     var hr = localStorage.getItem("HR_display");
     var bp = localStorage.getItem("BP_display");
     var shock = localStorage.getItem("Shock_display");
+    var lmarate = localStorage.getItem("LMA_display");
     var ettdepth = localStorage.getItem("ETT_display");
     var ettsize = localStorage.getItem("ETT_size_display");
     var bvm = localStorage.getItem("BVM_display");
@@ -12,6 +13,17 @@ function updateVitals(){
     var ivfs = localStorage.getItem("IVF_Started");
     var ivfa = localStorage.getItem("IVF_Additional");
     var ivf;
+
+    var airway = "Airway: ";
+    if (lmarate !== null) {
+      airway += (lmarate + "<br>");
+    }
+    if (ettdepth !== null) {
+      airway += (ettdepth + "<br>");
+    }
+    if (ettsize !== null) {
+      airway += (ettsize + "<br>");
+    }
 
     if (ivfs === "null") {
       ivf = ""
@@ -28,7 +40,7 @@ function updateVitals(){
     document.getElementById("hr_display").innerHTML = ("HR: " + hr + "<br>");
     document.getElementById("bp_display").innerHTML = ("BP: " + bp + "<br>");
     document.getElementById("shock_display").innerHTML = ("Shock: " + shock + "<br>");
-    document.getElementById("ett_display").innerHTML = ("Airway: " + ettdepth + "<br>" + ettsize + "<br>");
+    document.getElementById("ett_display").innerHTML = (airway);
     document.getElementById("bvm_display").innerHTML = ("Breathing: " + bvm + "<br>");
     document.getElementById("pupil_display").innerHTML = ("Disability:<br> Pupils: Right:" + rps + " Left: " + lps + "<br>");
     document.getElementById("ivf_display").innerHTML = ("Circulation: " + ivf + "<br>");

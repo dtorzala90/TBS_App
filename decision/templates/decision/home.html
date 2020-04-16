@@ -179,17 +179,23 @@
                                             <p class="survey-p">LMA</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lmaInit"
-                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime());revealOnClick('lma','init');"
                                                         ondblclick="initEdit('lma','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="lmaAchieved"
-                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime());revealOnClick('lma','achieved');"
                                                         ondblclick="initEdit('lma','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="lmaStop"
-                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime());revealOnClick('lma','stop');"
                                                         ondblclick="initEdit('lma','stop')">Removed
                                                 </button>
+                                            </div>
+                                            <div class="form-group w-60">
+                                                 <input class="form-control form-control-lg survey-fctrl" type="text" id="lmarate" style="display:none"
+                                                        name="lmaRate"
+                                                        value=""
+                                                        placeholder="respiratory rate">
                                             </div>
 
                                         </div>
