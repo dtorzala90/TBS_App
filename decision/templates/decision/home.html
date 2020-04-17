@@ -4,6 +4,8 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
+
+
     <h1>
 
         <!--
@@ -153,19 +155,19 @@
                                             <p class="survey-p">Bag Mask</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="bagMaskInit"
-                                                        onclick="setItemAjax('Bag_Mask_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('Bag_Mask_Initiated',getCurrentTime());revealOnClick('bag','init');"
                                                         ondblclick="initEdit('bag','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime());revealOnClick('bag','stop');"
                                                         ondblclick="initEdit('bag','stop')">Stopped
                                                 </button>
                                             </div>
                                             <div class="form-group w-60">
-                                                 <input class="form-control form-control-lg" type="text" id="bvmbpm" 
-                                                        name="bvmbpm" 
+                                                 <input class="form-control form-control-lg survey-fctrl" type="text" id="bvmbpm" style="display:none"
+                                                        name="bvmbpm"
                                                         value=""
-                                                        placeholder="BPM">
+                                                        placeholder="respiratory rate">
                                             </div>
 
                                         </div>
@@ -177,17 +179,23 @@
                                             <p class="survey-p">LMA</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lmaInit"
-                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime());revealOnClick('lma','init');"
                                                         ondblclick="initEdit('lma','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="lmaAchieved"
-                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime());revealOnClick('lma','achieved');"
                                                         ondblclick="initEdit('lma','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="lmaStop"
-                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime());revealOnClick('lma','stop');"
                                                         ondblclick="initEdit('lma','stop')">Removed
                                                 </button>
+                                            </div>
+                                            <div class="form-group w-60">
+                                                 <input class="form-control form-control-lg survey-fctrl" type="text" id="lmarate" style="display:none"
+                                                        name="lmaRate"
+                                                        value=""
+                                                        placeholder="respiratory rate">
                                             </div>
 
                                         </div>
@@ -199,23 +207,27 @@
                                             <p class="survey-p">Endotracheal Tube</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="setItemAjax('ETT_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Initiated',getCurrentTime());revealOnClick('ett','init');"
                                                         ondblclick="initEdit('ett','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime());revealOnClick('ett','achieved');"
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime());revealOnClick('ett','stop');"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
                                             </div>
                                             <div class="form-group w-60">
-                                                 <input class="form-control form-control-lg" type="text" id="ettdepth" 
-                                                        name="ettdepth" 
+                                                 <input class="form-control form-control-lg survey-fctrl" type="text" id="ettdepth" style="display:none"
+                                                        name="ettdepth"
                                                         value=""
-                                                        placeholder="Depth at cm">
+                                                        placeholder="Depth">
+                                                  <input class="form-control form-control-lg survey-fctrl" type="text" id="ettsize" style="display:none"
+                                                         name="ettsize"
+                                                         value=""
+                                                         placeholder="Size">
                                             </div>
 
                                         </div>
@@ -602,9 +614,25 @@
 
                                                 <br>
 
-                                                <button type="button" class="btn btn-light">Started</button>
-                                                <button type="button" class="btn btn-info">Additional Fluids
-                                                </button>
+
+                                                <button type="button" class="btn btn-light" id="ivf-started" onclick="ivfStarted()">Started</button>
+
+                                                <div class="form-group w-60">
+                                                     <input class="form-control form-control-lg" type="text" id="started-ivf" style="display:none"
+                                                            name="started-ivf"
+                                                            value=""
+                                                            placeholder="IVF volume xx mL/Kg">
+                                                </div>
+
+                                                <button type="button" class="btn btn-info" id="ivf-additional" onclick="ivfAdditional()">Additional Fluids</button>
+
+                                                <div class="form-group w-60">
+                                                     <input class="form-control form-control-lg" type="text" id="additional-ivf" style="display:none"
+                                                            name="additional-ivf"
+                                                            value=""
+                                                            placeholder="IVF volume xx mL/Kg">
+                                                </div>
+
                                                 <button type="button" class="btn btn-dark">Completed</button>
                                             </div>
 
@@ -862,10 +890,11 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Right:</span>
                                                 <div class="form-group w-100">
 
-                                                     <input class="form-control form-control-lg" type="text" id="pupilsizer"
-                                                            name="sizer" 
-                                                            value=""
-                                                            placeholder="Size">
+                                                    <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                           id="pupilsizer"
+                                                           name="sizer"
+                                                           value=""
+                                                           placeholder="Size">
                                                 </div>
 
                                                 <br>
@@ -873,10 +902,11 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Left:</span>
                                                 <div class="form-group w-100">
 
-                                                     <input class="form-control form-control-lg" type="text" id="pupilsizel"
-                                                            name="sizel" 
-                                                            value=""
-                                                            placeholder="Size">
+                                                    <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                           id="pupilsizel"
+                                                           name="sizel"
+                                                           value=""
+                                                           placeholder="Size">
                                                 </div>
 
 
@@ -1016,7 +1046,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1031,7 +1062,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1046,7 +1078,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1061,7 +1094,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1076,7 +1110,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1091,7 +1126,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1106,7 +1142,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1121,7 +1158,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1136,7 +1174,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1151,7 +1190,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1166,7 +1206,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1181,7 +1222,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1196,7 +1238,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1211,7 +1254,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1226,7 +1270,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1241,7 +1286,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1256,7 +1302,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1271,7 +1318,8 @@
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="" name=""
+                                                <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                       id="" name=""
                                                        value="" placeholder="Enter Abnormality">
                                             </div>
 
@@ -1318,7 +1366,4 @@
     -->
     <script type="text/javascript" src="{% static "js/initVitals.js" %}"></script>
     <script type="text/javascript" src="{% static "js/initAlertButtons.js" %}"></script>
-    </div>
-
-    
 {% endblock content %}

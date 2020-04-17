@@ -11,6 +11,13 @@ localStorage.setItem("GCS", "null");
 localStorage.setItem("HR_display", " ");
 localStorage.setItem("BP_display", " ");
 localStorage.setItem("Shock_display", " ");
+localStorage.setItem("ETT_display", " ");
+localStorage.setItem("BVM_display", " ");
+localStorage.setItem("RPS_display", " ");
+localStorage.setItem("LPS_display", " ");
+
+localStorage.setItem("IVF_Started", "null")
+localStorage.setItem("IVF_Additional", "null")
 localStorage.setItem("ETCO2_Display", " ");
 localStorage.setItem("GCS_Display", " ");
 
@@ -49,7 +56,8 @@ localStorage.setItem("MTP Alert", "not thrown");
 
 localStorage.setItem("PRBC Alert", "not thrown");
 
-
+//localStorage.setItem("Transfusion PRBC", "no"); IN DATABASE
+localStorage.setItem("Transfusion PRBC Alert", "not thrown");
 
 localStorage.setItem("ETT Depth", "null");
 
