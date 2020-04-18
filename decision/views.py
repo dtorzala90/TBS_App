@@ -30,16 +30,16 @@ alertsDict = {
 
 # Create your views here.
 def home(request):
-	return render(request, 'decision/home.html', {'title': 'Decision App'})
+	return render(request, 'decision/home.html')
 
 def begin(request):
-	return render(request, 'decision/begin.html', {'title': 'Start Session'})
+	return render(request, 'decision/begin.html')
 
 def summary(request):
-	return render(request, 'summary/main.html', {'title': 'Summary Page'})
+	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
 
 def startTrauma(request):
-	return render(request, 'decision/home.html', {'title': 'Decision App'})
+	return render(request, 'decision/home.html')
 
 
 @csrf_exempt
