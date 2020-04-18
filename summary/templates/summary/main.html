@@ -140,7 +140,6 @@
                                     <!--
                                     ================================================================================
                                     JavaScript to create new timer for current session and check for previous alerts
-
                                     This script is the same as the one in home.html but with additional calculations
                                     to compensate for the fact that the Summary page will be opened after the timer
                                     has started.
@@ -258,7 +257,7 @@
             success: function (data) {
                 localStorage.setItem("Age", data.age);
                 document.getElementById('patientAge').innerHTML = data.age + ' yrs';
-                document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
+                document.getElementById('patientWeight').innerHTML = data.weight + ' kg';
                 document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
                 document.getElementById('patientHistory').innerHTML = data.history;
             }
