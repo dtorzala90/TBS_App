@@ -137,15 +137,18 @@
                                              aria-labelledby="v-pills-oxsp-tab">
 
                                             <p class="survey-p">Oxygen Supplementation</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="oxySupplInit"
+                                            <div class="btn-group-vertical btn-stretch btn-group-toggle" role="group"
+                                                 data-toggle="buttons">
+                                                <label class="btn btn-top btn-label">
+                                                    <input type="radio" autocomplete="off" id="oxySupplInit"
                                                         onclick="setItemAjax('Oxygen_Supplementation_Initiated',getCurrentTime())"
-                                                        ondblclick="initEdit('oxygen','init')">Initiated
-                                                </button>
-                                                <button type="button" class="btn btn-dark" id="oxySupplStop"
+                                                        ondblclick="initEdit('oxygen','init')">Initiated</label>
+                                                <label class="btn btn-warning btn-label">
+                                                    <input type="radio" autocomplete="off" id="oxySupplStop"
                                                         onclick="setItemAjax('Oxygen_Supplementation_Stopped',getCurrentTime())"
-                                                        ondblclick="initEdit('oxygen','stop')">Stopped
-                                                </button>
+                                                        ondblclick="initEdit('oxygen','stop')">
+                                                    Stopped
+                                                </label>
                                             </div>
 
                                         </div>
@@ -155,7 +158,7 @@
                                              aria-labelledby="v-pills-bgmk-tab">
 
                                             <p class="survey-p">Bag Mask</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" id="bagMaskInit"
                                                         onclick="setItemAjax('Bag_Mask_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('bag','init')">Initiated
@@ -180,7 +183,7 @@
                                              aria-labelledby="v-pills-alma-tab">
 
                                             <p class="survey-p">LMA</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" id="lmaInit"
                                                         onclick="setItemAjax('LMA_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('lma','init')">Initiated
@@ -202,7 +205,7 @@
                                              aria-labelledby="v-pills-entb-tab">
 
                                             <p class="survey-p">Endotracheal Tube</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
                                                         onclick="setItemAjax('ETT_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('ett','init')">Initiated
@@ -231,7 +234,7 @@
                                              aria-labelledby="v-pills-dfaw-tab">
 
                                             <p class="survey-p">Difficult Airway</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" id="diffAirwayInit"
                                                         onclick="setItemAjax('Difficult_Airway_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('diffAirway','init')">Initiated
@@ -253,7 +256,7 @@
                                              aria-labelledby="v-pills-sgaw-tab">
 
                                             <p class="survey-p">Surgical Airway</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" id="surgAirwayInit"
                                                         onclick="setItemAjax('Surgical_Airway_Initiated',getCurrentTime())"
                                                         ondblclick="initEdit('surgAirway','init')">Initiated
@@ -321,7 +324,7 @@
                                              aria-labelledby="v-pills-spbr-tab">
 
                                             <p class="survey-p">Spontaneous Breathing</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="sponbreath"
                                                         value="yes" onclick="setItemAjax('Spontaneous_Breathing','Yes')">Yes
                                                 </button>
@@ -337,7 +340,7 @@
                                              aria-labelledby="v-pills-asbr-tab">
 
                                             <p class="survey-p">Assisted Breathing</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="assistb"
                                                         value="yes" onclick="setItemAjax('Assisted_Breathing','Yes')">
                                                     Yes
@@ -355,7 +358,7 @@
                                              aria-labelledby="v-pills-rcbs-tab">
 
                                             <p class="survey-p">Right: Chest Rise / Breath Sounds</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestyes"
                                                         value="yes"
@@ -375,7 +378,7 @@
                                              aria-labelledby="v-pills-lcbs-tab">
 
                                             <p class="survey-p">Left: Chest Rise / Breath Sounds</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestyes"
                                                         value="yes"
@@ -395,7 +398,7 @@
                                              aria-labelledby="v-pills-entd-tab">
 
                                             <p class="survey-p">End Tidal CO<sub>2</sub></p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <input class="form-control form-control-lg" type="text" id="etco2"
                                                        name="etco2"
                                                        value=""
@@ -499,7 +502,7 @@
                                              aria-labelledby="v-pills-prfs-tab">
 
                                             <p class="survey-p">Perfusion</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
                                                         value="pi" onclick="setItemAjax('Lip_Color','Pink')">Pink
@@ -552,7 +555,7 @@
                                              aria-labelledby="v-pills-ivac-tab">
 
                                             <p class="survey-p">IV Access</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Functional Peripheral IV:</span>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp0"
                                                         value="no">None
@@ -597,7 +600,7 @@
                                              aria-labelledby="v-pills-ivfl-tab">
 
                                             <p class="survey-p">IV Fluids</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="ivf" id="ivf-none"
                                                         value="no" onclick="setItemAjax('IV_Fluid_Amount','None')">None
                                                 </button>
@@ -623,7 +626,7 @@
                                              aria-labelledby="v-pills-tycr-tab">
 
                                             <p class="survey-p">Type and Cross</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossDrawn" value="yes"
                                                         onclick="setItemAjax('Type_Cross','Drawn')">Drawn
@@ -641,7 +644,7 @@
                                              aria-labelledby="v-pills-tfpr-tab">
 
                                             <p class="survey-p">Transfused PRBCs</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
                                                         value="yes" onclick="setItemAjax('Transfused_PRBC','Yes')">
                                                     Yes
@@ -660,7 +663,7 @@
                                              aria-labelledby="v-pills-mtfp-tab">
 
                                             <p class="survey-p">Massive Transfusion Protocol</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
                                                         onclick="setItemAjax('Massive_Transfusion','Yes')">
@@ -725,7 +728,7 @@
                                              aria-labelledby="v-pills-gmtr-tab">
 
                                             <p class="survey-p">GCS Motor</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor6" value="ob" onclick="recordGCS('motor','6')">
@@ -765,7 +768,7 @@
                                              aria-labelledby="v-pills-gvrb-tab">
 
                                             <p class="survey-p">GCS Verbal</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
                                                         id="verbal5" value="or" onclick="recordGCS('verbal','5')">
@@ -800,7 +803,7 @@
                                              aria-labelledby="v-pills-geye-tab">
 
                                             <p class="survey-p">GCS Eye</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
                                                         id="eye4" value="sp" onclick="recordGCS('eye','4')">
@@ -830,7 +833,7 @@
                                              aria-labelledby="v-pills-ppls-tab">
 
                                             <p class="survey-p">Pupils</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Equal:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="equal" value="yes"
@@ -899,7 +902,7 @@
                                              aria-labelledby="v-pills-maex-tab">
 
                                             <p class="survey-p">Moves All Extremities</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light" name="movee"
                                                         value="yes"
                                                         onclick="setItemAjax('Moves_Extremities','Yes')">
@@ -1022,7 +1025,7 @@
                                              aria-labelledby="v-pills-head-tab">
 
                                             <p class="survey-p">Head</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1038,7 +1041,7 @@
                                              aria-labelledby="v-pills-eyes-tab">
 
                                             <p class="survey-p">Eyes</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1054,7 +1057,7 @@
                                              aria-labelledby="v-pills-ears-tab">
 
                                             <p class="survey-p">Ears</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1070,7 +1073,7 @@
                                              aria-labelledby="v-pills-mdfc-tab">
 
                                             <p class="survey-p">Midface</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1086,7 +1089,7 @@
                                              aria-labelledby="v-pills-tcha-tab">
 
                                             <p class="survey-p">Trachea</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1102,7 +1105,7 @@
                                              aria-labelledby="v-pills-jgrv-tab">
 
                                             <p class="survey-p">Jugular Veins</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1118,7 +1121,7 @@
                                              aria-labelledby="v-pills-excv-tab">
 
                                             <p class="survey-p">CV</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1134,7 +1137,7 @@
                                              aria-labelledby="v-pills-lngs-tab">
 
                                             <p class="survey-p">Lungs</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1150,7 +1153,7 @@
                                              aria-labelledby="v-pills-abdm-tab">
 
                                             <p class="survey-p">Abdomen</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1166,7 +1169,7 @@
                                              aria-labelledby="v-pills-plvs-tab">
 
                                             <p class="survey-p">Pelvis</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1182,7 +1185,7 @@
                                              aria-labelledby="v-pills-exgu-tab">
 
                                             <p class="survey-p">G/U</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1198,7 +1201,7 @@
                                              aria-labelledby="v-pills-rctl-tab">
 
                                             <p class="survey-p">Rectal</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1214,7 +1217,7 @@
                                              aria-labelledby="v-pills-erue-tab">
 
                                             <p class="survey-p">RUE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1230,7 +1233,7 @@
                                              aria-labelledby="v-pills-elue-tab">
 
                                             <p class="survey-p">LUE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1246,7 +1249,7 @@
                                              aria-labelledby="v-pills-erle-tab">
 
                                             <p class="survey-p">RLE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1262,7 +1265,7 @@
                                              aria-labelledby="v-pills-elle-tab">
 
                                             <p class="survey-p">LLE</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1278,7 +1281,7 @@
                                              aria-labelledby="v-pills-back-tab">
 
                                             <p class="survey-p">Back</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">
@@ -1294,7 +1297,7 @@
                                              aria-labelledby="v-pills-skin-tab">
 
                                             <p class="survey-p">Skin</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-stretch" role="group">
                                                 <button type="button" class="btn btn-light">Normal</button>
                                             </div>
                                             <div class="form-group">

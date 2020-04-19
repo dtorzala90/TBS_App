@@ -243,16 +243,43 @@ a:hover {
     font-size: 2rem;
     height: 85px;
     width: 100%;
+    margin-bottom: 10px;
 }
 
-/*Creates border to make btn-light buttons pop against current theme*/
-.btn-light {
-    border-color: #2b7a78;
-}
-
-/*Adjusts padding between survey buttons*/
-.btn-padding {
+/*Adjusts button width*/
+.btn-stretch {
     width: 100%;
+}
+
+.btn-top {
+    border: 1.5px solid #2b7a78;
+    background-color: #7A2B2D;
+    border-radius: 0.25rem !important;
+}
+
+.btn-top:hover {
+    border: 1.5px solid #2b7a78;
+    background-color: #60bdd1;
+}
+
+.btn-top.focus, .btn-top:focus {
+    box-shadow: 0 0 0 0.5rem rgba(255,193,7,0.5);
+    background-color: #60bdd1;
+}
+
+.btn-top:not(:disabled):not(.disabled).active,
+.btn-top:not(:disabled):not(.disabled):active,
+.show>.btn-top.dropdown-toggle {
+    border: 1.5px solid #2b7a78;
+}
+
+
+
+.btn-label {
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
 }
 
 /*Adjusts spacing between clustered buttons in the 'Pupils' section*/
