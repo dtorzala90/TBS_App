@@ -1,0 +1,16 @@
+{% extends "decision/base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <form class="startForm" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            {{form.as_p}}
+        </div>
+            <button class="btn btn-primary btn-xl loginButton" type="submit">Login</button>
+            <div class="have-account">Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!</div>
+        </form>
+
+    </div>
+{% endblock %}
