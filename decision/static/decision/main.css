@@ -271,8 +271,30 @@ a:hover {
 .btn-top:not(:disabled):not(.disabled):active,
 .show>.btn-top.dropdown-toggle {
     border: 1.5px solid #2b7a78;
+    box-shadow: 0 0 0 0.5rem rgba(255,193,7,0.5);
+    background-color: #60bdd1;
 }
 
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #545b62;
+    border-color: #4e555b;
+}
+
+.btn-light {
+    border: 1.5px solid #2b7a78;
+    border-radius: 0.25rem !important;
+}
+
+.btn-info {
+    border-radius: 0.25rem !important;
+}
+
+.btn-dark {
+    border-radius: 0.25rem !important;
+}
 
 
 .btn-label {
