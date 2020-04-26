@@ -294,7 +294,7 @@
 
                                         <a class="nav-link survey-pill-a" id="v-pills-entd-tab" data-toggle="pill"
                                            href="#v-pills-entd" role="tab" aria-controls="v-pills-entd"
-                                           aria-selected="false">End Tidal CO</a>
+                                           aria-selected="false">End Tidal CO<sub>2</sub></a>
                                     </div>
                                 </div>
                                 <div class="col-8 survey-col">
@@ -379,12 +379,14 @@
                                              aria-labelledby="v-pills-entd-tab">
 
                                             <p class="survey-p">End Tidal CO<sub>2</sub></p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <input class="form-control form-control-lg" type="text" id="etco2Text"
-                                                       name="etco2Text"
-                                                       value=""
-                                                       placeholder=" ">
-                                                <button class="btn" onclick="recordEtco2()">Enter</button>
+                                            <div class="form-group w-60">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg w-50" type="text" id="etco2Text"
+                                                           name="etco2Text"
+                                                           value=""
+                                                           placeholder=" ">
+                                                    <span class="input-group-addon"><button class="btn btn-success mb-2" type="button" onclick="recordEtco2()">Enter</button></span>
+                                                </div>
                                                 <br>
                                             </div>
 
@@ -454,11 +456,11 @@
 
                                             <p class="survey-p">Heart Rate</p>
                                             <div class="form-group w-60">
-                                                <input class="form-control form-control-lg" type="text" id="hrText"
+                                                <input class="form-control form-control-lg w-50" type="text" id="hrText"
                                                        name="hrText"
                                                        value=""
                                                        placeholder="BPM">
-                                                <button class="btn btn-primary mb-2" onclick="recordHR()">Enter</button>
+                                                <button class="btn btn-success mb-2" type="button" onclick="recordHR()">Enter</button>
                                             </div>
 
                                         </div>
@@ -473,7 +475,7 @@
                                                        name="bpText"
                                                        value=""
                                                        placeholder="mmHg">
-                                                <button class="btn btn-primary mb-2" onclick="recordBP()">Enter</button>
+                                                <button type="button" class="btn btn-primary mb-2" onclick="recordBP()">Enter</button>
                                                 <br>
                                             </div>
 
@@ -848,7 +850,7 @@
                                                             name="sizer" 
                                                             value=""
                                                             placeholder="Size">
-                                                    <button class="btn btn-primary mb-2" onclick="recordPupilSize('right')">Enter</button>
+                                                    <button type="button" class="btn btn-primary mb-2" onclick="recordPupilSize('right')">Enter</button>
                                                 </div>
 
                                                 <br>
@@ -860,7 +862,7 @@
                                                             name="sizel" 
                                                             value=""
                                                             placeholder="Size">
-                                                    <button class="btn btn-primary mb-2" onclick="recordPupilSize('left')">Enter</button>
+                                                    <button type="button" class="btn btn-primary mb-2" onclick="recordPupilSize('left')">Enter</button>
                                                 </div>
 
 
