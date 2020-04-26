@@ -19,7 +19,7 @@
         -->
     <div class="row justify-content-center">
         <div>
-            <a type="button" class="btn btn-info btn-lg" href="{% url '' %}">
+            <a type="button" class="btn btn-info btn-lg" href="{% url 'decision-begin' %}">
               <span>&larr; Initial Form</span>
             </a>
         </div>
@@ -311,11 +311,7 @@
 
                                         <a class="nav-link survey-pill-a" id="v-pills-rcbs-tab" data-toggle="pill"
                                            href="#v-pills-rcbs" role="tab" aria-controls="v-pills-rcbs"
-                                           aria-selected="false">Right: Chest Rise / Breath Sounds</a>
-
-                                        <a class="nav-link survey-pill-a" id="v-pills-lcbs-tab" data-toggle="pill"
-                                           href="#v-pills-lcbs" role="tab" aria-controls="v-pills-lcbs"
-                                           aria-selected="false">Left: Chest Rise / Breath Sounds</a>
+                                           aria-selected="false">Breath Sounds</a>
 
                                         <a class="nav-link survey-pill-a" id="v-pills-entd-tab" data-toggle="pill"
                                            href="#v-pills-entd" role="tab" aria-controls="v-pills-entd"
@@ -366,45 +362,41 @@
                                         <!-- Right: Chest Rise / Breath Sounds -->
                                         <div class="tab-pane fade" id="v-pills-rcbs" role="tabpanel"
                                              aria-labelledby="v-pills-rcbs-tab">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="survey-p">Right:</p>
+                                                    <button type="button" class="btn btn-light" name="rchest"
+                                                            id="rchestyes"
+                                                            value="yes"
+                                                            onclick="setItemAjax('Right_Chest','yes');
+                                                            updateBorder(this.id,'rchestno');">Yes
+                                                    </button>
+                                                    <br>
+                                                    <button type="button" class="btn btn-light" name="rchest"
+                                                            id="rchestno"
+                                                            value="no"
+                                                            onclick="setItemAjax('Right_Chest','no');
+                                                            updateBorder(this.id,'rchestyes');">No
+                                                    </button>
+                                                </div>
 
-                                            <p class="survey-p">Right: Breath Sounds</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="rchest"
-                                                        id="rchestyes"
-                                                        value="yes"
-                                                        onclick="setItemAjax('Right_Chest','yes');
-                                                        updateBorder(this.id,'rchestno');">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="rchest"
-                                                        id="rchestno"
-                                                        value="no"
-                                                        onclick="setItemAjax('Right_Chest','no');
-                                                        updateBorder(this.id,'rchestyes');">No
-                                                </button>
+                                                <div class="col">
+                                                    <p class="survey-p">Left:</p>
+                                                    <button type="button" class="btn btn-light" name="lchest"
+                                                            id="lchestyes"
+                                                            value="yes"
+                                                            onclick="setItemAjax('Left_Chest','yes');
+                                                            updateBorder(this.id,'lchestno');">Yes
+                                                    </button>
+                                                    <br>
+                                                    <button type="button" class="btn btn-light" name="lchest"
+                                                            id="lchestno"
+                                                            value="no"
+                                                            onclick="setItemAjax('Left_Chest','no');
+                                                            updateBorder(this.id,'lchestyes');">No
+                                                    </button>
+                                                </div>
                                             </div>
-
-                                        </div>
-
-                                        <!-- Left: Chest Rise / Breath Sounds-->
-                                        <div class="tab-pane fade" id="v-pills-lcbs" role="tabpanel"
-                                             aria-labelledby="v-pills-lcbs-tab">
-
-                                            <p class="survey-p">Left: Breath Sounds</p>
-                                            <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" name="lchest"
-                                                        id="lchestyes"
-                                                        value="yes"
-                                                        onclick="setItemAjax('Left_Chest','yes');
-                                                        updateBorder(this.id,'lchestno');">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-light" name="lchest"
-                                                        id="lchestno"
-                                                        value="no"
-                                                        onclick="setItemAjax('Left_Chest','no');
-                                                        updateBorder(this.id,'lchestyes');">No
-                                                </button>
-                                            </div>
-
                                         </div>
 
                                         <!-- End Tidal CO -->
