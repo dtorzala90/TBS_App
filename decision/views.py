@@ -168,7 +168,7 @@ def checkAlerts(request):
 	#Hypotension
 	if(bp != "null"):
 		bpint = int(bp)
-		if (age != "null"):
+		if (age != " "):
 			ageInt = int(age)
 			if(bpint < (55 + (2*ageInt))):
 				alertsDict['hypotensive'] = 'true'

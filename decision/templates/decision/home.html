@@ -17,6 +17,12 @@
         Timer that displays time elapsed since beginning of Trauma
         ================================================================================
         -->
+    <div class="row justify-content-center">
+        <div>
+            <a type="button" class="btn btn-info btn-lg" href="{% url '' %}">
+              <span>&larr; Initial Form</span>
+            </a>
+        </div>
 
         <div class="container timer-decision" id="timer">
             <div class="row justify-content-center">
@@ -37,6 +43,12 @@
             </div>
         </div>
 
+        <div>
+            <a class="btn btn-info btn-lg" href="{% url 'summary' %}">
+              <span>&rarr; Summary Page</span>
+            </a>
+        </div>
+    </div>
     <hr>
 
     <!--
@@ -139,11 +151,13 @@
                                             <p class="survey-p">Oxygen Supplementation</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="oxySupplInit"
-                                                        onclick="setItemAjax('Oxygen_Supplementation_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('Oxygen_Supplementation_Initiated',getCurrentTime());
+                                                            updateBorder(this.id,'oxySupplStop');"
                                                         ondblclick="initEdit('oxygen','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="oxySupplStop"
-                                                        onclick="setItemAjax('Oxygen_Supplementation_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('Oxygen_Supplementation_Stopped',getCurrentTime());
+                                                            updateBorder(this.id,'oxySupplInit');"
                                                         ondblclick="initEdit('oxygen','stop')">Stopped
                                                 </button>
                                             </div>
@@ -157,11 +171,12 @@
                                             <p class="survey-p">Bag Mask</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="bagMaskInit"
-                                                        onclick="bagMaskModal()"
+                                                        onclick="bagMaskModal(); updateBorder(this.id,'bagMaskStop');"
                                                         ondblclick="initEdit('bag','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime());
+                                                                updateBorder(this.id,'bagMaskInit');"
                                                         ondblclick="initEdit('bag','stop')">Stopped
                                                 </button>
                                             </div>
@@ -175,15 +190,18 @@
                                             <p class="survey-p">LMA</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lmaInit"
-                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime());
+                                                            updateBorder(this.id,'lmaAchieved','lmaStop');"
                                                         ondblclick="initEdit('lma','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="lmaAchieved"
-                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime());
+                                                            updateBorder(this.id,'lmaInit','lmaStop');"
                                                         ondblclick="initEdit('lma','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="lmaStop"
-                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime());
+                                                            updateBorder(this.id,'lmaAchieved','lmaInit');"
                                                         ondblclick="initEdit('lma','stop')">Removed
                                                 </button>
                                             </div>
@@ -196,15 +214,17 @@
                                             <p class="survey-p">Endotracheal Tube</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="ettModal()"
+                                                        onclick="ettModal(); updateBorder(this.id,'ettAchieved','ettStop');"
                                                         ondblclick="initEdit('ett','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime())
+                                                            updateBorder(this.id,'ettInit','ettStop');"
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime())
+                                                            updateBorder(this.id,'ettInit','ettAchieved');"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
                                             </div>
@@ -217,15 +237,17 @@
                                             <p class="survey-p">Difficult Airway</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="diffAirwayInit"
-                                                        onclick="diffAirwayModal()"
+                                                        onclick="diffAirwayModal(); updateBorder(this.id,'diffAirwayStop','diffAirwayAchieved');"
                                                         ondblclick="initEdit('diffAirway','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="diffAirwayAchieved"
-                                                        onclick="setItemAjax('Difficult_Airway_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('Difficult_Airway_Achieved',getCurrentTime());
+                                                            updateBorder(this.id,'diffAirwayStop','diffAirwayInit');"
                                                         ondblclick="initEdit('diffAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="diffAirwayStop"
-                                                        onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime());
+                                                            updateBorder(this.id,'diffAirwayAchieved','diffAirwayInit');"
                                                         ondblclick="initEdit('diffAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -239,15 +261,18 @@
                                             <p class="survey-p">Surgical Airway</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="surgAirwayInit"
-                                                        onclick="setItemAjax('Surgical_Airway_Initiated',getCurrentTime())"
+                                                        onclick="setItemAjax('Surgical_Airway_Initiated',getCurrentTime());
+                                                            updateBorder(this.id,'surgAirwayStop','surgAirwayAchieved');"
                                                         ondblclick="initEdit('surgAirway','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="surgAirwayAchieved"
-                                                        onclick="setItemAjax('Surgical_Airway_Achieved',getCurrentTime())"
+                                                        onclick="setItemAjax('Surgical_Airway_Achieved',getCurrentTime());
+                                                            updateBorder(this.id,'surgAirwayStop','surgAirwayInit');"
                                                         ondblclick="initEdit('surgAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="surgAirwayStop"
-                                                        onclick="setItemAjax('Surgical_Airway_Stopped',getCurrentTime())"
+                                                        onclick="setItemAjax('Surgical_Airway_Stopped',getCurrentTime());
+                                                            updateBorder(this.id,'surgAirwayAchieved','surgAirwayInit');"
                                                         ondblclick="initEdit('surgAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -307,10 +332,12 @@
                                             <p class="survey-p">Spontaneous Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="yes" onclick="setItemAjax('Spontaneous_Breathing','yes')">Yes
+                                                        value="yes" id="sponairyes" onclick="setItemAjax('Spontaneous_Breathing','yes');
+                                                        updateBorder(this.id,'sponairno');">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="no" onclick="setItemAjax('Spontaneous_Breathing','no')">No
+                                                        value="no" id="sponairno" onclick="setItemAjax('Spontaneous_Breathing','no');
+                                                        updateBorder(this.id,'sponairyes');">No
                                                 </button>
                                             </div>
 
@@ -323,11 +350,13 @@
                                             <p class="survey-p">Assisted Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="yes" onclick="setItemAjax('Assisted_Breathing','yes')">
+                                                        value="yes" id="assissyes" onclick="setItemAjax('Assisted_Breathing','yes');
+                                                        updateBorder(this.id,'assissno');">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="no" onclick="setItemAjax('Assisted_Breathing','no')">
+                                                        value="no" id="assissno" onclick="setItemAjax('Assisted_Breathing','no');
+                                                        updateBorder(this.id,'assissyes');">
                                                     No
                                                 </button>
                                             </div>
@@ -343,12 +372,14 @@
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestyes"
                                                         value="yes"
-                                                        onclick="setItemAjax('Right_Chest','yes')">Yes
+                                                        onclick="setItemAjax('Right_Chest','yes');
+                                                        updateBorder(this.id,'rchestno');">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="rchest"
                                                         id="rchestno"
                                                         value="no"
-                                                        onclick="setItemAjax('Right_Chest','no')">No
+                                                        onclick="setItemAjax('Right_Chest','no');
+                                                        updateBorder(this.id,'rchestyes');">No
                                                 </button>
                                             </div>
 
@@ -363,12 +394,14 @@
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestyes"
                                                         value="yes"
-                                                        onclick="setItemAjax('Left_Chest','yes')">Yes
+                                                        onclick="setItemAjax('Left_Chest','yes');
+                                                        updateBorder(this.id,'lchestno');">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lchest"
                                                         id="lchestno"
                                                         value="no"
-                                                        onclick="setItemAjax('Left_Chest','no')">No
+                                                        onclick="setItemAjax('Left_Chest','no');
+                                                        updateBorder(this.id,'lchestyes');">No
                                                 </button>
                                             </div>
 
@@ -502,14 +535,17 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
-                                                        value="pi" onclick="setItemAjax('Lip_Color','pink')">Pink
+                                                        value="pi" onclick="setItemAjax('Lip_Color','pink');
+                                                        updateBorder(this.id,'lipc-wh','lipc-unk');">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
-                                                        value="wh" onclick="setItemAjax('Lip_Color','white')">White
+                                                        value="wh" onclick="setItemAjax('Lip_Color','white');
+                                                        updateBorder(this.id,'lipc-pi','lipc-unk');">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc"
                                                         id="lipc-unk"
-                                                        value="unk" onclick="setItemAjax('Lip_Color','unable to assess')">Unable To
+                                                        value="unk" onclick="setItemAjax('Lip_Color','unable to assess');
+                                                        updateBorder(this.id,'lipc-pi','lipc-wh');">Unable To
                                                     Assess
                                                 </button>
 
@@ -518,15 +554,18 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Nail Color:</span>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-pi"
-                                                        value="pi" onclick="setItemAjax('Nail_Color','pink')">Pink
+                                                        value="pi" onclick="setItemAjax('Nail_Color','pink');
+                                                        updateBorder(this.id,'nailc-wh','nailc-unk');">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-wh"
-                                                        value="wh" onclick="setItemAjax('Nail_Color','white')">White
+                                                        value="wh" onclick="setItemAjax('Nail_Color','white');
+                                                        updateBorder(this.id,'nailc-pi','nailc-unk');">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-unk"
-                                                        value="unk" onclick="setItemAjax('Nail_Color','unable to assess')">Unable
+                                                        value="unk" onclick="setItemAjax('Nail_Color','unable to assess');
+                                                        updateBorder(this.id,'nailc-pi','nailc-wh');">Unable
                                                     To Assess
                                                 </button>
 
@@ -534,14 +573,17 @@
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Capillary Refill:</span>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-2"
-                                                        value="<2" onclick="setItemAjax('Cap_Refill','<2sec')"><2s
+                                                        value="<2" onclick="setItemAjax('Cap_Refill','<2sec');
+                                                        updateBorder(this.id,'caprt-4','caprt-24');"><2s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr"
                                                         id="caprt-24"
-                                                        value="2-4" onclick="setItemAjax('Cap_Refill','2-4sec')">2s-4s
+                                                        value="2-4" onclick="setItemAjax('Cap_Refill','2-4sec');
+                                                        updateBorder(this.id,'caprt-2','caprt-4');">2s-4s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-4"
-                                                        value=">4" onclick="setItemAjax('Cap_Refill','>4sec')">>4s
+                                                        value=">4" onclick="setItemAjax('Cap_Refill','>4sec');
+                                                        updateBorder(this.id,'caprt-2','caprt-24');">>4s
                                                 </button>
                                             </div>
 
@@ -555,16 +597,19 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Functional Peripheral IV:</span>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp0"
-                                                        value="no">None
+                                                        value="no" onclick="updateBorder(this.id,'funp1','funp2','funp>2');">None
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp1"
-                                                        value="1" onclick="setItemAjax('PIV_Count','1')">1
+                                                        value="1" onclick="setItemAjax('PIV_Count','1');
+                                                        updateBorder(this.id,'funp0','funp2','funp>2');">1
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp2"
-                                                        value="2" onclick="setItemAjax('PIV_Count','2')">2
+                                                        value="2" onclick="setItemAjax('PIV_Count','2');
+                                                        updateBorder(this.id,'funp0','funp1','funp>2');">2
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp>2"
-                                                        value=">2" onclick="setItemAjax('PIV_Count','>2')">>2
+                                                        value=">2" onclick="setItemAjax('PIV_Count','>2');
+                                                        updateBorder(this.id,'funp0','funp1','funp2');">>2
                                                 </button>
 
                                                 <br>
@@ -572,21 +617,25 @@
                                                 <span style="font-weight:bold; font-size: 1.5rem">Intraosseous Line:</span>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralYes"
-                                                        value="yes" onclick="setItemAjax('Intraosseous_Line','yes')"> Yes
+                                                        value="yes" onclick="setItemAjax('Intraosseous_Line','yes');
+                                                        updateBorder(this.id,'intralNo');"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralNo"
-                                                        value="no" onclick="setItemAjax('Intraosseous_Line','no')">No
+                                                        value="no" onclick="setItemAjax('Intraosseous_Line','no');
+                                                        updateBorder(this.id,'intralYes');">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Central Line:</span>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
-                                                        value="yes" onclick="setItemAjax('Central_Line','yes')"> Yes
+                                                        value="yes" onclick="setItemAjax('Central_Line','yes');
+                                                        updateBorder(this.id,'cenlNo');"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
-                                                        value="no" onclick="setItemAjax('Central_Line','no')">No
+                                                        value="no" onclick="setItemAjax('Central_Line','no');
+                                                        updateBorder(this.id,'cenlYes');">No
                                                 </button>
                                             </div>
 
@@ -598,11 +647,12 @@
 
                                             <p class="survey-p">IV Fluids</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" onclick="ivfModal()"
-                                                            >Started</button>
-                                                <button type="button" class="btn btn-info" onclick="ivfModal()"
-                                                            >Additional Fluids</button>
-                                                <button type="button" class="btn btn-dark">Completed</button>
+                                                <button type="button" class="btn btn-light" id="ivf-started" onclick="ivfModal();
+                                                      updateBorder(this.id,'ivf-additional','ivf-complete');">Started</button>
+                                                <button type="button" class="btn btn-info" id="ivf-additional"  onclick="ivfModal();
+                                                      updateBorder(this.id,'ivf-started','ivf-complete');">Additional Fluids</button>
+                                                <button type="button" class="btn btn-dark" id="ivf-complete"
+                                                        onclick="updateBorder(this.id,'ivf-additional','ivf-started');">Completed</button>
                                             </div>
 
                                         </div>
@@ -615,10 +665,12 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossDrawn" value="yes"
-                                                        onclick="setItemAjax('Type_Cross','Drawn')">Drawn
+                                                        onclick="setItemAjax('Type_Cross','Drawn');
+                                                        updateBorder(this.id,'typeAndCrossSent');">Drawn
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tac"
-                                                        id="typeAndCrossSent" value="sent" onclick="setItemAjax('Type_Cross','Sent')">
+                                                        id="typeAndCrossSent" value="sent" onclick="setItemAjax('Type_Cross','Sent');
+                                                        updateBorder(this.id,'typeAndCrossDrawn');">
                                                     Sent
                                                 </button>
                                             </div>
@@ -632,12 +684,14 @@
                                             <p class="survey-p">Transfused PRBCs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
-                                                        value="yes" onclick="setItemAjax('Transfused_PRBC','yes')">
+                                                        value="yes" onclick="setItemAjax('Transfused_PRBC','yes');
+                                                        updateBorder(this.id,'tprbcNo');">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo"
                                                         value="no"
-                                                        onclick="setItemAjax('Transfused_PRBC','no')">
+                                                        onclick="setItemAjax('Transfused_PRBC','no');
+                                                        updateBorder(this.id,'tprbcYes');">
                                                     No
                                                 </button>
                                             </div>
@@ -652,12 +706,14 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
-                                                        onclick="setItemAjax('Massive_Transfusion','yes')">
+                                                        onclick="setItemAjax('Massive_Transfusion','yes');
+                                                        updateBorder(this.id,'mtpNo');">
                                                     Activated
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
                                                         value="no"
-                                                        onclick="setItemAjax('Massive_Transfusion','no')">No
+                                                        onclick="setItemAjax('Massive_Transfusion','no');
+                                                        updateBorder(this.id,'mtpYes');">No
                                                 </button>
                                             </div>
 
@@ -717,32 +773,38 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor6" value="ob" onclick="recordGCS('motor','6')">
+                                                        id="motor6" value="ob" onclick="recordGCS('motor','6');
+                                                        updateBorder(this.id,'motor5','motor4','motor3','motor2','motor1');">
                                                     <b>6</b> - Obeys Commands
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor5" value="lo" onclick="recordGCS('motor','5')">
+                                                        id="motor5" value="lo" onclick="recordGCS('motor','5');
+                                                        updateBorder(this.id,'motor4','motor6','motor3','motor2','motor1');">
                                                     <b>5</b> - Localizing Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor4" value="wi" onclick="recordGCS('motor','4')">
+                                                        id="motor4" value="wi" onclick="recordGCS('motor','4');
+                                                        updateBorder(this.id,'motor5','motor1','motor6','motor3','motor2');">
                                                     <b>4</b> - Withdraw From Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor3" value="fl" onclick="recordGCS('motor','3')">
+                                                        id="motor3" value="fl" onclick="recordGCS('motor','3');
+                                                        updateBorder(this.id,'motor5','motor4','motor6','motor2','motor1');">
                                                     <b>3</b> - Flexion To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor2" value="ex" onclick="recordGCS('motor','2')">
+                                                        id="motor2" value="ex" onclick="recordGCS('motor','2');
+                                                        updateBorder(this.id,'motor5','motor4','motor6','motor3','motor1');">
                                                     <b>2</b> - Extension To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
-                                                        id="motor1" value="no" onclick="recordGCS('motor','1')">
+                                                        id="motor1" value="no" onclick="recordGCS('motor','1');
+                                                        updateBorder(this.id,'motor5','motor4','motor6','motor3','motor2');">
                                                     <b>1</b> - No Motor Response
                                                 </button>
                                             </div>
@@ -757,27 +819,32 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal5" value="or" onclick="recordGCS('verbal','5')">
+                                                        id="verbal5" value="or" onclick="recordGCS('verbal','5');
+                                                        updateBorder(this.id,'verbal4','verbal3','verbal2','verbal1');">
                                                     <b>5</b> - Oriented
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal4" value="co" onclick="recordGCS('verbal','4')">
+                                                        id="verbal4" value="co" onclick="recordGCS('verbal','4');
+                                                        updateBorder(this.id,'verbal5','verbal3','verbal2','verbal1');">
                                                     <b>4</b> - Confused
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal3" value="wo" onclick="recordGCS('verbal','3')">
+                                                        id="verbal3" value="wo" onclick="recordGCS('verbal','3');
+                                                        updateBorder(this.id,'verbal5','verbal4','verbal2','verbal1');">
                                                     <b>3</b> - Inappropriate Words
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal2" value="so" onclick="recordGCS('verbal','2')">
+                                                        id="verbal2" value="so" onclick="recordGCS('verbal','2');
+                                                        updateBorder(this.id,'verbal5','verbal4','verbal3','verbal1');">
                                                     <b>2</b> - Incomprehensible Sounds
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
-                                                        id="verbal1" value="no" onclick="recordGCS('verbal','1')">
+                                                        id="verbal1" value="no" onclick="recordGCS('verbal','1');
+                                                        updateBorder(this.id,'verbal5','verbal4','verbal3','verbal2');">
                                                     <b>1</b> - No Verbal Response
                                                 </button>
                                             </div>
@@ -792,22 +859,26 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye4" value="sp" onclick="recordGCS('eye','4')">
+                                                        id="eye4" value="sp" onclick="recordGCS('eye','4');
+                                                        updateBorder(this.id,'eye1','eye2','eye3');">
                                                     <b>4</b> - Opens Spontaneously
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye3" value="ve" onclick="recordGCS('eye','3')">
+                                                        id="eye3" value="ve" onclick="recordGCS('eye','3');
+                                                        updateBorder(this.id,'eye1','eye2','eye4');">
                                                     <b>3</b> - Open To Verbal Command
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye2" value="pa" onclick="recordGCS('eye','2')">
+                                                        id="eye2" value="pa" onclick="recordGCS('eye','2');
+                                                        updateBorder(this.id,'eye1','eye4','eye3');">
                                                     <b>2</b> - Open To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
-                                                        id="eye1" value="no" onclick="recordGCS('eye','1')">
+                                                        id="eye1" value="no" onclick="recordGCS('eye','1');
+                                                        updateBorder(this.id,'eye2','eye3','eye4');">
                                                     <b>1</b> - No Eye Opening
                                                 </button>
                                             </div>
@@ -822,36 +893,42 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span style="font-weight:bold; font-size: 1.5rem">Equal:</span>
                                                 <button type="button" class="btn btn-light btn-space"
-                                                        name="equal" value="yes"
-                                                        onclick="setItemAjax('Pupils_Equal','Yes')">Yes
+                                                        name="equal" value="yes" id="equalyes"
+                                                        onclick="setItemAjax('Pupils_Equal','Yes');
+                                                        updateBorder(this.id,'equalno');">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
-                                                        name="equal" value="no"
-                                                        onclick="setItemAjax('Pupils_Equal','No')">No
+                                                        name="equal" value="no" id="equalno"
+                                                        onclick="setItemAjax('Pupils_Equal','No');
+                                                        updateBorder(this.id,'equalyes');">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Round:</span>
                                                 <button type="button" class="btn btn-light btn-space"
-                                                        name="round" value="yes"
-                                                        onclick="setItemAjax('Pupils_Round','Yes')">Yes
+                                                        name="round" value="yes" id="roundyes"
+                                                        onclick="setItemAjax('Pupils_Round','Yes');
+                                                        updateBorder(this.id,'roundyno');">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
-                                                        name="round" value="no"
-                                                        onclick="setItemAjax('Pupils_Round','No')">No
+                                                        name="round" value="no" id="roundno"
+                                                        onclick="setItemAjax('Pupils_Round','No');
+                                                        updateBorder(this.id,'roundyes');">No
                                                 </button>
 
                                                 <br>
 
                                                 <span style="font-weight:bold; font-size: 1.5rem">Reactive:</span>
                                                 <button type="button" class="btn btn-light btn-space"
-                                                        name="rlight" value="yes"
-                                                        onclick="setItemAjax('Pupils_Reactive','Yes')">Yes
+                                                        name="rlight" value="yes" id="reactiveyes"
+                                                        onclick="setItemAjax('Pupils_Reactive','Yes');
+                                                        updateBorder(this.id,'reactiveno');">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
-                                                        name="rlight" value="no"
-                                                        onclick="setItemAjax('Pupils_Reactive','No')">No
+                                                        name="rlight" value="no" id="reactiveno"
+                                                        onclick="setItemAjax('Pupils_Reactive','No');
+                                                        updateBorder(this.id,'reactiveyes');">No
                                                 </button>
 
                                                 <br>
@@ -890,17 +967,20 @@
                                             <p class="survey-p">Moves All Extremities</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="movee"
-                                                        value="yes"
-                                                        onclick="setItemAjax('Moves_Extremities','Yes')">
+                                                        value="yes" id="movesallextyes"
+                                                        onclick="setItemAjax('Moves_Extremities','Yes');
+                                                        updateBorder(this.id,'movesallextno','movesallextlim');">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-info" name="movee"
-                                                        value="onlyinj"
-                                                        onclick="setItemAjax('Moves_Extremities','Limited Only By Injury')">
+                                                        value="onlyinj" id="movesallextlim"
+                                                        onclick="setItemAjax('Moves_Extremities','Limited Only By Injury');
+                                                        updateBorder(this.id,'movesallextno','movesallextyes');">
                                                     Limited Only by Injury
                                                 </button>
-                                                <button type="button" class="btn btn-dark" name="movee" value="no"
-                                                        onclick="setItemAjax('Moves_Extremities','No')">
+                                                <button type="button" class="btn btn-dark" name="movee" value="no" id="movesallextno"
+                                                        onclick="setItemAjax('Moves_Extremities','No');
+                                                        updateBorder(this.id,'movesallextyes','movesallextlim');">
                                                     No
                                                 </button>
                                             </div>
@@ -1012,12 +1092,14 @@
 
                                             <p class="survey-p">Head</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="headnormal" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="headAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'headnormal')">
+                                                    Enter</button>
                                             </div>
 
                                         </div>
@@ -1028,12 +1110,13 @@
 
                                             <p class="survey-p">Eyes</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="eyesnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="eyesAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'eyesnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1044,12 +1127,13 @@
 
                                             <p class="survey-p">Ears</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="earsnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="earsAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'earsnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1060,12 +1144,13 @@
 
                                             <p class="survey-p">Midface</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="'midfacenorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="midfaceAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'midfacenorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1076,12 +1161,13 @@
 
                                             <p class="survey-p">Trachea</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="trachnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="trachAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'trachnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1092,12 +1178,13 @@
 
                                             <p class="survey-p">Jugular Veins</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="jugularnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="jugularAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'jugularnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1108,12 +1195,13 @@
 
                                             <p class="survey-p">CV</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="cvnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="CV" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'cvnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1124,12 +1212,13 @@
 
                                             <p class="survey-p">Lungs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="lungsnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="lungsAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'lungsnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1140,12 +1229,13 @@
 
                                             <p class="survey-p">Abdomen</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="'abdomennorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="abdomenAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'abdomennorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1156,12 +1246,13 @@
 
                                             <p class="survey-p">Pelvis</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="pelvisnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="PelvisAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'pelvisnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1172,12 +1263,13 @@
 
                                             <p class="survey-p">G/U</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="'gunorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="GU" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'gunorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1188,12 +1280,13 @@
 
                                             <p class="survey-p">Rectal</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="rectalnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="RectalAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'rectalnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1204,12 +1297,13 @@
 
                                             <p class="survey-p">RUE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="ruenorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="RUE" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'ruenorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1220,12 +1314,13 @@
 
                                             <p class="survey-p">LUE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="luenorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="LUE" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'luenorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1236,12 +1331,13 @@
 
                                             <p class="survey-p">RLE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="rlenorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="RLE" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'rlenorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1252,12 +1348,13 @@
 
                                             <p class="survey-p">LLE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="llenorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="LLE" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'llenorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1268,12 +1365,13 @@
 
                                             <p class="survey-p">Back</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="backnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="backAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="">Enter</button>
+                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'backnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1284,12 +1382,13 @@
 
                                             <p class="survey-p">Skin</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light">Normal</button>
+                                                <button type="button" class="btn btn-light" id="skinnorm" onclick="
+                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
                                             </div>
                                             <div class="form-group">
                                                 <input class="form-control form-control-lg" type="text" id="skinAbnorm" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn" onclick="">Enter</button>
+                                                <button class="btn" onclick="updateBorder(this.id, 'skinnorm')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1413,6 +1512,12 @@
     -->
     <script type="text/javascript" src="{% static "js/initVitalEntry.js" %}"></script>
     <script type="text/javascript" src="{% static "js/initModals.js" %}"></script>
+    <script type="text/javascript">
+        var updateBorder = function(...names) {
+            document.getElementById(names[0]).style['border'] = '0.2em solid #00cc3d';
+            for (let i=1; i<names.length; i++) document.getElementById(names[i]).style['border'] = 'none';
+        }
+    </script>
     </div>
 
     
