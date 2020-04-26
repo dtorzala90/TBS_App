@@ -5,6 +5,10 @@ var etco2Text = document.getElementById("etco2Text");
 var leftPupilText = document.getElementById("pupilsizeLeft");
 var rightPupilText = document.getElementById("pupilsizeRight");
 
+var etco2_vals = [' ', ' ', ' '];
+var hr_vals = [' ', ' ', ' '];
+var bp_vals = [' ', ' ', ' '];
+
 function recordHR(){
     createTimeStamp();
     var hr = parseInt(hrText.value);
@@ -21,16 +25,17 @@ function recordHR(){
     updateVitals("HR", hr.toString(10));
     localStorage.setItem("HR_prev", hr.toString(10));
 
-    var hrDisplay = hr.toString(10) + " at ";
-    localStorage.setItem("HR_display", hrDisplay + timeStamp);
+    var hrDisplay = hr.toString(10) + " at " + timeStamp;
+    localStorage.setItem("HR_display", hrDisplay);
+    populateUI('hr',hrDisplay);
 
     //Because the HR was updated we must update the Shock Index as well
     var bp = localStorage.getItem('BP_prev');
     if(bp !== "null" && hr !== null){
         var newShock = hr/(parseInt(bp,10)).toFixed(2);
-        var shockDisplay = newShock + " at ";
+        var shockDisplay = newShock + " at " + timeStamp;
         updateVitals("Shock_Level", newShock.toString(10));
-        localStorage.setItem("Shock_display", shockDisplay + timeStamp);
+        localStorage.setItem("Shock_display", shockDisplay);
     }
 }
 
@@ -50,16 +55,17 @@ function recordBP(){
         updateVitals("BP", bp.toString(10));
         localStorage.setItem("BP_prev", bp.toString(10));
 
-        var bpDisplay = bp.toString(10) + " at ";
-        localStorage.setItem("BP_display", bpDisplay + timeStamp);
+        var bpDisplay = bp.toString(10) + " at " + timeStamp;
+        localStorage.setItem("BP_display", bpDisplay);
+        populateUI('bp',bpDisplay);
 
         //Because the BP  was updated we must update the Shock Index as well
         var hr = localStorage.getItem('HR_prev');
         if(hr !== "null" && bp !== null){
             var newShock = ((parseInt(hr,10))/bp).toFixed(2);
-            var shockDisplay = newShock + " at ";
+            var shockDisplay = newShock + " at " + timeStamp;
             updateVitals("Shock_Level", newShock.toString(10));
-            localStorage.setItem("Shock_display", shockDisplay + timeStamp);
+            localStorage.setItem("Shock_display", shockDisplay);
         }
 }
 
@@ -75,8 +81,9 @@ function recordEtco2(){
     }
 
     updateVitals("ETCO2", etco2.toString(10));
-    var etco2Display = etco2.toString(10) + " at ";
-    localStorage.setItem("ETCO2_Display", etco2Display + timeStamp);
+    var etco2Display = etco2.toString(10) + " at " + timeStamp;
+    localStorage.setItem("ETCO2_Display", etco2Display);
+    populateUI('etco2',etco2Display);
 
 }
 
@@ -164,6 +171,89 @@ function createTimeStamp(){
 
     timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
 }
+
+/**
+ * This function updates the three most recent vital readings in the UI. These are found under the
+ * entry fields for the corresponding vital.
+ *
+ * @param vital
+ * @param display
+ */
+function populateUI(vital, display){
+
+    if(vital === 'etco2'){
+        if(etco2_vals[0] === ' '){
+            etco2_vals[0] = display;
+        }
+
+        else if(etco2_vals[1] === ' '){
+            var swap = etco2_vals[0];
+            etco2_vals[1] = swap;
+            etco2_vals[0] = display;
+        }
+
+        else{
+            var swap = etco2_vals[1];
+            etco2_vals[2] = swap;
+            swap = etco2_vals[0];
+            etco2_vals[1] = swap;
+            etco2_vals[0] = display;
+        }
+
+        document.getElementById('etco2_1').innerText = etco2_vals[0];
+        document.getElementById('etco2_2').innerText = etco2_vals[1];
+        document.getElementById('etco2_3').innerText = etco2_vals[2];
+    }
+
+    if(vital === 'hr'){
+        if(hr_vals[0] === ' '){
+            hr_vals[0] = display;
+        }
+
+        else if(hr_vals[1] === ' '){
+            var swap = hr_vals[0];
+            hr_vals[1] = swap;
+            hr_vals[0] = display;
+        }
+
+        else{
+            var swap = hr_vals[1];
+            hr_vals[2] = swap;
+            swap = hr_vals[0];
+            hr_vals[1] = swap;
+            hr_vals[0] = display;
+        }
+
+        document.getElementById('hr_1').innerText = hr_vals[0];
+        document.getElementById('hr_2').innerText = hr_vals[1];
+        document.getElementById('hr_3').innerText = hr_vals[2];
+    }
+
+    if(vital === 'bp'){
+        if(bp_vals[0] === ' '){
+            bp_vals[0] = display;
+        }
+
+        else if(bp_vals[1] === ' '){
+            var swap = bp_vals[0];
+            bp_vals[1] = swap;
+            bp_vals[0] = display;
+        }
+
+        else{
+            var swap = bp_vals[1];
+            bp_vals[2] = swap;
+            swap = bp_vals[0];
+            bp_vals[1] = swap;
+            bp_vals[0] = display;
+        }
+
+        document.getElementById('bp_1').innerText = bp_vals[0];
+        document.getElementById('bp_2').innerText = bp_vals[1];
+        document.getElementById('bp_3').innerText = bp_vals[2];
+    }
+}
+
 function updateVitals(key, value){
 
     $.ajax({
