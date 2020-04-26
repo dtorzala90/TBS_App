@@ -14,6 +14,7 @@ class Session(models.Model):
 
 	Bag_Mask_Initiated = models.CharField(max_length=20, default="null")
 	Bag_Mask_Stopped = models.CharField(max_length=20, default="null")
+	Bag_Mask_RR = models.CharField(max_length=20, default="null")
 
 	LMA_Initiated = models.CharField(max_length=20, default="null")
 	LMA_Achieved = models.CharField(max_length=20, default="null")
@@ -22,10 +23,13 @@ class Session(models.Model):
 	ETT_Initiated = models.CharField(max_length=20, default="null")
 	ETT_Achieved = models.CharField(max_length=20, default="null")
 	ETT_Stopped = models.CharField(max_length=20, default="null")
+	ETT_RR = models.CharField(max_length=20, default="null")
+	ETT_Depth = models.CharField(max_length=20, default="null")
 
 	Difficult_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Achieved = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Stopped = models.CharField(max_length=20, default="null")
+	Difficult_Airway_Adjunct = models.CharField(max_length=20, default="null")
 
 	Surgical_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Achieved = models.CharField(max_length=20, default="null")
@@ -45,7 +49,7 @@ class Session(models.Model):
 	Central_Line = models.CharField(max_length=20, default="no")
 	Intraosseous_Line = models.CharField(max_length=20, default="no")
 
-	IV_Fluid_Amount = models.CharField(max_length=20, default="none")
+	IVF_Total = models.CharField(max_length=20, default="0")
 	Type_Cross = models.CharField(max_length=20, default="null")
 	Transfused_PRBC = models.CharField(max_length=20, default="no")
 	Massive_Transfusion = models.CharField(max_length=20, default="no")

@@ -2,15 +2,13 @@
 var hrText = document.getElementById("hrText");
 var bpText = document.getElementById("bpText");
 var etco2Text = document.getElementById("etco2Text");
+var leftPupilText = document.getElementById("pupilsizeLeft");
+var rightPupilText = document.getElementById("pupilsizeRight");
 
-hrText.oninput = recordHR;
-bpText.oninput = recordBP;
-etco2Text.oninput = recordEtco2;
-
-async function recordHR(){
+function recordHR(){
     createTimeStamp();
-
-    var hr = await readHr();
+    var hr = parseInt(hrText.value);
+    hrText.value = "";
 
     if(isNaN(hr)){
          updateVitals("HR", "null");
@@ -23,7 +21,7 @@ async function recordHR(){
     updateVitals("HR", hr.toString(10));
     localStorage.setItem("HR_prev", hr.toString(10));
 
-    var hrDisplay = hr + " at ";
+    var hrDisplay = hr.toString(10) + " at ";
     localStorage.setItem("HR_display", hrDisplay + timeStamp);
 
     //Because the HR was updated we must update the Shock Index as well
@@ -36,10 +34,10 @@ async function recordHR(){
     }
 }
 
-async function recordBP(){
+function recordBP(){
         createTimeStamp();
-
-        var bp = await readBp();
+        var bp = parseInt(bpText.value);
+        bpText.value = "";
 
         if(isNaN(bp)){
              updateVitals("BP", "null");
@@ -52,7 +50,7 @@ async function recordBP(){
         updateVitals("BP", bp.toString(10));
         localStorage.setItem("BP_prev", bp.toString(10));
 
-        var bpDisplay = bp + " at ";
+        var bpDisplay = bp.toString(10) + " at ";
         localStorage.setItem("BP_display", bpDisplay + timeStamp);
 
         //Because the BP  was updated we must update the Shock Index as well
@@ -65,10 +63,10 @@ async function recordBP(){
         }
 }
 
-async function recordEtco2(){
+function recordEtco2(){
     etco2time = createTimeStamp();
-
-    var etco2 = await readEtco2();
+    etco2 = parseInt(etco2Text.value);
+    etco2Text.value = "";
 
     if(isNaN(etco2)){
          updateVitals("ETCO2", "null");
@@ -77,8 +75,9 @@ async function recordEtco2(){
     }
 
     updateVitals("ETCO2", etco2.toString(10));
-    var etco2Display = etco2 + " at ";
+    var etco2Display = etco2.toString(10) + " at ";
     localStorage.setItem("ETCO2_Display", etco2Display + timeStamp);
+
 }
 
 
@@ -110,6 +109,39 @@ function recordGCS(type, value){
 
         updateVitals("GCS", gcs.toString(10));
         localStorage.setItem("GCS_Display", gcsDisplay + timeStamp);
+    }
+}
+
+function recordPupilSize(side){
+    if(side === 'right'){
+        var size = parseInt(rightPupilText.value);
+        rightPupilText.value = "";
+
+        if(isNaN(size)){
+            localStorage.setItem("RightPupil_Display", " ");
+            updateVitals("Pupil_Size_Right", "null");
+            return;
+        }
+
+        var display = "Right Pupil: " + size.toString(10) + "cm";
+        localStorage.setItem("RightPupil_Display", display);
+
+        updateVitals("Pupil_Size_Right", size.toString(10));
+    }
+
+    else if(side === 'left'){
+        var size = parseInt(leftPupilText.value);
+        leftPupilText.value = "";
+
+        if(isNaN(size)){
+            localStorage.setItem("LeftPupil_Display", " ");
+             updateVitals("Pupil_Size_Left", "null");
+             return;
+        }
+        var display = "Left Pupil: " + size.toString(10) + "cm";
+        localStorage.setItem("LeftPupil_Display", display);
+
+        updateVitals("Pupil_Size_Left", size.toString(10));
     }
 }
 function createTimeStamp(){
@@ -146,29 +178,4 @@ function updateVitals(key, value){
 
         }
     });
-}
-
-function readEtco2(){
-    return new Promise (resolve => {
-        setTimeout(function(){
-            resolve(parseInt(etco2Text.value));
-            }, 1000);
-
-    })
-}
-
-function readHr(){
-     return new Promise (resolve => {
-        setTimeout(function(){
-            resolve(parseInt(hrText.value));
-            }, 1000);
-    })
-}
-
-function readBp(){
-     return new Promise (resolve => {
-        setTimeout(function(){
-            resolve(parseInt(bpText.value));
-            }, 1000);
-    })
 }

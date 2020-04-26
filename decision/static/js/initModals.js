@@ -82,52 +82,6 @@ function initEdit(type, step){
 }
 
 /**
-* Set up of Airway buttons and functions that will record user input
-*/
-//For ETT depth in cm
-var ettdepthText = document.getElementById("ettdepth");
-ettdepthText.oninput = recordettdepth;
-
-function recordettdepth(){
-    setTimeout(function(){
-        localStorage.setItem("ETT Depth", ettdepthText.value);
-    }, 1000);
-}
-
-//BVM breaths per minutes
-var bvmbpmText = document.getElementById("bvmbpm");
-bvmbpmText.oninput = recordbvmbpm;
-
-function recordbvmbpm(){
-    setTimeout(function(){
-        localStorage.setItem("BVM BPM", bvmbpmText.value);
-    }, 1000);
-}
-
-/**
-* Set up of disability  buttons and functions that will record user input
-*/
-//For pupilsizer depth in mm
-var pupilsizerText = document.getElementById("pupilsizer");
-pupilsizerText.oninput = recordpupilsizer;
-
-function recordpupilsizer(){
-    setTimeout(function(){
-        localStorage.setItem("Right Pupil Size", pupilsizerText.value);
-    }, 1000);
-}
-
-//For pupilsizel depth in mm
-var pupilsizelText = document.getElementById("pupilsizel");
-pupilsizelText.oninput = recordpupilsizel;
-
-function recordpupilsizel(){
-    setTimeout(function(){
-        localStorage.setItem("Left Pupil Size", pupilsizelText.value);
-    }, 1000);
-}
-
-/**
  * Reads the time stamp from user input fields and returns it to be saved in the database
  * @returns {string}
  */
@@ -146,12 +100,96 @@ function fetchTimeModal(){
  * @param step
  */
 function launchModal(modalTitle, step) {
+    var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
+    var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
+    var hour = 0;
+    if(min < 1){
+        min = 0;
+    }
+
+    if(min >= 60){
+        hour = Math.round(min/60);
+        min = Math.round(min%60);
+    }
+
     var saveBtn = document.getElementById('saveModal');
+    saveBtn.onclick = function(){
+        localStorage.setItem(step, fetchTimeModal());
+        $("#timeModal").modal('hide');
+    }
+
+    document.getElementById('popup-title').innerHTML = modalTitle;
+    document.getElementById('hourStamp').value = hour;
+    document.getElementById('minuteStamp').value = min;
+    document.getElementById('secondStamp').value = sec;
+    $("#timeModal").modal();
+}
+
+/**
+ * Because these will require pop-up modals to prompt further information they need their own
+ * onclick functions
+ */
+function ettModal() {
+    var saveBtn = document.getElementById('saveModal');
+    $("#ettModal").modal('hide');
     saveBtn.onclick = function () {
-        setItemAjax(step, fetchTimeModal());
-        $("#popUp").modal('hide');
+        var rr = (document.getElementById('ettRR').value).toString(10);
+        var depth = (document.getElementById('ettDepth').value).toString(10);
+        var display = "ETT Depth: " + depth + "cm  RR: " + rr;
+        localStorage.setItem("ETT_Display", display);
+
+        setItemAjax('ETT_RR', rr);
+        setItemAjax('ETT_Depth', depth);
+        setItemAjax('ETT_Initiated', getCurrentTime());
+        $("#ettModal").modal('hide');
     }
 }
+
+function bagMaskModal() {
+    var saveBtn = document.getElementById('saveModal');
+    $("#bagMaskModal").modal('hide');
+    saveBtn.onclick = function () {
+        var rr = (document.getElementById('bagMaskRR').value).toString(10);
+        var display = "Bag Mask RR: " + rr;
+        localStorage.setItem("BagMask_Display", display);
+
+        setItemAjax('Bag_Mask_RR', rr);
+        setItemAjax('Bag_Mask_Initiated', getCurrentTime());
+        $("#bagMaskModal").modal('hide');
+    }
+}
+
+function ivfModal() {
+    var saveBtn = document.getElementById('saveModal');
+    $("#ivfModal").modal('hide');
+    saveBtn.onclick = function () {
+        var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
+        var ivf_added = document.getElementById('ivfAmount').value;
+        var ivf_new = (ivf_prev + ivf_added).toString(10);
+        var display = "IVF: " + ivf_new + " mL/kg";
+        localStorage.setItem('IVF_Display', display);
+
+        localStorage.setItem('IVF', ivf_new);
+        setItemAjax('IVF_Total', ivf_new);
+        $("#ivfModal").modal('hide');
+    }
+}
+
+function diffAirwayModal() {
+    var saveBtn = document.getElementById('saveModal');
+    $("#diffAirwayModal").modal('hide');
+    saveBtn.onclick = function () {
+        var adjunct = document.getElementById('adjunct')
+        var display = "Difficult Airway: " + adjunct;
+        localStorage.setItem('DiffAirway_Display', display);
+
+        setItemAjax('Difficult_Airway_Adjunct', adjunct);
+        $("#diffAirwayModal").modal('hide');
+    }
+}
+
+
+
 
 /**
  * Gets the current time stamp and returns it in a "displayable" format

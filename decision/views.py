@@ -96,6 +96,7 @@ def checkAlerts(request):
 	age = dbTable.__getattribute__('Patient_Age')
 	etco2 = dbTable.__getattribute__('ETCO2')
 	gcs = dbTable.__getattribute__('GCS')
+	ivf = int(dbTable.__getattribute__('IVF_Total'))
 
 	##Time Based Alerts
 	if (time >= 120 and alertsDict['no_etco2_recorded'] != 'false'):
@@ -228,16 +229,16 @@ def checkAlerts(request):
 		alertsDict['additional_piv'] = 'false'
 
 	#IV Fluids
-	if(ivFluids == "<20mL/kg"):
+	if(ivf <= 20):
 		alertsDict['fluids_given'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
 
-	elif(ivFluids == ">20mL/kg"):
+	elif(ivFluids > 20):
 		alertsDict['fluids_given'] = 'false'
 		alertsDict['excess_fluids'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
 
-	elif(ivFluids == "None"):
+	elif(ivf == 0):
 		alertsDict['consider_bolus'] = 'true'
 
 	#Perfusion Alerts
