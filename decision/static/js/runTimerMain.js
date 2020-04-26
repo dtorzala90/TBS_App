@@ -1,5 +1,5 @@
 /**
- *      This script uses session storage variables to ensure that the time elapsed
+ *      This script uses local storage variables to ensure that the time elapsed
  *      being displayed on the screen remain persistent with user navigation. If the user
  *      starts a session, let's it run for a bit, navigates away from the page, and then
  *      comes back the time elapsed is still accurate.
@@ -24,7 +24,7 @@ if (localStorage.getItem('total_seconds_main') === null){
 
 /*
      If this is not a new session, the total seconds and start time are found
-     in session storage and used to create a new timer that is identical to the
+     in local storage and used to create a new timer that is identical to the
      old one. This ensure all data is preserved.
 */
 else {

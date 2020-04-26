@@ -1084,13 +1084,14 @@
 
                                             <p class="survey-p">Head</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="headnormal" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="headnormal" onclick="updateBorder(this.id, 'headAbnorm')"
+                                                    >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="headAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="headAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'headnormal')">
+                                                <button class="btn btn-primary mb-2" id="headAbnorm" onclick="updateBorder(this.id, 'headnormal');
+                                                        recordAbnormality('headAbnormText', 'Head_Abnormality')">
                                                     Enter</button>
                                             </div>
 
@@ -1102,13 +1103,14 @@
 
                                             <p class="survey-p">Eyes</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="eyesnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="eyesnorm" onclick="updateBorder(this.id, 'eyesAbnorm')"
+                                                    >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="eyesAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="eyesAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'eyesnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="eyesAbnorm" onclick="updateBorder(this.id, 'eyesnorm');
+                                                    recordAbnormality('eyesAbnormText', 'Eyes_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1119,13 +1121,14 @@
 
                                             <p class="survey-p">Ears</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="earsnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="earsnorm" onclick="updateBorder(this.id, 'earsAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="earsAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="earsAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'earsnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="earsAbnorm" onclick="updateBorder(this.id, 'earsnorm');
+                                                    recordAbnormality('earsAbnormText', 'Ears_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1136,13 +1139,14 @@
 
                                             <p class="survey-p">Midface</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="'midfacenorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="midfacenorm" onclick="updateBorder(this.id, 'midfaceAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="midfaceAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="midfaceAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'midfacenorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="midfaceAbnorm" onclick="updateBorder(this.id, 'midfacenorm');
+                                                    recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1153,13 +1157,14 @@
 
                                             <p class="survey-p">Trachea</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="trachnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="trachnorm" onclick="updateBorder(this.id, 'trachAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="trachAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="trachAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'trachnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="trachAbnorm" onclick="updateBorder(this.id, 'trachnorm');
+                                                    recordAbnormality('trachAbnormText', 'Trachea_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1170,13 +1175,14 @@
 
                                             <p class="survey-p">Jugular Veins</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="jugularnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="jugularnorm" onclick="updateBorder(this.id, 'jugularAbnorm')"
+                                                    >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="jugularAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="jugularAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'jugularnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="jugularAbnorm" onclick="updateBorder(this.id, 'jugularnorm');
+                                                    recordAbnormality('jugularAbnormText', 'Jugular_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1187,13 +1193,14 @@
 
                                             <p class="survey-p">CV</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="cvnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="cvnorm" onclick="updateBorder(this.id, 'cvAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="CV" name=""
+                                                <input class="form-control form-control-lg" type="text" id="CVAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'cvnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="cvAbnorm" onclick="updateBorder(this.id, 'cvnorm');
+                                                    recordAbnormality('CVAbnormText', 'CV_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1204,13 +1211,14 @@
 
                                             <p class="survey-p">Lungs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="lungsnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="lungsnorm" onclick="updateBorder(this.id, 'lungsAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="lungsAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="lungsAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'lungsnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="lungsAbnorm" onclick="updateBorder(this.id, 'lungsnorm');
+                                                    recordAbnormality('lungsAbnormText', 'Lungs_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1221,13 +1229,14 @@
 
                                             <p class="survey-p">Abdomen</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="'abdomennorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="abdomennorm" onclick="updateBorder(this.id, 'abdomenAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="abdomenAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="abdomenAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'abdomennorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="abdomenAbnorm" onclick="updateBorder(this.id, 'abdomennorm');
+                                                        recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1238,13 +1247,14 @@
 
                                             <p class="survey-p">Pelvis</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="pelvisnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="pelvisnorm" onclick="updateBorder(this.id, 'pelvisAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="PelvisAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="PelvisAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'pelvisnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="pelvisAbnorm" onclick="updateBorder(this.id, 'pelvisnorm');
+                                                    recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1255,13 +1265,14 @@
 
                                             <p class="survey-p">G/U</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="'gunorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="gunorm" onclick="updateBorder(this.id, 'guAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="GU" name=""
+                                                <input class="form-control form-control-lg" type="text" id="GUAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'gunorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="guAbnorm" onclick="updateBorder(this.id, 'gunorm');
+                                                        recordAbnormality('GUAbnormText', 'GU_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1272,13 +1283,14 @@
 
                                             <p class="survey-p">Rectal</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="rectalnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="rectalnorm" onclick="updateBorder(this.id, 'rectalAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="RectalAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="RectalAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'rectalnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="rectalAbnorm" onclick="updateBorder(this.id, 'rectalnorm');
+                                                        recordAbnormality('RectalAbnormText', 'Rectal_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1289,13 +1301,14 @@
 
                                             <p class="survey-p">RUE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="ruenorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="ruenorm" onclick="updateBorder(this.id, 'rueAbnorm')"
+                                                    >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="RUE" name=""
+                                                <input class="form-control form-control-lg" type="text" id="RUEAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'ruenorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="rueAbnorm" onclick="updateBorder(this.id, 'ruenorm');
+                                                        recordAbnormality('RUEAbnormText', 'RUE_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1306,13 +1319,14 @@
 
                                             <p class="survey-p">LUE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="luenorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="luenorm" onclick="updateBorder(this.id, 'lueAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="LUE" name=""
+                                                <input class="form-control form-control-lg" type="text" id="LUEAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'luenorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="lueAbnorm" onclick="updateBorder(this.id, 'luenorm');
+                                                        recordAbnormality('LUEAbnormText', 'LUE_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1323,13 +1337,14 @@
 
                                             <p class="survey-p">RLE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="rlenorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="rlenorm" onclick="updateBorder(this.id, 'rleAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="RLE" name=""
+                                                <input class="form-control form-control-lg" type="text" id="RLEAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'rlenorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="rleAbnorm" onclick="updateBorder(this.id, 'rlenorm');
+                                                        recordAbnormality('RLEAbnormText', 'RLE_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1340,13 +1355,14 @@
 
                                             <p class="survey-p">LLE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="llenorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="llenorm" onclick="updateBorder(this.id, 'lleAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="LLE" name=""
+                                                <input class="form-control form-control-lg" type="text" id="LLEAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'llenorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="lleAbnorm" onclick="updateBorder(this.id, 'llenorm');
+                                                        recordAbnormality('LLEAbnormText', 'LLE_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1357,13 +1373,14 @@
 
                                             <p class="survey-p">Back</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="backnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="backnorm" onclick="updateBorder(this.id, 'backAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="backAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="backAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" onclick="updateBorder(this.id, 'backnorm')">Enter</button>
+                                                <button class="btn btn-primary mb-2" id="backAbnorm" onclick="updateBorder(this.id, 'backnorm');
+                                                        recordAbnormality('backAbnormText', 'Back_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>
@@ -1374,13 +1391,14 @@
 
                                             <p class="survey-p">Skin</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <button type="button" class="btn btn-light" id="skinnorm" onclick="
-                                                this.style['border'] = '0.2em solid #00cc3d';">Normal</button>
+                                                <button type="button" class="btn btn-light" id="skinnorm" onclick="updateBorder(this.id, 'skinAbnorm')"
+                                                        >Normal</button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text" id="skinAbnorm" name=""
+                                                <input class="form-control form-control-lg" type="text" id="skinAbnormText" name=""
                                                        value="" placeholder="Enter Abnormality">
-                                                <button class="btn" onclick="updateBorder(this.id, 'skinnorm')">Enter</button>
+                                                <button class="btn" id="skinAbnorm" onclick="updateBorder(this.id, 'skinnorm');
+                                                        recordAbnormality('skinAbnormText', 'Skin_Abnormality')">Enter</button>
                                             </div>
 
                                         </div>

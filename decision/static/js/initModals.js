@@ -238,3 +238,19 @@ function setItemAjax(step, value){
         {}
      })
 }
+
+function recordAbnormality(inputId, modelName) {
+    var abnormality = document.getElementById(inputId).value;
+
+    $.ajax(
+    {
+        type:"POST",
+        url: "/setItem/",
+        data:{
+            'key': modelName,
+            'value': abnormality,
+        },
+        success: function( data )
+        {}
+     })
+}
