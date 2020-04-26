@@ -10,6 +10,9 @@ function updateVitals(){
     var bag = localStorage.getItem("BagMask_Display");
     var ivf = localStorage.getItem("IVF_Display");
     var diffAirway = localStorage.getItem("DiffAirway_Display");
+    var rightPupil = localStorage.getItem("RightPupil_Display");
+    var leftPupil = localStorage.getItem("LeftPupil_Display");
+
 
     document.getElementById("hr_display").innerHTML = ("HR: " + hr + "<br>");
     document.getElementById("bp_display").innerHTML = ("BP: " + bp + "<br>");
@@ -20,5 +23,6 @@ function updateVitals(){
     document.getElementById("bagDisplay").innerHTML = bag;
     document.getElementById("ivfDisplay").innerHTML = ivf;
     document.getElementById("diffAirwayDisplay").innerHTML = diffAirway;
-
+    document.getElementById("rightPupilDisplay").innerHTML = rightPupil;
+    document.getElementById("leftPupilDisplay").innerHTML = leftPupil;
 }

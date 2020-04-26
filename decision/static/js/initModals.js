@@ -112,13 +112,13 @@ function launchModal(modalTitle, step) {
         min = Math.round(min%60);
     }
 
-    var saveBtn = document.getElementById('saveModal');
+    var saveBtn = document.getElementById('saveTime');
     saveBtn.onclick = function(){
         localStorage.setItem(step, fetchTimeModal());
         $("#timeModal").modal('hide');
     }
 
-    document.getElementById('popup-title').innerHTML = modalTitle;
+    document.getElementById('time-title').innerHTML = modalTitle;
     document.getElementById('hourStamp').value = hour;
     document.getElementById('minuteStamp').value = min;
     document.getElementById('secondStamp').value = sec;
@@ -130,8 +130,8 @@ function launchModal(modalTitle, step) {
  * onclick functions
  */
 function ettModal() {
-    var saveBtn = document.getElementById('saveModal');
-    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    var saveBtn = document.getElementById('saveETT');
+    document.getElementById('ett-title').innerHTML = "Enter The Following";
     $("#ettModal").modal();
 
     saveBtn.onclick = function () {
@@ -148,8 +148,8 @@ function ettModal() {
 }
 
 function bagMaskModal() {
-    var saveBtn = document.getElementById('saveModal');
-    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    var saveBtn = document.getElementById('saveBag');
+    document.getElementById('bag-title').innerHTML = "Enter The Following";
     $("#bagMaskModal").modal();
     saveBtn.onclick = function () {
         var rr = (document.getElementById('bagMaskRR').value).toString(10);
@@ -163,8 +163,8 @@ function bagMaskModal() {
 }
 
 function ivfModal() {
-    var saveBtn = document.getElementById('saveModal');
-    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    var saveBtn = document.getElementById('saveIVF');
+    document.getElementById('ivf-title').innerHTML = "Enter The Following";
     $("#ivfModal").modal();
     saveBtn.onclick = function () {
         var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
@@ -180,11 +180,11 @@ function ivfModal() {
 }
 
 function diffAirwayModal() {
-    var saveBtn = document.getElementById('saveModal');
-    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    var saveBtn = document.getElementById('saveDiffAirway');
+    document.getElementById('diffAirway-title').innerHTML = "Enter The Following";
     $("#diffAirwayModal").modal();
     saveBtn.onclick = function () {
-        var adjunct = document.getElementById('adjunct')
+        var adjunct = document.getElementById('adjunct').value;
         var display = "Difficult Airway: " + adjunct;
         localStorage.setItem('DiffAirway_Display', display);
 
