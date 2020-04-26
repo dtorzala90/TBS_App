@@ -131,7 +131,9 @@ function launchModal(modalTitle, step) {
  */
 function ettModal() {
     var saveBtn = document.getElementById('saveModal');
-    $("#ettModal").modal('hide');
+    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    $("#ettModal").modal();
+
     saveBtn.onclick = function () {
         var rr = (document.getElementById('ettRR').value).toString(10);
         var depth = (document.getElementById('ettDepth').value).toString(10);
@@ -147,7 +149,8 @@ function ettModal() {
 
 function bagMaskModal() {
     var saveBtn = document.getElementById('saveModal');
-    $("#bagMaskModal").modal('hide');
+    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    $("#bagMaskModal").modal();
     saveBtn.onclick = function () {
         var rr = (document.getElementById('bagMaskRR').value).toString(10);
         var display = "Bag Mask RR: " + rr;
@@ -161,7 +164,8 @@ function bagMaskModal() {
 
 function ivfModal() {
     var saveBtn = document.getElementById('saveModal');
-    $("#ivfModal").modal('hide');
+    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    $("#ivfModal").modal();
     saveBtn.onclick = function () {
         var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
         var ivf_added = document.getElementById('ivfAmount').value;
@@ -177,7 +181,8 @@ function ivfModal() {
 
 function diffAirwayModal() {
     var saveBtn = document.getElementById('saveModal');
-    $("#diffAirwayModal").modal('hide');
+    document.getElementById('popup-title').innerHTML = "Enter The Following";
+    $("#diffAirwayModal").modal();
     saveBtn.onclick = function () {
         var adjunct = document.getElementById('adjunct')
         var display = "Difficult Airway: " + adjunct;

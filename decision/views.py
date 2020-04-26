@@ -219,7 +219,6 @@ def checkAlerts(request):
 		alertsDict['etco2_value'] = 'null'
 
 	##Circulation Alerts
-	ivFluids = dbTable.__getattribute__('IV_Fluid_Amount')
 
 	#Additional PIV
 	if(pivCount == "1" and centrLine == "no" and intrLine == "no"):
@@ -233,7 +232,7 @@ def checkAlerts(request):
 		alertsDict['fluids_given'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
 
-	elif(ivFluids > 20):
+	elif(ivf > 20):
 		alertsDict['fluids_given'] = 'false'
 		alertsDict['excess_fluids'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
