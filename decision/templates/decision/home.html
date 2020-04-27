@@ -365,36 +365,40 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <p class="survey-p">Right:</p>
-                                                    <button type="button" class="btn btn-light" name="rchest"
-                                                            id="rchestyes"
-                                                            value="yes"
-                                                            onclick="setItemAjax('Right_Chest','yes');
+                                                    <div class="btn-group-vertical btn-padding" role="group">
+                                                        <button type="button" class="btn btn-light" name="rchest"
+                                                                id="rchestyes"
+                                                                value="yes"
+                                                                onclick="setItemAjax('Right_Chest','yes');
                                                             updateBorder(this.id,'rchestno');">Yes
-                                                    </button>
-                                                    <br>
-                                                    <button type="button" class="btn btn-light" name="rchest"
-                                                            id="rchestno"
-                                                            value="no"
-                                                            onclick="setItemAjax('Right_Chest','no');
+                                                        </button>
+                                                        <br>
+                                                        <button type="button" class="btn btn-light" name="rchest"
+                                                                id="rchestno"
+                                                                value="no"
+                                                                onclick="setItemAjax('Right_Chest','no');
                                                             updateBorder(this.id,'rchestyes');">No
-                                                    </button>
+                                                        </button>
+                                                    </div>
                                                 </div>
 
                                                 <div class="col">
                                                     <p class="survey-p">Left:</p>
-                                                    <button type="button" class="btn btn-light" name="lchest"
-                                                            id="lchestyes"
-                                                            value="yes"
-                                                            onclick="setItemAjax('Left_Chest','yes');
+                                                    <div class="btn-group-vertical btn-padding" role="group">
+                                                        <button type="button" class="btn btn-light" name="lchest"
+                                                                id="lchestyes"
+                                                                value="yes"
+                                                                onclick="setItemAjax('Left_Chest','yes');
                                                             updateBorder(this.id,'lchestno');">Yes
-                                                    </button>
-                                                    <br>
-                                                    <button type="button" class="btn btn-light" name="lchest"
-                                                            id="lchestno"
-                                                            value="no"
-                                                            onclick="setItemAjax('Left_Chest','no');
+                                                        </button>
+                                                        <br>
+                                                        <button type="button" class="btn btn-light" name="lchest"
+                                                                id="lchestno"
+                                                                value="no"
+                                                                onclick="setItemAjax('Left_Chest','no');
                                                             updateBorder(this.id,'lchestyes');">No
-                                                    </button>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -542,7 +546,7 @@
 
                                             <p class="survey-p">Perfusion</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <span style="font-weight:bold; font-size: 1.5rem">Lip Color:</span>
+                                                <span class="survey-span">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
                                                         value="pi" onclick="setItemAjax('Lip_Color','pink');
                                                         updateBorder(this.id,'lipc-wh','lipc-unk');">Pink
@@ -560,7 +564,7 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Nail Color:</span>
+                                                <span class="survey-span">Nail Color:</span>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-pi"
                                                         value="pi" onclick="setItemAjax('Nail_Color','pink');
@@ -580,7 +584,7 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Capillary Refill:</span>
+                                                <span class="survey-span">Capillary Refill:</span>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-2"
                                                         value="<2" onclick="setItemAjax('Cap_Refill','<2sec');
                                                         updateBorder(this.id,'caprt-4','caprt-24');"><2s
@@ -604,7 +608,7 @@
 
                                             <p class="survey-p">IV Access</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <span style="font-weight:bold; font-size: 1.5rem">Functional Peripheral IV:</span>
+                                                <span class="survey-span">Functional Peripheral IV:</span>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp0"
                                                         value="no"
                                                         onclick="updateBorder(this.id,'funp1','funp2','funp>2');">None
@@ -624,7 +628,7 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Intraosseous Line:</span>
+                                                <span class="survey-span">Intraosseous Line:</span>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralYes"
                                                         value="yes" onclick="setItemAjax('Intraosseous_Line','yes');
@@ -638,7 +642,7 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Central Line:</span>
+                                                <span class="survey-span">Central Line:</span>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
                                                         value="yes" onclick="setItemAjax('Central_Line','yes');
                                                         updateBorder(this.id,'cenlNo');"> Yes
@@ -658,7 +662,7 @@
                                             <p class="survey-p">IV Fluids</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ivf-started" onclick="ivfModal();
-                                               updateBorder(this.id,'ivf-additional','ivf-complete');">Started
+                                                updateBorder(this.id,'ivf-additional','ivf-complete');">Started
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ivf-additional" onclick="ivfModal();
                                                 updateBorder(this.id,'ivf-started','ivf-complete');">Additional Fluids
@@ -905,7 +909,7 @@
 
                                             <p class="survey-p">Pupils</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
-                                                <span style="font-weight:bold; font-size: 1.5rem">Equal:</span>
+                                                <span class="survey-span">Equal:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="equal" value="yes" id="equalyes"
                                                         onclick="setItemAjax('Pupils_Equal','Yes');
@@ -919,7 +923,7 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Round:</span>
+                                                <span class="survey-span">Round:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="round" value="yes" id="roundyes"
                                                         onclick="setItemAjax('Pupils_Round','Yes');
@@ -933,7 +937,7 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Reactive:</span>
+                                                <span class="survey-span">Reactive:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="rlight" value="yes" id="reactiveyes"
                                                         onclick="setItemAjax('Pupils_Reactive','Yes');
@@ -947,35 +951,42 @@
 
                                                 <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Right:</span>
-                                                <div class="form-group w-100">
+                                            </div>
 
-                                                    <input class="form-control form-control-lg" type="text"
+                                            <span class="survey-span">Right:</span>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
                                                            id="pupilsizeRight"
                                                            name="sizer"
                                                            value=""
                                                            placeholder="Size">
-                                                    <button type="button" class="btn btn-primary mb-2"
-                                                            onclick="recordPupilSize('right')">Enter
-                                                    </button>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                onclick="recordPupilSize('right')">Enter
+                                                        </button>
+                                                    </div>
                                                 </div>
+                                            </div>
 
-                                                <br>
+                                            <br>
 
-                                                <span style="font-weight:bold; font-size: 1.5rem">Left:</span>
-                                                <div class="form-group w-100">
-
-                                                    <input class="form-control form-control-lg" type="text"
+                                            <span class="survey-span">Left:</span>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
                                                            id="pupilsizeLeft"
                                                            name="sizel"
                                                            value=""
                                                            placeholder="Size">
-                                                    <button type="button" class="btn btn-primary mb-2"
-                                                            onclick="recordPupilSize('left')">Enter
-                                                    </button>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                onclick="recordPupilSize('left')">Enter
+                                                        </button>
+                                                    </div>
                                                 </div>
-
-
                                             </div>
 
                                         </div>
@@ -1119,14 +1130,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="headAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="headAbnorm"
-                                                        onclick="updateBorder(this.id, 'headnormal');
-                                                        recordAbnormality('headAbnormText', 'Head_Abnormality')">
-                                                    Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="headAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="headAbnorm"
+                                                                onclick="updateBorder(this.id, 'headnormal');
+                                                                recordAbnormality('headAbnormText', 'Head_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1143,13 +1162,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="eyesAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="eyesAbnorm"
-                                                        onclick="updateBorder(this.id, 'eyesnorm');
-                                                        recordAbnormality('eyesAbnormText', 'Eyes_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="eyesAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="eyesAbnorm"
+                                                                onclick="updateBorder(this.id, 'eyesnorm');
+                                                                recordAbnormality('eyesAbnormText', 'Eyes_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1166,13 +1194,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="earsAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="earsAbnorm"
-                                                        onclick="updateBorder(this.id, 'earsnorm');
-                                                        recordAbnormality('earsAbnormText', 'Ears_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="earsAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="earsAbnorm"
+                                                                onclick="updateBorder(this.id, 'earsnorm');
+                                                        recordAbnormality('earsAbnormText', 'Ears_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1189,13 +1226,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="midfaceAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="midfaceAbnorm"
-                                                        onclick="updateBorder(this.id, 'midfacenorm');
-                                                        recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="midfaceAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="midfaceAbnorm"
+                                                                onclick="updateBorder(this.id, 'midfacenorm');
+                                                                recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1212,13 +1258,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="trachAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="trachAbnorm"
-                                                        onclick="updateBorder(this.id, 'trachnorm');
-                                                        recordAbnormality('trachAbnormText', 'Trachea_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="trachAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="trachAbnorm"
+                                                                onclick="updateBorder(this.id, 'trachnorm');
+                                                                recordAbnormality('trachAbnormText', 'Trachea_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1235,13 +1290,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="jugularAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="jugularAbnorm"
-                                                        onclick="updateBorder(this.id, 'jugularnorm');
-                                                        recordAbnormality('jugularAbnormText', 'Jugular_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="jugularAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="jugularAbnorm"
+                                                                onclick="updateBorder(this.id, 'jugularnorm');
+                                                                recordAbnormality('jugularAbnormText', 'Jugular_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1258,13 +1322,21 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="CVAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="cvAbnorm"
-                                                        onclick="updateBorder(this.id, 'cvnorm');
-                                                        recordAbnormality('CVAbnormText', 'CV_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="CVAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button" id="cvAbnorm"
+                                                                onclick="updateBorder(this.id, 'cvnorm');
+                                                                recordAbnormality('CVAbnormText', 'CV_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1281,13 +1353,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="lungsAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="lungsAbnorm"
-                                                        onclick="updateBorder(this.id, 'lungsnorm');
-                                                        recordAbnormality('lungsAbnormText', 'Lungs_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="lungsAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="lungsAbnorm"
+                                                                onclick="updateBorder(this.id, 'lungsnorm');
+                                                                recordAbnormality('lungsAbnormText', 'Lungs_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1304,13 +1385,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="abdomenAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="abdomenAbnorm"
-                                                        onclick="updateBorder(this.id, 'abdomennorm');
-                                                        recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="abdomenAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="abdomenAbnorm"
+                                                                onclick="updateBorder(this.id, 'abdomennorm');
+                                                                recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1327,13 +1417,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="PelvisAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="pelvisAbnorm"
-                                                        onclick="updateBorder(this.id, 'pelvisnorm');
-                                                        recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="PelvisAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="pelvisAbnorm"
+                                                                onclick="updateBorder(this.id, 'pelvisnorm');
+                                                                recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1350,13 +1449,21 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="GUAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="guAbnorm"
-                                                        onclick="updateBorder(this.id, 'gunorm');
-                                                        recordAbnormality('GUAbnormText', 'GU_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="GUAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button" id="guAbnorm"
+                                                                onclick="updateBorder(this.id, 'gunorm');
+                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1373,13 +1480,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="RectalAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="rectalAbnorm"
-                                                        onclick="updateBorder(this.id, 'rectalnorm');
-                                                        recordAbnormality('RectalAbnormText', 'Rectal_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="RectalAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="rectalAbnorm"
+                                                                onclick="updateBorder(this.id, 'rectalnorm');
+                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1396,13 +1512,21 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="RUEAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="rueAbnorm"
-                                                        onclick="updateBorder(this.id, 'ruenorm');
-                                                        recordAbnormality('RUEAbnormText', 'RUE_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="RUEAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button" id="rueAbnorm"
+                                                                onclick="updateBorder(this.id, 'ruenorm');
+                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1419,13 +1543,21 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="LUEAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="lueAbnorm"
-                                                        onclick="updateBorder(this.id, 'luenorm');
-                                                        recordAbnormality('LUEAbnormText', 'LUE_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="LUEAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button" id="lueAbnorm"
+                                                                onclick="updateBorder(this.id, 'luenorm');
+                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1442,13 +1574,21 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="RLEAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="rleAbnorm"
-                                                        onclick="updateBorder(this.id, 'rlenorm');
-                                                        recordAbnormality('RLEAbnormText', 'RLE_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="RLEAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button" id="rleAbnorm"
+                                                                onclick="updateBorder(this.id, 'rlenorm');
+                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1465,13 +1605,21 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="LLEAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="lleAbnorm"
-                                                        onclick="updateBorder(this.id, 'llenorm');
-                                                        recordAbnormality('LLEAbnormText', 'LLE_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="LLEAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button" id="lleAbnorm"
+                                                                onclick="updateBorder(this.id, 'llenorm');
+                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1488,13 +1636,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="backAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn btn-primary mb-2" id="backAbnorm"
-                                                        onclick="updateBorder(this.id, 'backnorm');
-                                                        recordAbnormality('backAbnormText', 'Back_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="backAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="backAbnorm"
+                                                                onclick="updateBorder(this.id, 'backnorm');
+                                                                recordAbnormality('backAbnormText', 'Back_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1511,13 +1668,22 @@
                                                 </button>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control form-control-lg" type="text"
-                                                       id="skinAbnormText" name=""
-                                                       value="" placeholder="Enter Abnormality">
-                                                <button class="btn" id="skinAbnorm"
-                                                        onclick="updateBorder(this.id, 'skinnorm');
-                                                        recordAbnormality('skinAbnormText', 'Skin_Abnormality')">Enter
-                                                </button>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl"
+                                                           type="text"
+                                                           id="skinAbnormText"
+                                                           name=""
+                                                           value=""
+                                                           placeholder="Enter Abnormality">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                id="skinAbnorm"
+                                                                onclick="updateBorder(this.id, 'skinnorm');
+                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality')">
+                                                            Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
