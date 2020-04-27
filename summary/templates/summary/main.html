@@ -118,26 +118,23 @@
                     </div>
                     <div class="card-body summary-card-body alerts-scrollable alerts-card-height"
                          id="alert_placeholder">
-                        <div class="row h-100 justify-content-center align-items-center">
-                            <div class="col h-100 mx-auto">
-                                <div class="alert-format">
 
-                                    <!--
-                                    ================================================================================
-                                    JavaScript to create new timer for current session and check for previous alerts
-                                    This script is the same as the one in home.html but with additional calculations
-                                    to compensate for the fact that the Summary page will be opened after the timer
-                                    has started.
-                                    ================================================================================
-                                    -->
-                                    <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
-                                    <script type="text/javascript"
-                                            src="{% static "js/generalAlertSystem.js" %}"></script>
-                                    <script type="text/javascript"
-                                            src="{% static "js/checkAlertsOnRefresh.js" %}"></script>
+                        <div>
 
-                                </div>
-                            </div>
+                            <!--
+                            ================================================================================
+                            JavaScript to create new timer for current session and check for previous alerts
+                            This script is the same as the one in home.html but with additional calculations
+                            to compensate for the fact that the Summary page will be opened after the timer
+                            has started.
+                            ================================================================================
+                            -->
+                            <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
+                            <script type="text/javascript"
+                                    src="{% static "js/generalAlertSystem.js" %}"></script>
+                            <script type="text/javascript"
+                                    src="{% static "js/checkAlertsOnRefresh.js" %}"></script>
+
                         </div>
                     </div>
                 </div>
