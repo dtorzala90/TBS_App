@@ -397,11 +397,10 @@ Summary page [/summary/main.html]
     height: 57vh;
 }
 
-/*Formats the Bootstrap alerts on the summary page*/
-.alert-format {
+/*Formats the Bootstrap danger alerts on the summary page*/
+.alert-danger {
     align-content: center;
     font-size: 30px;
-    overflow: auto;
     text-align: center;
 }
 
@@ -416,6 +415,7 @@ Summary page [/summary/main.html]
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 
 /* || Vitals card */
 
