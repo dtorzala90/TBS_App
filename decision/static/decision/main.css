@@ -119,7 +119,18 @@ Decision (survey) page [/decision/home.html]
     line-height: 1.2;
     padding: 5px;
     text-align: center;
-    width: 400px; /*Reduces div width to look nice*/
+    width: 350px; /*Reduces div width to look nice*/
+}
+
+/* || Page navigation buttons */
+
+.pagenav-btn {
+    align-items: center;
+    display: flex;
+    height: 65px;
+    justify-content: center;
+    vertical-align: middle;
+    width: 85%;
 }
 
 /* || Decision card container */
@@ -162,7 +173,7 @@ a:hover {
 
 /*Allows the content in the card to scroll*/
 .card-scroll {
-    height: 58vh;
+    height: 59vh;
     overflow-y: hidden;
 }
 
@@ -239,8 +250,13 @@ a:hover {
 }
 
 /*Creates border to make btn-light buttons pop against current theme*/
-.btn-light {
-    border-color: #2b7a78;
+.btn-light, .btn-dark {
+    border: 1.5px solid #2b7a78;
+}
+
+.btn-info {
+    background-color: #3aafa9;
+    border: 1.5px solid #2b7a78;
 }
 
 /*Adjusts padding between survey buttons*/
