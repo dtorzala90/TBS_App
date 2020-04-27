@@ -22,12 +22,6 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
 }
 
-/*Ensures that individual divs with this class can scroll individually*/
-.scrollable {
-    max-height: 50vh;
-    overflow-y: auto;
-}
-
 ul {
     margin: 0;
 }
@@ -123,10 +117,9 @@ Decision (survey) page [/decision/home.html]
     font-size: 65px;
     font-weight: 500;
     line-height: 1.2;
-    margin: 8px auto 2px; /*Auto margin for left/right to center div*/
     padding: 5px;
     text-align: center;
-    width: 350px; /*Reduces div width to look nice*/
+    width: 400px; /*Reduces div width to look nice*/
 }
 
 /* || Decision card container */
@@ -169,7 +162,7 @@ a:hover {
 
 /*Allows the content in the card to scroll*/
 .card-scroll {
-    height: 60vh;
+    height: 58vh;
     overflow-y: hidden;
 }
 
