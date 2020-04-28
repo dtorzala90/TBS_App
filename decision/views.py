@@ -29,6 +29,12 @@ alertsDict = {
 }
 
 historyDict = {
+	'Oxygen_Supplementation_History': {'Initiated' : [],'Stopped' : []},
+	'Bag_Mask_History': {'Initiated' : [],'Stopped' : []},
+	'LMA_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
+	'ETT_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
+	'Difficult_Airway_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
+	'Surgical_Airway_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
 	'ETCO2_History': {},
 	'HR_History': {},
 	'BP_History': {},
@@ -42,9 +48,7 @@ historyDict = {
 	'Pupils_Reactive_History': {},
 	'Pupil_Right_History' : {},
 	'Pupil_Left_History' : {},
-	'Moves_Extremities_History' : {},
-	'Oxygen_Supplementation_History': {}
-
+	'Moves_Extremities_History' : {}
 }
 
 # Create your views here.
@@ -101,15 +105,49 @@ def savePatientInfo(request):
 def setItem(request):
 		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
-		historyKey = request.POST.get('historyKey', None)
-		timeStamp = request.POST.get('timeStamp', None)
 		dbTable = Session.objects.get(id="99")
 		dbTable.__setattr__(key, valueNew)
 
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateVitalsHistory(request):
+		valueNew = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
 		history = historyDict[historyKey]
-		history[valueNew] = timeStamp
+		try:
+			# Assumes there is a list on the key
+			history[valueNew].append(timeStamp)
+		except KeyError:  # If it fails, because there is no key
+			history.__setitem__(valueNew, timeStamp)
+		except AttributeError:  # If it fails because it is not a list
+			history.__setitem__(valueNew, [history[valueNew], timeStamp])
 
 		dbTable.__setattr__(historyKey, str(history))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateAirwayHistory(request):
+		step = request.POST.get('step', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		airwayTypeHistory = historyDict[historyKey]
+		stepHistory = airwayTypeHistory[step]
+		stepHistory.append(timeStamp)
+
+		dbTable.__setattr__(historyKey, str(airwayTypeHistory))
 
 		dbTable.save()
 

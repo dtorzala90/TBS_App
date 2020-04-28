@@ -12,71 +12,71 @@
 function initEdit(type, step){
     if(type === 'oxygen'){
         if(step === 'init'){
-            launchModal("Oxygen Initiated At","Oxygen_Supplementation_Initiated");
+            launchModal("Oxygen Initiated At", "Oxygen_Supplementation_Initiated", "Oxygen_Supplementation_History", "Initiated" );
         }
         else{
-            launchModal("Oxygen Stopped At","Oxygen_Supplementation_Stopped");
+            launchModal("Oxygen Stopped At","Oxygen_Supplementation_Stopped", "Oxygen_Supplementation_History", "Stopped" );
         }
     }
 
     else if(type === 'bag'){
         if(step === 'init'){
-            launchModal("Bag Initiated At","Bag_Mask_Initiated");
+            launchModal("Bag Initiated At","Bag_Mask_Initiated", "Bag_Mask_History", "Initiated");
         }
         else{
-            launchModal("Bag Stopped At","Bag_Mask_Stopped");
+            launchModal("Bag Stopped At","Bag_Mask_Stopped", "Bag_Mask_History", "Stopped");
         }
     }
 
     else if(type === 'lma'){
         if(step === 'init'){
-            launchModal("LMA Initiated At","LMA_Initiated");
+            launchModal("LMA Initiated At","LMA_Initiated", "LMA_History", "Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("LMA Achieved At","LMA_Achieved");
+            launchModal("LMA Achieved At","LMA_Achieved", "LMA_History", "Achieved");
         }
 
         else{
-            launchModal("LMA Stopped At","LMA_Stopped");
+            launchModal("LMA Removed At","LMA_Stopped", "LMA_History", "Removed");
         }
     }
 
     else if(type === 'ett'){
         if(step === 'init'){
-            launchModal("ETT Initiated At","ETT_Initiated");
+            launchModal("ETT Initiated At","ETT_Initiated", "ETT_History", "Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("ETT Achieved At","ETT_Achieved");
+            launchModal("ETT Achieved At","ETT_Achieved", "ETT_History", "Achieved");
         }
 
         else{
-            launchModal("ETT Stopped At","ETT_Stopped");
+            launchModal("ETT Removed At","ETT_Stopped", "ETT_History", "Removed");
         }
     }
 
     else if(type === 'diffAirway'){
         if(step === 'init'){
-            launchModal("Difficult Airway Initiated At","Difficult_Airway_Initiated");
+            launchModal("Difficult Airway Initiated At","Difficult_Airway_Initiated", "Difficult_Airway_History", "Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("Difficult Airway Achieved At","Difficult_Airway_Achieved");
+            launchModal("Difficult Airway Achieved At","Difficult_Airway_Achieved", "Difficult_Airway_History", "Achieved");
         }
 
         else{
-            launchModal("Difficult Airway Stopped At","Difficult_Airway_Stopped");
+            launchModal("Difficult Airway Removed At","Difficult_Airway_Stopped", "Difficult_Airway_History", "Removed");
         }
     }
 
     else{
         if(step === 'init'){
-            launchModal("Surgical Airway Initiated At","Surgical_Airway_Initiated");
+            launchModal("Surgical Airway Initiated At","Surgical_Airway_Initiated", "Surgical_Airway_History", "Initiated");
         }
         else if (step === 'achieved') {
-            launchModal("Surgical Airway Achieved At","Surgical_Airway_Achieved");
+            launchModal("Surgical Airway Achieved At","Surgical_Airway_Achieved", "Surgical_Airway_History", "Achieved");
         }
 
         else{
-            launchModal("Surgical Airway Stopped At","Surgical_Airway_Stopped");
+            launchModal("Surgical Airway Removed At","Surgical_Airway_Stopped", "Surgical_Airway_History", "Removed");
         }
     }
 }
@@ -99,7 +99,7 @@ function fetchTimeModal(){
  * @param modalTitle
  * @param step
  */
-function launchModal(modalTitle, step) {
+function launchModal(modalTitle, step, historyKey, historyValue) {
     var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
     var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
@@ -114,7 +114,9 @@ function launchModal(modalTitle, step) {
 
     var saveBtn = document.getElementById('saveTime');
     saveBtn.onclick = function(){
-        localStorage.setItem(step, fetchTimeModal());
+        var timeStamp = fetchTimeModal();
+        setItemAjax(step, timeStamp);
+        updateAirwayHistory(historyKey, historyValue, timeStamp)
         $("#timeModal").modal('hide');
     }
 
@@ -143,6 +145,7 @@ function ettModal() {
         setItemAjax('ETT_RR', rr);
         setItemAjax('ETT_Depth', depth);
         setItemAjax('ETT_Initiated', getCurrentTime());
+        updateAirwayHistory('ETT_History', 'Achieved', ' At ' + getCurrentTime() + ' with RR of ' + rr + ' and depth of ' + depth + 'cm')
         $("#ettModal").modal('hide');
     }
 }
@@ -158,6 +161,7 @@ function bagMaskModal() {
 
         setItemAjax('Bag_Mask_RR', rr);
         setItemAjax('Bag_Mask_Initiated', getCurrentTime());
+        updateAirwayHistory('Bag_Mask_History', 'Initiated', ' At ' + getCurrentTime() + ' with a RR of ' + rr);
         $("#bagMaskModal").modal('hide');
     }
 }
@@ -189,6 +193,7 @@ function diffAirwayModal() {
         localStorage.setItem('DiffAirway_Display', display);
 
         setItemAjax('Difficult_Airway_Adjunct', adjunct);
+        updateAirwayHistory('Difficult_Airway_History', 'Initiated', ' At ' + timeStamp + ' using ' + adjunct);
         $("#diffAirwayModal").modal('hide');
     }
 }
@@ -254,3 +259,20 @@ function recordAbnormality(inputId, modelName) {
         {}
      })
 }
+
+function updateAirwayHistory(historyKey, step, timeStamp){
+    $.ajax({
+        type:"POST",
+        url: '/updateData/',
+        data: {
+            'historyKey': historyKey,
+            'step': step,
+            'timeStamp': timeStamp
+        },
+
+        success: function( data ) {
+
+        }
+    });
+}
+

@@ -47,6 +47,12 @@ class Session(models.Model):
 	Right_Chest = models.CharField(max_length=20, default="null")
 	Left_Chest = models.CharField(max_length=20, default="null")
 
+	Spontaneous_Breathing_History = models.CharField(max_length=20, default="null")
+	Assisted_Breathing_History = models.CharField(max_length=20, default="null")
+	Right_Chest_History = models.CharField(max_length=20, default="null")
+	Left_Chest_History = models.CharField(max_length=20, default="null")
+
+
 	#Circulation Data
 	Lip_Color = models.CharField(max_length=20, default="null")
 	Nail_Color = models.CharField(max_length=20, default="null")

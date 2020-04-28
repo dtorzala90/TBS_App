@@ -20,5 +20,9 @@ urlpatterns = [
     url(r'^checkAlerts/$', views.checkAlerts, name='checkAlerts'),
 
     url(r'^getData/$', views.getData, name='getData'),
+
+    url(r'^updateVitalsHistory/$', views.updateVitalsHistory, name='updateVitalsHistory'),
+
+    url(r'^updateAirwayHistory/$', views.updateAirwayHistory, name='updateAirwayHistory'),
 ]
 
