@@ -70,7 +70,7 @@ function recordBP(){
 }
 
 function recordEtco2(){
-    etco2time = createTimeStamp();
+    createTimeStamp();
     etco2 = parseInt(etco2Text.value);
     etco2Text.value = "";
 
@@ -80,7 +80,7 @@ function recordEtco2(){
          return;
     }
 
-    updateVitals("ETCO2", etco2.toString(10));
+    updateVitals("ETCO2_History", timeStamp,"ETCO2", etco2.toString(10));
     var etco2Display = etco2.toString(10) + " at " + timeStamp;
     localStorage.setItem("ETCO2_Display", etco2Display);
     populateUI('etco2',etco2Display);
@@ -266,7 +266,7 @@ function populateUI(vital, display){
     }
 }
 
-function updateVitals(key, value){
+function updateVitals(historyKey, timeStamp, key, value){
 
     $.ajax({
         type:"POST",
@@ -274,6 +274,8 @@ function updateVitals(key, value){
         data: {
             'key': key,
             'value': value,
+            'historyKey': historyKey,
+            'timeStamp':timeStamp,
         },
 
         success: function( data ) {

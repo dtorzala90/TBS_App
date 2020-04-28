@@ -28,6 +28,12 @@ alertsDict = {
 	'suggest_mtp' : 'null'
 }
 
+historyDict = {
+	'ETCO2_History': {},
+	'HR_History': {},
+	'BP_History': {}
+}
+
 # Create your views here.
 def home(request):
 	return render(request, 'decision/home.html')
@@ -37,6 +43,10 @@ def begin(request):
 
 def summary(request):
 	return render(request, 'summary/main.html', {'title': 'Trauma Overview'})
+
+@csrf_exempt
+def metrics(request):
+	return render(request, 'summary/metrics.html')
 
 def startTrauma(request):
 	return render(request, 'decision/home.html')
@@ -78,12 +88,24 @@ def savePatientInfo(request):
 def setItem(request):
 		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
 		dbTable = Session.objects.get(id="99")
 		dbTable.__setattr__(key, valueNew)
+
+		history = historyDict[historyKey]
+		history[valueNew] = timeStamp
+
+		dbTable.__setattr__(historyKey, str(history))
+
 		dbTable.save()
 
 		resp = HttpResponse("Saved it!")
 		return resp  # Sending an success response
+
+@csrf_exempt
+def getData(request):
+	return JsonResponse(historyDict)
 
 @csrf_exempt
 def checkAlerts(request):

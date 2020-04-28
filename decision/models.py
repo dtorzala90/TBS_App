@@ -77,6 +77,9 @@ class Session(models.Model):
 
 
 	GCS_History = models.CharField(max_length=20, default="null")
+	GCS_Motor_History = models.CharField(max_length=20, default="null")
+	GCS_Verbal_History = models.CharField(max_length=20, default="null")
+	GCS_Eye_History = models.CharField(max_length=20, default="null")
 	ETCO2_History = models.CharField(max_length=20, default="null")
 	Shock_History = models.CharField(max_length=20, default="null")
 	HR_History = models.CharField(max_length=20, default="null")
