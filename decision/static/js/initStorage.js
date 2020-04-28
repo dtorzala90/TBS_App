@@ -1,9 +1,17 @@
 <!-- Clear data from previous session and initialize global values -->
 localStorage.clear();
 
-localStorage.setItem("ETC02 Values Survey", "null");
-localStorage.setItem("HR Values Survey", "null");
-localStorage.setItem("BP Values Survey", "null");
+localStorage.setItem("etco2_1", " ");
+localStorage.setItem("etco2_2", " ");
+localStorage.setItem("etco2_3", " ");
+
+localStorage.setItem("hr_1", " ");
+localStorage.setItem("hr_2", " ");
+localStorage.setItem("hr_3", " ");
+
+localStorage.setItem("bp_1", " ");
+localStorage.setItem("bp_2", " ");
+localStorage.setItem("bp_3", " ");
 
 localStorage.setItem("HR_prev", "null");
 localStorage.setItem("BP_prev", "null");
