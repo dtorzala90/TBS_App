@@ -152,7 +152,7 @@ function recordPupilSize(side){
     }
 }
 function createTimeStamp(){
-    var min = (parseInt(localStorage.getItem('total_seconds_main'),10))/60;
+    var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
     var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
 
