@@ -228,7 +228,10 @@ def checkAlerts(request):
 		alertsDict['additional_piv'] = 'false'
 
 	#IV Fluids
-	if(ivf <= 20):
+	if(ivf == 0):
+		alertsDict['consider_bolus'] = 'true'
+
+	elif(ivf <= 20):
 		alertsDict['fluids_given'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
 
@@ -236,9 +239,6 @@ def checkAlerts(request):
 		alertsDict['fluids_given'] = 'false'
 		alertsDict['excess_fluids'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
-
-	elif(ivf == 0):
-		alertsDict['consider_bolus'] = 'true'
 
 	#Perfusion Alerts
 	nailColor = dbTable.__getattribute__('Nail_Color')
