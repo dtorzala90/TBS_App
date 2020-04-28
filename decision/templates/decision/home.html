@@ -216,11 +216,11 @@
                                             <p class="survey-p">Endotracheal Tube</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="ettModal(); updateBorder(this.id,'ettAchieved','ettStop');"
+                                                        onclick="updateBorder(this.id,'ettAchieved','ettStop');"
                                                         ondblclick="initEdit('ett','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="setItemAjax('ETT_Achieved',getCurrentTime())
+                                                        onclick="ettModal(); setItemAjax('ETT_Achieved',getCurrentTime())
                                                         updateBorder(this.id,'ettInit','ettStop');"
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>

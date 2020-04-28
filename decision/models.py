@@ -11,29 +11,35 @@ class Session(models.Model):
 	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
 	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")
 	Oxygen_Supplementation_Stopped = models.CharField(max_length=20, default="null")
+	Oxygen_Supplementation_History = models.CharField(max_length=20, default="null")
 
 	Bag_Mask_Initiated = models.CharField(max_length=20, default="null")
 	Bag_Mask_Stopped = models.CharField(max_length=20, default="null")
 	Bag_Mask_RR = models.CharField(max_length=20, default="null")
+	Bag_Mask_History = models.CharField(max_length=20, default="null")
 
 	LMA_Initiated = models.CharField(max_length=20, default="null")
 	LMA_Achieved = models.CharField(max_length=20, default="null")
 	LMA_Stopped = models.CharField(max_length=20, default="null")
+	LMA_History = models.CharField(max_length=20, default="null")
 
 	ETT_Initiated = models.CharField(max_length=20, default="null")
 	ETT_Achieved = models.CharField(max_length=20, default="null")
 	ETT_Stopped = models.CharField(max_length=20, default="null")
 	ETT_RR = models.CharField(max_length=20, default="null")
 	ETT_Depth = models.CharField(max_length=20, default="null")
+	ETT_History = models.CharField(max_length=20, default="null")
 
 	Difficult_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Achieved = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Stopped = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Adjunct = models.CharField(max_length=20, default="null")
+	Difficult_Airway_History = models.CharField(max_length=20, default="null")
 
 	Surgical_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Achieved = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Stopped = models.CharField(max_length=20, default="null")
+	Surgical_Airway_History = models.CharField(max_length=20, default="null")
 
 	#Breathing Data
 	Spontaneous_Breathing = models.CharField(max_length=20, default="null")
@@ -55,25 +61,32 @@ class Session(models.Model):
 	Massive_Transfusion = models.CharField(max_length=20, default="no")
 
 	#Disability Data
-	Pupils_Equal = models.CharField(max_length=20, default="null")
-	Pupils_Round = models.CharField(max_length=20, default="null")
-	Pupils_Reactive = models.CharField(max_length=20, default="null")
-	Pupil_Size_Right = models.CharField(max_length=20, default="null")
-	Pupil_Size_Left = models.CharField(max_length=20, default="null")
+	Pupils_Equal = models.CharField(max_length=20, default="Unknown")
+	Pupils_Round = models.CharField(max_length=20, default="Unknown")
+	Pupils_Reactive = models.CharField(max_length=20, default="Unknown")
+	Pupil_Size_Right = models.CharField(max_length=20, default="Unknown")
+	Pupil_Size_Left = models.CharField(max_length=20, default="Unknown")
 
-	Moves_Extremities = models.CharField(max_length=20, default="null")
+	Moves_Extremities = models.CharField(max_length=20, default="Unknown")
+
+	Pupils_Equal_History = models.CharField(max_length=20, default="null")
+	Pupils_Round_History = models.CharField(max_length=20, default="null")
+	Pupils_Reactive_History = models.CharField(max_length=20, default="null")
+	Pupil_Right_History = models.CharField(max_length=20, default="null")
+	Pupil_Left_History = models.CharField(max_length=20, default="null")
+	Moves_Extremities_History = models.CharField(max_length=20, default="null")
 
 	#Vitals
-	ETCO2 = models.CharField(max_length=20, default="null")
+	ETCO2 = models.CharField(max_length=20, default="Unknown")
 
-	GCS = models.CharField(max_length=20, default="null")
-	GCS_Motor = models.CharField(max_length=20, default="null")
-	GCS_Verbal = models.CharField(max_length=20, default="null")
-	GCS_Eye = models.CharField(max_length=20, default="null")
+	GCS = models.CharField(max_length=20, default="Unknown")
+	GCS_Motor = models.CharField(max_length=20, default="Unknown")
+	GCS_Verbal = models.CharField(max_length=20, default="Unknown")
+	GCS_Eye = models.CharField(max_length=20, default="Unknown")
 
-	Shock_Level = models.CharField(max_length=20, default="null")
-	HR = models.CharField(max_length=20, default="null")
-	BP = models.CharField(max_length=20, default="null")
+	Shock_Level = models.CharField(max_length=20, default="Unknown")
+	HR = models.CharField(max_length=20, default="Unknown")
+	BP = models.CharField(max_length=20, default="Unknown")
 
 
 	GCS_History = models.CharField(max_length=20, default="null")

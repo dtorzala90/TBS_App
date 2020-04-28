@@ -31,7 +31,20 @@ alertsDict = {
 historyDict = {
 	'ETCO2_History': {},
 	'HR_History': {},
-	'BP_History': {}
+	'BP_History': {},
+	'GCS_History': {},
+	'GCS_Motor_History': {},
+	'GCS_Verbal_History': {},
+	'GCS_Eye_History': {},
+	'Shock_History': {},
+	'Pupils_Equal_History': {},
+	'Pupils_Round_History':{},
+	'Pupils_Reactive_History': {},
+	'Pupil_Right_History' : {},
+	'Pupil_Left_History' : {},
+	'Moves_Extremities_History' : {},
+	'Oxygen_Supplementation_History': {}
+
 }
 
 # Create your views here.
@@ -178,7 +191,7 @@ def checkAlerts(request):
 	##Vital Alerts
 
 	#Brady/Tachycardia
-	if(hr != "null"):
+	if(hr != "Unknown"):
 		hrInt = int(hr)
 		if(hrInt < 60):
 			alertsDict['heart_rate'] = 'bradycardia'
@@ -188,7 +201,7 @@ def checkAlerts(request):
 			alertsDict['heart_rate'] = 'null'
 
 	#Hypotension
-	if(bp != "null"):
+	if(bp != "Unknown"):
 		bpint = int(bp)
 		if (age != " "):
 			ageInt = int(age)
@@ -203,7 +216,7 @@ def checkAlerts(request):
 				alertsDict['hypotensive'] = 'false'
 
 	#Elevated shock
-	if(shock != "null"):
+	if(shock != "Unknown"):
 		shockFloat = float(shock)
 		if(shockFloat > 1.0):
 			alertsDict['shock_elevated'] = 'true'
@@ -211,7 +224,7 @@ def checkAlerts(request):
 			alertsDict['shock_elevated'] = 'false'
 
 	#Etco2 Alert
-	if (etco2 != "null"):
+	if (etco2 != "Unknown"):
 
 		etco2Int = int(etco2)
 
@@ -225,7 +238,7 @@ def checkAlerts(request):
 			alertsDict['etco2_value'] = '25-30'
 
 		elif (etco2Int >= 40 and etco2Int <= 50 ):
-			if(gcs != "null"):
+			if(gcs != "Unknown"):
 				gcsInt = int(gcs)
 				if(gcsInt < 13):
 					alertsDict['etco2_value'] = '40-50'
