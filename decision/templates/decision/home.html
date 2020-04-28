@@ -20,7 +20,7 @@
     <div class="row justify-content-around">
         <div class="col-3 my-auto" align="center">
             <a class="btn btn-info btn-lg pagenav-btn" href="{% url 'decision-begin' %}" role="button">
-                &larr; Initial Form
+                &larr; New Session
             </a>
         </div>
 
@@ -74,6 +74,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link survey-a" data-toggle="tab" href="#exps">E</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link survey-a" data-toggle="tab" href="#pinfo">Patient Info</a>
                         </li>
                     </ul>
                 </div>
@@ -1694,6 +1697,138 @@
 
                         </form>
                     </div>
+                    <!--
+                    ================================================================================
+                    Patient Info Section
+                    ================================================================================
+                    -->
+                    <div id="pinfo" class="tab-pane">
+                        <h2 class="card-title" style="color: #39393B">Patient Info</h2>
+
+                        <form>
+                            <div class="row">
+                                <div class="col-4 card-nav-pills">
+                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                         aria-orientation="vertical">
+                                        <a class="nav-link active survey-pill-a" id="v-pills-age-tab"
+                                           data-toggle="pill"
+                                           href="#v-pills-age" role="tab" aria-controls="v-pills-age"
+                                           aria-selected="false">Age</a>
+
+                                        <a class="nav-link survey-pill-a" id="v-pills-weight-tab" data-toggle="pill"
+                                           href="#v-pills-weight" role="tab" aria-controls="v-pills-weight"
+                                           aria-selected="false">Estimated Weight</a>
+
+                                        <a class="nav-link survey-pill-a" id="v-pills-injury-tab" data-toggle="pill"
+                                           href="#v-pills-injury" role="tab" aria-controls="v-pills-injury"
+                                           aria-selected="false">Mechanism of Injury</a>
+
+                                        <a class="nav-link survey-pill-a" id="v-pills-preArrival-tab" data-toggle="pill"
+                                           href="#v-pills-preArrival" role="tab" aria-controls="v-pills-preArrival"
+                                           aria-selected="false">Pre-Arrival Info</a>
+                                    </div>
+                                </div>
+                                <div class="col-8 survey-col">
+                                    <div class="tab-content" id="v-pills-tabContent">
+
+                                        <!-- Age -->
+                                        <div class="tab-pane fade show active sticky-top" id="v-pills-age"
+                                             role="tabpanel"
+                                             aria-labelledby="v-pills-head-age">
+
+                                            <p class="survey-p">Patient Age</p>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                           id="ageText"
+                                                           name="ageText"
+                                                           value=""
+                                                           placeholder="">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                onclick="">Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="v-pills-weight" role="tabpanel"
+                                             aria-labelledby="v-pills-weight-tab">
+
+                                            <p class="survey-p">Patient Estimated Weight</p>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                           id="weightText"
+                                                           name="weightText"
+                                                           value=""
+                                                           placeholder="">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                onclick="">Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="v-pills-injury" role="tabpanel"
+                                             aria-labelledby="v-pills-injury-tab">
+
+                                            <p class="survey-p">Mechanism Of Injury</p>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                           id="injuryText"
+                                                           name="injuryText"
+                                                           value=""
+                                                           placeholder="">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                onclick="">Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="v-pills-preArrival" role="tabpanel"
+                                             aria-labelledby="v-pills-preArrival-tab">
+
+                                            <p class="survey-p">Pre-Arrival Info</p>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-lg survey-fctrl" type="text"
+                                                           id="preArrivalText"
+                                                           name="preArrivalText"
+                                                           value=""
+                                                           placeholder="">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-info btn-lg" type="button"
+                                                                onclick="">Enter
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <script>
+                            var age = localStorage.getItem("Age");
+                            var weight = localStorage.getItem("Weight");
+                            var injury = localStorage.getItem("Injury");
+                            var preArrival = localStorage.getItem("PreArrival");
+
+                            document.getElementById('preArrivalText').value = preArrival;
+                            document.getElementById('injuryText').value = injury;
+                            document.getElementById('weightText').value = weight;
+                            document.getElementById('ageText').value = age;
+                        </script>
+                    </div>
+
                 </div>
             </div>
 

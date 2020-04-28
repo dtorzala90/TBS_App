@@ -10,23 +10,23 @@
         <div class="col startForm">
             <form action="{% url 'startTrauma' %}" method="POST">
                 <div class="form-group">
-                    <label for="patientWeight">Weight</label>
-                    <input type="text" class="form-control" id="patientWeight">
-                </div>
-
-                <div class="form-group">
                     <label for="patientAge">Age</label>
                     <input type="text" class="form-control" id="patientAge">
                 </div>
 
                 <div class="form-group">
-                    <label for="patientHistory">Reason For Visit</label>
-                    <textarea class="form-control" id="patientHistory" rows="4"></textarea>
+                    <label for="patientWeight">Estimated Weight</label>
+                    <input type="text" class="form-control" id="patientWeight">
                 </div>
 
                 <div class="form-group">
-                    <label for="addlInfo">Assessment En Route</label>
-                    <textarea class="form-control" id="addlInfo" rows="4"></textarea>
+                    <label for="patientHistory">Mechanism Of Injury</label>
+                    <textarea class="form-control" id="injury" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="addlInfo">Pre-Arrival Info</label>
+                    <textarea class="form-control" id="preArrival" rows="4"></textarea>
                 </div>
 
                 <hr>
@@ -44,8 +44,8 @@
     function startSession() {
         pAge = document.getElementById('patientAge').value;
         pWeight = document.getElementById('patientWeight').value;
-        pAddlInfo = document.getElementById('addlInfo').value;
-        pHistory = document.getElementById('patientHistory').value;
+        pInjury = document.getElementById('injury').value;
+        pArrival = document.getElementById('preArrival').value;
 
         if (pAge === '') {
             pAge = ' ';
@@ -55,23 +55,27 @@
             pWeight = ' ';
         }
 
-        if (pAddlInfo === '') {
-            pAddlInfo = ' ';
+        if (pInjury === '') {
+            pInjury = ' ';
         }
 
-        if (pHistory === '') {
-            pHistory = ' ';
+        if (pArrival === '') {
+            pArrival = ' ';
         }
 
-        localStorage.setItem("Patient Age", document.getElementById('patientAge').value);
+        localStorage.setItem("Age", pAge);
+        localStorage.setItem("Weight", pWeight);
+        localStorage.setItem("Injury", pInjury);
+        localStorage.setItem("PreArrival", pArrival);
+
         $.ajax({
             type: "POST",
             url: '/savePatientInfo/',
             data: {
                 'age': pAge,
                 'weight': pWeight,
-                'addInfo': pAddlInfo,
-                'history': pHistory
+                'injury': pInjury,
+                'perArrival': pArrival
             },
 
             success: function (data) {

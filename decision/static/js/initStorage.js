@@ -1,6 +1,10 @@
 <!-- Clear data from previous session and initialize global values -->
 localStorage.clear();
 
+localStorage.setItem("ETC02 Values Survey", "null");
+localStorage.setItem("HR Values Survey", "null");
+localStorage.setItem("BP Values Survey", "null");
+
 localStorage.setItem("HR_prev", "null");
 localStorage.setItem("BP_prev", "null");
 localStorage.setItem("GCS Motor", "null");
@@ -22,6 +26,9 @@ localStorage.setItem("RightPupil_Display", " ");
 localStorage.setItem("LeftPupil_Display", " ");
 
 localStorage.setItem("Age", "null");
+localStorage.setItem("Weight", "null");
+localStorage.setItem("Injury", "null");
+localStorage.setItem("PreArrival", "null");
 
 localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");

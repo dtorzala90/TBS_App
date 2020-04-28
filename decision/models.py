@@ -85,8 +85,8 @@ class Session(models.Model):
 	#Initial patient info
 	Patient_Age = models.CharField(max_length=20, default="null")
 	Patient_Weight = models.CharField(max_length=20, default="null")
-	Patient_History = models.CharField(max_length=20, default="null")
-	Patient_AddInfo = models.CharField(max_length=20, default="null")
+	Patient_Mechanism_Injury = models.CharField(max_length=20, default="null")
+	Patient_Pre_Arrival = models.CharField(max_length=20, default="null")
 
 	#Exposure Section
 	Head_Abnormality = models.CharField(max_length=20, default="N/A")

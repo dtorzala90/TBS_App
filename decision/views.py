@@ -49,8 +49,8 @@ def populateSummary(request):
 	patientInfo = {
 		'age': dbTable.__getattribute__('Patient_Age'),
 		'weight': dbTable.__getattribute__('Patient_Weight'),
-		'history': dbTable.__getattribute__('Patient_History'),
-		'addInfo': dbTable.__getattribute__('Patient_AddInfo')
+		'injury': dbTable.__getattribute__('Patient_Mechanism_Injury'),
+		'preArrival': dbTable.__getattribute__('Patient_Pre_Arrival')
 	}
 
 	return JsonResponse(patientInfo)
@@ -62,13 +62,13 @@ def savePatientInfo(request):
 
 	age = request.POST.get('age', None)
 	weight = request.POST.get('weight', None)
-	history = request.POST.get('history', None)
-	addInfo = request.POST.get('addInfo', None)
+	injury = request.POST.get('injury', None)
+	preArrival = request.POST.get('preArrival', None)
 
 	newSession.__setattr__('Patient_Age', age)
 	newSession.__setattr__('Patient_Weight', weight)
-	newSession.__setattr__('Patient_History', history)
-	newSession.__setattr__('Patient_AddInfo', addInfo)
+	newSession.__setattr__('Patient_Mechanism_Injury', injury)
+	newSession.__setattr__('Patient_Pre_Arrival', preArrival)
 	newSession.save()
 
 	return HttpResponse('Success')
