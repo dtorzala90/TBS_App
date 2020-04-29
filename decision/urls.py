@@ -8,6 +8,7 @@ urlpatterns = [
     path('begin/', views.begin, name = 'decision-begin'),
     path('home/', views.home, name = 'decision-home'),
     path('summary/', views.summary, name = 'decision-summary'),
+    path('metrics/', views.metrics, name='decision-metrics'),
     path('currentSession/', views.startTrauma, name='startTrauma'),
 
     url(r'^populateSummary/$', views.populateSummary, name='populateSummary'),
@@ -18,5 +19,15 @@ urlpatterns = [
     url(r'^getVitals/$', views.populateSummary, name='populateSummary'),
 
     url(r'^checkAlerts/$', views.checkAlerts, name='checkAlerts'),
+
+    url(r'^getData/$', views.getData, name='getData'),
+
+    url(r'^updateHistoryUnknown/$', views.updateHistoryUnknown, name='updateHistoryUnknown'),
+
+    url(r'^updateAirwayHistory/$', views.updateAirwayHistory, name='updateAirwayHistory'),
+
+    url(r'^updateHistoryKnown/$', views.updateHistoryKnown, name='updateHistoryKnown'),
+
+    url(r'^updateHistoryBinary/$', views.updateHistoryBinary, name='updateHistoryBinary'),
 ]
 

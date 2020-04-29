@@ -30,6 +30,64 @@ alertsDict = {
 	'suggest_mtp' : 'null'
 }
 
+
+historyDict = {
+	'Oxygen_Supplementation_History': {'initiated' : [],'Stopped' : []},
+	'Bag_Mask_History': {'initiated' : [],'Stopped' : []},
+	'LMA_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'ETT_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'Difficult_Airway_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'Surgical_Airway_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'Spontaneous_Breathing_History': {'yes': [], 'no': []},
+	'Assisted_Breathing_History' : {'yes': [], 'no': []},
+	'Right_Chest_History': {'yes': [], 'no': []},
+	'Left_Chest_History': {'yes': [], 'no': []},
+	'Lip_Color_History': {'unknown':[], 'white': [], 'pink': []},
+	'Nail_Color_History': {'unknown': [], 'white': [], 'pink': []},
+	'Cap_Refill_History': {'lesstwo': [], 'twoandfour': [], 'fourplus': []},
+	'PIV_History': {'zero':[], 'one':[], 'two':[], 'twoplus':[]},
+	'Central_Line_History': {'yes': [], 'no': []},
+	'Intraosseous_Line_History': {'yes': [], 'no': []},
+	'IVF_History': {},
+	'Type_Cross_History': {'drawn': ' ', 'sent': ' '},
+	'Transfused_PRBC_History': {'yes': [], 'no': []},
+	'Massive_Transfusion_History': {'activated': ' ', 'no': ' '},
+	'ETCO2_History': {},
+	'HR_History': {},
+	'BP_History': {},
+	'GCS_History': {},
+	'GCS_Motor_History': {},
+	'GCS_Verbal_History': {},
+	'GCS_Eye_History': {},
+	'Shock_History': {},
+	'Pupils_Equal_History': {'yes': [], 'no': []},
+	'Pupils_Round_History': {'yes': [], 'no': []},
+	'Pupils_Reactive_History': {'yes': [], 'no': []},
+	'Pupil_Right_History' : {},
+	'Pupil_Left_History' : {},
+	'Moves_Extremities_History' : {'yes': [], 'limited':[], 'no': []},
+	'Exposure_History' : {
+		'Head': [],
+		'Eyes': [],
+		'Ears': [],
+		'Midface': [],
+		'Trachea': [],
+		'Jugular': [],
+		'CV': [],
+		'Lungs': [],
+		'Abdomen': [],
+		'Pelvis': [],
+		'GU': [],
+		'Rectal': [],
+		'RUE': [],
+		'LUE': [],
+		'RLE': [],
+		'LLE': [],
+		'Back': [],
+		'Skin': []
+	},
+}
+
 newSession = Session()
 
 def login_request(request):
@@ -83,8 +141,8 @@ def populateSummary(request):
 	patientInfo = {
 		'age': dbTable.__getattribute__('Patient_Age'),
 		'weight': dbTable.__getattribute__('Patient_Weight'),
-		'history': dbTable.__getattribute__('Patient_History'),
-		'addInfo': dbTable.__getattribute__('Patient_AddInfo')
+		'injury': dbTable.__getattribute__('Patient_Mechanism_Injury'),
+		'preArrival': dbTable.__getattribute__('Patient_Pre_Arrival')
 	}
 
 	return JsonResponse(patientInfo)
@@ -99,13 +157,13 @@ def savePatientInfo(request):
 
 	age = request.POST.get('age', None)
 	weight = request.POST.get('weight', None)
-	history = request.POST.get('history', None)
-	addInfo = request.POST.get('addInfo', None)
+	injury = request.POST.get('injury', None)
+	preArrival = request.POST.get('preArrival', None)
 
 	newSession.__setattr__('Patient_Age', age)
 	newSession.__setattr__('Patient_Weight', weight)
-	newSession.__setattr__('Patient_History', history)
-	newSession.__setattr__('Patient_AddInfo', addInfo)
+	newSession.__setattr__('Patient_Mechanism_Injury', injury)
+	newSession.__setattr__('Patient_Pre_Arrival', preArrival)
 	newSession.save()
 
 	return HttpResponse('Success')
@@ -118,10 +176,91 @@ def setItem(request):
 		print("The id is: ", newSession.id)
 		dbTable = Session.objects.get(id=newSession.id)
 		dbTable.__setattr__(key, valueNew)
+
 		dbTable.save()
 
 		resp = HttpResponse("Saved it!")
 		return resp  # Sending an success response
+
+@csrf_exempt
+def updateHistoryUnknown(request):
+		valueNew = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		history = historyDict[historyKey]
+		try:
+			# Assumes there is a list on the key
+			history[valueNew].append(timeStamp)
+		except KeyError:  # If it fails, because there is no key
+			history.__setitem__(valueNew, timeStamp)
+		except AttributeError:  # If it fails because it is not a list
+			history.__setitem__(valueNew, [history[valueNew], timeStamp])
+
+		dbTable.__setattr__(historyKey, str(history))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateAirwayHistory(request):
+		step = request.POST.get('step', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		airwayTypeHistory = historyDict[historyKey]
+		stepHistory = airwayTypeHistory[step]
+		stepHistory.append(timeStamp)
+
+		dbTable.__setattr__(historyKey, str(airwayTypeHistory))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateHistoryKnown(request):
+		value = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		typeHistory = historyDict[historyKey]
+		stepHistory = typeHistory[value]
+		stepHistory.append(timeStamp)
+
+		dbTable.__setattr__(historyKey, str(typeHistory))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateHistoryBinary(request):
+		value = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		history = historyDict[historyKey]
+		history[value] = timeStamp
+
+		dbTable.__setattr__(historyKey, str(history))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def getData(request):
+	return JsonResponse(historyDict)
 
 @csrf_exempt
 def checkAlerts(request):
@@ -134,6 +273,7 @@ def checkAlerts(request):
 	age = dbTable.__getattribute__('Patient_Age')
 	etco2 = dbTable.__getattribute__('ETCO2')
 	gcs = dbTable.__getattribute__('GCS')
+	ivf = int(dbTable.__getattribute__('IVF_Total'))
 
 	##Time Based Alerts
 	if (time >= 120 and alertsDict['no_etco2_recorded'] != 'false'):
@@ -193,7 +333,7 @@ def checkAlerts(request):
 	##Vital Alerts
 
 	#Brady/Tachycardia
-	if(hr != "null"):
+	if(hr != "Unknown"):
 		hrInt = int(hr)
 		if(hrInt < 60):
 			alertsDict['heart_rate'] = 'bradycardia'
@@ -203,9 +343,9 @@ def checkAlerts(request):
 			alertsDict['heart_rate'] = 'null'
 
 	#Hypotension
-	if(bp != "null"):
+	if(bp != "Unknown"):
 		bpint = int(bp)
-		if (age != "null"):
+		if (age != " "):
 			ageInt = int(age)
 			if(bpint < (55 + (2*ageInt))):
 				alertsDict['hypotensive'] = 'true'
@@ -218,7 +358,7 @@ def checkAlerts(request):
 				alertsDict['hypotensive'] = 'false'
 
 	#Elevated shock
-	if(shock != "null"):
+	if(shock != "Unknown"):
 		shockFloat = float(shock)
 		if(shockFloat > 1.0):
 			alertsDict['shock_elevated'] = 'true'
@@ -226,7 +366,7 @@ def checkAlerts(request):
 			alertsDict['shock_elevated'] = 'false'
 
 	#Etco2 Alert
-	if (etco2 != "null"):
+	if (etco2 != "Unknown"):
 
 		etco2Int = int(etco2)
 
@@ -240,7 +380,7 @@ def checkAlerts(request):
 			alertsDict['etco2_value'] = '25-30'
 
 		elif (etco2Int >= 40 and etco2Int <= 50 ):
-			if(gcs != "null"):
+			if(gcs != "Unknown"):
 				gcsInt = int(gcs)
 				if(gcsInt < 13):
 					alertsDict['etco2_value'] = '40-50'
@@ -256,7 +396,6 @@ def checkAlerts(request):
 		alertsDict['etco2_value'] = 'null'
 
 	##Circulation Alerts
-	ivFluids = dbTable.__getattribute__('IV_Fluid_Amount')
 
 	#Additional PIV
 	if(pivCount == "1" and centrLine == "no" and intrLine == "no"):
@@ -266,17 +405,17 @@ def checkAlerts(request):
 		alertsDict['additional_piv'] = 'false'
 
 	#IV Fluids
-	if(ivFluids == "<20mL/kg"):
+	if(ivf == 0):
+		alertsDict['consider_bolus'] = 'true'
+
+	elif(ivf <= 20):
 		alertsDict['fluids_given'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
 
-	elif(ivFluids == ">20mL/kg"):
+	elif(ivf > 20):
 		alertsDict['fluids_given'] = 'false'
 		alertsDict['excess_fluids'] = 'true'
 		alertsDict['consider_bolus'] = 'false'
-
-	elif(ivFluids == "None"):
-		alertsDict['consider_bolus'] = 'true'
 
 	#Perfusion Alerts
 	nailColor = dbTable.__getattribute__('Nail_Color')
@@ -303,14 +442,15 @@ def checkAlerts(request):
 	prbcStatus = dbTable.__getattribute__('Transfused_PRBC')
 
 	if(mtpStatus == 'no'):
-		if (bp != "null" and int(bp) < 90):
-			alertsDict['suggest_mtp'] = 'true'
+		if(bp != "Unknown" and shock != "Unknown" and hr != 'Unknown'):
+			if (bp != "null" and int(bp) < 90):
+				alertsDict['suggest_mtp'] = 'true'
 
-		elif (shock != "null" and float(shock) > 1.2):
-			alertsDict['suggest_mtp'] = 'true'
+			elif (shock != "null" and float(shock) > 1.2):
+				alertsDict['suggest_mtp'] = 'true'
 
-		elif (hr != "null" and int(hr) > 180):
-			alertsDict['suggest_mtp'] = 'true'
+			elif (hr != "null" and int(hr) > 180):
+				alertsDict['suggest_mtp'] = 'true'
 
 		else:
 			alertsDict['suggest_mtp'] = 'false'

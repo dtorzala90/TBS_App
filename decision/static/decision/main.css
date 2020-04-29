@@ -22,12 +22,6 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
 }
 
-/*Ensures that individual divs with this class can scroll individually*/
-.scrollable {
-    max-height: 50vh;
-    overflow-y: auto;
-}
-
 ul {
     margin: 0;
 }
@@ -68,9 +62,6 @@ Start session page [/decision/begin.html]
 
 /*Formats the "start session" button*/
 .start-button {
-    background-color: #3aafa9;
-    border: #1D5755;
-    color: #ffffff;
     font-size: 30px;
     padding: 9px 0;
 }
@@ -123,10 +114,19 @@ Decision (survey) page [/decision/home.html]
     font-size: 65px;
     font-weight: 500;
     line-height: 1.2;
-    margin: 8px auto 2px; /*Auto margin for left/right to center div*/
     padding: 5px;
     text-align: center;
     width: 350px; /*Reduces div width to look nice*/
+}
+
+/* || Page navigation buttons */
+
+.pagenav-btn {
+    align-items: center;
+    display: flex;
+    height: 65px;
+    justify-content: center;
+    vertical-align: middle;
 }
 
 /* || Decision card container */
@@ -138,7 +138,7 @@ a:hover {
 
 /*Formats the card container*/
 .card {
-    border: 4px solid #2b7a78;
+    border: 1.5px solid #2b7a78;
     box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10),
     0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
@@ -147,17 +147,11 @@ a:hover {
 
 /*Formats the card header with the nav tabs*/
 .card-header {
-    background-color: #3aafa9;
-    border-bottom: 4px solid #2b7a78;
-}
-
-/*Formats the nav tab divs since the size was increased for usability*/
-.card-header:first-child {
-    border-radius: 0px;
-}
-
-.card-header-tabs {
-    margin-bottom: -0.94rem;
+    background-color: #3AACA6;
+    border-bottom: 1.5px solid #2b7a78;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    width: 100%;
 }
 
 /*Formats the card title for each nav tab*/
@@ -169,8 +163,15 @@ a:hover {
 
 /*Allows the content in the card to scroll*/
 .card-scroll {
-    height: 60vh;
+    height: 59vh;
     overflow-y: hidden;
+}
+
+.survey-span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    float: left;
+    display: block;
 }
 
 /*Resizes nav pill div and adds styling*/
@@ -191,7 +192,7 @@ a:hover {
 
 /*Changes color of selected nav pill*/
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    background-color: #3aafa9;
+    background-color: #3AACA6;
     color: #fff;
 }
 
@@ -204,9 +205,8 @@ a:hover {
 
 /*Formats inactive nab tabs*/
 .nav-tabs .nav-link {
-    border: 4px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
+    border: 1.5px solid transparent;
+    margin-bottom: -1px;
 }
 
 /*Changes nav tab font color*/
@@ -246,8 +246,13 @@ a:hover {
 }
 
 /*Creates border to make btn-light buttons pop against current theme*/
-.btn-light {
-    border-color: #2b7a78;
+.btn-light, .btn-dark {
+    border: 1.5px solid #2b7a78;
+}
+
+.btn-info {
+    background-color: #3AACA6;
+    border: 1.5px solid #2b7a78;
 }
 
 /*Adjusts padding between survey buttons*/
@@ -321,7 +326,7 @@ Summary page [/summary/main.html]
 /* || Information divs general */
 
 /*Divides "rows" using borders in the ABCD card*/
-.abcd-card-item-divider {
+.card-row-divider {
     border-bottom: 1.5px solid #2b7a78;
 }
 
@@ -388,28 +393,16 @@ Summary page [/summary/main.html]
 
 /* || Alerts  card */
 
-/*Recolors the rest of the alerts card borders*/
-.alerts-card {
-    border: 4px solid #7A2B2D;
-}
-
 /*Sets height for alerts card (had to do this specifically due to bug)*/
 .alerts-card-height {
     height: 57vh;
 }
 
-/*Formats the Bootstrap alerts on the summary page*/
-.alert-format {
+/*Formats the Bootstrap danger alerts on the summary page*/
+.alert-danger {
     align-content: center;
     font-size: 30px;
-    overflow: auto;
     text-align: center;
-}
-
-/*Recolors the alerts card header*/
-.alerts-header {
-    background-color: #AF3A40;
-    border-bottom: 4px solid #7A2B2D;
 }
 
 /*Allows the alerts card to scroll vertically, removes horizontal scroll*/
@@ -418,17 +411,8 @@ Summary page [/summary/main.html]
     overflow-y: auto;
 }
 
+
 /* || Vitals card */
-
-/*Recolors the rest of the vitals card borders*/
-.vitals-card {
-    border: 4px solid #557A2B;
-}
-
-/*Divides "rows" using green borders in the vitals card*/
-.vitals-card-item-divider {
-    border-bottom: 1.5px solid #557A2B;
-}
 
 /*Adjusts the vitals text*/
 .vitals-format {
@@ -436,15 +420,9 @@ Summary page [/summary/main.html]
     text-align: center;
 }
 
-/*Recolors the vitals card header*/
-.vitals-header {
-    background-color: #7aaf3a;
-    border-bottom: 4px solid #557A2B;
-}
-
 /*Formats the SVG icons in the vitals card*/
 .svg-icon {
-    background-color: #1C2A17;
+    background-color: #17252a;
     color: white;
     font-weight: bold;
     font-size: 20px;
