@@ -204,7 +204,7 @@
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="lmaStop"
                                                         onclick="setItemAjax('LMA_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'lmaAchieved','lmaInit'); updateAirwayHistory('LMA_History', 'removed', getCurrentTime())"
+                                                        updateBorder(this.id,'lmaAchieved','lmaInit'); updateAirwayHistory('LMA_History', 'Removed', getCurrentTime())"
                                                         ondblclick="initEdit('lma','stop')">Removed
                                                 </button>
                                             </div>
@@ -227,7 +227,7 @@
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
                                                         onclick="setItemAjax('ETT_Stopped',getCurrentTime())
-                                                        updateBorder(this.id,'ettInit','ettAchieved'); updateAirwayHistory('ETT_History', 'removed', getCurrentTime())"
+                                                        updateBorder(this.id,'ettInit','ettAchieved'); updateAirwayHistory('ETT_History', 'Removed', getCurrentTime())"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
                                             </div>
@@ -251,7 +251,7 @@
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="diffAirwayStop"
                                                         onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'diffAirwayAchieved','diffAirwayInit'); updateAirwayHistory('Difficult_Airway_History', 'removed', getCurrentTime())"
+                                                        updateBorder(this.id,'diffAirwayAchieved','diffAirwayInit'); updateAirwayHistory('Difficult_Airway_History', 'Removed', getCurrentTime())"
                                                         ondblclick="initEdit('diffAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -276,7 +276,7 @@
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="surgAirwayStop"
                                                         onclick="setItemAjax('Surgical_Airway_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'surgAirwayAchieved','surgAirwayInit'); updateAirwayHistory('Surgical_Airway_History', 'removed', getCurrentTime())"
+                                                        updateBorder(this.id,'surgAirwayAchieved','surgAirwayInit'); updateAirwayHistory('Surgical_Airway_History', 'Removed', getCurrentTime())"
                                                         ondblclick="initEdit('surgAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -618,7 +618,7 @@
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-4"
                                                         value=">4" onclick="setItemAjax('Cap_Refill','>4sec');
-                                                        updateBorder(this.id,'caprt-2','caprt-24'); updateHistoryKnown('Cap_Refill_History', '4plus', getCurrentTime())">>4s
+                                                        updateBorder(this.id,'caprt-2','caprt-24'); updateHistoryKnown('Cap_Refill_History', 'fourplus', getCurrentTime())">>4s
                                                 </button>
                                             </div>
 
@@ -1883,7 +1883,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            RR: <input type="number" id="ettRR" min="0" max="50"/>
+                            RR: <input type="number" id="ettRR" min="0" max="50"/><br>
                             Depth: <input type="number" id="ettDepth" min="0" max="23"/> cm
                         </div>
                     </div>

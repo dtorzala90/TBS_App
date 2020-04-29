@@ -37,7 +37,7 @@ function initEdit(type, step){
         }
 
         else{
-            launchModal("LMA Removed At","LMA_Stopped", "LMA_History", "removed");
+            launchModal("LMA Removed At","LMA_Stopped", "LMA_History", "Removed");
         }
     }
 
@@ -50,7 +50,7 @@ function initEdit(type, step){
         }
 
         else{
-            launchModal("ETT Removed At","ETT_Stopped", "ETT_History", "removed");
+            launchModal("ETT Removed At","ETT_Stopped", "ETT_History", "Removed");
         }
     }
 
@@ -63,7 +63,7 @@ function initEdit(type, step){
         }
 
         else{
-            launchModal("Difficult Airway Removed At","Difficult_Airway_Stopped", "Difficult_Airway_History", "removed");
+            launchModal("Difficult Airway Removed At","Difficult_Airway_Stopped", "Difficult_Airway_History", "Removed");
         }
     }
 
@@ -76,7 +76,7 @@ function initEdit(type, step){
         }
 
         else{
-            launchModal("Surgical Airway Removed At","Surgical_Airway_Stopped", "Surgical_Airway_History", "removed");
+            launchModal("Surgical Airway Removed At","Surgical_Airway_Stopped", "Surgical_Airway_History", "Removed");
         }
     }
 }
@@ -194,7 +194,7 @@ function diffAirwayModal() {
         localStorage.setItem('DiffAirway_Display', display);
 
         setItemAjax('Difficult_Airway_Adjunct', adjunct);
-        updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + timeStamp + ' using ' + adjunct);
+        updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + getCurrentTime() + ' using ' + adjunct);
         $("#diffAirwayModal").modal('hide');
     }
 }

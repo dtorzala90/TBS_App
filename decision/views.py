@@ -31,10 +31,10 @@ alertsDict = {
 historyDict = {
 	'Oxygen_Supplementation_History': {'initiated' : [],'Stopped' : []},
 	'Bag_Mask_History': {'initiated' : [],'Stopped' : []},
-	'LMA_History': {'initiated' : [], 'achieved': [], 'removed' : []},
-	'ETT_History': {'initiated' : [], 'achieved': [], 'removed' : []},
-	'Difficult_Airway_History': {'initiated' : [], 'achieved': [], 'removed' : []},
-	'Surgical_Airway_History': {'initiated' : [], 'achieved': [], 'removed' : []},
+	'LMA_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'ETT_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'Difficult_Airway_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
+	'Surgical_Airway_History': {'initiated' : [], 'achieved': [], 'Removed' : []},
 	'Spontaneous_Breathing_History': {'yes': [], 'no': []},
 	'Assisted_Breathing_History' : {'yes': [], 'no': []},
 	'Right_Chest_History': {'yes': [], 'no': []},
@@ -387,14 +387,15 @@ def checkAlerts(request):
 	prbcStatus = dbTable.__getattribute__('Transfused_PRBC')
 
 	if(mtpStatus == 'no'):
-		if (bp != "null" and int(bp) < 90):
-			alertsDict['suggest_mtp'] = 'true'
+		if(bp != "Unknown" and shock != "Unknown" and hr != 'Unknown'):
+			if (bp != "null" and int(bp) < 90):
+				alertsDict['suggest_mtp'] = 'true'
 
-		elif (shock != "null" and float(shock) > 1.2):
-			alertsDict['suggest_mtp'] = 'true'
+			elif (shock != "null" and float(shock) > 1.2):
+				alertsDict['suggest_mtp'] = 'true'
 
-		elif (hr != "null" and int(hr) > 180):
-			alertsDict['suggest_mtp'] = 'true'
+			elif (hr != "null" and int(hr) > 180):
+				alertsDict['suggest_mtp'] = 'true'
 
 		else:
 			alertsDict['suggest_mtp'] = 'false'

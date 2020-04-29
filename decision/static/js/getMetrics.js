@@ -18,6 +18,7 @@ function parseHistory(data){
     var oxSupplDiv = document.getElementById('oxSuppHist');
 
     var oxInit = oxSuppl.initiated;
+
     for(var i = 0; i < oxInit.length; i++){
         oxSupplDiv.innerHTML += '<p> Initiated at ' + oxInit[i] + '</p><br>';
     }
@@ -55,7 +56,7 @@ function parseHistory(data){
         lmaDiv.innerHTML += '<p> Achieved at ' + lmaAcheive[i] + '</p><br>';
     }
 
-    var lmaRemoved = lma.removed;
+    var lmaRemoved = lma.Removed;
     for(var i = 0; i < lmaRemoved.length; i++){
         lmaDiv.innerHTML += '<p> Removed at ' + lmaRemoved[i] + '</p><br>';
     }
@@ -74,8 +75,8 @@ function parseHistory(data){
         ettDiv.innerHTML += '<p> Achieved at ' + ettAcheive[i] + '</p><br>';
     }
 
-    var ettRemoved = ett.removed;
-    for(var i = 0; i < etttRemoved.length; i++){
+    var ettRemoved = ett.Removed;
+    for(var i = 0; i < ettRemoved.length; i++){
         ettDiv.innerHTML += '<p> Removed at ' + ettRemoved[i] + '</p><br>';
     }
 
@@ -93,7 +94,7 @@ function parseHistory(data){
         diffAirwayDiv.innerHTML += '<p> Achieved at ' + diffAirwayAcheive[i] + '</p><br>';
     }
 
-    var diffAirwayRemoved = diffAirway.removed;
+    var diffAirwayRemoved = diffAirway.Removed;
     for(var i = 0; i < diffAirwayRemoved.length; i++){
         diffAirwayDiv.innerHTML += '<p> Removed at ' + diffAirwayRemoved[i] + '</p><br>';
     }
@@ -112,7 +113,7 @@ function parseHistory(data){
         surgAirwayDiv.innerHTML += '<p> Achieved at ' + surgAirwayAcheive[i] + '</p><br>';
     }
 
-    var surgAirwayRemoved = surgAirway.removed;
+    var surgAirwayRemoved = surgAirway.Removed;
     for(var i = 0; i < surgAirwayRemoved.length; i++){
         surgAirwayDiv.innerHTML += '<p> Removed at ' + surgAirwayRemoved[i] + '</p><br>';
     }
@@ -231,7 +232,7 @@ function parseHistory(data){
         nailDiv.innerHTML += '<p> Nail Color White At  ' + nailWhite[i] + '</p><br>';
     }
 
-    //Cappilary Refill
+    //Capillary Refill
     var capRefill = data.Cap_Refill_History;
     var capDiv = document.getElementById('capHist');
 
@@ -403,7 +404,7 @@ function parseHistory(data){
     var movesNo = movesExtremeties.no
 
     //IVF
-    /**var ivf = Object.keys(data.IVF_History);
+    var ivf = Object.keys(data.IVF_History);
     var ivfDiv = document.getElementById('ivfHist');
 
     for(var i = 0; i < ivf.length; i++){
@@ -417,7 +418,7 @@ function parseHistory(data){
             ivfDiv.innerHTML += '<p>' +  ivf + " at " + ivf[i] + '</p>'
         }
     }
-    /**var hr = Object.keys(data.HR_History);
+    var hr = Object.keys(data.HR_History);
     var hrDiv = document.getElementById('hrHist');
 
     for(var i = 0; i < hr.length; i++){
@@ -550,6 +551,6 @@ function parseHistory(data){
         else{
             leftPupilDiv.innerHTML += '<p>' + key + " at " + leftPupil[key] + '</p>'
         }
-    }**/
+    }
 
 }
