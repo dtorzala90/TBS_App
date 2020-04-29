@@ -1163,7 +1163,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="headAbnorm"
                                                                 onclick="updateBorder(this.id, 'headnormal');
-                                                                recordAbnormality('headAbnormText', 'Head_Abnormality')">
+                                                                recordAbnormality('headAbnormText', 'Head_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Head', document.getElementById('headAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1195,7 +1196,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="eyesAbnorm"
                                                                 onclick="updateBorder(this.id, 'eyesnorm');
-                                                                recordAbnormality('eyesAbnormText', 'Eyes_Abnormality')">
+                                                                recordAbnormality('eyesAbnormText', 'Eyes_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Eyes', document.getElementById('eyesAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1227,7 +1229,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="earsAbnorm"
                                                                 onclick="updateBorder(this.id, 'earsnorm');
-                                                        recordAbnormality('earsAbnormText', 'Ears_Abnormality')">
+                                                                recordAbnormality('earsAbnormText', 'Ears_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Ears', document.getElementById('earsAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1243,7 +1246,7 @@
                                             <p class="survey-p">Midface</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="midfacenorm"
-                                                        onclick="updateBorder(this.id, 'midfaceAbnorm')"
+                                                        onclick="updateBorder(this.id, 'midfaceAbnorm');"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1259,7 +1262,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="midfaceAbnorm"
                                                                 onclick="updateBorder(this.id, 'midfacenorm');
-                                                                recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality')">
+                                                                recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Midface', document.getElementById('midfaceAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1291,7 +1295,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="trachAbnorm"
                                                                 onclick="updateBorder(this.id, 'trachnorm');
-                                                                recordAbnormality('trachAbnormText', 'Trachea_Abnormality')">
+                                                                recordAbnormality('trachAbnormText', 'Trachea_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Trachea', document.getElementById('trachAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1323,7 +1328,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="jugularAbnorm"
                                                                 onclick="updateBorder(this.id, 'jugularnorm');
-                                                                recordAbnormality('jugularAbnormText', 'Jugular_Abnormality')">
+                                                                recordAbnormality('jugularAbnormText', 'Jugular_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Jugular', document.getElementById('jugularAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1354,7 +1360,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="cvAbnorm"
                                                                 onclick="updateBorder(this.id, 'cvnorm');
-                                                                recordAbnormality('CVAbnormText', 'CV_Abnormality')">
+                                                                recordAbnormality('CVAbnormText', 'CV_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'CV', document.getElementById('CVAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1386,7 +1393,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="lungsAbnorm"
                                                                 onclick="updateBorder(this.id, 'lungsnorm');
-                                                                recordAbnormality('lungsAbnormText', 'Lungs_Abnormality')">
+                                                                recordAbnormality('lungsAbnormText', 'Lungs_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Lungs', document.getElementById('lungsAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1418,7 +1426,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="abdomenAbnorm"
                                                                 onclick="updateBorder(this.id, 'abdomennorm');
-                                                                recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality')">
+                                                                recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Abdomen', document.getElementById('abdomenAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1450,7 +1459,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="pelvisAbnorm"
                                                                 onclick="updateBorder(this.id, 'pelvisnorm');
-                                                                recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality')">
+                                                                recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Pelvis', document.getElementById('PelvisAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1481,7 +1491,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="guAbnorm"
                                                                 onclick="updateBorder(this.id, 'gunorm');
-                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality')">
+                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'GU', document.getElementById('GUAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1513,7 +1524,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="rectalAbnorm"
                                                                 onclick="updateBorder(this.id, 'rectalnorm');
-                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality')">
+                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Rectal', document.getElementById('rectalAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1544,7 +1556,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="rueAbnorm"
                                                                 onclick="updateBorder(this.id, 'ruenorm');
-                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality')">
+                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'RUE', document.getElementById('RUEAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1575,7 +1588,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="lueAbnorm"
                                                                 onclick="updateBorder(this.id, 'luenorm');
-                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality')">
+                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'LUE', document.getElementById('LUEAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1606,7 +1620,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="rleAbnorm"
                                                                 onclick="updateBorder(this.id, 'rlenorm');
-                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality')">
+                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'RLE', document.getElementById('RLEAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1637,7 +1652,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="lleAbnorm"
                                                                 onclick="updateBorder(this.id, 'llenorm');
-                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality')">
+                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'LLE', document.getElementById('LLEAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1669,7 +1685,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="backAbnorm"
                                                                 onclick="updateBorder(this.id, 'backnorm');
-                                                                recordAbnormality('backAbnormText', 'Back_Abnormality')">
+                                                                recordAbnormality('backAbnormText', 'Back_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Back', document.getElementById('backAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1701,7 +1718,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="skinAbnorm"
                                                                 onclick="updateBorder(this.id, 'skinnorm');
-                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality')">
+                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality');
+                                                                updateHistoryKnown('Exposure_History', 'Skin', document.getElementById('skinAbnormText').value)">
                                                             Enter
                                                         </button>
                                                     </div>
