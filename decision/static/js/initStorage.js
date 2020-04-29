@@ -33,10 +33,10 @@ localStorage.setItem("DiffAirway_Display", " ");
 localStorage.setItem("RightPupil_Display", " ");
 localStorage.setItem("LeftPupil_Display", " ");
 
-localStorage.setItem("Age", "null");
-localStorage.setItem("Weight", "null");
-localStorage.setItem("Injury", "null");
-localStorage.setItem("PreArrival", "null");
+localStorage.setItem("Age", " ");
+localStorage.setItem("Weight", " ");
+localStorage.setItem("Injury", " ");
+localStorage.setItem("PreArrival", " ");
 
 localStorage.setItem("Alert No IV", "not thrown");
 localStorage.setItem("Alert One PIV", "not thrown");
