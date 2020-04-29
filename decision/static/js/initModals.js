@@ -86,10 +86,10 @@ function initEdit(type, step){
  * @returns {string}
  */
 function fetchTimeModal(){
-    var hr = Math.round(parseInt(document.getElementById('hourStamp').value, 10));
+    var hour = Math.round(parseInt(document.getElementById('hourStamp').value, 10));
     var min = Math.round(parseInt(document.getElementById('minuteStamp').value, 10));
     var sec =Math.round(parseInt(document.getElementById('secondStamp').value, 10));
-    var timeStamp = hr.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
     return timeStamp;
 }
 
@@ -115,8 +115,8 @@ function launchModal(modalTitle, step, historyKey, historyValue) {
     var saveBtn = document.getElementById('saveTime');
     saveBtn.onclick = function(){
         var timeStamp = fetchTimeModal();
-        setItemAjax(step, getCurrentTime());
-        updateAirwayHistory(historyKey, historyValue, getCurrentTime())
+        setItemAjax(step, timeStamp);
+        updateAirwayHistory(historyKey, historyValue, timeStamp)
         $("#timeModal").modal('hide');
     }
 
@@ -144,7 +144,7 @@ function ettModal() {
 
         setItemAjax('ETT_RR', rr);
         setItemAjax('ETT_Depth', depth);
-        setItemAjax('ETT_Initiated', fetchTimeModal());
+        setItemAjax('ETT_Initiated', getCurrentTime());
         updateAirwayHistory('ETT_History', 'achieved', ' At ' + getCurrentTime() + ' with RR of ' + rr + ' and depth of ' + depth + 'cm')
         $("#ettModal").modal('hide');
     }
@@ -155,13 +155,14 @@ function bagMaskModal() {
     document.getElementById('bag-title').innerHTML = "Enter The Following";
     $("#bagMaskModal").modal();
     saveBtn.onclick = function () {
+        var time = getCurrentTime();
         var rr = (document.getElementById('bagMaskRR').value).toString(10);
         var display = "Bag Mask RR: " + rr;
         localStorage.setItem("BagMask_Display", display);
 
         setItemAjax('Bag_Mask_RR', rr);
-        setItemAjax('Bag_Mask_Initiated', fetchTimeModal());
-        updateAirwayHistory('Bag_Mask_History', 'initiated', ' At ' + fetchTimeModal() + ' with a RR of ' + rr);
+        setItemAjax('Bag_Mask_Initiated', time);
+        updateAirwayHistory('Bag_Mask_History', 'initiated', ' At ' + time + ' with a RR of ' + rr);
         $("#bagMaskModal").modal('hide');
     }
 }
@@ -171,6 +172,7 @@ function ivfModal() {
     document.getElementById('ivf-title').innerHTML = "Enter The Following";
     $("#ivfModal").modal();
     saveBtn.onclick = function () {
+        var time = getCurrentTime();
         var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
         var ivf_added = parseInt(document.getElementById('ivfAmount').value,10);
         var ivf_new = (ivf_prev + ivf_added).toString(10);
@@ -179,7 +181,7 @@ function ivfModal() {
 
         localStorage.setItem('IVF', ivf_new);
         setItemAjax('IVF_Total', ivf_new);
-        updateIVFHistory('IVF_History', ivf_added, getCurrentTime());
+        updateIVFHistory('IVF_History', ivf_added, time);
         $("#ivfModal").modal('hide');
     }
 }
@@ -189,12 +191,13 @@ function diffAirwayModal() {
     document.getElementById('diffAirway-title').innerHTML = "Enter The Following";
     $("#diffAirwayModal").modal();
     saveBtn.onclick = function () {
+        var time = getCurrentTime();
         var adjunct = document.getElementById('adjunct').value;
         var display = "Difficult Airway: " + adjunct;
         localStorage.setItem('DiffAirway_Display', display);
 
         setItemAjax('Difficult_Airway_Adjunct', adjunct);
-        updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + getCurrentTime() + ' using ' + adjunct);
+        updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + time + ' using ' + adjunct);
         $("#diffAirwayModal").modal('hide');
     }
 }

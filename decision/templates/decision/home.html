@@ -155,12 +155,12 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="oxySupplInit"
                                                         onclick="setItemAjax('Oxygen_Supplementation_Initiated',getCurrentTime());
-                                                        updateBorder(this.id,'oxySupplStop'); updateAirwayHistory('Oxygen_Supplementation_History', 'initiated', getCurrentTime())"
+                                                        updateBorder(this.id,'oxySupplStop'); updateAirwayHistory('Oxygen_Supplementation_History', 'initiated', getCurrentTime());"
                                                         ondblclick="initEdit('oxygen','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="oxySupplStop"
                                                         onclick="setItemAjax('Oxygen_Supplementation_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'oxySupplInit'); updateAirwayHistory('Oxygen_Supplementation_History', 'Stopped', getCurrentTime())"
+                                                        updateBorder(this.id,'oxySupplInit'); updateAirwayHistory('Oxygen_Supplementation_History', 'Stopped', getCurrentTime());"
                                                         ondblclick="initEdit('oxygen','stop')">Stopped
                                                 </button>
                                             </div>
@@ -178,8 +178,8 @@
                                                         ondblclick="initEdit('bag','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="setItemAjax('Bag_Mask_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'bagMaskInit'); updateAirwayHistory('Bag_Mask_History', 'Stopped', getCurrentTime())"
+                                                        onclick="setItemAjax('Bag_Mask_Stopped', getCurrentTime()); localStorage.setItem('BagMask_Display', ' ');
+                                                        updateBorder(this.id,'bagMaskInit'); updateAirwayHistory('Bag_Mask_History', 'Stopped', getCurrentTime());"
                                                         ondblclick="initEdit('bag','stop')">Stopped
                                                 </button>
                                             </div>
@@ -226,7 +226,7 @@
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime())
+                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime()); localStorage.setItem('ETT_Display', ' ');
                                                         updateBorder(this.id,'ettInit','ettAchieved'); updateAirwayHistory('ETT_History', 'Removed', getCurrentTime())"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
@@ -250,7 +250,7 @@
                                                         ondblclick="initEdit('diffAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="diffAirwayStop"
-                                                        onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime());
+                                                        onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime()); localStorage.setItem('DiffAirway_Display', ' ');
                                                         updateBorder(this.id,'diffAirwayAchieved','diffAirwayInit'); updateAirwayHistory('Difficult_Airway_History', 'Removed', getCurrentTime())"
                                                         ondblclick="initEdit('diffAirway','stop')">Removed
                                                 </button>

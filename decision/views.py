@@ -408,13 +408,13 @@ def checkAlerts(request):
 
 	if(mtpStatus == 'no'):
 		if(bp != "Unknown" and shock != "Unknown" and hr != 'Unknown'):
-			if (bp != "null" and int(bp) < 90):
+			if (bp != "Unknown" and int(bp) < 90):
 				alertsDict['suggest_mtp'] = 'true'
 
-			elif (shock != "null" and float(shock) > 1.2):
+			elif (shock != "Unknown" and float(shock) > 1.2):
 				alertsDict['suggest_mtp'] = 'true'
 
-			elif (hr != "null" and int(hr) > 180):
+			elif (hr != "Unknown" and int(hr) > 180):
 				alertsDict['suggest_mtp'] = 'true'
 
 		else:
@@ -424,13 +424,13 @@ def checkAlerts(request):
 		alertsDict['suggest_mtp'] = 'false'
 
 	if(prbcStatus == 'no'):
-		if(bp != "null" and int(bp) < 90 ):
+		if(bp != "Unknown" and int(bp) < 90 ):
 			alertsDict['suggest_prbc'] = 'true'
 
-		elif(shock != "null" and float(shock) > 1.2):
+		elif(shock != "Unknown" and float(shock) > 1.2):
 				alertsDict['suggest_prbc'] = 'true'
 
-		elif(hr != "null" and int(hr) > 180):
+		elif(hr != "Unknown" and int(hr) > 180):
 			alertsDict['suggest_prbc'] = 'true'
 
 		else:
