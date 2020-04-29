@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^updateAirwayHistory/$', views.updateAirwayHistory, name='updateAirwayHistory'),
 
     url(r'^updateHistoryKnown/$', views.updateHistoryKnown, name='updateHistoryKnown'),
+
+    url(r'^updateHistoryBinary/$', views.updateHistoryBinary, name='updateHistoryBinary'),
 ]
 

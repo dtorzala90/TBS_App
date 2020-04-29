@@ -39,8 +39,8 @@ historyDict = {
 	'Assisted_Breathing_History' : {'yes': [], 'no': []},
 	'Right_Chest_History': {'yes': [], 'no': []},
 	'Left_Chest_History': {'yes': [], 'no': []},
-	'Lip_Color_History': {'Unknown':[], 'White': [], 'Pink': []},
-	'Nail_Color_History': {'Unknown': [], 'White': [], 'Pink': []},
+	'Lip_Color_History': {'unknown':[], 'white': [], 'pink': []},
+	'Nail_Color_History': {'unknown': [], 'white': [], 'pink': []},
 	'Cap_Refill_History': {'lesstwo': [], 'twoandfour': [], 'fourplus': []},
 	'PIV_History': {'zero':[], 'one':[], 'two':[], 'twoplus':[]},
 	'Central_Line_History': {'yes': [], 'no': []},
@@ -175,11 +175,28 @@ def updateHistoryKnown(request):
 		timeStamp = request.POST.get('timeStamp', None)
 		dbTable = Session.objects.get(id="99")
 
-		breathingTypeHistory = historyDict[historyKey]
-		stepHistory = breathingTypeHistory[value]
+		typeHistory = historyDict[historyKey]
+		stepHistory = typeHistory[value]
 		stepHistory.append(timeStamp)
 
-		dbTable.__setattr__(historyKey, str(breathingTypeHistory))
+		dbTable.__setattr__(historyKey, str(typeHistory))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateHistoryBinary(request):
+		value = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		history = historyDict[historyKey]
+		history[value] = timeStamp
+
+		dbTable.__setattr__(historyKey, str(history))
 
 		dbTable.save()
 

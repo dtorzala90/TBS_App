@@ -706,11 +706,11 @@
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossDrawn" value="yes"
                                                         onclick="setItemAjax('Type_Cross','Drawn');
-                                                        updateBorder(this.id,'typeAndCrossSent'); updateHistoryKnown('Type_Cross_History', 'drawn', getCurrentTime())">Drawn
+                                                        updateBorder(this.id,'typeAndCrossSent'); updateHistoryBinary('Type_Cross_History', 'drawn', getCurrentTime())">Drawn
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossSent" value="sent" onclick="setItemAjax('Type_Cross','Sent');
-                                                        updateBorder(this.id,'typeAndCrossDrawn'); updateHistoryKnown('Type_Cross_History', 'sent', getCurrentTime())">
+                                                        updateBorder(this.id,'typeAndCrossDrawn'); updateHistoryBinary('Type_Cross_History', 'sent', getCurrentTime())">
                                                     Sent
                                                 </button>
                                             </div>
@@ -747,13 +747,13 @@
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
                                                         onclick="setItemAjax('Massive_Transfusion','yes');
-                                                        updateBorder(this.id,'mtpNo'); updateHistoryKnown('Massive_Transfusion_History', 'activated', getCurrentTime())">
+                                                        updateBorder(this.id,'mtpNo'); updateHistoryBinary('Massive_Transfusion_History', 'activated', getCurrentTime())">
                                                     Activated
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
                                                         value="no"
                                                         onclick="setItemAjax('Massive_Transfusion','no');
-                                                        updateBorder(this.id,'mtpYes'); updateHistoryKnown('Massive_Transfusion_History', 'no', getCurrentTime())">No
+                                                        updateBorder(this.id,'mtpYes'); updateHistoryBinary('Massive_Transfusion_History', 'no', getCurrentTime())">No
                                                 </button>
                                             </div>
 
