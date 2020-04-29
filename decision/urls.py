@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.begin, name = 'decision-begin'),
     path('home/', views.home, name = 'decision-home'),
     path('summary/', views.summary, name = 'decision-summary'),
+    path('metrics/', views.metrics, name='decision-metrics'),
     path('currentSession/', views.startTrauma, name='startTrauma'),
 
     url(r'^populateSummary/$', views.populateSummary, name='populateSummary'),
@@ -16,17 +17,16 @@ urlpatterns = [
 
     url(r'^getVitals/$', views.populateSummary, name='populateSummary'),
 
-    url(r'^getPerfusion/$', views.getPerfusion, name='getPerfusion'),
-    url(r'^getTypeAndCross/$', views.getTypeAndCross, name='getTypeAndCross'),
-    url(r'^getBreathingRight/$', views.getBreathingRight, name='getBreathingRight'),
-    url(r'^getBreathingLeft/$', views.getBreathingLeft, name='getBreathingLeft'),
-    url(r'^getTransfusionPRBC/$', views.getTransfusionPRBC, name='getTransfusionPRBC'),
-    url(r'^getTransfusionMTP/$', views.getTransfusionMTP, name='getTransfusionMTP'),
-    url(r'^getETTCO2/$', views.getETTCO2, name='getETTCO2'),
-    url(r'^getETTGCS/$', views.getETTGCS, name='getETTGCS'),
-    url(r'^getShock/$', views.getShock, name='getShock'),
-    url(r'^getNoETCO2Alert/$', views.getNoETCO2Alert, name='getNoETCO2Alert'),
-    url(r'^getNoETTAlert/$', views.getNoETTAlert, name='getNoETTAlert'),
-    url(r'^getETCO2/$', views.getETCO2, name='getETCO2'),
+    url(r'^checkAlerts/$', views.checkAlerts, name='checkAlerts'),
+
+    url(r'^getData/$', views.getData, name='getData'),
+
+    url(r'^updateHistoryUnknown/$', views.updateHistoryUnknown, name='updateHistoryUnknown'),
+
+    url(r'^updateAirwayHistory/$', views.updateAirwayHistory, name='updateAirwayHistory'),
+
+    url(r'^updateHistoryKnown/$', views.updateHistoryKnown, name='updateHistoryKnown'),
+
+    url(r'^updateHistoryBinary/$', views.updateHistoryBinary, name='updateHistoryBinary'),
 ]
 

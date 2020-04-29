@@ -1,178 +1,249 @@
+{% extends "decision/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
+{% block content %}
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'decision/main.css' %}">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <br>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'summary/main.css' %}">
+    <!--
+    ================================================================================
+    Patient information card
+    ================================================================================
+    -->
+    <a class="btn btn-info btn-lg" type="button" href="{% url 'decision-metrics' %}">End Session</a>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-7">
+                <div class="card">
+                    <div class="card-header summary-card-header">
+                        Patient Information
+                    </div>
+                    <div class="card-body summary-card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-3 mx-auto">
+                                <div id="patientWeight">[Weight]</div>
+                                <hr>
+                                <div id="patientAge">[Age]</div>
+                            </div>
+                            <div class="col-4 mx-auto pi-col-divider">
+                                <div id="patientAddlInfo">[Additional Info]</div>
+                            </div>
+                            <div class="col-4 mx-auto">
+                                <div id="patientHistory">[History]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <script type="text/javascript" src="{% static "js/timerMain.js" %}"></script>
+            <!--
+            ================================================================================
+            Timer card that displays time elapsed since beginning of Trauma
+            ================================================================================
+            -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    {% if title %}
-        <title>Trauma Overview - {{ title }}</title>
-    {% else %}
-        <title>Trauma Overview</title>
-    {% endif %}
-</head>
-<body>
-<header class="site-header">
-    <!-- Navbar Main Content -->
-    <nav class="navbar navbar-expand-md navbar-default fixed-top">
-        <img id="brandImage" alt="Brand" src={% static 'logo.png' %}>
-        <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="#">View Metrics</a>
+            <div class="col-5 d-flex justify-content-center">
+                <div class="timer-summary" id="timer">
+                    <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
                 </div>
             </div>
         </div>
-    </nav>
-</header>
-<main role="main" class="container">
-    <h1>
-        <!--
-        ================================================================================
-        Timer that displays time elapsed since beginning of Trauma
-        ================================================================================
-        -->
-        <div class="container timer-summary" id="timer">
-            <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+
+        <br>
+
+        <div class="row justify-content-center align-items-start">
+
+            <!--
+            ================================================================================
+            ABCDE protocol data inputs card
+            ================================================================================
+            -->
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header summary-card-header">
+                        Protocol
+                    </div>
+                    <div class="card-body summary-card-body-2 card-row-2-height">
+                        <div class="card-item card-row-divider">
+                            <div class="letter-icon">
+                                A
+                            </div>
+                            <div class="card-item-text">
+                                <div id="ettDisplay"></div>
+                                <div id="bagDisplay"></div>
+                                <div id="diffAirwayDisplay"></div>
+                            </div>
+                        </div>
+                        <div class="card-item card-row-divider">
+                            <div class="letter-icon">
+                                B
+                            </div>
+                            <div class="card-item-text">
+
+                            </div>
+                        </div>
+                        <div class="card-item card-row-divider">
+                            <div class="letter-icon">
+                                C
+                            </div>
+                            <div class="card-item-text">
+                                <div id="ivfDisplay"></div>
+                            </div>
+                        </div>
+                        <div class="card-item">
+                            <div class="letter-icon">
+                                D
+                            </div>
+                            <div class="card-item-text">
+                                <div id="rightPupilDisplay"></div>
+                                <div id="leftPupilDisplay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            ================================================================================
+            Alerts card
+            ================================================================================
+            -->
+
+            <div class="col-6">
+                <div class="card alerts-card">
+                    <div class="card-header summary-card-header alerts-header">
+                        Alerts
+                    </div>
+                    <div class="card-body summary-card-body alerts-scrollable alerts-card-height"
+                         id="alert_placeholder">
+
+                        <div>
+
+                            <!--
+                            ================================================================================
+                            JavaScript to create new timer for current session and check for previous alerts
+                            This script is the same as the one in home.html but with additional calculations
+                            to compensate for the fact that the Summary page will be opened after the timer
+                            has started.
+                            ================================================================================
+                            -->
+                            <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
+                            <script type="text/javascript"
+                                    src="{% static "js/generalAlertSystem.js" %}"></script>
+                            <script type="text/javascript"
+                                    src="{% static "js/checkAlertsOnRefresh.js" %}"></script>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--
+            ================================================================================
+            Vitals card
+            ================================================================================
+            -->
+
+            <div class="col-3">
+                <div class="card vitals-card">
+                    <div class="card-header summary-card-header vitals-header">
+                        Vitals
+                    </div>
+                    <div class="card-body vitals-format summary-card-body-2 card-row-2-height" id="vitals_placeholder">
+
+                        <!--
+                        ================================================================================
+                        JavaScript vitals system
+                        ================================================================================
+                        -->
+                        <script type="text/javascript" src="{% static "js/updateSummary.js" %}"></script>
+
+                        <div class="card-item card-row-divider">
+                            <div class="svg-icon">
+                                <svg class="bi bi-heart-half" width="1em" height="1em" viewBox="0 0 16 16"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 1.314C3.562-3.248-7.534 4.735 8 15V1.314z"
+                                          clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                          d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C12.72-3.042 23.333 4.867 8 15z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="card-item-text" id="hr_display"><b>HR:</b></div>
+                        </div>
+                        <div class="card-item card-row-divider">
+                            <div class="svg-icon">
+                                <svg class="bi bi-droplet-half" width="1em" height="1em" viewBox="0 0 16 16"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 01-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 005.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0010 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
+                                          clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                          d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"
+                                          clip-rule="evenodd"></path>
+                                    <path d="M14 10a6 6 0 01-12 0s2.5 2.5 6.5.5S14 10 14 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="card-item-text" id="bp_display"><b>BP:</b></div>
+                        </div>
+                        <div class="card-item card-row-divider">
+                            <div class="svg-icon">
+                                <svg class="bi bi-lightning-fill" width="1em" height="1em" viewBox="0 0 16 16"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M11.251.068a.5.5 0 01.227.58L9.677 6.5H13a.5.5 0 01.364.843l-8 8.5a.5.5 0 01-.842-.49L6.323 9.5H3a.5.5 0 01-.364-.843l8-8.5a.5.5 0 01.615-.09z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="card-item-text" id="shock_display"><b>Shock:</b></div>
+                        </div>
+                        <div class="card-item card-row-divider">
+                            <div class="svg-icon">
+                                <svg class="bi bi-eye-fill" width="1em" height="1em" viewBox="0 0 16 16"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                                    <path fill-rule="evenodd"
+                                          d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="card-item-text" id="gcs_display"><b>GCS:</b></div>
+                        </div>
+                        <div class="card-item">
+                            <div class="svg-icon">
+                                <svg class="bi bi-arrow-repeat" width="1em" height="1em" viewBox="0 0 16 16"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M2.854 7.146a.5.5 0 00-.708 0l-2 2a.5.5 0 10.708.708L2.5 8.207l1.646 1.647a.5.5 0 00.708-.708l-2-2zm13-1a.5.5 0 00-.708 0L13.5 7.793l-1.646-1.647a.5.5 0 00-.708.708l2 2a.5.5 0 00.708 0l2-2a.5.5 0 000-.708z"
+                                          clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                          d="M8 3a4.995 4.995 0 00-4.192 2.273.5.5 0 01-.837-.546A6 6 0 0114 8a.5.5 0 01-1.001 0 5 5 0 00-5-5zM2.5 7.5A.5.5 0 013 8a5 5 0 009.192 2.727.5.5 0 11.837.546A6 6 0 012 8a.5.5 0 01.501-.5z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="card-item-text" id="etco2_display"><b>ETCO<sub>2</sub>:</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </h1>
-
-    <div class="container ph-banner">
-        <!--
-        ================================================================================
-        Container for pre-hospital information
-        ================================================================================
-        -->
-        <table class="table cell-size">
-            <tbody>
-            <tr>
-                <td class="td-weight" id="patientWeight">[Weight]</td>
-                <td rowspan="2" id="patientAddlInfo">[Additional Info]</td>
-                <td rowspan="2" id="patientHistory">[History]</td>
-            </tr>
-            <tr>
-                <td class="td-age" id="patientAge">[Age]</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="container alert-format scrollable" id="alert_placeholder">
-        <!--
-        ================================================================================
-        JavaScript to create new timer for current session and check for previous alerts
-
-        This script is the same as the one in home.html but with additional calculations
-        to compensate for the fact that the Summary page will be opened after the timer
-        has started.
-        ================================================================================
-        -->
-        <script type="text/javascript" src="{% static "js/runTimerSummary.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/generalAlertSystem.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/checkAlertsOnRefresh.js" %}"></script>
     </div>
 
-    <div class="container vitals-format" id="vitals_placeholder">
-        <!--
-        ================================================================================
-        Container for JavaScript vitals system
-        ================================================================================
-        -->
-        <table class="table cell-size">
-            <tbody>
-            <tr>
-                <td class="td-weight" id="bp_display">SBP:  </td>
-            </tr>
-            <tr>
-                <td rowspan="td-weight" id="hr_display">HR:  </td>
-            </tr>
-            <tr>
-                <td rowspan="td-weight" id="shock_display">Shock:  </td>
-            </tr>
-            </tbody>
-        </table>
-        <script type="text/javascript" src="{% static "js/updateSummary.js" %}"></script>
-    </div>
-
-     <div class="container abcd-banner">
-        <!--
-        ================================================================================
-        Container for ABCD components
-        ================================================================================
-        -->
-
-        <table class="table cell-size">
-            <tbody>
-            <tr>
-                <td> Airway: ETT taped at
-                  <script type="text/javascript">
-                    document.write(localStorage.getItem("ETT Depth"))
-                  </script> cm
-                </td>
-            </tr>
-            <tr>
-                <td> Breathing: BMV at
-                  <script type="text/javascript">
-                    document.write(localStorage.getItem("BVM BPM"))
-                  </script> breaths/min
-                </td>
-            </tr>
-            <tr>
-                <td>[Circulation]</td>
-            </tr>
-            <tr>
-                <td> Disability:<br />
-                  Pupils: Right:
-                    <script type="text/javascript">
-                      document.write(localStorage.getItem("Right Pupil Size"))
-                    </script> mm
-                    Left:
-                      <script type="text/javascript">
-                        document.write(localStorage.getItem("Left Pupil Size"))
-                    </script> mm
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-    </div>
-        <script type="text/javascript">
+    <script type="text/javascript">
         $.ajax({
-            type:"GET",
+            type: "GET",
             url: '/populateSummary/',
-            success: function( data ) {
+            success: function (data) {
                 localStorage.setItem("Age", data.age);
                 document.getElementById('patientAge').innerHTML = data.age + ' yrs';
-                document.getElementById('patientWeight').innerHTML = data.weight + ' lbs';
+                document.getElementById('patientWeight').innerHTML = data.weight + ' kg';
                 document.getElementById('patientAddlInfo').innerHTML = data.addInfo;
                 document.getElementById('patientHistory').innerHTML = data.history;
             }
         });
     </script>
-</main>
 
-</body>
-</html>
+{% endblock content %}
