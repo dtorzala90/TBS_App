@@ -398,10 +398,18 @@ function parseHistory(data){
     var movesDiv = document.getElementById('movesHist');
 
     var movesYes = movesExtremeties.yes;
-
+    for(var i = 0; i < movesYes.length; i++){
+        movesDiv.innerHTML += '<p> Patient Can Move All Extremeties At ' + movesYes[i];
+    }
     var movesInjury = movesExtremeties.limited;
+    for(var i = 0; i < movesInjury.length; i++){
+        movesDiv.innerHTML += '<p> Patient Can Limited By Injury At ' + movesInjury[i];
+    }
 
     var movesNo = movesExtremeties.no
+    for(var i = 0; i < movesNo.length; i++){
+        movesDiv.innerHTML += '<p> Patient Can Not Move Extremeties At: ' + movesNo[i];
+    }
 
     //IVF
     var ivf = Object.keys(data.IVF_History);
