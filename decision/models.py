@@ -128,7 +128,7 @@ class Session(models.Model):
 	Ears_Abnormality = models.CharField(max_length=20, default="N/A")
 	MidFace_Abnormality = models.CharField(max_length=20, default="N/A")
 	Trachea_Abnormality = models.CharField(max_length=20, default="N/A")
-	Jugular_Abnnormality = models.CharField(max_length=20, default="N/A")
+	Jugular_Abnormality = models.CharField(max_length=20, default="N/A")
 	CV_Abnormality = models.CharField(max_length=20, default="N/A")
 	Lungs_Abnormality = models.CharField(max_length=20, default="N/A")
 	Abdomen_Abnormality = models.CharField(max_length=20, default="N/A")
