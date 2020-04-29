@@ -29,12 +29,26 @@ alertsDict = {
 }
 
 historyDict = {
-	'Oxygen_Supplementation_History': {'Initiated' : [],'Stopped' : []},
-	'Bag_Mask_History': {'Initiated' : [],'Stopped' : []},
-	'LMA_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
-	'ETT_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
-	'Difficult_Airway_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
-	'Surgical_Airway_History': {'Initiated' : [], 'Achieved': [], 'Removed' : []},
+	'Oxygen_Supplementation_History': {'initiated' : [],'Stopped' : []},
+	'Bag_Mask_History': {'initiated' : [],'Stopped' : []},
+	'LMA_History': {'initiated' : [], 'achieved': [], 'removed' : []},
+	'ETT_History': {'initiated' : [], 'achieved': [], 'removed' : []},
+	'Difficult_Airway_History': {'initiated' : [], 'achieved': [], 'removed' : []},
+	'Surgical_Airway_History': {'initiated' : [], 'achieved': [], 'removed' : []},
+	'Spontaneous_Breathing_History': {'yes': [], 'no': []},
+	'Assisted_Breathing_History' : {'yes': [], 'no': []},
+	'Right_Chest_History': {'yes': [], 'no': []},
+	'Left_Chest_History': {'yes': [], 'no': []},
+	'Lip_Color_History': {'Unknown':[], 'White': [], 'Pink': []},
+	'Nail_Color_History': {'Unknown': [], 'White': [], 'Pink': []},
+	'Cap_Refill_History': {'lesstwo': [], 'twoandfour': [], 'fourplus': []},
+	'PIV_History': {'zero':[], 'one':[], 'two':[], 'twoplus':[]},
+	'Central_Line_History': {'yes': [], 'no': []},
+	'Intraosseous_Line_History': {'yes': [], 'no': []},
+	'IVF_History': {},
+	'Type_Cross_History': {'drawn': ' ', 'sent': ' '},
+	'Transfused_PRBC_History': {'yes': [], 'no': []},
+	'Massive_Transfusion_History': {'activated': ' ', 'no': ' '},
 	'ETCO2_History': {},
 	'HR_History': {},
 	'BP_History': {},
@@ -43,12 +57,12 @@ historyDict = {
 	'GCS_Verbal_History': {},
 	'GCS_Eye_History': {},
 	'Shock_History': {},
-	'Pupils_Equal_History': {},
-	'Pupils_Round_History':{},
-	'Pupils_Reactive_History': {},
+	'Pupils_Equal_History': {'yes': [], 'no': []},
+	'Pupils_Round_History': {'yes': [], 'no': []},
+	'Pupils_Reactive_History': {'yes': [], 'no': []},
 	'Pupil_Right_History' : {},
 	'Pupil_Left_History' : {},
-	'Moves_Extremities_History' : {}
+	'Moves_Extremities_History' : {'yes': [], 'limited':[], 'no': []},
 }
 
 # Create your views here.
@@ -114,7 +128,7 @@ def setItem(request):
 		return resp  # Sending an success response
 
 @csrf_exempt
-def updateVitalsHistory(request):
+def updateHistoryUnknown(request):
 		valueNew = request.POST.get('value', None)
 		historyKey = request.POST.get('historyKey', None)
 		timeStamp = request.POST.get('timeStamp', None)
@@ -148,6 +162,24 @@ def updateAirwayHistory(request):
 		stepHistory.append(timeStamp)
 
 		dbTable.__setattr__(historyKey, str(airwayTypeHistory))
+
+		dbTable.save()
+
+		resp = HttpResponse("Saved it!")
+		return resp  # Sending an success response
+
+@csrf_exempt
+def updateHistoryKnown(request):
+		value = request.POST.get('value', None)
+		historyKey = request.POST.get('historyKey', None)
+		timeStamp = request.POST.get('timeStamp', None)
+		dbTable = Session.objects.get(id="99")
+
+		breathingTypeHistory = historyDict[historyKey]
+		stepHistory = breathingTypeHistory[value]
+		stepHistory.append(timeStamp)
+
+		dbTable.__setattr__(historyKey, str(breathingTypeHistory))
 
 		dbTable.save()
 

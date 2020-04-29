@@ -66,6 +66,18 @@ class Session(models.Model):
 	Transfused_PRBC = models.CharField(max_length=20, default="no")
 	Massive_Transfusion = models.CharField(max_length=20, default="no")
 
+	Lip_Color_History = models.CharField(max_length=20, default="null")
+	Nail_Color_History = models.CharField(max_length=20, default="null")
+	Cap_Refill_History = models.CharField(max_length=20, default="null")
+	PIV_History = models.CharField(max_length=20, default="0")
+	Central_Line_History = models.CharField(max_length=20, default="no")
+	Intraosseous_Line_History = models.CharField(max_length=20, default="no")
+
+	IVF_History = models.CharField(max_length=20, default="0")
+	Type_Cross_History = models.CharField(max_length=20, default="null")
+	Transfused_PRBC_History = models.CharField(max_length=20, default="no")
+	Massive_Transfusion_History = models.CharField(max_length=20, default="no")
+
 	#Disability Data
 	Pupils_Equal = models.CharField(max_length=20, default="Unknown")
 	Pupils_Round = models.CharField(max_length=20, default="Unknown")

@@ -11,6 +11,7 @@
     -->
     <script type="text/javascript" src="{% static "js/initVitalEntry.js" %}"></script>
     <script type="text/javascript" src="{% static "js/initModals.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/globalAjaxFunctions.js" %}"></script>
 
     <!--
     ================================================================================
@@ -332,11 +333,11 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="sponbreath"
                                                         value="yes" id="sponairyes" onclick="setItemAjax('Spontaneous_Breathing','yes');
-                                                        updateBorder(this.id,'sponairno');">Yes
+                                                        updateBorder(this.id,'sponairno'); updateHistoryKnown('Spontaneous_Breathing_History', 'Yes', getCurrentTime())">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="sponbreath"
                                                         value="no" id="sponairno" onclick="setItemAjax('Spontaneous_Breathing','no');
-                                                        updateBorder(this.id,'sponairyes');">No
+                                                        updateBorder(this.id,'sponairyes'); updateHistoryKnown('Spontaneous_Breathing_History', 'No', getCurrentTime())">No
                                                 </button>
                                             </div>
 
@@ -350,12 +351,12 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="assistb"
                                                         value="yes" id="assissyes" onclick="setItemAjax('Assisted_Breathing','yes');
-                                                        updateBorder(this.id,'assissno');">
+                                                        updateBorder(this.id,'assissno'); updateHistoryKnown('Assisted_Breathing_History', 'Yes', getCurrentTime())">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="assistb"
                                                         value="no" id="assissno" onclick="setItemAjax('Assisted_Breathing','no');
-                                                        updateBorder(this.id,'assissyes');">
+                                                        updateBorder(this.id,'assissyes'); updateHistoryKnown('Assisted_Breathing_History', 'No', getCurrentTime())">
                                                     No
                                                 </button>
                                             </div>
@@ -373,14 +374,14 @@
                                                                 id="rchestyes"
                                                                 value="yes"
                                                                 onclick="setItemAjax('Right_Chest','yes');
-                                                            updateBorder(this.id,'rchestno');">Yes
+                                                            updateBorder(this.id,'rchestno'); updateHistoryKnown('Right_Chest_History', 'Yes', getCurrentTime())">Yes
                                                         </button>
                                                         <br>
                                                         <button type="button" class="btn btn-light" name="rchest"
                                                                 id="rchestno"
                                                                 value="no"
                                                                 onclick="setItemAjax('Right_Chest','no');
-                                                            updateBorder(this.id,'rchestyes');">No
+                                                            updateBorder(this.id,'rchestyes'); updateHistoryKnown('Right_Chest_History', 'No', getCurrentTime())">No
                                                         </button>
                                                     </div>
                                                 </div>
@@ -392,14 +393,14 @@
                                                                 id="lchestyes"
                                                                 value="yes"
                                                                 onclick="setItemAjax('Left_Chest','yes');
-                                                            updateBorder(this.id,'lchestno');">Yes
+                                                            updateBorder(this.id,'lchestno'); updateHistoryKnown('Left_Chest_History', 'Yes', getCurrentTime())">Yes
                                                         </button>
                                                         <br>
                                                         <button type="button" class="btn btn-light" name="lchest"
                                                                 id="lchestno"
                                                                 value="no"
                                                                 onclick="setItemAjax('Left_Chest','no');
-                                                            updateBorder(this.id,'lchestyes');">No
+                                                            updateBorder(this.id,'lchestyes'); updateHistoryKnown('Left_Chest_History', 'No', getCurrentTime())">No
                                                         </button>
                                                     </div>
                                                 </div>
@@ -570,16 +571,16 @@
                                                 <span class="survey-span">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
                                                         value="pi" onclick="setItemAjax('Lip_Color','pink');
-                                                        updateBorder(this.id,'lipc-wh','lipc-unk');">Pink
+                                                        updateBorder(this.id,'lipc-wh','lipc-unk'); updateHistoryKnown('Lip_Color_History', 'Pink', getCurrentTime())">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
                                                         value="wh" onclick="setItemAjax('Lip_Color','white');
-                                                        updateBorder(this.id,'lipc-pi','lipc-unk');">White
+                                                        updateBorder(this.id,'lipc-pi','lipc-unk'); updateHistoryKnown('Lip_Color_History', 'White', getCurrentTime())">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc"
                                                         id="lipc-unk"
                                                         value="unk" onclick="setItemAjax('Lip_Color','unable to assess');
-                                                        updateBorder(this.id,'lipc-pi','lipc-wh');">Unable To
+                                                        updateBorder(this.id,'lipc-pi','lipc-wh'); updateHistoryKnown('Lip_Color_History', 'Unknown', getCurrentTime())">Unable To
                                                     Assess
                                                 </button>
 
@@ -589,17 +590,17 @@
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-pi"
                                                         value="pi" onclick="setItemAjax('Nail_Color','pink');
-                                                        updateBorder(this.id,'nailc-wh','nailc-unk');">Pink
+                                                        updateBorder(this.id,'nailc-wh','nailc-unk'); updateHistoryKnown('Nail_Color_History', 'Pink', getCurrentTime())">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-wh"
                                                         value="wh" onclick="setItemAjax('Nail_Color','white');
-                                                        updateBorder(this.id,'nailc-pi','nailc-unk');">White
+                                                        updateBorder(this.id,'nailc-pi','nailc-unk'); updateHistoryKnown('Nail_Color_History', 'White', getCurrentTime())">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-unk"
                                                         value="unk" onclick="setItemAjax('Nail_Color','unable to assess');
-                                                        updateBorder(this.id,'nailc-pi','nailc-wh');">Unable
+                                                        updateBorder(this.id,'nailc-pi','nailc-wh'); updateHistoryKnown('Nail_Color_History', 'Unknown', getCurrentTime())">Unable
                                                     To Assess
                                                 </button>
 
@@ -608,16 +609,16 @@
                                                 <span class="survey-span">Capillary Refill:</span>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-2"
                                                         value="<2" onclick="setItemAjax('Cap_Refill','<2sec');
-                                                        updateBorder(this.id,'caprt-4','caprt-24');"><2s
+                                                        updateBorder(this.id,'caprt-4','caprt-24'); updateHistoryKnown('Cap_Refill_History', 'lesstwo', getCurrentTime())"><2s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr"
                                                         id="caprt-24"
                                                         value="2-4" onclick="setItemAjax('Cap_Refill','2-4sec');
-                                                        updateBorder(this.id,'caprt-2','caprt-4');">2s-4s
+                                                        updateBorder(this.id,'caprt-2','caprt-4'); updateHistoryKnown('Cap_Refill_History', 'twoandfour', getCurrentTime())">2s-4s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-4"
                                                         value=">4" onclick="setItemAjax('Cap_Refill','>4sec');
-                                                        updateBorder(this.id,'caprt-2','caprt-24');">>4s
+                                                        updateBorder(this.id,'caprt-2','caprt-24'); updateHistoryKnown('Cap_Refill_History', '4plus', getCurrentTime())">>4s
                                                 </button>
                                             </div>
 
@@ -632,19 +633,19 @@
                                                 <span class="survey-span">Functional Peripheral IV:</span>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp0"
                                                         value="no"
-                                                        onclick="updateBorder(this.id,'funp1','funp2','funp>2');">None
+                                                        onclick="updateBorder(this.id,'funp1','funp2','funp>2'); updateHistoryKnown('PIV_History', 'zero', getCurrentTime())">None
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp1"
                                                         value="1" onclick="setItemAjax('PIV_Count','1');
-                                                        updateBorder(this.id,'funp0','funp2','funp>2');">1
+                                                        updateBorder(this.id,'funp0','funp2','funp>2'); updateHistoryKnown('PIV_History', 'one', getCurrentTime())">1
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp2"
                                                         value="2" onclick="setItemAjax('PIV_Count','2');
-                                                        updateBorder(this.id,'funp0','funp1','funp>2');">2
+                                                        updateBorder(this.id,'funp0','funp1','funp>2'); updateHistoryKnown('PIV_History', 'two', getCurrentTime())">2
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp>2"
                                                         value=">2" onclick="setItemAjax('PIV_Count','>2');
-                                                        updateBorder(this.id,'funp0','funp1','funp2');">>2
+                                                        updateBorder(this.id,'funp0','funp1','funp2'); updateHistoryKnown('PIV_History', 'twoplus', getCurrentTime())">>2
                                                 </button>
 
                                                 <br>
@@ -653,12 +654,12 @@
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralYes"
                                                         value="yes" onclick="setItemAjax('Intraosseous_Line','yes');
-                                                        updateBorder(this.id,'intralNo');"> Yes
+                                                        updateBorder(this.id,'intralNo'); updateHistoryKnown('Intraosseous_Line_History', 'Yes', getCurrentTime())"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralNo"
                                                         value="no" onclick="setItemAjax('Intraosseous_Line','no');
-                                                        updateBorder(this.id,'intralYes');">No
+                                                        updateBorder(this.id,'intralYes'); updateHistoryKnown('Intraosseous_Line_History', 'No', getCurrentTime())">No
                                                 </button>
 
                                                 <br>
@@ -666,11 +667,11 @@
                                                 <span class="survey-span">Central Line:</span>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
                                                         value="yes" onclick="setItemAjax('Central_Line','yes');
-                                                        updateBorder(this.id,'cenlNo');"> Yes
+                                                        updateBorder(this.id,'cenlNo'); updateHistoryKnown('Central_Line_History', 'Yes', getCurrentTime())"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
                                                         value="no" onclick="setItemAjax('Central_Line','no');
-                                                        updateBorder(this.id,'cenlYes');">No
+                                                        updateBorder(this.id,'cenlYes'); updateHistoryKnown('Central_Line_History', 'No', getCurrentTime())">No
                                                 </button>
                                             </div>
 
@@ -705,11 +706,11 @@
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossDrawn" value="yes"
                                                         onclick="setItemAjax('Type_Cross','Drawn');
-                                                        updateBorder(this.id,'typeAndCrossSent');">Drawn
+                                                        updateBorder(this.id,'typeAndCrossSent'); updateHistoryKnown('Type_Cross_History', 'Drawn', getCurrentTime())">Drawn
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossSent" value="sent" onclick="setItemAjax('Type_Cross','Sent');
-                                                        updateBorder(this.id,'typeAndCrossDrawn');">
+                                                        updateBorder(this.id,'typeAndCrossDrawn'); updateHistoryKnown('Type_Cross_History', 'Sent', getCurrentTime())">
                                                     Sent
                                                 </button>
                                             </div>
@@ -724,13 +725,13 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
                                                         value="yes" onclick="setItemAjax('Transfused_PRBC','yes');
-                                                        updateBorder(this.id,'tprbcNo');">
+                                                        updateBorder(this.id,'tprbcNo'); updateHistoryKnown('Transfused_PRBC_History', 'Yes', getCurrentTime())">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo"
                                                         value="no"
                                                         onclick="setItemAjax('Transfused_PRBC','no');
-                                                        updateBorder(this.id,'tprbcYes');">
+                                                        updateBorder(this.id,'tprbcYes'); updateHistoryKnown('Transfused_PRBC_History', 'No', getCurrentTime())">
                                                     No
                                                 </button>
                                             </div>
@@ -746,13 +747,13 @@
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
                                                         onclick="setItemAjax('Massive_Transfusion','yes');
-                                                        updateBorder(this.id,'mtpNo');">
+                                                        updateBorder(this.id,'mtpNo'); updateHistoryKnown('Massive_Transfusion_History', 'Activated', getCurrentTime())">
                                                     Activated
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
                                                         value="no"
                                                         onclick="setItemAjax('Massive_Transfusion','no');
-                                                        updateBorder(this.id,'mtpYes');">No
+                                                        updateBorder(this.id,'mtpYes'); updateHistoryKnown('Massive_Transfusion_History', 'No', getCurrentTime())">No
                                                 </button>
                                             </div>
 
@@ -804,7 +805,7 @@
                                 <div class="col-8 survey-col">
                                     <div class="tab-content" id="v-pills-tabContent">
 
-                                        <!-- Spontaneous Breathing -->
+                                        <!-- GCS Motor-->
                                         <div class="tab-pane fade show active" id="v-pills-gmtr" role="tabpanel"
                                              aria-labelledby="v-pills-gmtr-tab">
 
@@ -934,12 +935,12 @@
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="equal" value="yes" id="equalyes"
                                                         onclick="setItemAjax('Pupils_Equal','Yes');
-                                                        updateBorder(this.id,'equalno');">Yes
+                                                        updateBorder(this.id,'equalno'); updateHistoryKnown('Pupils_Equal_History', 'Yes', getCurrentTime())">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
                                                         name="equal" value="no" id="equalno"
                                                         onclick="setItemAjax('Pupils_Equal','No');
-                                                        updateBorder(this.id,'equalyes');">No
+                                                        updateBorder(this.id,'equalyes'); updateHistoryKnown('Pupils_Equal_History', 'No', getCurrentTime())">No
                                                 </button>
 
                                                 <br>
@@ -948,12 +949,12 @@
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="round" value="yes" id="roundyes"
                                                         onclick="setItemAjax('Pupils_Round','Yes');
-                                                        updateBorder(this.id,'roundyno');">Yes
+                                                        updateBorder(this.id,'roundyno'); updateHistoryKnown('Pupils_Round_History', 'Yes', getCurrentTime())">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
                                                         name="round" value="no" id="roundno"
                                                         onclick="setItemAjax('Pupils_Round','No');
-                                                        updateBorder(this.id,'roundyes');">No
+                                                        updateBorder(this.id,'roundyes'); updateHistoryKnown('Pupils_Round_History', 'No', getCurrentTime())">No
                                                 </button>
 
                                                 <br>
@@ -962,12 +963,12 @@
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="rlight" value="yes" id="reactiveyes"
                                                         onclick="setItemAjax('Pupils_Reactive','Yes');
-                                                        updateBorder(this.id,'reactiveno');">Yes
+                                                        updateBorder(this.id,'reactiveno'); updateHistoryKnown('Pupils_Reactive_History', 'Yes', getCurrentTime())">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
                                                         name="rlight" value="no" id="reactiveno"
                                                         onclick="setItemAjax('Pupils_Reactive','No');
-                                                        updateBorder(this.id,'reactiveyes');">No
+                                                        updateBorder(this.id,'reactiveyes'); updateHistoryKnown('Pupils_Reactive_History', 'No', getCurrentTime())">No
                                                 </button>
 
                                                 <br>
@@ -1021,19 +1022,19 @@
                                                 <button type="button" class="btn btn-light" name="movee"
                                                         value="yes" id="movesallextyes"
                                                         onclick="setItemAjax('Moves_Extremities','Yes');
-                                                        updateBorder(this.id,'movesallextno','movesallextlim');">
+                                                        updateBorder(this.id,'movesallextno','movesallextlim'); updateHistoryKnown('Moves_Extremities_History', 'Yes', getCurrentTime())">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-info" name="movee"
                                                         value="onlyinj" id="movesallextlim"
                                                         onclick="setItemAjax('Moves_Extremities','Limited Only By Injury');
-                                                        updateBorder(this.id,'movesallextno','movesallextyes');">
+                                                        updateBorder(this.id,'movesallextno','movesallextyes'); updateHistoryKnown('Moves_Extremities_History', 'Limited', getCurrentTime())">
                                                     Limited Only by Injury
                                                 </button>
                                                 <button type="button" class="btn btn-dark" name="movee" value="no"
                                                         id="movesallextno"
                                                         onclick="setItemAjax('Moves_Extremities','No');
-                                                        updateBorder(this.id,'movesallextyes','movesallextlim');">
+                                                        updateBorder(this.id,'movesallextyes','movesallextlim'); updateHistoryKnown('Moves_Extremities_History', 'No', getCurrentTime())">
                                                     No
                                                 </button>
                                             </div>

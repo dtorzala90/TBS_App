@@ -303,7 +303,7 @@ function updateVitals(key, value){
 function updateVitalsHistory(historyKey, value, timeStamp){
         $.ajax({
         type:"POST",
-        url: '/updateVitalsHistory/',
+        url: '/updateHistoryUnknown/',
         data: {
             'historyKey': historyKey,
             'value': value,

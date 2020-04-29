@@ -179,6 +179,7 @@ function ivfModal() {
 
         localStorage.setItem('IVF', ivf_new);
         setItemAjax('IVF_Total', ivf_new);
+        updateIVFHistory('IVF_History', ivf_added, getCurrentTime());
         $("#ivfModal").modal('hide');
     }
 }
@@ -263,7 +264,7 @@ function recordAbnormality(inputId, modelName) {
 function updateAirwayHistory(historyKey, step, timeStamp){
     $.ajax({
         type:"POST",
-        url: '/updateData/',
+        url: '/updateAirwayHistory/',
         data: {
             'historyKey': historyKey,
             'step': step,
@@ -276,3 +277,18 @@ function updateAirwayHistory(historyKey, step, timeStamp){
     });
 }
 
+function updateIVFHistory(historyKey, value, timeStamp){
+    $.ajax({
+        type:"POST",
+        url: '/updateHistoryUnknown/',
+        data: {
+            'historyKey': historyKey,
+            'value': value,
+            'timeStamp': timeStamp
+        },
+
+        success: function( data ) {
+
+        }
+    });
+}

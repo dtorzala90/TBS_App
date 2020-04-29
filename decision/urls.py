@@ -21,8 +21,10 @@ urlpatterns = [
 
     url(r'^getData/$', views.getData, name='getData'),
 
-    url(r'^updateVitalsHistory/$', views.updateVitalsHistory, name='updateVitalsHistory'),
+    url(r'^updateHistoryUnknown/$', views.updateHistoryUnknown, name='updateHistoryUnknown'),
 
     url(r'^updateAirwayHistory/$', views.updateAirwayHistory, name='updateAirwayHistory'),
+
+    url(r'^updateHistoryKnown/$', views.updateHistoryKnown, name='updateHistoryKnown'),
 ]
 
