@@ -29,4 +29,3 @@ function updateHistoryBinary(historyKey, value, timeStamp){
         }
     });
 }
-

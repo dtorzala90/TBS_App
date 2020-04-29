@@ -63,6 +63,26 @@ historyDict = {
 	'Pupil_Right_History' : {},
 	'Pupil_Left_History' : {},
 	'Moves_Extremities_History' : {'yes': [], 'limited':[], 'no': []},
+	'Exposure_History' : {
+		'Head': [],
+		'Eyes': [],
+		'Ears': [],
+		'Midface': [],
+		'Trachea': [],
+		'Jugular': [],
+		'CV': [],
+		'Lungs': [],
+		'Abdomen': [],
+		'Pelvis': [],
+		'GU': [],
+		'Rectal': [],
+		'RUE': [],
+		'LUE': [],
+		'RLE': [],
+		'LLE': [],
+		'Back': [],
+		'Skin': []
+	},
 }
 
 # Create your views here.

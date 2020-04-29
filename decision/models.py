@@ -142,3 +142,5 @@ class Session(models.Model):
 	Back_Abnormality = models.CharField(max_length=20, default="N/A")
 	Skin_Abnormality = models.CharField(max_length=20, default="N/A")
 
+	Exposure_History = models.CharField(max_length=20, default="N/A");
+

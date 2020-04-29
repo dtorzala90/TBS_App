@@ -247,6 +247,7 @@ function setItemAjax(step, value){
 
 function recordAbnormality(inputId, modelName) {
     var abnormality = document.getElementById(inputId).value;
+    document.getElementById(inputId).value = ' ';
 
     $.ajax(
     {
