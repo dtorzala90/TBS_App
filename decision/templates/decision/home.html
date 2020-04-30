@@ -1,5 +1,25 @@
 {% extends "decision/base.html" %}
 {% load static %}
+
+{% block nav %}
+    <nav class="site-header navbar navbar-expand-lg navbar-default fixed-top">
+        <form class="form-inline mr-auto">
+            <a class="btn btn-info" href="{% url 'decision-begin' %}" role="button">
+                &larr; New Session
+            </a>
+        </form>
+        <a class="navbar-brand mx-auto" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
+        <span class="navbar-text mx-auto" style="color: #C3F4E6;">
+            Primary Survey
+        </span>
+        <form class="form-inline ml-auto">
+            <a class="btn btn-info" href="{% url 'summary' %}" role="button">
+                Summary Page &rarr;
+            </a>
+        </form>
+    </nav>
+{% endblock %}
+
 {% block content %}
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -12,41 +32,32 @@
     <script type="text/javascript" src="{% static "js/initVitalEntry.js" %}"></script>
     <script type="text/javascript" src="{% static "js/initModals.js" %}"></script>
     <script type="text/javascript" src="{% static "js/globalAjaxFunctions.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/divScrollToTop.js" %}"></script>
 
     <!--
     ================================================================================
     Timer that displays time elapsed since beginning of Trauma
     ================================================================================
     -->
-    <div class="row justify-content-around">
-        <div class="col-3 my-auto" align="center">
-            <a class="btn btn-info btn-lg pagenav-btn" href="{% url 'decision-begin' %}" role="button">
-                &larr; New Session
-            </a>
-        </div>
-
-        <div class="col-6">
-            <div class="container timer-decision" id="timer">
+    <div class="container-fluid" style="margin-top: 5rem">
+        <div class="row justify-content-around align-items-center">
+            <div class="col-6">
+                <div class="container timer-decision" id="timer">
 
 
-                <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
+                    <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label>
 
-                <!--
-                ================================================================================
-                Javascript to create new timer for current session
-                ================================================================================
-                -->
+                    <!--
+                    ================================================================================
+                    Javascript to create new timer for current session
+                    ================================================================================
+                    -->
 
-                <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
+                    <script type="text/javascript" src="{% static "js/runTimerMain.js" %}"></script>
 
 
+                </div>
             </div>
-        </div>
-
-        <div class="col-3 my-auto" align="center">
-            <a class="btn btn-info btn-lg pagenav-btn" href="{% url 'summary' %}" role="button">
-                Summary Page &rarr;
-            </a>
         </div>
     </div>
     <hr>
@@ -56,28 +67,35 @@
     Card nav tabs for the survey
     ================================================================================
     -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="card text-center" style="width: 100%">
+            <div class="card text-center" style="height: 75vh;">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link active survey-a" data-toggle="tab" href="#airw">A</a>
+                            <a class="nav-link active survey-a" data-toggle="tab" href="#airw"
+                            onclick="navPillScroll();inputScroll()">A</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#brth">B</a>
+                            <a class="nav-link survey-a" data-toggle="tab" href="#brth" id="B"
+                            onclick="navPillScroll();inputScroll()">B</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#circ">C</a>
+                            <a class="nav-link survey-a" data-toggle="tab" href="#circ"
+                            onclick="navPillScroll();inputScroll()">C</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#disb">D</a>
+                            <a class="nav-link survey-a" data-toggle="tab" href="#disb"
+                            onclick="navPillScroll();inputScroll()">D</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#exps">E</a>
+                            <a class="nav-link survey-a" data-toggle="tab" href="#exps"
+                            onclick="navPillScroll();inputScroll()">E</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link survey-a" data-toggle="tab" href="#pinfo">Patient Info</a>
+                            <a class="nav-link survey-a" data-toggle="tab" href="#pinfo"
+                            style="font-size: 33.5px"
+                            onclick="navPillScroll();inputScroll()">Patient<br>Info</a>
                         </li>
                     </ul>
                 </div>
@@ -94,7 +112,7 @@
                 ================================================================================
                 -->
 
-                <div class="tab-content card-body card-scroll">
+                <div class="tab-content card-body">
                     <div id="airw" class="tab-pane active">
                         <h2 class="card-title" style="color: #39393B">Airway</h2>
 
@@ -109,7 +127,7 @@
 
                         <form>
                             <div class="row">
-                                <div class="col-4 card-nav-pills">
+                                <div class="col-4 card-nav-pills" id="airdiv">
 
                                     <!-- Nav pills for each part of A/Airway linked to respective inputs -->
 
@@ -141,7 +159,7 @@
                                            aria-selected="false">Surgical Airway</a>
                                     </div>
                                 </div>
-                                <div class="col-8 survey-col">
+                                <div class="col-8 survey-col" id="airinput">
 
                                     <!-- The resulting content according to the selected nav pill -->
 
@@ -301,7 +319,7 @@
 
                         <form>
                             <div class="row">
-                                <div class="col-4 card-nav-pills">
+                                <div class="col-4 card-nav-pills" id="bthdiv">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                          aria-orientation="vertical">
                                         <a class="nav-link active survey-pill-a" id="v-pills-spbr-tab"
@@ -322,7 +340,7 @@
                                            aria-selected="false">End Tidal CO<sub>2</sub></a>
                                     </div>
                                 </div>
-                                <div class="col-8 survey-col">
+                                <div class="col-8 survey-col" id="bthinput">
                                     <div class="tab-content" id="v-pills-tabContent">
 
                                         <!-- Spontaneous Breathing -->
@@ -458,7 +476,7 @@
 
                         <form>
                             <div class="row">
-                                <div class="col-4 card-nav-pills">
+                                <div class="col-4 card-nav-pills" id="crcdiv">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                          aria-orientation="vertical">
                                         <a class="nav-link active survey-pill-a" id="v-pills-hrrt-tab"
@@ -472,11 +490,13 @@
 
                                         <a class="nav-link survey-pill-a" id="v-pills-prfs-tab" data-toggle="pill"
                                            href="#v-pills-prfs" role="tab" aria-controls="v-pills-prfs"
-                                           aria-selected="false">Perfusion</a>
+                                           aria-selected="false"
+                                           onclick="inputScroll()">Perfusion</a>
 
                                         <a class="nav-link survey-pill-a" id="v-pills-ivac-tab" data-toggle="pill"
                                            href="#v-pills-ivac" role="tab" aria-controls="v-pills-ivac"
-                                           aria-selected="false">IV Access</a>
+                                           aria-selected="false"
+                                           onclick="inputScroll()">IV Access</a>
 
                                         <a class="nav-link survey-pill-a" id="v-pills-ivfl-tab" data-toggle="pill"
                                            href="#v-pills-ivfl" role="tab" aria-controls="v-pills-ivfl"
@@ -495,7 +515,7 @@
                                            aria-selected="false">Massive Transfusion Protocol</a>
                                     </div>
                                 </div>
-                                <div class="col-8 survey-col">
+                                <div class="col-8 survey-col" id="crcinput">
                                     <div class="tab-content" id="v-pills-tabContent">
 
                                         <!-- Heart Rate -->
@@ -777,17 +797,19 @@
 
                         <form>
                             <div class="row">
-                                <div class="col-4 card-nav-pills">
+                                <div class="col-4 card-nav-pills" id="dsbdiv">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                          aria-orientation="vertical">
                                         <a class="nav-link active survey-pill-a" id="v-pills-gmtr-tab"
                                            data-toggle="pill"
                                            href="#v-pills-gmtr" role="tab" aria-controls="v-pills-gmtr"
-                                           aria-selected="true">GCS Motor</a>
+                                           aria-selected="true"
+                                           onclick="inputScroll()">GCS Motor</a>
 
                                         <a class="nav-link survey-pill-a" id="v-pills-gvrb-tab" data-toggle="pill"
                                            href="#v-pills-gvrb" role="tab" aria-controls="v-pills-gvrb"
-                                           aria-selected="false">GCS Verbal</a>
+                                           aria-selected="false"
+                                           onclick="inputScroll()">GCS Verbal</a>
 
                                         <a class="nav-link survey-pill-a" id="v-pills-geye-tab" data-toggle="pill"
                                            href="#v-pills-geye" role="tab" aria-controls="v-pills-geye"
@@ -795,14 +817,15 @@
 
                                         <a class="nav-link survey-pill-a" id="v-pills-ppls-tab" data-toggle="pill"
                                            href="#v-pills-ppls" role="tab" aria-controls="v-pills-ppls"
-                                           aria-selected="false">Pupils</a>
+                                           aria-selected="false"
+                                           onclick="inputScroll()">Pupils</a>
 
                                         <a class="nav-link survey-pill-a" id="v-pills-maex-tab" data-toggle="pill"
                                            href="#v-pills-maex" role="tab" aria-controls="v-pills-maex"
                                            aria-selected="false">Moves All Extremities</a>
                                     </div>
                                 </div>
-                                <div class="col-8 survey-col">
+                                <div class="col-8 survey-col" id="dsbinput">
                                     <div class="tab-content" id="v-pills-tabContent">
 
                                         <!-- GCS Motor-->
@@ -1059,7 +1082,7 @@
 
                         <form>
                             <div class="row">
-                                <div class="col-4 card-nav-pills">
+                                <div class="col-4 card-nav-pills" id="expdiv">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                          aria-orientation="vertical">
                                         <a class="nav-link active survey-pill-a" id="v-pills-head-tab"
@@ -1136,7 +1159,7 @@
                                            aria-selected="false">Skin</a>
                                     </div>
                                 </div>
-                                <div class="col-8 survey-col">
+                                <div class="col-8 survey-col" id="expinput">
                                     <div class="tab-content" id="v-pills-tabContent">
 
                                         <!-- Head -->
