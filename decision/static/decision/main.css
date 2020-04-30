@@ -4,10 +4,15 @@ General styles
 ================================================================================
 */
 
+html, body {
+    overflow: hidden;
+}
+
 body {
     background: #FBFBFB; /*Off-white background*/
     color: #39393B;
-    margin-top: 5rem; /*Slight spacing from the top navbar*/
+    height: 100vh;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,6 +36,8 @@ ul {
 /*Background color for main top navbar*/
 .navbar-default {
     background-color: #17252a;
+    height: 65px;
+    flex-wrap: nowrap;
 }
 
 /*Nav brand font color*/
@@ -63,7 +70,7 @@ Start session page [/decision/begin.html]
 /*Formats the "start session" button*/
 .start-button {
     font-size: 30px;
-    padding: 9px 0;
+    padding: 25px 0;
 }
 
 /*Changes start button color when hovered over*/
@@ -89,11 +96,17 @@ Start session page [/decision/begin.html]
     box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
-    margin: auto;
-    max-width: 450px;
+    margin: 0 auto;
     padding: 30px;
-    top: 4rem;
-    width: 100%;
+    width: 90%;
+}
+
+.form-label {
+    font-size: large;
+}
+
+.form-group {
+    margin-bottom: 2rem;
 }
 
 /*
@@ -119,16 +132,6 @@ Decision (survey) page [/decision/home.html]
     width: 350px; /*Reduces div width to look nice*/
 }
 
-/* || Page navigation buttons */
-
-.pagenav-btn {
-    align-items: center;
-    display: flex;
-    height: 65px;
-    justify-content: center;
-    vertical-align: middle;
-}
-
 /* || Decision card container */
 
 /*Changes hover color for navbar letters*/
@@ -143,6 +146,7 @@ a:hover {
     0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+    width: 95%;
 }
 
 /*Formats the card header with the nav tabs*/
@@ -159,12 +163,6 @@ a:hover {
     background: rgb(255, 255, 255); /*Creates background gradient effect*/
     background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(252, 225, 129, 1) 50%, rgba(255, 255, 255, 1) 100%);
     margin-bottom: 1.5rem;
-}
-
-/*Allows the content in the card to scroll*/
-.card-scroll {
-    height: 59vh;
-    overflow-y: hidden;
 }
 
 .survey-span {
@@ -185,9 +183,9 @@ a:hover {
 
 /*Formats the card nav tabs*/
 .nav > li > a {
-    font-size: 75px;
+    font-size: 67px;
     font-weight: bold;
-    padding: 0px 35px;
+    padding: 0px 27px;
 }
 
 /*Changes color of selected nav pill*/
@@ -206,7 +204,9 @@ a:hover {
 /*Formats inactive nab tabs*/
 .nav-tabs .nav-link {
     border: 1.5px solid transparent;
-    margin-bottom: -1px;
+    margin-bottom: -2.8px;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 /*Changes nav tab font color*/
@@ -441,12 +441,12 @@ Summary page [/summary/main.html]
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
     color: #39393B;
-    font-size: 80px;
+    font-size: 6vmax;
     font-weight: 500;
     line-height: 1.2;
     padding: 10px;
     text-align: center;
-    width: 450px; /*Reduces div width to look nice*/
+    width: 70vw; /*Reduces div width to look nice*/
 }
 
 /*

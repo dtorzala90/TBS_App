@@ -38,33 +38,15 @@
 </head>
 
 <body>
-<!-- Navbar
+<!-- Navbar -->
+{% block nav %}
 <nav class="site-header navbar navbar-expand-md navbar-default fixed-top">
     <a class="navbar-brand" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-            aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarToggle">
-        <ul class="navbar-nav mr-auto ml-auto">
-            <li class="nav-item">
-                <a class="nav-item nav-link" href="{% url 'decision-home' %}">Decision App</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-item nav-link" href="{% url 'summary' %}">Summary Page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-item nav-link" href="/login/">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-item nav-link" href="/register/">Register</a>
-            </li>
-        </ul>
-    </div>
-</nav> -->
+</nav>
+{% endblock %}
 
 <!-- Main content section of <body> -->
-<main role="main">
+<main role="main" style="height: 80vh">
             <!-- Content block filled by children of template -->
             {% block content %}
             {% endblock %}
