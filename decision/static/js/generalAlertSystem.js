@@ -334,7 +334,7 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
                 "                  <strong>Consider additional PIV</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\")'" +
                     "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -359,7 +359,7 @@ function checkAlertsLocal(ajaxData){
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
                 "                  <strong>Fluids Given</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Fluids Given\", \"dismissed\"))'" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Fluids Given\", \"dismissed\")'" +
                     "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -384,7 +384,7 @@ function checkAlertsLocal(ajaxData){
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-fluids-alert'>\n" +
                 "                  <strong>Excess IVF, consider transfusion!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\"))'" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\")'" +
                     "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -409,7 +409,7 @@ function checkAlertsLocal(ajaxData){
              $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='consider-bolus-alert'>\n" +
                 "                  <strong>Consider IVF bolus!</strong>\n" +
-                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\"))'" +
+                "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\")'" +
                     "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
@@ -457,8 +457,8 @@ function checkAlertsLocal(ajaxData){
              localStorage.setItem("Type and Cross Alert", "thrown");
             $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-cross-alert'>\n" +
-            "                  <strong>Consider Type and Cross</strong>\n" +
-            "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\"))'" +
+            "                  <strong>Consider Type and Cross!!!!!</strong>\n" +
+            "                   <button type=\"button\" data-dismiss=\"alert\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\")'" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
@@ -486,7 +486,7 @@ function checkAlertsLocal(ajaxData){
               $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='prbc-alert'>\n" +
                 "                  <strong>Consider Transfusion of PRBC!</strong>\n" +
-                "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"PRBC Alert\", \"closed\"))'" +
+                "                   <button type=\"button\" data-dismiss=\"alert\" class=\"close\"  onclick='localStorage.setItem(\"PRBC Alert\", \"closed\")'" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -510,7 +510,7 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
                 "                  <strong>Consider Massive Transfusion Protocol!</strong>\n" +
-                "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\"))'" +
+                "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\")'" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
