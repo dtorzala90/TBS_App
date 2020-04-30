@@ -175,13 +175,13 @@ function ivfModal() {
         var time = getCurrentTime();
         var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
         var ivf_added = parseInt(document.getElementById('ivfAmount').value,10);
-        var ivf_new = (ivf_prev + ivf_added).toString(10);
-        var display = "IVF: " + ivf_new + " mL/kg";
+        var ivf_new = (ivf_prev + ivf_added);
+        var display = "IVF: " + ivf_new.toString(10) + " mL/kg";
         localStorage.setItem('IVF_Display', display);
 
-        localStorage.setItem('IVF', ivf_new);
-        setItemAjax('IVF_Total', ivf_new);
-        updateIVFHistory('IVF_History', ivf_added, time);
+        localStorage.setItem('IVF', ivf_new.toString(10));
+        setItemAjax('IVF_Total', ivf_new.toString(10));
+        updateIVFHistory('IVF_History', ivf_added.toString(10), time);
         $("#ivfModal").modal('hide');
     }
 }
@@ -213,7 +213,7 @@ function getCurrentTime(){
     var min = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))/60);
     var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
-    var timeStamp = "";
+    var timeStamp = " ";
     if(min < 1){
         min = 0;
     }
