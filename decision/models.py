@@ -11,35 +11,35 @@ class Session(models.Model):
 	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
 	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")
 	Oxygen_Supplementation_Stopped = models.CharField(max_length=20, default="null")
-	Oxygen_Supplementation_History = models.CharField(max_length=20, default="null")
+	#Oxygen_Supplementation_History = models.CharField(max_length=20, default="null")
 
 	Bag_Mask_Initiated = models.CharField(max_length=20, default="null")
 	Bag_Mask_Stopped = models.CharField(max_length=20, default="null")
 	Bag_Mask_RR = models.CharField(max_length=20, default="null")
-	Bag_Mask_History = models.CharField(max_length=20, default="null")
+	#Bag_Mask_History = models.CharField(max_length=20, default="null")
 
 	LMA_Initiated = models.CharField(max_length=20, default="null")
 	LMA_Achieved = models.CharField(max_length=20, default="null")
 	LMA_Stopped = models.CharField(max_length=20, default="null")
-	LMA_History = models.CharField(max_length=20, default="null")
+	#LMA_History = models.CharField(max_length=20, default="null")
 
 	ETT_Initiated = models.CharField(max_length=20, default="null")
 	ETT_Achieved = models.CharField(max_length=20, default="null")
 	ETT_Stopped = models.CharField(max_length=20, default="null")
 	ETT_RR = models.CharField(max_length=20, default="null")
 	ETT_Depth = models.CharField(max_length=20, default="null")
-	ETT_History = models.CharField(max_length=20, default="null")
+	#ETT_History = models.CharField(max_length=20, default="null")
 
 	Difficult_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Achieved = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Stopped = models.CharField(max_length=20, default="null")
 	Difficult_Airway_Adjunct = models.CharField(max_length=20, default="null")
-	Difficult_Airway_History = models.CharField(max_length=20, default="null")
+	#Difficult_Airway_History = models.CharField(max_length=20, default="null")
 
 	Surgical_Airway_Initiated = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Achieved = models.CharField(max_length=20, default="null")
 	Surgical_Airway_Stopped = models.CharField(max_length=20, default="null")
-	Surgical_Airway_History = models.CharField(max_length=20, default="null")
+	#Surgical_Airway_History = models.CharField(max_length=20, default="null")
 
 	#Breathing Data
 	Spontaneous_Breathing = models.CharField(max_length=20, default="null")
@@ -49,8 +49,8 @@ class Session(models.Model):
 
 	Spontaneous_Breathing_History = models.CharField(max_length=20, default="null")
 	Assisted_Breathing_History = models.CharField(max_length=20, default="null")
-	Right_Chest_History = models.CharField(max_length=20, default="null")
-	Left_Chest_History = models.CharField(max_length=20, default="null")
+	#Right_Chest_History = models.CharField(max_length=20, default="null")
+	#Left_Chest_History = models.CharField(max_length=20, default="null")
 
 
 	#Circulation Data
@@ -66,12 +66,12 @@ class Session(models.Model):
 	Transfused_PRBC = models.CharField(max_length=20, default="no")
 	Massive_Transfusion = models.CharField(max_length=20, default="no")
 
-	Lip_Color_History = models.CharField(max_length=20, default="null")
-	Nail_Color_History = models.CharField(max_length=20, default="null")
-	Cap_Refill_History = models.CharField(max_length=20, default="null")
-	PIV_History = models.CharField(max_length=20, default="0")
-	Central_Line_History = models.CharField(max_length=20, default="no")
-	Intraosseous_Line_History = models.CharField(max_length=20, default="no")
+	#Lip_Color_History = models.CharField(max_length=20, default="null")
+	#Nail_Color_History = models.CharField(max_length=20, default="null")
+	#Cap_Refill_History = models.CharField(max_length=20, default="null")
+	#PIV_History = models.CharField(max_length=20, default="0")
+	#Central_Line_History = models.CharField(max_length=20, default="no")
+	#Intraosseous_Line_History = models.CharField(max_length=20, default="no")
 
 	IVF_History = models.CharField(max_length=20, default="0")
 	Type_Cross_History = models.CharField(max_length=20, default="null")
@@ -87,12 +87,12 @@ class Session(models.Model):
 
 	Moves_Extremities = models.CharField(max_length=20, default="Unknown")
 
-	Pupils_Equal_History = models.CharField(max_length=20, default="null")
-	Pupils_Round_History = models.CharField(max_length=20, default="null")
-	Pupils_Reactive_History = models.CharField(max_length=20, default="null")
-	Pupil_Right_History = models.CharField(max_length=20, default="null")
-	Pupil_Left_History = models.CharField(max_length=20, default="null")
-	Moves_Extremities_History = models.CharField(max_length=20, default="null")
+	#Pupils_Equal_History = models.CharField(max_length=20, default="null")
+	#Pupils_Round_History = models.CharField(max_length=20, default="null")
+	#Pupils_Reactive_History = models.CharField(max_length=20, default="null")
+	#Pupil_Right_History = models.CharField(max_length=20, default="null")
+	#Pupil_Left_History = models.CharField(max_length=20, default="null")
+	#Moves_Extremities_History = models.CharField(max_length=20, default="null")
 
 	#Vitals
 	ETCO2 = models.CharField(max_length=20, default="Unknown")
@@ -107,14 +107,14 @@ class Session(models.Model):
 	BP = models.CharField(max_length=20, default="Unknown")
 
 
-	GCS_History = models.CharField(max_length=20, default="null")
-	GCS_Motor_History = models.CharField(max_length=20, default="null")
-	GCS_Verbal_History = models.CharField(max_length=20, default="null")
-	GCS_Eye_History = models.CharField(max_length=20, default="null")
-	ETCO2_History = models.CharField(max_length=20, default="null")
-	Shock_History = models.CharField(max_length=20, default="null")
-	HR_History = models.CharField(max_length=20, default="null")
-	BP_History = models.CharField(max_length=20, default="null")
+	#GCS_History = models.CharField(max_length=20, default="null")
+	#GCS_Motor_History = models.CharField(max_length=20, default="null")
+	#GCS_Verbal_History = models.CharField(max_length=20, default="null")
+	#GCS_Eye_History = models.CharField(max_length=20, default="null")
+	#ETCO2_History = models.CharField(max_length=20, default="null")
+	#Shock_History = models.CharField(max_length=20, default="null")
+	#HR_History = models.CharField(max_length=20, default="null")
+	#BP_History = models.CharField(max_length=20, default="null")
 
 	#Initial patient info
 	Patient_Age = models.CharField(max_length=20, default="null")
@@ -142,5 +142,5 @@ class Session(models.Model):
 	Back_Abnormality = models.CharField(max_length=20, default="N/A")
 	Skin_Abnormality = models.CharField(max_length=20, default="N/A")
 
-	Exposure_History = models.CharField(max_length=20, default="N/A");
+	#Exposure_History = models.CharField(max_length=20, default="N/A");
 
