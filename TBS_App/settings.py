@@ -54,6 +54,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'TBS_App.urls'
 
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/begin/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
