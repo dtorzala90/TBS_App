@@ -458,7 +458,7 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-cross-alert'>\n" +
             "                  <strong>Consider Type and Cross</strong>\n" +
-            "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\"))'" +
+            "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\"))'" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +
             "                </div>");
@@ -486,7 +486,7 @@ function checkAlertsLocal(ajaxData){
               $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='prbc-alert'>\n" +
                 "                  <strong>Consider Transfusion of PRBC!</strong>\n" +
-                "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"PRBC Alert\", \"closed\"))'" +
+                "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"PRBC Alert\", \"closed\"))'" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
@@ -510,7 +510,7 @@ function checkAlertsLocal(ajaxData){
             $('#alert_placeholder').append(
                 "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
                 "                  <strong>Consider Massive Transfusion Protocol!</strong>\n" +
-                "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\"))'" +
+                "                   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\"))'" +
                 "                    <span aria-hidden=\"true\">&times;</span>\n" +
                 "                  </button>\n" +
                 "                </div>");
