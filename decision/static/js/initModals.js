@@ -116,7 +116,7 @@ function launchModal(modalTitle, step, historyKey, historyValue) {
     saveBtn.onclick = function(){
         var timeStamp = fetchTimeModal();
         setItemAjax(step, timeStamp);
-        updateAirwayHistory(historyKey, historyValue, timeStamp)
+        //updateAirwayHistory(historyKey, historyValue, timeStamp)
         $("#timeModal").modal('hide');
     }
 
@@ -145,7 +145,7 @@ function ettModal() {
         setItemAjax('ETT_RR', rr);
         setItemAjax('ETT_Depth', depth);
         setItemAjax('ETT_Initiated', getCurrentTime());
-        updateAirwayHistory('ETT_History', 'achieved', ' At ' + getCurrentTime() + ' with RR of ' + rr + ' and depth of ' + depth + 'cm')
+        //updateAirwayHistory('ETT_History', 'achieved', ' At ' + getCurrentTime() + ' with RR of ' + rr + ' and depth of ' + depth + 'cm')
         $("#ettModal").modal('hide');
     }
 }
@@ -162,7 +162,7 @@ function bagMaskModal() {
 
         setItemAjax('Bag_Mask_RR', rr);
         setItemAjax('Bag_Mask_Initiated', time);
-        updateAirwayHistory('Bag_Mask_History', 'initiated', ' At ' + time + ' with a RR of ' + rr);
+        //updateAirwayHistory('Bag_Mask_History', 'initiated', ' At ' + time + ' with a RR of ' + rr);
         $("#bagMaskModal").modal('hide');
     }
 }
@@ -181,7 +181,7 @@ function ivfModal() {
 
         localStorage.setItem('IVF', ivf_new.toString(10));
         setItemAjax('IVF_Total', ivf_new.toString(10));
-        updateIVFHistory('IVF_History', ivf_added.toString(10), time);
+        //updateIVFHistory('IVF_History', ivf_added.toString(10), time);
         $("#ivfModal").modal('hide');
     }
 }
@@ -197,7 +197,7 @@ function diffAirwayModal() {
         localStorage.setItem('DiffAirway_Display', display);
 
         setItemAjax('Difficult_Airway_Adjunct', adjunct);
-        updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + time + ' using ' + adjunct);
+        //updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + time + ' using ' + adjunct);
         $("#diffAirwayModal").modal('hide');
     }
 }
