@@ -4,4 +4,3 @@ django-compat==1.0.15
 django-crispy-forms==1.9.0
 gunicorn==19.6.0
 Unipath==1.0
-whitenoise==5.0.1
