@@ -1,0 +1,191 @@
+body {
+    background: #feffff;
+    color: #555555;
+    margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+ul {
+    margin: 0;
+}
+
+.site-header .navbar-nav .nav-link {
+    color: white;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #9fedd7;
+}
+
+.navbar-default {
+    background-color: #17252a;
+    border-bottom: 4px solid #fce181;
+}
+
+.navbar-default .navbar-brand {
+    color: #555555;
+}
+
+.label-wrap {
+    display: inline-block;
+    text_align: right;
+    padding-left: 5px;
+    padding-top: 7px;
+    white-space: nowrap;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+/*Formatting the timer on the summary page*/
+
+.timer-summary {
+    color: #414143;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    font-size: 50px;
+    position: fixed;
+    right: 0;
+    top: 8rem;
+    width: 30%;
+    z-index: 1;
+    margin-left: 10px;
+}
+/*Formatting the text alert on the summary page*/
+.alert-format {
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+    width: 60vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 1;
+    top: 15rem;
+    left: 0;
+    overflow: auto
+}
+
+.vitals-format{
+    align-content: center;
+    width: 40vw;
+    height: 50vh;
+    position: fixed;
+    z-index: 1;
+    top: 15rem;
+    right: 0;
+    text-align: center;
+}
+
+#hr_placeholder{
+    position: relative;
+    font-size: 20px;
+    padding-top: 15px;
+    overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #9fedd7;
+    display: inline-block;
+}
+
+#bp_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #fce181;
+    display: inline-block;
+}
+
+#shock_placeholder{
+    font-size: 20px;
+    position: relative;
+    padding-top:15px;
+    overflow: auto;
+    text-decoration: underline;
+    text-decoration-color: #edeae5;
+    display: inline-block;
+}
+/*Format the PCH logo in the navbar*/
+#brandImage {
+    width: 150px;
+    height: 57.75px;
+    display: inline-block;
+    float: left;
+}
+
+.ph-banner {
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    z-index: 0;
+    top: 6rem;
+    left: 0;
+    width: 70%;
+    margin-right: 10px;
+}
+
+/*Adjust table styling, such as borders and cell fill*/
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    background-color: rgba(0, 0, 0, 0);
+    vertical-align: middle;
+    border: 8px solid #2b7a78;
+    align-content: center;
+    table-layout: auto;
+}
+
+.td-weight {
+    border-bottom: 4px solid #2b7a78 !important;
+}
+
+.td-age {
+    border-top: 4px solid #2b7a78 !important;
+}
+
+.cell-size td {
+    height: 50%;
+}
+
+/*Format the labels for each item on the summary page
+.content-label {
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #414143;
+    font-size: 2.5rem;
+}
+
+.alert-label {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #414143;
+    font-size: 2.5rem;
+    text-align: center;
+
+}*/
+
+.abcd-banner {
+    align-content: center;
+    width: 40vw;
+    height: 50vh;
+    position: fixed;
+    z-index: 1;
+    top: 30rem;
+    right: 5px;
+    bottom: 30px;
+    text-align: center;
+}
+
+/*Ensures that individual divs with this class can scroll individually*/
+.scrollable {
+    overflow-y: auto;
+    max-height: 50vh;
+}
