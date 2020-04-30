@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*n_jy^3e6!!k+7dri27l=5_*g+b2l9x%*topyc&_yid-b@3%_3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tbs-app-demo.herokuapp.com']
 
 
 # Application definition
