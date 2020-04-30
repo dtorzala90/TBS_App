@@ -1170,7 +1170,9 @@
                                             <p class="survey-p">Head</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="headnormal"
-                                                        onclick="updateBorder(this.id, 'headAbnorm')"
+                                                        onclick="updateBorder(this.id, 'headAbnorm');
+                                                        setItemAjax('Head_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Head', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1203,7 +1205,9 @@
                                             <p class="survey-p">Eyes</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="eyesnorm"
-                                                        onclick="updateBorder(this.id, 'eyesAbnorm')"
+                                                        onclick="updateBorder(this.id, 'eyesAbnorm');
+                                                        setItemAjax('Eyes_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Eyes', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1236,7 +1240,9 @@
                                             <p class="survey-p">Ears</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="earsnorm"
-                                                        onclick="updateBorder(this.id, 'earsAbnorm')"
+                                                        onclick="updateBorder(this.id, 'earsAbnorm');
+                                                        setItemAjax('Ears_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Ears', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1269,7 +1275,9 @@
                                             <p class="survey-p">Midface</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="midfacenorm"
-                                                        onclick="updateBorder(this.id, 'midfaceAbnorm');"
+                                                        onclick="updateBorder(this.id, 'midfaceAbnorm');
+                                                        setItemAjax('MidFace_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Midface', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1302,7 +1310,9 @@
                                             <p class="survey-p">Trachea</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="trachnorm"
-                                                        onclick="updateBorder(this.id, 'trachAbnorm')"
+                                                        onclick="updateBorder(this.id, 'trachAbnorm');
+                                                        setItemAjax('Trachea_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Trachea', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1335,7 +1345,9 @@
                                             <p class="survey-p">Jugular Veins</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="jugularnorm"
-                                                        onclick="updateBorder(this.id, 'jugularAbnorm')"
+                                                        onclick="updateBorder(this.id, 'jugularAbnorm');
+                                                        setItemAjax('Jugular_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Jugular', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1368,7 +1380,9 @@
                                             <p class="survey-p">CV</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="cvnorm"
-                                                        onclick="updateBorder(this.id, 'cvAbnorm')"
+                                                        onclick="updateBorder(this.id, 'cvAbnorm');
+                                                        setItemAjax('CV_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'CV', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1400,7 +1414,9 @@
                                             <p class="survey-p">Lungs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lungsnorm"
-                                                        onclick="updateBorder(this.id, 'lungsAbnorm')"
+                                                        onclick="updateBorder(this.id, 'lungsAbnorm');
+                                                        setItemAjax('Lungs_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Lungs', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1433,7 +1449,9 @@
                                             <p class="survey-p">Abdomen</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="abdomennorm"
-                                                        onclick="updateBorder(this.id, 'abdomenAbnorm')"
+                                                        onclick="updateBorder(this.id, 'abdomenAbnorm');
+                                                        setItemAjax('Abdomen_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Abdomen', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1466,7 +1484,9 @@
                                             <p class="survey-p">Pelvis</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="pelvisnorm"
-                                                        onclick="updateBorder(this.id, 'pelvisAbnorm')"
+                                                        onclick="updateBorder(this.id, 'pelvisAbnorm');
+                                                        setItemAjax('Pelvis_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Pelvis', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1499,7 +1519,9 @@
                                             <p class="survey-p">G/U</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="gunorm"
-                                                        onclick="updateBorder(this.id, 'guAbnorm')"
+                                                        onclick="updateBorder(this.id, 'guAbnorm');
+                                                        setItemAjax('GU_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'GU', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1531,7 +1553,9 @@
                                             <p class="survey-p">Rectal</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="rectalnorm"
-                                                        onclick="updateBorder(this.id, 'rectalAbnorm')"
+                                                        onclick="updateBorder(this.id, 'rectalAbnorm');
+                                                        setItemAjax('Rectal_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Rectal', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1564,7 +1588,9 @@
                                             <p class="survey-p">RUE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ruenorm"
-                                                        onclick="updateBorder(this.id, 'rueAbnorm')"
+                                                        onclick="updateBorder(this.id, 'rueAbnorm');
+                                                        setItemAjax('RUE_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'RUE', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1596,7 +1622,9 @@
                                             <p class="survey-p">LUE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="luenorm"
-                                                        onclick="updateBorder(this.id, 'lueAbnorm')"
+                                                        onclick="updateBorder(this.id, 'lueAbnorm');
+                                                        setItemAjax('LUE_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'LUE', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1628,7 +1656,9 @@
                                             <p class="survey-p">RLE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="rlenorm"
-                                                        onclick="updateBorder(this.id, 'rleAbnorm')"
+                                                        onclick="updateBorder(this.id, 'rleAbnorm');
+                                                        setItemAjax('RLE_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'RLE', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1660,7 +1690,9 @@
                                             <p class="survey-p">LLE</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="llenorm"
-                                                        onclick="updateBorder(this.id, 'lleAbnorm')"
+                                                        onclick="updateBorder(this.id, 'lleAbnorm');
+                                                        setItemAjax('LLE_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'LLE', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1692,7 +1724,9 @@
                                             <p class="survey-p">Back</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="backnorm"
-                                                        onclick="updateBorder(this.id, 'backAbnorm')"
+                                                        onclick="updateBorder(this.id, 'backAbnorm');
+                                                        setItemAjax('Back_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Back', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1725,7 +1759,9 @@
                                             <p class="survey-p">Skin</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="skinnorm"
-                                                        onclick="updateBorder(this.id, 'skinAbnorm')"
+                                                        onclick="updateBorder(this.id, 'skinAbnorm')
+                                                        setItemAjax('Skin_Abnormality', 'normal');
+                                                        updateHistoryKnown('Exposure_History', 'Skin', 'normal')"
                                                 >Normal
                                                 </button>
                                             </div>
