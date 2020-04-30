@@ -1,0 +1,1 @@
+web: gunicorn TBS_App.wsgi --log-file -

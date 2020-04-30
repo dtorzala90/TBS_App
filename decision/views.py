@@ -187,7 +187,7 @@ def updateHistoryUnknown(request):
 		valueNew = request.POST.get('value', None)
 		historyKey = request.POST.get('historyKey', None)
 		timeStamp = request.POST.get('timeStamp', None)
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 
 		history = historyDict[historyKey]
 		try:
@@ -210,7 +210,7 @@ def updateAirwayHistory(request):
 		step = request.POST.get('step', None)
 		historyKey = request.POST.get('historyKey', None)
 		timeStamp = request.POST.get('timeStamp', None)
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 
 		airwayTypeHistory = historyDict[historyKey]
 		stepHistory = airwayTypeHistory[step]
@@ -228,7 +228,7 @@ def updateHistoryKnown(request):
 		value = request.POST.get('value', None)
 		historyKey = request.POST.get('historyKey', None)
 		timeStamp = request.POST.get('timeStamp', None)
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 
 		typeHistory = historyDict[historyKey]
 		stepHistory = typeHistory[value]
@@ -246,7 +246,7 @@ def updateHistoryBinary(request):
 		value = request.POST.get('value', None)
 		historyKey = request.POST.get('historyKey', None)
 		timeStamp = request.POST.get('timeStamp', None)
-		dbTable = Session.objects.get(id="99")
+		dbTable = Session.objects.get(id=newSession.id)
 
 		history = historyDict[historyKey]
 		history[value] = timeStamp
