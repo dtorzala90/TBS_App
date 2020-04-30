@@ -3,6 +3,7 @@
  */
 var currTime = localStorage.getItem('total_seconds_main');
 setInterval(checkAlertsAjax, 1000);
+var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
 function checkAlertsAjax(){
     currTime = localStorage.getItem('total_seconds_main');
@@ -10,6 +11,9 @@ function checkAlertsAjax(){
     {
         type:"GET",
         url: "/checkAlerts/",
+        headers:{
+            "X-CSRFToken": csrftoken
+        },
         data:{
             'time': currTime,
         },
