@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 
 class Session(models.Model):
-	id = models.CharField(max_length=20, primary_key=True)
-	#date_created = models.DateTimeField(default=timezone.now)
-	#author = models.ForeignKey(User, on_delete=models.CASCADE)
+	id = models.AutoField(primary_key=True)
+	date_created = models.DateTimeField(default=timezone.now)
+	author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 	#All airway steps below are considered "completed" if they have a correlating value (timestamp)
 	Oxygen_Supplementation_Initiated = models.CharField(max_length=20, default="null")

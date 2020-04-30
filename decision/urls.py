@@ -4,10 +4,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.begin, name = 'decision-begin'),
+	path('', views.initiate, name = 'decision-initiate'),
+    path('begin/', views.begin, name = 'decision-begin'),
     path('home/', views.home, name = 'decision-home'),
     path('summary/', views.summary, name = 'decision-summary'),
-    path('metrics/', views.metrics, name='decision-metrics'),
+    #path('metrics/', views.metrics, name='decision-metrics'),
     path('currentSession/', views.startTrauma, name='startTrauma'),
 
     url(r'^populateSummary/$', views.populateSummary, name='populateSummary'),
