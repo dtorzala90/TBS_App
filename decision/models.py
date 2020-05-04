@@ -81,7 +81,8 @@ class Session(models.Model):
 	#Disability Data
 	Pupils_Equal = models.CharField(max_length=20, default="Unknown")
 	Pupils_Round = models.CharField(max_length=20, default="Unknown")
-	Pupils_Reactive = models.CharField(max_length=20, default="Unknown")
+	Pupils_Reactive_Right = models.CharField(max_length=20, default="Unknown")
+	Pupils_Reactive_Left = models.CharField(max_length=20, default="Unknown")
 	Pupil_Size_Right = models.CharField(max_length=20, default="Unknown")
 	Pupil_Size_Left = models.CharField(max_length=20, default="Unknown")
 
