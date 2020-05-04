@@ -10,25 +10,22 @@ var hr_vals = [' ', ' ', ' '];
 var bp_vals = [' ', ' ', ' '];
 
 function recordHR(){
-    createTimeStamp();
+    var time = createTimeStamp();
     var hr = parseInt(hrText.value);
     hrText.value = "";
 
     if(isNaN(hr)){
-         updateVitals("HR", 'Unknown');
-         //updateVitalsHistory('HR_History', 'Unknown', timeStamp);
+         updateVitals("HR", 'Unknown','HR_History','Unknown','unknown', time);
          localStorage.setItem("HR_Display", ' ');
-         updateVitals("Shock_Level", 'Unknown');
-         //updateVitalsHistory('Shock_History', 'Unknown', timeStamp);
+         updateVitals("Shock_Level", 'Unknown','Shock_History', 'Unknown', 'unknown', time);
          localStorage.setItem("Shock_display", " ");
          return;
     }
 
-    updateVitals("HR", hr.toString(10));
-    //updateVitalsHistory('HR_History', hr.toString(10) ,timeStamp);
+    updateVitals("HR", hr.toString(10),'HR_History',hr.toString(10),'unknown', time);
     localStorage.setItem("HR_prev", hr.toString(10));
 
-    var hrDisplay = hr.toString(10) + " at " + createTimeStamp();
+    var hrDisplay = hr.toString(10) + " at " + time;
     localStorage.setItem("HR_display", hrDisplay);
     populateUI('hr',hrDisplay);
 
@@ -36,33 +33,29 @@ function recordHR(){
     var bp = localStorage.getItem('BP_prev');
     if(bp !== "null" && hr !== null){
         var newShock = hr/(parseInt(bp,10)).toFixed(2);
-        var shockDisplay = newShock + " at " + createTimeStamp();
-        updateVitals("Shock_Level", newShock.toString(10));
-        //updateVitalsHistory('Shock_History', newShock.toString(10), timeStamp);
+        var shockDisplay = newShock + " at " + time;
+        updateVitals("Shock_Level", newShock.toString(10),'Shock_History', newShock.toString(10), 'unknown', time);
         localStorage.setItem("Shock_display", shockDisplay);
     }
 }
 
 function recordBP(){
-        createTimeStamp();
+        var time = createTimeStamp();
         var bp = parseInt(bpText.value);
         bpText.value = "";
 
         if(isNaN(bp)){
-             updateVitals("BP", "Unknown");
-             updateVitalsHistory("BP_History",'Unknown', createTimeStamp());
+             updateVitals("BP", 'Unknown','BP_History','Unknown','unknown', time);
              localStorage.setItem("BP_Display", ' ');
-             updateVitals("Shock_Level", 'Unknown');
-             //updateVitalsHistory('Shock_History', 'Unknown', timeStamp);
+             updateVitals("Shock_Level", 'Unknown','Shock_History', 'Unknown', 'unknown', time);
              localStorage.setItem("Shock_display", " ");
              return;
         }
 
-        updateVitals("BP", bp.toString(10));
-        //updateVitalsHistory("BP_History", bp.toString(10), timeStamp);
+        updateVitals("BP", bp.toString(10),'BP_History',bp.toString(10),'unknown', time);
         localStorage.setItem("BP_prev", bp.toString(10));
 
-        var bpDisplay = bp.toString(10) + " at " + createTimeStamp();
+        var bpDisplay = bp.toString(10) + " at " + time;
         localStorage.setItem("BP_display", bpDisplay);
         populateUI('bp',bpDisplay);
 
@@ -70,28 +63,25 @@ function recordBP(){
         var hr = localStorage.getItem('HR_prev');
         if(hr !== "null" && bp !== null){
             var newShock = ((parseInt(hr,10))/bp).toFixed(2);
-            var shockDisplay = newShock + " at " + createTimeStamp();
-            updateVitals("Shock_Level", newShock.toString(10));
-            //updateVitalsHistory('Shock_History', newShock.toString(10), timeStamp);
+            var shockDisplay = newShock + " at " + time;
+            updateVitals("Shock_Level", newShock.toString(10),'Shock_History', newShock.toString(10), 'unknown', time);
             localStorage.setItem("Shock_display", shockDisplay);
         }
 }
 
 function recordEtco2(){
-    createTimeStamp();
+    var time = createTimeStamp();
     etco2 = parseInt(etco2Text.value);
     etco2Text.value = "";
 
     if(isNaN(etco2)){
-        updateVitals("ETCO2", 'Unknown');
-        //updateVitalsHistory("ETCO2_History", 'Unknown', timeStamp);
+        updateVitals("ETCO2", 'Unknown','ETCO2_History','Unknown','unknown', time);
          localStorage.setItem("ETCO2_Display", ' ');
          return;
     }
 
-    updateVitals("ETCO2_History", createTimeStamp(),"ETCO2", etco2.toString(10));
-    //updateVitalsHistory("ETCO2_History", etco2.toString(10),timeStamp);
-    var etco2Display = etco2.toString(10) + " at " + createTimeStamp();
+    updateVitals("ETCO2", etco2.toString(10),'ETCO2_History',etco2.toString(10),'unknown', time);
+    var etco2Display = etco2.toString(10) + " at " + time;
     localStorage.setItem("ETCO2_Display", etco2Display);
     populateUI('etco2',etco2Display);
 
@@ -99,22 +89,20 @@ function recordEtco2(){
 
 
 function recordGCS(type, value){
+    var time = createTimeStamp();
 
     if(type === 'motor'){
-        updateVitals("GCS_Motor", value);
-        //updateVitalsHistory('GCS_Motor_History', value, timeStamp);
+        setItemAjax("GCS_Motor", value);
         localStorage.setItem("GCS Motor", value);
     }
 
     else if(type === 'verbal'){
-        updateVitals("GCS_Verbal", value);
-        //updateVitalsHistory('GCS_Verbal_History', value, timeStamp);
+        setItemAjax("GCS_Verbal", value);
         localStorage.setItem("GCS Verbal", value);
     }
 
     else{
-        updateVitals("GCS_Eye", value);
-        //updateVitalsHistory('GCS_Eye_History', value, timeStamp);
+        setItemAjax("GCS_Eye", value);
         localStorage.setItem("GCS Eye", value);
     }
 
@@ -126,29 +114,27 @@ function recordGCS(type, value){
         var gcs = parseInt(gcs_motor,10) + parseInt(gcs_verbal, 10) + parseInt(gcs_eye, 10);
         var gcsDisplay = gcs + " at ";
 
-        updateVitals("GCS", gcs.toString(10));
-        //updateVitalsHistory('GCS_History', gcs.toString(10), timeStamp);
-        localStorage.setItem("GCS_Display", gcsDisplay + createTimeStamp());
+        setItemAjax("GCS", gcs.toString(10));
+        localStorage.setItem("GCS_Display", gcsDisplay + time);
     }
 }
 
 function recordPupilSize(side){
+    var time = createTimeStamp();
     if(side === 'right'){
         var size = parseInt(rightPupilText.value);
         rightPupilText.value = "";
 
         if(isNaN(size)){
             localStorage.setItem("RightPupil_Display", " ");
-            updateVitals("Pupil_Size_Right", "Unknown");
-            //updateVitalsHistory("Pupil_Right_History", "Unknown", timeStamp);
+            updateVitals("Pupil_Size_Right", "Unknown",'Pupil_Size_Right_History',"Unknown",'unknown', time);
             return;
         }
 
-        var display = "Right Pupil: " + size.toString(10) + "cm " + createTimeStamp();
+        var display = "Right Pupil: " + size.toString(10) + "cm " + time;
         localStorage.setItem("RightPupil_Display", display);
 
-        updateVitals("Pupil_Size_Right", size.toString(10));
-        //updateVitalsHistory("Pupil_Right_History", size.toString(10), timeStamp);
+        updateVitals("Pupil_Size_Right", size.toString(10),'Pupil_Size_Right_History',size.toString(10),'unknown', time);
     }
 
     else if(side === 'left'){
@@ -157,15 +143,13 @@ function recordPupilSize(side){
 
         if(isNaN(size)){
             localStorage.setItem("LeftPupil_Display", " ");
-            updateVitals("Pupil_Size_Left", "Unknown");
-            //updateVitalsHistory("Pupil_Left_History",  "Unknown", timeStamp);
+            updateVitals("Pupil_Size_Left", "Unknown",'Pupil_Size_Left_History',"Unknown",'unknown', time);
              return;
         }
-        var display = "Left Pupil: " + size.toString(10) + "cm " + createTimeStamp();
+        var display = "Left Pupil: " + size.toString(10) + "cm " + time;
         localStorage.setItem("LeftPupil_Display", display);
 
-        updateVitals("Pupil_Size_Left", size.toString(10));
-        //updateVitalsHistory("Pupil_Left_History", size.toString(10), timeStamp);
+        updateVitals("Pupil_Size_Left", size.toString(10),'Pupil_Size_Left_History',size.toString(10),'unknown', time);
     }
 }
 function createTimeStamp(){
@@ -293,35 +277,55 @@ function populateUI(vital, display){
     }
 }
 
-function updateVitals(key, value){
-
-    $.ajax({
-        type:"POST",
-        url: '/setItem/',
-        data: {
-            'key': key,
-            'value': value,
-        },
-
-        success: function( data ) {
-
-        }
-    });
+function updateVitals(step, value, historyKey, historyStep, historyType, timestamp){
+    $.ajax(
+        {
+            type:"POST",
+            url: "/setItemSimple/",
+            data:{
+                'key': step,
+                'value': value,
+                'historyKey': historyKey,
+                'historyStep': historyStep,
+                'historyType': historyType,
+                'timestamp': timestamp,
+            },
+            success: function( data )
+            {}
+        });
 }
 
-function updateVitalsHistory(historyKey, value, timeStamp){
-        $.ajax({
+function setItemAddl(step, value, historyKey, historyStep, historyType, timestamp, addlKey, addlValue){
+    $.ajax(
+        {
+            type:"POST",
+            url: "/setItemAddl/",
+            data:{
+                'key': step,
+                'value': value,
+                'historyKey': historyKey,
+                'historyStep': historyStep,
+                'historyType': historyType,
+                'timestamp': timestamp,
+                'addlValue': addlValue,
+                'addlKey': addlKey,
+            },
+            success: function( data )
+            {}
+        })
+}
+
+function setItemAjax(step, value){
+    $.ajax(
+    {
         type:"POST",
-        url: '/updateHistoryUnknown/',
-        data: {
-            'historyKey': historyKey,
+        url: "/setItem/",
+        data:{
+            'key': step,
             'value': value,
-            'timeStamp': timeStamp,
         },
-
-        success: function( data ) {
-
-        }
-    });
+        success: function( data )
+        {}
+     })
 }
 
