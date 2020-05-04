@@ -9,15 +9,15 @@ to suggest any next steps the team should take. Additionally, the total time ela
 beginning of the trauma will be displayed on both the main page as well as the summary page. 
 
 ## Deployed To
-Heroku Account https://id.heroku.com/login
-### Credentials:
-* Username: dtorzala@asu.edu
-* Password: Pch123456!
+### Heroku Account https://id.heroku.com/login
+#### Credentials:
+  * Username: dtorzala@asu.edu
+  * Password: Pch123456!
 
-TBS App Access point: https://tbs-app-demo.herokuapp.com/
-### Credentials:
-* Username: pch123456
-* Password: Qwerty123456!
+### TBS App Access point: https://tbs-app-demo.herokuapp.com/
+####  Credentials:
+  * Username: pch123456
+  * Password: Qwerty123456!
 
 
 ## Getting Started
