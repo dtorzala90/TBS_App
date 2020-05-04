@@ -91,7 +91,7 @@ function fetchTimeModal(){
     var hour = Math.round(parseInt(document.getElementById('hourStamp').value, 10));
     var min = Math.round(parseInt(document.getElementById('minuteStamp').value, 10));
     var sec =Math.round(parseInt(document.getElementById('secondStamp').value, 10));
-    var timeStamp = pad(hour).toString(10) + ":" +  pad(min).toString(10) + ":" + pad(sec).toString(10);
+    var timeStamp = pad(hour) + ":" +  pad(min) + ":" + pad(sec);
     return timeStamp;
 }
 
@@ -256,11 +256,11 @@ function getCurrentTime(){
     }
 
     if(hour !== 0){
-        timeStamp = pad(hour).toString + ":" +  pad(min).toString + ":" + pad(sec).toString;
+        timeStamp = pad(hour) + ":" +  pad(min) + ":" + pad(sec);
     }
 
     else{
-        timeStamp = "00:" + pad(min).toString + ":" + pad(sec).toString;
+        timeStamp = "00:" + pad(min) + ":" + pad(sec);
     }
 
     return timeStamp;

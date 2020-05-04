@@ -450,9 +450,9 @@
                                                 <br>
                                             </div>
                                             <script>
-                                                document.getElementById('etco2_1').innerHTML = "<b> ETC0 <sub>2</sub> : " + localStorage.getItem('etco2_1') + "</b>";
-                                                document.getElementById('etco2_2').innerHTML = "<b> ETC0 <sub>2</sub> : " + localStorage.getItem('etco2_2') + "</b>";
-                                                document.getElementById('etco2_3').innerHTML = "<b> ETC0 <sub>2</sub> : " + localStorage.getItem('etco2_3') + "</b>";
+                                                document.getElementById('etco2_1').innerHTML = "<b>" + localStorage.getItem('etco2_1') + "</b>";
+                                                document.getElementById('etco2_2').innerHTML = "<b>" + localStorage.getItem('etco2_2') + "</b>";
+                                                document.getElementById('etco2_3').innerHTML = "<b>" + localStorage.getItem('etco2_3') + "</b>";
                                             </script>
 
                                         </div>
@@ -544,9 +544,9 @@
                                             <br>
 
                                             <script>
-                                                document.getElementById('hr_1').innerHTML = "<b> HR: " + localStorage.getItem('hr_1') + "</b>";
-                                                document.getElementById('hr_2').innerHTML = "<b> HR: " + localStorage.getItem('hr_2') + "</b>";
-                                                document.getElementById('hr_3').innerHTML = "<b> HR: " + localStorage.getItem('hr_3') + "</b>";
+                                                document.getElementById('hr_1').innerHTML = "<b>" + localStorage.getItem('hr_1') + "</b>";
+                                                document.getElementById('hr_2').innerHTML = "<b>" + localStorage.getItem('hr_2') + "</b>";
+                                                document.getElementById('hr_3').innerHTML = "<b>" + localStorage.getItem('hr_3') + "</b>";
                                             </script>
                                         </div>
 
@@ -574,9 +574,9 @@
                                             <div id="bp_3"></div>
 
                                             <script>
-                                                document.getElementById('bp_1').innerHTML = "<b> BP: " + localStorage.getItem('bp_1') + "</b>";
-                                                document.getElementById('bp_2').innerHTML = "<b> BP: " + localStorage.getItem('bp_2') + "</b>";
-                                                document.getElementById('bp_3').innerHTML = "<b> BP: " + localStorage.getItem('bp_3') + "</b>";
+                                                document.getElementById('bp_1').innerHTML = "<b>" + localStorage.getItem('bp_1') + "</b>";
+                                                document.getElementById('bp_2').innerHTML = "<b>" + localStorage.getItem('bp_2') + "</b>";
+                                                document.getElementById('bp_3').innerHTML = "<b>" + localStorage.getItem('bp_3') + "</b>";
                                             </script>
 
                                         </div>
@@ -719,9 +719,9 @@
                                             <div id="ivf_3"></div>
 
                                             <script>
-                                                document.getElementById('ivf_1').innerHTML = "<b> IVF: " + localStorage.getItem('ivf_1') + "</b>";
-                                                document.getElementById('ivf_2').innerHTML = "<b> IVF: " + localStorage.getItem('ivf_2') + "</b>";
-                                                document.getElementById('ivf_3').innerHTML = "<b> IVF: " + localStorage.getItem('ivf_3') + "</b>";
+                                                document.getElementById('ivf_1').innerHTML = "<b>" + localStorage.getItem('ivf_1') + "</b>";
+                                                document.getElementById('ivf_2').innerHTML = "<b>" + localStorage.getItem('ivf_2') + "</b>";
+                                                document.getElementById('ivf_3').innerHTML = "<b>" + localStorage.getItem('ivf_3') + "</b>";
                                             </script>
 
                                         </div>
@@ -1090,8 +1090,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            </div>
                         </form>
+
                     </div>
 
                     <!--
@@ -1529,7 +1530,7 @@
                                                         <button class="btn btn-info btn-lg" type="button" id="guAbnorm"
                                                                 onclick="updateBorder(this.id, 'gunorm');
                                                                 recordAbnormality('GUAbnormText', 'GU_Abnormality');
-                                                                initEnter('guAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1562,7 +1563,7 @@
                                                                 id="rectalAbnorm"
                                                                 onclick="updateBorder(this.id, 'rectalnorm');
                                                                 recordAbnormality('RectalAbnormText', 'Rectal_Abnormality');
-                                                                initEnter('rectalAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1594,7 +1595,7 @@
                                                         <button class="btn btn-info btn-lg" type="button" id="rueAbnorm"
                                                                 onclick="updateBorder(this.id, 'ruenorm');
                                                                 recordAbnormality('RUEAbnormText', 'RUE_Abnormality');
-                                                                initEnter('rueAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1626,7 +1627,7 @@
                                                         <button class="btn btn-info btn-lg" type="button" id="lueAbnorm"
                                                                 onclick="updateBorder(this.id, 'luenorm');
                                                                 recordAbnormality('LUEAbnormText', 'LUE_Abnormality');
-                                                                initEnter('lueAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1658,7 +1659,7 @@
                                                         <button class="btn btn-info btn-lg" type="button" id="rleAbnorm"
                                                                 onclick="updateBorder(this.id, 'rlenorm');
                                                                 recordAbnormality('RLEAbnormText', 'RLE_Abnormality');
-                                                                initEnter('rleAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1690,7 +1691,7 @@
                                                         <button class="btn btn-info btn-lg" type="button" id="lleAbnorm"
                                                                 onclick="updateBorder(this.id, 'llenorm');
                                                                 recordAbnormality('LLEAbnormText', 'LLE_Abnormality');
-                                                                initEnter('lleAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1723,7 +1724,7 @@
                                                                 id="backAbnorm"
                                                                 onclick="updateBorder(this.id, 'backnorm');
                                                                 recordAbnormality('backAbnormText', 'Back_Abnormality');
-                                                                initEnter('backAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1756,7 +1757,7 @@
                                                                 id="skinAbnorm"
                                                                 onclick="updateBorder(this.id, 'skinnorm');
                                                                 recordAbnormality('skinAbnormText', 'Skin_Abnormality');
-                                                                initEnter('skinAbnorm')">
+                                                                ">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -2025,7 +2026,7 @@
             }
 
             initEnter('hrEnter', 'hrText');
-            initEnter('bpEnter', 'bpText');
+            <!-- initEnter('bpEnter', 'bpText');
             initEnter('etco2Enter', 'etco2Text');
             initEnter('rightPupilEnter', 'pupilsizeRight');
             initEnter('leftPupilEnter', 'pupilsizeLeft');
@@ -2043,7 +2044,7 @@
             initEnter('headAbnorm', 'headAbnormText');
             initEnter('eyesAbnorm', 'eyesAbnormText');
             initEnter('earsAbnorm', 'earsAbnormText');
-            initEnter('midFaceAbnorm', 'midFaceAbnormText');
+            initEnter('midfaceAbnorm', 'midfaceAbnormText');
             initEnter('trachAbnorm', 'trachAbnormText');
             initEnter('jugularAbnorm', 'jugularAbnormText');
             initEnter('cvAbnorm', 'CVAbnormText');
@@ -2058,7 +2059,7 @@
             initEnter('lleAbnorm', 'LLEAbnormText');
 
             initEnter('backAbnorm', 'backAbnormText');
-            initEnter('skinAbnorm', 'skinAbnormText');
+            initEnter('skinAbnorm', 'skinAbnormText');-->
         </script>
     </div>
 
