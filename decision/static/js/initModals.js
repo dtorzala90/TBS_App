@@ -175,7 +175,7 @@ function ivfModal() {
         var time = getCurrentTime();
         var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
         var ivf_added = parseInt(document.getElementById('ivfAmount').value,10);
-        var display = "IVF: " + ivf_added.toString(10) + " mL/kg " + getCurrentTime();
+        var display = "<b>IVF: " + ivf_added.toString(10) + " mL/kg " + getCurrentTime() + "</b>";
         if(ivf_vals[0] === ' '){
             ivf_vals[0] = display;
         }

@@ -204,7 +204,8 @@ function pad(val) {
  */
 function populateUI(vital, display){
     if(vital === 'etco2'){
-        display = "ETC0<sub>2</sub>: " + display;
+        display = "<b>ETC0<sub>2</sub>: " + display + "</b>";
+
         if(etco2_vals[0] === ' '){
             etco2_vals[0] = display;
         }
@@ -223,16 +224,17 @@ function populateUI(vital, display){
             etco2_vals[0] = display;
         }
 
-        document.getElementById('etco2_1').innerText = etco2_vals[0];
-        document.getElementById('etco2_2').innerText = etco2_vals[1];
-        document.getElementById('etco2_3').innerText = etco2_vals[2];
+        console.log(etco2_vals);
+        document.getElementById('etco2_1').innerHTML = etco2_vals[0];
+        document.getElementById('etco2_2').innerHTML = etco2_vals[1];
+        document.getElementById('etco2_3').innerHTML = etco2_vals[2];
         localStorage.setItem("etco2_1", etco2_vals[0]);
         localStorage.setItem("etco2_2", etco2_vals[1]);
         localStorage.setItem("etco2_3", etco2_vals[3]);
     }
 
     if(vital === 'hr'){
-        display = "HR: " + display;
+        display = "<b>HR: " + display + "</b>";
         if(hr_vals[0] === ' '){
             hr_vals[0] = display;
         }
@@ -251,9 +253,9 @@ function populateUI(vital, display){
             hr_vals[0] = display;
         }
 
-        document.getElementById('hr_1').innerText = hr_vals[0];
-        document.getElementById('hr_2').innerText = hr_vals[1];
-        document.getElementById('hr_3').innerText = hr_vals[2];
+        document.getElementById('hr_1').innerHTML = hr_vals[0];
+        document.getElementById('hr_2').innerHTML = hr_vals[1];
+        document.getElementById('hr_3').innerHTML = hr_vals[2];
 
         localStorage.setItem("hr_1", hr_vals[0]);
         localStorage.setItem("hr_2", hr_vals[1]);
@@ -261,7 +263,7 @@ function populateUI(vital, display){
     }
 
     if(vital === 'bp'){
-        display = "BP: " + display;
+        display = "<b>BP: " + display + "</b>";
         if(bp_vals[0] === ' '){
             bp_vals[0] = display;
         }
@@ -280,9 +282,9 @@ function populateUI(vital, display){
             bp_vals[0] = display;
         }
 
-        document.getElementById('bp_1').innerText = bp_vals[0];
-        document.getElementById('bp_2').innerText = bp_vals[1];
-        document.getElementById('bp_3').innerText = bp_vals[2];
+        document.getElementById('bp_1').innerHTML = bp_vals[0];
+        document.getElementById('bp_2').innerHTML = bp_vals[1];
+        document.getElementById('bp_3').innerHTML = bp_vals[2];
 
         localStorage.setItem("bp_1", bp_vals[0]);
         localStorage.setItem("bp_2", bp_vals[1]);

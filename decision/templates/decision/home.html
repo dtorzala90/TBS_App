@@ -450,9 +450,9 @@
                                                 <br>
                                             </div>
                                             <script>
-                                                document.getElementById('etco2_1').innerHTML = "<b>" + localStorage.getItem('etco2_1') + "</b>";
-                                                document.getElementById('etco2_2').innerHTML = "<b>" + localStorage.getItem('etco2_2') + "</b>";
-                                                document.getElementById('etco2_3').innerHTML = "<b>" + localStorage.getItem('etco2_3') + "</b>";
+                                                document.getElementById('etco2_1').innerHTML = localStorage.getItem('etco2_1');
+                                                document.getElementById('etco2_2').innerHTML = localStorage.getItem('etco2_2');
+                                                document.getElementById('etco2_3').innerHTML = localStorage.getItem('etco2_3');
                                             </script>
 
                                         </div>
@@ -544,9 +544,9 @@
                                             <br>
 
                                             <script>
-                                                document.getElementById('hr_1').innerHTML = "<b>" + localStorage.getItem('hr_1') + "</b>";
-                                                document.getElementById('hr_2').innerHTML = "<b>" + localStorage.getItem('hr_2') + "</b>";
-                                                document.getElementById('hr_3').innerHTML = "<b>" + localStorage.getItem('hr_3') + "</b>";
+                                                document.getElementById('hr_1').innerHTML = localStorage.getItem('hr_1');
+                                                document.getElementById('hr_2').innerHTML = localStorage.getItem('hr_2');
+                                                document.getElementById('hr_3').innerHTML = localStorage.getItem('hr_3');
                                             </script>
                                         </div>
 
@@ -574,9 +574,9 @@
                                             <div id="bp_3"></div>
 
                                             <script>
-                                                document.getElementById('bp_1').innerHTML = "<b>" + localStorage.getItem('bp_1') + "</b>";
-                                                document.getElementById('bp_2').innerHTML = "<b>" + localStorage.getItem('bp_2') + "</b>";
-                                                document.getElementById('bp_3').innerHTML = "<b>" + localStorage.getItem('bp_3') + "</b>";
+                                                document.getElementById('bp_1').innerHTML = localStorage.getItem('bp_1');
+                                                document.getElementById('bp_2').innerHTML = localStorage.getItem('bp_2');
+                                                document.getElementById('bp_3').innerHTML = localStorage.getItem('bp_3');
                                             </script>
 
                                         </div>
@@ -719,9 +719,9 @@
                                             <div id="ivf_3"></div>
 
                                             <script>
-                                                document.getElementById('ivf_1').innerHTML = "<b>" + localStorage.getItem('ivf_1') + "</b>";
-                                                document.getElementById('ivf_2').innerHTML = "<b>" + localStorage.getItem('ivf_2') + "</b>";
-                                                document.getElementById('ivf_3').innerHTML = "<b>" + localStorage.getItem('ivf_3') + "</b>";
+                                                document.getElementById('ivf_1').innerHTML = localStorage.getItem('ivf_1');
+                                                document.getElementById('ivf_2').innerHTML = localStorage.getItem('ivf_2');
+                                                document.getElementById('ivf_3').innerHTML = localStorage.getItem('ivf_3');
                                             </script>
 
                                         </div>
@@ -2027,6 +2027,40 @@
             }
 
             initEnter('hrEnter', 'hrText');
+            initEnter('bpEnter', 'bpText');
+            initEnter('etco2Enter', 'etco2Text');
+            initEnter('rightPupilEnter', 'pupilsizeRight');
+            initEnter('leftPupilEnter', 'pupilsizeLeft');
+
+            initEnter('saveDiffAirway', 'adjunct');
+            initEnter('saveIVF', 'ivfAmount');
+            initEnter('saveBag', 'bagMaskRR');
+            initEnter('saveETT', 'ettDepth');
+
+            initEnter('preArrivalEnter', 'preArrivalText');
+            initEnter('injuryEnter', 'injuryText');
+            initEnter('ageEnter', 'ageText');
+            initEnter('weightEnter', 'weightText');
+
+            initEnter('headAbnorm', 'headAbnormText');
+            initEnter('eyesAbnorm', 'eyesAbnormText');
+            initEnter('earsAbnorm', 'earsAbnormText');
+            initEnter('midfaceAbnorm', 'midfaceAbnormText');
+            initEnter('trachAbnorm', 'trachAbnormText');
+            initEnter('jugularAbnorm', 'jugularAbnormText');
+            initEnter('cvAbnorm', 'CVAbnormText');
+            initEnter('lungsAbnorm', 'lungsAbnormText');
+            initEnter('abdomenAbnorm', 'abdomenAbnormText');
+            initEnter('pelvisAbnorm', 'PelvisAbnormText');
+            initEnter('guAbnorm', 'GUAbnormText');
+            initEnter('rectalAbnorm', 'RectalAbnormText');
+            initEnter('rueAbnorm', 'RUEAbnormText');
+            initEnter('lueAbnorm', 'LUEAbnormText');
+            initEnter('rleAbnorm', 'RLEAbnormText');
+            initEnter('lleAbnorm', 'LLEAbnormText');
+
+            initEnter('backAbnorm', 'backAbnormText');
+            initEnter('skinAbnorm', 'skinAbnormText');
 
         </script>
     </div>
