@@ -14,10 +14,10 @@ function updateVitals(){
     var leftPupil = localStorage.getItem("LeftPupil_Display");
 
 
-    document.getElementById("hr_display").innerHTML = ("<b>" + hr + "<br></b>");
-    document.getElementById("bp_display").innerHTML = ("<b>" + bp + "<br></b>");
+    document.getElementById("hr_display").innerHTML = ("<b>HR: " + hr + "<br></b>");
+    document.getElementById("bp_display").innerHTML = ("<b>BP: " + bp + "<br></b>");
     document.getElementById("shock_display").innerHTML = ("<b>Shock: " + shock + "<br></b>");
-    document.getElementById("etco2_display").innerHTML = ("<b>" + etco2 + "<br></b>");
+    document.getElementById("etco2_display").innerHTML = ("<b> ETC0<sub>2</sub>: " + etco2 + "<br></b>");
     document.getElementById("gcs_display").innerHTML = ("<b>GCS: " + gcs + "<br></b>");
     document.getElementById("ettDisplay").innerHTML = "<b>" + ett + "</b>";
     document.getElementById("bagDisplay").innerHTML = "<b>" + bag + "</b>";

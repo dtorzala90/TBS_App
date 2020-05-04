@@ -28,7 +28,7 @@ function recordHR(){
     //updateVitalsHistory('HR_History', hr.toString(10) ,timeStamp);
     localStorage.setItem("HR_prev", hr.toString(10));
 
-    var hrDisplay = "HR: " + hr.toString(10) + " at " + createTimeStamp();
+    var hrDisplay = hr.toString(10) + " at " + createTimeStamp();
     localStorage.setItem("HR_display", hrDisplay);
     populateUI('hr',hrDisplay);
 
@@ -62,7 +62,7 @@ function recordBP(){
         //updateVitalsHistory("BP_History", bp.toString(10), timeStamp);
         localStorage.setItem("BP_prev", bp.toString(10));
 
-        var bpDisplay = "BP: " + bp.toString(10) + " at " + createTimeStamp();
+        var bpDisplay = bp.toString(10) + " at " + createTimeStamp();
         localStorage.setItem("BP_display", bpDisplay);
         populateUI('bp',bpDisplay);
 
@@ -91,7 +91,7 @@ function recordEtco2(){
 
     updateVitals("ETCO2_History", createTimeStamp(),"ETCO2", etco2.toString(10));
     //updateVitalsHistory("ETCO2_History", etco2.toString(10),timeStamp);
-    var etco2Display = "ETC0 <sub>2</sub>:" + etco2.toString(10) + " at " + createTimeStamp();
+    var etco2Display = etco2.toString(10) + " at " + createTimeStamp();
     localStorage.setItem("ETCO2_Display", etco2Display);
     populateUI('etco2',etco2Display);
 
@@ -182,11 +182,8 @@ function createTimeStamp(){
         min = min%60;
     }
 
-    if(hour !== 0){
-        return pad(hour) + ":" +  pad(min) + ":" + pad(sec);
-    }
+    return pad(hour.toString(10)) + ":" +  pad(min.toString(10)) + ":" + pad(sec.toString(10));
 
-    return pad(min) + ":" + pad(sec);
 }
 
 function pad(val) {
@@ -206,8 +203,8 @@ function pad(val) {
  * @param display
  */
 function populateUI(vital, display){
-
     if(vital === 'etco2'){
+        display = "ETC0<sub>2</sub>: " + display;
         if(etco2_vals[0] === ' '){
             etco2_vals[0] = display;
         }
@@ -235,6 +232,7 @@ function populateUI(vital, display){
     }
 
     if(vital === 'hr'){
+        display = "HR: " + display;
         if(hr_vals[0] === ' '){
             hr_vals[0] = display;
         }
@@ -263,6 +261,7 @@ function populateUI(vital, display){
     }
 
     if(vital === 'bp'){
+        display = "BP: " + display;
         if(bp_vals[0] === ' '){
             bp_vals[0] = display;
         }

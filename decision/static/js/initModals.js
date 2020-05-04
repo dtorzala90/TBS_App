@@ -246,6 +246,7 @@ function getCurrentTime(){
     var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
     var timeStamp = " ";
+
     if(min < 1){
         min = 0;
     }
@@ -255,13 +256,7 @@ function getCurrentTime(){
         min = Math.round(min%60);
     }
 
-    if(hour !== 0){
-        timeStamp = pad(hour) + ":" +  pad(min) + ":" + pad(sec);
-    }
-
-    else{
-        timeStamp = "00:" + pad(min) + ":" + pad(sec);
-    }
+    timeStamp = pad(hour.toString(10)) + ":" +  pad(min.toString(10)) + ":" + pad(sec.toString(10));
 
     return timeStamp;
 }

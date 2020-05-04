@@ -962,7 +962,7 @@
                                              aria-labelledby="v-pills-ppls-tab">
 
                                             <p class="survey-p">Pupils</p>
-                                            < class="btn-group-vertical btn-padding" role="group">
+                                            <div class="btn-group-vertical btn-padding" role="group">
                                                 <span class="survey-span">Equal:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="equal" value="yes" id="equalyes"
@@ -990,75 +990,76 @@
                                                 </button>
 
                                                 <br>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="survey-p">Right:</p>
-                                                    <div class="btn-group-vertical btn-padding" role="group">
-                                                        <button type="button" class="btn btn-light" name="rReactive"
-                                                                id="reactiveRightYes"
-                                                                value="yes"
-                                                                onclick="setItemAjax('Pupils_Reactive_Right','Yes');
-                                                        updateBorder(this.id,'reactiveRightNo');">Yes
-                                                        </button>
-                                                        <br>
-                                                        <button type="button" class="btn btn-light" name="rReactive"
-                                                                id="reactiveRightNo"
-                                                                value="no"
-                                                                onclick="setItemAjax('Pupils_Reactive_Right','No');
-                                                        updateBorder(this.id,'reactiveRightYes');">No
-                                                        </button>
-                                                        <br>
-                                                        <div class="input-group">
-                                                            <input class="form-control form-control-lg survey-fctrl"
-                                                                   type="text"
-                                                                   id="pupilsizeRight"
-                                                                   name="sizer"
-                                                                   value=""
-                                                                   placeholder="Size">
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-info btn-lg" type="button" id="rightPupilSize"
-                                                                        onclick="recordPupilSize('right')">Enter
-                                                                </button>
+                                                <span class="survey-span">Reactive:</span>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p class="survey-p">Right:</p>
+                                                        <div class="btn-group-vertical btn-padding" role="group">
+                                                            <button type="button" class="btn btn-light" name="rReactive"
+                                                                    id="reactiveRightYes"
+                                                                    value="yes"
+                                                                    onclick="setItemAjax('Pupils_Reactive_Right','Yes');
+                                                            updateBorder(this.id,'reactiveRightNo');">Yes
+                                                            </button>
+                                                            <br>
+                                                            <button type="button" class="btn btn-light" name="rReactive"
+                                                                    id="reactiveRightNo"
+                                                                    value="no"
+                                                                    onclick="setItemAjax('Pupils_Reactive_Right','No');
+                                                            updateBorder(this.id,'reactiveRightYes');">No
+                                                            </button>
+                                                            <br>
+                                                            <div class="input-group">
+                                                                <input class="form-control form-control-lg survey-fctrl"
+                                                                       type="text"
+                                                                       id="pupilsizeRight"
+                                                                       name="sizer"
+                                                                       value=""
+                                                                       placeholder="Size">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-info btn-lg" type="button" id="rightPupilSize"
+                                                                            onclick="recordPupilSize('right')">Enter
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col">
-                                                    <p class="survey-p">Left:</p>
-                                                    <div class="btn-group-vertical btn-padding" role="group">
-                                                        <button type="button" class="btn btn-light" name="lReactive"
-                                                                id="reactiveLeftYes"
-                                                                value="yes"
-                                                                onclick="setItemAjax('Pupils_Reactive_Left','Yes');
-                                                        updateBorder(this.id,'reactiveLeftNo');">Yes
-                                                        </button>
-                                                        <br>
-                                                        <button type="button" class="btn btn-light" name="lReactive"
-                                                                id="reactiveLeftNo"
-                                                                value="no"
-                                                                onclick="setItemAjax('Pupils_Reactive_Left','No');
-                                                        updateBorder(this.id,'reactiveLeftYes');">No
-                                                        </button>
-                                                        <br>
-                                                        <div class="input-group">
-                                                            <input class="form-control form-control-lg survey-fctrl"
-                                                                   type="text"
-                                                                   id="pupilsizeLeft"
-                                                                   name="sizel"
-                                                                   value=""
-                                                                   placeholder="Size">
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-info btn-lg" type="button" id="leftPupilEnter"
-                                                                        onclick="recordPupilSize('left')">Enter
-                                                                </button>
+                                                    <div class="col">
+                                                        <p class="survey-p">Left:</p>
+                                                        <div class="btn-group-vertical btn-padding" role="group">
+                                                            <button type="button" class="btn btn-light" name="lReactive"
+                                                                    id="reactiveLeftYes"
+                                                                    value="yes"
+                                                                    onclick="setItemAjax('Pupils_Reactive_Left','Yes');
+                                                            updateBorder(this.id,'reactiveLeftNo');">Yes
+                                                            </button>
+                                                            <br>
+                                                            <button type="button" class="btn btn-light" name="lReactive"
+                                                                    id="reactiveLeftNo"
+                                                                    value="no"
+                                                                    onclick="setItemAjax('Pupils_Reactive_Left','No');
+                                                            updateBorder(this.id,'reactiveLeftYes');">No
+                                                            </button>
+                                                            <br>
+                                                            <div class="input-group">
+                                                                <input class="form-control form-control-lg survey-fctrl"
+                                                                       type="text"
+                                                                       id="pupilsizeLeft"
+                                                                       name="sizel"
+                                                                       value=""
+                                                                       placeholder="Size">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-info btn-lg" type="button" id="leftPupilEnter"
+                                                                            onclick="recordPupilSize('left')">Enter
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                         <!-- Moves All Extremities -->
                                         <div class="tab-pane fade" id="v-pills-maex" role="tabpanel"
                                              aria-labelledby="v-pills-maex-tab">
@@ -1090,7 +1091,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
+
                         </form>
 
                     </div>
@@ -2026,40 +2027,7 @@
             }
 
             initEnter('hrEnter', 'hrText');
-            <!-- initEnter('bpEnter', 'bpText');
-            initEnter('etco2Enter', 'etco2Text');
-            initEnter('rightPupilEnter', 'pupilsizeRight');
-            initEnter('leftPupilEnter', 'pupilsizeLeft');
 
-            initEnter('saveDiffAirway', 'adjunct');
-            initEnter('saveIVF', 'ivfAmount');
-            initEnter('saveBag', 'bagMaskRR');
-            initEnter('saveETT', 'ettDepth');
-
-            initEnter('preArrivalEnter', 'preArrivalText');
-            initEnter('injuryEnter', 'injuryText');
-            initEnter('ageEnter', 'ageText');
-            initEnter('weightEnter', 'weightText');
-
-            initEnter('headAbnorm', 'headAbnormText');
-            initEnter('eyesAbnorm', 'eyesAbnormText');
-            initEnter('earsAbnorm', 'earsAbnormText');
-            initEnter('midfaceAbnorm', 'midfaceAbnormText');
-            initEnter('trachAbnorm', 'trachAbnormText');
-            initEnter('jugularAbnorm', 'jugularAbnormText');
-            initEnter('cvAbnorm', 'CVAbnormText');
-            initEnter('lungsAbnorm', 'lungsAbnormText');
-            initEnter('abdomenAbnorm', 'abdomenAbnormText');
-            initEnter('pelvisAbnorm', 'PelvisAbnormText');
-            initEnter('guAbnorm', 'GUAbnormText');
-            initEnter('rectalAbnorm', 'RectalAbnormText');
-            initEnter('rueAbnorm', 'RUEAbnormText');
-            initEnter('lueAbnorm', 'LUEAbnormText');
-            initEnter('rleAbnorm', 'RLEAbnormText');
-            initEnter('lleAbnorm', 'LLEAbnormText');
-
-            initEnter('backAbnorm', 'backAbnormText');
-            initEnter('skinAbnorm', 'skinAbnormText');-->
         </script>
     </div>
 
