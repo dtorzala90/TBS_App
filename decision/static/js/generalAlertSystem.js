@@ -457,7 +457,7 @@ function checkAlertsLocal(ajaxData){
              localStorage.setItem("Type and Cross Alert", "thrown");
             $('#alert_placeholder').append(
             "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-cross-alert'>\n" +
-            "                  <strong>Consider Type and Cross!!!!!</strong>\n" +
+            "                  <strong>Consider Type and Cross!</strong>\n" +
             "                   <button type=\"button\" data-dismiss=\"alert\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\")'" +
             "                    <span aria-hidden=\"true\">&times;</span>\n" +
             "                  </button>\n" +

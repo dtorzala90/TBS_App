@@ -224,13 +224,13 @@ function populateUI(vital, display){
             etco2_vals[0] = display;
         }
 
-        console.log(etco2_vals);
         document.getElementById('etco2_1').innerHTML = etco2_vals[0];
         document.getElementById('etco2_2').innerHTML = etco2_vals[1];
         document.getElementById('etco2_3').innerHTML = etco2_vals[2];
+
         localStorage.setItem("etco2_1", etco2_vals[0]);
         localStorage.setItem("etco2_2", etco2_vals[1]);
-        localStorage.setItem("etco2_3", etco2_vals[3]);
+        localStorage.setItem("etco2_3", etco2_vals[2]);
     }
 
     if(vital === 'hr'){
@@ -259,7 +259,7 @@ function populateUI(vital, display){
 
         localStorage.setItem("hr_1", hr_vals[0]);
         localStorage.setItem("hr_2", hr_vals[1]);
-        localStorage.setItem("hr_3", hr_vals[3]);
+        localStorage.setItem("hr_3", hr_vals[2]);
     }
 
     if(vital === 'bp'){
@@ -288,7 +288,7 @@ function populateUI(vital, display){
 
         localStorage.setItem("bp_1", bp_vals[0]);
         localStorage.setItem("bp_2", bp_vals[1]);
-        localStorage.setItem("bp_3", bp_vals[3]);
+        localStorage.setItem("bp_3", bp_vals[2]);
 
     }
 }

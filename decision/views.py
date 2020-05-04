@@ -173,7 +173,6 @@ def savePatientInfo(request):
 def setItem(request):
 		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
-		print("The id is: ", newSession.id)
 		dbTable = Session.objects.get(id=newSession.id)
 		dbTable.__setattr__(key, valueNew)
 
