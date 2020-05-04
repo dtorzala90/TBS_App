@@ -28,7 +28,7 @@ function recordHR(){
     //updateVitalsHistory('HR_History', hr.toString(10) ,timeStamp);
     localStorage.setItem("HR_prev", hr.toString(10));
 
-    var hrDisplay = hr.toString(10) + " at " + timeStamp;
+    var hrDisplay = hr.toString(10) + " at " + createTimeStamp();
     localStorage.setItem("HR_display", hrDisplay);
     populateUI('hr',hrDisplay);
 
@@ -36,7 +36,7 @@ function recordHR(){
     var bp = localStorage.getItem('BP_prev');
     if(bp !== "null" && hr !== null){
         var newShock = hr/(parseInt(bp,10)).toFixed(2);
-        var shockDisplay = newShock + " at " + timeStamp;
+        var shockDisplay = newShock + " at " + createTimeStamp();
         updateVitals("Shock_Level", newShock.toString(10));
         //updateVitalsHistory('Shock_History', newShock.toString(10), timeStamp);
         localStorage.setItem("Shock_display", shockDisplay);
@@ -50,7 +50,7 @@ function recordBP(){
 
         if(isNaN(bp)){
              updateVitals("BP", "Unknown");
-             updateVitalsHistory("BP_History",'Unknown', timeStamp);
+             updateVitalsHistory("BP_History",'Unknown', createTimeStamp());
              localStorage.setItem("BP_Display", ' ');
              updateVitals("Shock_Level", 'Unknown');
              //updateVitalsHistory('Shock_History', 'Unknown', timeStamp);
@@ -62,7 +62,7 @@ function recordBP(){
         //updateVitalsHistory("BP_History", bp.toString(10), timeStamp);
         localStorage.setItem("BP_prev", bp.toString(10));
 
-        var bpDisplay = bp.toString(10) + " at " + timeStamp;
+        var bpDisplay = bp.toString(10) + " at " + createTimeStamp();
         localStorage.setItem("BP_display", bpDisplay);
         populateUI('bp',bpDisplay);
 
@@ -70,7 +70,7 @@ function recordBP(){
         var hr = localStorage.getItem('HR_prev');
         if(hr !== "null" && bp !== null){
             var newShock = ((parseInt(hr,10))/bp).toFixed(2);
-            var shockDisplay = newShock + " at " + timeStamp;
+            var shockDisplay = newShock + " at " + createTimeStamp();
             updateVitals("Shock_Level", newShock.toString(10));
             //updateVitalsHistory('Shock_History', newShock.toString(10), timeStamp);
             localStorage.setItem("Shock_display", shockDisplay);
@@ -89,9 +89,9 @@ function recordEtco2(){
          return;
     }
 
-    updateVitals("ETCO2_History", timeStamp,"ETCO2", etco2.toString(10));
+    updateVitals("ETCO2_History", createTimeStamp(),"ETCO2", etco2.toString(10));
     //updateVitalsHistory("ETCO2_History", etco2.toString(10),timeStamp);
-    var etco2Display = etco2.toString(10) + " at " + timeStamp;
+    var etco2Display = etco2.toString(10) + " at " + createTimeStamp();
     localStorage.setItem("ETCO2_Display", etco2Display);
     populateUI('etco2',etco2Display);
 
@@ -123,13 +123,12 @@ function recordGCS(type, value){
     var gcs_eye = localStorage.getItem("GCS Eye");
 
     if(gcs_motor !== "null" && gcs_verbal !== "null" && gcs_eye !== "null"){
-        createTimeStamp();
         var gcs = parseInt(gcs_motor,10) + parseInt(gcs_verbal, 10) + parseInt(gcs_eye, 10);
         var gcsDisplay = gcs + " at ";
 
         updateVitals("GCS", gcs.toString(10));
         //updateVitalsHistory('GCS_History', gcs.toString(10), timeStamp);
-        localStorage.setItem("GCS_Display", gcsDisplay + timeStamp);
+        localStorage.setItem("GCS_Display", gcsDisplay + createTimeStamp());
     }
 }
 
@@ -145,7 +144,7 @@ function recordPupilSize(side){
             return;
         }
 
-        var display = "Right Pupil: " + size.toString(10) + "cm";
+        var display = "Right Pupil: " + size.toString(10) + "cm " + createTimeStamp();
         localStorage.setItem("RightPupil_Display", display);
 
         updateVitals("Pupil_Size_Right", size.toString(10));
@@ -162,7 +161,7 @@ function recordPupilSize(side){
             //updateVitalsHistory("Pupil_Left_History",  "Unknown", timeStamp);
              return;
         }
-        var display = "Left Pupil: " + size.toString(10) + "cm";
+        var display = "Left Pupil: " + size.toString(10) + "cm " + createTimeStamp();
         localStorage.setItem("LeftPupil_Display", display);
 
         updateVitals("Pupil_Size_Left", size.toString(10));
@@ -184,10 +183,19 @@ function createTimeStamp(){
     }
 
     if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+        return pad(hour).toString + ":" +  pad(min).toString + ":" + pad(sec).toString;
     }
 
-    timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
+    return pad(min).toString + ":" + pad(sec).toString;
+}
+
+function pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
 }
 
 /**

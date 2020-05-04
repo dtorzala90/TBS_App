@@ -437,7 +437,7 @@
                                                            value=""
                                                            placeholder="ETCO&#8322;">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
+                                                        <button class="btn btn-info btn-lg" type="button" id="etco2Enter"
                                                                 onclick="recordEtco2()">Enter
                                                         </button>
                                                     </div>
@@ -450,9 +450,9 @@
                                                 <br>
                                             </div>
                                             <script>
-                                                document.getElementById('etco2_1').innerText = localStorage.getItem('etco2_1');
-                                                document.getElementById('etco2_2').innerText = localStorage.getItem('etco2_2');
-                                                document.getElementById('etco2_3').innerText = localStorage.getItem('etco2_3');
+                                                document.getElementById('etco2_1').innerHTML = "<b> ETC0 <sub>2</sub> : " + localStorage.getItem('etco2_1') + "</b>";
+                                                document.getElementById('etco2_2').innerHTML = "<b> ETC0 <sub>2</sub> : " + localStorage.getItem('etco2_2') + "</b>";
+                                                document.getElementById('etco2_3').innerHTML = "<b> ETC0 <sub>2</sub> : " + localStorage.getItem('etco2_3') + "</b>";
                                             </script>
 
                                         </div>
@@ -530,7 +530,7 @@
                                                            value=""
                                                            placeholder="BPM">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
+                                                        <button class="btn btn-info btn-lg" type="button" id="hrEnter"
                                                                 onclick="recordHR()">Enter
                                                         </button>
                                                     </div>
@@ -544,9 +544,9 @@
                                             <br>
 
                                             <script>
-                                                document.getElementById('hr_1').innerText = localStorage.getItem('hr_1');
-                                                document.getElementById('hr_2').innerText = localStorage.getItem('hr_2');
-                                                document.getElementById('hr_3').innerText = localStorage.getItem('hr_3');
+                                                document.getElementById('hr_1').innerHTML = "<b> HR: " + localStorage.getItem('hr_1') + "</b>";
+                                                document.getElementById('hr_2').innerHTML = "<b> HR: " + localStorage.getItem('hr_2') + "</b>";
+                                                document.getElementById('hr_3').innerHTML = "<b> HR: " + localStorage.getItem('hr_3') + "</b>";
                                             </script>
                                         </div>
 
@@ -562,7 +562,7 @@
                                                        value=""
                                                        placeholder="mmHg">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-info btn-lg" type="button"
+                                                    <button class="btn btn-info btn-lg" type="button" id="bpEnter"
                                                             onclick="recordBP()">Enter
                                                     </button>
                                                 </div>
@@ -574,9 +574,9 @@
                                             <div id="bp_3"></div>
 
                                             <script>
-                                                document.getElementById('bp_1').innerText = localStorage.getItem('bp_1');
-                                                document.getElementById('bp_2').innerText = localStorage.getItem('bp_2');
-                                                document.getElementById('bp_3').innerText = localStorage.getItem('bp_3');
+                                                document.getElementById('bp_1').innerHTML = "<b> BP: " + localStorage.getItem('bp_1') + "</b>";
+                                                document.getElementById('bp_2').innerHTML = "<b> BP: " + localStorage.getItem('bp_2') + "</b>";
+                                                document.getElementById('bp_3').innerHTML = "<b> BP: " + localStorage.getItem('bp_3') + "</b>";
                                             </script>
 
                                         </div>
@@ -713,6 +713,16 @@
                                                     Completed
                                                 </button>
                                             </div>
+
+                                            <div id="ivf_1"></div>
+                                            <div id="ivf_2"></div>
+                                            <div id="ivf_3"></div>
+
+                                            <script>
+                                                document.getElementById('ivf_1').innerHTML = "<b> IVF: " + localStorage.getItem('ivf_1') + "</b>";
+                                                document.getElementById('ivf_2').innerHTML = "<b> IVF: " + localStorage.getItem('ivf_2') + "</b>";
+                                                document.getElementById('ivf_3').innerHTML = "<b> IVF: " + localStorage.getItem('ivf_3') + "</b>";
+                                            </script>
 
                                         </div>
 
@@ -1007,7 +1017,7 @@
                                                            value=""
                                                            placeholder="Size">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
+                                                        <button class="btn btn-info btn-lg" type="button" id="rightPupilSize"
                                                                 onclick="recordPupilSize('right')">Enter
                                                         </button>
                                                     </div>
@@ -1026,7 +1036,7 @@
                                                            value=""
                                                            placeholder="Size">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
+                                                        <button class="btn btn-info btn-lg" type="button" id="leftPupilEnter"
                                                                 onclick="recordPupilSize('left')">Enter
                                                         </button>
                                                     </div>
@@ -1504,7 +1514,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="guAbnorm"
                                                                 onclick="updateBorder(this.id, 'gunorm');
-                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality');">
+                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality');
+                                                                initEnter('guAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1536,7 +1547,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="rectalAbnorm"
                                                                 onclick="updateBorder(this.id, 'rectalnorm');
-                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality');">
+                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality');
+                                                                initEnter('rectalAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1567,7 +1579,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="rueAbnorm"
                                                                 onclick="updateBorder(this.id, 'ruenorm');
-                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality');">
+                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality');
+                                                                initEnter('rueAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1598,7 +1611,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="lueAbnorm"
                                                                 onclick="updateBorder(this.id, 'luenorm');
-                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality');">
+                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality');
+                                                                initEnter('lueAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1629,7 +1643,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="rleAbnorm"
                                                                 onclick="updateBorder(this.id, 'rlenorm');
-                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality');">
+                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality');
+                                                                initEnter('rleAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1660,7 +1675,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="lleAbnorm"
                                                                 onclick="updateBorder(this.id, 'llenorm');
-                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality');">
+                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality');
+                                                                initEnter('lleAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1692,7 +1708,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="backAbnorm"
                                                                 onclick="updateBorder(this.id, 'backnorm');
-                                                                recordAbnormality('backAbnormText', 'Back_Abnormality');">
+                                                                recordAbnormality('backAbnormText', 'Back_Abnormality');
+                                                                initEnter('backAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1724,7 +1741,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="skinAbnorm"
                                                                 onclick="updateBorder(this.id, 'skinnorm');
-                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality');">
+                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality');
+                                                                initEnter('skinAbnorm')">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1787,8 +1805,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Age', document.getElementById('ageText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="ageEnter"
+                                                                onclick="setItemAjax('Patient_Age', document.getElementById('ageText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1807,8 +1825,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Weight', document.getElementById('weightText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="weightEnter"
+                                                                onclick="setItemAjax('Patient_Weight', document.getElementById('weightText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1827,8 +1845,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Mechanism_Injury',localStorage.getItem('Injury') +  document.getElementById('injuryText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="injuryEnter"
+                                                                onclick="setItemAjax('Patient_Mechanism_Injury',localStorage.getItem('Injury') +  document.getElementById('injuryText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1847,8 +1865,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Pre_Arrival', localStorage.getItem('PreArrival') + document.getElementById('preArrivalText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="preArrivalEnter"
+                                                                onclick="setItemAjax('Patient_Pre_Arrival', localStorage.getItem('PreArrival') + document.getElementById('preArrivalText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1895,7 +1913,6 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            RR: <input type="number" id="ettRR" min="0" max="50"/><br>
                             Depth: <input type="number" id="ettDepth" min="0" max="23"/> cm
                         </div>
                     </div>
@@ -1977,6 +1994,57 @@
                 document.getElementById(names[0]).style['border'] = '0.2em solid #00cc3d';
                 for (let i = 1; i < names.length; i++) document.getElementById(names[i]).style['border'] = 'none';
             }
+        </script>
+
+        <script type="text/javascript">
+            var initEnter = function (bName, inputName) {
+                var input = document.getElementById(inputName);
+                input.addEventListener("keyup", function(event) {
+                  // Number 13 is the "Enter" key on the keyboard
+                  if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById(bName).click();
+                  }
+                });
+            }
+
+            initEnter('hrEnter', 'hrText');
+            initEnter('bpEnter', 'bpText');
+            initEnter('etco2Enter', 'etco2Text');
+            initEnter('rightPupilEnter', 'pupilsizeRight');
+            initEnter('leftPupilEnter', 'pupilsizeLeft');
+
+            initEnter('saveDiffAirway', 'adjunct');
+            initEnter('saveIVF', 'ivfAmount');
+            initEnter('saveBag', 'bagMaskRR');
+            initEnter('saveETT', 'ettDepth');
+
+            initEnter('preArrivalEnter', 'preArrivalText');
+            initEnter('injuryEnter', 'injuryText');
+            initEnter('ageEnter', 'ageText');
+            initEnter('weightEnter', 'weightText');
+
+            initEnter('headAbnorm', 'headAbnormText');
+            initEnter('eyesAbnorm', 'eyesAbnormText');
+            initEnter('earsAbnorm', 'earsAbnormText');
+            initEnter('midFaceAbnorm', 'midFaceAbnormText');
+            initEnter('trachAbnorm', 'trachAbnormText');
+            initEnter('jugularAbnorm', 'jugularAbnormText');
+            initEnter('cvAbnorm', 'CVAbnormText');
+            initEnter('lungsAbnorm', 'lungsAbnormText');
+            initEnter('abdomenAbnorm', 'abdomenAbnormText');
+            initEnter('pelvisAbnorm', 'PelvisAbnormText');
+            initEnter('guAbnorm', 'GUAbnormText');
+            initEnter('rectalAbnorm', 'RectalAbnormText');
+            initEnter('rueAbnorm', 'RUEAbnormText');
+            initEnter('lueAbnorm', 'LUEAbnormText');
+            initEnter('rleAbnorm', 'RLEAbnormText');
+            initEnter('lleAbnorm', 'LLEAbnormText');
+
+            initEnter('backAbnorm', 'backAbnormText');
+            initEnter('skinAbnorm', 'skinAbnormText');
         </script>
     </div>
 
