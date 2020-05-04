@@ -8,6 +8,17 @@ summary page. These alerts serve both as way to indicate critical steps in the v
 to suggest any next steps the team should take. Additionally, the total time elapsed since the
 beginning of the trauma will be displayed on both the main page as well as the summary page. 
 
+## Deployed To
+Heroku Account
+Username: dtorzala@asu.edu
+Password: Pch123456!
+
+URL Access point: https://tbs-app-demo.herokuapp.com/
+Login Credentials:
+Username: pch123456
+Pasword: Qwerty123456!
+
+
 ## Getting Started
 
 ```bash
