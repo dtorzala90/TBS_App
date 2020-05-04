@@ -16,7 +16,7 @@ Password: Pch123456!
 URL Access point: https://tbs-app-demo.herokuapp.com/
 Login Credentials:
 Username: pch123456
-Pasword: Qwerty123456!
+Password: Qwerty123456!
 
 
 ## Getting Started
