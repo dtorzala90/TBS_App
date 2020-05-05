@@ -14,15 +14,15 @@ function updateVitals(){
     var leftPupil = localStorage.getItem("LeftPupil_Display");
 
 
-    document.getElementById("hr_display").innerHTML = ("HR: " + hr + "<br>");
-    document.getElementById("bp_display").innerHTML = ("BP: " + bp + "<br>");
-    document.getElementById("shock_display").innerHTML = ("Shock: " + shock + "<br>");
-    document.getElementById("etco2_display").innerHTML = ("ETCO<sub>2</sub>: " + etco2 + "<br>");
-    document.getElementById("gcs_display").innerHTML = ("GCS: " + gcs + "<br>");
-    document.getElementById("ettDisplay").innerHTML = ett;
-    document.getElementById("bagDisplay").innerHTML = bag;
-    document.getElementById("ivfDisplay").innerHTML = ivf;
-    document.getElementById("diffAirwayDisplay").innerHTML = diffAirway;
-    document.getElementById("rightPupilDisplay").innerHTML = rightPupil;
-    document.getElementById("leftPupilDisplay").innerHTML = leftPupil;
+    document.getElementById("hr_display").innerHTML = ("<b>HR: " + hr + "<br></b>");
+    document.getElementById("bp_display").innerHTML = ("<b>BP: " + bp + "<br></b>");
+    document.getElementById("shock_display").innerHTML = ("<b>Shock: " + shock + "<br></b>");
+    document.getElementById("etco2_display").innerHTML = ("<b> ETC0<sub>2</sub>: " + etco2 + "<br></b>");
+    document.getElementById("gcs_display").innerHTML = ("<b>GCS: " + gcs + "<br></b>");
+    document.getElementById("ettDisplay").innerHTML = "<b>" + ett + "</b>";
+    document.getElementById("bagDisplay").innerHTML = "<b>" + bag + "</b>";
+    document.getElementById("ivfDisplay").innerHTML = "<b>" + ivf + "</b>";
+    document.getElementById("diffAirwayDisplay").innerHTML = "<b>" + diffAirway + "</b>";
+    document.getElementById("rightPupilDisplay").innerHTML = "<b>" + rightPupil + "</b>";
+    document.getElementById("leftPupilDisplay").innerHTML = "<b>" + leftPupil + "</b>";
 }

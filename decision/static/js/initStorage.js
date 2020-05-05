@@ -5,6 +5,10 @@ localStorage.setItem("etco2_1", " ");
 localStorage.setItem("etco2_2", " ");
 localStorage.setItem("etco2_3", " ");
 
+localStorage.setItem("ivf_1", " ");
+localStorage.setItem("ivf_2", " ");
+localStorage.setItem("ivf_3", " ");
+
 localStorage.setItem("hr_1", " ");
 localStorage.setItem("hr_2", " ");
 localStorage.setItem("hr_3", " ");

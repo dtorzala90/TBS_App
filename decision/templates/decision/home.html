@@ -8,10 +8,10 @@
                 &larr; New Session
             </a>
         </form>
-        <a class="navbar-brand mx-auto" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a>
-        <span class="navbar-text mx-auto" style="color: #C3F4E6;">
+        <!-- <a class="navbar-brand mx-auto" href="{% url 'decision-home' %}"><h4>Trauma Bay Decision App</h4></a> -->
+        <!-- <span class="navbar-text mx-auto" style="color: #C3F4E6;">
             Primary Survey
-        </span>
+        </span> -->
         <form class="form-inline ml-auto">
             <a class="btn btn-info" href="{% url 'summary' %}" role="button">
                 Summary Page &rarr;
@@ -171,13 +171,15 @@
                                             <p class="survey-p">Oxygen Supplementation</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="oxySupplInit"
-                                                        onclick="setItemAjax('Oxygen_Supplementation_Initiated',getCurrentTime());
-                                                        updateBorder(this.id,'oxySupplStop'); updateAirwayHistory('Oxygen_Supplementation_History', 'initiated', getCurrentTime());"
+                                                        onclick="setItemSimple('Oxygen_Supplementation_Initiated', getCurrentTime(), 'Oxygen_Supplementation_History',
+                                                                    'initiated', 'known', getCurrentTime());
+                                                        updateBorder(this.id,'oxySupplStop');"
                                                         ondblclick="initEdit('oxygen','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="oxySupplStop"
-                                                        onclick="setItemAjax('Oxygen_Supplementation_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'oxySupplInit'); updateAirwayHistory('Oxygen_Supplementation_History', 'Stopped', getCurrentTime());"
+                                                        onclick="setItemSimple('Oxygen_Supplementation_Stopped', getCurrentTime(), 'Oxygen_Supplementation_History',
+                                                                    'Stopped', 'known', getCurrentTime());
+                                                        updateBorder(this.id,'oxySupplInit');"
                                                         ondblclick="initEdit('oxygen','stop')">Stopped
                                                 </button>
                                             </div>
@@ -195,8 +197,10 @@
                                                         ondblclick="initEdit('bag','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="bagMaskStop"
-                                                        onclick="setItemAjax('Bag_Mask_Stopped', getCurrentTime()); localStorage.setItem('BagMask_Display', ' ');
-                                                        updateBorder(this.id,'bagMaskInit'); updateAirwayHistory('Bag_Mask_History', 'Stopped', getCurrentTime());"
+                                                        onclick="localStorage.setItem('BagMask_Display', ' ');
+                                                        setItemSimple('Bag_Mask_Stopped', getCurrentTime(), 'Bag_Mask_History',
+                                                                    'Stopped', 'known', getCurrentTime());
+                                                        updateBorder(this.id,'bagMaskInit');"
                                                         ondblclick="initEdit('bag','stop')">Stopped
                                                 </button>
                                             </div>
@@ -210,18 +214,21 @@
                                             <p class="survey-p">LMA</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lmaInit"
-                                                        onclick="setItemAjax('LMA_Initiated',getCurrentTime());
-                                                        updateBorder(this.id,'lmaAchieved','lmaStop'); updateAirwayHistory('LMA_History', 'initiated', getCurrentTime());"
+                                                        onclick="setItemSimple('LMA_Initiated', getCurrentTime(), 'LMA_History', 'initiated',
+                                                                     'known', getCurrentTime());
+                                                        updateBorder(this.id,'lmaAchieved','lmaStop');"
                                                         ondblclick="initEdit('lma','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="lmaAchieved"
-                                                        onclick="setItemAjax('LMA_Achieved',getCurrentTime());
-                                                        updateBorder(this.id,'lmaInit','lmaStop'); updateAirwayHistory('LMA_History', 'achieved', getCurrentTime());"
+                                                        onclick="setItemSimple('LMA_Achieved', getCurrentTime(), 'LMA_History', 'achieved',
+                                                                     'known', getCurrentTime());
+                                                        updateBorder(this.id,'lmaInit','lmaStop');"
                                                         ondblclick="initEdit('lma','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="lmaStop"
-                                                        onclick="setItemAjax('LMA_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'lmaAchieved','lmaInit'); updateAirwayHistory('LMA_History', 'Removed', getCurrentTime());"
+                                                        onclick="setItemSimple('LMA_Stopped', getCurrentTime(), 'LMA_History', 'Removed',
+                                                                     'known', getCurrentTime());
+                                                        updateBorder(this.id,'lmaAchieved','lmaInit');"
                                                         ondblclick="initEdit('lma','stop')">Removed
                                                 </button>
                                             </div>
@@ -234,17 +241,21 @@
                                             <p class="survey-p">Endotracheal Tube</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ettInit"
-                                                        onclick="updateBorder(this.id,'ettAchieved','ettStop'); updateAirwayHistory('ETT_History', 'initiated', getCurrentTime())"
+                                                        onclick="updateBorder(this.id,'ettAchieved','ettStop');
+                                                        setItemSimple('ETT_Initiated', getCurrentTime(), 'ETT_History', 'initiated',
+                                                                     'known', getCurrentTime());"
                                                         ondblclick="initEdit('ett','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="ettAchieved"
-                                                        onclick="ettModal(); setItemAjax('ETT_Achieved',getCurrentTime())
+                                                        onclick="ettModal();
                                                         updateBorder(this.id,'ettInit','ettStop');"
                                                         ondblclick="initEdit('ett','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ettStop"
-                                                        onclick="setItemAjax('ETT_Stopped',getCurrentTime()); localStorage.setItem('ETT_Display', ' ');
-                                                        updateBorder(this.id,'ettInit','ettAchieved'); updateAirwayHistory('ETT_History', 'Removed', getCurrentTime())"
+                                                        onclick="localStorage.setItem('ETT_Display', ' ');
+                                                        setItemSimple('ETT_Stopped', getCurrentTime(), 'ETT_History', 'Removed',
+                                                                     'known', getCurrentTime());
+                                                        updateBorder(this.id,'ettInit','ettAchieved');"
                                                         ondblclick="initEdit('ett','stop')">Removed
                                                 </button>
                                             </div>
@@ -262,13 +273,15 @@
                                                         ondblclick="initEdit('diffAirway','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="diffAirwayAchieved"
-                                                        onclick="setItemAjax('Difficult_Airway_Achieved',getCurrentTime());
-                                                        updateBorder(this.id,'diffAirwayStop','diffAirwayInit'); updateAirwayHistory('Difficult_Airway_History', 'achieved', getCurrentTime())"
+                                                        onclick="updateBorder(this.id,'diffAirwayStop','diffAirwayInit');
+                                                        setItemSimple('Difficult_Airway_Achieved', getCurrentTime(), 'Difficult_Airway_History', 'achieved',
+                                                                     'known', getCurrentTime());"
                                                         ondblclick="initEdit('diffAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="diffAirwayStop"
-                                                        onclick="setItemAjax('Difficult_Airway_Stopped',getCurrentTime()); localStorage.setItem('DiffAirway_Display', ' ');
-                                                        updateBorder(this.id,'diffAirwayAchieved','diffAirwayInit'); updateAirwayHistory('Difficult_Airway_History', 'Removed', getCurrentTime())"
+                                                        onclick="updateBorder(this.id,'diffAirwayAchieved','diffAirwayInit');
+                                                        setItemSimple('Difficult_Airway_Stopped', getCurrentTime(), 'Difficult_Airway_History', 'Removed',
+                                                                     'known', getCurrentTime());"
                                                         ondblclick="initEdit('diffAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -282,18 +295,21 @@
                                             <p class="survey-p">Surgical Airway</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="surgAirwayInit"
-                                                        onclick="setItemAjax('Surgical_Airway_Initiated',getCurrentTime());
-                                                        updateBorder(this.id,'surgAirwayStop','surgAirwayAchieved'); updateAirwayHistory('Surgical_Airway_History', 'initiated', getCurrentTime())"
+                                                        onclick="updateBorder(this.id,'surgAirwayStop','surgAirwayAchieved');
+                                                        setItemSimple('Surgical_Airway_Initiated', getCurrentTime(), 'Surgical_Airway_History', 'initiated',
+                                                                     'known', getCurrentTime());"
                                                         ondblclick="initEdit('surgAirway','init')">Initiated
                                                 </button>
                                                 <button type="button" class="btn btn-info" id="surgAirwayAchieved"
-                                                        onclick="setItemAjax('Surgical_Airway_Achieved',getCurrentTime());
-                                                        updateBorder(this.id,'surgAirwayStop','surgAirwayInit'); updateAirwayHistory('Surgical_Airway_History', 'achieved', getCurrentTime())"
+                                                        onclick="updateBorder(this.id,'surgAirwayStop','surgAirwayInit');
+                                                        setItemSimple('Surgical_Airway_Achieved', getCurrentTime(), 'Surgical_Airway_History', 'achieved',
+                                                                     'known', getCurrentTime());"
                                                         ondblclick="initEdit('surgAirway','achieved')">Achieved
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="surgAirwayStop"
-                                                        onclick="setItemAjax('Surgical_Airway_Stopped',getCurrentTime());
-                                                        updateBorder(this.id,'surgAirwayAchieved','surgAirwayInit'); updateAirwayHistory('Surgical_Airway_History', 'Removed', getCurrentTime())"
+                                                        onclick="updateBorder(this.id,'surgAirwayAchieved','surgAirwayInit');
+                                                        setItemSimple('Surgical_Airway_Stopped', getCurrentTime(), 'Surgical_Airway_History', 'Removed',
+                                                                     'known', getCurrentTime());"
                                                         ondblclick="initEdit('surgAirway','stop')">Removed
                                                 </button>
                                             </div>
@@ -349,12 +365,14 @@
                                             <p class="survey-p">Spontaneous Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="yes" id="sponairyes" onclick="setItemAjax('Spontaneous_Breathing','yes');
-                                                        updateBorder(this.id,'sponairno'); updateHistoryKnown('Spontaneous_Breathing_History', 'yes', getCurrentTime())">Yes
+                                                        value="yes" id="sponairyes" onclick="updateBorder(this.id,'sponairno');
+                                                        setItemSimple('Spontaneous_Breathing', 'yes' , 'Spontaneous_Breathing_History', 'yes',
+                                                                     'known', getCurrentTime());">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="sponbreath"
-                                                        value="no" id="sponairno" onclick="setItemAjax('Spontaneous_Breathing','no');
-                                                        updateBorder(this.id,'sponairyes'); updateHistoryKnown('Spontaneous_Breathing_History', 'no', getCurrentTime())">No
+                                                        value="no" id="sponairno" onclick="updateBorder(this.id,'sponairyes');
+                                                        setItemSimple('Spontaneous_Breathing', 'no' , 'Spontaneous_Breathing_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                 </button>
                                             </div>
 
@@ -367,13 +385,15 @@
                                             <p class="survey-p">Assisted Breathing</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="yes" id="assissyes" onclick="setItemAjax('Assisted_Breathing','yes');
-                                                        updateBorder(this.id,'assissno'); updateHistoryKnown('Assisted_Breathing_History', 'yes', getCurrentTime())">
+                                                        value="yes" id="assissyes" onclick="updateBorder(this.id,'assissno');
+                                                        setItemSimple('Assisted_Breathing', 'yes' , 'Assisted_Breathing_History', 'yes',
+                                                                     'known', getCurrentTime());">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="assistb"
-                                                        value="no" id="assissno" onclick="setItemAjax('Assisted_Breathing','no');
-                                                        updateBorder(this.id,'assissyes'); updateHistoryKnown('Assisted_Breathing_History', 'no', getCurrentTime())">
+                                                        value="no" id="assissno" onclick="updateBorder(this.id,'assissyes');
+                                                        setItemSimple('Assisted_Breathing', 'no' , 'Assisted_Breathing_History', 'no',
+                                                                     'known', getCurrentTime());">
                                                     No
                                                 </button>
                                             </div>
@@ -390,15 +410,17 @@
                                                         <button type="button" class="btn btn-light" name="rchest"
                                                                 id="rchestyes"
                                                                 value="yes"
-                                                                onclick="setItemAjax('Right_Chest','yes');
-                                                            updateBorder(this.id,'rchestno'); updateHistoryKnown('Right_Chest_History', 'yes', getCurrentTime())">Yes
+                                                                onclick="updateBorder(this.id,'rchestno');
+                                                            setItemSimple('Right_Chest', 'yes' , 'Right_Chest_History', 'yes',
+                                                                     'known', getCurrentTime());">Yes
                                                         </button>
                                                         <br>
                                                         <button type="button" class="btn btn-light" name="rchest"
                                                                 id="rchestno"
                                                                 value="no"
-                                                                onclick="setItemAjax('Right_Chest','no');
-                                                            updateBorder(this.id,'rchestyes'); updateHistoryKnown('Right_Chest_History', 'no', getCurrentTime())">No
+                                                                onclick="updateBorder(this.id,'rchestyes');
+                                                            setItemSimple('Right_Chest', 'no' , 'Right_Chest_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                         </button>
                                                     </div>
                                                 </div>
@@ -409,15 +431,17 @@
                                                         <button type="button" class="btn btn-light" name="lchest"
                                                                 id="lchestyes"
                                                                 value="yes"
-                                                                onclick="setItemAjax('Left_Chest','yes');
-                                                            updateBorder(this.id,'lchestno'); updateHistoryKnown('Left_Chest_History', 'yes', getCurrentTime())">Yes
+                                                                onclick="updateBorder(this.id,'lchestno');
+                                                            setItemSimple('Left_Chest', 'yes' , 'Left_Chest_History', 'yes',
+                                                                     'known', getCurrentTime());">Yes
                                                         </button>
                                                         <br>
                                                         <button type="button" class="btn btn-light" name="lchest"
                                                                 id="lchestno"
                                                                 value="no"
-                                                                onclick="setItemAjax('Left_Chest','no');
-                                                            updateBorder(this.id,'lchestyes'); updateHistoryKnown('Left_Chest_History', 'no', getCurrentTime())">No
+                                                                onclick="updateBorder(this.id,'lchestyes');
+                                                            setItemSimple('Left_Chest', 'no' , 'Left_Chest_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                         </button>
                                                     </div>
                                                 </div>
@@ -437,12 +461,11 @@
                                                            value=""
                                                            placeholder="ETCO&#8322;">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
+                                                        <button class="btn btn-info btn-lg" type="button" id="etco2Enter"
                                                                 onclick="recordEtco2()">Enter
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <br>
                                                 <br>
                                                 <div id="etco2_1"></div>
                                                 <div id="etco2_2"></div>
@@ -450,9 +473,9 @@
                                                 <br>
                                             </div>
                                             <script>
-                                                document.getElementById('etco2_1').innerText = localStorage.getItem('etco2_1');
-                                                document.getElementById('etco2_2').innerText = localStorage.getItem('etco2_2');
-                                                document.getElementById('etco2_3').innerText = localStorage.getItem('etco2_3');
+                                                document.getElementById('etco2_1').innerHTML = localStorage.getItem('etco2_1');
+                                                document.getElementById('etco2_2').innerHTML = localStorage.getItem('etco2_2');
+                                                document.getElementById('etco2_3').innerHTML = localStorage.getItem('etco2_3');
                                             </script>
 
                                         </div>
@@ -530,13 +553,12 @@
                                                            value=""
                                                            placeholder="BPM">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
+                                                        <button class="btn btn-info btn-lg" type="button" id="hrEnter"
                                                                 onclick="recordHR()">Enter
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
                                             <br>
                                             <div id="hr_1"></div>
                                             <div id="hr_2"></div>
@@ -544,9 +566,9 @@
                                             <br>
 
                                             <script>
-                                                document.getElementById('hr_1').innerText = localStorage.getItem('hr_1');
-                                                document.getElementById('hr_2').innerText = localStorage.getItem('hr_2');
-                                                document.getElementById('hr_3').innerText = localStorage.getItem('hr_3');
+                                                document.getElementById('hr_1').innerHTML = localStorage.getItem('hr_1');
+                                                document.getElementById('hr_2').innerHTML = localStorage.getItem('hr_2');
+                                                document.getElementById('hr_3').innerHTML = localStorage.getItem('hr_3');
                                             </script>
                                         </div>
 
@@ -562,21 +584,20 @@
                                                        value=""
                                                        placeholder="mmHg">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-info btn-lg" type="button"
+                                                    <button class="btn btn-info btn-lg" type="button" id="bpEnter"
                                                             onclick="recordBP()">Enter
                                                     </button>
                                                 </div>
                                             </div>
-                                            <br>
                                             <br>
                                             <div id="bp_1"></div>
                                             <div id="bp_2"></div>
                                             <div id="bp_3"></div>
 
                                             <script>
-                                                document.getElementById('bp_1').innerText = localStorage.getItem('bp_1');
-                                                document.getElementById('bp_2').innerText = localStorage.getItem('bp_2');
-                                                document.getElementById('bp_3').innerText = localStorage.getItem('bp_3');
+                                                document.getElementById('bp_1').innerHTML = localStorage.getItem('bp_1');
+                                                document.getElementById('bp_2').innerHTML = localStorage.getItem('bp_2');
+                                                document.getElementById('bp_3').innerHTML = localStorage.getItem('bp_3');
                                             </script>
 
                                         </div>
@@ -589,17 +610,20 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <span class="survey-span">Lip Color:</span>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-pi"
-                                                        value="pi" onclick="setItemAjax('Lip_Color','pink');
-                                                        updateBorder(this.id,'lipc-wh','lipc-unk'); updateHistoryKnown('Lip_Color_History', 'pink', getCurrentTime())">Pink
+                                                        value="pi" onclick="updateBorder(this.id,'lipc-wh','lipc-unk');
+                                                        setItemSimple('Lip_Color', 'pink' , 'Lip_Color_History', 'pink',
+                                                                     'known', getCurrentTime());">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc" id="lipc-wh"
-                                                        value="wh" onclick="setItemAjax('Lip_Color','white');
-                                                        updateBorder(this.id,'lipc-pi','lipc-unk'); updateHistoryKnown('Lip_Color_History', 'white', getCurrentTime())">White
+                                                        value="wh" onclick="updateBorder(this.id,'lipc-pi','lipc-unk');
+                                                        setItemSimple('Lip_Color', 'white' , 'Lip_Color_History', 'white',
+                                                                     'known', getCurrentTime());">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="lipc"
                                                         id="lipc-unk"
-                                                        value="unk" onclick="setItemAjax('Lip_Color','unable to assess');
-                                                        updateBorder(this.id,'lipc-pi','lipc-wh'); updateHistoryKnown('Lip_Color_History', 'unknown', getCurrentTime())">Unable To
+                                                        value="unk" onclick="updateBorder(this.id,'lipc-pi','lipc-wh');
+                                                        setItemSimple('Lip_Color', 'unable to assess' , 'Lip_Color_History', 'unknown',
+                                                                     'known', getCurrentTime());">Unable To
                                                     Assess
                                                 </button>
 
@@ -608,18 +632,21 @@
                                                 <span class="survey-span">Nail Color:</span>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-pi"
-                                                        value="pi" onclick="setItemAjax('Nail_Color','pink');
-                                                        updateBorder(this.id,'nailc-wh','nailc-unk'); updateHistoryKnown('Nail_Color_History', 'pink', getCurrentTime())">Pink
+                                                        value="pi" onclick="updateBorder(this.id,'nailc-wh','nailc-unk');
+                                                        setItemSimple('Nail_Color', 'pink' , 'Nail_Color_History', 'pink',
+                                                                     'known', getCurrentTime());">Pink
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-wh"
-                                                        value="wh" onclick="setItemAjax('Nail_Color','white');
-                                                        updateBorder(this.id,'nailc-pi','nailc-unk'); updateHistoryKnown('Nail_Color_History', 'white', getCurrentTime())">White
+                                                        value="wh" onclick="updateBorder(this.id,'nailc-pi','nailc-unk');
+                                                        setItemSimple('Nail_Color', 'white' , 'Nail_Color_History', 'white',
+                                                                     'known', getCurrentTime());">White
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="nailc"
                                                         id="nailc-unk"
-                                                        value="unk" onclick="setItemAjax('Nail_Color','unable to assess');
-                                                        updateBorder(this.id,'nailc-pi','nailc-wh'); updateHistoryKnown('Nail_Color_History', 'unknown', getCurrentTime())">Unable
+                                                        value="unk" onclick="updateBorder(this.id,'nailc-pi','nailc-wh');
+                                                        setItemSimple('Nail_Color', 'unable to assess' , 'Nail_Color_History', 'unknown',
+                                                                     'known', getCurrentTime());">Unable
                                                     To Assess
                                                 </button>
 
@@ -627,17 +654,20 @@
 
                                                 <span class="survey-span">Capillary Refill:</span>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-2"
-                                                        value="<2" onclick="setItemAjax('Cap_Refill','<2sec');
-                                                        updateBorder(this.id,'caprt-4','caprt-24'); updateHistoryKnown('Cap_Refill_History', 'lesstwo', getCurrentTime())"><2s
+                                                        value="<2" onclick="updateBorder(this.id,'caprt-4','caprt-24');
+                                                        setItemSimple('Cap_Refill', '<2sec' , 'Cap_Refill_History', 'lesstwo',
+                                                                     'known', getCurrentTime());"><2s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr"
                                                         id="caprt-24"
-                                                        value="2-4" onclick="setItemAjax('Cap_Refill','2-4sec');
-                                                        updateBorder(this.id,'caprt-2','caprt-4'); updateHistoryKnown('Cap_Refill_History', 'twoandfour', getCurrentTime())">2s-4s
+                                                        value="2-4" onclick="updateBorder(this.id,'caprt-2','caprt-4');
+                                                        setItemSimple('Cap_Refill', '2-4sec' , 'Cap_Refill_History', 'twoandfour',
+                                                                     'known', getCurrentTime());">2s-4s
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="capr" id="caprt-4"
-                                                        value=">4" onclick="setItemAjax('Cap_Refill','>4sec');
-                                                        updateBorder(this.id,'caprt-2','caprt-24'); updateHistoryKnown('Cap_Refill_History', 'fourplus', getCurrentTime())">>4s
+                                                        value=">4" onclick="updateBorder(this.id,'caprt-2','caprt-24');
+                                                        setItemSimple('Cap_Refill', '>4sec' , 'Cap_Refill_History', 'fourplus',
+                                                                     'known', getCurrentTime());">>4s
                                                 </button>
                                             </div>
 
@@ -652,19 +682,24 @@
                                                 <span class="survey-span">Functional Peripheral IV:</span>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp0"
                                                         value="no"
-                                                        onclick="updateBorder(this.id,'funp1','funp2','funp>2'); updateHistoryKnown('PIV_History', 'zero', getCurrentTime())">None
+                                                        onclick="updateBorder(this.id,'funp1','funp2','funp>2');
+                                                        setItemSimple('PIV_Count', 'zero' , 'PIV_History', 'zero',
+                                                                     'known', getCurrentTime());">None
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp1"
-                                                        value="1" onclick="setItemAjax('PIV_Count','1');
-                                                        updateBorder(this.id,'funp0','funp2','funp>2'); updateHistoryKnown('PIV_History', 'one', getCurrentTime())">1
+                                                        value="1" onclick="updateBorder(this.id,'funp0','funp2','funp>2');
+                                                        setItemSimple('PIV_Count', '1' , 'PIV_History', 'one',
+                                                                     'known', getCurrentTime());">1
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp2"
-                                                        value="2" onclick="setItemAjax('PIV_Count','2');
-                                                        updateBorder(this.id,'funp0','funp1','funp>2'); updateHistoryKnown('PIV_History', 'two', getCurrentTime())">2
+                                                        value="2" onclick="updateBorder(this.id,'funp0','funp1','funp>2');
+                                                        setItemSimple('PIV_Count', '2' , 'PIV_History', 'two',
+                                                                     'known', getCurrentTime());">2
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="funp" id="funp>2"
-                                                        value=">2" onclick="setItemAjax('PIV_Count','>2');
-                                                        updateBorder(this.id,'funp0','funp1','funp2'); updateHistoryKnown('PIV_History', 'twoplus', getCurrentTime())">>2
+                                                        value=">2" onclick="updateBorder(this.id,'funp0','funp1','funp2');
+                                                        setItemSimple('PIV_Count', '>2' , 'PIV_History', 'twoplus',
+                                                                     'known', getCurrentTime());">>2
                                                 </button>
 
                                                 <br>
@@ -672,25 +707,29 @@
                                                 <span class="survey-span">Intraosseous Line:</span>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralYes"
-                                                        value="yes" onclick="setItemAjax('Intraosseous_Line','yes');
-                                                        updateBorder(this.id,'intralNo'); updateHistoryKnown('Intraosseous_Line_History', 'yes', getCurrentTime())"> Yes
+                                                        value="yes" onclick="updateBorder(this.id,'intralNo');
+                                                        setItemSimple('Intraosseous_Line', 'yes' , 'Intraosseous_Line_History', 'yes',
+                                                                     'known', getCurrentTime());"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="intral"
                                                         id="intralNo"
-                                                        value="no" onclick="setItemAjax('Intraosseous_Line','no');
-                                                        updateBorder(this.id,'intralYes'); updateHistoryKnown('Intraosseous_Line_History', 'no', getCurrentTime())">No
+                                                        value="no" onclick="updateBorder(this.id,'intralYes');
+                                                        setItemSimple('Intraosseous_Line', 'no' , 'Intraosseous_Line_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                 </button>
 
                                                 <br>
 
                                                 <span class="survey-span">Central Line:</span>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlYes"
-                                                        value="yes" onclick="setItemAjax('Central_Line','yes');
-                                                        updateBorder(this.id,'cenlNo'); updateHistoryKnown('Central_Line_History', 'yes', getCurrentTime())"> Yes
+                                                        value="yes" onclick="updateBorder(this.id,'cenlNo');
+                                                        setItemSimple('Central_Line', 'yes' , 'Central_Line_History', 'yes',
+                                                                     'known', getCurrentTime());"> Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="cenl" id="cenlNo"
-                                                        value="no" onclick="setItemAjax('Central_Line','no');
-                                                        updateBorder(this.id,'cenlYes'); updateHistoryKnown('Central_Line_History', 'no', getCurrentTime())">No
+                                                        value="no" onclick="updateBorder(this.id,'cenlYes');
+                                                        setItemSimple('Central_Line', 'no' , 'Central_Line_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                 </button>
                                             </div>
 
@@ -709,10 +748,22 @@
                                                 updateBorder(this.id,'ivf-started','ivf-complete');">Additional Fluids
                                                 </button>
                                                 <button type="button" class="btn btn-dark" id="ivf-complete"
-                                                        onclick="updateBorder(this.id,'ivf-additional','ivf-started');">
+                                                        onclick="updateBorder(this.id,'ivf-additional','ivf-started');
+                                                        setItemSimple('IVF_Completed', getCurrentTime() , 'IVF_History', 'Completed',
+                                                                     'unknown', getCurrentTime());">
                                                     Completed
                                                 </button>
                                             </div>
+
+                                            <div id="ivf_1"></div>
+                                            <div id="ivf_2"></div>
+                                            <div id="ivf_3"></div>
+
+                                            <script>
+                                                document.getElementById('ivf_1').innerHTML = localStorage.getItem('ivf_1');
+                                                document.getElementById('ivf_2').innerHTML = localStorage.getItem('ivf_2');
+                                                document.getElementById('ivf_3').innerHTML = localStorage.getItem('ivf_3');
+                                            </script>
 
                                         </div>
 
@@ -724,12 +775,14 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tac"
                                                         id="typeAndCrossDrawn" value="yes"
-                                                        onclick="setItemAjax('Type_Cross','Drawn');
-                                                        updateBorder(this.id,'typeAndCrossSent'); updateHistoryBinary('Type_Cross_History', 'drawn', getCurrentTime())">Drawn
+                                                        onclick="updateBorder(this.id,'typeAndCrossSent');
+                                                        setItemSimple('Type_Cross', 'drawn' , 'Type_Cross_History', 'drawn',
+                                                                     'binary', getCurrentTime());">Drawn
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tac"
-                                                        id="typeAndCrossSent" value="sent" onclick="setItemAjax('Type_Cross','Sent');
-                                                        updateBorder(this.id,'typeAndCrossDrawn'); updateHistoryBinary('Type_Cross_History', 'sent', getCurrentTime())">
+                                                        id="typeAndCrossSent" value="sent" onclick="updateBorder(this.id,'typeAndCrossDrawn');
+                                                        setItemSimple('Type_Cross', 'sent' , 'Type_Cross_History', 'sent',
+                                                                     'binary', getCurrentTime());">
                                                     Sent
                                                 </button>
                                             </div>
@@ -743,14 +796,16 @@
                                             <p class="survey-p">Transfused PRBCs</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcYes"
-                                                        value="yes" onclick="setItemAjax('Transfused_PRBC','yes');
-                                                        updateBorder(this.id,'tprbcNo'); updateHistoryKnown('Transfused_PRBC_History', 'yes', getCurrentTime())">
+                                                        value="yes" onclick="updateBorder(this.id,'tprbcNo');
+                                                        setItemSimple('Transfused_PRBC', 'yes' , 'Transfused_PRBC_History', 'yes',
+                                                                     'known', getCurrentTime());">
                                                     Yes
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="tprbc" id="tprbcNo"
                                                         value="no"
-                                                        onclick="setItemAjax('Transfused_PRBC','no');
-                                                        updateBorder(this.id,'tprbcYes'); updateHistoryKnown('Transfused_PRBC_History', 'no', getCurrentTime())">
+                                                        onclick="updateBorder(this.id,'tprbcYes');
+                                                        setItemSimple('Transfused_PRBC', 'no' , 'Transfused_PRBC_History', 'no',
+                                                                     'known', getCurrentTime());">
                                                     No
                                                 </button>
                                             </div>
@@ -766,13 +821,16 @@
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpYes"
                                                         value="yes"
                                                         onclick="setItemAjax('Massive_Transfusion','yes');
-                                                        updateBorder(this.id,'mtpNo'); updateHistoryBinary('Massive_Transfusion_History', 'activated', getCurrentTime())">
+                                                        updateBorder(this.id,'mtpNo');
+                                                        setItemSimple('Massive_Transfusion', 'yes' , 'Massive_Transfusion_History', 'activated',
+                                                                     'binary', getCurrentTime());">
                                                     Activated
                                                 </button>
                                                 <button type="button" class="btn btn-light" name="mtp" id="mtpNo"
                                                         value="no"
-                                                        onclick="setItemAjax('Massive_Transfusion','no');
-                                                        updateBorder(this.id,'mtpYes'); updateHistoryBinary('Massive_Transfusion_History', 'no', getCurrentTime())">No
+                                                        onclick="updateBorder(this.id,'mtpYes');
+                                                        setItemSimple('Massive_Transfusion', 'no' , 'Massive_Transfusion_History', 'no',
+                                                                     'binary', getCurrentTime());">No
                                                 </button>
                                             </div>
 
@@ -836,37 +894,43 @@
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor6" value="ob" onclick="recordGCS('motor','6');
-                                                        updateBorder(this.id,'motor5','motor4','motor3','motor2','motor1');">
+                                                        updateBorder(this.id,'motor5','motor4','motor3','motor2','motor1');
+                                                        $('#v-pills-gvrb-tab').tab('show');">
                                                     <b>6</b> - Obeys Commands
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor5" value="lo" onclick="recordGCS('motor','5');
-                                                        updateBorder(this.id,'motor4','motor6','motor3','motor2','motor1');">
+                                                        updateBorder(this.id,'motor4','motor6','motor3','motor2','motor1');
+                                                        $('#v-pills-gvrb-tab').tab('show');">
                                                     <b>5</b> - Localizing Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor4" value="wi" onclick="recordGCS('motor','4');
-                                                        updateBorder(this.id,'motor5','motor1','motor6','motor3','motor2');">
+                                                        updateBorder(this.id,'motor5','motor1','motor6','motor3','motor2');
+                                                        $('#v-pills-gvrb-tab').tab('show');">
                                                     <b>4</b> - Withdraw From Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor3" value="fl" onclick="recordGCS('motor','3');
-                                                        updateBorder(this.id,'motor5','motor4','motor6','motor2','motor1');">
+                                                        updateBorder(this.id,'motor5','motor4','motor6','motor2','motor1');
+                                                        $('#v-pills-gvrb-tab').tab('show');">
                                                     <b>3</b> - Flexion To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor2" value="ex" onclick="recordGCS('motor','2');
-                                                        updateBorder(this.id,'motor5','motor4','motor6','motor3','motor1');">
+                                                        updateBorder(this.id,'motor5','motor4','motor6','motor3','motor1');
+                                                        $('#v-pills-gvrb-tab').tab('show');">
                                                     <b>2</b> - Extension To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="motor"
                                                         id="motor1" value="no" onclick="recordGCS('motor','1');
-                                                        updateBorder(this.id,'motor5','motor4','motor6','motor3','motor2');">
+                                                        updateBorder(this.id,'motor5','motor4','motor6','motor3','motor2');
+                                                        $('#v-pills-gvrb-tab').tab('show');">
                                                     <b>1</b> - No Motor Response
                                                 </button>
                                             </div>
@@ -882,31 +946,36 @@
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
                                                         id="verbal5" value="or" onclick="recordGCS('verbal','5');
-                                                        updateBorder(this.id,'verbal4','verbal3','verbal2','verbal1');">
+                                                        updateBorder(this.id,'verbal4','verbal3','verbal2','verbal1');
+                                                        $('#v-pills-geye-tab').tab('show');">
                                                     <b>5</b> - Oriented
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
                                                         id="verbal4" value="co" onclick="recordGCS('verbal','4');
-                                                        updateBorder(this.id,'verbal5','verbal3','verbal2','verbal1');">
+                                                        updateBorder(this.id,'verbal5','verbal3','verbal2','verbal1');
+                                                        $('#v-pills-geye-tab').tab('show');">
                                                     <b>4</b> - Confused
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
                                                         id="verbal3" value="wo" onclick="recordGCS('verbal','3');
-                                                        updateBorder(this.id,'verbal5','verbal4','verbal2','verbal1');">
+                                                        updateBorder(this.id,'verbal5','verbal4','verbal2','verbal1');
+                                                        $('#v-pills-geye-tab').tab('show');">
                                                     <b>3</b> - Inappropriate Words
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
                                                         id="verbal2" value="so" onclick="recordGCS('verbal','2');
-                                                        updateBorder(this.id,'verbal5','verbal4','verbal3','verbal1');">
+                                                        updateBorder(this.id,'verbal5','verbal4','verbal3','verbal1');
+                                                        $('#v-pills-geye-tab').tab('show');">
                                                     <b>2</b> - Incomprehensible Sounds
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="verbal"
                                                         id="verbal1" value="no" onclick="recordGCS('verbal','1');
-                                                        updateBorder(this.id,'verbal5','verbal4','verbal3','verbal2');">
+                                                        updateBorder(this.id,'verbal5','verbal4','verbal3','verbal2');
+                                                        $('#v-pills-geye-tab').tab('show');">
                                                     <b>1</b> - No Verbal Response
                                                 </button>
                                             </div>
@@ -922,25 +991,29 @@
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
                                                         id="eye4" value="sp" onclick="recordGCS('eye','4');
-                                                        updateBorder(this.id,'eye1','eye2','eye3');">
+                                                        updateBorder(this.id,'eye1','eye2','eye3');
+                                                        $('#v-pills-ppls-tab').tab('show');">
                                                     <b>4</b> - Opens Spontaneously
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
                                                         id="eye3" value="ve" onclick="recordGCS('eye','3');
-                                                        updateBorder(this.id,'eye1','eye2','eye4');">
+                                                        updateBorder(this.id,'eye1','eye2','eye4');
+                                                        $('#v-pills-ppls-tab').tab('show');">
                                                     <b>3</b> - Open To Verbal Command
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
                                                         id="eye2" value="pa" onclick="recordGCS('eye','2');
-                                                        updateBorder(this.id,'eye1','eye4','eye3');">
+                                                        updateBorder(this.id,'eye1','eye4','eye3');
+                                                        $('#v-pills-ppls-tab').tab('show');">
                                                     <b>2</b> - Open To Pain
                                                 </button>
                                                 <button type="button" class="btn btn-light text-left disb-btn"
                                                         name="eye"
                                                         id="eye1" value="no" onclick="recordGCS('eye','1');
-                                                        updateBorder(this.id,'eye2','eye3','eye4');">
+                                                        updateBorder(this.id,'eye2','eye3','eye4');
+                                                        $('#v-pills-ppls-tab').tab('show');">
                                                     <b>1</b> - No Eye Opening
                                                 </button>
                                             </div>
@@ -956,13 +1029,15 @@
                                                 <span class="survey-span">Equal:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="equal" value="yes" id="equalyes"
-                                                        onclick="setItemAjax('Pupils_Equal','Yes');
-                                                        updateBorder(this.id,'equalno'); updateHistoryKnown('Pupils_Equal_History', 'yes', getCurrentTime())">Yes
+                                                        onclick="updateBorder(this.id,'equalno');
+                                                        setItemSimple('Pupils_Equal', 'yes' , 'Pupils_Equal_History', 'yes',
+                                                                     'known', getCurrentTime());">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
                                                         name="equal" value="no" id="equalno"
-                                                        onclick="setItemAjax('Pupils_Equal','No');
-                                                        updateBorder(this.id,'equalyes'); updateHistoryKnown('Pupils_Equal_History', 'no', getCurrentTime())">No
+                                                        onclick="updateBorder(this.id,'equalyes');
+                                                        setItemSimple('Pupils_Equal', 'no' , 'Pupils_Equal_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                 </button>
 
                                                 <br>
@@ -970,71 +1045,92 @@
                                                 <span class="survey-span">Round:</span>
                                                 <button type="button" class="btn btn-light btn-space"
                                                         name="round" value="yes" id="roundyes"
-                                                        onclick="setItemAjax('Pupils_Round','Yes');
-                                                        updateBorder(this.id,'roundyno'); updateHistoryKnown('Pupils_Round_History', 'yes', getCurrentTime())">Yes
+                                                        onclick="updateBorder(this.id,'roundno');
+                                                        setItemSimple('Pupils_Round', 'yes' , 'Pupils_Round_History', 'yes',
+                                                                     'known', getCurrentTime());">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-dark btn-space"
                                                         name="round" value="no" id="roundno"
-                                                        onclick="setItemAjax('Pupils_Round','No');
-                                                        updateBorder(this.id,'roundyes'); updateHistoryKnown('Pupils_Round_History', 'no', getCurrentTime())">No
+                                                        onclick="updateBorder(this.id,'roundyes');
+                                                        setItemSimple('Pupils_Round', 'no' , 'Pupils_Round_History', 'no',
+                                                                     'known', getCurrentTime());">No
                                                 </button>
 
                                                 <br>
-
                                                 <span class="survey-span">Reactive:</span>
-                                                <button type="button" class="btn btn-light btn-space"
-                                                        name="rlight" value="yes" id="reactiveyes"
-                                                        onclick="setItemAjax('Pupils_Reactive','Yes');
-                                                        updateBorder(this.id,'reactiveno'); updateHistoryKnown('Pupils_Reactive_History', 'yes', getCurrentTime())">Yes
-                                                </button>
-                                                <button type="button" class="btn btn-dark btn-space"
-                                                        name="rlight" value="no" id="reactiveno"
-                                                        onclick="setItemAjax('Pupils_Reactive','No');
-                                                        updateBorder(this.id,'reactiveyes'); updateHistoryKnown('Pupils_Reactive_History', 'no', getCurrentTime())">No
-                                                </button>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p class="survey-p">Right:</p>
+                                                        <div class="btn-group-vertical btn-padding" role="group">
+                                                            <button type="button" class="btn btn-light" name="rReactive"
+                                                                    id="reactiveRightYes"
+                                                                    value="yes"
+                                                                    onclick="updateBorder(this.id,'reactiveRightNo');
+                                                                    setItemSimple('Pupils_Reactive_Right', 'yes', 'Pupil_Reactive_Right_History', 'yes','known',
+                                                                        getCurrentTime());">Yes
+                                                            </button>
+                                                            <br>
+                                                            <button type="button" class="btn btn-light" name="rReactive"
+                                                                    id="reactiveRightNo"
+                                                                    value="no"
+                                                                    onclick="updateBorder(this.id,'reactiveRightYes');
+                                                                    setItemSimple('Pupils_Reactive_Right', 'no', 'Pupil_Reactive_Right_History', 'no','known',
+                                                                        getCurrentTime());">No
+                                                            </button>
+                                                            <br>
+                                                            <div class="input-group">
+                                                                <input class="form-control form-control-lg survey-fctrl"
+                                                                       type="text"
+                                                                       id="pupilsizeRight"
+                                                                       name="sizer"
+                                                                       value=""
+                                                                       placeholder="Size">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-info btn-lg" type="button" id="rightPupilEnter"
+                                                                            onclick="recordPupilSize('right')">Enter
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                <br>
-
-                                            </div>
-
-                                            <span class="survey-span">Right:</span>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control form-control-lg survey-fctrl"
-                                                           type="text"
-                                                           id="pupilsizeRight"
-                                                           name="sizer"
-                                                           value=""
-                                                           placeholder="Size">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="recordPupilSize('right')">Enter
-                                                        </button>
+                                                    <div class="col">
+                                                        <p class="survey-p">Left:</p>
+                                                        <div class="btn-group-vertical btn-padding" role="group">
+                                                            <button type="button" class="btn btn-light" name="lReactive"
+                                                                    id="reactiveLeftYes"
+                                                                    value="yes"
+                                                                    onclick="updateBorder(this.id,'reactiveLeftNo');
+                                                                    setItemSimple('Pupils_Reactive_Left', 'yes', 'Pupil_Reactive_Left_History', 'yes','known',
+                                                                        getCurrentTime());">Yes
+                                                            </button>
+                                                            <br>
+                                                            <button type="button" class="btn btn-light" name="lReactive"
+                                                                    id="reactiveLeftNo"
+                                                                    value="no"
+                                                                    onclick="updateBorder(this.id,'reactiveLeftYes');
+                                                                    setItemSimple('Pupils_Reactive_Left', 'no', 'Pupil_Reactive_Left_History', 'no','known',
+                                                                        getCurrentTime());">No
+                                                            </button>
+                                                            <br>
+                                                            <div class="input-group">
+                                                                <input class="form-control form-control-lg survey-fctrl"
+                                                                       type="text"
+                                                                       id="pupilsizeLeft"
+                                                                       name="sizel"
+                                                                       value=""
+                                                                       placeholder="Size">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-info btn-lg" type="button" id="leftPupilEnter"
+                                                                            onclick="recordPupilSize('left')">Enter
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <br>
-
-                                            <span class="survey-span">Left:</span>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control form-control-lg survey-fctrl"
-                                                           type="text"
-                                                           id="pupilsizeLeft"
-                                                           name="sizel"
-                                                           value=""
-                                                           placeholder="Size">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="recordPupilSize('left')">Enter
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
-
                                         <!-- Moves All Extremities -->
                                         <div class="tab-pane fade" id="v-pills-maex" role="tabpanel"
                                              aria-labelledby="v-pills-maex-tab">
@@ -1043,21 +1139,21 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" name="movee"
                                                         value="yes" id="movesallextyes"
-                                                        onclick="setItemAjax('Moves_Extremities','Yes');
-                                                        updateBorder(this.id,'movesallextno','movesallextlim'); updateHistoryKnown('Moves_Extremities_History', 'yes', getCurrentTime())">
-                                                    Yes
+                                                        onclick="updateBorder(this.id,'movesallextno','movesallextlim');
+                                                        setItemSimple('Moves_Extremities', 'yes', 'Moves_Extremities_History','yes',
+                                                            'known', getCurrentTime());">Yes
                                                 </button>
                                                 <button type="button" class="btn btn-info" name="movee"
                                                         value="onlyinj" id="movesallextlim"
-                                                        onclick="setItemAjax('Moves_Extremities','Limited Only By Injury');
-                                                        updateBorder(this.id,'movesallextno','movesallextyes'); updateHistoryKnown('Moves_Extremities_History', 'limited', getCurrentTime())">
-                                                    Limited Only by Injury
+                                                        onclick="updateBorder(this.id,'movesallextno','movesallextyes');
+                                                        setItemSimple('Moves_Extremities', 'Limited Only By Injury', 'Moves_Extremities_History','limited',
+                                                            'known', getCurrentTime());">Limited Only by Injury
                                                 </button>
                                                 <button type="button" class="btn btn-dark" name="movee" value="no"
                                                         id="movesallextno"
-                                                        onclick="setItemAjax('Moves_Extremities','No');
-                                                        updateBorder(this.id,'movesallextyes','movesallextlim'); updateHistoryKnown('Moves_Extremities_History', 'no', getCurrentTime())">
-                                                    No
+                                                        onclick="updateBorder(this.id,'movesallextyes','movesallextlim');
+                                                        setItemSimple('Moves_Extremities', 'no', 'Moves_Extremities_History','no',
+                                                            'known', getCurrentTime());">No
                                                 </button>
                                             </div>
 
@@ -1068,6 +1164,7 @@
                             </div>
 
                         </form>
+
                     </div>
 
                     <!--
@@ -1170,8 +1267,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="headnormal"
                                                         onclick="updateBorder(this.id, 'headAbnorm');
-                                                        setItemAjax('Head_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Head', 'normal')"
+                                                        setItemSimple('Head_Abnormality', 'normal', 'Exposure_History', 'Head',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-eyes-tab').tab('show');"
                                                 >Normal
                                                 </button>
                                             </div>
@@ -1187,8 +1285,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="headAbnorm"
                                                                 onclick="updateBorder(this.id, 'headnormal');
-                                                                recordAbnormality('headAbnormText', 'Head_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Head', document.getElementById('headAbnormText').value)">
+                                                                recordAbnormality('headAbnormText', 'Head_Abnormality', 'Exposure_History', 'Head', 'known', getCurrentTime());
+                                                                $('#v-pills-eyes-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1205,9 +1303,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="eyesnorm"
                                                         onclick="updateBorder(this.id, 'eyesAbnorm');
-                                                        setItemAjax('Eyes_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Eyes', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Eyes_Abnormality', 'normal', 'Exposure_History', 'Eyes',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-ears-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1222,8 +1320,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="eyesAbnorm"
                                                                 onclick="updateBorder(this.id, 'eyesnorm');
-                                                                recordAbnormality('eyesAbnormText', 'Eyes_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Eyes', document.getElementById('eyesAbnormText').value)">
+                                                                recordAbnormality('eyesAbnormText', 'Eyes_Abnormality', 'Exposure_History', 'Eyes', 'known', getCurrentTime());
+                                                                $('#v-pills-ears-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1240,9 +1338,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="earsnorm"
                                                         onclick="updateBorder(this.id, 'earsAbnorm');
-                                                        setItemAjax('Ears_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Ears', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Ears_Abnormality', 'normal', 'Exposure_History', 'Ears',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-mdfc-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1257,8 +1355,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="earsAbnorm"
                                                                 onclick="updateBorder(this.id, 'earsnorm');
-                                                                recordAbnormality('earsAbnormText', 'Ears_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Ears', document.getElementById('earsAbnormText').value)">
+                                                                recordAbnormality('earsAbnormText', 'Ears_Abnormality', 'Exposure_History', 'Ears', 'known', getCurrentTime());
+                                                                $('#v-pills-mdfc-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1275,9 +1373,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="midfacenorm"
                                                         onclick="updateBorder(this.id, 'midfaceAbnorm');
-                                                        setItemAjax('MidFace_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Midface', 'normal')"
-                                                >Normal
+                                                        setItemSimple('MidFace_Abnormality', 'normal', 'Exposure_History', 'Midface',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-tcha-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1292,8 +1390,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="midfaceAbnorm"
                                                                 onclick="updateBorder(this.id, 'midfacenorm');
-                                                                recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Midface', document.getElementById('midfaceAbnormText').value)">
+                                                                recordAbnormality('midfaceAbnormText', 'MidFace_Abnormality', 'Exposure_History', 'Midface', 'known', getCurrentTime());
+                                                                $('#v-pills-tcha-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1310,9 +1408,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="trachnorm"
                                                         onclick="updateBorder(this.id, 'trachAbnorm');
-                                                        setItemAjax('Trachea_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Trachea', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Trachea_Abnormality', 'normal', 'Exposure_History', 'Trachea',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-jgrv-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1327,8 +1425,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="trachAbnorm"
                                                                 onclick="updateBorder(this.id, 'trachnorm');
-                                                                recordAbnormality('trachAbnormText', 'Trachea_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Trachea', document.getElementById('trachAbnormText').value)">
+                                                                recordAbnormality('trachAbnormText', 'Trachea_Abnormality', 'Exposure_History', 'Trachea', 'known', getCurrentTime());
+                                                                $('#v-pills-jgrv-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1345,9 +1443,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="jugularnorm"
                                                         onclick="updateBorder(this.id, 'jugularAbnorm');
-                                                        setItemAjax('Jugular_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Jugular', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Jugular_Abnormality', 'normal', 'Exposure_History', 'Jugular',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-excv-tab').tab('show');" >Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1362,8 +1460,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="jugularAbnorm"
                                                                 onclick="updateBorder(this.id, 'jugularnorm');
-                                                                recordAbnormality('jugularAbnormText', 'Jugular_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Jugular', document.getElementById('jugularAbnormText').value)">
+                                                                recordAbnormality('jugularAbnormText', 'Jugular_Abnormality', 'Exposure_History', 'Jugular', 'known', getCurrentTime());
+                                                                $('#v-pills-excv-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1380,9 +1478,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="cvnorm"
                                                         onclick="updateBorder(this.id, 'cvAbnorm');
-                                                        setItemAjax('CV_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'CV', 'normal')"
-                                                >Normal
+                                                        setItemSimple('CV_Abnormality', 'normal', 'Exposure_History', 'CV',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-lngs-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1396,8 +1494,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="cvAbnorm"
                                                                 onclick="updateBorder(this.id, 'cvnorm');
-                                                                recordAbnormality('CVAbnormText', 'CV_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'CV', document.getElementById('CVAbnormText').value)">
+                                                                recordAbnormality('CVAbnormText', 'CV_Abnormality', 'Exposure_History', 'CV', 'known', getCurrentTime());
+                                                                $('#v-pills-lngs-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1414,9 +1512,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="lungsnorm"
                                                         onclick="updateBorder(this.id, 'lungsAbnorm');
-                                                        setItemAjax('Lungs_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Lungs', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Lungs_Abnormality', 'normal', 'Exposure_History', 'Lungs',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-abdm-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1431,8 +1529,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="lungsAbnorm"
                                                                 onclick="updateBorder(this.id, 'lungsnorm');
-                                                                recordAbnormality('lungsAbnormText', 'Lungs_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Lungs', document.getElementById('lungsAbnormText').value)">
+                                                                recordAbnormality('lungsAbnormText', 'Lungs_Abnormality', 'Exposure_History', 'Lungs', 'known', getCurrentTime());
+                                                                $('#v-pills-abdm-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1449,9 +1547,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="abdomennorm"
                                                         onclick="updateBorder(this.id, 'abdomenAbnorm');
-                                                        setItemAjax('Abdomen_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Abdomen', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Abdomen_Abnormality', 'normal', 'Exposure_History', 'Abdomen',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-plvs-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1466,8 +1564,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="abdomenAbnorm"
                                                                 onclick="updateBorder(this.id, 'abdomennorm');
-                                                                recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Abdomen', document.getElementById('abdomenAbnormText').value)">
+                                                                recordAbnormality('abdomenAbnormText', 'Abdomen_Abnormality', 'Exposure_History', 'Abdomen', 'known', getCurrentTime());
+                                                                $('#v-pills-plvs-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1484,9 +1582,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="pelvisnorm"
                                                         onclick="updateBorder(this.id, 'pelvisAbnorm');
-                                                        setItemAjax('Pelvis_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Pelvis', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Pelvis_Abnormality', 'normal', 'Exposure_History', 'Pelvis',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-exgu-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1501,8 +1599,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="pelvisAbnorm"
                                                                 onclick="updateBorder(this.id, 'pelvisnorm');
-                                                                recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Pelvis', document.getElementById('PelvisAbnormText').value)">
+                                                                recordAbnormality('PelvisAbnormText', 'Pelvis_Abnormality', 'Exposure_History', 'Pelvis', 'known', getCurrentTime());
+                                                                $('#v-pills-exgu-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1519,9 +1617,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="gunorm"
                                                         onclick="updateBorder(this.id, 'guAbnorm');
-                                                        setItemAjax('GU_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'GU', 'normal')"
-                                                >Normal
+                                                        setItemSimple('GU_Abnormality', 'normal', 'Exposure_History', 'GU',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-rctl-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1535,8 +1633,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="guAbnorm"
                                                                 onclick="updateBorder(this.id, 'gunorm');
-                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'GU', document.getElementById('GUAbnormText').value)">
+                                                                recordAbnormality('GUAbnormText', 'GU_Abnormality', 'Exposure_History', 'GU', 'known', getCurrentTime());
+                                                                $('#v-pills-rctl-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1553,9 +1651,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="rectalnorm"
                                                         onclick="updateBorder(this.id, 'rectalAbnorm');
-                                                        setItemAjax('Rectal_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Rectal', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Rectal_Abnormality', 'normal', 'Exposure_History', 'Rectal',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-erue-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1570,8 +1668,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="rectalAbnorm"
                                                                 onclick="updateBorder(this.id, 'rectalnorm');
-                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Rectal', document.getElementById('rectalAbnormText').value)">
+                                                                recordAbnormality('RectalAbnormText', 'Rectal_Abnormality', 'Exposure_History', 'Rectal', 'known', getCurrentTime());
+                                                                $('#v-pills-erue-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1588,9 +1686,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="ruenorm"
                                                         onclick="updateBorder(this.id, 'rueAbnorm');
-                                                        setItemAjax('RUE_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'RUE', 'normal')"
-                                                >Normal
+                                                        setItemSimple('RUE_Abnormality', 'normal', 'Exposure_History', 'RUE',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-elue-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1604,8 +1702,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="rueAbnorm"
                                                                 onclick="updateBorder(this.id, 'ruenorm');
-                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'RUE', document.getElementById('RUEAbnormText').value)">
+                                                                recordAbnormality('RUEAbnormText', 'RUE_Abnormality', 'Exposure_History', 'RUE', 'known', getCurrentTime());
+                                                                $('#v-pills-elue-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1622,9 +1720,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="luenorm"
                                                         onclick="updateBorder(this.id, 'lueAbnorm');
-                                                        setItemAjax('LUE_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'LUE', 'normal')"
-                                                >Normal
+                                                        setItemSimple('LUE_Abnormality', 'normal', 'Exposure_History', 'LUE',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-erle-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1638,8 +1736,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="lueAbnorm"
                                                                 onclick="updateBorder(this.id, 'luenorm');
-                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'LUE', document.getElementById('LUEAbnormText').value)">
+                                                                recordAbnormality('LUEAbnormText', 'LUE_Abnormality', 'Exposure_History', 'LUE', 'known', getCurrentTime());
+                                                                $('#v-pills-erle-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1656,9 +1754,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="rlenorm"
                                                         onclick="updateBorder(this.id, 'rleAbnorm');
-                                                        setItemAjax('RLE_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'RLE', 'normal')"
-                                                >Normal
+                                                        setItemSimple('RLE_Abnormality', 'normal', 'Exposure_History', 'RLE',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-elle-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1672,8 +1770,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="rleAbnorm"
                                                                 onclick="updateBorder(this.id, 'rlenorm');
-                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'RLE', document.getElementById('RLEAbnormText').value)">
+                                                                recordAbnormality('RLEAbnormText', 'RLE_Abnormality', 'Exposure_History', 'RLE', 'known', getCurrentTime());
+                                                                $('#v-pills-elle-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1690,9 +1788,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="llenorm"
                                                         onclick="updateBorder(this.id, 'lleAbnorm');
-                                                        setItemAjax('LLE_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'LLE', 'normal')"
-                                                >Normal
+                                                        setItemSimple('LLE_Abnormality', 'normal', 'Exposure_History', 'LLE',
+                                                            'known','normal ' + getCurrentTime());
+                                                        $('#v-pills-back-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1706,8 +1804,8 @@
                                                     <div class="input-group-append">
                                                         <button class="btn btn-info btn-lg" type="button" id="lleAbnorm"
                                                                 onclick="updateBorder(this.id, 'llenorm');
-                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'LLE', document.getElementById('LLEAbnormText').value)">
+                                                                recordAbnormality('LLEAbnormText', 'LLE_Abnormality', 'Exposure_History', 'LLE', 'known', getCurrentTime());
+                                                                $('#v-pills-back-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1724,9 +1822,9 @@
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="backnorm"
                                                         onclick="updateBorder(this.id, 'backAbnorm');
-                                                        setItemAjax('Back_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Back', 'normal')"
-                                                >Normal
+                                                        setItemSimple('Back_Abnormality', 'normal', 'Exposure_History', 'Back',
+                                                            'known', 'normal ' + getCurrentTime());
+                                                        $('#v-pills-skin-tab').tab('show');">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1741,8 +1839,8 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="backAbnorm"
                                                                 onclick="updateBorder(this.id, 'backnorm');
-                                                                recordAbnormality('backAbnormText', 'Back_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Back', document.getElementById('backAbnormText').value)">
+                                                                recordAbnormality('backAbnormText', 'Back_Abnormality', 'Exposure_History', 'Back', 'known', getCurrentTime());
+                                                                $('#v-pills-skin-tab').tab('show');">
                                                             Enter
                                                         </button>
                                                     </div>
@@ -1758,10 +1856,9 @@
                                             <p class="survey-p">Skin</p>
                                             <div class="btn-group-vertical btn-padding" role="group">
                                                 <button type="button" class="btn btn-light" id="skinnorm"
-                                                        onclick="updateBorder(this.id, 'skinAbnorm')
-                                                        setItemAjax('Skin_Abnormality', 'normal');
-                                                        updateHistoryKnown('Exposure_History', 'Skin', 'normal')"
-                                                >Normal
+                                                        onclick="updateBorder(this.id, 'skinAbnorm');
+                                                        setItemSimple('Skin_Abnormality', 'normal', 'Exposure_History', 'Skin',
+                                                            'known','normal ' + getCurrentTime());">Normal
                                                 </button>
                                             </div>
                                             <div class="form-group">
@@ -1776,9 +1873,7 @@
                                                         <button class="btn btn-info btn-lg" type="button"
                                                                 id="skinAbnorm"
                                                                 onclick="updateBorder(this.id, 'skinnorm');
-                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality');
-                                                                updateHistoryKnown('Exposure_History', 'Skin', document.getElementById('skinAbnormText').value)">
-                                                            Enter
+                                                                recordAbnormality('skinAbnormText', 'Skin_Abnormality', 'Exposure_History', 'Skin', 'known', getCurrentTime());" >Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1840,8 +1935,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Age', document.getElementById('ageText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="ageEnter"
+                                                                onclick="setItemAjax('Patient_Age', document.getElementById('ageText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1860,8 +1955,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Weight', document.getElementById('weightText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="weightEnter"
+                                                                onclick="setItemAjax('Patient_Weight', document.getElementById('weightText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1880,8 +1975,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Mechanism_Injury',localStorage.getItem('Injury') +  document.getElementById('injuryText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="injuryEnter"
+                                                                onclick="setItemAjax('Patient_Mechanism_Injury',localStorage.getItem('Injury') +  document.getElementById('injuryText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1900,8 +1995,8 @@
                                                            value=""
                                                            placeholder="">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info btn-lg" type="button"
-                                                                onclick="setItemAjax('Patient_Pre_Arrival', localStorage.getItem('PreArrival') + document.getElementById('preArrivalText').value)">Enter
+                                                        <button class="btn btn-info btn-lg" type="button" id="preArrivalEnter"
+                                                                onclick="setItemAjax('Patient_Pre_Arrival', localStorage.getItem('PreArrival') + document.getElementById('preArrivalText').value);">Enter
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1948,7 +2043,6 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            RR: <input type="number" id="ettRR" min="0" max="50"/><br>
                             Depth: <input type="number" id="ettDepth" min="0" max="23"/> cm
                         </div>
                     </div>
@@ -2030,6 +2124,57 @@
                 document.getElementById(names[0]).style['border'] = '0.2em solid #00cc3d';
                 for (let i = 1; i < names.length; i++) document.getElementById(names[i]).style['border'] = 'none';
             }
+
+            function initEnter (bName, inputName) {
+                var input = document.getElementById(inputName);
+                input.addEventListener("keyup", function(event) {
+                  // Number 13 is the "Enter" key on the keyboard
+                  if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById(bName).click();
+                  }
+                });
+            }
+
+
+            initEnter('hrEnter', 'hrText');
+            initEnter('bpEnter', 'bpText');
+            initEnter('etco2Enter', 'etco2Text');
+            initEnter('rightPupilEnter', 'pupilsizeRight');
+            initEnter('leftPupilEnter', 'pupilsizeLeft');
+
+            initEnter('saveDiffAirway', 'adjunct');
+            initEnter('saveIVF', 'ivfAmount');
+            initEnter('saveBag', 'bagMaskRR');
+            initEnter('saveETT', 'ettDepth');
+
+            initEnter('preArrivalEnter', 'preArrivalText');
+            initEnter('injuryEnter', 'injuryText');
+            initEnter('ageEnter', 'ageText');
+            initEnter('weightEnter', 'weightText');
+
+            initEnter('headAbnorm', 'headAbnormText');
+            initEnter('eyesAbnorm', 'eyesAbnormText');
+            initEnter('earsAbnorm', 'earsAbnormText');
+            initEnter('midfaceAbnorm', 'midfaceAbnormText');
+            initEnter('trachAbnorm', 'trachAbnormText');
+            initEnter('jugularAbnorm', 'jugularAbnormText');
+            initEnter('cvAbnorm', 'CVAbnormText');
+            initEnter('lungsAbnorm', 'lungsAbnormText');
+            initEnter('abdomenAbnorm', 'abdomenAbnormText');
+            initEnter('pelvisAbnorm', 'PelvisAbnormText');
+            initEnter('guAbnorm', 'GUAbnormText');
+            initEnter('rectalAbnorm', 'RectalAbnormText');
+            initEnter('rueAbnorm', 'RUEAbnormText');
+            initEnter('lueAbnorm', 'LUEAbnormText');
+            initEnter('rleAbnorm', 'RLEAbnormText');
+            initEnter('lleAbnorm', 'LLEAbnormText');
+
+            initEnter('backAbnorm', 'backAbnormText');
+            initEnter('skinAbnorm', 'skinAbnormText');
+
         </script>
     </div>
 

@@ -62,9 +62,10 @@ historyDict = {
 	'Shock_History': {},
 	'Pupils_Equal_History': {'yes': [], 'no': []},
 	'Pupils_Round_History': {'yes': [], 'no': []},
-	'Pupils_Reactive_History': {'yes': [], 'no': []},
-	'Pupil_Right_History' : {},
-	'Pupil_Left_History' : {},
+	'Pupil_Reactive_Right_History': {'yes': [], 'no': []},
+	'Pupil_Reactive_Left_History': {'yes': [], 'no': []},
+	'Pupil_Size_Right_History' : {},
+	'Pupil_Size_Left_History' : {},
 	'Moves_Extremities_History' : {'yes': [], 'limited':[], 'no': []},
 	'Exposure_History' : {
 		'Head': [],
@@ -173,7 +174,6 @@ def savePatientInfo(request):
 def setItem(request):
 		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
-		print("The id is: ", newSession.id)
 		dbTable = Session.objects.get(id=newSession.id)
 		dbTable.__setattr__(key, valueNew)
 
@@ -183,76 +183,84 @@ def setItem(request):
 		return resp  # Sending an success response
 
 @csrf_exempt
-def updateHistoryUnknown(request):
+def setItemAddl(request):
+		key = request.POST.get('key', None)
 		valueNew = request.POST.get('value', None)
-		historyKey = request.POST.get('historyKey', None)
-		timeStamp = request.POST.get('timeStamp', None)
+		addlKey = request.POST.get('addlKey', None)
+		addlValue = request.POST.get('addlValue', None)
+
 		dbTable = Session.objects.get(id=newSession.id)
+		dbTable.__setattr__(key, valueNew)
+		dbTable.__setattr__(addlKey, addlValue)
 
-		history = historyDict[historyKey]
-		try:
-			# Assumes there is a list on the key
-			history[valueNew].append(timeStamp)
-		except KeyError:  # If it fails, because there is no key
-			history.__setitem__(valueNew, timeStamp)
-		except AttributeError:  # If it fails because it is not a list
-			history.__setitem__(valueNew, [history[valueNew], timeStamp])
+		historyKey = request.POST.get('historyKey', None)
+		historyStep = request.POST.get('historyStep', None)
+		historyType = request.POST.get('historyType', None)
+		timestamp = request.POST.get('timestamp', None)
 
-		dbTable.__setattr__(historyKey, str(history))
+		if(historyType == "known"):
+			history = historyDict[historyKey]
+			stepHistory = history[historyStep]
+			stepHistory.append(timestamp)
+			dbTable.__setattr__(historyKey, str(history))
 
+		elif(historyType == "unknown"):
+			history = historyDict[historyKey]
+			try:
+				# Assumes there is a list on the key
+				history[valueNew].append(timestamp)
+			except KeyError:  # If it fails, because there is no key
+				history.__setitem__(valueNew, timestamp)
+			except AttributeError:  # If it fails because it is not a list
+				history.__setitem__(valueNew, [history[valueNew], timestamp])
+
+			dbTable.__setattr__(historyKey, str(history))
+
+		elif(historyType == "binary"):
+			history = historyDict[historyKey]
+			history[valueNew] = timestamp
+
+			dbTable.__setattr__(historyKey, str(history))
 		dbTable.save()
 
 		resp = HttpResponse("Saved it!")
 		return resp  # Sending an success response
 
 @csrf_exempt
-def updateAirwayHistory(request):
-		step = request.POST.get('step', None)
-		historyKey = request.POST.get('historyKey', None)
-		timeStamp = request.POST.get('timeStamp', None)
+def setItemSimple(request):
+		key = request.POST.get('key', None)
+		valueNew = request.POST.get('value', None)
 		dbTable = Session.objects.get(id=newSession.id)
+		dbTable.__setattr__(key, valueNew)
 
-		airwayTypeHistory = historyDict[historyKey]
-		stepHistory = airwayTypeHistory[step]
-		stepHistory.append(timeStamp)
-
-		dbTable.__setattr__(historyKey, str(airwayTypeHistory))
-
-		dbTable.save()
-
-		resp = HttpResponse("Saved it!")
-		return resp  # Sending an success response
-
-@csrf_exempt
-def updateHistoryKnown(request):
-		value = request.POST.get('value', None)
 		historyKey = request.POST.get('historyKey', None)
-		timeStamp = request.POST.get('timeStamp', None)
-		dbTable = Session.objects.get(id=newSession.id)
+		historyStep = request.POST.get('historyStep', None)
+		historyType = request.POST.get('historyType', None)
+		timestamp = request.POST.get('timestamp', None)
 
-		typeHistory = historyDict[historyKey]
-		stepHistory = typeHistory[value]
-		stepHistory.append(timeStamp)
+		if(historyType == "known"):
+			history = historyDict[historyKey]
+			stepHistory = history[historyStep]
+			stepHistory.append(timestamp)
+			dbTable.__setattr__(historyKey, str(history))
 
-		dbTable.__setattr__(historyKey, str(typeHistory))
+		elif(historyType == "unknown"):
+			history = historyDict[historyKey]
+			try:
+				# Assumes there is a list on the key
+				history[valueNew].append(timestamp)
+			except KeyError:  # If it fails, because there is no key
+				history.__setitem__(valueNew, timestamp)
+			except AttributeError:  # If it fails because it is not a list
+				history.__setitem__(valueNew, [history[valueNew], timestamp])
 
-		dbTable.save()
+			dbTable.__setattr__(historyKey, str(history))
 
-		resp = HttpResponse("Saved it!")
-		return resp  # Sending an success response
+		elif(historyType == "binary"):
+			history = historyDict[historyKey]
+			history[valueNew] = timestamp
 
-@csrf_exempt
-def updateHistoryBinary(request):
-		value = request.POST.get('value', None)
-		historyKey = request.POST.get('historyKey', None)
-		timeStamp = request.POST.get('timeStamp', None)
-		dbTable = Session.objects.get(id=newSession.id)
-
-		history = historyDict[historyKey]
-		history[value] = timeStamp
-
-		dbTable.__setattr__(historyKey, str(history))
-
+			dbTable.__setattr__(historyKey, str(history))
 		dbTable.save()
 
 		resp = HttpResponse("Saved it!")

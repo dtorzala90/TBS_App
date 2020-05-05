@@ -25,7 +25,7 @@ if (onepiv === "thrown") {
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='one-piv-alert'>\n" +
         "                  <strong>Consider additional PIV</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\"))'" +
+        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert One PIV\", \"dismissed\")'" +
         "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
@@ -36,7 +36,7 @@ if (considerBolus === "thrown") {
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='consider-bolus-alert'>\n" +
         "                  <strong>Consider IVF bolus!</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\"))'" +
+        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\")'" +
         "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
@@ -47,7 +47,7 @@ if (fluidsGiven === "thrown") {
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='fluids-given-alert'>\n" +
         "                  <strong>Fluids Given</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Fluids Given\", \"dismissed\"))'" +
+        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Fluids Given\", \"dismissed\")'" +
         "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
@@ -58,7 +58,7 @@ if (excessFluids === "thrown") {
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='excess-fluids-alert'>\n" +
         "                  <strong>Excess IVF, consider transfusion!</strong>\n" +
-        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\"))'" +
+        "                  <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Alert Excess IVF\", \"dismissed\")'" +
         "                        data-dismiss=\"alert\" aria-label=\"Close\">\n" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
@@ -173,14 +173,14 @@ var shockAlert = localStorage.getItem("Shock Alert");
 if(hrAlert === "Bradycardia"){
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='brady-alert'>\n" +
-        "                  <strong>Bradycardia:  Consider cause!</strong>\n" +
+        "                  <strong>Bradycardia: Consider cause!</strong>\n" +
         "                </div>");
 }
 
 else if(hrAlert === "Tachycardia"){
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='tachy-alert'>\n" +
-        "                  <strong>Tachycardia:  Consider cause!</strong>\n" +
+        "                  <strong>Tachycardia: Consider cause!</strong>\n" +
         "                </div>");
 }
 
@@ -214,8 +214,8 @@ var typeAlert = localStorage.getItem("Type and Cross Alert");
 if(typeAlert === "thrown"){
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='type-cross-alert'>\n" +
-        "                  <strong>Consider Type and Cross</strong>\n" +
-        "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\"))'" +
+        "                  <strong>Consider Type and Cross!!!!</strong>\n" +
+        "                   <button type=\"button\" data-dismiss=\"alert\" class=\"close\" onclick='localStorage.setItem(\"Type and Cross Alert\", \"dismissed\")'" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
         "                </div>");
@@ -229,7 +229,7 @@ if(prbcAlert === "thrown"){
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='prbc-alert'>\n" +
         "                  <strong>Consider Transfusion of PRBC!</strong>\n" +
-        "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"PRBC Alert\", \"closed\"))'" +
+        "                   <button type=\"button\" data-dismiss=\"alert\" class=\"close\" onclick='localStorage.setItem(\"PRBC Alert\", \"closed\")'" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
         "                </div>");
@@ -239,7 +239,7 @@ if(mtpAlert === "thrown"){
     $('#alert_placeholder').append(
         "                <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id='mtp-alert'>\n" +
         "                  <strong>Consider Massive Transfusion Protocol!</strong>\n" +
-        "                   <button type=\"button\" class=\"close\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\"))'" +
+        "                   <button type=\"button\" data-dismiss=\"alert\" class=\"close\" onclick='localStorage.setItem(\"MTP Alert\", \"closed\")'" +
         "                    <span aria-hidden=\"true\">&times;</span>\n" +
         "                  </button>\n" +
         "                </div>");

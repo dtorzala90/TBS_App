@@ -1,3 +1,5 @@
+
+
 function updateHistoryKnown(historyKey, value, timeStamp){
     $.ajax({
         type:"POST",

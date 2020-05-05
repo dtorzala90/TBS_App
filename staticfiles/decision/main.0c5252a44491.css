@@ -1,0 +1,464 @@
+/*
+================================================================================
+General styles
+================================================================================
+*/
+
+html, body {
+    overflow: hidden;
+}
+
+body {
+    background: #FBFBFB; /*Off-white background*/
+    color: #39393B;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white; /*Sets the font color for headings*/
+}
+
+.label-wrap {
+    display: inline-block;
+    padding-left: 5px;
+    padding-top: 7px;
+    text_align: right;
+    white-space: nowrap;
+}
+
+ul {
+    margin: 0;
+}
+
+/* || Navigation Bar */
+
+/*Background color for main top navbar*/
+.navbar-default {
+    background-color: #17252a;
+    height: 65px;
+    flex-wrap: nowrap;
+}
+
+/*Nav brand font color*/
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+
+/*Font color for main top navbar links*/
+.site-header .navbar-nav .nav-link {
+    color: white;
+}
+
+/*Changes main top navbar link color when interacted with*/
+.site-header .navbar-nav .nav-link:hover {
+    color: #9fedd7;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+/*
+================================================================================
+Start session page [/decision/begin.html]
+================================================================================
+*/
+
+/* || Start button */
+
+/*Formats the "start session" button*/
+.start-button {
+    font-size: 30px;
+    padding: 25px 0;
+}
+
+/*Changes start button color when hovered over*/
+.start-button:hover {
+    background-color: #2B837F;
+}
+
+/*Changes start button color when clicked*/
+.start-button:visited {
+    border-color: #246D6A !important;
+}
+
+.start-button:active:focus {
+    background-color: #246D6A !important;
+}
+
+/* || Start form */
+
+/*Formats the start page "pre-hospital" form*/
+.startForm {
+    align-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+    margin: 0 auto;
+    padding: 30px;
+    width: 90%;
+}
+
+.form-label {
+    font-size: large;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+/*
+================================================================================
+Decision (survey) page [/decision/home.html]
+================================================================================
+*/
+
+/* || Decision timer */
+
+/*Formats the timer on the decision page*/
+.timer-decision {
+    background-color: #ffffff;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+    color: #39393B;
+    font-size: 65px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 5px;
+    text-align: center;
+    width: 350px; /*Reduces div width to look nice*/
+}
+
+/* || Decision card container */
+
+/*Changes hover color for navbar letters*/
+a:hover {
+    color: #9fedd7;
+}
+
+/*Formats the card container*/
+.card {
+    border: 1.5px solid #2b7a78;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10),
+    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+    width: 95%;
+}
+
+/*Formats the card header with the nav tabs*/
+.card-header {
+    background-color: #3AACA6;
+    border-bottom: 1.5px solid #2b7a78;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    width: 100%;
+}
+
+/*Formats the card title for each nav tab*/
+.card-title {
+    background: rgb(255, 255, 255); /*Creates background gradient effect*/
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(252, 225, 129, 1) 50%, rgba(255, 255, 255, 1) 100%);
+    margin-bottom: 1.5rem;
+}
+
+.survey-span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    float: left;
+    display: block;
+}
+
+/*Resizes nav pill div and adds styling*/
+.card-nav-pills {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(230, 245, 244, 1) 25%, rgba(230, 245, 244, 1) 50%, rgba(230, 245, 244, 1) 75%, rgba(255, 255, 255, 1) 100%);
+    border-right: 1.5px solid #2b7a78;
+    max-height: 50vh;
+    overflow-y: auto; /*Allows div to scroll separately if content doesn't fit*/
+}
+
+/*Formats the card nav tabs*/
+.nav > li > a {
+    font-size: 67px;
+    font-weight: bold;
+    padding: 0px 27px;
+}
+
+/*Changes color of selected nav pill*/
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #3AACA6;
+    color: #fff;
+}
+
+/*Recolors the current nav tab*/
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #39393B;
+    background-color: #fff;
+    border-color: #2b7a78 #2b7a78 #fff;
+}
+
+/*Formats inactive nab tabs*/
+.nav-tabs .nav-link {
+    border: 1.5px solid transparent;
+    margin-bottom: -2.8px;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/*Changes nav tab font color*/
+.survey-a {
+    color: white;
+}
+
+/*Resizes input section div*/
+.survey-col {
+    max-height: 50vh;
+    overflow-y: auto; /*Allows div to scroll separately if content doesn't fit*/
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/*Formats nav pill to be easily selected on tablet*/
+.survey-pill-a {
+    color: #39393B;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* || Survey input (buttons and text fields) */
+
+/*Allows for spacing between the vertical button groups*/
+.btn-group-vertical > button {
+    border-radius: 0.25rem !important;
+    margin-bottom: 10px;
+}
+
+/*Resizes the input buttons so it's easier on a tablet*/
+.btn-group-vertical .btn, .btn-group-vertical .btn-group {
+    font-size: 2rem;
+    height: 85px;
+    width: 100%;
+}
+
+/*Creates border to make btn-light buttons pop against current theme*/
+.btn-light, .btn-dark {
+    border: 1.5px solid #2b7a78;
+}
+
+.btn-info {
+    background-color: #3AACA6;
+    border: 1.5px solid #2b7a78;
+}
+
+/*Adjusts padding between survey buttons*/
+.btn-padding {
+    width: 100%;
+}
+
+/*Adjusts spacing between clustered buttons in the 'Pupils' section*/
+.btn-space {
+    border-radius: 0.25rem !important;
+    margin-bottom: 10px;
+}
+
+/*Specifically changes disability button text since it needs to fit more words*/
+.disb-btn {
+    font-size: 1.6rem !important;
+}
+
+/*Changes size of input text fields to match buttons*/
+.survey-fctrl {
+    font-size: 1.6rem;
+    height: 75px;
+}
+
+/*Adjusts input section labels using <p> elements*/
+.survey-p {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+/*
+================================================================================
+Summary page [/summary/main.html]
+================================================================================
+*/
+
+/* || Alerts & Vitals */
+
+/*Formats vitals according to their IDs*/
+#bp_placeholder {
+    display: inline-block;
+    font-size: 20px;
+    overflow: auto;
+    padding-top: 15px;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: #fce181;
+}
+
+#hr_placeholder {
+    display: inline-block;
+    font-size: 20px;
+    overflow: auto;
+    padding-top: 15px;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: #9fedd7;
+}
+
+#shock_placeholder {
+    display: inline-block;
+    font-size: 20px;
+    overflow: auto;
+    padding-top: 15px;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: #edeae5;
+}
+
+/* || Information divs general */
+
+/*Divides "rows" using borders in the ABCD card*/
+.card-row-divider {
+    border-bottom: 1.5px solid #2b7a78;
+}
+
+/*Allows each "row" in the ABCD and Vitals cards to be the same size*/
+.card-item {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+}
+
+/*Pads the text within each "row"*/
+.card-item-text {
+    padding: 10px 5px;
+}
+
+/*Adjusts the height and container display for the ABCD and Vitals cards*/
+.card-row-2-height {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column;
+    height: 57vh;
+}
+
+/*Formats the letter icons in the ABCD card*/
+.letter-icon {
+    background-color: #17252a;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+}
+
+/*Divides each section of the patient info card using borders*/
+.pi-col-divider {
+    border-left: 1.5px solid #2b7a78;
+    border-right: 1.5px solid #2b7a78;
+}
+
+/*Formats summary page card bodies*/
+.summary-card-body {
+    align-items: center;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+/*Formats the ABCD and Vitals card bodies*/
+.summary-card-body-2 {
+    align-items: center;
+    padding: 0px;
+    text-align: center;
+}
+
+/*Overrides default card headers for summary page use*/
+.summary-card-header {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 7.5px 20px;
+}
+
+/* || Alerts  card */
+
+/*Sets height for alerts card (had to do this specifically due to bug)*/
+.alerts-card-height {
+    height: 57vh;
+}
+
+/*Formats the Bootstrap danger alerts on the summary page*/
+.alert-danger {
+    align-content: center;
+    font-size: 30px;
+    text-align: center;
+}
+
+/*Allows the alerts card to scroll vertically, removes horizontal scroll*/
+.alerts-scrollable {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* || Vitals card */
+
+/*Adjusts the vitals text*/
+.vitals-format {
+    align-content: center;
+    text-align: center;
+}
+
+/*Formats the SVG icons in the vitals card*/
+.svg-icon {
+    background-color: #17252a;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 40px;
+    padding: 7px;
+    vertical-align: middle;
+    width: 40px;
+}
+
+/* || Summary timer */
+
+/*Formats the timer on the summary page*/
+.timer-summary {
+    background-color: #ffffff;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.10), /*Creates a shadow effect around div*/ 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.10),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.10),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.10);
+    color: #39393B;
+    font-size: 6vmax;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 10px;
+    text-align: center;
+    width: 70vw; /*Reduces div width to look nice*/
+}
+
+/*
+================================================================================
+Login page
+================================================================================
+*/
+
+.content-section {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}

@@ -5,6 +5,8 @@
  * has all been moved into its own script to prevent clutter in the HTML file.
  */
 
+var ivf_vals = [' ', ' ', ' '];
+
 /**
  * Function is responsible for launching modal based on parameters. The button calling the function
  * will pass an identifying value.
@@ -89,7 +91,7 @@ function fetchTimeModal(){
     var hour = Math.round(parseInt(document.getElementById('hourStamp').value, 10));
     var min = Math.round(parseInt(document.getElementById('minuteStamp').value, 10));
     var sec =Math.round(parseInt(document.getElementById('secondStamp').value, 10));
-    var timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
+    var timeStamp = pad(hour) + ":" +  pad(min) + ":" + pad(sec);
     return timeStamp;
 }
 
@@ -116,7 +118,7 @@ function launchModal(modalTitle, step, historyKey, historyValue) {
     saveBtn.onclick = function(){
         var timeStamp = fetchTimeModal();
         setItemAjax(step, timeStamp);
-        updateAirwayHistory(historyKey, historyValue, timeStamp)
+        //updateAirwayHistory(historyKey, historyValue, timeStamp)
         $("#timeModal").modal('hide');
     }
 
@@ -137,15 +139,13 @@ function ettModal() {
     $("#ettModal").modal();
 
     saveBtn.onclick = function () {
-        var rr = (document.getElementById('ettRR').value).toString(10);
         var depth = (document.getElementById('ettDepth').value).toString(10);
-        var display = "ETT Depth: " + depth + "cm  RR: " + rr;
+        var display = "ETT Depth: " + depth + "cm " + getCurrentTime();
+        var time = getCurrentTime();
         localStorage.setItem("ETT_Display", display);
 
-        setItemAjax('ETT_RR', rr);
-        setItemAjax('ETT_Depth', depth);
-        setItemAjax('ETT_Initiated', getCurrentTime());
-        updateAirwayHistory('ETT_History', 'achieved', ' At ' + getCurrentTime() + ' with RR of ' + rr + ' and depth of ' + depth + 'cm')
+        setItemAddl('ETT_Achieved', time, 'ETT_History', 'achieved',
+                'known', time, 'ETT_Depth', depth);
         $("#ettModal").modal('hide');
     }
 }
@@ -157,12 +157,12 @@ function bagMaskModal() {
     saveBtn.onclick = function () {
         var time = getCurrentTime();
         var rr = (document.getElementById('bagMaskRR').value).toString(10);
-        var display = "Bag Mask RR: " + rr;
+        var display = "Bag Mask RR: " + rr + " " + time;
         localStorage.setItem("BagMask_Display", display);
 
-        setItemAjax('Bag_Mask_RR', rr);
-        setItemAjax('Bag_Mask_Initiated', time);
-        updateAirwayHistory('Bag_Mask_History', 'initiated', ' At ' + time + ' with a RR of ' + rr);
+        setItemAddl('Bag_Mask_Initiated', time, 'Bag_Mask_History', 'initiated',
+                'known', time, 'Bag_Mask_RR', rr);
+
         $("#bagMaskModal").modal('hide');
     }
 }
@@ -175,13 +175,40 @@ function ivfModal() {
         var time = getCurrentTime();
         var ivf_prev = parseInt(localStorage.getItem('IVF'),10);
         var ivf_added = parseInt(document.getElementById('ivfAmount').value,10);
+        var display = "<b>IVF: " + ivf_added.toString(10) + " mL/kg " + getCurrentTime() + "</b>";
+        if(ivf_vals[0] === ' '){
+            ivf_vals[0] = display;
+        }
+
+        else if(ivf_vals[1] === ' '){
+            var swap = ivf_vals[0];
+            ivf_vals[1] = swap;
+            ivf_vals[0] = display;
+        }
+
+        else{
+            var swap = ivf_vals[1];
+            ivf_vals[2] = swap;
+            swap = ivf_vals[0];
+            ivf_vals[1] = swap;
+            ivf_vals[0] = display;
+        }
+
+        document.getElementById('ivf_1').innerHTML = ivf_vals[0];
+        document.getElementById('ivf_2').innerHTML = ivf_vals[1];
+        document.getElementById('ivf_3').innerHTML = ivf_vals[2];
+        localStorage.setItem("ivf_1", ivf_vals[0]);
+        localStorage.setItem("ivf_2", ivf_vals[1]);
+        localStorage.setItem("ivf_3", ivf_vals[2]);
+
         var ivf_new = (ivf_prev + ivf_added);
-        var display = "IVF: " + ivf_new.toString(10) + " mL/kg";
+        var display = "IVF: " + ivf_new.toString(10) + " mL/kg " + time;
         localStorage.setItem('IVF_Display', display);
 
         localStorage.setItem('IVF', ivf_new.toString(10));
-        setItemAjax('IVF_Total', ivf_new.toString(10));
-        updateIVFHistory('IVF_History', ivf_added.toString(10), time);
+
+        setItemSimple('IVF_Total', ivf_new.toString(10), 'IVF_History', ivf_added.toString(10),
+                'unknown', time);
         $("#ivfModal").modal('hide');
     }
 }
@@ -193,17 +220,23 @@ function diffAirwayModal() {
     saveBtn.onclick = function () {
         var time = getCurrentTime();
         var adjunct = document.getElementById('adjunct').value;
-        var display = "Difficult Airway: " + adjunct;
+        var display = "Difficult Airway: " + adjunct + " " + time;
         localStorage.setItem('DiffAirway_Display', display);
 
-        setItemAjax('Difficult_Airway_Adjunct', adjunct);
-        updateAirwayHistory('Difficult_Airway_History', 'initiated', ' At ' + time + ' using ' + adjunct);
+        setItemAddl('Difficult_Airway_Initiated', time, 'Difficult_Airway_History', 'initiated',
+                'known', time, 'Difficult_Airway_Adjunct', adjunct);
         $("#diffAirwayModal").modal('hide');
     }
 }
 
-
-
+function pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+}
 
 /**
  * Gets the current time stamp and returns it in a "displayable" format
@@ -214,6 +247,7 @@ function getCurrentTime(){
     var sec = Math.round((parseInt(localStorage.getItem('total_seconds_main'),10))%60);
     var hour = 0;
     var timeStamp = " ";
+
     if(min < 1){
         min = 0;
     }
@@ -223,76 +257,67 @@ function getCurrentTime(){
         min = Math.round(min%60);
     }
 
-    if(hour !== 0){
-        timeStamp = hour.toString(10) + "hr " +  min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
-
-    else{
-        timeStamp = min.toString(10) + "min " + sec.toString(10) + "sec";
-    }
+    timeStamp = pad(hour.toString(10)) + ":" +  pad(min.toString(10)) + ":" + pad(sec.toString(10));
 
     return timeStamp;
 }
 
-function setItemAjax(step, value){
+
+function setItemAddl(step, value, historyKey, historyStep, historyType, timestamp, addlKey, addlValue){
     $.ajax(
-    {
-        type:"POST",
-        url: "/setItem/",
-        data:{
-            'key': step,
-            'value': value,
-        },
-        success: function( data )
-        {}
-     })
+        {
+            type:"POST",
+            url: "/setItemAddl/",
+            data:{
+                'key': step,
+                'value': value,
+                'historyKey': historyKey,
+                'historyStep': historyStep,
+                'historyType': historyType,
+                'timestamp': timestamp,
+                'addlValue': addlValue,
+                'addlKey': addlKey,
+            },
+            success: function( data )
+            {}
+        })
 }
 
-function recordAbnormality(inputId, modelName) {
+function setItemSimple(step, value, historyKey, historyStep, historyType, timestamp){
+    $.ajax(
+        {
+            type:"POST",
+            url: "/setItemSimple/",
+            data:{
+                'key': step,
+                'value': value,
+                'historyKey': historyKey,
+                'historyStep': historyStep,
+                'historyType': historyType,
+                'timestamp': timestamp,
+            },
+            success: function( data )
+            {}
+        });
+}
+
+function recordAbnormality(inputId, step, historyKey, historyStep, historyType, timestamp) {
     var abnormality = document.getElementById(inputId).value;
     document.getElementById(inputId).value = ' ';
 
     $.ajax(
-    {
-        type:"POST",
-        url: "/setItem/",
-        data:{
-            'key': modelName,
-            'value': abnormality,
-        },
-        success: function( data )
-        {}
-     })
-}
-
-function updateAirwayHistory(historyKey, step, timeStamp){
-    $.ajax({
-        type:"POST",
-        url: '/updateAirwayHistory/',
-        data: {
-            'historyKey': historyKey,
-            'step': step,
-            'timeStamp': timeStamp
-        },
-
-        success: function( data ) {
-
-        }
-    });
-}
-
-function updateIVFHistory(historyKey, value, timeStamp){
-    $.ajax({
-        type:"POST",
-        url: '/updateHistoryUnknown/',
-        data: {
-            'historyKey': historyKey,
-            'value': value,
-            'timeStamp': timeStamp
-        },
-
-        success: function( data ) {
-
-        }
-    });
+        {
+            type:"POST",
+            url: "/setItemSimple/",
+            data:{
+                'key': step,
+                'value': abnormality,
+                'historyKey': historyKey,
+                'historyStep': historyStep,
+                'historyType': historyType,
+                'timestamp': abnormality + " " +  timestamp,
+            },
+            success: function( data )
+            {}
+        });
 }

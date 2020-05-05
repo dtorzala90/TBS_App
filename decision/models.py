@@ -26,7 +26,6 @@ class Session(models.Model):
 	ETT_Initiated = models.CharField(max_length=20, default="null")
 	ETT_Achieved = models.CharField(max_length=20, default="null")
 	ETT_Stopped = models.CharField(max_length=20, default="null")
-	ETT_RR = models.CharField(max_length=20, default="null")
 	ETT_Depth = models.CharField(max_length=20, default="null")
 	ETT_History = models.CharField(max_length=20, default="null")
 
@@ -62,6 +61,7 @@ class Session(models.Model):
 	Intraosseous_Line = models.CharField(max_length=20, default="no")
 
 	IVF_Total = models.CharField(max_length=20, default="0")
+	IVF_Completed = models.CharField(max_length=20, default="0")
 	Type_Cross = models.CharField(max_length=20, default="null")
 	Transfused_PRBC = models.CharField(max_length=20, default="no")
 	Massive_Transfusion = models.CharField(max_length=20, default="no")
@@ -81,7 +81,8 @@ class Session(models.Model):
 	#Disability Data
 	Pupils_Equal = models.CharField(max_length=20, default="Unknown")
 	Pupils_Round = models.CharField(max_length=20, default="Unknown")
-	Pupils_Reactive = models.CharField(max_length=20, default="Unknown")
+	Pupils_Reactive_Right = models.CharField(max_length=20, default="Unknown")
+	Pupils_Reactive_Left = models.CharField(max_length=20, default="Unknown")
 	Pupil_Size_Right = models.CharField(max_length=20, default="Unknown")
 	Pupil_Size_Left = models.CharField(max_length=20, default="Unknown")
 
@@ -89,9 +90,10 @@ class Session(models.Model):
 
 	Pupils_Equal_History = models.CharField(max_length=20, default="null")
 	Pupils_Round_History = models.CharField(max_length=20, default="null")
-	Pupils_Reactive_History = models.CharField(max_length=20, default="null")
-	Pupil_Right_History = models.CharField(max_length=20, default="null")
-	Pupil_Left_History = models.CharField(max_length=20, default="null")
+	Pupil_Reactive_Right_History = models.CharField(max_length=20, default="null")
+	Pupil_Reactive_Left_History = models.CharField(max_length=20, default="null")
+	Pupil_Size_Right_History = models.CharField(max_length=20, default="null")
+	Pupil_Size_Left_History = models.CharField(max_length=20, default="null")
 	Moves_Extremities_History = models.CharField(max_length=20, default="null")
 
 	#Vitals
@@ -108,9 +110,6 @@ class Session(models.Model):
 
 
 	GCS_History = models.CharField(max_length=20, default="null")
-	GCS_Motor_History = models.CharField(max_length=20, default="null")
-	GCS_Verbal_History = models.CharField(max_length=20, default="null")
-	GCS_Eye_History = models.CharField(max_length=20, default="null")
 	ETCO2_History = models.CharField(max_length=20, default="null")
 	Shock_History = models.CharField(max_length=20, default="null")
 	HR_History = models.CharField(max_length=20, default="null")
